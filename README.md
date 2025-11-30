@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Throoout - Smart Software Solutions
 
-## Getting Started
+A modern, attractive landing page for Throoout, a software engineering startup specializing in building fast, secure, and scalable digital products.
+
+## 🚀 Features
+
+- **Modern Design**: Clean, minimal, and professional UI with blue/purple gradient theme
+- **Fully Responsive**: Works perfectly on mobile, tablet, and desktop
+- **Smooth Animations**: Engaging scroll animations and hover effects
+- **Contact Form**: Interactive form with validation
+- **WhatsApp Integration**: Direct link to chat on WhatsApp
+- **SEO Optimized**: Proper meta tags and descriptions
+
+## 📋 Sections
+
+1. **Navigation Bar** - Fixed header with smooth scrolling
+2. **Hero Section** - Eye-catching headline with animated gradient background
+3. **About Us** - Brief introduction to the company
+4. **Services** - 4 core services with hover effects
+5. **Why Choose Us** - Key differentiators
+6. **Contact Form** - Full contact form with WhatsApp and email links
+7. **Footer** - Company information and links
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 16.0.5
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4
+- **React**: 19.2.0
+- **Node.js**: 20.19.6 (required)
+
+## 🚦 Getting Started
 
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📝 Customization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Update Contact Information
 
-## Learn More
+1. **WhatsApp Number**: Replace `1234567890` in `app/page.tsx` with your actual WhatsApp number
+2. **Email**: Update `hello@Throoout.com` with your company email
 
-To learn more about Next.js, take a look at the following resources:
+### Change Colors
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The main gradient colors can be adjusted in `app/page.tsx`:
+- Primary gradient: `from-blue-600 to-purple-600`
+- Background gradient: `from-blue-50 via-purple-50 to-pink-50`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Update Content
 
-## Deploy on Vercel
+All content can be edited directly in `app/page.tsx`:
+- Company description
+- Services list
+- About us text
+- Contact form fields
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📱 Contact Methods
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Email**: hello@Throoout.com
+- **WhatsApp**: Direct chat integration
+- **Contact Form**: Built-in form submission
+
+## 🎨 Design Features
+
+- Gradient backgrounds with animated blobs
+- Smooth hover transitions
+- Rounded corners and soft shadows
+- Mobile-first responsive design
+- Accessible and semantic HTML
+
+## 📦 Build for Production
+
+```bash
+npm run build
+npm start
+```
+
+## 📄 License
+
+© 2025 Throoout. All rights reserved.
+
+---
+
+**Note**: Make sure to update the WhatsApp number and email address before deploying to production!
