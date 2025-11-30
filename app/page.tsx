@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+const CONTACT_API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL || '';
+const CONTACT_API_KEY = process.env.NEXT_PUBLIC_CONTACT_API_KEY || '';
 import Image from 'next/image';
 
 export default function Home() {
@@ -16,14 +18,39 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setSubmitMessage('Thank you! We will get back to you soon.');
-      setFormData({ name: '', email: '', phone: '', message: '' });
-      setIsSubmitting(false);
-      setTimeout(() => setSubmitMessage(''), 5000);
-    }, 1000);
+    setSubmitMessage('');
+    try {
+      const [firstname, ...lastnameArr] = formData.name.trim().split(' ');
+      const lastname = lastnameArr.join(' ');
+      const payload = {
+        app_name: 'throoout',
+        email: formData.email,
+        firstname: firstname || '',
+        lastname: lastname || '',
+        phoneno: formData.phone,
+        description: formData.message,
+        type: 'contact',
+        other: '-'
+      };
+      const res = await fetch(CONTACT_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': CONTACT_API_KEY,
+        },
+        body: JSON.stringify(payload),
+      });
+      if (res.ok) {
+        setSubmitMessage('Thank you! We will get back to you soon.');
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } else {
+        setSubmitMessage('Failed to send. Please try again later.');
+      }
+    } catch (err) {
+      setSubmitMessage('Failed to send. Please try again later.');
+    }
+    setIsSubmitting(false);
+    setTimeout(() => setSubmitMessage(''), 5000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
