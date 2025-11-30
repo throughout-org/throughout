@@ -1,11 +1,12 @@
 'use client';
-
 import { useState } from 'react';
-const CONTACT_API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL || '';
-const CONTACT_API_KEY = process.env.NEXT_PUBLIC_CONTACT_API_KEY || '';
+
+
 import Image from 'next/image';
 
 export default function Home() {
+  const CONTACT_API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL ?? '';
+  const CONTACT_API_KEY = process.env.NEXT_PUBLIC_CONTACT_API_KEY ?? '';
   const [formData, setFormData] = useState({
     name: '',
     email: '',
