@@ -354,6 +354,7 @@ export default function Home() {
             <p className="text-gray-500 text-sm">
               © {new Date().getFullYear()} Throoout. All rights reserved.
             </p>
+            
             <p className="text-gray-500 text-xs mt-3">
               Owned & Developed by <a href="https://www.bavaram.info/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors font-medium">Bavaram</a>
             </p>
