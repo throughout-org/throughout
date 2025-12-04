@@ -4,6 +4,8 @@ export interface ServiceHero {
   primaryCTA: string;
   secondaryCTA: string;
   visualStrategy: string;
+  badgeText?: string;
+  trustIndicators?: string[];
 }
 
 export interface ServiceCard {
@@ -22,6 +24,8 @@ export interface Service {
   id: string;
   title: string;
   slug: string;
+  gradient: string;
+  icon: string;
   hero: ServiceHero;
   solutionsGridHeadline: string;
   solutionsGridIntro: string;
@@ -31,7 +35,11 @@ export interface Service {
   engineeringFeatures: EngineeringFeature[];
   technologies: {
     headline: string;
-    stack: string[];
+    description?: string;
+    stack: {
+      name: string;
+      icon: string;
+    }[];
   };
   scalableBanner: {
     headline: string;
@@ -56,12 +64,16 @@ export const services: Service[] = [
     id: '1',
     title: 'Software Development',
     slug: 'software-development',
+    gradient: 'from-blue-500 to-cyan-500',
+    icon: '💻',
     hero: {
       headline: 'Engineering Scalable Software for the Future',
       subheadline: 'We build high-performance web applications, dynamic admin panels, and real-time APIs using industry-leading technologies like Laravel, Next.js, and Python.',
       primaryCTA: 'Start Your Project',
       secondaryCTA: 'View Our Tech Stack',
       visualStrategy: 'Abstract geometric lines connecting server icons, representing connectivity and structure',
+      badgeText: 'Software Excellence',
+      trustIndicators: ['Free Consultation', 'Agile Development', 'Expert Team'],
     },
     solutionsGridHeadline: 'Comprehensive Development Solutions',
     solutionsGridIntro: 'Whether you need a lightning-fast frontend or a complex automation backend, our stack covers the full lifecycle.',
@@ -113,7 +125,23 @@ export const services: Service[] = [
     ],
     technologies: {
       headline: 'Powered by Modern Tech',
-      stack: ['React', 'Next.js', 'Tailwind CSS', 'Laravel', 'Node.js', 'Nest.js', 'Python', 'MySQL', 'PostgreSQL', 'MongoDB', 'Redis', 'Docker', 'AWS', 'Git'],
+      description: 'We harness modern frameworks like React.js and Next.js, alongside robust back-end technologies such as Laravel, Node.js, and Python, to craft powerful and scalable web applications.',
+      stack: [
+        { name: 'React', icon: '/images/tech/react.svg' },
+        { name: 'Next.js', icon: '/images/tech/nextjs.svg' },
+        { name: 'Tailwind CSS', icon: '/images/tech/tailwind.svg' },
+        { name: 'Laravel', icon: '/images/tech/laravel.svg' },
+        { name: 'Node.js', icon: '/images/tech/nodejs.svg' },
+        { name: 'Nest.js', icon: '/images/tech/nestjs.svg' },
+        { name: 'Python', icon: '/images/tech/python.svg' },
+        { name: 'MySQL', icon: '/images/tech/mysql.svg' },
+        { name: 'PostgreSQL', icon: '/images/tech/postgresql.svg' },
+        { name: 'MongoDB', icon: '/images/tech/mongodb.svg' },
+        { name: 'Redis', icon: '/images/tech/redis.svg' },
+        { name: 'Docker', icon: '/images/tech/docker.svg' },
+        { name: 'AWS', icon: '/images/tech/aws.svg' },
+        { name: 'Git', icon: '/images/tech/git.svg' },
+      ],
     },
     scalableBanner: {
       headline: 'Build high-performance software that scales with your business',
@@ -146,12 +174,16 @@ export const services: Service[] = [
     id: '2',
     title: 'Custom E-Commerce Development',
     slug: 'custom-ecommerce-development',
+    gradient: 'from-amber-500 to-yellow-500',
+    icon: '🛒',
     hero: {
       headline: 'Enterprise-Grade E-Commerce Engineering',
       subheadline: 'We move beyond templates to build bespoke, headless e-commerce platforms using Laravel and Next.js—optimized for speed, scalability, and specific payment needs.',
       primaryCTA: 'Build Your Store',
       secondaryCTA: 'View Payment Integrations',
       visualStrategy: 'A split diagram showing a backend "Database/API" layer connecting to multiple "Heads" like Mobile, Web, and POS',
+      badgeText: 'E-Commerce Solutions',
+      trustIndicators: ['Payment Integration', 'Scalable Architecture', '99.9% Uptime'],
     },
     solutionsGridHeadline: 'Bespoke Commerce Solutions',
     solutionsGridIntro: "From multi-vendor marketplaces to single-brand flagship stores, we build logic that standard platforms can't handle.",
@@ -190,7 +222,16 @@ export const services: Service[] = [
     ],
     technologies: {
       headline: 'Technologies',
-      stack: ['Laravel', 'Next.js', 'Redis', 'MySQL', 'Stripe API', 'PayHere API', 'Docker'],
+      description: 'Our e-commerce stack combines powerful backend frameworks like Laravel with blazing-fast frontends using Next.js, integrated with secure payment gateways and modern caching solutions.',
+      stack: [
+        { name: 'Laravel', icon: '/images/tech/laravel.svg' },
+        { name: 'Next.js', icon: '/images/tech/nextjs.svg' },
+        { name: 'Redis', icon: '/images/tech/redis.svg' },
+        { name: 'MySQL', icon: '/images/tech/mysql.svg' },
+        { name: 'Stripe', icon: '/images/tech/stripe.svg' },
+        { name: 'PayHere', icon: '/images/tech/payhere.svg' },
+        { name: 'Docker', icon: '/images/tech/docker.svg' },
+      ],
     },
     scalableBanner: {
       headline: 'Launch a custom e-commerce platform that converts visitors into customers',
@@ -223,12 +264,16 @@ export const services: Service[] = [
     id: '3',
     title: 'Shopify E-Commerce',
     slug: 'shopify-ecommerce',
+    gradient: 'from-teal-500 to-cyan-500',
+    icon: '🛍️',
     hero: {
       headline: 'Expert Shopify Development & Optimization',
       subheadline: 'Maximize your revenue with custom Shopify themes, app integrations, and Headless Shopify solutions tailored for high-growth brands.',
       primaryCTA: 'Start Shopify Store',
       secondaryCTA: 'Explore Headless Shopify',
       visualStrategy: 'Clean icons of Shopify connecting to inventory, shipping, and marketing tools',
+      badgeText: 'Shopify Experts',
+      trustIndicators: ['Custom Themes', 'App Integration', 'Performance Optimized'],
     },
     solutionsGridHeadline: 'Shopify Ecosystem Services',
     solutionsGridIntro: "We help you unlock the full potential of the world's leading commerce platform.",
@@ -267,7 +312,14 @@ export const services: Service[] = [
     ],
     technologies: {
       headline: 'Technologies',
-      stack: ['Shopify Plus', 'Liquid', 'React.js (Hydrogen)', 'GraphQL', 'Node.js'],
+      description: 'We leverage the Shopify ecosystem with custom Liquid themes and headless React frontends using Hydrogen, powered by GraphQL APIs for optimal performance and flexibility.',
+      stack: [
+        { name: 'Shopify', icon: '/images/tech/shopify.svg' },
+        { name: 'Liquid', icon: '/images/tech/liquid.svg' },
+        { name: 'React', icon: '/images/tech/react.svg' },
+        { name: 'GraphQL', icon: '/images/tech/graphql.svg' },
+        { name: 'Node.js', icon: '/images/tech/nodejs.svg' },
+      ],
     },
     scalableBanner: {
       headline: 'Maximize your Shopify store potential with custom development',
@@ -300,12 +352,16 @@ export const services: Service[] = [
     id: '4',
     title: 'Cloud & Server Solutions',
     slug: 'cloud-server-solutions',
+    gradient: 'from-green-500 to-emerald-500',
+    icon: '☁️',
     hero: {
       headline: 'Resilient Cloud Infrastructure & DevOps',
       subheadline: 'We architect, deploy, and manage secure server environments on AWS, Azure, and Google Cloud to ensure your applications never go offline.',
       primaryCTA: 'Optimize My Server',
       secondaryCTA: 'View DevOps Tools',
       visualStrategy: 'Isometric view of server clusters, load balancers, and a CI/CD infinity loop',
+      badgeText: 'Cloud Infrastructure',
+      trustIndicators: ['99.9% Uptime', '24/7 Monitoring', 'Auto-Scaling'],
     },
     solutionsGridHeadline: 'Infrastructure Services',
     solutionsGridIntro: 'Bridging the gap between code and deployment with modern DevOps practices.',
@@ -344,7 +400,16 @@ export const services: Service[] = [
     ],
     technologies: {
       headline: 'Technologies',
-      stack: ['AWS', 'Google Cloud', 'Docker', 'Kubernetes', 'Jenkins', 'Terraform', 'Linux'],
+      description: 'We architect cloud infrastructure using industry-leading platforms like AWS and Google Cloud, with containerization via Docker and Kubernetes, automated with CI/CD pipelines and Infrastructure as Code.',
+      stack: [
+        { name: 'AWS', icon: '/images/tech/aws.svg' },
+        { name: 'Google Cloud', icon: '/images/tech/gcp.svg' },
+        { name: 'Docker', icon: '/images/tech/docker.svg' },
+        { name: 'Kubernetes', icon: '/images/tech/kubernetes.svg' },
+        { name: 'Jenkins', icon: '/images/tech/jenkins.svg' },
+        { name: 'Terraform', icon: '/images/tech/terraform.svg' },
+        { name: 'Linux', icon: '/images/tech/linux.svg' },
+      ],
     },
     scalableBanner: {
       headline: 'Deploy with confidence on robust cloud infrastructure',
@@ -377,12 +442,16 @@ export const services: Service[] = [
     id: '5',
     title: 'WordPress Development',
     slug: 'wordpress-development',
+    gradient: 'from-orange-500 to-red-500',
+    icon: '📝',
     hero: {
       headline: 'High-Performance Custom WordPress',
       subheadline: 'We push WordPress beyond its limits with custom plugin development, headless setups, and API integrations—secure, fast, and scalable.',
       primaryCTA: 'Discuss My Site',
       secondaryCTA: 'Technical Audit',
       visualStrategy: 'Abstract representation of the WordPress block editor connecting to raw PHP code',
+      badgeText: 'WordPress Experts',
+      trustIndicators: ['Custom Development', 'Security Hardened', 'SEO Optimized'],
     },
     solutionsGridHeadline: 'Advanced WP Engineering',
     solutionsGridIntro: 'Ideal for publishers and businesses who need the ease of WordPress but the power of a custom app.',
@@ -421,7 +490,15 @@ export const services: Service[] = [
     ],
     technologies: {
       headline: 'Technologies',
-      stack: ['PHP', 'MySQL', 'JavaScript', 'React (for Gutenberg blocks)', 'WP-CLI', 'WooCommerce'],
+      description: 'We build custom WordPress solutions using PHP and MySQL foundations, enhanced with modern JavaScript and React for dynamic Gutenberg blocks, alongside WooCommerce for robust e-commerce functionality.',
+      stack: [
+        { name: 'WordPress', icon: '/images/tech/wordpress.svg' },
+        { name: 'PHP', icon: '/images/tech/php.svg' },
+        { name: 'MySQL', icon: '/images/tech/mysql.svg' },
+        { name: 'JavaScript', icon: '/images/tech/javascript.svg' },
+        { name: 'React', icon: '/images/tech/react.svg' },
+        { name: 'WooCommerce', icon: '/images/tech/woocommerce.svg' },
+      ],
     },
     scalableBanner: {
       headline: 'WordPress that performs like a custom-built application',
@@ -454,12 +531,16 @@ export const services: Service[] = [
     id: '6',
     title: 'AI Integrations & Automation',
     slug: 'ai-integrations-automation',
+    gradient: 'from-indigo-500 to-blue-500',
+    icon: '🤖',
     hero: {
       headline: 'Intelligent Automation & AI Solutions',
       subheadline: 'Leverage the power of LLMs and Python to automate workflows, analyze data, and build intelligent assistants for your business.',
       primaryCTA: 'Automate Your Workflow',
       secondaryCTA: 'Explore AI Use Cases',
       visualStrategy: 'A glowing network of nodes representing AI processing data points',
+      badgeText: 'AI & Automation',
+      trustIndicators: ['Custom AI Models', 'Process Automation', 'Data Security'],
     },
     solutionsGridHeadline: 'AI & Data Services',
     solutionsGridIntro: 'Transform raw data into actionable intelligence and manual work into automated flows.',
@@ -498,7 +579,15 @@ export const services: Service[] = [
     ],
     technologies: {
       headline: 'Technologies',
-      stack: ['OpenAI API', 'Python', 'LangChain', 'Pinecone (Vector DB)', 'PyTorch', 'Hugging Face'],
+      description: 'We integrate cutting-edge AI technologies including OpenAI APIs and open-source models, leveraging Python with LangChain for orchestration, vector databases for semantic search, and PyTorch for custom model training.',
+      stack: [
+        { name: 'OpenAI', icon: '/images/tech/openai.svg' },
+        { name: 'Python', icon: '/images/tech/python.svg' },
+        { name: 'LangChain', icon: '/images/tech/langchain.svg' },
+        { name: 'Pinecone', icon: '/images/tech/pinecone.svg' },
+        { name: 'PyTorch', icon: '/images/tech/pytorch.svg' },
+        { name: 'Hugging Face', icon: '/images/tech/huggingface.svg' },
+      ],
     },
     scalableBanner: {
       headline: 'Automate your workflows and unlock AI-powered intelligence',
@@ -531,12 +620,16 @@ export const services: Service[] = [
     id: '7',
     title: 'UI/UX Design',
     slug: 'ui-ux-design',
+    gradient: 'from-violet-500 to-purple-500',
+    icon: '🎨',
     hero: {
       headline: 'Design That Drives User Action',
       subheadline: "We don't just make things look good. We design intuitive, accessible, and conversion-focused interfaces that developers love to build.",
       primaryCTA: 'Start Design Project',
       secondaryCTA: 'View Design Process',
       visualStrategy: 'A floating "glassmorphism" style UI card with cursor interactions and wireframe lines',
+      badgeText: 'UI/UX Design',
+      trustIndicators: ['User Research', 'Accessibility First', 'Conversion Focused'],
     },
     solutionsGridHeadline: 'User Experience Services',
     solutionsGridIntro: 'From initial research to pixel-perfect prototypes, we cover the full design lifecycle.',
@@ -575,7 +668,14 @@ export const services: Service[] = [
     ],
     technologies: {
       headline: 'Technologies',
-      stack: ['Figma', 'Adobe XD', 'Sketch', 'Storybook', 'Zeplin'],
+      description: 'We design with industry-leading tools like Figma and Adobe XD, building component libraries in Storybook, and ensuring seamless developer handoff through Zeplin for pixel-perfect implementation.',
+      stack: [
+        { name: 'Figma', icon: '/images/tech/figma.svg' },
+        { name: 'Adobe XD', icon: '/images/tech/adobexd.svg' },
+        { name: 'Sketch', icon: '/images/tech/sketch.svg' },
+        { name: 'Storybook', icon: '/images/tech/storybook.svg' },
+        { name: 'Zeplin', icon: '/images/tech/zeplin.svg' },
+      ],
     },
     scalableBanner: {
       headline: 'Design experiences that users love and developers can build',

@@ -1,0 +1,43 @@
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import ServicesCTASection from '@/components/services/ServicesCTASection';
+import WhyUsHeroSection from '@/components/whyus/WhyUsHeroSection';
+import CoreStrengthsSection from '@/components/whyus/CoreStrengthsSection';
+import OurApproachSection from '@/components/whyus/OurApproachSection';
+import TechnologyExpertiseSection from '@/components/whyus/TechnologyExpertiseSection';
+import ClientSuccessSection from '@/components/whyus/ClientSuccessSection';
+
+export default function WhyUsPage() {
+  return (
+    <main className="min-h-screen">
+      <Navbar />
+      
+      {/* Hero Section */}
+      <WhyUsHeroSection />
+
+      {/* Main Content Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-white to-indigo-50 relative overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute top-20 left-10 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div className="absolute top-40 right-10 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Core Strengths */}
+          <CoreStrengthsSection />
+
+          {/* Our Approach */}
+          <OurApproachSection />
+
+          {/* Technology Expertise */}
+          <TechnologyExpertiseSection />
+
+          {/* Client Success Stories */}
+          <ClientSuccessSection />
+        </div>
+      </section>
+
+      <ServicesCTASection />
+      <Footer />
+    </main>
+  );
+}

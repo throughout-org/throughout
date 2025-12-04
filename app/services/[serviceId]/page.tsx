@@ -41,6 +41,8 @@ export default async function ServiceDetailPage({
         subheadline={service.hero.subheadline}
         primaryCTA={service.hero.primaryCTA}
         secondaryCTA={service.hero.secondaryCTA}
+        badgeText={service.hero.badgeText}
+        trustIndicators={service.hero.trustIndicators}
       />
 
       {/* What We Offer Section */}
@@ -63,6 +65,7 @@ export default async function ServiceDetailPage({
       {/* Technologies Section */}
       <TechnologiesSection
         headline={service.technologies.headline}
+        description={service.technologies.description}
         stack={service.technologies.stack}
       />
 
@@ -86,7 +89,7 @@ export default async function ServiceDetailPage({
       />
 
       {/* Back to Services */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      {/* <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-7xl mx-auto text-center">
           <Link 
             href="/services"
@@ -98,7 +101,7 @@ export default async function ServiceDetailPage({
             Back to All Services
           </Link>
         </div>
-      </section>
+      </section> */}
 
       {/* Footer */}
       <Footer />
