@@ -1,0 +1,107 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { services, getServiceBySlug } from '@/data/services';
+import Navbar from '@/components/Navbar';
+import HeroSection from '@/components/service/HeroSection';
+import WhatWeOfferSection from '@/components/service/WhatWeOfferSection';
+import InnovativeSolutionsSection from '@/components/service/InnovativeSolutionsSection';
+import EngineeringDNASection from '@/components/service/EngineeringDNASection';
+import TechnologiesSection from '@/components/service/TechnologiesSection';
+import ScalableBanner from '@/components/service/ScalableBanner';
+import EngagementModelsSection from '@/components/service/EngagementModelsSection';
+import FinalCTASection from '@/components/service/FinalCTASection';
+import Footer from '@/components/Footer';
+
+export async function generateStaticParams() {
+  return services.map((service) => ({
+    serviceId: service.slug,
+  }));
+}
+
+export default async function ServiceDetailPage({ 
+  params 
+}: { 
+  params: Promise<{ serviceId: string }> 
+}) {
+  const { serviceId } = await params;
+  const service = getServiceBySlug(serviceId);
+
+  if (!service) {
+    notFound();
+  }
+
+  return (
+    <div className="min-h-screen bg-white">
+      <Navbar />
+
+      {/* Hero Section */}
+      <HeroSection
+        headline={service.hero.headline}
+        subheadline={service.hero.subheadline}
+        primaryCTA={service.hero.primaryCTA}
+        secondaryCTA={service.hero.secondaryCTA}
+      />
+
+      {/* What We Offer Section */}
+      <WhatWeOfferSection
+        headline={service.solutionsGridHeadline}
+        intro={service.solutionsGridIntro}
+        cards={service.solutionCards}
+      />
+
+      {/* Innovative Solutions Section */}
+      <InnovativeSolutionsSection cards={service.solutionCards} />
+
+      {/* Engineering DNA Section */}
+      <EngineeringDNASection
+        headline={service.engineeringDNAHeadline}
+        intro={service.engineeringDNAIntro}
+        features={service.engineeringFeatures}
+      />
+
+      {/* Technologies Section */}
+      <TechnologiesSection
+        headline={service.technologies.headline}
+        stack={service.technologies.stack}
+      />
+
+      {/* Scalable Solutions Banner */}
+      <ScalableBanner
+        headline={service.scalableBanner.headline}
+        description={service.scalableBanner.description}
+      />
+
+      {/* Engagement Models Section */}
+      <EngagementModelsSection
+        headline={service.engagementModels.headline}
+        models={service.engagementModels.models}
+      />
+
+      {/* Final CTA Section */}
+      <FinalCTASection
+        headline={service.finalCTA.headline}
+        subtext={service.finalCTA.subtext}
+        buttonText={service.finalCTA.buttonText}
+      />
+
+      {/* Back to Services */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto text-center">
+          <Link 
+            href="/services"
+            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to All Services
+          </Link>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <Footer />
+    </div>
+  );
+}

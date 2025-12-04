@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
-
-
 import Image from 'next/image';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   const CONTACT_API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL ?? '';
@@ -61,34 +61,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-3">
-              <Image 
-                src="/images/logo.png" 
-                alt="Throoout Logo" 
-                width={280}
-                height={80}
-                className="h-15 w-auto"
-                priority
-              />
-            </div>
-            <div className="hidden md:flex space-x-8">
-              <a href="#about" className="text-gray-700 hover:text-blue-500 transition-colors">About</a>
-              <a href="#services" className="text-gray-700 hover:text-blue-500 transition-colors">Services</a>
-              <a href="#why-us" className="text-gray-700 hover:text-blue-500 transition-colors">Why Us</a>
-              <a href="#contact" className="text-gray-700 hover:text-blue-500 transition-colors">Contact</a>
-            </div>
-            <a
-              href="#contact"
-              className="hidden md:block px-6 py-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300"
-            >
-              Get Started
-            </a>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -330,37 +303,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center">
-            <div className="flex justify-center mb-4">
-              <Image 
-                src="/images/logo.png" 
-                alt="Throoout Logo" 
-                width={200}
-                height={90}
-                className="h-12 w-auto brightness-0 invert"
-              />
-            </div>
-            <p className="text-gray-400 mb-6">Building the future, one line of code at a time.</p>
-            <div className="flex justify-center gap-6 mb-6">
-              <a href="mailto:nkbram95@gmail.com" className="text-gray-400 hover:text-blue-400 transition-colors">
-                Email
-              </a>
-              <a href="https://wa.me/767000249" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
-                WhatsApp
-              </a>
-            </div>
-            <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Throoout. All rights reserved.
-            </p>
-            
-            <p className="text-gray-500 text-xs mt-3">
-              Owned & Developed by <a href="https://www.bavaram.info/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors font-medium">Bavaram</a>
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
