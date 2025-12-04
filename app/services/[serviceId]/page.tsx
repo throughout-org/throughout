@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -17,6 +18,62 @@ export async function generateStaticParams() {
   return services.map((service) => ({
     serviceId: service.slug,
   }));
+}
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ serviceId: string }> 
+}): Promise<Metadata> {
+  const { serviceId } = await params;
+  const service = getServiceBySlug(serviceId);
+
+  if (!service) {
+    return {
+      title: 'Service Not Found | Throoout',
+      description: 'The requested service page could not be found.',
+    };
+  }
+
+  return {
+    title: `${service.title} - ${service.hero.headline} | Throoout`,
+    description: service.hero.subheadline,
+    keywords: [
+      service.title.toLowerCase(),
+      `${service.title.toLowerCase()} development`,
+      `${service.title.toLowerCase()} services`,
+      'custom software development',
+      'agile development',
+      'scalable solutions',
+      'enterprise solutions',
+      ...service.technologies.stack.map(tech => tech.name.toLowerCase())
+    ],
+    openGraph: {
+      type: 'website',
+      locale: 'en_US',
+      url: `https://throoout.com/services/${serviceId}`,
+      siteName: 'Throoout',
+      title: `${service.title} - ${service.hero.headline}`,
+      description: service.hero.subheadline,
+      images: [
+        {
+          url: `/images/og-${serviceId}.png`,
+          width: 1200,
+          height: 630,
+          alt: `${service.title} Services`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${service.title} | Throoout`,
+      description: service.hero.subheadline,
+      images: [`/images/twitter-${serviceId}.png`],
+    },
+    alternates: {
+      canonical: `https://throoout.com/services/${serviceId}`,
+    },
+  };
 }
 
 export default async function ServiceDetailPage({ 

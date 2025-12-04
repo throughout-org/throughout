@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServicesCTASection from '@/components/services/ServicesCTASection';
@@ -7,6 +8,51 @@ import MissionVisionSection from '@/components/about/MissionVisionSection';
 import CoreValuesSection from '@/components/about/CoreValuesSection';
 import WhatWeDoSection from '@/components/about/WhatWeDoSection';
 import WhyChooseUsSection from '@/components/about/WhyChooseUsSection';
+
+export const metadata: Metadata = {
+  title: 'About Throoout - Your Trusted Software Development Partner',
+  description: 'Learn about Throoout\'s mission to deliver innovative software solutions. We specialize in web development, mobile apps, cloud solutions, and AI/ML. Discover our core values, vision, and commitment to excellence in software engineering.',
+  keywords: [
+    'about Throoout',
+    'software development company',
+    'our mission',
+    'our vision',
+    'company values',
+    'innovation',
+    'excellence',
+    'integrity',
+    'software engineering team',
+    'agile methodology',
+    'quality assurance',
+    'client success',
+    'digital transformation experts'
+  ],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://throoout.com/about',
+    siteName: 'Throoout',
+    title: 'About Throoout - Your Trusted Software Development Partner',
+    description: 'Discover Throoout\'s mission, vision, and values. Expert software development with innovation and excellence.',
+    images: [
+      {
+        url: '/images/og-about.png',
+        width: 1200,
+        height: 630,
+        alt: 'About Throoout',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Throoout - Software Development Experts',
+    description: 'Our mission, vision, and commitment to delivering exceptional software solutions.',
+    images: ['/images/twitter-about.png'],
+  },
+  alternates: {
+    canonical: 'https://throoout.com/about',
+  },
+};
 
 export default function AboutPage() {
   return (
