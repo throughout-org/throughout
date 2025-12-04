@@ -3,6 +3,7 @@ import { Montserrat, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Preloader from "@/components/Preloader";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -38,6 +39,7 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${jetbrainsMono.variable} antialiased font-sans`}
       >
+        {/* <Preloader /> */}
         <Navbar />
         {children}
          <Footer />

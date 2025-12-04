@@ -43,16 +43,20 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex items-center gap-3 z-50">
-            <Image 
-              src="/images/logo.png" 
-              alt="Throoout Logo" 
-              width={280}
-              height={80}
-              className="h-14 w-auto transition-transform duration-300 hover:scale-105"
-              priority
-            />
-          </div>
+          <a href="/" className="flex items-center gap-3 z-50 relative">
+            <div className="relative overflow-hidden">
+              {/* Continuous Shining Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-40 animate-logo-shine pointer-events-none"></div>
+              <Image 
+                src="/images/logo.png" 
+                alt="Throoout Logo" 
+                width={300}
+                height={100}
+                className="h-18 w-auto relative z-10"
+                priority
+              />
+            </div>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
@@ -175,6 +179,19 @@ export default function Navbar() {
             opacity: 1;
             transform: translateY(0);
           }
+        }
+        
+        @keyframes logo-shine {
+          0% {
+            transform: translateX(-100%) skewX(-15deg);
+          }
+          100% {
+            transform: translateX(200%) skewX(-15deg);
+          }
+        }
+        
+        .animate-logo-shine {
+          animation: logo-shine 3s ease-in-out infinite;
         }
         
         .animation-delay-1000 {
