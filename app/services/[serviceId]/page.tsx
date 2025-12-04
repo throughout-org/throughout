@@ -33,7 +33,7 @@ export default async function ServiceDetailPage({
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
+
 
       {/* Hero Section */}
       <HeroSection
@@ -103,8 +103,7 @@ export default async function ServiceDetailPage({
         </div>
       </section> */}
 
-      {/* Footer */}
-      <Footer />
+      
     </div>
   );
 }

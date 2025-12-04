@@ -13,7 +13,7 @@ export default function EngagementFrameworkSection() {
 
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % 4);
-    }, 2000); // Change every 3 seconds
+    }, 2000); // Change every 2 seconds
 
     return () => clearInterval(interval);
   }, [isPaused]);
@@ -287,25 +287,23 @@ export default function EngagementFrameworkSection() {
                 activeStep === index ? 'shadow-2xl scale-105' : 'shadow-lg hover:shadow-xl'
               }`}
             >
-              <div className={`bg-gradient-to-br ${step.color} p-1`}>
-                <div className="bg-white p-6">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${step.bgColor} flex items-center justify-center flex-shrink-0`}>
-                      <span className="text-3xl">{step.icon}</span>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-xs font-bold text-gray-500 mb-1">{step.number}</div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-1">{step.title}</h3>
-                      <p className="text-sm text-gray-600 font-medium">{step.headline}</p>
-                    </div>
+              <div className={`${activeStep === index ? `bg-gradient-to-br ${step.color}` : 'bg-gradient-to-br from-gray-100 to-gray-50'} p-6`}>
+                <div className="flex items-start gap-4 mb-4">
+                  <div className={`w-16 h-16 rounded-xl ${activeStep === index ? 'bg-white/20' : `bg-gradient-to-br ${step.bgColor}`} flex items-center justify-center flex-shrink-0`}>
+                    <span className="text-3xl">{step.icon}</span>
                   </div>
-                  
-                  {activeStep === index && (
-                    <p className="text-gray-600 text-sm leading-relaxed animate-fadeIn">
-                      {step.description}
-                    </p>
-                  )}
+                  <div className="flex-1 min-w-0">
+                    <div className={`text-xs font-bold mb-1 ${activeStep === index ? 'text-white/80' : 'text-gray-500'}`}>{step.number}</div>
+                    <h3 className={`text-lg font-bold mb-1 ${activeStep === index ? 'text-white' : 'text-gray-900'}`}>{step.title}</h3>
+                    <p className={`text-sm font-medium ${activeStep === index ? 'text-white/90' : 'text-gray-600'}`}>{step.headline}</p>
+                  </div>
                 </div>
+                
+                {activeStep === index && (
+                  <p className="text-white/95 text-sm leading-relaxed animate-fadeIn">
+                    {step.description}
+                  </p>
+                )}
               </div>
             </button>
           ))}

@@ -160,8 +160,10 @@ export default function IndustriesSection() {
                 <div className="max-w-4xl mx-auto">
                   {/* Icon and Title Row */}
                   <div className="flex items-center gap-6 mb-6">
-                    <div className={`w-20 h-20 bg-gradient-to-br ${industry.color} rounded-2xl flex items-center justify-center shadow-md`}>
-                      <span className="text-4xl">{industry.icon}</span>
+                    <div className={`w-20 h-20 bg-gradient-to-br ${industry.color} rounded-2xl flex items-center justify-center shadow-md p-0.5`}>
+                      <div className="w-full h-full bg-white rounded-xl flex items-center justify-center">
+                        <span className="text-4xl">{industry.icon}</span>
+                      </div>
                     </div>
                     <h3 className="text-3xl font-bold text-gray-900">
                       {industry.title}

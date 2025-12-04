@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <Navbar />
+      
 
       {/* Hero Section */}
       <HeroSection />
@@ -41,7 +41,7 @@ export default function Home() {
       <TechStackSection />
       {/* Footer */}
         <ServicesCTASection />
-      <Footer />
+     
 
       
     </div>

@@ -66,6 +66,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/why-us" className="text-gray-400 hover:text-blue-400 transition-colors text-sm flex items-center group">
+                  <span className="mr-2 group-hover:mr-3 transition-all">→</span>
+                  Why Us
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="text-gray-400 hover:text-blue-400 transition-colors text-sm flex items-center group">
                   <span className="mr-2 group-hover:mr-3 transition-all">→</span>
                   Contact
@@ -172,7 +178,7 @@ export default function Footer() {
               Terms of Service
             </Link>
           </div>
-          <p className="text-gray-400 text-sm text-center md:text-right">
+          {/* <p className="text-gray-400 text-sm text-center md:text-right">
             Owned & Developed by{' '}
             <a 
               href="https://www.bavaram.info/" 
@@ -182,7 +188,7 @@ export default function Footer() {
             >
               Bavaram
             </a>
-          </p>
+          </p> */}
         </div>
       </div>
     </footer>

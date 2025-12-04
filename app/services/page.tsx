@@ -7,7 +7,7 @@ import ServicesCTASection from '@/components/services/ServicesCTASection';
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      <Navbar />
+
 
       {/* Hero Section */}
       <ServicesHeroSection />
@@ -18,8 +18,7 @@ export default function ServicesPage() {
       {/* CTA Section */}
       <ServicesCTASection />
 
-      {/* Footer */}
-      <Footer />
+ 
     </div>
   );
 }

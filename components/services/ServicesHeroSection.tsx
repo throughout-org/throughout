@@ -27,7 +27,7 @@ export default function ServicesHeroSection() {
         </div>
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
           <span className="block text-gray-900">Transform Your</span>
-          <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <span className="block bg-gradient-to-r pb-2 from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
             Digital Experience
           </span>
         </h1>
