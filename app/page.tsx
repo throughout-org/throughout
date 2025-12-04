@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     'agile development',
     'full stack development'
   ],
-  authors: [{ name: 'Throoout', url: 'https://throoout.com' }],
+  authors: [{ name: 'Bavaram Karunaharan', url: 'https://bavaram.info' }],
   creator: 'Throoout',
   publisher: 'Throoout',
   openGraph: {
