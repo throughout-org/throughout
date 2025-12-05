@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="min-h-screen">
-      <Navbar />
+ 
       
       {/* Hero Section */}
       <AboutHeroSection />
@@ -87,7 +87,7 @@ export default function AboutPage() {
       </section>
 
       <ServicesCTASection />
-      <Footer />
+ 
     </main>
   );
 }

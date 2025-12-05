@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 export default function WhyUsPage() {
   return (
     <main className="min-h-screen">
-      <Navbar />
+ 
       
       {/* Hero Section */}
       <WhyUsHeroSection />
@@ -84,7 +84,7 @@ export default function WhyUsPage() {
       </section>
 
       <ServicesCTASection />
-      <Footer />
+ 
     </main>
   );
 }

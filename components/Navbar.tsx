@@ -47,6 +47,7 @@ export default function Navbar() {
             <div className="relative overflow-hidden">
               {/* Continuous Shining Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-40 animate-logo-shine pointer-events-none"></div>
+              
               <Image 
                 src="/images/logo.png" 
                 alt="Throoout Logo" 
@@ -55,6 +56,7 @@ export default function Navbar() {
                 className="h-18 w-auto relative z-10"
                 priority
               />
+              
             </div>
           </a>
 
@@ -94,23 +96,23 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden relative w-10 h-10 flex items-center justify-center focus:outline-none z-50"
+            className="lg:hidden relative w-10 h-10 flex items-center justify-center focus:outline-none z-[60]"
             aria-label="Toggle menu"
           >
             <div className="w-6 h-5 flex flex-col justify-between">
               <span 
-                className={`w-full h-0.5 bg-gray-800 rounded-full transition-all duration-300 ${
-                  isMenuOpen ? 'rotate-45 translate-y-2' : ''
+                className={`w-full h-0.5 rounded-full transition-all duration-300 ${
+                  isMenuOpen ? 'bg-gray-800 rotate-45 translate-y-2' : 'bg-gray-800'
                 }`}
               ></span>
               <span 
-                className={`w-full h-0.5 bg-gray-800 rounded-full transition-all duration-300 ${
-                  isMenuOpen ? 'opacity-0' : ''
+                className={`w-full h-0.5 rounded-full transition-all duration-300 ${
+                  isMenuOpen ? 'opacity-0 bg-gray-800' : 'bg-gray-800'
                 }`}
               ></span>
               <span 
-                className={`w-full h-0.5 bg-gray-800 rounded-full transition-all duration-300 ${
-                  isMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                className={`w-full h-0.5 rounded-full transition-all duration-300 ${
+                  isMenuOpen ? 'bg-gray-800 -rotate-45 -translate-y-2' : 'bg-gray-800'
                 }`}
               ></span>
             </div>
@@ -120,37 +122,55 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div 
-        className={`lg:hidden fixed inset-0 bg-white z-40 transition-all duration-500 ${
+        className={`lg:hidden fixed inset-0 z-40 transition-all duration-500 ${
           isMenuOpen 
             ? 'opacity-100 visible' 
-            : 'opacity-0 invisible'
+            : 'opacity-0 invisible pointer-events-none'
         }`}
       >
-        {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-50"></div>
+        {/* Vibrant Gradient Background */}
+        {/* <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600"></div> */}
         
-        {/* Animated Blobs */}
-        <div className="absolute top-20 right-10 w-64 h-64 bg-blue-200/30 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-10 w-64 h-64 bg-purple-200/30 rounded-full blur-3xl animate-pulse animation-delay-1000"></div>
+        {/* Animated Mesh Gradient Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-cyan-400/20 via-transparent to-fuchsia-500/20"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-violet-500/20 via-transparent to-amber-400/10"></div>
+        
+        {/* Floating Orbs */}
+        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-gradient-to-br from-cyan-400/30 to-blue-500/30 rounded-full blur-3xl animate-blob"></div>
+        <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-gradient-to-tr from-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/3 w-80 h-80 bg-gradient-to-r from-fuchsia-500/20 to-violet-500/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
         
         {/* Menu Content */}
-        <div className="relative h-full flex flex-col items-center justify-center px-8 space-y-8">
+        <div className="relative bg-white/95 min-h-screen flex flex-col items-center justify-center  space-y-10">
+          {/* Logo */}
+     
+   
+          
+
           {navLinks.map((link, index) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setIsMenuOpen(false)}
-              className={`text-3xl font-bold transition-all duration-300 transform hover:scale-110 ${
+              className={`relative text-3xl font-extrabold transition-all duration-500 transform hover:scale-110 group ${
                 isActive(link.href)
-                  ? 'text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text'
-                  : 'text-gray-800 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:bg-clip-text'
+                  ? 'text-blue-300 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text'
+                  : 'text-gray-800 hover:text-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 hover:bg-clip-text'
               }`}
               style={{
                 animation: isMenuOpen ? `slideIn 0.5s ease-out forwards ${index * 0.1}s` : 'none',
                 opacity: isMenuOpen ? 1 : 0
               }}
             >
-              {link.name}
+              {/* Glow effect on hover */}
+              <span className="relative inline-block">
+                {link.name}
+                {/* <span className={`absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transform transition-transform duration-300 rounded-full ${
+                  isActive(link.href)
+                    ? 'scale-x-100'
+                    : 'scale-x-0 group-hover:scale-x-100'
+                }`}></span> */}
+              </span>
             </a>
           ))}
           
@@ -158,13 +178,14 @@ export default function Navbar() {
           <a
             href="/contact"
             onClick={() => setIsMenuOpen(false)}
-            className="mt-8 px-8 py-4 bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 text-white font-semibold rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
+            className="mt-12 relative px-12 py-5 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white text-xl font-bold rounded-full shadow-2xl hover:shadow-[0_0_40px_rgba(139,92,246,0.5)] hover:scale-105 transition-all duration-300 overflow-hidden group"
             style={{
               animation: isMenuOpen ? 'slideIn 0.5s ease-out forwards 0.5s' : 'none',
               opacity: isMenuOpen ? 1 : 0
             }}
           >
-            Contact Us
+            <span className="relative z-10">Contact Us</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-500 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
           </a>
         </div>
       </div>
@@ -190,12 +211,36 @@ export default function Navbar() {
           }
         }
         
+        @keyframes blob {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+          }
+          33% {
+            transform: translate(30px, -50px) scale(1.1);
+          }
+          66% {
+            transform: translate(-20px, 20px) scale(0.9);
+          }
+        }
+        
         .animate-logo-shine {
           animation: logo-shine 3s ease-in-out infinite;
         }
         
+        .animate-blob {
+          animation: blob 7s ease-in-out infinite;
+        }
+        
         .animation-delay-1000 {
           animation-delay: 1s;
+        }
+        
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+          animation-delay: 4s;
         }
       `}</style>
     </nav>

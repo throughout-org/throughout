@@ -60,7 +60,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
+ 
 
       {/* Hero Section - Trendy Design */}
       <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -469,7 +469,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }
