@@ -7,6 +7,7 @@ import CoreStrengthsSection from '@/components/whyus/CoreStrengthsSection';
 import OurApproachSection from '@/components/whyus/OurApproachSection';
 import TechnologyExpertiseSection from '@/components/whyus/TechnologyExpertiseSection';
 import ClientSuccessSection from '@/components/whyus/ClientSuccessSection';
+import TrendyTuringLabel from '@/components/TrendyTuringLabel';
 
 export const metadata: Metadata = {
   title: 'Why Choose Throoout - Your Software Development Partner',
@@ -84,7 +85,7 @@ export default function WhyUsPage() {
       </section>
 
       <ServicesCTASection />
- 
+  <TrendyTuringLabel />
     </main>
   );
 }

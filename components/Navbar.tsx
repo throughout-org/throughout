@@ -101,7 +101,7 @@ export default function Navbar() {
                       zIndex: 1,
                       top: 'calc(50% + 8px)',
                       left: navLinksRect.left - 12,
-                      width: navLinksRect.width + 32,
+                      width: navLinksRect.width + 24,
                       height: 56,
                       transform: 'translateY(-50%)',
                       backdropFilter: 'blur(24px) saturate(1.5)',

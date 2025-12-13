@@ -13,6 +13,7 @@ import ScalableBanner from '@/components/service/ScalableBanner';
 import EngagementModelsSection from '@/components/service/EngagementModelsSection';
 import FinalCTASection from '@/components/service/FinalCTASection';
 import Footer from '@/components/Footer';
+import TrendyTuringLabel from '@/components/TrendyTuringLabel';
 
 export async function generateStaticParams() {
   return services.map((service) => ({
@@ -159,7 +160,7 @@ export default async function ServiceDetailPage({
           </Link>
         </div>
       </section> */}
-
+       <TrendyTuringLabel />
       
     </div>
   );

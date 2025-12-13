@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import ServicesHeroSection from '@/components/services/ServicesHeroSection';
 import ServicesGridSection from '@/components/services/ServicesGridSection';
 import ServicesCTASection from '@/components/services/ServicesCTASection';
+import TrendyTuringLabel from '@/components/TrendyTuringLabel';
 
 export const metadata: Metadata = {
   title: 'Our Services - Custom Software Development Solutions | Throoout',
@@ -67,6 +68,7 @@ export default function ServicesPage() {
 
       {/* CTA Section */}
       <ServicesCTASection />
+       <TrendyTuringLabel />
 
  
     </div>

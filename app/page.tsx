@@ -10,6 +10,7 @@ import IndustriesSection from '@/components/home/IndustriesSection';
 import EngagementFrameworkSection from '@/components/home/EngagementFrameworkSection';
 import TrustSection from '@/components/home/TrustSection';
 import ServicesCTASection from '@/components/services/ServicesCTASection';
+import TrendyTuringLabel from '@/components/TrendyTuringLabel';
 
 export const metadata: Metadata = {
   title: 'Throoout - Smart Software Solutions | Web & Mobile App Development',
@@ -103,7 +104,8 @@ export default function Home() {
        {/* Technology Stack Showcase */}
       <TechStackSection />
       {/* Footer */}
-        <ServicesCTASection />
+      <ServicesCTASection />
+      <TrendyTuringLabel />
      
 
       
