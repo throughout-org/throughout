@@ -17,7 +17,7 @@ export default function HeroSection() {
         </div>
 
         {/* Main Heading */}
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-center mb-8 ">
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-center mb-8 mt-8">
           <span className="block text-gray-900 mb-2">We Build</span>
           <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent pb-4">
             Smart Digital Solutions
