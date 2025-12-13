@@ -64,7 +64,7 @@ export default function IndustriesSection() {
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br ">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">

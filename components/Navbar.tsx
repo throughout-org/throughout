@@ -89,7 +89,7 @@ export default function Navbar() {
               className="relative px-6 py-3 bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 text-white font-semibold rounded-full overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <span className="relative z-10">Contact Us</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-blue-600 to-blue-500 transform translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-500 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
             </a>
           </div>
 
@@ -178,7 +178,7 @@ export default function Navbar() {
           <a
             href="/contact"
             onClick={() => setIsMenuOpen(false)}
-            className="mt-12 relative px-12 py-5 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white text-xl font-bold rounded-full shadow-2xl hover:shadow-[0_0_40px_rgba(139,92,246,0.5)] hover:scale-105 transition-all duration-300 overflow-hidden group"
+            className="relative px-6 py-3 bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 text-white font-semibold rounded-full overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-300"
             style={{
               animation: isMenuOpen ? 'slideIn 0.5s ease-out forwards 0.5s' : 'none',
               opacity: isMenuOpen ? 1 : 0

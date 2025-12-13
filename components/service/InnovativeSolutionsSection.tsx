@@ -159,15 +159,15 @@ export default function InnovativeSolutionsSection({ cards }: InnovativeSolution
           <div className="relative lg:sticky lg:top-8">
             <div className="relative group">
               {/* Main Card */}
-              <div className="relative aspect-[4/3] bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition-all duration-500">
+              <div className="relative aspect-[4/3] bg-gradient-to-br from-pink-100 via-blue-100 to-pink-100 rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition-all duration-500">
                 {/* Animated Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/50 via-purple-400/50 to-pink-400/50 animate-gradient-shift"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-200/50 via-blue-200/50 to-pink-200/50 animate-gradient-shift"></div>
                 
                 {/* Decorative Elements */}
                 <div className="absolute inset-0 opacity-20">
-                  <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl animate-float"></div>
-                  <div className="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full blur-3xl animate-float animation-delay-2000"></div>
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-white rounded-full blur-3xl animate-pulse"></div>
+                  <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-blue-200/60 via-white/60 to-purple-200/60 rounded-full blur-3xl animate-float"></div>
+                  <div className="absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-br from-pink-200/60 via-white/60 to-yellow-200/60 rounded-full blur-3xl animate-float animation-delay-2000"></div>
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-gradient-to-br from-purple-200/60 via-white/60 to-blue-200/60 rounded-full blur-3xl animate-pulse"></div>
                 </div>
                 
                 {/* Content */}
@@ -175,39 +175,39 @@ export default function InnovativeSolutionsSection({ cards }: InnovativeSolution
                   {/* Icon */}
                   <div className="mb-6 relative">
                     <div className="absolute inset-0 bg-white rounded-3xl blur-2xl opacity-50 animate-pulse"></div>
-                    <div className="relative text-8xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                    <div className="relative text-8xl text-gray-800 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                       💼
                     </div>
                   </div>
                   
                   {/* Text */}
-                  <h3 className="text-3xl font-bold text-white mb-3 drop-shadow-lg">
+                  <h3 className="text-3xl font-bold text-gray-900 mb-3 drop-shadow-lg">
                     Professional Solutions
                   </h3>
-                  <p className="text-white/90 text-lg max-w-sm drop-shadow-md">
+                  <p className="text-gray-700 text-lg max-w-sm drop-shadow-md">
                     Cutting-edge technology meets exceptional service
                   </p>
                   
                   {/* Stats */}
                   <div className="mt-8 grid grid-cols-3 gap-4 w-full max-w-md">
-                    <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-4 border border-white/30">
-                      <div className="text-2xl font-bold text-white">100+</div>
-                      <div className="text-xs text-white/80">Projects</div>
+                    <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-4 border border-gray-300">
+                      <div className="text-2xl font-bold text-gray-900">100+</div>
+                      <div className="text-xs text-gray-700">Projects</div>
                     </div>
-                    <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-4 border border-white/30">
-                      <div className="text-2xl font-bold text-white">50+</div>
-                      <div className="text-xs text-white/80">Clients</div>
+                    <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-4 border border-gray-300">
+                      <div className="text-2xl font-bold text-gray-900">50+</div>
+                      <div className="text-xs text-gray-700">Clients</div>
                     </div>
-                    <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-4 border border-white/30">
-                      <div className="text-2xl font-bold text-white">24/7</div>
-                      <div className="text-xs text-white/80">Support</div>
+                    <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-4 border border-gray-300">
+                      <div className="text-2xl font-bold text-gray-900">24/7</div>
+                      <div className="text-xs text-gray-700">Support</div>
                     </div>
                   </div>
                 </div>
               </div>
               
               {/* Glow Effect */}
-              <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500 -z-10"></div>
+              <div className="absolute -inset-1 bg-gradient-to-br from-pink-200 via-blue-200 to-pink-200 rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 -z-10"></div>
             </div>
           </div>
         </div>

@@ -7,16 +7,16 @@ export default function EngagementFrameworkSection() {
   const [activeStep, setActiveStep] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Auto-play carousel
+  // Auto-play carousel with consistent timing
   useEffect(() => {
     if (isPaused) return;
 
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % 4);
-    }, 2000); // Change every 2 seconds
+    }, 1500); // Change every 1.5 seconds for smoother experience
 
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, activeStep]); // Added activeStep to ensure clean resets
 
   const steps = [
     {

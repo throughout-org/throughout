@@ -126,6 +126,7 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${jetbrainsMono.variable} antialiased font-sans`}
       >
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

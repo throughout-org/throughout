@@ -167,7 +167,7 @@ export const services: Service[] = [
     finalCTA: {
       headline: 'Ready to Build Your Platform?',
       subtext: "Let's discuss your architecture and roadmap.",
-      buttonText: 'Get a Free Consultation',
+      buttonText: 'Schedule Software Consultation',
     },
   },
   {
@@ -257,7 +257,7 @@ export const services: Service[] = [
     finalCTA: {
       headline: 'Ready to Scale Your Sales?',
       subtext: "Let's build a store that fits your business, not a template.",
-      buttonText: 'Discuss Your Custom Store',
+      buttonText: 'Schedule E-Commerce Demo',
     },
   },
   {
@@ -345,7 +345,7 @@ export const services: Service[] = [
     finalCTA: {
       headline: 'Launch Your Brand Today',
       subtext: 'Expert setup, custom design, and ongoing support.',
-      buttonText: 'Get a Quote',
+      buttonText: 'Schedule Shopify Consultation',
     },
   },
   {
@@ -435,7 +435,7 @@ export const services: Service[] = [
     finalCTA: {
       headline: 'Stop Worrying About Server Crashes',
       subtext: 'Let us handle the infrastructure while you focus on the code.',
-      buttonText: 'Secure Your Infrastructure',
+      buttonText: 'Schedule Cloud Consultation',
     },
   },
   {
@@ -524,7 +524,7 @@ export const services: Service[] = [
     finalCTA: {
       headline: 'A WordPress Site That Actually Performs',
       subtext: 'Fast, secure, and built for growth.',
-      buttonText: 'Start Development',
+      buttonText: 'Schedule WordPress Call',
     },
   },
   {
@@ -613,7 +613,7 @@ export const services: Service[] = [
     finalCTA: {
       headline: 'Future-Proof Your Business',
       subtext: 'Discover how AI can reduce costs and increase efficiency.',
-      buttonText: 'Book an AI Consultation',
+      buttonText: 'Schedule AI Consultation',
     },
   },
   {
@@ -701,7 +701,7 @@ export const services: Service[] = [
     finalCTA: {
       headline: 'Turn Visitors into Users',
       subtext: "Let's design an interface that works as good as it looks.",
-      buttonText: 'Start Your Design',
+      buttonText: 'Schedule Design Consultation',
     },
   },
 ];
