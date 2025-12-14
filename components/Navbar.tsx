@@ -10,13 +10,13 @@ export default function Navbar() {
   const navLinksRef = useRef<HTMLDivElement>(null);
   const [navLinksRect, setNavLinksRect] = useState<{left: number, width: number} | null>(null);
 
+  const pathname = usePathname();
   useLayoutEffect(() => {
     if (!isScrolled && navLinksRef.current) {
       const el = navLinksRef.current;
       setNavLinksRect({ left: el.offsetLeft, width: el.offsetWidth });
     }
-  }, [isScrolled, isMenuOpen]);
-  const pathname = usePathname();
+  }, [isScrolled, isMenuOpen, pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
