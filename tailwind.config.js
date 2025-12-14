@@ -1,4 +1,31 @@
 module.exports = {
+  // ...other config
+  safelist: [
+    'bg-gradient-to-r',
+    'from-sky-400',
+    'via-blue-500',
+    'to-indigo-500',
+    'from-sky-100',
+    'to-blue-200/80',
+    'text-white',
+    'text-blue-700',
+    'hover:bg-gradient-to-r',
+    'hover:from-sky-100',
+    'hover:to-blue-200/80',
+    'hover:text-blue-900',
+    'border-white/30',
+    'border-white/20',
+    'border',
+    'scale-105',
+    'shadow-xl',
+    'shadow-lg',
+    'backdrop-blur-md',
+    'rounded-full',
+    'rounded-4xl',
+    // Add any other classes you use dynamically
+  ],
+};
+module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
