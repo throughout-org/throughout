@@ -1,5 +1,4 @@
 module.exports = {
-  // ...other config
   safelist: [
     'bg-gradient-to-r',
     'from-sky-400',
@@ -24,8 +23,6 @@ module.exports = {
     'rounded-4xl',
     // Add any other classes you use dynamically
   ],
-};
-module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
