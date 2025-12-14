@@ -5,6 +5,18 @@ import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
+  // Hidden div to ensure Tailwind classes are not purged in production
+  // This is a workaround for environments where safelist or static analysis may fail
+  const tailwindClassPreserver = (
+    <div className="hidden">
+      bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 text-white scale-105 shadow-xl border border-white/30
+      bg-white/40 text-blue-700 hover:bg-gradient-to-r hover:from-sky-100 hover:to-blue-200/80 hover:text-blue-900 hover:scale-105 border-white/20
+      from-sky-100 to-blue-200/80
+      rounded-full rounded-4xl
+      shadow-lg shadow-xl
+      backdrop-blur-md
+    </div>
+  );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navLinksRef = useRef<HTMLDivElement>(null);
@@ -42,7 +54,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav
+    <>
+      {tailwindClassPreserver}
+      <nav
       className={`fixed top-0 w-full z-50 flex justify-center items-center transition-all duration-500`}
       style={{ minHeight: '90px' }}
     >
@@ -245,5 +259,6 @@ export default function Navbar() {
           .animation-delay-4000 { animation-delay: 4s; }
         `}</style>
       </nav>
+    </>
   );
 }
