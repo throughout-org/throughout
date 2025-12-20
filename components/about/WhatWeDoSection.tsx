@@ -4,25 +4,25 @@ export default function WhatWeDoSection() {
       title: 'Web Development',
       description: 'Modern, responsive web applications',
       icon: '💻',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-200 to-cyan-50'
     },
     {
       title: 'Mobile Apps',
       description: 'iOS & Android native apps',
       icon: '📱',
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-blue-200 to-cyan-50'
     },
     {
       title: 'Cloud Solutions',
       description: 'Scalable infrastructure',
       icon: '☁️',
-      color: 'from-orange-500 to-red-500'
+      color: 'from-blue-200 to-cyan-50'
     },
     {
       title: 'AI & ML',
       description: 'Intelligent automation',
       icon: '🤖',
-      color: 'from-green-500 to-emerald-500'
+      color: 'from-blue-200 to-cyan-50'
     },
   ];
 
@@ -30,7 +30,7 @@ export default function WhatWeDoSection() {
     <div className="mb-12">
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-3">
-          What <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">We Do</span>
+          What <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">We Do</span>
         </h2>
         <p className="text-gray-600">Comprehensive technology solutions for modern businesses</p>
       </div>

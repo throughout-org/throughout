@@ -32,7 +32,7 @@ export default function TechStackSection() {
         <div className="text-center">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
             <span className="text-gray-900">Our</span>{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Tech Stack</span>
+            <span className="bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent pb-4 font-bold">Tech Stack</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             We work with industry-leading technologies to build modern, scalable solutions
@@ -47,23 +47,20 @@ export default function TechStackSection() {
           {[...techStack, ...techStack].map((tech, index) => (
             <div 
               key={index}
-              className="group relative flex-shrink-0 w-[160px]"
-              style={{
-                animation: 'float 6s ease-in-out infinite',
-                animationDelay: `${index * 0.2}s`
-              }}
+              className={`group relative flex-shrink-0 w-[160px] animate-float`}
+              style={{ animationDelay: `${index * 0.2}s` }}
             >
               {/* Card */}
-              <div className="relative h-full p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+              <div className="relative h-full p-6 bg-white/80 backdrop-blur-sm rounded-4xl border border-gray-200/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                 {/* Gradient Overlay on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 via-blue-500/0 to-cyan-500/0 group-hover:from-purple-500/10 group-hover:via-blue-500/10 group-hover:to-cyan-500/10 rounded-2xl transition-all duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-sky-500/0 via-blue-500/0 to-cyan-500/0 group-hover:from-sky-500/10 group-hover:via-blue-500/10 group-hover:to-cyan-500/10 rounded-4xl transition-all duration-500"></div>
                 
                 {/* Content */}
                 <div className="relative flex flex-col items-center gap-4">
                   {/* Icon Container with Glow Effect */}
                   <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-blue-400 rounded-xl blur-md opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
-                    <div className="relative w-16 h-16 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl group-hover:scale-110 transition-transform duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-gray-100 rounded-4xl blur-md opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                    <div className="relative w-16 h-16 flex items-center justify-center bg-gradient-to-br  rounded-4xl group-hover:scale-110 transition-transform duration-500">
                       <Image
                         src={tech.icon}
                         alt={tech.name}
@@ -76,14 +73,14 @@ export default function TechStackSection() {
                   
                   {/* Tech Name */}
                   <div className="text-center">
-                    <span className="text-sm font-bold text-gray-800 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text transition-all duration-300">
+                    <span className="text-sm font-bold text-gray-800 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-sky-600 group-hover:to-blue-600 group-hover:bg-clip-text transition-all duration-300">
                       {tech.name}
                     </span>
                   </div>
                 </div>
                 
                 {/* Bottom Accent Line */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8/12 h-1 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8/12 h-1 bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               </div>
             </div>
           ))}
@@ -91,6 +88,13 @@ export default function TechStackSection() {
       </div>
       {/* Global Animations */}
       <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-16px); }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
         @keyframes fadeInUp {
           from {
             opacity: 0;

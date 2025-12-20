@@ -25,8 +25,8 @@ export default function EngagementFrameworkSection() {
       icon: '🤝',
       headline: 'Identify Priorities',
       description: "We don't guess. We analyze your current infrastructure and business goals to identify exactly what needs to be built. We align technical requirements with your customer's needs.",
-      color: 'from-blue-600 via-blue-500 to-cyan-400',
-      bgColor: 'from-blue-100 via-blue-50 to-cyan-50',
+      color: 'from-blue-600 via-blue-500 to-blue-400',
+      bgColor: 'from-blue-100 via-blue-50 to-blue-50',
       ringColor: '#3b82f6',
       glowColor: 'shadow-blue-500/50',
     },
@@ -36,10 +36,10 @@ export default function EngagementFrameworkSection() {
       icon: '🧭',
       headline: 'Define Success Criteria',
       description: 'Before a line of code is written, we define what "winning" looks like. We craft a technical specification and project plan that outlines scope, budget, and timeline.',
-      color: 'from-purple-600 via-purple-500 to-pink-400',
-      bgColor: 'from-purple-100 via-purple-50 to-pink-50',
-      ringColor: '#a855f7',
-      glowColor: 'shadow-purple-500/50',
+      color: 'from-blue-600 via-blue-500 to-blue-400',
+      bgColor: 'from-blue-100 via-blue-50 to-blue-50',
+      ringColor: '#3b82f6',
+      glowColor: 'shadow-blue-500/50',
     },
     {
       number: '03',
@@ -47,10 +47,10 @@ export default function EngagementFrameworkSection() {
       icon: '⚙️',
       headline: 'Iterative Milestones',
       description: 'We break the project into short, achievable sprints. This gives you clear visibility into progress and allows us to adapt quickly to feedback without derailing the project.',
-      color: 'from-orange-600 via-orange-500 to-red-400',
-      bgColor: 'from-orange-100 via-orange-50 to-red-50',
-      ringColor: '#f97316',
-      glowColor: 'shadow-orange-500/50',
+      color: 'from-blue-600 via-blue-500 to-blue-400',
+      bgColor: 'from-blue-100 via-blue-50 to-blue-50',
+      ringColor: '#3b82f6',
+      glowColor: 'shadow-blue-500/50',
     },
     {
       number: '04',
@@ -58,10 +58,10 @@ export default function EngagementFrameworkSection() {
       icon: '📈',
       headline: 'Measurable Outcomes',
       description: 'Launch is just the beginning. We monitor performance metrics and user feedback to continuously improve the software, ensuring it scales as your business grows.',
-      color: 'from-green-600 via-emerald-500 to-teal-400',
-      bgColor: 'from-green-100 via-emerald-50 to-teal-50',
-      ringColor: '#10b981',
-      glowColor: 'shadow-emerald-500/50',
+      color: 'from-blue-600 via-blue-500 to-blue-400',
+      bgColor: 'from-blue-100 via-blue-50 to-blue-50',
+      ringColor: '#3b82f6',
+      glowColor: 'shadow-blue-500/50',
     },
   ];
 
@@ -69,15 +69,16 @@ export default function EngagementFrameworkSection() {
     <section className="py-24 bg-gradient-to-br from-slate-50 via-white to-indigo-50 relative overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-blue-200 to-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"></div>
-      <div className="absolute top-40 right-10 w-96 h-96 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
-      <div className="absolute bottom-20 left-1/2 w-96 h-96 bg-gradient-to-br from-orange-200 to-red-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+      <div className="absolute top-40 right-10 w-96 h-96 bg-gradient-to-br from-blue-200 to-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
+      <div className="absolute bottom-20 left-1/2 w-96 h-96 bg-gradient-to-br from-blue-200 to-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Our{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent pb-4 font-bold">
+           
               Engagement Framework
             </span>
           </h2>
@@ -163,20 +164,26 @@ export default function EngagementFrameworkSection() {
                 const rad = (angle * Math.PI) / 180;
                 const x = 50 + (26.5 * Math.cos(rad)); // Position on ring
                 const y = 50 + (26.5 * Math.sin(rad));
-                
+
                 return (
                   <button
                     key={step.number}
                     onClick={() => setActiveStep(index)}
-                    className={`absolute transform -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full flex flex-col items-center justify-center font-bold transition-all duration-500 shadow-xl hover:scale-125 ${
+                    className={`absolute transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full flex flex-col items-center justify-center font-bold transition-all duration-500 shadow-xl hover:scale-110 border-2 border-white/60 backdrop-blur-md bg-white/30 bg-opacity-60 overflow-hidden ${
                       activeStep === index
-                        ? `bg-gradient-to-br ${step.color} text-white scale-125 ring-4 ring-white ${step.glowColor}`
-                        : `bg-gradient-to-br ${step.bgColor} text-gray-700 hover:shadow-2xl ring-2 ring-white`
+                        ? `ring-4 ring-white ${step.glowColor}`
+                        : 'hover:shadow-2xl'
                     }`}
-                    style={{ left: `${x}%`, top: `${y}%` }}
+                    style={{ left: `${x}%`, top: `${y}%`, boxShadow: activeStep === index ? '0 0 0 6px rgba(0,0,0,0.04), 0 8px 32px 0 rgba(31, 38, 135, 0.18)' : undefined }}
                   >
-                    <span className="text-lg">{step.icon}</span>
-                    <span className="text-[10px] font-bold mt-0.5">{step.number}</span>
+                    {/* Gradient overlay for trendy look */}
+                    <span className={`absolute inset-0 rounded-full pointer-events-none ${activeStep === index ? `bg-gradient-to-br ${step.color} opacity-80` : `bg-gradient-to-br ${step.bgColor} opacity-60`} z-0`}></span>
+                    {/* Glowing ring for active */}
+                    {activeStep === index && (
+                      <span className={`absolute inset-0 rounded-full pointer-events-none ${step.glowColor} opacity-30 z-0`}></span>
+                    )}
+                    <span className="relative z-10 text-2xl">{step.icon}</span>
+                    <span className="relative z-10 text-[11px] font-bold mt-0.5 tracking-wide text-white drop-shadow-sm" style={{textShadow:'0 1px 4px rgba(0,0,0,0.12)'}}>{step.number}</span>
                   </button>
                 );
               })}
@@ -184,23 +191,28 @@ export default function EngagementFrameworkSection() {
 
             {/* Description Cards in 4 Corners */}
             {/* Top Left - Step 3 */}
+            {/* Top Left - Step 3 */}
             <div 
               className="absolute top-0 left-0 max-w-xs cursor-pointer"
               onClick={() => setActiveStep(3)}
             >
-              <div className={`bg-gradient-to-br ${steps[3].color} p-[2px] rounded-2xl shadow-lg transition-all duration-500 ${
+              <div className="flex items-center gap-2 justify-center mb-2">
+                <div className="w-8 h-8 flex items-center rounded-lg bg-white/80 border border-emerald-200">
+                  <span className="text-xl">{steps[3].icon}</span>
+                </div>
+                <h3 className="text-base font-bold text-blue-600">
+                  {steps[3].headline}
+                </h3>
+              </div>
+              <div className={`bg-gradient-to-br p-[2px] rounded-full shadow-lg transition-all duration-500 ${
                 activeStep === 3 ? `shadow-2xl scale-105 ${steps[3].glowColor}` : 'hover:shadow-xl hover:scale-105'
               }`}>
-                <div className={`bg-gradient-to-br ${activeStep === 3 ? steps[3].bgColor : 'from-white to-gray-50'} rounded-2xl p-4 transition-all duration-500`}>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">{steps[3].icon}</span>
-                    <h3 className={`text-sm font-bold bg-gradient-to-r ${steps[3].color} bg-clip-text text-transparent`}>
-                      {steps[3].headline}
-                    </h3>
+                <div className={`bg-gradient-to-br ${activeStep === 3 ? `${steps[3].color} to-blue-100` : 'from-white to-gray-50'} border border-blue-400 border-2 rounded-full p-4 transition-all duration-500`}>
+                  <div className="mt-1 text-center">
+                    <p className={`text-sm ${activeStep === 3 ? 'text-white' : 'text-gray-700'}`} style={{margin:0, lineHeight:'1.5'}}>
+                      {steps[3].description}
+                    </p>
                   </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    {steps[3].description}
-                  </p>
                 </div>
               </div>
             </div>
@@ -210,19 +222,23 @@ export default function EngagementFrameworkSection() {
               className="absolute top-0 right-0 max-w-xs cursor-pointer"
               onClick={() => setActiveStep(0)}
             >
-              <div className={`bg-gradient-to-br ${steps[0].color} p-[2px] rounded-2xl shadow-lg transition-all duration-500 ${
+              <div className="flex items-center gap-2 justify-center mb-2">
+                <div className="w-8 h-8 flex items-center rounded-lg bg-white/80 border border-blue-200">
+                  <span className="text-xl">{steps[0].icon}</span>
+                </div>
+                <h3 className="text-base font-bold text-blue-600">
+                  {steps[0].headline}
+                </h3>
+              </div>
+              <div className={`bg-gradient-to-br p-[2px] rounded-full shadow-lg transition-all duration-500 ${
                 activeStep === 0 ? `shadow-2xl scale-105 ${steps[0].glowColor}` : 'hover:shadow-xl hover:scale-105'
               }`}>
-                <div className={`bg-gradient-to-br ${activeStep === 0 ? steps[0].bgColor : 'from-white to-gray-50'} rounded-2xl p-4 transition-all duration-500`}>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">{steps[0].icon}</span>
-                    <h3 className={`text-sm font-bold bg-gradient-to-r ${steps[0].color} bg-clip-text text-transparent`}>
-                      {steps[0].headline}
-                    </h3>
+                <div className={`bg-gradient-to-br ${activeStep === 0 ? `${steps[0].color} to-blue-100` : 'from-white to-gray-50'} border border-blue-400 border-2 rounded-full p-4 transition-all duration-500`}>
+                  <div className="mt-1 text-center">
+                    <p className={`text-sm ${activeStep === 0 ? 'text-white' : 'text-gray-700'}`} style={{margin:0, lineHeight:'1.5'}}>
+                      {steps[0].description}
+                    </p>
                   </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    {steps[0].description}
-                  </p>
                 </div>
               </div>
             </div>
@@ -232,19 +248,23 @@ export default function EngagementFrameworkSection() {
               className="absolute bottom-0 right-0 max-w-xs cursor-pointer"
               onClick={() => setActiveStep(1)}
             >
-              <div className={`bg-gradient-to-br ${steps[1].color} p-[2px] rounded-2xl shadow-lg transition-all duration-500 ${
+              <div className="flex items-center gap-2 justify-center mb-2">
+                <div className="w-8 h-8 flex items-center rounded-lg bg-white/80 border border-purple-200">
+                  <span className="text-xl">{steps[1].icon}</span>
+                </div>
+                <h3 className="text-base font-bold text-blue-600">
+                  {steps[1].headline}
+                </h3>
+              </div>
+              <div className={`bg-gradient-to-br p-[2px] rounded-full shadow-lg transition-all duration-500 ${
                 activeStep === 1 ? `shadow-2xl scale-105 ${steps[1].glowColor}` : 'hover:shadow-xl hover:scale-105'
               }`}>
-                <div className={`bg-gradient-to-br ${activeStep === 1 ? steps[1].bgColor : 'from-white to-gray-50'} rounded-2xl p-4 transition-all duration-500`}>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">{steps[1].icon}</span>
-                    <h3 className={`text-sm font-bold bg-gradient-to-r ${steps[1].color} bg-clip-text text-transparent`}>
-                      {steps[1].headline}
-                    </h3>
+                <div className={`bg-gradient-to-br ${activeStep === 1 ? `${steps[1].color} to-blue-100` : 'from-white to-gray-50'} border border-blue-400 border-2 rounded-full p-4 transition-all duration-500`}>
+                  <div className="mt-1 text-center">
+                    <p className={`text-sm ${activeStep === 1 ? 'text-white' : 'text-gray-700'}`} style={{margin:0, lineHeight:'1.5'}}>
+                      {steps[1].description}
+                    </p>
                   </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    {steps[1].description}
-                  </p>
                 </div>
               </div>
             </div>
@@ -254,19 +274,23 @@ export default function EngagementFrameworkSection() {
               className="absolute bottom-0 left-0 max-w-xs cursor-pointer"
               onClick={() => setActiveStep(2)}
             >
-              <div className={`bg-gradient-to-br ${steps[2].color} p-[2px] rounded-2xl shadow-lg transition-all duration-500 ${
+              <div className="flex items-center gap-2 justify-center mb-2">
+                <div className="w-8 h-8 flex items-center rounded-lg bg-white/80 border border-orange-200">
+                  <span className="text-xl">{steps[2].icon}</span>
+                </div>
+                <h3 className="text-base font-bold text-blue-600">
+                  {steps[2].headline}
+                </h3>
+              </div>
+              <div className={`bg-gradient-to-br p-[2px] rounded-full shadow-lg transition-all duration-500 ${
                 activeStep === 2 ? `shadow-2xl scale-105 ${steps[2].glowColor}` : 'hover:shadow-xl hover:scale-105'
               }`}>
-                <div className={`bg-gradient-to-br ${activeStep === 2 ? steps[2].bgColor : 'from-white to-gray-50'} rounded-2xl p-4 transition-all duration-500`}>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">{steps[2].icon}</span>
-                    <h3 className={`text-sm font-bold bg-gradient-to-r ${steps[2].color} bg-clip-text text-transparent`}>
-                      {steps[2].headline}
-                    </h3>
+                <div className={`bg-gradient-to-br ${activeStep === 2 ? `${steps[2].color} to-blue-100` : 'from-white to-gray-50'} border border-blue-400 border-2 rounded-full p-4 transition-all duration-500`}>
+                  <div className="mt-1 text-center">
+                    <p className={`text-sm ${activeStep === 2 ? 'text-white' : 'text-gray-700'}`} style={{margin:0, lineHeight:'1.5'}}>
+                      {steps[2].description}
+                    </p>
                   </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    {steps[2].description}
-                  </p>
                 </div>
               </div>
             </div>
@@ -336,7 +360,7 @@ export default function EngagementFrameworkSection() {
         {/* CTA Button */}
         <div className="text-center">
           <Link href="/contact">
-            <button className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <button className="group inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-500 text-white font-semibold rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300">
               Start Your Journey
               <svg className="inline-block w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

@@ -12,10 +12,10 @@ export default function EngineeringDNASection({ headline, intro, features }: Eng
   const icons = ['✨', '🚀', '🔐', '⚡', '💎', '🎯'];
   
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-blue-50/20 to-purple-50/20 overflow-hidden">
+    <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-blue-50/20 to-sky-50/20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-100/30 to-purple-100/30 rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-100/30 to-sky-100/30 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-orange-100/30 to-pink-100/30 rounded-full blur-3xl"></div>
       </div>
 
@@ -51,12 +51,12 @@ export default function EngineeringDNASection({ headline, intro, features }: Eng
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Gradient Glow Effect */}
-              <div className="absolute -inset-0.5 bg-gradient-to-br from-blue-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-blue-500/20 group-hover:via-purple-500/20 group-hover:to-pink-500/20 rounded-t-3xl blur-xl transition-all duration-500 opacity-0 group-hover:opacity-100 -z-10"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-br from-blue-500/0 via-sky-200/0 to-pink-500/0 group-hover:from-blue-500/20 group-hover:via-sky-200/20 group-hover:to-pink-500/20 rounded-t-3xl blur-xl transition-all duration-500 opacity-0 group-hover:opacity-100 -z-10"></div>
               
               {/* Icon */}
               <div className="relative mb-6">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/30 to-purple-400/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative w-14 h-14 bg-gradient-to-br from-blue-500/10 to-purple-500/10 group-hover:from-blue-500/20 group-hover:to-purple-500/20 rounded-2xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/30 to-sky-200/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative w-14 h-14 bg-gradient-to-br from-blue-500/10 to-sky-200/10 group-hover:from-blue-500/20 group-hover:to-sky-200/20 rounded-2xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                   <span className="text-3xl group-hover:scale-110 transition-transform duration-300">
                     {icons[index % icons.length]}
                   </span>
@@ -64,7 +64,7 @@ export default function EngineeringDNASection({ headline, intro, features }: Eng
               </div>
               
               {/* Content */}
-              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-sky-600 group-hover:bg-clip-text transition-all duration-300">
                 {feature.title}
               </h3>
               
@@ -73,7 +73,7 @@ export default function EngineeringDNASection({ headline, intro, features }: Eng
               </p>
 
               {/* Bottom Accent Line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-sky-500 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
             </div>
           ))}
         </div>

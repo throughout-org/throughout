@@ -72,7 +72,8 @@ export default function IndustriesSection() {
             Industries We Serve
           </span> */}
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            
+            <span className="block bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent pb-4 font-bold">
               Reshaping Industries Through Technology
             </span>
           </h2>
@@ -82,14 +83,14 @@ export default function IndustriesSection() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="relative mb-12">
+        <div className="relative mb-4">
           {/* Desktop Tabs */}
-          <div className="hidden lg:flex items-center justify-center gap-2 p-2 bg-white rounded-2xl shadow-xl max-w-6xl mx-auto">
+          <div className="hidden lg:flex items-center justify-center gap-2 p-2 bg-white rounded-full shadow-xl max-w-6xl mx-auto">
             {industries.map((industry) => (
               <button
                 key={industry.id}
                 onClick={() => setActiveTab(industry.id)}
-                className={`group relative flex-1 px-4 py-4 rounded-xl font-semibold transition-all duration-300 ${
+                className={`group relative flex-1 px-4 py-4 rounded-full font-semibold transition-all duration-300 ${
                   activeTab === industry.id
                     ? 'bg-gradient-to-br from-blue-50 to-purple-50 text-blue-700 shadow-md border-2 border-blue-200'
                     : 'text-gray-600 hover:bg-gray-50'
@@ -111,7 +112,7 @@ export default function IndustriesSection() {
           {/* Mobile Tabs */}
           <div className="lg:hidden">
             {/* Active Tab Display */}
-            <div className="bg-white rounded-2xl shadow-xl p-4 mb-4">
+            <div className="bg-white rounded-full shadow-xl p-4 mb-4">
               <div className={`flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-purple-50 border-2 ${industries[activeTab].color.replace('from-', 'border-').split(' ')[0].replace('to-', '')} rounded-xl`}>
                 <div className={`flex items-center gap-3 bg-gradient-to-r ${industries[activeTab].color} bg-clip-text text-transparent`}>
                   <span className="text-4xl">{industries[activeTab].icon}</span>
@@ -129,7 +130,7 @@ export default function IndustriesSection() {
                 <button
                   key={industry.id}
                   onClick={() => setActiveTab(industry.id)}
-                  className={`p-4 rounded-xl font-semibold transition-all duration-300 ${
+                  className={`p-4 rounded-full font-semibold transition-all duration-300 ${
                     activeTab === industry.id
                       ? `bg-gradient-to-br from-blue-50 to-purple-50 border-2 ${industry.color.replace('from-', 'border-').split(' ')[0].replace('to-', '')} shadow-lg scale-105`
                       : 'bg-white text-gray-700 shadow-md hover:shadow-lg border border-gray-200'
@@ -156,12 +157,12 @@ export default function IndustriesSection() {
                   : 'opacity-0 absolute inset-0 pointer-events-none -translate-y-4'
               }`}
             >
-              <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-10 border border-gray-200">
+              <div className="bg-white rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 p-10 border border-gray-200">
                 <div className="max-w-4xl mx-auto">
                   {/* Icon and Title Row */}
                   <div className="flex items-center gap-6 mb-6">
-                    <div className={`w-20 h-20 bg-gradient-to-br ${industry.color} rounded-2xl flex items-center justify-center shadow-md p-0.5`}>
-                      <div className="w-full h-full bg-white rounded-xl flex items-center justify-center">
+                    <div className={`w-20 h-20 bg-gradient-to-br via-blue-200 rounded-full flex items-center justify-center shadow-md p-0.5`}>
+                      <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
                         <span className="text-4xl">{industry.icon}</span>
                       </div>
                     </div>
@@ -179,51 +180,51 @@ export default function IndustriesSection() {
                   <div className="flex flex-wrap gap-2 mb-6">
                     {industry.id === 0 && (
                       <>
-                        <span className="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-sm font-medium border border-blue-200">Tenant Portals</span>
-                        <span className="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-sm font-medium border border-blue-200">AI Maintenance</span>
-                        <span className="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-sm font-medium border border-blue-200">Automated Workflows</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Tenant Portals</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">AI Maintenance</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Automated Workflows</span>
                       </>
                     )}
                     {industry.id === 1 && (
                       <>
-                        <span className="px-3 py-1.5 bg-purple-50 text-purple-700 rounded-lg text-sm font-medium border border-purple-200">Booking Engines</span>
-                        <span className="px-3 py-1.5 bg-purple-50 text-purple-700 rounded-lg text-sm font-medium border border-purple-200">Dynamic Pricing</span>
-                        <span className="px-3 py-1.5 bg-purple-50 text-purple-700 rounded-lg text-sm font-medium border border-purple-200">High Concurrency</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Booking Engines</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Dynamic Pricing</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">High Concurrency</span>
                       </>
                     )}
                     {industry.id === 2 && (
                       <>
-                        <span className="px-3 py-1.5 bg-green-50 text-green-700 rounded-lg text-sm font-medium border border-green-200">Headless Commerce</span>
-                        <span className="px-3 py-1.5 bg-green-50 text-green-700 rounded-lg text-sm font-medium border border-green-200">Payment Gateways</span>
-                        <span className="px-3 py-1.5 bg-green-50 text-green-700 rounded-lg text-sm font-medium border border-green-200">Personalization</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Headless Commerce</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Payment Gateways</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Personalization</span>
                       </>
                     )}
                     {industry.id === 3 && (
                       <>
-                        <span className="px-3 py-1.5 bg-orange-50 text-orange-700 rounded-lg text-sm font-medium border border-orange-200">LMS Platforms</span>
-                        <span className="px-3 py-1.5 bg-orange-50 text-orange-700 rounded-lg text-sm font-medium border border-orange-200">Video Streaming</span>
-                        <span className="px-3 py-1.5 bg-orange-50 text-orange-700 rounded-lg text-sm font-medium border border-orange-200">Gamified Learning</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">LMS Platforms</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Video Streaming</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Gamified Learning</span>
                       </>
                     )}
                     {industry.id === 4 && (
                       <>
-                        <span className="px-3 py-1.5 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium border border-indigo-200">Case Management</span>
-                        <span className="px-3 py-1.5 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium border border-indigo-200">AI Drafting</span>
-                        <span className="px-3 py-1.5 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium border border-indigo-200">Bank-Grade Security</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Case Management</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">AI Drafting</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Bank-Grade Security</span>
                       </>
                     )}
                     {industry.id === 5 && (
                       <>
-                        <span className="px-3 py-1.5 bg-teal-50 text-teal-700 rounded-lg text-sm font-medium border border-teal-200">Auditing Tools</span>
-                        <span className="px-3 py-1.5 bg-teal-50 text-teal-700 rounded-lg text-sm font-medium border border-teal-200">Compliance Dashboards</span>
-                        <span className="px-3 py-1.5 bg-teal-50 text-teal-700 rounded-lg text-sm font-medium border border-teal-200">Auto Tracking</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Auditing Tools</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Compliance Dashboards</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Auto Tracking</span>
                       </>
                     )}
                     {industry.id === 6 && (
                       <>
-                        <span className="px-3 py-1.5 bg-rose-50 text-rose-700 rounded-lg text-sm font-medium border border-rose-200">HIPAA Compliant</span>
-                        <span className="px-3 py-1.5 bg-rose-50 text-rose-700 rounded-lg text-sm font-medium border border-rose-200">Telemedicine</span>
-                        <span className="px-3 py-1.5 bg-rose-50 text-rose-700 rounded-lg text-sm font-medium border border-rose-200">Real-time Monitoring</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">HIPAA Compliant</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Telemedicine</span>
+                        <span className="px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Real-time Monitoring</span>
                       </>
                     )}
                   </div>
@@ -232,7 +233,7 @@ export default function IndustriesSection() {
                   <div>
                     <a
                       href="/contact"
-                      className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r ${industry.color} text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300`}
+                      className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-500 text-white font-semibold rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300`}
                     >
                       Explore {industry.title} Solutions
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

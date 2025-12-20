@@ -10,7 +10,7 @@ export default function CoreValuesSection() {
     <div className="mb-12">
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-3">
-          Our <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Core Values</span>
+          Our <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Core Values</span>
         </h2>
         <p className="text-gray-600">Principles that guide everything we do</p>
       </div>
@@ -20,7 +20,7 @@ export default function CoreValuesSection() {
             key={index}
             className="group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105"
           >
-            <div className={`w-12 h-12 bg-gradient-to-br ${value.color} rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
+            <div className={`w-12 h-12 bg-gradient-to-br from-blue-200 to-cyan-50 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
               {value.icon}
             </div>
             <h3 className="font-bold text-gray-900 mb-2">{value.title}</h3>

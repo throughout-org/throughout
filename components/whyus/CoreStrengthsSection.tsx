@@ -30,7 +30,7 @@ export default function CoreStrengthsSection() {
     <div className="mb-12">
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-3">
-          Our <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Core Strengths</span>
+          Our <span className="bg-gradient-to-r from-blue-600 to-sky-300 bg-clip-text text-transparent pb-4 font-bold">Core Strengths</span>
         </h2>
         <p className="text-gray-600">What sets us apart from the competition</p>
       </div>
@@ -40,7 +40,7 @@ export default function CoreStrengthsSection() {
             key={index}
             className="group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:-translate-y-2"
           >
-            <div className={`w-16 h-16 bg-gradient-to-br ${strength.color} rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+            <div className={`w-16 h-16 bg-gradient-to-br from-blue-500 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
               {strength.icon}
             </div>
             <h3 className="font-bold text-gray-900 mb-2 text-lg">{strength.title}</h3>

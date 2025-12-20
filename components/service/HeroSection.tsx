@@ -22,9 +22,9 @@ export default function HeroSection({
       {/* Animated Background with Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
         {/* Animated Blobs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/30 to-cyan-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-gradient-to-r from-purple-400/30 to-pink-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-gradient-to-r from-cyan-400/30 to-blue-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/30 to-sky-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-gradient-to-r from-sky-400/30 to-blue-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-gradient-to-r from-blue-400/30 to-blue-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
         
         {/* Grid Pattern Overlay */}
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
@@ -46,7 +46,7 @@ export default function HeroSection({
           {/* Headline with Gradient */}
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 animate-slide-up">
             <span className="block text-gray-900 mb-2">{headline.split(' ').slice(0, -2).join(' ')}</span>
-            <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient-x">
+            <span className="block bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent pb-4 font-bold">
               {headline.split(' ').slice(-2).join(' ')}
             </span>
           </h1>
@@ -60,7 +60,7 @@ export default function HeroSection({
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-delay-2">
             <a
               href="/contact"
-              className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full overflow-hidden shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+              className="group relative px-8 py-4 bg-gradient-to-r from-sky-400 to-blue-600 text-white font-bold rounded-full overflow-hidden shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
             >
               <span className="relative z-10 flex items-center gap-2">
                 {primaryCTA}

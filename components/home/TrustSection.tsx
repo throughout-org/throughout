@@ -9,42 +9,42 @@ export default function TrustSection() {
       title: 'Clean Engineering Practices',
       description: 'We hate messy code. We enforce strict coding standards (PSR/ESLint), conduct mandatory peer code reviews, and use static analysis tools like SonarQube to ensure your software is maintainable for years to come.',
       icon: '✨',
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-blue-500 to-cyan-300',
     },
     {
       number: '02',
       title: 'Modern Tech Stack',
       description: 'We leverage "Infrastructure as Code" and automated CI/CD pipelines. This reduces manual deployment errors and cuts your long-term testing and server costs by up to 45%.',
       icon: '🚀',
-      color: 'from-purple-500 to-pink-500',
+       color: 'from-blue-500 to-cyan-300',
     },
     {
       number: '03',
       title: 'Security & Compliance',
       description: "Security isn't an afterthought. We adhere strictly to the OWASP Top 10 security protocols, performing regular vulnerability scans and penetration testing to protect your application from threats.",
       icon: '🔒',
-      color: 'from-green-500 to-emerald-500',
+      color: 'from-blue-500 to-cyan-300',
     },
     {
       number: '04',
       title: 'Data Privacy First',
       description: 'Your user data is sacred. We implement strict encryption standards and data governance protocols to ensure full compliance with privacy laws, giving your customers peace of mind.',
       icon: '🛡️',
-      color: 'from-orange-500 to-red-500',
+      color: 'from-blue-500 to-cyan-300',
     },
     {
       number: '05',
       title: 'Staff Continuity',
       description: "We invest heavily in our team's growth. By constantly training our developers in the latest technologies, we maintain low attrition rates—meaning the experts who build your software stay to support it.",
       icon: '👥',
-      color: 'from-indigo-500 to-blue-500',
+       color: 'from-blue-500 to-cyan-300',
     },
     {
       number: '06',
       title: 'Flexible Talent Pool',
       description: 'Whether you need a dedicated squad or a single expert, we align with your purpose. Our simplified engagement model gives you access to top-tier talent without the recruitment overhead.',
       icon: '⚡',
-      color: 'from-pink-500 to-rose-500',
+       color: 'from-blue-500 to-cyan-300',
     },
   ];
 
@@ -63,7 +63,7 @@ export default function TrustSection() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             A Partner You Can{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent pb-4 font-bold">
               Trust
             </span>
           </h2>
@@ -105,25 +105,25 @@ export default function TrustSection() {
         {/* Trust Indicators */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
           <div className="text-center">
-            <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+            <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent mb-2">
               100%
             </div>
             <p className="text-sm text-gray-600">Code Quality Standards</p>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+            <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent mb-2">
               45%
             </div>
             <p className="text-sm text-gray-600">Cost Reduction</p>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
+            <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent mb-2">
               24/7
             </div>
             <p className="text-sm text-gray-600">Security Monitoring</p>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-2">
+            <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent mb-2">
               OWASP
             </div>
             <p className="text-sm text-gray-600">Compliance</p>

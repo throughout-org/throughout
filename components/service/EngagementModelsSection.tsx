@@ -12,15 +12,15 @@ interface EngagementModelsSectionProps {
 
 export default function EngagementModelsSection({ headline, models }: EngagementModelsSectionProps) {
   const gradients = [
-    'from-blue-500 via-cyan-500 to-teal-500',
-    'from-purple-500 via-pink-500 to-rose-500',
-    'from-orange-500 via-amber-500 to-yellow-500'
+    'from-blue-800 via-blue-500 to-sky-400',
+    'from-blue-800 via-blue-500 to-sky-400',
+    'from-blue-500 via-blue-500 to-sky-400'
   ];
 
   const iconBackgrounds = [
-    'from-blue-400 to-cyan-400',
-    'from-purple-400 to-pink-400',
-    'from-orange-400 to-amber-400'
+    'from-blue-400 to-cyan-200',
+    'from-blue-400 to-sky-200',
+    'from-blue-400 to-blue-200'
   ];
 
   const icons = ['👥', '📦', '➕'];
@@ -28,22 +28,22 @@ export default function EngagementModelsSection({ headline, models }: Engagement
   return (
     <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Modern Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-sky-50/30"></div>
       
       {/* Animated Background Shapes */}
       <div className="absolute top-20 right-10 w-64 h-64 bg-blue-200/20 rounded-full blur-3xl animate-pulse-slow"></div>
-      <div className="absolute bottom-20 left-10 w-64 h-64 bg-purple-200/20 rounded-full blur-3xl animate-pulse-slow animation-delay-2000"></div>
+      <div className="absolute bottom-20 left-10 w-64 h-64 bg-sky-200/20 rounded-full blur-3xl animate-pulse-slow animation-delay-2000"></div>
       
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           {/* <div className="inline-block mb-6">
-            <span className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-full shadow-lg">
+            <span className="px-4 py-2 bg-gradient-to-r from-blue-600 to-sky-600 text-white text-sm font-semibold rounded-full shadow-lg">
               Flexible Solutions
             </span>
           </div> */}
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-slate-800 via-blue-700 to-purple-700 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-slate-800 via-blue-700 to-sky-700 bg-clip-text text-transparent">
               {headline}
             </span>
           </h2>
@@ -79,7 +79,7 @@ export default function EngagementModelsSection({ headline, models }: Engagement
                   </div>
                   
                   {/* Content */}
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-sky-600 transition-all duration-300">
                     {model.title}
                   </h3>
                   <p className="text-gray-600 leading-relaxed text-lg">

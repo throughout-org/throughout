@@ -34,7 +34,7 @@ export default function OurApproachSection() {
     <div className="mb-12">
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-3">
-          Our <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Approach</span>
+          Our <span className="bg-gradient-to-r from-blue-600 to-sky-300 bg-clip-text text-transparent">Approach</span>
         </h2>
         <p className="text-gray-600">How we ensure your project's success</p>
       </div>
@@ -45,11 +45,11 @@ export default function OurApproachSection() {
             className="relative group bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100"
           >
             <div className="flex items-start gap-4">
-              <div className={`flex-shrink-0 w-14 h-14 bg-gradient-to-br ${approach.color} rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+              <div className={`flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-200 to-cyan-50 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                 {approach.icon}
               </div>
               <div className="flex-1">
-                <div className={`text-sm font-bold bg-gradient-to-r ${approach.color} bg-clip-text text-transparent mb-2`}>
+                <div className={`text-sm font-bold bg-gradient-to-r from-blue-500  bg-clip-text text-transparent mb-2`}>
                   STEP {approach.step}
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2 text-xl">{approach.title}</h3>

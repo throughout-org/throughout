@@ -12,7 +12,7 @@ export default function HeroSection() {
         {/* Badge */}
         <div className="text-center mb-8">
           <span
-            className="inline-block px-4 py-2 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 text-white text-sm font-extrabold rounded-full shadow-xl animate-pulse-subtle"
+            className="inline-block px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-400 text-white text-sm font-semibold rounded-full shadow-lg"
             style={{
               boxShadow: '0 6px 32px 0 rgba(56,189,248,0.18), 0 2px 12px 0 rgba(99,102,241,0.10)',
               transition: 'all 0.25s cubic-bezier(.4,2,.6,1)',
@@ -25,7 +25,7 @@ export default function HeroSection() {
         {/* Main Heading */}
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-center mb-8 mt-8">
           <span className="block text-gray-900 mb-2">We Build</span>
-          <span className="block bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent pb-4 font-extrabold">
+          <span className="block bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent pb-4 font-bold">
             Smart Digital Solutions
           </span>
         </h1>
