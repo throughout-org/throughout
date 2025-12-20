@@ -11,7 +11,7 @@ export default function TechnologyExpertiseSection() {
       category: 'Backend',
       description: 'Robust server-side solutions',
       icon: '⚙️',
-      color: 'from-purple-500 to-pink-500',
+      color: 'from-sky-500 to-pink-500',
       techs: ['Node.js', 'Python', 'Java', 'PHP']
     },
     {
@@ -34,7 +34,7 @@ export default function TechnologyExpertiseSection() {
     <div className="mb-12">
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-3">
-          Technology <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Expertise</span>
+          Technology <span className="bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text text-transparent">Expertise</span>
         </h2>
         <p className="text-gray-600">Mastery across the full technology stack</p>
       </div>

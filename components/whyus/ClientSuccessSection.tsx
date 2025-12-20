@@ -30,7 +30,7 @@ export default function ClientSuccessSection() {
       <div className="mb-12">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-3">
-            Proven <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Success</span>
+            Proven <span className="bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text text-transparent">Success</span>
           </h2>
           <p className="text-gray-600">Numbers that speak for themselves</p>
         </div>
@@ -41,7 +41,7 @@ export default function ClientSuccessSection() {
               className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100"
             >
               <div className="text-4xl mb-3">{stat.icon}</div>
-              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text text-transparent mb-2">
                 {stat.value}
               </div>
               <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
@@ -54,7 +54,7 @@ export default function ClientSuccessSection() {
       <div>
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-3">
-            What <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Clients Say</span>
+            What <span className="bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text text-transparent">Clients Say</span>
           </h2>
           <p className="text-gray-600">Real feedback from real clients</p>
         </div>
@@ -71,7 +71,7 @@ export default function ClientSuccessSection() {
               </div>
               <p className="text-gray-700 mb-4 italic">"{testimonial.quote}"</p>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-sky-500 rounded-full flex items-center justify-center text-white font-bold">
                   {testimonial.author[0]}
                 </div>
                 <div>

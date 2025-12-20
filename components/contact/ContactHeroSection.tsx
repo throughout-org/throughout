@@ -4,10 +4,10 @@ export default function ContactHeroSection() {
   return (
     <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Animated Background with Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-sky-50 to-pink-50">
         {/* Animated Blobs */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/30 to-cyan-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-gradient-to-r from-purple-400/30 to-pink-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-gradient-to-r from-sky-400/30 to-pink-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
         <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-gradient-to-r from-cyan-400/30 to-blue-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
         
         {/* Grid Pattern Overlay */}
@@ -19,10 +19,10 @@ export default function ContactHeroSection() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-lg mb-8 animate-fade-in">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-r from-blue-500 to-purple-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gradient-to-r from-blue-500 to-sky-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-r from-blue-500 to-sky-500"></span>
             </span>
-            <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text text-transparent">
               Let's Connect
             </span>
           </div>
@@ -30,7 +30,7 @@ export default function ContactHeroSection() {
           {/* Headline with Gradient */}
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 animate-slide-up">
             <span className="block text-gray-900 mb-2">Get In</span>
-            <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient-x">
+            <span className="block bg-gradient-to-r from-blue-600 via-sky-600 to-pink-600 bg-clip-text text-transparent animate-gradient-x">
               Touch
             </span>
           </h1>

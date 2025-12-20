@@ -19,7 +19,7 @@ export default function IndustriesSection() {
       title: 'Travel & Hospitality',
       icon: '✈️',
       description: 'Create seamless booking experiences. We engineer high-concurrency booking engines and dynamic pricing algorithms that handle seasonal traffic spikes, ensuring your guests have a flawless experience from search to check-out.',
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-sky-500 to-pink-500'
     },
     {
       id: 2,
@@ -68,7 +68,7 @@ export default function IndustriesSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          {/* <span className="inline-block px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-full shadow-lg mb-6">
+          {/* <span className="inline-block px-4 py-2 bg-gradient-to-r from-blue-600 to-sky-600 text-white text-sm font-semibold rounded-full shadow-lg mb-6">
             Industries We Serve
           </span> */}
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
@@ -92,7 +92,7 @@ export default function IndustriesSection() {
                 onClick={() => setActiveTab(industry.id)}
                 className={`group relative flex-1 px-4 py-4 rounded-full font-semibold transition-all duration-300 ${
                   activeTab === industry.id
-                    ? 'bg-gradient-to-br from-blue-50 to-purple-50 text-blue-700 shadow-md border-2 border-blue-200'
+                    ? 'bg-gradient-to-br from-blue-50 to-sky-50 text-blue-700 shadow-md border-2 border-blue-200'
                     : 'text-gray-600 hover:bg-gray-50'
                 }`}
               >
@@ -103,7 +103,7 @@ export default function IndustriesSection() {
                   <span className="text-sm">{industry.name}</span>
                 </div>
                 {activeTab === industry.id && (
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-t-full"></div>
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-gradient-to-r from-blue-500 to-sky-500 rounded-t-full"></div>
                 )}
               </button>
             ))}
@@ -113,7 +113,7 @@ export default function IndustriesSection() {
           <div className="lg:hidden">
             {/* Active Tab Display */}
             <div className="bg-white rounded-full shadow-xl p-4 mb-4">
-              <div className={`flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-purple-50 border-2 ${industries[activeTab].color.replace('from-', 'border-').split(' ')[0].replace('to-', '')} rounded-xl`}>
+              <div className={`flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-sky-50 border-2 ${industries[activeTab].color.replace('from-', 'border-').split(' ')[0].replace('to-', '')} rounded-xl`}>
                 <div className={`flex items-center gap-3 bg-gradient-to-r ${industries[activeTab].color} bg-clip-text text-transparent`}>
                   <span className="text-4xl">{industries[activeTab].icon}</span>
                   <span className="font-bold text-lg text-gray-800">{industries[activeTab].title}</span>
@@ -132,7 +132,7 @@ export default function IndustriesSection() {
                   onClick={() => setActiveTab(industry.id)}
                   className={`p-4 rounded-full font-semibold transition-all duration-300 ${
                     activeTab === industry.id
-                      ? `bg-gradient-to-br from-blue-50 to-purple-50 border-2 ${industry.color.replace('from-', 'border-').split(' ')[0].replace('to-', '')} shadow-lg scale-105`
+                      ? `bg-gradient-to-br from-blue-50 to-sky-50 border-2 ${industry.color.replace('from-', 'border-').split(' ')[0].replace('to-', '')} shadow-lg scale-105`
                       : 'bg-white text-gray-700 shadow-md hover:shadow-lg border border-gray-200'
                   }`}
                 >

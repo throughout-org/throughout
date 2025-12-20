@@ -16,7 +16,7 @@ export default function CoreStrengthsSection() {
       icon: '💬',
       title: 'Clear Communication',
       description: 'Regular updates and transparent process keeping you informed every step',
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-sky-500 to-pink-500'
     },
     {
       icon: '🚀',

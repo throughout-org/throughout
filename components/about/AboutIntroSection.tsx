@@ -12,7 +12,7 @@ export default function AboutIntroSection() {
         <div className="flex flex-wrap justify-center gap-3 mb-6">
           {[
             { label: 'Web Applications', color: 'from-blue-500 to-cyan-500' },
-            { label: 'Mobile Apps', color: 'from-purple-500 to-pink-500' },
+            { label: 'Mobile Apps', color: 'from-sky-500 to-pink-500' },
             { label: 'E-Commerce', color: 'from-orange-500 to-red-500' },
             { label: 'AI Solutions', color: 'from-green-500 to-emerald-500' },
           ].map((item, index) => (
@@ -42,7 +42,7 @@ export default function AboutIntroSection() {
             key={index}
             className="bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg transition-all duration-300"
           >
-            <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-1">
+            <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text text-transparent mb-1">
               {stat.value}
             </div>
             <div className="text-sm text-gray-600 font-medium">{stat.label}</div>

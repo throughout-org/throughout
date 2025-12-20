@@ -2,7 +2,7 @@ export default function WhyUsHeroSection() {
   return (
     <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-sky-50">
         <div className="absolute top-20 left-10 w-96 h-96 bg-blue-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
         <div className="absolute top-40 right-10 w-96 h-96 bg-sky-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
         <div className="absolute bottom-20 left-1/2 w-96 h-96 bg-blue-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
@@ -24,7 +24,7 @@ export default function WhyUsHeroSection() {
           </span>
         </h1>
 
-        <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-8"></div>
+        <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-sky-600 mx-auto rounded-full mb-8"></div>
 
         {/* Subheading */}
         <p className="text-xl sm:text-2xl text-gray-700 text-center mb-12 max-w-4xl mx-auto leading-relaxed">

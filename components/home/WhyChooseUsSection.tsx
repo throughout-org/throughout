@@ -10,7 +10,7 @@ export default function WhyChooseUsSection() {
     <section id="why-us" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          {/* <span className="inline-block px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-full shadow-lg mb-6">
+          {/* <span className="inline-block px-4 py-2 bg-gradient-to-r from-blue-600 to-sky-600 text-white text-sm font-semibold rounded-full shadow-lg mb-6">
             Why Us
           </span> */}
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">

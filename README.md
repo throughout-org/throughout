@@ -4,7 +4,7 @@ A modern, attractive landing page for Throoout, a software engineering startup s
 
 ## 🚀 Features
 
-- **Modern Design**: Clean, minimal, and professional UI with blue/purple gradient theme
+- **Modern Design**: Clean, minimal, and professional UI with blue/sky gradient theme
 - **Fully Responsive**: Works perfectly on mobile, tablet, and desktop
 - **Smooth Animations**: Engaging scroll animations and hover effects
 - **Contact Form**: Interactive form with validation
@@ -49,8 +49,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ### Change Colors
 
 The main gradient colors can be adjusted in `app/page.tsx`:
-- Primary gradient: `from-blue-600 to-purple-600`
-- Background gradient: `from-blue-50 via-purple-50 to-pink-50`
+- Primary gradient: `from-blue-600 to-sky-600`
+- Background gradient: `from-blue-50 via-sky-50 to-pink-50`
 
 ### Update Content
 

@@ -20,7 +20,7 @@ export default function HeroSection({
   return (
     <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Animated Background with Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-sky-50 to-pink-50">
         {/* Animated Blobs */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/30 to-sky-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-gradient-to-r from-sky-400/30 to-blue-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
@@ -35,10 +35,10 @@ export default function HeroSection({
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-lg mb-8 animate-fade-in">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-r from-blue-500 to-purple-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gradient-to-r from-blue-500 to-sky-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-r from-blue-500 to-sky-500"></span>
             </span>
-            <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text text-transparent">
               {badgeText}
             </span>
           </div>
@@ -68,12 +68,12 @@ export default function HeroSection({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-sky-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </a>
             
             {/* <a
               href="#learn-more"
-              className="group px-8 py-4 bg-white/80 backdrop-blur-sm text-gray-900 font-bold rounded-full border-2 border-gray-200 hover:border-purple-300 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              className="group px-8 py-4 bg-white/80 backdrop-blur-sm text-gray-900 font-bold rounded-full border-2 border-gray-200 hover:border-sky-300 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
             >
               {secondaryCTA}
               <svg className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

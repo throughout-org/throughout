@@ -249,7 +249,7 @@ export default function EngagementFrameworkSection() {
               onClick={() => setActiveStep(1)}
             >
               <div className="flex items-center gap-2 justify-center mb-2">
-                <div className="w-8 h-8 flex items-center rounded-lg bg-white/80 border border-purple-200">
+                <div className="w-8 h-8 flex items-center rounded-lg bg-white/80 border border-sky-200">
                   <span className="text-xl">{steps[1].icon}</span>
                 </div>
                 <h3 className="text-base font-bold text-blue-600">

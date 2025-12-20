@@ -12,7 +12,7 @@ export default function OurApproachSection() {
       title: 'Agile Methodology',
       description: 'Flexible and iterative development process that adapts to changing requirements.',
       icon: '🔄',
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-sky-500 to-pink-500'
     },
     {
       step: '03',
