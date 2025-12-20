@@ -88,7 +88,7 @@ export default function Home() {
       <ServicesSection />
 
       {/* About Section */}
-      <AboutSection />
+      {/* <AboutSection /> */}
 
       {/* Why Choose Us */}
       <WhyChooseUsSection />

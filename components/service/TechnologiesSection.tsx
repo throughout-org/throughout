@@ -25,11 +25,11 @@ export default function TechnologiesSection({ headline, description, stack }: Te
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block mb-4">
+          {/* <div className="inline-block mb-4">
             <span className="px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-semibold rounded-full shadow-lg">
               Tech Stack
             </span>
-          </div>
+          </div> */}
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
               {headline}

@@ -77,10 +77,10 @@ export default function WhyUsPage() {
           <OurApproachSection />
 
           {/* Technology Expertise */}
-          <TechnologyExpertiseSection />
+          {/* <TechnologyExpertiseSection /> */}
 
           {/* Client Success Stories */}
-          <ClientSuccessSection />
+          {/* <ClientSuccessSection /> */}
         </div>
       </section>
 

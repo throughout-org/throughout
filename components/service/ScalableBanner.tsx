@@ -27,11 +27,11 @@ export default function ScalableBanner({ headline, description }: ScalableBanner
           
           <div className="relative text-center space-y-6">
             {/* Badge */}
-            <div className="inline-block mb-4">
+            {/* <div className="inline-block mb-4">
               <span className="px-5 py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white text-sm font-bold rounded-full shadow-lg animate-pulse-subtle">
                 ✨ Enterprise Ready
               </span>
-            </div>
+            </div> */}
             
             {/* Headline */}
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">

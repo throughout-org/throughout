@@ -37,11 +37,11 @@ export default function EngagementModelsSection({ headline, models }: Engagement
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block mb-6">
+          {/* <div className="inline-block mb-6">
             <span className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-full shadow-lg">
               Flexible Solutions
             </span>
-          </div>
+          </div> */}
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-slate-800 via-blue-700 to-purple-700 bg-clip-text text-transparent">
               {headline}

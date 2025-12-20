@@ -71,7 +71,7 @@ export default function AboutPage() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Intro Section */}
-          <AboutIntroSection />
+          {/* <AboutIntroSection /> */}
 
           {/* Mission & Vision */}
           <MissionVisionSection />

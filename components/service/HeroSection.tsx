@@ -59,7 +59,7 @@ export default function HeroSection({
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-delay-2">
             <a
-              href="#contact"
+              href="/contact"
               className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full overflow-hidden shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
             >
               <span className="relative z-10 flex items-center gap-2">
@@ -71,7 +71,7 @@ export default function HeroSection({
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </a>
             
-            <a
+            {/* <a
               href="#learn-more"
               className="group px-8 py-4 bg-white/80 backdrop-blur-sm text-gray-900 font-bold rounded-full border-2 border-gray-200 hover:border-purple-300 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
             >
@@ -79,11 +79,11 @@ export default function HeroSection({
               <svg className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-            </a>
+            </a> */}
           </div>
 
           {/* Trust Indicators */}
-          <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-gray-600 animate-fade-in-delay-3">
+          {/* <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-gray-600 animate-fade-in-delay-3">
             {trustIndicators.map((indicator, index) => (
               <div key={index} className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -92,7 +92,7 @@ export default function HeroSection({
                 <span>{indicator}</span>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
 

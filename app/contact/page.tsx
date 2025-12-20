@@ -11,8 +11,8 @@ export default function ContactPage() {
       <ContactHeroSection />
       <ContactInfoSection />
       {/* <ContactMapSection /> */}
-      <ContactFAQSection />
-      <ServicesCTASection />
+      {/* <ContactFAQSection /> */}
+      {/* <ServicesCTASection /> */}
        <TrendyTuringLabel />
     </div>
   );
