@@ -97,7 +97,7 @@ export default function EngagementFrameworkSection() {
             {/* Central Circle */}
             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-52 h-52 bg-gradient-to-br from-white via-gray-50 to-white rounded-full shadow-2xl ${steps[activeStep].glowColor} flex items-center justify-center z-20 border-4 border-white ring-2 ring-gray-100 transition-all duration-500`}>
               <div className="text-center p-3">
-                <div className="text-5xl mb-2 animate-pulse">{steps[activeStep].icon}</div>
+                <div className="text-5xl mb-2 animate-pulse flex justify-center items-center text-center ">{steps[activeStep].icon}</div>
                 <div className={`text-base font-bold bg-gradient-to-r ${steps[activeStep].color} bg-clip-text text-transparent mb-1`}>
                   {steps[activeStep].title}
                 </div>
@@ -197,7 +197,7 @@ export default function EngagementFrameworkSection() {
               onClick={() => setActiveStep(3)}
             >
               <div className="flex items-center gap-2 justify-center mb-2">
-                <div className="w-8 h-8 flex items-center rounded-lg bg-white/80 border border-emerald-200">
+                <div className="w-8 h-8 flex items-center rounded-lg bg-white/80 border border-emerald-200 justify-center items-center text-center">
                   <span className="text-xl">{steps[3].icon}</span>
                 </div>
                 <h3 className="text-base font-bold text-blue-600">
@@ -223,7 +223,7 @@ export default function EngagementFrameworkSection() {
               onClick={() => setActiveStep(0)}
             >
               <div className="flex items-center gap-2 justify-center mb-2">
-                <div className="w-8 h-8 flex items-center rounded-lg bg-white/80 border border-blue-200">
+                <div className="w-8 h-8 flex items-center rounded-lg bg-white/80 border border-blue-200 justify-center items-center text-center">
                   <span className="text-xl">{steps[0].icon}</span>
                 </div>
                 <h3 className="text-base font-bold text-blue-600">
@@ -249,7 +249,7 @@ export default function EngagementFrameworkSection() {
               onClick={() => setActiveStep(1)}
             >
               <div className="flex items-center gap-2 justify-center mb-2">
-                <div className="w-8 h-8 flex items-center rounded-lg bg-white/80 border border-sky-200">
+                <div className="w-8 h-8 flex items-center rounded-lg bg-white/80 border border-sky-200 justify-center items-center text-center">
                   <span className="text-xl">{steps[1].icon}</span>
                 </div>
                 <h3 className="text-base font-bold text-blue-600">
@@ -275,7 +275,7 @@ export default function EngagementFrameworkSection() {
               onClick={() => setActiveStep(2)}
             >
               <div className="flex items-center gap-2 justify-center mb-2">
-                <div className="w-8 h-8 flex items-center rounded-lg bg-white/80 border border-orange-200">
+                <div className="w-8 h-8 flex items-center rounded-lg bg-white/80 border border-orange-200 justify-center items-center text-center">
                   <span className="text-xl">{steps[2].icon}</span>
                 </div>
                 <h3 className="text-base font-bold text-blue-600">

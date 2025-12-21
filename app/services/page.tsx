@@ -1,6 +1,4 @@
 import type { Metadata } from 'next';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import ServicesHeroSection from '@/components/services/ServicesHeroSection';
 import ServicesGridSection from '@/components/services/ServicesGridSection';
 import ServicesCTASection from '@/components/services/ServicesCTASection';

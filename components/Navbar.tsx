@@ -31,7 +31,7 @@ export default function Navbar() {
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
     { name: 'Why Us', href: '/why-us' },
-    // { name: 'Contact', href: '/contact' }
+    { name: 'Insights', href: '/insights' }
   ];
 
   const isActive = (href: string) => {
