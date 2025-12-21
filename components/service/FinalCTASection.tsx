@@ -13,12 +13,12 @@ export default function FinalCTASection({ headline, subtext, buttonText }: Final
   const [showCalendly, setShowCalendly] = useState(false);
   return (
     <>
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-r from-pink-500 to-red-500">
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-r from-sky-500 to-red-500">
         {/* Light Gradient Background with Blobs */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-sky-50 to-pink-50">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-sky-50 to-sky-50">
           <div className="absolute top-20 left-10 w-96 h-96 bg-blue-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
           <div className="absolute top-40 right-10 w-96 h-96 bg-sky-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-20 left-1/2 w-96 h-96 bg-pink-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+          <div className="absolute bottom-20 left-1/2 w-96 h-96 bg-sky-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
         </div>
         <div className="relative max-w-4xl mx-auto text-center z-10">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-700 mb-6">
@@ -31,7 +31,7 @@ export default function FinalCTASection({ headline, subtext, buttonText }: Final
             <button
               type="button"
               onClick={() => setShowCalendly(true)}
-              className="px-8 py-4 bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-3"
+              className="px-8 py-4 bg-gradient-to-r from-sky-400 via-sky-500 to-sky-600 text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-3"
             >
               {buttonText}
               <svg

@@ -83,8 +83,8 @@ export default function ContactInfoSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                  <a href="mailto:nkbram95@gmail.com" className="text-blue-600 hover:text-blue-700 transition-colors">
-                    nkbram95@gmail.com
+                  <a href="mailto:throughoutwithyou@gmail.com" className="text-blue-600 hover:text-blue-700 transition-colors">
+                    throughoutwithyou@gmail.com
                   </a>
                 </div>
               </div>
@@ -140,7 +140,7 @@ export default function ContactInfoSection() {
                   <span className="font-medium">Chat on WhatsApp</span>
                 </a>
                 <a
-                  href="mailto:nkbram95@gmail.com"
+                  href="mailto:throughoutwithyou@gmail.com"
                   className="flex items-center gap-3 px-4 py-3 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-colors shadow-sm"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -134,12 +134,12 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4 text-white">Get In Touch</h3>
             <ul className="space-y-4">
               <li>
-                <a href="mailto:nkbram95@gmail.com" 
+                <a href="mailto:throughoutwithyou@gmail.com" 
                   className="text-gray-400 hover:text-blue-400 transition-colors text-sm flex items-start group">
                   <svg className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
-                  <span className="break-all">nkbram95@gmail.com</span>
+                  <span className="break-all">throughoutwithyou@gmail.com</span>
                 </a>
               </li>
               <li>
@@ -171,10 +171,10 @@ export default function Footer() {
             © {new Date().getFullYear()} Throoout. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
-            <Link href="/privacy" className="text-gray-400 hover:text-blue-400 transition-colors">
+            <Link href="/privacy-policy" className="text-gray-400 hover:text-blue-400 transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-gray-400 hover:text-blue-400 transition-colors">
+            <Link href="/terms-of-service" className="text-gray-400 hover:text-blue-400 transition-colors">
               Terms of Service
             </Link>
           </div>

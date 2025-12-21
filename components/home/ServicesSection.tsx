@@ -29,7 +29,7 @@ export default function ServicesSection() {
               className="group relative"
             >
               {/* Compact Card */}
-              <div className="relative h-full bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 border border-gray-100 hover:border-transparent shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+              <div className="relative h-full bg-gradient-to-br from-sky-100 to-sky-100 rounded-2xl p-6 border border-sky-200 hover:border-sky shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
                 {/* Gradient Accent Border */}
                 <div className={`absolute inset-0 bg-gradient-to-br via-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                 <div className="absolute inset-[1px] bg-white rounded-2xl"></div>

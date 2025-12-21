@@ -93,7 +93,7 @@ export default function TermsOfService() {
               9. Governing Law
             </h2>
             <div className="text-gray-700 space-y-1 pl-2">
-              <div>These Terms shall be governed by and defined following the laws of Sri Lanka. <span className="font-semibold text-blue-600">Throoout</span> and yourself irrevocably consent that the courts of Sri Lanka shall have exclusive jurisdiction to resolve any dispute which may arise in connection with these terms.</div>
+              <div>These Terms shall be governed by and defined following the laws of Sri Lanka. <span className="font-semibold text-[#154B79]">Throoout</span> and yourself irrevocably consent that the courts of Sri Lanka shall have exclusive jurisdiction to resolve any dispute which may arise in connection with these terms.</div>
             </div>
           </section>
           {/* 10. Contact Us */}
@@ -102,12 +102,8 @@ export default function TermsOfService() {
               10. Contact Us
             </h2>
             <div className="text-gray-700 space-y-1 pl-2">
-              <span className="block my-4 mt-5">
-                <img src="/images/logo.png" alt="Throoout Logo" className="h-20  mb-2" style={{maxWidth:'220px'}} />
-              </span>
-              <div><span className="font-semibold text-[#154B79]">Throoout (Pvt) Ltd</span></div>
-              <div>nkbram95@gmail.com</div>
-              <div>+94 767 000 249</div>
+              <div>To resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at <span className="text-[#154B79]">throughoutwithyou@gmail.com</span>  or <span className="text-[#154B79]">+94 076 7000 249.</span></div>
+      
             </div>
           </section>
         </div>

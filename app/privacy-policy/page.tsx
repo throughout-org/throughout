@@ -85,14 +85,8 @@ export default function PrivacyPolicy() {
             <h2 className="text-xl font-bold text-[#154B79] mb-2 flex items-center gap-2">
                8. Contact Us
             </h2>
-            <p className="text-gray-700">If you have questions or comments about this policy, you may email us at <span className="text-[#154B79]">nkbram95@gmail.com</span> or by post to:<br />
-              <span className="block my-4 mt-10">
-                <img src="/images/logo.png" alt="Throoout Logo" className="h-20 mx-auto mb-2" style={{maxWidth:'220px'}} />
-              </span>
-              <span className="block font-semibold text-[#154B79] text-center">Throoout (Pvt) Ltd</span><br />
-              <span className="block text-center">Malwatha Road, Dehiwala, Colombo</span><br />
-              <span className="block text-center">Sri Lanka.</span>
-            </p>
+
+            <p className="text-gray-700">If you have questions or comments about this policy, you may email us at <span className="text-[#154B79]">throughoutwithyou@gmail.com</span>, like this 8 point in the <span className="text-[#154B79]"><a href="https://www.throoout.com/privacy-policy">Privacy Policy</a></span></p>
           </section>
         </div>
       </div>

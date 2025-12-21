@@ -85,12 +85,12 @@ export default function IndustriesSection() {
         {/* Tab Navigation */}
         <div className="relative mb-4">
           {/* Desktop Tabs */}
-          <div className="hidden lg:flex items-center justify-center gap-2 p-2 bg-white rounded-full shadow-xl max-w-6xl mx-auto">
+          <div className="hidden lg:flex items-center justify-center gap-2 p-2 bg-white rounded-2xl shadow-xl max-w-6xl mx-auto">
             {industries.map((industry) => (
               <button
                 key={industry.id}
                 onClick={() => setActiveTab(industry.id)}
-                className={`group relative flex-1 px-4 py-4 rounded-full font-semibold transition-all duration-300 ${
+                className={`group relative flex-1 px-4 py-4 rounded-2xl font-semibold transition-all duration-300 ${
                   activeTab === industry.id
                     ? 'bg-gradient-to-br from-blue-50 to-sky-50 text-blue-700 shadow-md border-2 border-blue-200'
                     : 'text-gray-600 hover:bg-gray-50'
@@ -112,7 +112,7 @@ export default function IndustriesSection() {
           {/* Mobile Tabs */}
           <div className="lg:hidden">
             {/* Active Tab Display */}
-            <div className="bg-white rounded-full shadow-xl p-4 mb-4">
+            <div className="bg-white rounded-2xl shadow-xl p-4 mb-4">
               <div className={`flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-sky-50 border-2 ${industries[activeTab].color.replace('from-', 'border-').split(' ')[0].replace('to-', '')} rounded-xl`}>
                 <div className={`flex items-center gap-3 bg-gradient-to-r ${industries[activeTab].color} bg-clip-text text-transparent`}>
                   <span className="text-4xl">{industries[activeTab].icon}</span>
@@ -130,7 +130,7 @@ export default function IndustriesSection() {
                 <button
                   key={industry.id}
                   onClick={() => setActiveTab(industry.id)}
-                  className={`p-4 rounded-full font-semibold transition-all duration-300 ${
+                  className={`p-4 rounded-2xl font-semibold transition-all duration-300 ${
                     activeTab === industry.id
                       ? `bg-gradient-to-br from-blue-50 to-sky-50 border-2 ${industry.color.replace('from-', 'border-').split(' ')[0].replace('to-', '')} shadow-lg scale-105`
                       : 'bg-white text-gray-700 shadow-md hover:shadow-lg border border-gray-200'
@@ -157,7 +157,7 @@ export default function IndustriesSection() {
                   : 'opacity-0 absolute inset-0 pointer-events-none -translate-y-4'
               }`}
             >
-              <div className="bg-white rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 p-10 border border-gray-200">
+              <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-10 border border-gray-200">
                 <div className="max-w-4xl mx-auto">
                   {/* Icon and Title Row */}
                   <div className="flex items-center gap-6 mb-6">
