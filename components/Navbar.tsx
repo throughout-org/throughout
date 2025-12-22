@@ -13,8 +13,11 @@ export default function Navbar() {
   const pathname = usePathname();
   useLayoutEffect(() => {
     if (!isScrolled && navLinksRef.current) {
-      const el = navLinksRef.current;
-      setNavLinksRect({ left: el.offsetLeft, width: el.offsetWidth });
+      // Ensure DOM is ready before measuring
+      requestAnimationFrame(() => {
+        const el = navLinksRef.current;
+        setNavLinksRect({ left: el.offsetLeft, width: el.offsetWidth });
+      });
     }
   }, [isScrolled, isMenuOpen, pathname]);
 
