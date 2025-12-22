@@ -77,7 +77,7 @@ export default function Navbar() {
                       const el = navLinksRef.current;
                       setNavLinksRect({ left: el.offsetLeft, width: el.offsetWidth });
                     }
-                  }, 100);
+                  }, 2000);
                 }}
                 className={`relative px-6 py-2 font-extrabold rounded-full transition-all duration-300 group text-base focus:outline-none focus:ring-2 focus:ring-sky-300 shadow-lg backdrop-blur-md ${
                   isActive(link.href)
