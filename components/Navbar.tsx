@@ -16,7 +16,9 @@ export default function Navbar() {
       // Ensure DOM is ready before measuring
       requestAnimationFrame(() => {
         const el = navLinksRef.current;
-        setNavLinksRect({ left: el.offsetLeft, width: el.offsetWidth });
+        if (el) {
+          setNavLinksRect({ left: el.offsetLeft, width: el.offsetWidth });
+        }
       });
     }
   }, [isScrolled, isMenuOpen, pathname]);
