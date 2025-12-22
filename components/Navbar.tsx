@@ -1,19 +1,23 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
   const navLinksRef = useRef<HTMLDivElement>(null);
   const [navLinksRect, setNavLinksRect] = useState<{left: number, width: number} | null>(null);
 
   const pathname = usePathname();
-  useLayoutEffect(() => {
-    if (!isScrolled && navLinksRef.current) {
-      // Ensure DOM is ready before measuring
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (hasMounted && !isScrolled && navLinksRef.current) {
       requestAnimationFrame(() => {
         const el = navLinksRef.current;
         if (el) {
@@ -21,7 +25,7 @@ export default function Navbar() {
         }
       });
     }
-  }, [isScrolled, isMenuOpen, pathname]);
+  }, [hasMounted, isScrolled, isMenuOpen, pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,30 +96,32 @@ export default function Navbar() {
             ))}
           </div>
           {/* Animated expanding background on scroll */}
-          <div
-            className={`hidden lg:block absolute transition-all duration-700 ease-[cubic-bezier(.4,2,.6,1)] bg-white/60 shadow-2xl backdrop-blur-2xl border border-white/30 ${
-              isScrolled
-                ? 'top-0 left-0 right-0 h-[calc(100%+16px)] rounded-4xl opacity-100 scale-105'
-                : 'rounded-4xl shadow-lg opacity-90 scale-100'
-            }`}
-            style={{
-              ...(isScrolled
-                ? { zIndex: 1, width: '98%', backdropFilter: 'blur(24px) saturate(1.5)' }
-                : navLinksRect
-                  ? {
-                      zIndex: 1,
-                      top: 'calc(50% + 8px)',
-                      left: navLinksRect.left - 12,
-                      width: navLinksRect.width + 24,
-                      height: 56,
-                      transform: 'translateY(-50%)',
-                      backdropFilter: 'blur(24px) saturate(1.5)',
-                    }
-                  : { zIndex: 1, backdropFilter: 'blur(24px) saturate(1.5)' }
-              ),
-              boxShadow: '0 -4px 16px 0 rgba(30,64,175,0.10), 0 4px 16px 0 rgba(30,64,175,0.07), 0 1px 8px 0 rgba(56,189,248,0.10)'
-            }}
-          ></div>
+          {hasMounted && (
+            <div
+              className={`hidden lg:block absolute transition-all duration-700 ease-[cubic-bezier(.4,2,.6,1)] bg-white/60 shadow-2xl backdrop-blur-2xl border border-white/30 ${
+                isScrolled
+                  ? 'top-0 left-0 right-0 h-[calc(100%+16px)] rounded-4xl opacity-100 scale-105'
+                  : 'rounded-4xl shadow-lg opacity-90 scale-100'
+              }`}
+              style={{
+                ...(isScrolled
+                  ? { zIndex: 1, width: '98%', backdropFilter: 'blur(24px) saturate(1.5)' }
+                  : navLinksRect
+                    ? {
+                        zIndex: 1,
+                        top: 'calc(50% + 8px)',
+                        left: navLinksRect.left - 12,
+                        width: navLinksRect.width + 24,
+                        height: 56,
+                        transform: 'translateY(-50%)',
+                        backdropFilter: 'blur(24px) saturate(1.5)',
+                      }
+                    : { zIndex: 1, backdropFilter: 'blur(24px) saturate(1.5)' }
+                ),
+                boxShadow: '0 -4px 16px 0 rgba(30,64,175,0.10), 0 4px 16px 0 rgba(30,64,175,0.07), 0 1px 8px 0 rgba(56,189,248,0.10)'
+              }}
+            ></div>
+          )}
 
           {/* Desktop CTA Button */}
           <div className="hidden lg:flex items-center gap-4 mt-4" style={{ zIndex: 2 }}>
