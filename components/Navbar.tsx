@@ -5,6 +5,15 @@ import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
+   
+    useEffect(() => {
+                setTimeout(() => {
+                    if (navLinksRef.current) {
+                      const el = navLinksRef.current;
+                      setNavLinksRect({ left: el.offsetLeft, width: el.offsetWidth });
+                    }
+                  }, 2000);
+    });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navLinksRef = useRef<HTMLDivElement>(null);
@@ -19,9 +28,7 @@ export default function Navbar() {
   }, [isScrolled, isMenuOpen, pathname]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -70,15 +77,6 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => {
-                  // Delay recalculation to after navigation
-                  setTimeout(() => {
-                    if (navLinksRef.current) {
-                      const el = navLinksRef.current;
-                      setNavLinksRect({ left: el.offsetLeft, width: el.offsetWidth });
-                    }
-                  }, 2000);
-                }}
                 className={`relative px-6 py-2 font-extrabold rounded-full transition-all duration-300 group text-base focus:outline-none focus:ring-2 focus:ring-sky-300 shadow-lg backdrop-blur-md ${
                   isActive(link.href)
                     ? 'bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 text-white scale-105 shadow-xl border border-white/30'
