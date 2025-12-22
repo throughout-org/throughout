@@ -96,28 +96,30 @@ export default function Navbar() {
             ))}
           </div>
           {/* Animated expanding background on scroll */}
-          {hasMounted && (
+          {/* Only render highlight background if navLinksRect is available and not scrolled */}
+          {hasMounted && !isScrolled && navLinksRect && (
             <div
-              className={`hidden lg:block absolute transition-all duration-700 ease-[cubic-bezier(.4,2,.6,1)] bg-white/60 shadow-2xl backdrop-blur-2xl border border-white/30 ${
-                isScrolled
-                  ? 'top-0 left-0 right-0 h-[calc(100%+16px)] rounded-4xl opacity-100 scale-105'
-                  : 'rounded-4xl shadow-lg opacity-90 scale-100'
-              }`}
+              className="hidden lg:block absolute transition-all duration-700 ease-[cubic-bezier(.4,2,.6,1)] bg-white/60 shadow-2xl backdrop-blur-2xl border border-white/30 rounded-4xl shadow-lg opacity-90 scale-100"
               style={{
-                ...(isScrolled
-                  ? { zIndex: 1, width: '98%', backdropFilter: 'blur(24px) saturate(1.5)' }
-                  : navLinksRect
-                    ? {
-                        zIndex: 1,
-                        top: 'calc(50% + 8px)',
-                        left: navLinksRect.left - 12,
-                        width: navLinksRect.width + 24,
-                        height: 56,
-                        transform: 'translateY(-50%)',
-                        backdropFilter: 'blur(24px) saturate(1.5)',
-                      }
-                    : { zIndex: 1, backdropFilter: 'blur(24px) saturate(1.5)' }
-                ),
+                zIndex: 1,
+                top: 'calc(50% + 8px)',
+                left: navLinksRect.left - 12,
+                width: navLinksRect.width + 24,
+                height: 56,
+                transform: 'translateY(-50%)',
+                backdropFilter: 'blur(24px) saturate(1.5)',
+                boxShadow: '0 -4px 16px 0 rgba(30,64,175,0.10), 0 4px 16px 0 rgba(30,64,175,0.07), 0 1px 8px 0 rgba(56,189,248,0.10)'
+              }}
+            ></div>
+          )}
+          {/* Render scrolled background as before */}
+          {hasMounted && isScrolled && (
+            <div
+              className="hidden lg:block absolute transition-all duration-700 ease-[cubic-bezier(.4,2,.6,1)] bg-white/60 shadow-2xl backdrop-blur-2xl border border-white/30 top-0 left-0 right-0 h-[calc(100%+16px)] rounded-4xl opacity-100 scale-105"
+              style={{
+                zIndex: 1,
+                width: '98%',
+                backdropFilter: 'blur(24px) saturate(1.5)',
                 boxShadow: '0 -4px 16px 0 rgba(30,64,175,0.10), 0 4px 16px 0 rgba(30,64,175,0.07), 0 1px 8px 0 rgba(56,189,248,0.10)'
               }}
             ></div>
