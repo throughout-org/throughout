@@ -53,25 +53,29 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 flex justify-center items-center transition-all duration-500`}
+      className={`fixed top-0 w-full z-50 flex justify-center items-center transition-all duration-500
+        ${isScrolled ? 'lg:!bg-transparent lg:!backdrop-blur-none  lg:!shadow-none' : ''}
+        ${isScrolled && !isMenuOpen? 'bg-white/30 backdrop-blur-md  shadow-sm' : ''}
+        lg:bg-transparent lg:backdrop-blur-none  lg:shadow-none
+      `}
       style={{ minHeight: "90px" }}
     >
-      <div className="max-w-[1600px] w-full mx-auto px-8">
-        <div className="flex justify-between items-center h-14 relative transition-all duration-500">
+      <div className="max-w-[1600px] w-full mx-auto px-8 ">
+        <div className="flex justify-between items-center h-14 relative transition-all duration-500 ">
           {/* Logo */}
           <a
             href="/"
-            className="flex items-center gap-3 z-50 relative   transition-all duration-300"
+            className="flex items-center gap-3 z-50 relative transition-all duration-300"
           >
-            <div className="relative overflow-hidden ">
+            <div className="relative overflow-hidden mt-[-20px] lg:mt-0">
               {/* Continuous Shining Effect */}
-              <div className="absolute inset-0  pointer-events-none"></div>
+              <div className="absolute inset-0 pointer-events-none"></div>
               <Image
                 src="/images/logo.png"
                 alt="Throoout Logo"
                 width={190}
                 height={90}
-                className="h-16 mt-2 w-auto relative z-13 "
+                className="h-16 mt-2 w-auto relative z-13"
                 priority
               />
             </div>
@@ -165,7 +169,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden relative w-12 h-12 flex items-center justify-center focus:outline-none z-[60] rounded-full bg-blue-100/70 border border-blue-200 shadow-md hover:bg-blue-200 transition-all duration-300"
+            className="lg:hidden relative w-12 h-12 flex items-center justify-center focus:outline-none z-[60] rounded-full bg-blue-50/70 border border-blue-200 shadow-md hover:bg-blue-200 transition-all duration-300"
             aria-label="Toggle menu"
           >
             <div className="w-7 h-6 flex flex-col justify-between">
@@ -196,7 +200,7 @@ export default function Navbar() {
       {/* Mobile Menu (fixed, rounded, blue) */}
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden fixed inset-0 z-40 transition-all duration-500 flex justify-center items-start pt-16 mt-5 ${
+        className={`lg:hidden fixed inset-0 z-40 transition-all duration-500 flex justify-center items-start    pt-25 ${
           isMenuOpen
             ? "opacity-100 visible"
             : "opacity-0 invisible pointer-events-none"
