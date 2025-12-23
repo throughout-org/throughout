@@ -1,5 +1,7 @@
 'use client';
 
+
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 interface TechnologiesSectionProps {
@@ -10,8 +12,13 @@ interface TechnologiesSectionProps {
     icon: string;
   }[];
 }
-
 export default function TechnologiesSection({ headline, description, stack }: TechnologiesSectionProps) {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <section id="technologies" className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Gradient Background */}
@@ -44,12 +51,15 @@ export default function TechnologiesSection({ headline, description, stack }: Te
         
         {/* Tech Stack Grid */}
         <div className="relative overflow-hidden py-8">
-          <div className="flex gap-6 animate-scroll-left">
+          <div
+            className={`flex gap-6 min-w-[200%]${isMounted ? ' animate-scroll-ltr' : ''}`}
+            style={{ willChange: 'transform' }}
+          >
             {/* Duplicate the array twice for seamless infinite scroll */}
             {[...stack, ...stack].map((tech, index) => (
               <div 
                 key={index}
-                className="group relative flex-shrink-0 w-[160px] animate-float"
+                className="group relative flex-shrink-0 w-[160px]"
                 style={{
                   animation: 'float 6s ease-in-out infinite',
                   animationDelay: `${index * 0.2}s`
@@ -93,61 +103,6 @@ export default function TechnologiesSection({ headline, description, stack }: Te
         </div>
       </div>
       
-      <style jsx>{`
-        @keyframes scrollLeft {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          25% {
-            transform: translateY(-10px);
-          }
-          50% {
-            transform: translateY(5px);
-          }
-          75% {
-            transform: translateY(-5px);
-          }
-        }
-        
-        .animate-scroll-left {
-          animation: scrollLeft 30s linear infinite;
-          display: flex;
-          width: fit-content;
-        }
-        
-        @keyframes blob {
-          0%, 100% {
-            transform: translate(0, 0) scale(1);
-          }
-          33% {
-            transform: translate(30px, -50px) scale(1.1);
-          }
-          66% {
-            transform: translate(-20px, 20px) scale(0.9);
-          }
-        }
-        
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-      `}</style>
     </section>
   );
 }

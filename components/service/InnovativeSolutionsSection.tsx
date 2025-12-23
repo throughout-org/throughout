@@ -159,7 +159,7 @@ export default function InnovativeSolutionsSection({ cards }: InnovativeSolution
           <div className="relative lg:sticky lg:top-8">
             <div className="relative group">
               {/* Main Card */}
-              <div className="relative aspect-[4/3] bg-gradient-to-br from-sky-100 via-blue-10 to-sky-10 rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition-all duration-500">
+              <div className="relative aspect-[4/3] min-h-[420px] sm:min-h-0 md:min-h-[520px] lg:min-h-[] bg-gradient-to-br from-sky-100 via-blue-100 to-sky-100 rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition-all duration-500 w-full max-w-full">
                 {/* Animated Gradient Overlay */}
               
                 {/* Decorative Elements */}
@@ -170,35 +170,35 @@ export default function InnovativeSolutionsSection({ cards }: InnovativeSolution
                 </div>
                 
                 {/* Content */}
-                <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-8">
+                <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-4 sm:p-6 lg:p-8">
                   {/* Icon */}
                   <div className="mb-6 relative">
                     <div className="absolute inset-0 bg-white rounded-3xl blur-2xl opacity-50 animate-pulse"></div>
-                    <div className="relative text-8xl text-gray-800 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                    <div className="relative text-6xl md:text-8xl text-gray-800 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                       💼
                     </div>
                   </div>
                   
                   {/* Text */}
-                  <h3 className="text-3xl font-bold text-gray-900 mb-3 drop-shadow-lg">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 drop-shadow-lg">
                     Professional Solutions
                   </h3>
-                  <p className="text-gray-700 text-lg max-w-sm drop-shadow-md">
+                  <p className="text-gray-700 text-base md:text-lg max-w-sm drop-shadow-md">
                     Cutting-edge technology meets exceptional service
                   </p>
                   
                   {/* Stats */}
                   <div className="mt-8 grid grid-cols-3 gap-4 w-full max-w-md">
-                    <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-4 border border-gray-300">
-                      <div className="text-2xl font-bold text-gray-900">100+</div>
+                    <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-2 sm:p-4 border border-gray-300">
+                      <div className="text-xl md:text-2xl font-bold text-gray-900">100+</div>
                       <div className="text-xs text-gray-700">Projects</div>
                     </div>
-                    <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-4 border border-gray-300">
-                      <div className="text-2xl font-bold text-gray-900">50+</div>
+                    <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-2 sm:p-4 border border-gray-300">
+                      <div className="text-xl md:text-2xl font-bold text-gray-900">50+</div>
                       <div className="text-xs text-gray-700">Clients</div>
                     </div>
-                    <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-4 border border-gray-300">
-                      <div className="text-2xl font-bold text-gray-900">24/7</div>
+                    <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-2 sm:p-4 border border-gray-300">
+                      <div className="text-xl md:text-2xl font-bold text-gray-900">24/7</div>
                       <div className="text-xs text-gray-700">Support</div>
                     </div>
                   </div>
