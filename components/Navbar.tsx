@@ -5,14 +5,7 @@ import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  useEffect(() => {
-    setTimeout(() => {
-      if (navLinksRef.current) {
-        const el = navLinksRef.current;
-        setNavLinksRect({ left: el.offsetLeft, width: el.offsetWidth });
-      }
-    }, 100);
-  });
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navLinksRef = useRef<HTMLDivElement>(null);
@@ -50,6 +43,15 @@ export default function Navbar() {
     }
     return pathname.startsWith(href);
   };
+    useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (navLinksRef.current) {
+        const el = navLinksRef.current;
+        setNavLinksRect({ left: el.offsetLeft, width: el.offsetWidth });
+      }
+    }, 100);
+    return () => clearTimeout(timeout);
+  }, [pathname, isMenuOpen]);
 
   return (
     <nav
