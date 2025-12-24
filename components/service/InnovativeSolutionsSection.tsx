@@ -49,7 +49,7 @@ export default function InnovativeSolutionsSection({ cards }: InnovativeSolution
             <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-gray-50 to-transparent z-10 pointer-events-none"></div>
             
             {/* Scroll Container */}
-            <div className="max-h-[650px] overflow-y-auto space-y-3 pr-4 py-2 custom-scrollbar">
+            <div className="lg:max-h-[520px] md:overflow-y-auto overflow-y-visible space-y-3 pr-4 py-2 custom-scrollbar">
               {cards.map((card, index) => {
                 const isExpanded = expandedCard === index;
                 return (
@@ -275,17 +275,17 @@ export default function InnovativeSolutionsSection({ cards }: InnovativeSolution
           background: transparent;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: linear-gradient(180deg, #f97316, #3b82f6, #a855f7);
+          background: linear-gradient(180deg, #6c94d3ff, #3b82f6, #a855f7);
           border-radius: 10px;
           transition: all 0.3s ease;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(180deg, #ea580c, #2563eb, #9333ea);
+          background: linear-gradient(180deg, #6c94d3ff, #2563eb, #9333ea);
         }
         /* Firefox */
         .custom-scrollbar {
           scrollbar-width: thin;
-          scrollbar-color: #f97316 transparent;
+          scrollbar-color: #6c94d3ff transparent;
         }
       `}</style>
     </section>

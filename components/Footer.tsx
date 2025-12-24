@@ -8,8 +8,8 @@ export default function Footer() {
         {/* Main Footer Content */}
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="space-y-4">
-            <div className="flex items-center mb-4">
+          <div className="space-y-4 text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start mb-4">
               <Image 
                 src="/images/logo.png" 
                 alt="Throoout Logo" 
@@ -18,10 +18,10 @@ export default function Footer() {
                 className="h-10 w-auto brightness-0 invert"
               />
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
+            <p className="text-gray-400 text-sm leading-relaxed text-center md:text-left">
               Building the future, one line of code at a time. We transform ideas into powerful digital solutions.
             </p>
-            <div className="flex gap-4 pt-2">
+            <div className="flex gap-4 pt-2 justify-center md:justify-start">
               <a href="https://www.linkedin.com/company/throoout" target="_blank" rel="noopener noreferrer" 
                 className="w-10 h-10 rounded-full bg-gray-800 hover:bg-blue-600 flex items-center justify-center transition-all duration-300 transform hover:scale-110">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="ml-5 ">
             <h3 className="text-lg font-semibold mb-4 text-white">Quick Links</h3>
             <ul className="space-y-3">
               <li>
@@ -81,7 +81,7 @@ export default function Footer() {
           </div>
 
           {/* Services */}
-          <div>
+          <div className="ml-5 " >
             <h3 className="text-lg font-semibold mb-4 text-white">Services</h3>
             <ul className="space-y-3">
               <li>
@@ -130,7 +130,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div className="ml-5 " >
             <h3 className="text-lg font-semibold mb-4 text-white">Get In Touch</h3>
             <ul className="space-y-4">
               <li>
@@ -166,29 +166,31 @@ export default function Footer() {
         <div className="border-t border-gray-700"></div>
 
         {/* Bottom Bar */}
-        <div className="py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-sm text-center md:text-left">
-            © {new Date().getFullYear()} Throoout. All rights reserved.
-          </p>
-          <div className="flex gap-6 text-sm">
-            <Link href="/privacy-policy" className="text-gray-400 hover:text-blue-400 transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms-of-service" className="text-gray-400 hover:text-blue-400 transition-colors">
-              Terms of Service
-            </Link>
+        <div className="py-6 flex flex-col md:flex-row justify-between items-center md:items-center gap-4 text-center md:text-left">
+          <div className="w-full flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+            <p className="text-gray-400 text-sm text-center md:text-left w-full md:w-auto">
+              © {new Date().getFullYear()} Throoout. All rights reserved.
+            </p>
+            <div className="flex flex-col md:flex-row gap-2 md:gap-6 text-sm items-center justify-center w-full md:w-auto">
+              <Link href="/privacy-policy" className="text-gray-400 hover:text-blue-400 transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms-of-service" className="text-gray-400 hover:text-blue-400 transition-colors">
+                Terms of Service
+              </Link>
+            </div>
+            <p className="text-gray-400 text-sm text-center md:text-right w-full md:w-auto">
+              Owned & Developed by{' '}
+              <a 
+                href="https://www.bavaram.info/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-blue-400 hover:text-blue-300 transition-colors font-medium"
+              >
+                Bavaram
+              </a>
+            </p>
           </div>
-          {/* <p className="text-gray-400 text-sm text-center md:text-right">
-            Owned & Developed by{' '}
-            <a 
-              href="https://www.bavaram.info/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-blue-400 hover:text-blue-300 transition-colors font-medium"
-            >
-              Bavaram
-            </a>
-          </p> */}
         </div>
       </div>
     </footer>

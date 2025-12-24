@@ -1,9 +1,116 @@
-'use client';
-import { useState } from 'react';
+"use client";
+import React, { useEffect, useRef, useState } from 'react';
+
+// Auto-scrollable industries for mobile
+type Industry = {
+  id: number;
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+};
+
+interface AutoScrollIndustriesProps {
+  industries: Industry[];
+}
+
+function AutoScrollIndustries({ industries }: AutoScrollIndustriesProps) {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const cardCount = industries.length;
+
+  // Auto-scroll effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % cardCount);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [cardCount]);
+
+  // Scroll to active card
+  useEffect(() => {
+    if (scrollRef.current) {
+      const container = scrollRef.current;
+      const children = (container.children as HTMLCollectionOf<HTMLElement>);
+      const card = children[activeIndex];
+      if (card) {
+        // Only scroll horizontally, never vertically
+        const containerRect = container.getBoundingClientRect();
+        const cardRect = card.getBoundingClientRect();
+        // If card is out of view horizontally, scroll only horizontally
+        if (cardRect.left < containerRect.left || cardRect.right > containerRect.right) {
+          const scrollLeft = card.offsetLeft - (container.offsetWidth / 2) + (card.offsetWidth / 2);
+          container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+        }
+      }
+    }
+  }, [activeIndex]);
+
+  return (
+    <div className="w-full">
+      <div
+        ref={scrollRef}
+        className="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory px-2"
+        style={{ scrollBehavior: 'smooth', scrollbarWidth: 'none', msOverflowStyle: 'none', borderBottom: 'none' }}
+      >
+        {industries.map((industry: Industry, idx: number) => (
+          <div
+            key={industry.id}
+            className="min-w-[90vw] max-w-[90vw] snap-center flex-shrink-0"
+            style={{ scrollSnapAlign: 'center' }}
+          >
+            <div className="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 border border-gray-200">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-14 h-14 bg-gradient-to-br via-blue-200 rounded-3xl flex items-center justify-center shadow-md p-0.5">
+                  <div className="w-full h-full bg-white rounded-3xl flex items-center justify-center">
+                    <span className="text-3xl">{industry.icon}</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">{industry.title}</h3>
+              </div>
+              <p className="text-base text-gray-600 leading-relaxed mb-4">{industry.description}</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {industry.id === 0 && (<><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Tenant Portals</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">AI Maintenance</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Automated Workflows</span></>)}
+                {industry.id === 1 && (<><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Booking Engines</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Dynamic Pricing</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">High Concurrency</span></>)}
+                {industry.id === 2 && (<><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Headless Commerce</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Payment Gateways</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Personalization</span></>)}
+                {industry.id === 3 && (<><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">LMS Platforms</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Video Streaming</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Gamified Learning</span></>)}
+                {industry.id === 4 && (<><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Case Management</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">AI Drafting</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Bank-Grade Security</span></>)}
+                {industry.id === 5 && (<><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Auditing Tools</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Compliance Dashboards</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Auto Tracking</span></>)}
+                {industry.id === 6 && (<><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">HIPAA Compliant</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Telemedicine</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">Real-time Monitoring</span></>)}
+              </div>
+              <div>
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-xs bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-500 text-white font-semibold rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  Explore {industry.title} Solutions
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* Dots */}
+      <div className="flex justify-center gap-2 mt-4">
+        {industries.map((_: Industry, idx: number) => (
+          <button
+            key={idx}
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'bg-blue-500 scale-110' : 'bg-gray-300'}`}
+            onClick={() => setActiveIndex(idx)}
+            aria-label={`Go to industry ${idx + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
 
 export default function IndustriesSection() {
   const [activeTab, setActiveTab] = useState(0);
-
   const industries = [
     {
       id: 0,
@@ -63,6 +170,17 @@ export default function IndustriesSection() {
     }
   ];
 
+  const tabCount = industries.length;
+
+  // Auto-scroll effect for desktop tabs
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTab((prev) => (prev + 1) % tabCount);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [tabCount]);
+
+  
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br ">
       <div className="max-w-7xl mx-auto">
@@ -109,142 +227,68 @@ export default function IndustriesSection() {
             ))}
           </div>
 
-          {/* Mobile Tabs */}
-          <div className="lg:hidden">
-            {/* Active Tab Display */}
-            <div className="bg-white rounded-2xl shadow-xl p-4 mb-4">
-              <div className={`flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-sky-50 border-2 ${industries[activeTab].color.replace('from-', 'border-').split(' ')[0].replace('to-', '')} rounded-xl`}>
-                <div className={`flex items-center gap-3 bg-gradient-to-r ${industries[activeTab].color} bg-clip-text text-transparent`}>
-                  <span className="text-4xl">{industries[activeTab].icon}</span>
-                  <span className="font-bold text-lg text-gray-800">{industries[activeTab].title}</span>
-                </div>
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-            </div>
-
-            {/* Mobile Tab Grid */}
-            <div className="grid grid-cols-2 gap-3">
-              {industries.map((industry) => (
-                <button
-                  key={industry.id}
-                  onClick={() => setActiveTab(industry.id)}
-                  className={`p-4 rounded-2xl font-semibold transition-all duration-300 ${
-                    activeTab === industry.id
-                      ? `bg-gradient-to-br from-blue-50 to-sky-50 border-2 ${industry.color.replace('from-', 'border-').split(' ')[0].replace('to-', '')} shadow-lg scale-105`
-                      : 'bg-white text-gray-700 shadow-md hover:shadow-lg border border-gray-200'
-                  }`}
-                >
-                  <div className="flex flex-col items-center gap-2">
-                    <span className="text-3xl">{industry.icon}</span>
-                    <span className={`text-xs ${activeTab === industry.id ? 'text-gray-800 font-bold' : ''} hidden sm:inline`}>{industry.name}</span>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
         </div>
 
         {/* Tab Content */}
         <div className="relative">
-          {industries.map((industry) => (
-            <div
-              key={industry.id}
-              className={`transition-all duration-500 ${
-                activeTab === industry.id
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 absolute inset-0 pointer-events-none -translate-y-4'
-              }`}
-            >
-              <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-10 border border-gray-200">
-                <div className="max-w-4xl mx-auto">
-                  {/* Icon and Title Row */}
-                  <div className="flex items-center gap-6 mb-6">
-                    <div className={`w-20 h-20 bg-gradient-to-br via-blue-200 rounded-full flex items-center justify-center shadow-md p-0.5`}>
-                      <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
-                        <span className="text-4xl">{industry.icon}</span>
+          {/* Mobile auto-scrollable industry cards with dots */}
+          <div className="block lg:hidden">
+            <AutoScrollIndustries industries={industries} />
+          </div>
+          <div className="hidden lg:block">
+            {industries.map((industry) => (
+              <div
+                key={industry.id}
+                className={`transition-all duration-500 ${
+                  activeTab === industry.id
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 absolute inset-0 pointer-events-none -translate-y-4'
+                }`}
+              >
+                <div className="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-10 ">
+                  <div className="max-w-4xl mx-auto">
+                    {/* Icon and Title Row */}
+                    <div className="flex items-center gap-6 mb-6">
+                      <div className={`w-20 h-20 bg-gradient-to-br via-blue-200 rounded-3xl flex items-center justify-center shadow-md p-0.5`}>
+                        <div className="w-full h-full bg-white rounded-3xl flex items-center justify-center">
+                          <span className="text-4xl">{industry.icon}</span>
+                        </div>
                       </div>
+                      <h3 className="text-3xl font-bold text-gray-900">
+                        {industry.title}
+                      </h3>
                     </div>
-                    <h3 className="text-3xl font-bold text-gray-900">
-                      {industry.title}
-                    </h3>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                    {industry.description}
-                  </p>
-
-                  {/* Key Features */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {industry.id === 0 && (
-                      <>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Tenant Portals</span>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">AI Maintenance</span>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Automated Workflows</span>
-                      </>
-                    )}
-                    {industry.id === 1 && (
-                      <>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Booking Engines</span>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Dynamic Pricing</span>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">High Concurrency</span>
-                      </>
-                    )}
-                    {industry.id === 2 && (
-                      <>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Headless Commerce</span>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Payment Gateways</span>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Personalization</span>
-                      </>
-                    )}
-                    {industry.id === 3 && (
-                      <>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">LMS Platforms</span>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Video Streaming</span>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Gamified Learning</span>
-                      </>
-                    )}
-                    {industry.id === 4 && (
-                      <>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Case Management</span>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">AI Drafting</span>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Bank-Grade Security</span>
-                      </>
-                    )}
-                    {industry.id === 5 && (
-                      <>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Auditing Tools</span>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Compliance Dashboards</span>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Auto Tracking</span>
-                      </>
-                    )}
-                    {industry.id === 6 && (
-                      <>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">HIPAA Compliant</span>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Telemedicine</span>
-                        <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Real-time Monitoring</span>
-                      </>
-                    )}
-                  </div>
-
-                  {/* CTA Button */}
-                  <div>
-                    <a
-                      href="/contact"
-                      className={`inline-flex items-center gap-2 px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-500 text-white font-semibold rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300`}
-                    >
-                      Explore {industry.title} Solutions
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </a>
+                    {/* Description */}
+                    <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                      {industry.description}
+                    </p>
+                    {/* Key Features */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {industry.id === 0 && (<><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Tenant Portals</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">AI Maintenance</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Automated Workflows</span></>)}
+                      {industry.id === 1 && (<><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Booking Engines</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Dynamic Pricing</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">High Concurrency</span></>)}
+                      {industry.id === 2 && (<><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Headless Commerce</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Payment Gateways</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Personalization</span></>)}
+                      {industry.id === 3 && (<><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">LMS Platforms</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Video Streaming</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Gamified Learning</span></>)}
+                      {industry.id === 4 && (<><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Case Management</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">AI Drafting</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Bank-Grade Security</span></>)}
+                      {industry.id === 5 && (<><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Auditing Tools</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Compliance Dashboards</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Auto Tracking</span></>)}
+                      {industry.id === 6 && (<><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">HIPAA Compliant</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Telemedicine</span><span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">Real-time Monitoring</span></>)}
+                    </div>
+                    {/* CTA Button */}
+                    <div>
+                      <a
+                        href="/contact"
+                        className={`inline-flex items-center gap-2 px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-500 text-white font-semibold rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300`}
+                      >
+                        Explore {industry.title} Solutions
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

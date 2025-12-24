@@ -193,7 +193,7 @@ export default function EngagementFrameworkSection() {
             {/* Top Left - Step 3 */}
             {/* Top Left - Step 3 */}
             <div 
-              className="absolute top-0 left-0 max-w-xs cursor-pointer"
+              className="absolute top-0 left-0 max-w-xs cursor-pointer "
               onClick={() => setActiveStep(3)}
             >
               <div className="flex items-center gap-2 justify-center mb-2">
@@ -299,7 +299,7 @@ export default function EngagementFrameworkSection() {
 
         {/* Mobile: Card Grid */}
         <div 
-          className="lg:hidden grid md:grid-cols-2 gap-6 mb-12"
+          className="lg:hidden grid md:grid-cols-2 gap-6 mb-12 "
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setIsPaused(false)}
         >
@@ -307,7 +307,7 @@ export default function EngagementFrameworkSection() {
             <button
               key={step.number}
               onClick={() => setActiveStep(index)}
-              className={`text-left transition-all duration-300 rounded-2xl overflow-hidden ${
+              className={`text-left transition-all duration-300 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 ${
                 activeStep === index ? 'shadow-2xl scale-105' : 'shadow-lg hover:shadow-xl'
               }`}
             >
