@@ -7,30 +7,26 @@ export default function WhyChooseUsSection() {
   ];
 
   return (
-    <section id="why-us" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          {/* <span className="inline-block px-4 py-2 bg-gradient-to-r from-blue-600 to-sky-600 text-white text-sm font-semibold rounded-full shadow-lg mb-6">
-            Why Us
-          </span> */}
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="block bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent pb-4 font-bold">
+    <section id="why-us" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
+            <span className="block bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
               Why Choose Us
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
             We combine expertise, innovation, and dedication to deliver exceptional results
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((item, index) => (
-            <div key={index} className="text-center group">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-100 to-sky-100 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
-                <span className="text-4xl">{item.icon}</span>
+            <div key={index} className="flex flex-col items-center text-center bg-white border border-blue-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full mb-3 text-3xl">
+                {item.icon}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-              <p className="text-gray-600">{item.description}</p>
+              <h3 className="text-lg font-bold text-blue-900 mb-1">{item.title}</h3>
+              <p className="text-gray-500 text-sm">{item.description}</p>
             </div>
           ))}
         </div>
