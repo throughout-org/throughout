@@ -1,6 +1,7 @@
 'use client';
 import { useParams } from 'next/navigation';
 import { Insights } from '@/data/insights';
+import Image from 'next/image';
 
 export default function InsightDetailPage() {
   const params = useParams();
@@ -38,7 +39,17 @@ export default function InsightDetailPage() {
         ))}
       </div>
       <div className="text-gray-500 mb-4">{insight.date}</div>
-      <img src={insight.image} alt={insight.title} className="w-full rounded-xl mb-8" />
+      <div className="w-full rounded-xl mb-8 overflow-hidden">
+        <Image
+          src={insight.image}
+          alt={insight.title}
+          width={1200}
+          height={600}
+          className="w-full h-auto rounded-xl"
+          quality={75}
+          priority
+        />
+      </div>
       <div className="text-lg text-gray-700 mb-8" dangerouslySetInnerHTML={{ __html: insight.content }} />
       <a href="/insights" className="text-blue-600 hover:underline">← Back to Insights</a>
 

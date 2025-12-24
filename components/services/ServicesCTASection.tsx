@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { InlineWidget } from "react-calendly";
+import dynamic from "next/dynamic";
+const InlineWidget = dynamic(() => import("react-calendly").then(mod => mod.InlineWidget), { ssr: false });
 
 export default function ServicesCTASection() {
   const [showCalendly, setShowCalendly] = useState(false);
