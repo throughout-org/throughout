@@ -5,8 +5,12 @@ import Image from 'next/image';
 
 export default function InsightDetailPage() {
   const params = useParams();
-  // Ensure params.slug is a string (Next.js may provide it as string or array)
-  const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
+  // Ensure params and params.slug exist and are a string (Next.js may provide it as string or array)
+  const slug = params && 'slug' in params && params.slug
+    ? Array.isArray(params.slug)
+      ? params.slug[0]
+      : params.slug
+    : '';
   const insight = Insights.find(i => i.slug === slug);
 
   if (!insight) {
