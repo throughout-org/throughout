@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useRef, useLayoutEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
@@ -15,11 +15,19 @@ export default function Navbar() {
   } | null>(null);
 
   const pathname = usePathname();
-  useLayoutEffect(() => {
+
+  // Batch DOM reads/writes to avoid forced reflow
+  useEffect(() => {
+    // Only run after paint
     if (!isScrolled && navLinksRef.current) {
       const el = navLinksRef.current;
-      setNavLinksRect({ left: el.offsetLeft, width: el.offsetWidth });
+      // Read values first
+      const left = el.offsetLeft;
+      const width = el.offsetWidth;
+      // Write state after all reads
+      setNavLinksRect({ left, width });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isScrolled, isMenuOpen, pathname]);
 
   useEffect(() => {

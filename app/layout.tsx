@@ -124,6 +124,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Preload manifest only; Next.js handles fonts and CSS */}
+        <link rel="preload" as="manifest" href="/site.webmanifest" />
         {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-70B910BNDJ"></script>
         <script
