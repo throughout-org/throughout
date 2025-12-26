@@ -28,6 +28,27 @@ A modern, attractive landing page for Throoout, a software engineering startup s
 - **Styling**: Tailwind CSS 4
 - **React**: 19.2.0
 - **Node.js**: 20.19.6 (required)
+- **CMS**: Sanity.io (with Portable Text)
+- **Content Rendering**: @portabletext/react for rich text blocks
+## 📰 Insights & CMS Integration
+
+- Insights/blog content is managed via Sanity CMS (`/src/sanity/client.ts`)
+- Rich text fields (like `content`) use Sanity's Portable Text and are rendered with `@portabletext/react` for full formatting (including lists, headings, etc.)
+- Images in insights use a fallback mechanism: if an image fails to load, a placeholder is shown
+
+### Editing Content
+
+- To update insights, edit content in your Sanity Studio or via the Sanity API
+- The `content` field in Sanity is an array of blocks (type: `array`, of: `block`)
+- Lists, headings, and formatting are supported and rendered automatically
+
+### Dependencies
+
+If you add or update content structure, make sure to install:
+
+```bash
+npm install @portabletext/react
+```
 
 ## 🚦 Getting Started
 
@@ -54,11 +75,8 @@ The main gradient colors can be adjusted in `app/page.tsx`:
 
 ### Update Content
 
-All content can be edited directly in `app/page.tsx`:
-- Company description
-- Services list
-- About us text
-- Contact form fields
+- Landing page content: edit in `app/page.tsx`
+- Insights/blog content: edit in Sanity Studio (see `/src/sanity/client.ts` for config)
 
 ## 📱 Contact Methods
 
@@ -73,6 +91,8 @@ All content can be edited directly in `app/page.tsx`:
 - Rounded corners and soft shadows
 - Mobile-first responsive design
 - Accessible and semantic HTML
+- Portable Text rendering for rich content
+- Image fallback for broken/missing images in insights
 
 ## 📦 Build for Production
 
