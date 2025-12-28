@@ -3,7 +3,6 @@ import { Montserrat, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Preloader from "@/components/Preloader";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -18,57 +17,50 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://throoout.com'),
+  metadataBase: new URL("https://throoout.com"),
+
   title: {
-    default: "Throoout - Smart Software Solutions | Custom Web & Mobile Development",
+    default: "Custom Software & AI Development Company | Throoout",
     template: "%s | Throoout",
   },
-  description: "Throoout delivers innovative software solutions for businesses. Expert web development, mobile apps, cloud services, AI/ML, and custom software. Transform your digital presence with our agile development team.",
-  keywords: [
-    "software development",
-    "web applications",
-    "mobile apps",
-    "API development",
-    "automation",
-    "software engineering",
-    "custom software",
-    "cloud solutions",
-    "AI ML development",
-    "React development",
-    "Next.js",
-    "enterprise software"
-  ],
-  authors: [{ name: "Bavaram Karunaharan", url: "https://bavaram.info" }],
+
+  description:
+    "Throoout is a custom software and AI development company building scalable web, mobile, and cloud solutions for startups and businesses.",
+
   creator: "Throoout",
   publisher: "Throoout",
+
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
+
   openGraph: {
     type: "website",
-    locale: "en_US",
     url: "https://throoout.com",
     siteName: "Throoout",
-    title: "Throoout - Smart Software Solutions",
-    description: "Modern software engineering startup helping businesses build fast, secure, and scalable digital products.",
+    title: "Custom Software & AI Development Company | Throoout",
+    description:
+      "Custom software, web, mobile, and AI solutions built to scale modern businesses.",
     images: [
       {
         url: "/images/og-default.png",
         width: 1200,
         height: 630,
-        alt: "Throoout Software Solutions",
+        alt: "Throoout Software & AI Development",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Throoout - Smart Software Solutions",
-    description: "Expert software development for modern businesses",
-    creator: "@throoout",
+    title: "Custom Software & AI Development Company | Throoout",
+    description:
+      "Custom software, web, mobile, and AI solutions for modern businesses.",
     images: ["/images/twitter-default.png"],
   },
+
   robots: {
     index: true,
     follow: true,
@@ -80,44 +72,39 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
+
   manifest: "/site.webmanifest",
-  verification: {
-    google: "your-google-verification-code",
-    // yandex: "your-yandex-verification-code",
-    // bing: "your-bing-verification-code",
-  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Throoout',
-    url: 'https://throoout.com',
-    logo: 'https://throoout.com/images/logo.png',
-    description: 'Smart software solutions for modern businesses. Custom web development, mobile apps, and cloud services.',
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'US',
-    },
+}) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://throoout.com/#organization",
+    name: "Throoout",
+    url: "https://throoout.com",
+    logo: "https://throoout.com/images/logo.png",
+    description:
+      "Custom software and AI development company delivering web, mobile, and cloud solutions.",
     contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'Customer Service',
-      email: 'info@throoout.com',
+      "@type": "ContactPoint",
+      contactType: "Customer Support",
+      email: "info@throoout.com",
+      availableLanguage: ["English"],
     },
     sameAs: [
-      'https://twitter.com/throoout',
-      'https://linkedin.com/company/throoout',
-      'https://github.com/throoout',
+      "https://twitter.com/throoout",
+      "https://www.linkedin.com/company/throoout",
+      "https://github.com/throoout",
     ],
   };
 
@@ -127,7 +114,10 @@ export default function RootLayout({
         {/* Preload manifest only; Next.js handles fonts and CSS */}
         <link rel="preload" as="manifest" href="/site.webmanifest" />
         {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-70B910BNDJ"></script>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-70B910BNDJ"
+        ></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -142,15 +132,22 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${jetbrainsMono.variable} antialiased font-sans`}
       >
-        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <script
+          type="text/javascript"
+          src="https://assets.calendly.com/assets/external/widget.js"
+          async
+        ></script>
+        {/* Organization Schema */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
         />
         {/* <Preloader /> */}
         <Navbar />
         {children}
-         <Footer />
+        <Footer />
       </body>
     </html>
   );

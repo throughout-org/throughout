@@ -1,19 +1,23 @@
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const environment = process.env.VERCEL_ENV;
-  const isProduction = environment === 'production';
-  const siteUrl = 'https://www.throoout.com';
+  const siteUrl = "https://www.throoout.com";
 
   return {
     rules: [
       {
-        userAgent: '*',
-        allow: '/',
-        // Example: disallow private paths in production only
-        // disallow: isProduction ? ['/private/', '/admin/'] : []
+        userAgent: "*",
+        allow: "/",
+        disallow: [
+          "/api/",
+          "/_next/",
+          "/admin/",
+          "/login/",
+          "/signup/",
+          "/search",
+        ],
       },
     ],
-    sitemap: `${siteUrl}/sitemap.xml`,
+    sitemap: [`${siteUrl}/sitemap.xml`, `${siteUrl}/insights/sitemap.xml`],
   };
 }
