@@ -2,6 +2,10 @@ import LeadComparisonCards from "@/components/whatsAppApi/LeadComparisonCards";
 import WhatsappAutomationHero from "@/components/whatsAppApi/WhatsappAutomationHero";
 import TechnicalEdge from "@/components/whatsAppApi/TechnicalEdge";
 import InstantAnswersConnectivity from "@/components/whatsAppApi/InstantAnswersConnectivity";
+import SalesFunnelHighlight from "@/components/SalesFunnelHighlight";
+import StoreInChatHighlight from "@/components/StoreInChatHighlight";
+import DashboardControlHighlight from "@/components/DashboardControlHighlight";
+import AiMediaImageHighlight from "@/components/AiMediaImageHighlight";
 
 export default function WhatsappAutomationPage() {
   return (
@@ -23,6 +27,18 @@ export default function WhatsappAutomationPage() {
       </div>
        <div className="w-full flex flex-col items-center px-2 sm:px-2 md:px-4 lg:px-8 xl:px-16 2xl:px-32">
         <InstantAnswersConnectivity />
+      </div>
+        <div className="w-full flex flex-col items-center px-2 sm:px-2 md:px-4 lg:px-8 xl:px-16 2xl:px-32">
+        <SalesFunnelHighlight />
+      </div>
+        <div className="w-full flex flex-col items-center px-2 sm:px-2 md:px-4 lg:px-8 xl:px-16 2xl:px-32">
+        <StoreInChatHighlight />
+      </div>
+         <div className="w-full flex flex-col items-center px-2 sm:px-2 md:px-4 lg:px-8 xl:px-16 2xl:px-32">
+        <DashboardControlHighlight />
+      </div>
+        <div className="w-full flex flex-col items-center px-2 sm:px-2 md:px-4 lg:px-8 xl:px-16 2xl:px-32">
+        <AiMediaImageHighlight />
       </div>
     </main>
   );

@@ -6,7 +6,7 @@ export default function InstantAnswersConnectivity() {
     <section className="w-full max-w-7xl mx-auto py-12 px-2 flex flex-col md:flex-row items-center gap-10 md:gap-16">
       {/* Left: Illustration */}
       <div className="flex-1 flex justify-center items-center bg-transparent">
-        <div className="relative w-[340px] h-[260px] md:w-[400px] md:h-[320px] bg-transparent">
+        <div className="relative w-[320px] h-[240px] sm:w-[380px] sm:h-[280px] md:w-[400px] md:h-[300px] lg:w-[520px] lg:h-[400px] bg-transparent">
           <Image
             src="/images/whatsApp/connectivity.png"
             alt="24/7 Connectivity Illustration"
@@ -23,7 +23,7 @@ export default function InstantAnswersConnectivity() {
         </h2>
         <ul className="space-y-6">
           <li className="flex items-start gap-4">
-            <span className="mt-1 text-2xl text-sky-500">
+            <span className="mt-1 text-5xl text-sky-500">
               <FaRegComments />
             </span>
             <div>
@@ -34,7 +34,7 @@ export default function InstantAnswersConnectivity() {
             </div>
           </li>
           <li className="flex items-start gap-4">
-            <span className="mt-1 text-2xl text-sky-500">
+            <span className="mt-1 text-5xl text-sky-500">
               <FaUserCheck />
             </span>
             <div>
