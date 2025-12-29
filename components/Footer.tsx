@@ -179,7 +179,7 @@ export default function Footer() {
                 Terms of Service
               </Link>
             </div>
-            <p className="text-gray-400 text-sm text-center md:text-right w-full md:w-auto">
+            {/* <p className="text-gray-400 text-sm text-center md:text-right w-full md:w-auto">
               Owned & Developed by{' '}
               <a 
                 href="https://www.bavaram.info/" 
@@ -189,7 +189,7 @@ export default function Footer() {
               >
                 Bavaram
               </a>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
