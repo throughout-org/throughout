@@ -9,7 +9,7 @@ import AiMediaImageHighlight from "@/components/AiMediaImageHighlight";
 
 export default function WhatsappAutomationPage() {
   return (
-    <main className="relative min-h-screen w-full flex flex-col items-center justify-start overflow-hidden pt-10">
+    <main className="relative min-h-screen w-full flex flex-col items-center justify-start overflow-hidden pt-20 pb-20">
       {/* Blue Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-blue-50 to-blue-50 -z-10">
         <div className="absolute top-20 left-10 w-96 h-96 bg-blue-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>

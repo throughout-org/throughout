@@ -1,4 +1,5 @@
 // Section 2: Engineering
+import { MdApi, MdCode, MdArrowForward } from "react-icons/md";
 export default function N8nAgencyEngineering() {
   return (
     <section className="py-20 bg-background-alt relative overflow-hidden" id="engineering">
@@ -6,17 +7,17 @@ export default function N8nAgencyEngineering() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row-reverse gap-16 items-center">
           <div className="flex-1 space-y-8">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              Connect Anything to <span className="text-primary">Everything</span>.
+            <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              Connect Anything to  <span className=" bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent pb-2 font-bold">Everything</span>.
             </h2>
             <p className="text-lg text-slate-600">
               We don't just use standard nodes. We build custom integrations for your specific tech stack.
             </p>
             <div className="space-y-6">
-              <div className="flex gap-4 p-4 rounded-xl hover:bg-white hover:shadow-sm transition-all border border-transparent hover:border-slate-100">
+              <div className="flex gap-4 p-4 rounded-xl bg-white hover:bg-white hover:shadow-sm transition-all border border-transparent hover:border-slate-100 ">
                 <div className="flex-none pt-1">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-primary">
-                    <span className="material-symbols-outlined">api</span>
+                    <span><MdApi className="w-6 h-6 text-blue-500" /></span>
                   </div>
                 </div>
                 <div>
@@ -24,10 +25,10 @@ export default function N8nAgencyEngineering() {
                   <p className="text-slate-500 mt-2">Seamlessly integrate private APIs, legacy on-prem systems, and internal databases that standard tools can't touch.</p>
                 </div>
               </div>
-              <div className="flex gap-4 p-4 rounded-xl hover:bg-white hover:shadow-sm transition-all border border-transparent hover:border-slate-100">
+              <div className="flex gap-4 p-4 rounded-xl bg-white hover:bg-white hover:shadow-sm transition-all border border-transparent hover:border-slate-100">
                 <div className="flex-none pt-1">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-primary">
-                    <span className="material-symbols-outlined">code_blocks</span>
+                    <span><MdCode className="w-6 h-6 text-blue-500" /></span>
                   </div>
                 </div>
                 <div>
@@ -36,9 +37,9 @@ export default function N8nAgencyEngineering() {
                 </div>
               </div>
             </div>
-            <button className="flex items-center gap-2 text-primary font-bold hover:text-slate-800 transition-colors pl-4">
+            <button className="flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-blue-400 px-8 text-base font-bold text-white shadow-lg hover:from-blue-700 hover:to-blue-500 transition-all">
               Explore Integration Library
-              <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              <span className="ml-2"><MdArrowForward className="text-lg" /></span>
             </button>
           </div>
           <div className="flex-1 w-full relative">
