@@ -23,8 +23,8 @@ export default function SeoUnlockPopup({ open, onClose, onSubmit, loading, error
         >
           ×
         </button>
-        <h2 className="text-2xl font-bold mb-2 text-center">Unlock Full Technical Report</h2>
-        <p className="text-gray-600 mb-4 text-center text-sm">Get detailed insights on competitor analysis, backlinks, and more. Enter your business email to receive the full report.</p>
+        <h2 className="text-2xl font-bold mb-2 text-center">Get Your Full SEO Report</h2>
+        <p className="text-gray-600 mb-4 text-center text-sm">Your full technical SEO report will be sent directly to your email with actionable insights and recommendations.</p>
         <form
           onSubmit={async e => {
             e.preventDefault();
@@ -50,7 +50,7 @@ export default function SeoUnlockPopup({ open, onClose, onSubmit, loading, error
           </button>
         </form>
         {error && <div className="text-red-600 text-center mt-2">{error}</div>}
-        <div className="text-xs text-gray-400 mt-4 text-center">We respect your inbox. No spam.</div>
+        <div className="text-xs text-gray-400 mt-4 text-center">We keep your information safe and secure.</div>
       </div>
     </div>
   );

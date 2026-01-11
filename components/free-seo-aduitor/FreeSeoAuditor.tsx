@@ -4,23 +4,49 @@ import SeoUnlockPopup from "./SeoUnlockPopup";
 
 export default function FreeSeoAuditor() {
   const [domain, setDomain] = useState("");
+  const [domainError, setDomainError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showResult, setShowResult] = useState(false);
   const [showUnlock, setShowUnlock] = useState(false);
   const [unlockLoading, setUnlockLoading] = useState(false);
   const [unlockError, setUnlockError] = useState("");
   const [unlocked, setUnlocked] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const [showSentPopup, setShowSentPopup] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setDomainError("");
+    // Accepts: https://site.com, http://site.com, www.site.com, site.com
+    // Rejects: random strings, numbers, etc.
+    // Improved regex: accepts site.com, www.site.com, https://site.com, http://site.com, etc.
+    const domainPattern = /^(https?:\/\/)?(www\.)?([a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,}(\/)?$/;
+    if (!domainPattern.test(domain.trim())) {
+      setDomainError("Please enter a valid website URL (e.g. site.com or https://site.com)");
+      return;
+    }
     setLoading(true);
     setShowResult(false);
     setTimeout(() => {
       setLoading(false);
       setShowResult(true);
       setShowUnlock(true); // Show popup automatically after loading
+    const [showDownloadButton, setShowDownloadButton] = useState(false);
     }, 4000); // Simulate loading (increased)
   };
+
+  // Listen for scroll event from iframe via postMessage
+  React.useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      // Only accept messages from the iframe that indicate a scroll
+      if (event.data === "iframe-scrolled" && !hasScrolled) {
+        setHasScrolled(true);
+        setShowUnlock(true);
+      }
+    };
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, [hasScrolled]);
 
   return (
     <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[80vh] bg-gradient-to-br from-blue-50 via-blue-100 to-white">
@@ -33,7 +59,7 @@ export default function FreeSeoAuditor() {
 
       <div className="relative max-w-2xl mx-auto z-10 ">
         {/* Badge */}
-        <div className="text-center mb-8 pt-8 pb-8">
+        <div className="text-center mb-8 pt-4 pb-2">
           <span className="inline-block px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-400 text-white text-base font-bold rounded-full shadow-xl drop-shadow-lg ">
             <span className="mr-2">🚀</span> Free SEO Auditor
           </span>
@@ -47,15 +73,32 @@ export default function FreeSeoAuditor() {
         </p>
         {/* Search Bar */}
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <input
-            type="url"
-            required
-            placeholder="www.yourcompany.com"
-            value={domain}
-            onChange={e => setDomain(e.target.value)}
-            className="flex-1 px-6 py-4 rounded-full border-2 border-blue-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-lg shadow-xl outline-none transition-all bg-white/70 backdrop-blur-md font-semibold placeholder:text-blue-400"
-            disabled={loading}
-          />
+          <div className="flex flex-col flex-1">
+            <input
+              type="text"
+              required
+              placeholder="www.yourcompany.com"
+              value={domain}
+              onChange={e => {
+                setDomain(e.target.value);
+                setDomainError("");
+              }}
+              className="px-6 py-4 rounded-full border-2 border-blue-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-lg shadow-xl outline-none transition-all bg-white/70 backdrop-blur-md font-semibold placeholder:text-blue-400 w-full"
+              disabled={loading}
+              autoComplete="off"
+            />
+            {domainError && (
+              <div className="relative w-full flex justify-center mt-2">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 z-20">
+                  <div className="flex items-center bg-white border border-gray-300 shadow-lg rounded px-3 py-2 text-sm font-semibold text-gray-800 min-w-[220px]">
+                    <span className="text-orange-500 text-lg mr-2">&#9888;</span>
+                    <span>{domainError.replace('Please enter a valid website URL (e.g. site.com or https://site.com)', 'Please enter a URL.')}</span>
+                  </div>
+                  <div className="absolute left-1/2 -translate-x-1/2 -top-2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white"></div>
+                </div>
+              </div>
+            )}
+          </div>
           <button
             type="submit"
             className="px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-400 text-white text-lg font-extrabold rounded-full shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 border border-white/30 backdrop-blur-md disabled:opacity-60 animate-pulse"
@@ -65,15 +108,19 @@ export default function FreeSeoAuditor() {
           </button>
         </form>
         </div>
-         <div className="relative max-w-5xl mx-auto z-10 ">
+         <div className="relative max-w-5xl mx-auto z-60 ">
         {loading && (
           <div className="relative bg-white/80 rounded-3xl shadow-2xl p-8 mt-4 backdrop-blur-md border border-blue-200 overflow-hidden flex flex-col items-center justify-center min-h-[400px]">
-            <div className="w-full h-[400px] rounded-2xl overflow-hidden border-2 border-blue-300 bg-white/80 shadow-xl flex items-center justify-center backdrop-blur-lg mb-8 relative">
+            <div
+              className="w-full h-[400px] rounded-2xl overflow-hidden border-2 border-blue-200 bg-white/80 shadow-xl flex items-center justify-center backdrop-blur-lg mb-8 relative"
+              style={{ overflow: 'auto' }}
+            >
               <iframe
                 src={domain ? (domain.startsWith('http') ? domain : `https://${domain}`) : 'about:blank'}
                 title="Site Preview"
                 className="w-full h-full"
-                style={{ pointerEvents: 'none', filter: 'blur(2px) grayscale(0.2)' }}
+                style={{ filter: 'blur(2px) grayscale(0.2)' }}
+                sandbox="allow-scripts allow-same-origin"
               />
               <div className="absolute inset-0 flex items-center justify-center z-10">
                 <span className="animate-spin inline-block w-16 h-16 border-4 border-t-4 border-t-blue-500 border-blue-300 rounded-full bg-white/60"></span>
@@ -85,8 +132,18 @@ export default function FreeSeoAuditor() {
           </div>
         )}
         {showResult && (
-          <div className="relative bg-white/80 rounded-3xl shadow-2xl p-8 mt-4 backdrop-blur-md border border-blue-200 overflow-hidden">
+          <div className="relative bg-white/80 rounded-3xl shadow-2xl p-8 mt-4 backdrop-blur border border-blue-200 overflow-hidden">
             {/* Blurred dashboard */}
+            <div className="w-full flex justify-center mb-6">
+              <button
+                type="button"
+                className="px-6 py-3 bg-gradient-to-r from-blue-500 to-sky-400 text-white font-bold rounded-full shadow hover:scale-105 transition-all disabled:opacity-60"
+                disabled={loading}
+                onClick={() => setShowUnlock(true)}
+              >
+                {loading ? "Sending..." : "Send Me The Full Report"}
+              </button>
+            </div>
             <div className="opacity-30 blur-sm select-none pointer-events-none">
               {/* Dashboard-style result (blurred) */}
               <div className="mb-8">
@@ -162,11 +219,29 @@ export default function FreeSeoAuditor() {
             setUnlockLoading(true);
             setUnlockError("");
             try {
-              // TODO: Replace with actual 2nd API call
-              // Example: await fetch("http://127.0.0.1:8000/send-report", { method: "POST", ... })
-              await new Promise(res => setTimeout(res, 1200));
+              // Show loader and send mail check
+              const apiUrl = process.env.NEXT_PUBLIC_SEO_AUDIT_API_URL || "http://127.0.0.1:8000/free-seo-audit";
+              const response = await fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                  url: domain.startsWith("http") ? domain : `https://${domain}`,
+                  email
+                })
+              });
+              if (!response.ok) {
+                throw new Error("Failed to send report. Please try again later.");
+              }
+              // Simulate up to 2 minutes delay for email delivery
+              await new Promise(res => setTimeout(res, 2000));
               setUnlocked(true);
               setShowUnlock(false);
+              // Show custom UI popup after closing unlock popup
+              setTimeout(() => {
+                setShowSentPopup(true);
+              }, 500);
             } catch (err: any) {
               setUnlockError(err.message || "Failed to send report");
             } finally {
@@ -174,6 +249,23 @@ export default function FreeSeoAuditor() {
             }
           }}
         />
+        {/* Sent popup */}
+        {showSentPopup && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm">
+            <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md relative flex flex-col items-center">
+              <button
+                className="absolute top-3 right-3 text-gray-400 hover:text-gray-700 text-2xl font-bold"
+                onClick={() => setShowSentPopup(false)}
+                aria-label="Close"
+              >
+                ×
+              </button>
+              <h2 className="text-2xl font-bold mb-2 text-center text-blue-600">Mail Sent!</h2>
+              <p className="text-gray-700 mb-4 text-center text-base">Please check your email. Delivery may take up to <span className="font-bold">2 minutes</span>.</p>
+              <div className="text-xs text-gray-400 mt-2 text-center">If you don't see it, check your spam folder.</div>
+            </div>
+          </div>
+        )}
         {/* Global styles for animations (fixes nested styled-jsx error) */}
         <style jsx>{`
           @keyframes iframe-scroll {

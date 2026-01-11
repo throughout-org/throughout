@@ -1,3 +1,5 @@
+
+import type { Metadata } from "next";
 import LeadComparisonCards from "@/components/whatsAppApi/LeadComparisonCards";
 import WhatsappAutomationHero from "@/components/whatsAppApi/WhatsappAutomationHero";
 import TechnicalEdge from "@/components/whatsAppApi/TechnicalEdge";
@@ -6,6 +8,40 @@ import SalesFunnelHighlight from "@/components/SalesFunnelHighlight";
 import StoreInChatHighlight from "@/components/StoreInChatHighlight";
 import DashboardControlHighlight from "@/components/DashboardControlHighlight";
 import AiMediaImageHighlight from "@/components/AiMediaImageHighlight";
+
+export const metadata: Metadata = {
+  title: "WhatsApp Automation Platform | AI Chatbot & CRM Integration",
+  description: "Automate WhatsApp for business: AI chatbot, CRM integration, instant lead capture, and sales automation. Boost engagement and conversions with Throoout's WhatsApp Automation.",
+  keywords: [
+    "whatsapp automation",
+    "whatsapp api",
+    "ai chatbot whatsapp",
+    "whatsapp crm integration",
+    "whatsapp business automation",
+    "lead capture whatsapp",
+    "sales automation whatsapp"
+  ],
+  openGraph: {
+    title: "WhatsApp Automation Platform | AI Chatbot & CRM Integration",
+    description: "Automate WhatsApp for business: AI chatbot, CRM integration, instant lead capture, and sales automation. Boost engagement and conversions with Throoout's WhatsApp Automation.",
+    url: "https://throoout.com/whatsapp_automation",
+    images: [
+      {
+        url: "/images/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "WhatsApp Automation by Throoout"
+      }
+    ],
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WhatsApp Automation Platform | AI Chatbot & CRM Integration",
+    description: "Automate WhatsApp for business: AI chatbot, CRM integration, instant lead capture, and sales automation. Boost engagement and conversions with Throoout's WhatsApp Automation.",
+    images: ["/images/twitter-default.png"]
+  }
+};
 
 export default function WhatsappAutomationPage() {
   return (

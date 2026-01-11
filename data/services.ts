@@ -704,6 +704,93 @@ export const services: Service[] = [
       buttonText: 'Schedule Design Consultation',
     },
   },
+   {
+          id: '8',
+          title: 'SEO',
+          slug: 'seo',
+          gradient: 'from-green-400 to-blue-600',
+          icon: '📈',
+          hero: {
+            headline: 'SEO That Gets Results',
+            subheadline: 'Boost your rankings and drive organic traffic with proven SEO strategies.',
+            primaryCTA: 'Start SEO Audit',
+            secondaryCTA: 'View SEO Packages',
+            visualStrategy: 'A graph with upward-trending lines and search icons',
+            badgeText: 'SEO',
+            trustIndicators: ['Technical SEO', 'Content Strategy', 'Proven Results'],
+          },
+          solutionsGridHeadline: 'SEO Services',
+          solutionsGridIntro: 'Comprehensive SEO solutions for every business.',
+          solutionCards: [
+            {
+              title: 'Technical SEO Audit',
+              concept: 'Site Health',
+              content: 'We analyze your website for crawl issues, speed, mobile usability, and indexation.',
+            },
+            {
+              title: 'On-Page Optimization',
+              concept: 'Content & Structure',
+              content: 'We optimize your site structure, meta tags, headings, and content.',
+            },
+            {
+              title: 'Content Strategy',
+              concept: 'Authority Building',
+              content: 'We develop a content plan that targets high-value keywords.',
+            },
+          ],
+          engineeringDNAHeadline: 'SEO That Works With Your Code',
+          engineeringDNAIntro: '',
+          engineeringFeatures: [
+            {
+              title: 'Schema & Structured Data',
+              copy: 'We implement JSON-LD and Open Graph to enhance your search listings.',
+            },
+            {
+              title: 'Performance Optimization',
+              copy: 'We improve Core Web Vitals and reduce load times.',
+            },
+            {
+              title: 'SEO Automation',
+              copy: 'We use the latest tools to automate reporting and keyword tracking.',
+            },
+          ],
+          technologies: {
+            headline: 'Technologies',
+            description: 'We leverage industry-leading SEO tools and analytics platforms.',
+            stack: [
+              { name: 'Google Search Console', icon: '/images/tech/gsc.svg' },
+              { name: 'Ahrefs', icon: '/images/tech/ahrefs.svg' },
+              { name: 'Semrush', icon: '/images/tech/semrush.svg' },
+              { name: 'Google Analytics', icon: '/images/tech/ga.svg' },
+            ],
+          },
+          scalableBanner: {
+            headline: 'Grow your traffic and outrank your competition',
+            description: 'Our SEO experts use proven strategies and the latest tools to help your website climb the search rankings.',
+          },
+          engagementModels: {
+            headline: 'Engagement Model',
+            models: [
+              {
+                title: 'Monthly Retainer',
+                description: 'Ongoing SEO management and optimization.',
+              },
+              {
+                title: 'Project-Based',
+                description: 'One-time audits or content campaigns.',
+              },
+              {
+                title: 'Consulting',
+                description: 'Expert advice and strategy for your in-house team.',
+              },
+            ],
+          },
+          finalCTA: {
+            headline: 'Ready to Rank Higher?',
+            subtext: 'Let’s unlock your site’s full SEO potential.',
+            buttonText: 'Schedule SEO Consultation',
+          },
+        },
 ];
 
 export const getServiceById = (id: string): Service | undefined => {

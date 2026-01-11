@@ -1,10 +1,45 @@
-"use client";
+
+import type { Metadata } from "next";
 import N8nAgencyAI from "@/components/n8n-agency/N8nAgencyAI";
 import N8nAgencyEngineering from "@/components/n8n-agency/N8nAgencyEngineering";
 import N8nAgencyFAQ from "@/components/n8n-agency/N8nAgencyFAQ";
 import N8nAgencyHero from "@/components/n8n-agency/N8nAgencyHero";
 import N8nAgencyManaged from "@/components/n8n-agency/N8nAgencyManaged";
 import N8nAgencyManualWork from "@/components/n8n-agency/N8nAgencyManualWork";
+
+export const metadata: Metadata = {
+  title: "n8n Agency Services | Workflow Automation Experts",
+  description: "Unlock business automation with n8n experts. Custom workflow automation, integration, and managed n8n services for startups and enterprises.",
+  keywords: [
+    "n8n agency",
+    "n8n experts",
+    "workflow automation",
+    "n8n managed services",
+    "business automation",
+    "n8n integration",
+    "automation consulting"
+  ],
+  openGraph: {
+    title: "n8n Agency Services | Workflow Automation Experts",
+    description: "Unlock business automation with n8n experts. Custom workflow automation, integration, and managed n8n services for startups and enterprises.",
+    url: "https://throoout.com/n8n-agency",
+    images: [
+      {
+        url: "/images/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "n8n Agency by Throoout"
+      }
+    ],
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "n8n Agency Services | Workflow Automation Experts",
+    description: "Unlock business automation with n8n experts. Custom workflow automation, integration, and managed n8n services for startups and enterprises.",
+    images: ["/images/twitter-default.png"]
+  }
+};
 
 export default function N8nAgencyPage() {
   return (
