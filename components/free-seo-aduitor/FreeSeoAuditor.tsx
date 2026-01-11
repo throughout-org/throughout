@@ -19,10 +19,10 @@ export default function FreeSeoAuditor() {
     setDomainError("");
     // Accepts: https://site.com, http://site.com, www.site.com, site.com
     // Rejects: random strings, numbers, etc.
-    // Improved regex: accepts site.com, www.site.com, https://site.com, http://site.com, etc.
-    const domainPattern = /^(https?:\/\/)?(www\.)?([a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,}(\/)?$/;
+    // Improved regex: accepts site.com, www.site.com, https://site.com, http://site.com, and URLs with paths
+    const domainPattern = /^(https?:\/\/)?(www\.)?([a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,}(\/.*)?$/;
     if (!domainPattern.test(domain.trim())) {
-      setDomainError("Please enter a valid website URL (e.g. site.com or https://site.com)");
+      setDomainError("Please enter a valid website URL (e.g. site.com, https://site.com, or https://site.com/path)");
       return;
     }
     setLoading(true);
