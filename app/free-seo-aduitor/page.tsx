@@ -38,6 +38,7 @@ export const metadata: Metadata = {
   }
 };
 
+
 export default function FreeSeoAuditorPage() {
   return <FreeSeoAuditor />;
 }
