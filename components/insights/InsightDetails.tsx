@@ -56,6 +56,8 @@ export default function InsightDetails({ slug }: InsightDetailsProps) {
     fetchInsights();
   }, [slug]);
 
+  console.log("InsightDetails - insight:", insight);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">

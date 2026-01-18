@@ -20,9 +20,9 @@ async function fetchPostMeta(slug: string) {
 export async function generateMetadata({
   params,
 }: {
-  params: Params;
+  params: Promise<Params>;
 }): Promise<Metadata> {
-  const slug = params.slug;
+  const { slug } = await params;
   const post = slug ? await fetchPostMeta(slug) : null;
 
   const siteUrl = "https://throoout.com";
@@ -71,6 +71,11 @@ export async function generateMetadata({
   };
 }
 
-export default function InsightDetailPage({ params }: { params: Params }) {
-  return <InsightDetails slug={params.slug} />;
+export default async function InsightDetailPage({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
+  const { slug } = await params;
+  return <InsightDetails slug={slug} />;
 }
