@@ -1,18 +1,19 @@
-
-
-
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { client } from '@/src/sanity/client';
-import { PortableText, PortableTextComponents } from '@portabletext/react';
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { client } from "@/src/sanity/client";
+import { PortableText, PortableTextComponents } from "@portabletext/react";
 // Custom components for PortableText to style lists
 const ptComponents: PortableTextComponents = {
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc pl-6 my-4 text-base text-gray-700">{children}</ul>
+      <ul className="pl-6 my-4 text-base text-gray-700 list-disc">
+        {children}
+      </ul>
     ),
     number: ({ children }) => (
-      <ol className="list-decimal pl-6 my-4 text-base text-gray-700">{children}</ol>
+      <ol className="pl-6 my-4 text-base text-gray-700 list-decimal">
+        {children}
+      </ol>
     ),
   },
   listItem: {
@@ -20,7 +21,6 @@ const ptComponents: PortableTextComponents = {
     number: ({ children }) => <li className="mb-1">{children}</li>,
   },
 };
-
 
 interface InsightDetailsProps {
   slug: string;
@@ -45,7 +45,7 @@ export default function InsightDetails({ slug }: InsightDetailsProps) {
             asset->{url}
           },
           excerpt
-        }`
+        }`,
       );
       const found = data.find((i: any) => (i.slug?.current || i.slug) === slug);
       setInsight(found || null);
@@ -56,9 +56,9 @@ export default function InsightDetails({ slug }: InsightDetailsProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="flex items-center justify-center min-h-screen">
         <svg
-          className="animate-spin h-10 w-10 text-blue-500 mb-4"
+          className="w-10 h-10 mb-4 text-blue-500 animate-spin"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -82,39 +82,49 @@ export default function InsightDetails({ slug }: InsightDetailsProps) {
   }
   if (!insight) {
     return (
-      <div className="text-center py-24 text-2xl text-gray-500">
+      <div className="py-24 text-2xl text-center text-gray-500">
         Coming soon: This insight will be available shortly.
       </div>
     );
   }
 
   return (
-    <div className="max-w-5xl mx-auto py-16 px-4 mt-20">
+    <div className="max-w-5xl px-4 py-16 mx-auto mt-20">
       {/* Breadcrumb Navigation */}
-      <nav className="text-sm mb-6" aria-label="Breadcrumb">
-        <ol className="list-reset flex text-gray-500">
+      <nav className="mb-6 text-sm" aria-label="Breadcrumb">
+        <ol className="flex text-gray-500 list-reset">
           <li>
-            <a href="/insights" className="hover:text-blue-600 transition-colors">Insights</a>
+            <a
+              href="/insights"
+              className="transition-colors hover:text-blue-600"
+            >
+              Insights
+            </a>
           </li>
           <li>
             <span className="mx-2">/</span>
           </li>
-          <li className="text-gray-700 font-semibold truncate max-w-xs" title={insight.title}>{insight.title}</li>
+          <li
+            className="max-w-xs font-semibold text-gray-700 truncate"
+            title={insight.title}
+          >
+            {insight.title}
+          </li>
         </ol>
       </nav>
-      <h1 className="text-4xl font-bold mb-4">{insight.title}</h1>
+      <h1 className="mb-4 text-4xl font-bold">{insight.title}</h1>
       <div className="flex flex-wrap gap-2 mb-4">
         {insight.category?.map((cat: string, idx: number) => (
           <span
             key={cat + idx}
-            className="inline-block px-3 py-1 bg-gradient-to-r from-blue-100 via-sky-100 to-indigo-100 text-blue-900 text-xs font-semibold rounded-lg shadow-sm"
+            className="inline-block px-3 py-1 text-xs font-semibold text-blue-900 rounded-lg shadow-sm bg-gradient-to-r from-blue-100 via-sky-100 to-indigo-100"
           >
             {cat}
           </span>
         ))}
       </div>
-      <div className="text-gray-500 mb-4">{insight.date}</div>
-      <div className="w-full rounded-xl mb-8 overflow-hidden">
+      <div className="mb-4 text-gray-500">{insight.date}</div>
+      <div className="w-full mb-8 overflow-hidden rounded-xl">
         <Image
           src={insight.image?.asset?.url || insight.image}
           alt={insight.title}
@@ -125,7 +135,7 @@ export default function InsightDetails({ slug }: InsightDetailsProps) {
           priority
         />
       </div>
-      <div className="text-lg text-gray-700 mb-8">
+      <div className="mb-8 text-lg text-gray-700 blog-inner-content">
         {Array.isArray(insight.content) ? (
           <PortableText value={insight.content} components={ptComponents} />
         ) : (
@@ -137,4 +147,3 @@ export default function InsightDetails({ slug }: InsightDetailsProps) {
     </div>
   );
 }
-

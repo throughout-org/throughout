@@ -9,7 +9,8 @@
   animation-delay: 4s;
 }
 @keyframes blob {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) scale(1);
   }
   33% {
@@ -21,8 +22,12 @@
 }
 
 @keyframes scrollLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 .animate-scroll-left {
   animation: scrollLeft 40s linear infinite;
@@ -31,16 +36,25 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-16px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
 }
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
 
 @keyframes scrollLTR {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 .animate-scroll-ltr {
   animation: scrollLTR 30s linear infinite;
@@ -48,10 +62,19 @@
   width: fit-content;
 }
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  25% { transform: translateY(-10px); }
-  50% { transform: translateY(5px); }
-  75% { transform: translateY(-5px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  75% {
+    transform: translateY(-5px);
+  }
 }
 @import "tailwindcss";
 
@@ -70,9 +93,17 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-montserrat), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-family:
+    var(--font-montserrat),
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    sans-serif;
 }
-
 
 html {
   scroll-behavior: smooth;
@@ -132,4 +163,132 @@ body {
 
 .animate-fade-in-delay-2 {
   animation: fade-in 0.8s ease-out 0.4s both;
+}
+
+.custom-paragraph {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.custom-heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
+
+.custom-list-item {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.blog-inner-content h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin-bottom: 24px;
+  margin-top: 24px;
+  line-height: 1.3;
+}
+
+.blog-inner-content h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  line-height: 1.4;
+}
+
+.blog-inner-content h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  line-height: 1.4;
+}
+
+.blog-inner-content h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 12px;
+  margin-top: 12px;
+  line-height: 1.4;
+}
+
+.blog-inner-content h5 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 12px;
+  margin-top: 12px;
+  line-height: 1.4;
+}
+
+.blog-inner-content h6 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 12px;
+  margin-top: 12px;
+  line-height: 1.4;
+}
+
+.blog-inner-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.blog-inner-content ul {
+  list-style-type: disc;
+  margin-left: 24px;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.blog-inner-content ol {
+  list-style-type: decimal;
+  margin-left: 24px;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.blog-inner-content li {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.blog-inner-content ul li {
+  list-style-type: disc;
+}
+
+.blog-inner-content ol li {
+  list-style-type: decimal;
+}
+
+.blog-inner-content a {
+  color: #0066cc !important;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.blog-inner-content a:hover {
+  color: #0052a3 !important;
+  text-decoration: underline;
+}
+
+.blog-inner-content a:visited {
+  color: #7030a0 !important;
+}
+
+.blog-inner-content a:active {
+  color: #003d7a !important;
 }
