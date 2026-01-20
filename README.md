@@ -128,7 +128,7 @@ npm start
 
 ## 📄 License
 
-© 2025 Throoout. All rights reserved.
+© 2026 Throoout. All rights reserved.
 
 ---
 
