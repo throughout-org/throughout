@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Navbar() {
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navLinksRef = useRef<HTMLDivElement>(null);
@@ -43,6 +43,7 @@ export default function Navbar() {
     { name: "Services", href: "/services", abbr: "SV" },
     { name: "Why Us", href: "/why-us", abbr: "WU" },
     { name: "Insights", href: "/insights", abbr: "IN" },
+    { name: "Internships", href: "/internships", abbr: "IT" },
   ];
 
   const isActive = (href: string) => {
@@ -52,7 +53,7 @@ export default function Navbar() {
     }
     return pathname.startsWith(href);
   };
-    useEffect(() => {
+  useEffect(() => {
     const timeout = setTimeout(() => {
       if (navLinksRef.current) {
         const el = navLinksRef.current;
@@ -65,18 +66,17 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 w-full z-50 flex justify-center items-center transition-all duration-500
-        ${isScrolled ? 'lg:!bg-transparent lg:!backdrop-blur-none  lg:!shadow-none' : ''}
-        ${isScrolled && !isMenuOpen? 'bg-white/30 backdrop-blur-md  shadow-sm' : ''}
-        lg:bg-transparent lg:backdrop-blur-none  lg:shadow-none
-      `}
+        ${isScrolled ? "lg:!bg-transparent lg:!backdrop-blur-none  lg:!shadow-none" : ""}
+        ${isScrolled && !isMenuOpen ? "bg-white/30 backdrop-blur-md  shadow-sm" : ""}
+        lg:bg-transparent lg:backdrop-blur-none  lg:shadow-none pl-8`}
       style={{ minHeight: "90px" }}
     >
-      <div className="max-w-[1600px] w-full mx-auto px-8 ">
-        <div className="flex justify-between items-center h-14 relative transition-all duration-500 ">
+      <div className="max-w-[1600px] w-full mx-auto px-8">
+        <div className="relative flex items-center justify-between transition-all duration-500 h-14">
           {/* Logo */}
-          <a
+          <Link
             href="/"
-            className="flex items-center gap-3 z-50 relative transition-all duration-300"
+            className="relative z-50 flex items-center gap-3 transition-all duration-300"
           >
             <div className="relative overflow-hidden mt-[-20px] lg:mt-0">
               {/* Continuous Shining Effect */}
@@ -86,21 +86,21 @@ export default function Navbar() {
                 alt="Throoout Logo"
                 width={190}
                 height={90}
-                className="h-16 mt-2 w-auto relative z-13"
+                className="relative w-auto h-16 mt-2 z-13"
                 priority
               />
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation with animated background */}
           <div
             ref={navLinksRef}
-            className="hidden lg:flex items-center space-x-5 mt-4 relative z-10"
+            className="relative z-10 items-center hidden mt-4 space-x-5 lg:flex"
           >
             {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
                   className={`relative px-6 py-2 font-extrabold rounded-full transition-all duration-300 group text-base focus:outline-none focus:ring-2 focus:ring-sky-300 shadow-lg backdrop-blur-md ${
@@ -116,10 +116,10 @@ export default function Navbar() {
                   }}
                 >
                   {/* Show full text at all breakpoints, but smaller font size below 1140px */}
-                  <span className="block text-xs sm:text-sm xl:text-base 2xl:text-lg font-bold tracking-wide">
+                  <span className="block text-xs font-bold tracking-wide sm:text-sm xl:text-base 2xl:text-lg">
                     {link.name}
                   </span>
-                </a>
+                </Link>
               );
             })}
           </div>
@@ -138,16 +138,16 @@ export default function Navbar() {
                     backdropFilter: "blur(24px) saturate(1.5)",
                   }
                 : navLinksRect
-                ? {
-                    zIndex: 1,
-                    top: "calc(50% + 8px)",
-                    left: navLinksRect.left - 12,
-                    width: navLinksRect.width + 24,
-                    height: 56,
-                    transform: "translateY(-50%)",
-                    backdropFilter: "blur(24px) saturate(1.5)",
-                  }
-                : { zIndex: 1, backdropFilter: "blur(24px) saturate(1.5)" }),
+                  ? {
+                      zIndex: 1,
+                      top: "calc(50% + 8px)",
+                      left: navLinksRect.left - 12,
+                      width: navLinksRect.width + 24,
+                      height: 56,
+                      transform: "translateY(-50%)",
+                      backdropFilter: "blur(24px) saturate(1.5)",
+                    }
+                  : { zIndex: 1, backdropFilter: "blur(24px) saturate(1.5)" }),
               boxShadow:
                 "0 -4px 16px 0 rgba(30,64,175,0.10), 0 4px 16px 0 rgba(30,64,175,0.07), 0 1px 8px 0 rgba(56,189,248,0.10)",
             }}
@@ -155,12 +155,12 @@ export default function Navbar() {
 
           {/* Desktop CTA Button */}
           <div
-            className="hidden lg:flex items-center gap-4 mt-4"
+            className="items-center hidden gap-4 mt-4 lg:flex"
             style={{ zIndex: 2 }}
           >
-            <a
+            <Link
               href="/contact"
-              className="group relative px-8 py-4 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 text-white text-xs sm:text-sm xl:text-base 2xl:text-lg font-extrabold rounded-full overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border border-white/30 backdrop-blur-md flex items-center gap-2"
+              className="relative flex items-center gap-2 px-8 py-4 overflow-hidden text-xs font-extrabold text-white transition-all duration-300 border rounded-full shadow-xl group bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 sm:text-sm xl:text-base 2xl:text-lg hover:shadow-2xl hover:scale-105 border-white/30 backdrop-blur-md"
               style={{
                 boxShadow:
                   "0 6px 32px 0 rgba(56,189,248,0.18), 0 2px 12px 0 rgba(99,102,241,0.10)",
@@ -168,13 +168,24 @@ export default function Navbar() {
               }}
             >
               {/* Show icon only between 1140px and 425px, show text above 1140px */}
-              <span className="inline 2xl:hidden text-2xl align-middle text-white">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-white fill-current" aria-hidden="true">
-                  <path d="M16.5562 12.9062L16.1007 13.359C16.1007 13.359 15.0181 14.4355 12.0631 11.4972C9.10812 8.55901 10.1907 7.48257 10.1907 7.48257L10.4775 7.19738C11.1841 6.49484 11.2507 5.36691 10.6342 4.54348L9.37326 2.85908C8.61028 1.83992 7.13596 1.70529 6.26145 2.57483L4.69185 4.13552C4.25823 4.56668 3.96765 5.12559 4.00289 5.74561C4.09304 7.33182 4.81071 10.7447 8.81536 14.7266C13.0621 18.9492 17.0468 19.117 18.6763 18.9651C19.1917 18.9171 19.6399 18.6546 20.0011 18.2954L21.4217 16.883C22.3806 15.9295 22.1102 14.2949 20.8833 13.628L18.9728 12.5894C18.1672 12.1515 17.1858 12.2801 16.5562 12.9062Z" fill="currentColor"/>
+              {/* <span className="inline text-2xl text-white align-middle 2xl:hidden">
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="text-white fill-current w-7 h-7"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M16.5562 12.9062L16.1007 13.359C16.1007 13.359 15.0181 14.4355 12.0631 11.4972C9.10812 8.55901 10.1907 7.48257 10.1907 7.48257L10.4775 7.19738C11.1841 6.49484 11.2507 5.36691 10.6342 4.54348L9.37326 2.85908C8.61028 1.83992 7.13596 1.70529 6.26145 2.57483L4.69185 4.13552C4.25823 4.56668 3.96765 5.12559 4.00289 5.74561C4.09304 7.33182 4.81071 10.7447 8.81536 14.7266C13.0621 18.9492 17.0468 19.117 18.6763 18.9651C19.1917 18.9171 19.6399 18.6546 20.0011 18.2954L21.4217 16.883C22.3806 15.9295 22.1102 14.2949 20.8833 13.628L18.9728 12.5894C18.1672 12.1515 17.1858 12.2801 16.5562 12.9062Z"
+                    fill="currentColor"
+                  />
                 </svg>
-              </span>
-              <span className="hidden 2xl:inline">Contact Us</span>
-            </a>
+              </span> */}
+              <span className="">Talk to us</span>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -183,7 +194,7 @@ export default function Navbar() {
             className="lg:hidden relative w-12 h-12 flex items-center justify-center focus:outline-none z-[60] rounded-full bg-blue-50/70 border border-blue-200 shadow-md hover:bg-blue-200 transition-all duration-300"
             aria-label="Toggle menu"
           >
-            <div className="w-7 h-6 flex flex-col justify-between">
+            <div className="flex flex-col justify-between h-6 w-7">
               <span
                 className={`w-full h-1 rounded-full transition-all duration-300 ${
                   isMenuOpen
@@ -219,9 +230,9 @@ export default function Navbar() {
       >
         {/* Soft blue background with floating blobs */}
         <div className="absolute inset-0 bg-blue-100/90"></div>
-        <div className="absolute top-1/4 -right-20 w-80 h-80 bg-gradient-to-br from-blue-200/40 to-blue-400/30 rounded-full blur-3xl animate-blob"></div>
-        <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-gradient-to-tr from-blue-300/30 to-blue-100/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-r from-blue-200/20 to-blue-400/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+        <div className="absolute rounded-full top-1/4 -right-20 w-80 h-80 bg-gradient-to-br from-blue-200/40 to-blue-400/30 blur-3xl animate-blob"></div>
+        <div className="absolute rounded-full -bottom-20 -left-20 w-80 h-80 bg-gradient-to-tr from-blue-300/30 to-blue-100/30 blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute w-64 h-64 rounded-full top-1/2 left-1/3 bg-gradient-to-r from-blue-200/20 to-blue-400/20 blur-3xl animate-blob animation-delay-4000"></div>
         {/* Menu Content */}
         <div
           className="relative bg-gradient-to-br from-white/70 via-blue-100/60 to-blue-200/40 rounded-3xl shadow-2xl min-w-[320px] max-w-xs mx-auto my-8 flex flex-col items-center justify-center py-10 px-6 space-y-8 border border-white/40 backdrop-blur-2xl"
@@ -233,7 +244,7 @@ export default function Navbar() {
           {/* Logo */}
 
           {navLinks.map((link, index) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               onClick={() => setIsMenuOpen(false)}
@@ -254,10 +265,10 @@ export default function Navbar() {
               }}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           {/* Mobile CTA Button */}
-          <a
+          <Link
             href="/contact"
             onClick={() => setIsMenuOpen(false)}
             className={`w-full text-center relative text-xl font-extrabold transition-all duration-500 transform rounded-full px-6 py-3 group focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-lg backdrop-blur-md border ${
@@ -276,7 +287,7 @@ export default function Navbar() {
             }}
           >
             Contact Us
-          </a>
+          </Link>
         </div>
       </div>
       {/* Move styles outside the menu content */}

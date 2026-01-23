@@ -25,7 +25,7 @@ export default function InternshipsPage() {
         <div className="relative mx-auto text-center max-w-7xl">
           <div className="inline-block mb-6">
             <span className="inline-block px-4 py-2 text-sm font-semibold text-white rounded-full shadow-lg bg-linear-to-r from-blue-600 to-blue-400">
-              Insights
+              Internships
             </span>
           </div>
           <h1 className="mb-6 text-5xl font-bold sm:text-6xl lg:text-7xl">

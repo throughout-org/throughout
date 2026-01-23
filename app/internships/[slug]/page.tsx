@@ -55,7 +55,7 @@ export default async function InternshipDetailPage({
 
       <div className="relative z-10 pt-8 mt-28">
         {/* Back Button */}
-        <div className="px-4 mx-auto mt-10 max-w-7xl">
+        {/* <div className="px-4 mx-auto mt-10 max-w-7xl">
           <Link
             href="/internships"
             className="relative inline-flex items-center gap-2 py-3 overflow-hidden font-extrabold text-blue-700 transition-all duration-300 border rounded-full shadow-lg group px-7 bg-white/40 hover:shadow-2xl hover:scale-105 border-white/30 backdrop-blur-2xl"
@@ -80,7 +80,7 @@ export default async function InternshipDetailPage({
             </svg>
             Back to All Internships
           </Link>
-        </div>
+        </div> */}
 
         {/* Hero Section */}
         {/* Hero Section */}

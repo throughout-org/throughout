@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { portfolioProjects } from "@/data/portfolio";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 interface ProjectDetailProps {
   params: {
@@ -21,11 +22,11 @@ export default function ProjectDetail({ params }: ProjectDetailProps) {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative px-4 pt-32 pb-16 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-indigo-50">
-        <div className="mx-auto max-w-5xl">
+        <div className="max-w-5xl mx-auto">
           <div className="mb-6">
-            <a
+            <Link
               href="/portfolio"
-              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors"
+              className="inline-flex items-center gap-2 font-semibold text-blue-600 transition-colors hover:text-blue-700"
             >
               <svg
                 className="w-4 h-4"
@@ -41,17 +42,17 @@ export default function ProjectDetail({ params }: ProjectDetailProps) {
                 />
               </svg>
               Back to Portfolio
-            </a>
+            </Link>
           </div>
-          <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-4">
+          <h1 className="mb-4 text-5xl font-bold text-gray-900 sm:text-6xl">
             {project.title}
           </h1>
-          <p className="text-xl text-gray-600 mb-6">{project.description}</p>
+          <p className="mb-6 text-xl text-gray-600">{project.description}</p>
           <div className="flex flex-wrap gap-3">
             {project.category.map((cat) => (
               <span
                 key={cat}
-                className="px-4 py-2 bg-blue-100 text-blue-600 rounded-full font-semibold text-sm"
+                className="px-4 py-2 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full"
               >
                 {cat}
               </span>
@@ -61,51 +62,51 @@ export default function ProjectDetail({ params }: ProjectDetailProps) {
       </section>
 
       {/* Featured Image */}
-      <section className="px-4 sm:px-6 lg:px-8 py-12">
-        <div className="mx-auto max-w-5xl">
+      <section className="px-4 py-12 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
           <div className="relative h-96 sm:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
             <Image
               src={project.image}
               alt={project.title}
               width={1200}
               height={600}
-              className="w-full h-full object-cover"
+              className="object-cover w-full h-full"
             />
           </div>
         </div>
       </section>
 
       {/* Content Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-16">
-        <div className="mx-auto max-w-5xl grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid max-w-5xl grid-cols-1 gap-12 mx-auto lg:grid-cols-3">
           {/* Main Content */}
           <div className="lg:col-span-2">
             {/* Challenge */}
             <div className="mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="mb-4 text-3xl font-bold text-gray-900">
                 The Challenge
               </h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <p className="text-lg leading-relaxed text-gray-700">
                 {project.challenge}
               </p>
             </div>
 
             {/* Solution */}
             <div className="mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="mb-4 text-3xl font-bold text-gray-900">
                 The Solution
               </h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <p className="text-lg leading-relaxed text-gray-700">
                 {project.solution}
               </p>
             </div>
 
             {/* Results */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="mb-6 text-3xl font-bold text-gray-900">
                 Results Achieved
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {project.results.map((result, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <div className="flex-shrink-0 mt-1">
@@ -123,7 +124,7 @@ export default function ProjectDetail({ params }: ProjectDetailProps) {
                         />
                       </svg>
                     </div>
-                    <p className="text-gray-700 font-semibold">{result}</p>
+                    <p className="font-semibold text-gray-700">{result}</p>
                   </div>
                 ))}
               </div>
@@ -133,8 +134,8 @@ export default function ProjectDetail({ params }: ProjectDetailProps) {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             {/* Client Info */}
-            <div className="bg-gray-50 rounded-xl p-6 mb-6">
-              <h3 className="text-sm font-semibold text-gray-600 uppercase mb-2">
+            <div className="p-6 mb-6 bg-gray-50 rounded-xl">
+              <h3 className="mb-2 text-sm font-semibold text-gray-600 uppercase">
                 Client
               </h3>
               <p className="text-2xl font-bold text-gray-900">
@@ -143,15 +144,15 @@ export default function ProjectDetail({ params }: ProjectDetailProps) {
             </div>
 
             {/* Technologies */}
-            <div className="bg-gray-50 rounded-xl p-6">
-              <h3 className="text-sm font-semibold text-gray-600 uppercase mb-4">
+            <div className="p-6 bg-gray-50 rounded-xl">
+              <h3 className="mb-4 text-sm font-semibold text-gray-600 uppercase">
                 Technologies
               </h3>
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full font-semibold"
+                    className="px-3 py-1 text-sm font-semibold text-blue-700 bg-blue-100 rounded-full"
                   >
                     {tech}
                   </span>
@@ -163,18 +164,18 @@ export default function ProjectDetail({ params }: ProjectDetailProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-blue-600 to-indigo-600">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-4xl font-bold text-white mb-4">
+      <section className="px-4 py-20 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-600 to-indigo-600">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="mb-4 text-4xl font-bold text-white">
             Interested in a Similar Project?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Let's discuss how we can help transform your business with custom
-            solutions tailored to your needs.
+          <p className="mb-8 text-xl text-blue-100">
+            Let&apos;s discuss how we can help transform your business with
+            custom solutions tailored to your needs.
           </p>
-          <a
+          <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-colors duration-300 shadow-lg"
+            className="inline-flex items-center gap-2 px-8 py-4 font-bold text-blue-600 transition-colors duration-300 bg-white rounded-full shadow-lg hover:bg-gray-100"
           >
             Start Your Project
             <svg
@@ -190,25 +191,25 @@ export default function ProjectDetail({ params }: ProjectDetailProps) {
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </a>
+          </Link>
         </div>
       </section>
 
       {/* Related Projects */}
-      <section className="px-4 sm:px-6 lg:px-8 py-20">
+      <section className="px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-4xl font-bold text-gray-900 mb-12">
+          <h2 className="mb-12 text-4xl font-bold text-gray-900">
             More Projects
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {portfolioProjects
               .filter((p) => p.id !== project.id)
               .slice(0, 3)
               .map((relatedProject) => (
-                <a
+                <Link
                   key={relatedProject.id}
                   href={`/portfolio/${relatedProject.id}`}
-                  className="group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
+                  className="overflow-hidden transition-all duration-300 shadow-lg group rounded-xl hover:shadow-2xl"
                 >
                   <div className="relative h-48 overflow-hidden">
                     <Image
@@ -216,18 +217,18 @@ export default function ProjectDetail({ params }: ProjectDetailProps) {
                       alt={relatedProject.title}
                       width={400}
                       height={300}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
                   <div className="p-4 bg-white">
-                    <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
+                    <h3 className="mb-2 text-lg font-bold text-gray-900 transition-colors group-hover:text-blue-600">
                       {relatedProject.title}
                     </h3>
                     <p className="text-sm text-gray-600">
                       {relatedProject.clientName}
                     </p>
                   </div>
-                </a>
+                </Link>
               ))}
           </div>
         </div>

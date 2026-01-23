@@ -64,12 +64,12 @@ export default function WhyUsPage() {
       <WhyUsHeroSection />
 
       {/* Main Content Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-white to-indigo-50 relative overflow-hidden">
+      <section className="relative px-4 py-16 overflow-hidden sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-white to-indigo-50">
         {/* Background Decorative Elements */}
-        <div className="absolute top-20 left-10 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-        <div className="absolute top-40 right-10 w-96 h-96 bg-sky-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute bg-blue-100 rounded-full top-20 left-10 w-96 h-96 mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div className="absolute rounded-full top-40 right-10 w-96 h-96 bg-sky-100 mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="relative z-10 mx-auto max-w-7xl">
           {/* Core Strengths */}
           <CoreStrengthsSection />
 
@@ -85,7 +85,7 @@ export default function WhyUsPage() {
       </section>
 
       <ServicesCTASection />
-  <TrendyTuringLabel />
+  {/* <TrendyTuringLabel /> */}
     </main>
   );
 }

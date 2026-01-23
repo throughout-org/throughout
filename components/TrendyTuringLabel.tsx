@@ -5,22 +5,22 @@ import React from "react";
 export default function TrendyTuringLabel() {
   return (
     <div
-      className="relative w-full flex flex-col lg:flex-row items-center justify-between px-4 lg:px-10 py-4 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500  shadow-2xl border border-white/30 overflow-hidden"
+      className="relative flex flex-col items-center justify-between w-full px-4 py-4 overflow-hidden border shadow-2xl lg:flex-row lg:px-10 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 border-white/30"
       style={{ backdropFilter: "blur(18px) saturate(1.5)" }}
     >
       {/* Floating glassy blobs */}
       <div
-        className="absolute -top-10 -left-10 w-60 h-60 bg-white/30 rounded-full blur-2xl animate-blob z-0"
+        className="absolute z-0 rounded-full -top-10 -left-10 w-60 h-60 bg-white/30 blur-2xl animate-blob"
         style={{ animationDelay: "1s" }}
       />
       <div
-        className="absolute -bottom-16 right-0 w-72 h-72 bg-blue-200/30 rounded-full blur-3xl animate-blob z-0"
+        className="absolute right-0 z-0 rounded-full -bottom-16 w-72 h-72 bg-blue-200/30 blur-3xl animate-blob"
         style={{ animationDelay: "2s" }}
       />
-      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between w-full gap-4 text-center lg:text-left">
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-3 w-full md:max-w-4xl mb-2 md:mb-0">
+      <div className="relative z-10 flex flex-col items-center justify-between w-full gap-4 text-center lg:flex-row lg:text-left">
+        <div className="flex flex-col items-start w-full gap-3 mb-2 md:flex-row md:items-center md:max-w-4xl md:mb-0">
           <span
-            className="inline-flex items-center justify-center bg-white/90 rounded-full shadow-lg text-3xl lg:text-4xl text-blue-900 border border-white/40 backdrop-blur-lg mx-auto md:mx-0 md:self-start"
+            className="inline-flex items-center justify-center mx-auto text-3xl text-blue-900 border rounded-full shadow-lg bg-white/90 lg:text-4xl border-white/40 backdrop-blur-lg md:mx-0 md:self-start"
             style={{
               width: 52,
               height: 52,
@@ -46,15 +46,15 @@ export default function TrendyTuringLabel() {
             </svg>
           </span>
           <div className="w-full text-center md:text-left">
-            <h2 className="text-white text-2xl lg:text-3xl font-extrabold mb-1 drop-shadow-lg break-words text-center md:text-left">
+            <h2 className="mb-1 text-2xl font-extrabold text-center text-white break-words lg:text-3xl drop-shadow-lg md:text-left">
               AI Research &amp; Development
             </h2>
-            <p className="text-white/90 text-base lg:text-lg font-medium w-full break-words text-center md:text-left">
+            <p className="w-full text-base font-medium text-center break-words text-white/90 lg:text-lg md:text-left">
               Our dedicated <span className="font-bold">Turing</span> team is focused on cutting-edge AI research and innovation.
             </p>
           </div>
         </div>
-        <div className="flex w-full justify-center md:justify-end lg:justify-end lg:ml-4 lg:basis-2/5 lg:max-w-2/5 mt-4 lg:mt-0">
+        <div className="flex justify-center w-full mt-4 md:justify-end lg:justify-end lg:ml-4 lg:basis-2/5 lg:max-w-2/5 lg:mt-0">
           <a
             href="http://turing.global/"
             target="_blank"

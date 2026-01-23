@@ -13,7 +13,7 @@ export default function ContactPage() {
       {/* <ContactMapSection /> */}
       {/* <ContactFAQSection /> */}
       {/* <ServicesCTASection /> */}
-       <TrendyTuringLabel />
+       {/* <TrendyTuringLabel /> */}
     </div>
   );
 }
