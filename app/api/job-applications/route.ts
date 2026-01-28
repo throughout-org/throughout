@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 import JobApplication from "@/models/JobApplication";
 import { dbConnect } from "@/lib/mongoose";
+import { sendEmail } from "@/lib/email";
 
 export const runtime = "nodejs";
 
@@ -196,11 +197,29 @@ export async function POST(request: NextRequest) {
       resumeFileName: resumeFileName || "",
     });
 
+    let emailResult: Awaited<ReturnType<typeof sendEmail>> | undefined;
+
+    try {
+      emailResult = await sendEmail({
+        to: email,
+        subject: `Thanks for applying — ${jobTitle}`,
+        leadName: name,
+        message:
+          `Thanks for applying for the ${jobTitle} position at Throoout.\n\n` +
+          `We have received your application and our team will review it soon. ` +
+          `If your profile matches what we're looking for, we’ll contact you with next steps.\n\n` +
+          `Best regards,\nThrooout Team`,
+      });
+    } catch (e) {
+      emailResult = { success: false, error: String(e) };
+    }
+
     return NextResponse.json(
       {
         success: true,
         message: "Application submitted successfully!",
         data: created,
+        email: emailResult,
       },
       { status: 201, headers: corsHeaders(origin) },
     );
