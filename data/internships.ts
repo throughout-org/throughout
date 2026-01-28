@@ -178,8 +178,8 @@ export const internships: Internship[] = [
   },
   {
     id: "3",
-    slug: "sales-lead-generation-intern",
-    title: "Sales & Lead Generation Intern",
+    slug: "business-development-intern",
+    title: "Business Development Intern",
     duration: "3–6 Months",
     stipend: "LKR 15,000 / month (Paid Internship)",
     location: "Remote / Hybrid",

@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { getInternshipBySlug, internships } from "@/data/internships";
 import ApplicationForm from "@/components/internships/ApplicationForm";
 
@@ -331,10 +330,7 @@ export default async function InternshipDetailPage({
               {/* Right Column - Application Form */}
               <div className="lg:col-span-1">
                 <div className="sticky top-28">
-                  <ApplicationForm
-                    internshipTitle={internship.title}
-                    internshipSlug={internship.slug}
-                  />
+                  <ApplicationForm internshipTitle={internship.title} />
                 </div>
               </div>
             </div>

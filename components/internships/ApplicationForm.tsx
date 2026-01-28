@@ -4,12 +4,10 @@ import { useState, FormEvent } from "react";
 
 interface ApplicationFormProps {
   internshipTitle: string;
-  internshipSlug: string;
 }
 
 export default function ApplicationForm({
   internshipTitle,
-  internshipSlug,
 }: ApplicationFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
@@ -24,6 +22,43 @@ export default function ApplicationForm({
     setErrorMessage("");
 
     const formData = new FormData(e.currentTarget);
+
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const phone = String(formData.get("phone") || "").trim();
+    const jobTitle = String(formData.get("jobTitle") || "").trim();
+    const coverLetter = String(formData.get("coverLetter") || "").trim();
+
+    if (!name || !email || !phone || !jobTitle || !coverLetter) {
+      setErrorMessage(
+        "Please fill in name, email, phone, job title, and cover letter.",
+      );
+      setIsSubmitting(false);
+      setSubmitStatus("error");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMessage("Please enter a valid email address.");
+      setIsSubmitting(false);
+      setSubmitStatus("error");
+      return;
+    }
+
+    if (phone.replace(/\D/g, "").length < 7) {
+      setErrorMessage("Please enter a valid phone number.");
+      setIsSubmitting(false);
+      setSubmitStatus("error");
+      return;
+    }
+
+    if (coverLetter.length < 20) {
+      setErrorMessage("Cover letter should be at least 20 characters.");
+      setIsSubmitting(false);
+      setSubmitStatus("error");
+      return;
+    }
 
     // Validate file type
     const resumeFile = formData.get("resume") as File;
@@ -49,7 +84,7 @@ export default function ApplicationForm({
     }
 
     try {
-      const response = await fetch("/api/internship-application", {
+      const response = await fetch("/api/job-applications", {
         method: "POST",
         body: formData,
       });
@@ -106,8 +141,8 @@ export default function ApplicationForm({
                 Application Submitted Successfully!
               </h3>
               <p className="text-sm text-green-700">
-                Thank you for applying. We&apos;ll review your application and get
-                back to you soon.
+                Thank you for applying. We&apos;ll review your application and
+                get back to you soon.
               </p>
             </div>
           </div>
@@ -141,8 +176,7 @@ export default function ApplicationForm({
       )}
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <input type="hidden" name="internshipSlug" value={internshipSlug} />
-        <input type="hidden" name="internshipTitle" value={internshipTitle} />
+        <input type="hidden" name="jobTitle" value={internshipTitle} />
 
         {/* Name */}
         <div>
@@ -235,7 +269,7 @@ export default function ApplicationForm({
               name="resume"
               accept=".pdf,application/pdf"
               required
-              className="w-full px-4 py-3 transition-all border shadow-sm cursor-pointer border-white/50 bg-white/70 rounded-2xl focus:ring-2 focus:ring-sky-400 focus:border-transparent file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-extrabold file:bg-gradient-to-r file:from-sky-400 file:via-blue-500 file:to-indigo-500 file:text-white hover:file:opacity-90"
+              className="w-full px-4 py-3 transition-all border shadow-sm cursor-pointer border-white/50 bg-white/70 rounded-2xl focus:ring-2 focus:ring-sky-400 focus:border-transparent file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-extrabold file:bg-linear-to-r file:from-sky-400 file:via-blue-500 file:to-indigo-500 file:text-white hover:file:opacity-90"
             />
           </div>
           <p className="mt-1 text-sm text-gray-500">
@@ -248,7 +282,7 @@ export default function ApplicationForm({
           <button
             type="submit"
             disabled={isSubmitting}
-            className="group relative w-full px-8 py-4 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 text-white text-base sm:text-lg font-extrabold rounded-full overflow-hidden shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-white/30 backdrop-blur-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+            className="group relative w-full px-8 py-4 bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500 text-white text-base sm:text-lg font-extrabold rounded-full overflow-hidden shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-white/30 backdrop-blur-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             style={{
               boxShadow:
                 "0 6px 32px 0 rgba(56,189,248,0.18), 0 2px 12px 0 rgba(99,102,241,0.10)",
