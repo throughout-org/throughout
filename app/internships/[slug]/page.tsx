@@ -330,7 +330,7 @@ export default async function InternshipDetailPage({
               {/* Right Column - Application Form */}
               <div className="lg:col-span-1">
                 <div className="sticky top-28">
-                  <ApplicationForm internshipTitle={internship.title} />
+                  <ApplicationForm internshipTitle={internship.title} internshipSlug={internship.slug} />
                 </div>
               </div>
             </div>
