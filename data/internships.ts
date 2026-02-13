@@ -28,7 +28,7 @@ export const internships: Internship[] = [
     title: "Social Media & Content Creation Intern",
     duration: "3–6 Months",
     stipend: "LKR 15,000 / month (Paid Internship)",
-    location: "Hybrid / On-site",
+    location: "Remote / Hybrid",
     status: "open",
     description:
       "We're hiring a self-driven, creative intern to take ownership of social media content creation and management. This role is for someone who can come up with new ideas, work with minimal supervision, and execute independently. You'll be directly involved in filming, editing, posting, and managing content while documenting the real journey of building a startup.\n\nIf you need constant instructions, reminders, or hand-holding, this role is not for you.",
@@ -248,6 +248,162 @@ export const internships: Internship[] = [
       "Opportunity for full-time or commission-based role based on performance",
     ],
     note: "This internship is output-driven. Activity without results won't be rewarded. Consistency and execution matter more than talking skills.",
+  },
+  {
+    id: "4",
+    slug: "ai-automation-engineer-intern",
+    title: "AI Automation Engineer Intern",
+    duration: "3–6 Months",
+    stipend: "LKR 15,000 / month (Paid Internship)",
+    location: "Remote",
+    status: "open",
+    description:
+      "Support research and development of AI-driven automation to improve internal workflows across sales, marketing, finance, and operations. This role does not replace departments with AI. The focus is to identify repetitive tasks, design automation, test solutions, and measure impact.",
+    responsibilities: [
+      {
+        category: "Process Analysis",
+        items: [
+          "Study current workflows such as sales pipeline, invoicing, reporting, and lead handling.",
+          "Identify repetitive, manual, rule-based tasks.",
+          "Document inefficiencies and improvement areas.",
+        ],
+      },
+      {
+        category: "AI and Automation Development",
+        items: [
+          "Build automation scripts or AI tools such as: lead scoring model, sales prediction model, automated invoice generation, customer support chatbot, automated report generation, data cleaning automation.",
+          "Integrate APIs between systems.",
+        ],
+      },
+      {
+        category: "Research and Experimentation",
+        items: [
+          "Test LLM tools such as OpenAI or open source models for workflow automation.",
+          "Explore AI agents for task execution.",
+          "Compare frameworks such as LangChain versus custom pipelines.",
+          "Prototype internal AI dashboards.",
+        ],
+      },
+      {
+        category: "Implementation Support",
+        items: [
+          "Connect automation systems to CRM, accounting tools, or internal databases.",
+          "Monitor performance and optimize models.",
+        ],
+      },
+    ],
+    requirements: {
+      title: "Required Tech Stack",
+      items: [
+        "Python required, basic JavaScript optional",
+        "Pandas, NumPy, Scikit-learn, Matplotlib or Seaborn",
+        "OpenAI API or similar, LangChain or similar frameworks",
+        "Basic understanding of vector databases",
+        "FastAPI or Flask, REST APIs, Webhooks",
+        "MySQL or PostgreSQL, basic SQL, Firebase optional",
+        "Basic Git and Docker knowledge",
+      ],
+    },
+    requiredSkills: [
+      "Python programming",
+      "Pandas, NumPy, Scikit-learn",
+      "REST API usage",
+      "OpenAI API or similar",
+      "Basic SQL",
+      "Git",
+    ],
+    niceToHave: [
+      "LangChain or similar frameworks",
+      "FastAPI or Flask",
+      "Vector database basics",
+      "Basic JavaScript",
+      "Docker",
+      "Zapier or Make",
+      "Firebase",
+    ],
+    benefits: [
+      "Hands-on experience with real AI/ML automation projects",
+      "Exposure to modern AI tools and frameworks",
+      "Opportunity to build a portfolio of automation solutions",
+      "Possibility of full-time offer based on performance",
+    ],
+    note: "This role focuses on innovation and measurable impact. It does not replace departments with AI, but augments them by automating repetitive tasks.",
+  },
+  {
+    id: "5",
+    slug: "software-engineer-intern-product-development",
+    title: "Software Engineer Intern - Product Development",
+    duration: "3–6 Months",
+    stipend: "LKR 15,000 / month (Paid Internship)",
+    location: "Remote",
+    status: "open",
+    description:
+      "We are looking for a Software Engineer Intern to join our Product Development team. The intern will work on building prototypes, experimenting with new technologies, and developing internal tools that improve product efficiency and scalability. This role focuses on innovation, experimentation, and rapid prototyping rather than routine maintenance work.",
+    responsibilities: [
+      {
+        category: "Key Responsibilities",
+        items: [
+          "Build proof of concept applications using JavaScript.",
+          "Develop internal tools and automation scripts.",
+          "Experiment with new frameworks, APIs, and architectures.",
+          "Integrate third party APIs and services.",
+          "Assist in improving system performance and scalability.",
+          "Write clean, maintainable, and well documented code.",
+          "Collaborate with backend and frontend developers.",
+          "Research emerging technologies and present findings to the team.",
+        ],
+      },
+      {
+        category: "What the Intern Will Work On",
+        items: [
+          "Internal automation tools",
+          "API integrations",
+          "Experimental AI powered features",
+          "Performance optimization experiments",
+          "New product feature prototypes",
+        ],
+      },
+      {
+        category: "Learning Outcomes",
+        items: [
+          "Real world product development experience",
+          "Exposure to scalable architecture",
+          "API design and integration",
+          "Rapid prototyping methodology",
+          "Agile collaboration",
+        ],
+      },
+    ],
+    requirements: {
+      title: "Technical Requirements",
+      items: [
+        "Strong knowledge of JavaScript",
+        "Understanding of ES6 concepts",
+        "Basic knowledge of asynchronous programming",
+        "Familiarity with REST APIs",
+        "Basic Git usage",
+        "Node.js, Express.js, React or Next.js (preferred)",
+        "MongoDB or PostgreSQL (preferred)",
+        "Basic understanding of Docker (preferred)",
+        "API integration experience (preferred)",
+      ],
+    },
+    requiredSkills: ["JavaScript (ES6)", "REST API usage", "Basic Git"],
+    niceToHave: [
+      "Node.js",
+      "Express.js",
+      "React or Next.js",
+      "MongoDB or PostgreSQL",
+      "Docker",
+      "API integration experience",
+    ],
+    benefits: [
+      "Hands-on experience with real product development",
+      "Exposure to scalable architecture and rapid prototyping",
+      "Opportunity to work on innovative projects",
+      "Possibility of full-time offer based on performance",
+    ],
+    note: "This internship is focused on innovation, experimentation, and building new solutions. Routine maintenance is not the focus.",
   },
 ];
 
