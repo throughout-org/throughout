@@ -78,11 +78,12 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+# ![THROOOUT Logo](./public/images/throoout-logo.png)
+
 
 ## 📝 Customization
 
 ### Update Contact Information
-
 1. **WhatsApp Number**: Replace the placeholder in [app/page.tsx](app/page.tsx) with your actual WhatsApp number
 2. **Email**: Update `hello@Throoout.com` with your company email
 
