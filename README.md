@@ -1,6 +1,5 @@
 # Throoout - Smart Software Solutions
 
-
 Throoout is a modern software engineering company specializing in custom web, mobile, and AI solutions. We build fast, secure, and scalable digital products for startups and enterprises.
 
 
@@ -61,6 +60,34 @@ If you add or update content structure, make sure to install:
 npm install @portabletext/react @sanity/image-url next-sanity react-calendly
 ```
 
+## 🔐 Environment Variables
+
+Create a `.env.local` file at the project root and set the following values:
+
+```bash
+# Sanity
+NEXT_PUBLIC_SANITY_API_TOKEN=
+
+# MongoDB
+MONGODB_URI=
+
+# Cloudinary (for resume uploads)
+CLOUDINARY_URL=
+
+# Email (Gmail SMTP)
+GMAIL_USER=
+GMAIL_PASS=
+MAIL_FROM="Throoout Team"
+
+# Optional: CORS for job applications API
+CORS_ALLOWED_ORIGINS="http://localhost:3000,http://localhost:3001"
+
+# Optional: External APIs
+NEXT_PUBLIC_SEO_AUDIT_API_URL="http://127.0.0.1:8000/free-seo-audit"
+NEXT_PUBLIC_CONTACT_API_URL=
+NEXT_PUBLIC_CONTACT_API_KEY=
+```
+
 
 ## 🚦 Getting Started
 
@@ -80,6 +107,15 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 # ![THROOOUT Logo](./public/images/throoout-logo.png)
 
+## 📦 Scripts
+
+```bash
+npm run dev     # Start dev server
+npm run build   # Build for production
+npm run start   # Start production server
+npm run lint    # Run ESLint
+```
+
 
 ## 📝 Customization
 
@@ -97,6 +133,11 @@ The main gradient colors can be adjusted in [app/page.tsx](app/page.tsx):
 
 - Landing page content: edit in [app/page.tsx](app/page.tsx)
 - Insights/blog content: edit in Sanity Studio (see [src/sanity/client.ts](src/sanity/client.ts) for config)
+
+## 🧩 API Endpoints
+
+- **Job Applications**: `POST /api/job-applications` (stores in MongoDB, uploads resume to Cloudinary, sends confirmation email)
+- **SEO Audit**: `POST /api/seo-audit` (frontend proxy to external audit service)
 
 
 ## 📱 Contact Methods
