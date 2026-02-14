@@ -49,7 +49,7 @@ export default function ApplicationForm({
     }
 
     try {
-      const response = await fetch("/api/internship-application", {
+      const response = await fetch("/api/job-applications", {
         method: "POST",
         body: formData,
       });

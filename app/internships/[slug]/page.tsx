@@ -15,9 +15,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Params;
+  params: Promise<Params>;
 }): Promise<Metadata> {
-  const internship = getInternshipBySlug(params.slug);
+  const { slug } = await params;
+  const internship = getInternshipBySlug(slug);
   if (!internship) {
     return {
       title: "Internship Not Found | Throoout",
@@ -56,9 +57,10 @@ export async function generateMetadata({
 export default async function InternshipDetailPage({
   params,
 }: {
-  params: Params;
+  params: Promise<Params>;
 }) {
-  const internship = getInternshipBySlug(params.slug);
+  const { slug } = await params;
+  const internship = getInternshipBySlug(slug);
   if (!internship) {
     notFound();
   }
