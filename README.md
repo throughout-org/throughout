@@ -2,7 +2,6 @@
 
 Throoout is a modern software engineering company specializing in custom web, mobile, and AI solutions. We build fast, secure, and scalable digital products for startups and enterprises.
 
-
 ## 🚀 Features
 
 - **Modern Design**: Clean, minimal, and professional UI with blue/sky gradient theme
