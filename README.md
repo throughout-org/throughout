@@ -37,19 +37,26 @@ Throoout is a modern software engineering company specializing in custom web, mo
 - **Content Rendering**: @portabletext/react
 - **Other**: react-calendly, Docker, ESLint, PostCSS
 
+
 ## 📰 Insights & CMS Integration
 
-- Insights/blog content is managed via Sanity CMS ([src/sanity/client.ts](src/sanity/client.ts))
-- Rich text fields (like `content`) use Sanity's Portable Text and are rendered with `@portabletext/react` for full formatting (including lists, headings, etc.)
-- Images in insights use a fallback mechanism: if an image fails to load, a placeholder is shown
+- **Dynamic Insights/Blog**: Insights and blog articles are rendered dynamically from Sanity CMS and local data files.
+- **Rich Content**: Uses Sanity's Portable Text for rich formatting (lists, headings, etc.) and a fallback image mechanism for missing images.
 
+### Editing Insights
 
-### Editing Content
+- **Sanity CMS**: Most insights/blog content is managed via Sanity Studio ([src/sanity/client.ts](src/sanity/client.ts)).
+- **Local Data**: Some demo/sample insights are stored in [data/insights.ts](data/insights.ts) for development or fallback.
+- **How to Update**: Edit in Sanity Studio for production, or update [data/insights.ts](data/insights.ts) for local/demo content.
+- **Content Structure**: The `content` field supports HTML and Portable Text blocks.
 
-- To update insights, edit content in your Sanity Studio or via the Sanity API
-- The `content` field in Sanity is an array of blocks (type: `array`, of: `block`)
-- Lists, headings, and formatting are supported and rendered automatically
+### Internships
 
+- **Dynamic Internships Page**: Internship listings are rendered from [data/internships.ts](data/internships.ts).
+- **Rich Metadata**: Each internship includes title, duration, stipend, location, status, description, responsibilities, requirements, skills, and benefits.
+- **How to Update**: Add, edit, or remove internships in [data/internships.ts](data/internships.ts). Each internship is an object in the exported array.
+- **Dynamic Routing**: Individual internship details are available at `/internships/[slug]`.
+- **Open/Closed Status**: Only internships with `status: "open"` are shown on the main page. Use the helper functions `getOpenInternships()` and `getInternshipBySlug(slug)` from [data/internships.ts](data/internships.ts).
 
 ### Dependencies
 
