@@ -1,12 +1,31 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getOpenInternships } from "@/data/internships";
-import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Internship Opportunities | Throoout",
   description:
     "Join our team and gain hands-on experience in a fast-paced startup environment. Explore internship opportunities at Throoout.",
+  keywords: [
+    "internship",
+    "internships",
+    "jobs",
+    "careers",
+    "startup",
+    "Throoout",
+    "Sri Lanka",
+    "remote",
+    "work from home",
+    "AI",
+    "automation",
+    "software engineering",
+    "digital marketing",
+    "business development",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: "Internship Opportunities | Throoout",
     description:
@@ -37,28 +56,39 @@ export const metadata: Metadata = {
 
 export default function InternshipsPage() {
   const internships = getOpenInternships();
+  const datePosted = new Date().toISOString().split("T")[0];
+  const validThrough = new Date(new Date().setMonth(new Date().getMonth() + 3))
+    .toISOString()
+    .slice(0, 16);
 
-  // Structured data for SEO (JobPosting)
+  // Structured data for SEO (Google Job Search / JobPosting)
   const jobPostings = internships.map((internship) => ({
     "@context": "https://schema.org",
     "@type": "JobPosting",
     title: internship.title,
     description: internship.description,
-    datePosted: new Date().toISOString().split("T")[0],
-    employmentType: "Internship",
+    datePosted,
+    validThrough,
+    employmentType: "INTERN",
     hiringOrganization: {
       "@type": "Organization",
       name: "Throoout",
       sameAs: "https://throoout.com",
+      logo: "https://throoout.com/images/logo.png",
     },
-    jobLocationType: "TELECOMMUTE",
+    applicantLocationRequirements: {
+      "@type": "Country",
+      name: "Sri Lanka",
+    },
+    jobLocationType: internship.location.toLowerCase().includes("remote")
+      ? "TELECOMMUTE"
+      : undefined,
     identifier: {
       "@type": "PropertyValue",
       name: "Throoout",
       value: internship.id,
     },
     url: `https://throoout.com/internships/${internship.slug}`,
-    validThrough: `${new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString().split("T")[0]}`,
     baseSalary: {
       "@type": "MonetaryAmount",
       currency: "LKR",
@@ -68,28 +98,21 @@ export default function InternshipsPage() {
         unitText: "MONTH",
       },
     },
+    directApply: true,
   }));
 
   return (
     <>
-      <Head>
-        <meta name="robots" content="index, follow" />
-        <meta
-          name="keywords"
-          content="internship, internships, jobs, careers, startup, Throoout, Sri Lanka, remote, product development, AI, automation, software engineering, digital marketing, business development"
-        />
-        <link rel="canonical" href="https://throoout.com/internships" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
-              jobPostings.length === 1
-                ? jobPostings[0]
-                : { "@context": "https://schema.org", "@graph": jobPostings },
-            ),
-          }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            jobPostings.length === 1
+              ? jobPostings[0]
+              : { "@context": "https://schema.org", "@graph": jobPostings },
+          ),
+        }}
+      />
       <div className="min-h-screen bg-linear-to-b from-gray-50 to-white">
         {/* Hero Section */}
         <section className="relative px-4 pt-32 pb-24 overflow-hidden sm:px-6 lg:px-8">
@@ -372,67 +395,65 @@ export default function InternshipsPage() {
             </div>
           </div>
           {/* JSON-LD for FAQPage */}
-          <Head>
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                  "@context": "https://schema.org",
-                  "@type": "FAQPage",
-                  mainEntity: [
-                    {
-                      "@type": "Question",
-                      name: "What roles are currently open?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "We offer internships and entry-level roles in software development, AI/automation, marketing, sales, content creation, and operations. Check the Careers page for details.",
-                      },
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: [
+                  {
+                    "@type": "Question",
+                    name: "What roles are currently open?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "We offer internships and entry-level roles in software development, AI/automation, marketing, sales, content creation, and operations. Check the Careers page for details.",
                     },
-                    {
-                      "@type": "Question",
-                      name: "Are these paid positions?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Compensation varies by role — some have a fixed stipend, others are performance or commission-based. Exact details are shared during the interview.",
-                      },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Are these paid positions?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Compensation varies by role — some have a fixed stipend, others are performance or commission-based. Exact details are shared during the interview.",
                     },
-                    {
-                      "@type": "Question",
-                      name: "Can I work remotely?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Yes. Most roles are remote-friendly, but regular communication and updates are required.",
-                      },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Can I work remotely?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Yes. Most roles are remote-friendly, but regular communication and updates are required.",
                     },
-                    {
-                      "@type": "Question",
-                      name: "What is the duration of an internship?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Internships usually last 3–6 months, with high performers considered for extended roles or full-time offers.",
-                      },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "What is the duration of an internship?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Internships usually last 3–6 months, with high performers considered for extended roles or full-time offers.",
                     },
-                    {
-                      "@type": "Question",
-                      name: "Will I work on real projects?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Absolutely. Interns work on live projects and tools that directly impact business growth, not just theoretical tasks.",
-                      },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Will I work on real projects?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Absolutely. Interns work on live projects and tools that directly impact business growth, not just theoretical tasks.",
                     },
-                    {
-                      "@type": "Question",
-                      name: "How is performance evaluated?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Evaluation is based on task completion, quality, deadlines, communication, and contribution to measurable business results.",
-                      },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "How is performance evaluated?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Evaluation is based on task completion, quality, deadlines, communication, and contribution to measurable business results.",
                     },
-                  ],
-                }),
-              }}
-            />
-          </Head>
+                  },
+                ],
+              }),
+            }}
+          />
         </section>
       </div>
     </>

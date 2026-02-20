@@ -3,6 +3,9 @@ import InsightDetails from "@/components/insights/InsightDetails";
 import { client } from "@/src/sanity/client";
 
 type Params = { slug: string };
+const siteUrl = "https://throoout.com";
+const imageLicenseUrl = `${siteUrl}/terms-of-service`;
+const acquireLicensePageUrl = `${siteUrl}/contact`;
 
 async function fetchPostMeta(slug: string) {
   const post = await client.fetch(
@@ -25,7 +28,6 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = slug ? await fetchPostMeta(slug) : null;
 
-  const siteUrl = "https://throoout.com";
   const canonical = `${siteUrl}/insights/${slug}`;
 
   if (!post) {
@@ -77,5 +79,38 @@ export default async function InsightDetailPage({
   params: Promise<Params>;
 }) {
   const { slug } = await params;
-  return <InsightDetails slug={slug} />;
+  const post = slug ? await fetchPostMeta(slug) : null;
+
+  const imageObject =
+    post && post.imageUrl
+      ? {
+          "@context": "https://schema.org",
+          "@type": "ImageObject",
+          contentUrl: post.imageUrl,
+          name: post.title,
+          description:
+            post.excerpt ||
+            "Explore detailed insights from Throoout on software, AI, and automation.",
+          license: imageLicenseUrl,
+          acquireLicensePage: acquireLicensePageUrl,
+          creditText: "Throoout Insights",
+          creator: {
+            "@type": "Organization",
+            name: "Throoout",
+          },
+          copyrightNotice: "© Throoout",
+        }
+      : null;
+
+  return (
+    <>
+      {imageObject && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(imageObject) }}
+        />
+      )}
+      <InsightDetails slug={slug} />
+    </>
+  );
 }
