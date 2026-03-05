@@ -1,41 +1,37 @@
 import type { Metadata } from "next";
-import PortfolioClient from "./PortfolioClient";
-
-const siteUrl = "https://throoout.com";
-const pagePath = "/portfolio";
+import PortfolioShowcase from "@/components/portfolio/PortfolioShowcase";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Our Client Success Stories",
+  title: "Portfolio | Our Work - Throoout",
   description:
-    "Explore Throoout's portfolio of successful projects including web development, AI solutions, mobile apps, and custom software implementations.",
-  alternates: {
-    canonical: pagePath,
-  },
+    "Explore our portfolio of web development, mobile apps, AI solutions, and automation projects. See how we deliver results for our clients.",
+  keywords: [
+    "portfolio",
+    "case studies",
+    "web development projects",
+    "mobile app development",
+    "AI projects",
+    "automation solutions",
+    "software development portfolio",
+  ],
   openGraph: {
-    title: "Portfolio | Our Client Success Stories | Throoout",
+    title: "Portfolio | Our Work - Throoout",
     description:
-      "Explore Throoout's portfolio of successful projects including web development, AI solutions, mobile apps, and custom software implementations.",
-    url: `${siteUrl}${pagePath}`,
-    siteName: "Throoout",
-    type: "website",
+      "Explore our portfolio of web, mobile, AI, and automation projects.",
+    url: "https://throoout.com/portfolio",
     images: [
       {
-        url: `${siteUrl}/images/og-default.png`,
+        url: "/images/og-portfolio.png",
         width: 1200,
         height: 630,
         alt: "Throoout Portfolio",
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Portfolio | Our Client Success Stories | Throoout",
-    description:
-      "Explore Throoout's portfolio of successful projects including web development, AI solutions, mobile apps, and custom software implementations.",
-    images: [`${siteUrl}/images/twitter-default.png`],
-  },
 };
 
 export default function PortfolioPage() {
-  return <PortfolioClient />;
+  return <div>
+    <PortfolioShowcase />
+  </div>;
 }

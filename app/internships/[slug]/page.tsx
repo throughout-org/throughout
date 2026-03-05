@@ -127,7 +127,7 @@ export default async function InternshipDetailPage({
           {/* <div className="px-4 mx-auto mt-10 max-w-7xl">
           <Link
             href="/internships"
-            className="relative inline-flex items-center gap-2 py-3 overflow-hidden font-extrabold text-blue-700 transition-all duration-300 border rounded-full shadow-lg group px-7 bg-white/40 hover:shadow-2xl hover:scale-105 border-white/30 backdrop-blur-2xl"
+            className="relative inline-flex items-center gap-2 py-3 overflow-hidden font-extrabold text-blue-700 transition-all duration-300 border rounded-full shadow-lg group px-7 bg-white/40 hover:shadow-xl hover:scale-105 border-white/30 backdrop-blur-2xl"
             style={{
               boxShadow:
                 "0 6px 32px 0 rgba(56,189,248,0.18), 0 2px 12px 0 rgba(99,102,241,0.10)",
@@ -155,7 +155,7 @@ export default async function InternshipDetailPage({
           {/* Hero Section */}
           <section className="px-4 pt-10">
             <div className="mx-auto max-w-7xl">
-              <div className="relative p-8 overflow-hidden text-white border shadow-2xl bg-linear-to-r from-sky-500 via-blue-600 to-indigo-600 rounded-3xl md:p-12 border-white/20">
+              <div className="relative p-8 overflow-hidden text-white border shadow-xl bg-linear-to-r from-sky-500 via-blue-600 to-indigo-600 rounded-3xl md:p-12 border-white/20">
                 <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.35),transparent_50%)]"></div>
                 <div className="relative">
                   <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
@@ -241,7 +241,7 @@ export default async function InternshipDetailPage({
                 {/* Left Column - Job Details */}
                 <div className="space-y-8 lg:col-span-2">
                   {/* About the Role */}
-                  <div className="p-8 border shadow-2xl bg-white/70 rounded-3xl border-white/40 backdrop-blur-2xl">
+                  <div className="p-8 border shadow-xl bg-white/70 rounded-3xl border-white/40 backdrop-blur-2xl">
                     <h2 className="mb-4 text-2xl font-bold">About the Role</h2>
                     <div className="prose prose-blue max-w-none">
                       {internship.description
@@ -258,7 +258,7 @@ export default async function InternshipDetailPage({
                   </div>
 
                   {/* Key Responsibilities */}
-                  <div className="p-8 border shadow-2xl bg-white/70 rounded-3xl border-white/40 backdrop-blur-2xl">
+                  <div className="p-8 border shadow-xl bg-white/70 rounded-3xl border-white/40 backdrop-blur-2xl">
                     <h2 className="mb-6 text-2xl font-bold">
                       Key Responsibilities
                     </h2>
@@ -294,7 +294,7 @@ export default async function InternshipDetailPage({
                   </div>
 
                   {/* Requirements */}
-                  <div className="p-8 border shadow-2xl bg-white/70 rounded-3xl border-white/40 backdrop-blur-2xl">
+                  <div className="p-8 border shadow-xl bg-white/70 rounded-3xl border-white/40 backdrop-blur-2xl">
                     <h2 className="mb-4 text-2xl font-bold">
                       {internship.requirements.title}
                     </h2>
@@ -345,7 +345,7 @@ export default async function InternshipDetailPage({
                   </div>
 
                   {/* What You'll Gain */}
-                  <div className="p-8 border shadow-2xl bg-linear-to-br from-white/70 via-blue-50/70 to-indigo-50/70 rounded-3xl border-white/40 backdrop-blur-2xl">
+                  <div className="p-8 border shadow-xl bg-linear-to-br from-white/70 via-blue-50/70 to-indigo-50/70 rounded-3xl border-white/40 backdrop-blur-2xl">
                     <h2 className="mb-6 text-2xl font-bold">
                       What You&apos;ll Gain
                     </h2>
