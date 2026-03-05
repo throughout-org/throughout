@@ -146,6 +146,8 @@ export default function RootLayout({
         />
         {/* <Preloader /> */}
         <Navbar />
+        {/* Spacer to prevent fixed navbar from hiding content */}
+        <div className="h-0 lg:h-[40px]" />
         {children}
         <Footer />
       </body>

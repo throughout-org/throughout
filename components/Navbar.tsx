@@ -1,34 +1,40 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { services } from "@/data/services";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const navLinksRef = useRef<HTMLDivElement>(null);
-  const [navLinksRect, setNavLinksRect] = useState<{
-    left: number;
-    width: number;
-  } | null>(null);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const servicesDropdownRef = useRef<HTMLDivElement>(null);
+  const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const pathname = usePathname();
 
-  // Batch DOM reads/writes to avoid forced reflow
+  // Close services dropdown on route change
   useEffect(() => {
-    // Only run after paint
-    if (!isScrolled && navLinksRef.current) {
-      const el = navLinksRef.current;
-      // Read values first
-      const left = el.offsetLeft;
-      const width = el.offsetWidth;
-      // Write state after all reads
-      setNavLinksRect({ left, width });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isScrolled, isMenuOpen, pathname]);
+    setIsServicesOpen(false);
+    setMobileServicesOpen(false);
+  }, [pathname]);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        servicesDropdownRef.current &&
+        !servicesDropdownRef.current.contains(e.target as Node)
+      ) {
+        setIsServicesOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -36,308 +42,516 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Add icons for each nav link (use Heroicons or similar, or fallback to emoji for demo)
-  const navLinks = [
-    { name: "Home", href: "/", abbr: "HM" },
-    { name: "About", href: "/about", abbr: "AB" },
-    { name: "Services", href: "/services", abbr: "SV" },
-    { name: "Why Us", href: "/why-us", abbr: "WU" },
-    { name: "Insights", href: "/insights", abbr: "IN" },
-    { name: "Internships", href: "/internships", abbr: "IT" },
-  ];
-
   const isActive = (href: string) => {
     if (!pathname) return false;
-    if (href === "/") {
-      return pathname === "/";
-    }
+    if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (navLinksRef.current) {
-        const el = navLinksRef.current;
-        setNavLinksRect({ left: el.offsetLeft, width: el.offsetWidth });
-      }
-    }, 100);
-    return () => clearTimeout(timeout);
-  }, [pathname, isMenuOpen]);
+
+  const handleServicesEnter = useCallback(() => {
+    if (servicesTimeoutRef.current) clearTimeout(servicesTimeoutRef.current);
+    setIsServicesOpen(true);
+  }, []);
+
+  const handleServicesLeave = useCallback(() => {
+    servicesTimeoutRef.current = setTimeout(() => {
+      setIsServicesOpen(false);
+    }, 200);
+  }, []);
+
+  // ===== TOP BAR LINKS =====
+  const topBarLinks = [
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Engagement Model", href: "/why-us" },
+    { name: "Insights", href: "/insights" },
+    // { name: "Researchers", href: "/insights" },
+    { name: "Portfolio", href: "/portfolio" },
+    { name: "Internships", href: "/internships" },
+    { name: "Contact Us", href: "/contact" },
+  ];
+
+  // ===== MAIN NAV LINKS =====
+  const mainNavLinks = [
+    { name: "Our Services", href: "/services", hasDropdown: true },
+    { name: "AI WhatsApp Automation", href: "/whatsapp_automation" },
+    { name: "SEO Audit Checker", href: "/free-seo-aduitor" },
+    { name: "n8n Automations", href: "/n8n-agency" },
+  ];
+
+  // Short descriptions for the dropdown cards
+  const serviceDescriptions: Record<string, string> = {
+    "software-development":
+      "High-performance engineering for modern digital business.",
+    "custom-ecommerce-development":
+      "Limitless commerce built on headless architecture.",
+    "shopify-ecommerce": "Scalable storefronts tailored for high growth.",
+    "cloud-server-solutions":
+      "Resilient infrastructure for total peace of mind.",
+    "wordpress-development": "Enterprise-level power on a familiar platform.",
+    "ai-integrations-automation":
+      "Intelligent logic that automates your workflow.",
+    "ui-ux-design": "Designs that convert visitors into loyal users.",
+    seo: "Data-driven strategies to dominate search rankings.",
+  };
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 flex justify-center items-center transition-all duration-500
-        ${isScrolled ? "lg:!bg-transparent lg:!backdrop-blur-none  lg:!shadow-none" : ""}
-        ${isScrolled && !isMenuOpen ? "bg-white/30 backdrop-blur-md  shadow-sm" : ""}
-        lg:bg-transparent lg:backdrop-blur-none  lg:shadow-none pl-8`}
-      style={{ minHeight: "90px" }}
-    >
-      <div className="max-w-[1600px] w-full mx-auto px-8">
-        <div className="relative flex items-center justify-between transition-all duration-500 h-14">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="relative z-50 flex items-center gap-3 transition-all duration-300"
-          >
-            <div className="relative overflow-hidden mt-[-20px] lg:mt-0">
-              {/* Continuous Shining Effect */}
-              <div className="absolute inset-0 pointer-events-none"></div>
-              <Image
-                src="/images/logo.png"
-                alt="Throoout Logo"
-                width={190}
-                height={90}
-                className="relative w-auto h-16 mt-2 z-13"
-                priority
-              />
-            </div>
-          </Link>
-
-          {/* Desktop Navigation with animated background */}
-          <div
-            ref={navLinksRef}
-            className="relative z-10 items-center hidden mt-4 space-x-5 lg:flex"
-          >
-            {navLinks.map((link) => {
-              const active = isActive(link.href);
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`relative px-6 py-2 font-extrabold rounded-full transition-all duration-300 group text-base focus:outline-none focus:ring-2 focus:ring-sky-300 shadow-lg backdrop-blur-md ${
-                    active
-                      ? "bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 text-white scale-105 shadow-xl border border-white/30"
-                      : "bg-white/40 text-blue-700 hover:bg-gradient-to-r hover:from-sky-100 hover:to-blue-200/80 hover:text-blue-900 hover:scale-105 border border-white/20"
-                  }`}
-                  style={{
-                    boxShadow: active
-                      ? "0 4px 24px 0 rgba(56,189,248,0.18), 0 1.5px 8px 0 rgba(99,102,241,0.10)"
-                      : "0 1.5px 8px 0 rgba(99,102,241,0.08)",
-                    transition: "all 0.25s cubic-bezier(.4,2,.6,1)",
-                  }}
-                >
-                  {/* Show full text at all breakpoints, but smaller font size below 1140px */}
-                  <span className="block text-xs font-bold tracking-wide sm:text-sm xl:text-base 2xl:text-lg">
-                    {link.name}
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
-          {/* Animated expanding background on scroll */}
-          <div
-            className={`hidden lg:block absolute transition-all duration-700 ease-[cubic-bezier(.4,2,.6,1)] bg-white/60 shadow-2xl backdrop-blur-2xl border border-white/30 ${
-              isScrolled
-                ? "top-0 left-0 right-0 h-[calc(100%+16px)] rounded-4xl opacity-100 scale-105"
-                : "rounded-4xl shadow-lg opacity-90 scale-100"
-            }`}
-            style={{
-              ...(isScrolled
-                ? {
-                    zIndex: 1,
-                    width: "98%",
-                    backdropFilter: "blur(24px) saturate(1.5)",
-                  }
-                : navLinksRect
-                  ? {
-                      zIndex: 1,
-                      top: "calc(50% + 8px)",
-                      left: navLinksRect.left - 12,
-                      width: navLinksRect.width + 24,
-                      height: 56,
-                      transform: "translateY(-50%)",
-                      backdropFilter: "blur(24px) saturate(1.5)",
-                    }
-                  : { zIndex: 1, backdropFilter: "blur(24px) saturate(1.5)" }),
-              boxShadow:
-                "0 -4px 16px 0 rgba(30,64,175,0.10), 0 4px 16px 0 rgba(30,64,175,0.07), 0 1px 8px 0 rgba(56,189,248,0.10)",
-            }}
-          ></div>
-
-          {/* Desktop CTA Button */}
-          <div
-            className="items-center hidden gap-4 mt-4 lg:flex"
-            style={{ zIndex: 2 }}
-          >
-            <Link
-              href="/contact"
-              className="relative flex items-center gap-2 px-8 py-4 overflow-hidden text-xs font-extrabold text-white transition-all duration-300 border rounded-full shadow-xl group bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 sm:text-sm xl:text-base 2xl:text-lg hover:shadow-2xl hover:scale-105 border-white/30 backdrop-blur-md"
-              style={{
-                boxShadow:
-                  "0 6px 32px 0 rgba(56,189,248,0.18), 0 2px 12px 0 rgba(99,102,241,0.10)",
-                transition: "all 0.25s cubic-bezier(.4,2,.6,1)",
-              }}
-            >
-              {/* Show icon only between 1140px and 425px, show text above 1140px */}
-              {/* <span className="inline text-2xl text-white align-middle 2xl:hidden">
-                <svg
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="text-white fill-current w-7 h-7"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M16.5562 12.9062L16.1007 13.359C16.1007 13.359 15.0181 14.4355 12.0631 11.4972C9.10812 8.55901 10.1907 7.48257 10.1907 7.48257L10.4775 7.19738C11.1841 6.49484 11.2507 5.36691 10.6342 4.54348L9.37326 2.85908C8.61028 1.83992 7.13596 1.70529 6.26145 2.57483L4.69185 4.13552C4.25823 4.56668 3.96765 5.12559 4.00289 5.74561C4.09304 7.33182 4.81071 10.7447 8.81536 14.7266C13.0621 18.9492 17.0468 19.117 18.6763 18.9651C19.1917 18.9171 19.6399 18.6546 20.0011 18.2954L21.4217 16.883C22.3806 15.9295 22.1102 14.2949 20.8833 13.628L18.9728 12.5894C18.1672 12.1515 17.1858 12.2801 16.5562 12.9062Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span> */}
-              <span className="">Talk to us</span>
-            </Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden relative w-12 h-12 flex items-center justify-center focus:outline-none z-[60] rounded-full bg-blue-50/70 border border-blue-200 shadow-md hover:bg-blue-200 transition-all duration-300"
-            aria-label="Toggle menu"
-          >
-            <div className="flex flex-col justify-between h-6 w-7">
-              <span
-                className={`w-full h-1 rounded-full transition-all duration-300 ${
-                  isMenuOpen
-                    ? "bg-blue-700 rotate-45 translate-y-3"
-                    : "bg-blue-700"
-                }`}
-              ></span>
-              <span
-                className={`w-full h-1 rounded-full transition-all duration-300 ${
-                  isMenuOpen ? "opacity-0 bg-blue-700" : "bg-blue-700"
-                }`}
-              ></span>
-              <span
-                className={`w-full h-1 rounded-full transition-all duration-300 ${
-                  isMenuOpen
-                    ? "bg-blue-700 -rotate-45 -translate-y-2"
-                    : "bg-blue-700"
-                }`}
-              ></span>
-            </div>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu (fixed, rounded, blue) */}
-      {/* Mobile Menu */}
+    <>
+      {/* ============================================================ */}
+      {/* LAYER 1 — TOP BAR (black, simple links)                      */}
+      {/* ============================================================ */}
       <div
-        className={`lg:hidden fixed inset-0 z-40 transition-all duration-500 flex justify-center items-start    pt-25 ${
-          isMenuOpen
-            ? "opacity-100 visible"
-            : "opacity-0 invisible pointer-events-none"
+        className={`fixed top-0 left-0 w-full z-50 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 transition-all duration-500 hidden lg:block ${
+          isScrolled
+            ? "-translate-y-full opacity-0"
+            : "translate-y-0 opacity-100"
         }`}
       >
-        {/* Soft blue background with floating blobs */}
-        <div className="absolute inset-0 bg-blue-100/90"></div>
-        <div className="absolute rounded-full top-1/4 -right-20 w-80 h-80 bg-gradient-to-br from-blue-200/40 to-blue-400/30 blur-3xl animate-blob"></div>
-        <div className="absolute rounded-full -bottom-20 -left-20 w-80 h-80 bg-gradient-to-tr from-blue-300/30 to-blue-100/30 blur-3xl animate-blob animation-delay-2000"></div>
-        <div className="absolute w-64 h-64 rounded-full top-1/2 left-1/3 bg-gradient-to-r from-blue-200/20 to-blue-400/20 blur-3xl animate-blob animation-delay-4000"></div>
-        {/* Menu Content */}
-        <div
-          className="relative bg-gradient-to-br from-white/70 via-blue-100/60 to-blue-200/40 rounded-3xl shadow-2xl min-w-[320px] max-w-xs mx-auto my-8 flex flex-col items-center justify-center py-10 px-6 space-y-8 border border-white/40 backdrop-blur-2xl"
-          style={{
-            boxShadow:
-              "0 8px 32px 0 rgba(30,64,175,0.10), 0 1.5px 8px 0 rgba(99,102,241,0.08), 0 2px 24px 0 rgba(56,189,248,0.10)",
-          }}
-        >
-          {/* Logo */}
-
-          {navLinks.map((link, index) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={() => setIsMenuOpen(false)}
-              className={`w-full text-center relative text-xl font-extrabold transition-all duration-500 transform rounded-full px-6 py-3 group focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-lg backdrop-blur-md border ${
-                isActive(link.href)
-                  ? "bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 text-white scale-105 shadow-xl border-white/30"
-                  : "bg-white/40 text-blue-700 hover:bg-gradient-to-r hover:from-sky-100 hover:to-blue-200/80 hover:text-blue-900 hover:scale-105 border-white/20"
-              }`}
-              style={{
-                animation: isMenuOpen
-                  ? `slideIn 0.5s ease-out forwards ${index * 0.1}s`
-                  : "none",
-                opacity: isMenuOpen ? 1 : 0,
-                boxShadow: isActive(link.href)
-                  ? "0 4px 24px 0 rgba(56,189,248,0.18), 0 1.5px 8px 0 rgba(99,102,241,0.10)"
-                  : "0 1.5px 8px 0 rgba(99,102,241,0.08)",
-                transition: "all 0.25s cubic-bezier(.4,2,.6,1)",
-              }}
-            >
-              {link.name}
-            </Link>
-          ))}
-          {/* Mobile CTA Button */}
-          <Link
-            href="/contact"
-            onClick={() => setIsMenuOpen(false)}
-            className={`w-full text-center relative text-xl font-extrabold transition-all duration-500 transform rounded-full px-6 py-3 group focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-lg backdrop-blur-md border ${
-              isActive("/contact")
-                ? "bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 text-white scale-105 shadow-xl border-white/30"
-                : "bg-white/40 text-blue-700 hover:bg-gradient-to-r hover:from-sky-100 hover:to-blue-200/80 hover:text-blue-900 hover:scale-105 border-white/20"
-            }`}
-            style={{
-              animation: isMenuOpen
-                ? "slideIn 0.5s ease-out forwards 0.5s"
-                : "none",
-              opacity: isMenuOpen ? 1 : 0,
-              boxShadow:
-                "0 4px 24px 0 rgba(56,189,248,0.18), 0 1.5px 8px 0 rgba(99,102,241,0.10)",
-              transition: "all 0.25s cubic-bezier(.4,2,.6,1)",
-            }}
-          >
-            Contact Us
-          </Link>
+        <div className="max-w-[1600px] mx-auto px-8">
+          <div className="flex items-center justify-center gap-8 h-10">
+            {topBarLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`text-[13px] font-medium transition-all duration-300 rounded-full px-3 py-0 ${
+                  isActive(link.href)
+                    ? "text-white bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 shadow-md scale-105"
+                    : "text-gray-300 hover:text-white"
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
-      {/* Move styles outside the menu content */}
+
+      {/* ============================================================ */}
+      {/* LAYER 2 — MAIN NAV BAR (red, with logo + primary links)      */}
+      {/* ============================================================ */}
+      <nav
+        className={`fixed w-full z-40 transition-all duration-500 ${
+          isScrolled ? "top-0" : "lg:top-10 top-0"
+        }`}
+      >
+        {/* Background band (full-width) */}
+        <div className="bg-transparent">
+          <div className="max-w-[1600px] mx-auto px-4 lg:px-4 xl:px-8">
+            {/* Main bar container */}
+            <div
+              className={`relative flex items-center justify-between transition-all duration-500 ${
+                isScrolled ? "py-2" : "py-3"
+              }  backdrop-blur-xl rounded-2xl mx-2 my-1.5 px-4 md:rounded-full md:mx-3 md:my-2 md:px-6 lg:mx-0 lg:px-4 lg:my-2 xl:px-8 bg-white/80 lg:bg-transparent`}
+              style={{
+                boxShadow: "0 6px 30px rgba(7, 10, 49, 0.12), 0 0 0 1px rgba(8, 13, 41, 0.05)",
+              }}
+            >
+              {/* Logo */}
+              <Link
+                href="/"
+                className="relative z-50 flex items-center shrink-0"
+              >
+                <Image
+                  src="/images/logo.png"
+                  alt="Throoout Logo"
+                  width={190}
+                  height={90}
+                  className="w-auto h-11 md:h-14 lg:h-12 xl:h-16"
+                  priority
+                />
+              </Link>
+
+              {/* ===== Desktop Main Nav Links ===== */}
+              <div className="items-center hidden gap-0.5 lg:flex xl:gap-3">
+                {mainNavLinks.map((link) => {
+                  // Our Services with dropdown
+                  if (link.hasDropdown) {
+                    return (
+                      <div
+                        key={link.name}
+                        ref={servicesDropdownRef}
+                        className="relative"
+                        onMouseEnter={handleServicesEnter}
+                        onMouseLeave={handleServicesLeave}
+                      >
+                        <button
+                          onClick={() => setIsServicesOpen((prev) => !prev)}
+                          className={`flex items-center gap-1 px-2.5 py-1.5 text-xs xl:text-sm font-semibold transition-all duration-200 cursor-pointer rounded-lg ${
+                            isActive("/services")
+                              ? "text-white bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 shadow-md scale-105"
+                              : "text-gray-900 hover:text-gray-900 hover:bg-gray-100/60"
+                          }`}
+                        >
+                          {link.name}
+                          <svg
+                            className={`w-4 h-4 transition-transform duration-300 ${isServicesOpen ? "rotate-180" : ""}`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </button>
+
+                        {/* ===== MEGA DROPDOWN ===== */}
+                        <div
+                          className={`absolute top-full left-1/2 -translate-x-1/2 mt-5 transition-all duration-300 ease-out origin-top ${
+                            isServicesOpen
+                              ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+                              : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+                          }`}
+                          style={{ width: "min(860px, calc(100vw - 80px))" }}
+                        >
+                          <div
+                            className="relative z-10 p-5 bg-white rounded-2xl border border-gray-200"
+                            style={{
+                              boxShadow:
+                                "0 25px 60px -12px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.06)",
+                            }}
+                          >
+                            {/* Services Grid — 3 columns */}
+                            <div className="grid grid-cols-3 gap-3">
+                              {services.map((service, idx) => (
+                                <Link
+                                  key={service.id}
+                                  href={`/services/${service.slug}`}
+                                  onClick={() => setIsServicesOpen(false)}
+                                  className={`group/card flex items-start gap-3.5 p-4 rounded-xl border transition-all duration-300 hover:shadow-lg hover:scale-[1.03] ${
+                                    isActive(`/services/${service.slug}`)
+                                      ? "bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 border-white/30 shadow-xl scale-[1.02]"
+                                      : "bg-gray-50/80 border-gray-200/80 hover:bg-white hover:border-gray-300"
+                                  }`}
+                                  style={{
+                                    animation: isServicesOpen
+                                      ? `dropdownCardIn 0.35s ease-out forwards ${idx * 0.04}s`
+                                      : "none",
+                                    opacity: isServicesOpen ? 1 : 0,
+                                  }}
+                                >
+                                  <div
+                                    className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center text-2xl shadow-md group-hover/card:shadow-lg group-hover/card:scale-110 transition-all duration-300`}
+                                  >
+                                    {service.icon}
+                                  </div>
+                                  <div className="min-w-0 flex-1">
+                                    <p className={`text-sm font-bold transition-colors duration-200 leading-tight ${isActive(`/services/${service.slug}`) ? "text-white" : "text-gray-900 group-hover/card:text-blue-700"}`}>
+                                      {service.title}
+                                    </p>
+                                    <p className={`text-xs mt-1 leading-relaxed line-clamp-2 ${isActive(`/services/${service.slug}`) ? "text-white/80" : "text-gray-500"}`}>
+                                      {serviceDescriptions[service.slug] ||
+                                        service.hero.subheadline.slice(0, 80)}
+                                    </p>
+                                  </div>
+                                </Link>
+                              ))}
+
+                              {/* View All Services — same card style */}
+                              <Link
+                                href="/services"
+                                onClick={() => setIsServicesOpen(false)}
+                                className="group/card flex items-start gap-3.5 p-4 rounded-xl border transition-all duration-300 hover:shadow-lg hover:scale-[1.03] bg-gray-50/80 border-gray-200/80 hover:bg-white hover:border-gray-300"
+                                style={{
+                                  animation: isServicesOpen
+                                    ? `dropdownCardIn 0.35s ease-out forwards ${services.length * 0.04}s`
+                                    : "none",
+                                  opacity: isServicesOpen ? 1 : 0,
+                                }}
+                              >
+                                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-500 flex items-center justify-center text-2xl shadow-md group-hover/card:shadow-lg group-hover/card:scale-110 transition-all duration-300">
+                                  🔎
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                  <p className="text-sm font-bold text-gray-900 group-hover/card:text-blue-700 transition-colors duration-200 leading-tight">
+                                    View All Services
+                                  </p>
+                                  <p className="text-xs text-gray-500 mt-1 leading-relaxed line-clamp-2">
+                                    Explore our complete range of solutions.
+                                  </p>
+                                </div>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  // Regular main nav link
+                  return (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      className={`px-2.5 py-1.5 text-xs xl:text-sm font-semibold transition-all duration-200 rounded-lg whitespace-nowrap ${
+                        isActive(link.href)
+                          ? "text-gray-900 bg-blue-100 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 text-white scale-105 shadow-xl border-white/30"
+                          : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/60"
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* Desktop CTA Button */}
+              <Link
+                href="/contact"
+                className="group/cta hidden lg:inline-flex items-center gap-1.5 px-4 py-2 text-xs xl:px-7 xl:py-3 xl:text-sm xl:gap-2 font-extrabold text-white bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 rounded-full transition-all duration-300 tracking-wide uppercase relative overflow-hidden hover:scale-105 hover:shadow-xl border border-white/30"
+                style={{
+                  boxShadow: "0 4px 20px rgba(56,189,248,0.3)",
+                }}
+              >
+                <span className="relative z-10 hidden xl:inline">Talk to an Expert</span>
+                <span className="relative z-10 xl:hidden">Talk to an Expert</span>
+                <svg className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover/cta:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+                {/* Shimmer effect on hover */}
+                <span className="absolute inset-0 z-0 opacity-0 group-hover/cta:opacity-100 transition-opacity duration-300 overflow-hidden rounded-full">
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent animate-[shimmer_1.5s_ease-in-out_infinite]" />
+                </span>
+              </Link>
+
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="lg:hidden relative w-11 h-11 flex items-center justify-center focus:outline-none z-[60] rounded-full bg-gray-100 border border-gray-200 hover:bg-gray-200 transition-all duration-300 shadow-sm"
+                aria-label="Toggle menu"
+              >
+                <div className="flex flex-col justify-between h-5 w-6">
+                  <span
+                    className={`w-full h-0.5 rounded-full transition-all duration-300 ${
+                      isMenuOpen
+                        ? "bg-gray-800 rotate-45 translate-y-[9px]"
+                        : "bg-gray-800"
+                    }`}
+                  ></span>
+                  <span
+                    className={`w-full h-0.5 rounded-full transition-all duration-300 ${
+                      isMenuOpen ? "opacity-0 bg-gray-800" : "bg-gray-800"
+                    }`}
+                  ></span>
+                  <span
+                    className={`w-full h-0.5 rounded-full transition-all duration-300 ${
+                      isMenuOpen
+                        ? "bg-gray-800 -rotate-45 -translate-y-[9px]"
+                        : "bg-gray-800"
+                    }`}
+                  ></span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* ===== MOBILE MENU ===== */}
+        <div
+          className={`lg:hidden fixed inset-0 z-40 transition-all duration-500 flex flex-col ${
+            isMenuOpen
+              ? "opacity-100 visible"
+              : "opacity-0 invisible pointer-events-none"
+          }`}
+          style={{ top: isScrolled ? "65px" : "72px" }}
+        >
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0  backdrop-blur-sm"
+            onClick={() => setIsMenuOpen(false)}
+          />
+
+          {/* Scrollable Menu Content */}
+          <div className="relative mx-4 mt-2 bg-white rounded-2xl shadow-2xl max-h-[85vh] overflow-y-auto border border-gray-200">
+            {/* Top bar links section */}
+            <div className="px-5 pt-5 pb-3 border-b border-gray-100">
+              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">
+                Quick Links
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {topBarLinks.map((link, idx) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`text-xs font-medium px-3 py-1.5 rounded-full transition-all duration-300 border ${
+                      isActive(link.href)
+                        ? "bg-gray-900 text-white border-gray-900"
+                        : "bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100"
+                    }`}
+                    style={{
+                      animation: isMenuOpen
+                        ? `slideIn 0.4s ease-out forwards ${idx * 0.04}s`
+                        : "none",
+                      opacity: isMenuOpen ? 1 : 0,
+                    }}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Main nav links section */}
+            <div className="px-5 py-4 space-y-2">
+              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">
+                Services
+              </p>
+
+              {mainNavLinks.map((link, index) => {
+                // Our Services with expandable submenu
+                if (link.hasDropdown) {
+                  return (
+                    <div key={link.name}>
+                      <button
+                        onClick={() => setMobileServicesOpen((prev) => !prev)}
+                        className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-300 cursor-pointer ${
+                          mobileServicesOpen
+                            ? "bg-gray-900 text-white"
+                            : "bg-gray-50 text-gray-800 hover:bg-gray-100"
+                        }`}
+                        style={{
+                          animation: isMenuOpen
+                            ? `slideIn 0.4s ease-out forwards ${(index + 8) * 0.04}s`
+                            : "none",
+                          opacity: isMenuOpen ? 1 : 0,
+                        }}
+                      >
+                        <span className="text-sm font-bold">{link.name}</span>
+                        <svg
+                          className={`w-4 h-4 transition-transform duration-300 ${mobileServicesOpen ? "rotate-180" : ""}`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2.5}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+
+                      {/* Mobile services submenu */}
+                      <div
+                        className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                          mobileServicesOpen
+                            ? "max-h-[700px] opacity-100 mt-2"
+                            : "max-h-0 opacity-0 mt-0"
+                        }`}
+                      >
+                        <div className="space-y-1.5 pl-2">
+                          {services.map((service, sIdx) => (
+                            <Link
+                              key={service.id}
+                              href={`/services/${service.slug}`}
+                              onClick={() => {
+                                setIsMenuOpen(false);
+                                setMobileServicesOpen(false);
+                              }}
+                              className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-white border border-gray-100 shadow-sm hover:bg-gray-50 hover:shadow-md transition-all duration-300"
+                              style={{
+                                animation: mobileServicesOpen
+                                  ? `slideIn 0.35s ease-out forwards ${sIdx * 0.04}s`
+                                  : "none",
+                                opacity: mobileServicesOpen ? 1 : 0,
+                              }}
+                            >
+                              <span
+                                className={`flex-shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br ${service.gradient} flex items-center justify-center text-base shadow-sm`}
+                              >
+                                {service.icon}
+                              </span>
+                              <span className="text-sm font-semibold text-gray-700">
+                                {service.title}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+
+                // Regular mobile main nav link
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`block px-4 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${
+                      isActive(link.href)
+                        ? "bg-gray-900 text-white"
+                        : "bg-gray-50 text-gray-800 hover:bg-gray-100"
+                    }`}
+                    style={{
+                      animation: isMenuOpen
+                        ? `slideIn 0.4s ease-out forwards ${(index + 8) * 0.04}s`
+                        : "none",
+                      opacity: isMenuOpen ? 1 : 0,
+                    }}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Mobile CTA */}
+            <div className="px-5 pb-5">
+              <Link
+                href="/contact"
+                onClick={() => setIsMenuOpen(false)}
+                className="block w-full text-center px-6 py-3.5 text-sm font-extrabold text-white bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 uppercase tracking-wide"
+                style={{
+                  animation: isMenuOpen
+                    ? "slideIn 0.4s ease-out forwards 0.6s"
+                    : "none",
+                  opacity: isMenuOpen ? 1 : 0,
+                }}
+              >
+                Talk to an Expert
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Animations */}
       <style jsx>{`
         @keyframes slideIn {
           from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(12px);
           }
           to {
             opacity: 1;
             transform: translateY(0);
           }
         }
-        @keyframes logo-shine {
+        @keyframes dropdownCardIn {
+          from {
+            opacity: 0;
+            transform: translateY(8px) scale(0.97);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+        @keyframes shimmer {
           0% {
-            transform: translateX(-100%) skewX(-15deg);
+            transform: translateX(-100%);
           }
           100% {
-            transform: translateX(200%) skewX(-15deg);
+            transform: translateX(100%);
           }
-        }
-        @keyframes blob {
-          0%,
-          100% {
-            transform: translate(0, 0) scale(1);
-          }
-          33% {
-            transform: translate(30px, -50px) scale(1.1);
-          }
-          66% {
-            transform: translate(-20px, 20px) scale(0.9);
-          }
-        }
-        .animate-logo-shine {
-          animation: logo-shine 3s ease-in-out infinite;
-        }
-        .animate-blob {
-          animation: blob 7s ease-in-out infinite;
-        }
-        .animation-delay-1000 {
-          animation-delay: 1s;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
         }
       `}</style>
-    </nav>
+    </>
   );
 }
