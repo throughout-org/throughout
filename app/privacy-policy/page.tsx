@@ -86,7 +86,7 @@ export default function PrivacyPolicy() {
                8. Contact Us
             </h2>
 
-            <p className="text-gray-700">If you have questions or comments about this policy, you may email us at <span className="text-[#154B79]">throughoutwithyou@gmail.com</span>, like this 8 point in the <span className="text-[#154B79]"><a href="https://www.throoout.com/privacy-policy">Privacy Policy</a></span></p>
+            <p className="text-gray-700">If you have questions or comments about this policy, you may email us at <span className="text-[#154B79]">info@throughout.io</span>, like this 8 point in the <span className="text-[#154B79]"><a href="https://www.throoout.com/privacy-policy">Privacy Policy</a></span></p>
           </section>
         </div>
       </div>

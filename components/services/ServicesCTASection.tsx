@@ -66,7 +66,7 @@ export default function ServicesCTASection() {
           )}
 
           {/* <a
-            href="https://wa.me/767000249"
+            href="https://wa.me/707007992"
             target="_blank"
             rel="noopener noreferrer"
             className="group px-8 py-4 bg-white text-gray-900 border-2 border-gray-200 text-lg font-bold rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-3"

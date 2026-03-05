@@ -102,7 +102,7 @@ export default function TermsOfService() {
               10. Contact Us
             </h2>
             <div className="text-gray-700 space-y-1 pl-2">
-              <div>To resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at <span className="text-[#154B79]">throughoutwithyou@gmail.com</span>  or <span className="text-[#154B79]">+94 076 7000 249.</span></div>
+              <div>To resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at <span className="text-[#154B79]">info@throughout.io</span>  or <span className="text-[#154B79]">+94 070 7007 992.</span></div>
       
             </div>
           </section>

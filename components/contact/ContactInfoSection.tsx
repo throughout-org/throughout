@@ -83,8 +83,8 @@ export default function ContactInfoSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                  <a href="mailto:throughoutwithyou@gmail.com" className="text-blue-600 hover:text-blue-700 transition-colors">
-                    throughoutwithyou@gmail.com
+                  <a href="mailto:info@throughout.io" className="text-blue-600 hover:text-blue-700 transition-colors">
+                    info@throughout.io
                   </a>
                 </div>
               </div>
@@ -99,7 +99,7 @@ export default function ContactInfoSection() {
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">WhatsApp</h3>
                   <a 
-                    href="https://wa.me/767000249" 
+                    href="https://wa.me/707007992" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-green-600 hover:text-green-700 transition-colors"
@@ -129,7 +129,7 @@ export default function ContactInfoSection() {
               <h3 className="font-semibold text-gray-900 mb-4">Quick Actions</h3>
               <div className="space-y-3">
                 <a
-                  href="https://wa.me/767000249"
+                  href="https://wa.me/707007992"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 px-4 py-3 bg-green-500 text-white rounded-xl hover:bg-green-600 transition-colors shadow-sm"
@@ -140,7 +140,7 @@ export default function ContactInfoSection() {
                   <span className="font-medium">Chat on WhatsApp</span>
                 </a>
                 <a
-                  href="mailto:throughoutwithyou@gmail.com"
+                  href="mailto:info@throughout.io"
                   className="flex items-center gap-3 px-4 py-3 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-colors shadow-sm"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

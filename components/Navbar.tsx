@@ -200,12 +200,15 @@ export default function Navbar() {
 
                         {/* ===== MEGA DROPDOWN ===== */}
                         <div
-                          className={`absolute top-full left-1/2 -translate-x-1/2 mt-5 transition-all duration-300 ease-out origin-top ${
+                          className={`fixed left-1/2 -translate-x-1/2 mt-2 transition-all duration-300 ease-out origin-top z-50 ${
                             isServicesOpen
                               ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
                               : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
                           }`}
-                          style={{ width: "min(860px, calc(100vw - 80px))" }}
+                          style={{
+                            width: "min(860px, calc(100vw - 40px))",
+                            top: isScrolled ? "60px" : "70px",
+                          }}
                         >
                           <div
                             className="relative z-10 p-5 bg-white rounded-2xl border border-gray-200"
