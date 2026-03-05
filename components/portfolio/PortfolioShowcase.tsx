@@ -167,7 +167,7 @@ export default function PortfolioShowcase() {
      
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 flex flex-col justify-center min-h-screen pt-20 sm:pt-24 lg:pt-24 pb-24">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 flex flex-col justify-center min-h-screen pt-20 sm:pt-12 lg:pt-12 pb-0">
         {/* Section Header */}
         <div className="text-center mb-4 mt-4 pb-5 ">
           <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-blue-600 to-sky-500 text-white text-xs font-semibold rounded-full shadow-md tracking-wide uppercase">
@@ -331,7 +331,7 @@ export default function PortfolioShowcase() {
       </div>
 
       {/* Bottom: Pagination + Navigation */}
-      <div className="absolute bottom-6 left-0 right-0 z-20 px-4 sm:px-6 md:px-10 lg:px-16 md:px-10 max-w-[1400px] mx-auto">
+      <div className="absolute bottom-6 left-0 right-0 z-20 px-4 sm:px-6 md:px-10 lg:px-16 md:px-10 max-w-[1400px] mx-auto  ">
         <div className="flex items-center justify-between">
           {/* Current / Total */}
           <div className="flex items-baseline gap-1">

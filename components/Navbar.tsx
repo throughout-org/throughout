@@ -170,7 +170,7 @@ export default function Navbar() {
                       <div
                         key={link.name}
                         ref={servicesDropdownRef}
-                        className="relative"
+                        className="static"
                         onMouseEnter={handleServicesEnter}
                         onMouseLeave={handleServicesLeave}
                       >
@@ -200,14 +200,13 @@ export default function Navbar() {
 
                         {/* ===== MEGA DROPDOWN ===== */}
                         <div
-                          className={`fixed left-1/2 -translate-x-1/2 mt-2 transition-all duration-300 ease-out origin-top z-50 ${
+                          className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 transition-all duration-300 ease-out origin-top z-50 ${
                             isServicesOpen
                               ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
                               : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
                           }`}
                           style={{
                             width: "min(860px, calc(100vw - 40px))",
-                            top: isScrolled ? "60px" : "70px",
                           }}
                         >
                           <div
