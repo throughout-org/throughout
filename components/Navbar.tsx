@@ -63,7 +63,7 @@ export default function Navbar() {
   const topBarLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Engagement Model", href: "/why-us" },
+    { name: "Why Us", href: "/why-us" },
     { name: "Insights", href: "/insights" },
     // { name: "Researchers", href: "/insights" },
     { name: "Portfolio", href: "/portfolio" },
