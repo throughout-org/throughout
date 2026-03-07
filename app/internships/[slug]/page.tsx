@@ -86,15 +86,6 @@ export default async function InternshipDetailPage({
     },
     url: `https://throoout.com/internships/${internship.slug}`,
     validThrough: `${new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString().split("T")[0]}`,
-    baseSalary: {
-      "@type": "MonetaryAmount",
-      currency: "LKR",
-      value: {
-        "@type": "QuantitativeValue",
-        value: 15000,
-        unitText: "MONTH",
-      },
-    },
   };
 
   return (
@@ -192,9 +183,7 @@ export default async function InternshipDetailPage({
                       </div>
                       <div className="pl-3">
                         <p className="text-sm text-blue-100">Stipend</p>
-                        <p className="text-lg font-semibold">
-                          {internship.stipend}
-                        </p>
+                        <p className="text-lg font-semibold">Paid Internship</p>
                       </div>
                     </div>
 

@@ -27,7 +27,7 @@ export const internships: Internship[] = [
     slug: "social-media-content-creation-intern",
     title: "Social Media & Content Creation Intern",
     duration: "3–6 Months",
-    stipend: "LKR 15,000 / month (Paid Internship)",
+    stipend: "Paid Internship",
     location: "Remote / Hybrid",
     status: "open",
     description:
@@ -100,7 +100,7 @@ export const internships: Internship[] = [
     slug: "digital-marketing-intern",
     title: "Digital Marketing Intern",
     duration: "3–6 Months",
-    stipend: "LKR 15,000 / month (Paid Internship)",
+    stipend: "Paid Internship",
     location: "Remote / Hybrid",
     status: "open",
     description:
@@ -181,7 +181,7 @@ export const internships: Internship[] = [
     slug: "business-development-intern",
     title: "Business Development Intern",
     duration: "3–6 Months",
-    stipend: "LKR 15,000 / month (Paid Internship)",
+    stipend: "Paid Internship",
     location: "Remote / Hybrid",
     status: "open",
     description:
@@ -254,7 +254,7 @@ export const internships: Internship[] = [
     slug: "ai-automation-engineer-intern",
     title: "AI Automation Engineer Intern",
     duration: "3–6 Months",
-    stipend: "LKR 15,000 / month (Paid Internship)",
+    stipend: "Paid Internship",
     location: "Remote",
     status: "open",
     description:
@@ -334,7 +334,7 @@ export const internships: Internship[] = [
     slug: "software-engineer-intern-product-development",
     title: "Software Engineer Intern - Product Development",
     duration: "3–6 Months",
-    stipend: "LKR 15,000 / month (Paid Internship)",
+    stipend: "Paid Internship",
     location: "Remote",
     status: "open",
     description:
