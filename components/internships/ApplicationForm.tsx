@@ -220,6 +220,24 @@ export default function ApplicationForm({
           </p>
         </div>
 
+        {/* Referral Source */}
+        <div>
+          <label
+            htmlFor="referralSource"
+            className="block mb-2 text-sm font-semibold text-gray-700"
+          >
+            Where did you hear about us? <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            id="referralSource"
+            name="referralSource"
+            required
+            className="w-full px-4 py-3 transition-all border shadow-sm border-white/50 bg-white/70 rounded-2xl focus:ring-2 focus:ring-sky-400 focus:border-transparent"
+            placeholder="e.g., LinkedIn, Instagram, friend, university, other"
+          />
+        </div>
+
         {/* Resume Upload */}
         <div>
           <label

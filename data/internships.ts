@@ -405,6 +405,86 @@ export const internships: Internship[] = [
     ],
     note: "This internship is focused on innovation, experimentation, and building new solutions. Routine maintenance is not the focus.",
   },
+  {
+    id: "6",
+    slug: "web-engineer-intern",
+    title: "Web Engineer Intern - WordPress & Headless CMS",
+    duration: "3–6 Months",
+    stipend: "Paid Internship",
+    location: "Remote / Hybrid",
+    status: "open",
+    description:
+      "We are looking for a Web Engineer Intern to work on real client and internal projects across WordPress, custom theme and plugin development, and headless CMS setups powered by modern frontend frameworks like Next.js. You will work on building, modifying, and optimizing production-grade sites, integrating CRMs and custom APIs, and ensuring stable, performant, and maintainable implementations.",
+    responsibilities: [
+      {
+        category: "WordPress Development",
+        items: [
+          "Develop and customize WordPress themes from scratch or existing starters",
+          "Build and modify custom WordPress plugins based on functional requirements",
+          "Configure custom post types, taxonomies, and advanced fields",
+          "Implement reusable components and templates that non-technical users can manage",
+        ],
+      },
+      {
+        category: "Headless CMS & Frontend",
+        items: [
+          "Work with headless CMS setups (e.g., WordPress as a headless backend) with Next.js or similar frameworks",
+          "Consume REST or GraphQL APIs from the CMS in frontend applications",
+          "Implement SEO-friendly, responsive pages and components",
+          "Handle routing, data fetching, and basic state management on the frontend",
+        ],
+      },
+      {
+        category: "Databases, CRM & Integrations",
+        items: [
+          "Work with MySQL databases backing WordPress installations",
+          "Support CRM integrations (HubSpot, Zoho, custom CRMs, etc.) via forms and APIs",
+          "Integrate third-party and custom APIs for features like leads, webhooks, and automation",
+          "Debug integration issues and ensure data flows are reliable and secure",
+        ],
+      },
+      {
+        category: "Quality, Performance & Collaboration",
+        items: [
+          "Follow basic coding standards and version control (Git)",
+          "Test key user flows across desktop and mobile before handoff",
+          "Optimize pages for performance (caching, images, queries)",
+          "Collaborate with designers, content creators, and founders to ship improvements fast",
+        ],
+      },
+    ],
+    requirements: {
+      title: "Technical Requirements",
+      items: [
+        "Good understanding of WordPress as a CMS",
+        "Basic experience with custom theme or plugin development (not just page builders)",
+        "Comfortable working with PHP and JavaScript",
+        "Basic understanding of MySQL and how WordPress stores data",
+        "Familiarity with REST APIs and JSON data",
+      ],
+    },
+    requiredSkills: [
+      "WordPress theme development",
+      "WordPress plugin development or modification",
+      "PHP and JavaScript fundamentals",
+      "Basic MySQL knowledge",
+      "REST API usage and integration",
+    ],
+    niceToHave: [
+      "Next.js or React experience",
+      "Hands-on exposure to headless CMS setups",
+      "Experience with CRM tools and web-to-lead forms",
+      "Basic understanding of performance optimization and caching",
+      "Familiarity with Git-based workflows",
+    ],
+    benefits: [
+      "Real-world experience building and integrating production WordPress and headless sites",
+      "Exposure to modern frontend frameworks alongside traditional CMS work",
+      "Opportunity to work on CRM and API integrations that impact real leads and customers",
+      "Possibility of a full-time offer based on performance and ownership",
+    ],
+    note: "This internship is for builders, not button-clickers. If you enjoy solving technical problems, understanding how systems connect, and taking ownership of complete features from CMS to frontend, this role is a strong fit.",
+  },
 ];
 
 export const getInternshipBySlug = (slug: string): Internship | undefined => {

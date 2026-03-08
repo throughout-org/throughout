@@ -30,6 +30,10 @@ const JobApplicationSchema = new Schema(
       type: String,
       default: "",
     },
+    referralSource: {
+      type: String,
+      default: "",
+    },
     status: {
       type: String,
       enum: ["pending", "qualified", "offered", "rejected"],

@@ -74,7 +74,7 @@ export default function Navbar() {
   // ===== MAIN NAV LINKS =====
   const mainNavLinks = [
     { name: "Our Services", href: "/services", hasDropdown: true },
-    { name: "AI WhatsApp Automation", href: "/whatsapp_automation" },
+    { name: "Comflo", href: "https://comflo.app/" },
     { name: "SEO Audit Checker", href: "/free-seo-aduitor" },
     { name: "n8n Automations", href: "/n8n-agency" },
   ];
@@ -108,7 +108,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-[1600px] mx-auto px-8">
-          <div className="flex items-center justify-center gap-8 h-10">
+          <div className="flex items-center justify-center h-10 gap-8">
             {topBarLinks.map((link) => (
               <Link
                 key={link.name}
@@ -143,7 +143,8 @@ export default function Navbar() {
                 isScrolled ? "py-2" : "py-3"
               }  backdrop-blur-xl rounded-2xl mx-2 my-1.5 px-4 md:rounded-full md:mx-3 md:my-2 md:px-6 lg:mx-0 lg:px-4 lg:my-2 xl:px-8 bg-white/80 lg:bg-transparent`}
               style={{
-                boxShadow: "0 6px 30px rgba(7, 10, 49, 0.12), 0 0 0 1px rgba(8, 13, 41, 0.05)",
+                boxShadow:
+                  "0 6px 30px rgba(7, 10, 49, 0.12), 0 0 0 1px rgba(8, 13, 41, 0.05)",
               }}
             >
               {/* Logo */}
@@ -164,6 +165,7 @@ export default function Navbar() {
               {/* ===== Desktop Main Nav Links ===== */}
               <div className="items-center hidden gap-0.5 lg:flex xl:gap-3">
                 {mainNavLinks.map((link) => {
+                  const isExternal = link.href.startsWith("http");
                   // Our Services with dropdown
                   if (link.hasDropdown) {
                     return (
@@ -210,7 +212,7 @@ export default function Navbar() {
                           }}
                         >
                           <div
-                            className="relative z-10 p-5 bg-white rounded-2xl border border-gray-200"
+                            className="relative z-10 p-5 bg-white border border-gray-200 rounded-2xl"
                             style={{
                               boxShadow:
                                 "0 25px 60px -12px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.06)",
@@ -240,11 +242,15 @@ export default function Navbar() {
                                   >
                                     {service.icon}
                                   </div>
-                                  <div className="min-w-0 flex-1">
-                                    <p className={`text-sm font-bold transition-colors duration-200 leading-tight ${isActive(`/services/${service.slug}`) ? "text-white" : "text-gray-900 group-hover/card:text-blue-700"}`}>
+                                  <div className="flex-1 min-w-0">
+                                    <p
+                                      className={`text-sm font-bold transition-colors duration-200 leading-tight ${isActive(`/services/${service.slug}`) ? "text-white" : "text-gray-900 group-hover/card:text-blue-700"}`}
+                                    >
                                       {service.title}
                                     </p>
-                                    <p className={`text-xs mt-1 leading-relaxed line-clamp-2 ${isActive(`/services/${service.slug}`) ? "text-white/80" : "text-gray-500"}`}>
+                                    <p
+                                      className={`text-xs mt-1 leading-relaxed line-clamp-2 ${isActive(`/services/${service.slug}`) ? "text-white/80" : "text-gray-500"}`}
+                                    >
                                       {serviceDescriptions[service.slug] ||
                                         service.hero.subheadline.slice(0, 80)}
                                     </p>
@@ -264,14 +270,14 @@ export default function Navbar() {
                                   opacity: isServicesOpen ? 1 : 0,
                                 }}
                               >
-                                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-500 flex items-center justify-center text-2xl shadow-md group-hover/card:shadow-lg group-hover/card:scale-110 transition-all duration-300">
+                                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-2xl transition-all duration-300 shadow-md rounded-xl bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-500 group-hover/card:shadow-lg group-hover/card:scale-110">
                                   🔎
                                 </div>
-                                <div className="min-w-0 flex-1">
-                                  <p className="text-sm font-bold text-gray-900 group-hover/card:text-blue-700 transition-colors duration-200 leading-tight">
+                                <div className="flex-1 min-w-0">
+                                  <p className="text-sm font-bold leading-tight text-gray-900 transition-colors duration-200 group-hover/card:text-blue-700">
                                     View All Services
                                   </p>
-                                  <p className="text-xs text-gray-500 mt-1 leading-relaxed line-clamp-2">
+                                  <p className="mt-1 text-xs leading-relaxed text-gray-500 line-clamp-2">
                                     Explore our complete range of solutions.
                                   </p>
                                 </div>
@@ -288,6 +294,8 @@ export default function Navbar() {
                     <Link
                       key={link.name}
                       href={link.href}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
                       className={`px-2.5 py-1.5 text-xs xl:text-sm font-semibold transition-all duration-200 rounded-lg whitespace-nowrap ${
                         isActive(link.href)
                           ? "text-gray-900 bg-blue-100 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 text-white scale-105 shadow-xl border-white/30"
@@ -308,13 +316,27 @@ export default function Navbar() {
                   boxShadow: "0 4px 20px rgba(56,189,248,0.3)",
                 }}
               >
-                <span className="relative z-10 hidden xl:inline">Talk to an Expert</span>
-                <span className="relative z-10 xl:hidden">Talk to an Expert</span>
-                <svg className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover/cta:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                <span className="relative z-10 hidden xl:inline">
+                  Talk to an Expert
+                </span>
+                <span className="relative z-10 xl:hidden">
+                  Talk to an Expert
+                </span>
+                <svg
+                  className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover/cta:translate-x-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
                 </svg>
                 {/* Shimmer effect on hover */}
-                <span className="absolute inset-0 z-0 opacity-0 group-hover/cta:opacity-100 transition-opacity duration-300 overflow-hidden rounded-full">
+                <span className="absolute inset-0 z-0 overflow-hidden transition-opacity duration-300 rounded-full opacity-0 group-hover/cta:opacity-100">
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent animate-[shimmer_1.5s_ease-in-out_infinite]" />
                 </span>
               </Link>
@@ -325,7 +347,7 @@ export default function Navbar() {
                 className="lg:hidden relative w-11 h-11 flex items-center justify-center focus:outline-none z-[60] rounded-full bg-gray-100 border border-gray-200 hover:bg-gray-200 transition-all duration-300 shadow-sm"
                 aria-label="Toggle menu"
               >
-                <div className="flex flex-col justify-between h-5 w-6">
+                <div className="flex flex-col justify-between w-6 h-5">
                   <span
                     className={`w-full h-0.5 rounded-full transition-all duration-300 ${
                       isMenuOpen
@@ -362,7 +384,7 @@ export default function Navbar() {
         >
           {/* Backdrop */}
           <div
-            className="absolute inset-0  backdrop-blur-sm"
+            className="absolute inset-0 backdrop-blur-sm"
             onClick={() => setIsMenuOpen(false)}
           />
 
@@ -404,6 +426,7 @@ export default function Navbar() {
               </p>
 
               {mainNavLinks.map((link, index) => {
+                const isExternal = link.href.startsWith("http");
                 // Our Services with expandable submenu
                 if (link.hasDropdown) {
                   return (
@@ -484,6 +507,8 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     href={link.href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
                     onClick={() => setIsMenuOpen(false)}
                     className={`block px-4 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${
                       isActive(link.href)

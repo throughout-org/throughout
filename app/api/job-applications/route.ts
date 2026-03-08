@@ -13,6 +13,7 @@ type JobApplicationPayload = {
   phone: string;
   coverLetter: string;
   resumeUrl: string;
+  referralSource?: string;
 };
 
 function requireEnv(name: string): string {
@@ -110,6 +111,7 @@ export async function POST(request: NextRequest) {
     let phone: string | undefined;
     let coverLetter: string | undefined;
     let resumeUrl: string | undefined;
+    let referralSource: string | undefined;
     let resumeFileName: string | undefined;
 
     if (requestContentType.includes("multipart/form-data")) {
@@ -123,6 +125,7 @@ export async function POST(request: NextRequest) {
       email = (formData.get("email") as string) || undefined;
       phone = (formData.get("phone") as string) || undefined;
       coverLetter = (formData.get("coverLetter") as string) || undefined;
+      referralSource = (formData.get("referralSource") as string) || undefined;
 
       const resume = formData.get("resume");
       if (!resume || typeof resume !== "object") {
@@ -158,6 +161,7 @@ export async function POST(request: NextRequest) {
       phone = body.phone;
       coverLetter = body.coverLetter;
       resumeUrl = body.resumeUrl;
+      referralSource = body.referralSource;
     }
 
     if (
@@ -194,6 +198,7 @@ export async function POST(request: NextRequest) {
       phone,
       coverLetter,
       resumeUrl,
+      referralSource: referralSource || "",
       resumeFileName: resumeFileName || "",
     });
 
