@@ -25,7 +25,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Complete redesign and development of an e-commerce platform using Next.js and Node.js",
     category: ["Web Development", "E-Commerce"],
     technologies: ["Next.js", "Node.js", "PostgreSQL", "Stripe", "AWS"],
-    image: "/images/portfolio/ecommerce.jpg",
+    image: "/images/insights/insight-1.png",
     clientName: "RetailX",
     challenge:
       "The client needed to handle 10x traffic growth with their legacy PHP system unable to scale.",
@@ -48,7 +48,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Custom AI chatbot powered by GPT-4 for enterprise customer support",
     category: ["AI/ML", "Automation"],
     technologies: ["Python", "GPT-4", "Langchain", "React", "Firebase"],
-    image: "/images/portfolio/ai-chatbot.jpg",
+    image: "/images/insights/insight-2.png",
     clientName: "TechCorp Inc.",
     challenge:
       "Support team was overwhelmed with 5000+ daily tickets causing customer satisfaction to drop.",
@@ -71,7 +71,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Cross-platform mobile application for field service teams with real-time tracking",
     category: ["Mobile Development", "Logistics"],
     technologies: ["React Native", "Firebase", "Google Maps API", "TypeScript"],
-    image: "/images/portfolio/mobile-app.jpg",
+    image: "/images/insights/insight-3.png",
     clientName: "ServicePro",
     challenge:
       "Field teams lacked visibility into job assignments, routing, and completion status.",
@@ -93,7 +93,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Real-time analytics and visualization platform for business intelligence",
     category: ["Data Analytics", "Web Development"],
     technologies: ["React", "D3.js", "Apache Kafka", "PostgreSQL", "Docker"],
-    image: "/images/portfolio/dashboard.jpg",
+    image: "/images/insights/insight-4.png",
     clientName: "DataViz Corp",
     challenge:
       "Manual reporting process took 40 hours/week and was always outdated.",
@@ -115,7 +115,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "End-to-end WhatsApp automation platform for customer engagement",
     category: ["Automation", "Integration"],
     technologies: ["N8n", "WhatsApp API", "Node.js", "MongoDB", "Zapier"],
-    image: "/images/portfolio/whatsapp-automation.jpg",
+    image: "/images/whatsApp/store-chat.png",
     clientName: "MarketingPro",
     challenge:
       "Manual WhatsApp messaging was time-consuming and error-prone at scale.",
@@ -137,7 +137,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Full-stack SaaS platform with subscription management and collaboration features",
     category: ["Web Development", "SaaS"],
     technologies: ["Next.js", "Prisma", "PostgreSQL", "Stripe", "Tailwind CSS"],
-    image: "/images/portfolio/saas-app.jpg",
+    image: "/images/insights/insight-5.png",
     clientName: "StartupX",
     challenge:
       "Needed to launch MVP quickly to validate market before full development.",

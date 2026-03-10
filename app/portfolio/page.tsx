@@ -31,8 +31,5 @@ export const metadata: Metadata = {
 };
 
 export default function PortfolioPage() {
-  return <div className="min-[1024px]:-mt-[3%] ">
-  
-    <PortfolioShowcase />
-  </div>;
+  return <PortfolioShowcase />;
 }

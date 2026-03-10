@@ -66,7 +66,7 @@ export default function Navbar() {
     { name: "Why Us", href: "/why-us" },
     { name: "Insights", href: "/insights" },
     // { name: "Researchers", href: "/insights" },
-    { name: "Portfolio", href: "/portfolio" },
+    { name: "Work", href: "/portfolio" },
     { name: "Internships", href: "/internships" },
     { name: "Contact Us", href: "/contact" },
   ];

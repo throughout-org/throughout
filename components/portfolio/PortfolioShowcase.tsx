@@ -2,47 +2,19 @@
 
 import { useState, useCallback, useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { portfolioProjects, portfolioCategories } from "@/data/portfolio";
+import { portfolioProjects } from "@/data/portfolio";
 import type { PortfolioProject } from "@/data/portfolio";
 
-// Map data categories to display-friendly filter labels
-const filterTabs = [
-  { label: "All Work", match: "All" },
-  { label: "Web Dev", match: "Web Development" },
-  { label: "AI & Automation", match: "AI/ML" },
-  { label: "Mobile Apps", match: "Mobile Development" },
-  { label: "E-Commerce", match: "E-Commerce" },
-  { label: "Data & Analytics", match: "Data Analytics" },
-  { label: "Automation", match: "Automation" },
-  { label: "SaaS", match: "SaaS" },
-];
-
 export default function PortfolioShowcase() {
-  const [activeFilter, setActiveFilter] = useState("All");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [direction, setDirection] = useState<"up" | "down">("down");
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const filteredProjects =
-    activeFilter === "All"
-      ? portfolioProjects
-      : portfolioProjects.filter((p) =>
-          p.category.some(
-            (c) =>
-              c.toLowerCase().includes(activeFilter.toLowerCase()) ||
-              activeFilter.toLowerCase().includes(c.toLowerCase())
-          )
-        );
+  const filteredProjects = portfolioProjects;
 
   const totalProjects = filteredProjects.length;
   const currentProject = filteredProjects[currentIndex] || filteredProjects[0];
-
-  const handleFilterChange = (match: string) => {
-    setActiveFilter(match);
-    setCurrentIndex(0);
-  };
 
   const navigate = useCallback(
     (dir: "up" | "down") => {
@@ -53,12 +25,12 @@ export default function PortfolioShowcase() {
         setCurrentIndex((prev) =>
           dir === "down"
             ? (prev + 1) % totalProjects
-            : (prev - 1 + totalProjects) % totalProjects
+            : (prev - 1 + totalProjects) % totalProjects,
         );
         setTimeout(() => setIsAnimating(false), 400);
       }, 100);
     },
-    [isAnimating, totalProjects]
+    [isAnimating, totalProjects],
   );
 
   // Keyboard navigation
@@ -71,22 +43,8 @@ export default function PortfolioShowcase() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [navigate]);
 
-  // Mouse wheel navigation
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    let timeout: NodeJS.Timeout;
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        if (e.deltaY > 0) navigate("down");
-        else navigate("up");
-      }, 80);
-    };
-    el.addEventListener("wheel", handleWheel, { passive: false });
-    return () => el.removeEventListener("wheel", handleWheel);
-  }, [navigate]);
+  // Mouse wheel navigation removed to allow normal scrolling
+  // Users can still navigate with keyboard arrows, touch swipe, and dot buttons
 
   // Touch swipe
   useEffect(() => {
@@ -120,69 +78,79 @@ export default function PortfolioShowcase() {
       className="relative min-h-screen overflow-hidden select-none"
     >
       {/* Light gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-sky-50 pointer-events-none" />
+      {/* <div className="absolute inset-0 pointer-events-none bg-linear-to-br from-blue-50 via-white to-sky-50" /> */}
 
       {/* Animated background blobs */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-blue-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob" />
-        <div className="absolute top-40 right-10 w-96 h-96 bg-sky-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute bottom-20 left-1/2 w-96 h-96 bg-indigo-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000" />
-      </div>
+      {/* <div className="absolute inset-0">
+        <div className="absolute rounded-full top-20 left-10 w-96 h-96 bg-blue-300/20 mix-blend-multiply filter blur-3xl animate-blob" />
+        <div className="absolute rounded-full top-40 right-10 w-96 h-96 bg-sky-300/20 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000" />
+        <div className="absolute rounded-full bottom-20 left-1/2 w-96 h-96 bg-indigo-300/20 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000" />
+      </div> */}
 
       {/* Subtle grid pattern overlay */}
-      <div
+      {/* <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
           backgroundImage:
             "linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
-      />
+      /> */}
 
-      {/* Side dot navigation */}
-      <div className="absolute right-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-3 z-30">
-        {filteredProjects.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => {
-              if (i !== currentIndex) {
-                setDirection(i > currentIndex ? "down" : "up");
-                setIsAnimating(true);
-                setTimeout(() => {
-                  setCurrentIndex(i);
-                  setTimeout(() => setIsAnimating(false), 400);
-                }, 100);
-              }
-            }}
-            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-              i === currentIndex
-                ? "bg-blue-600 scale-125 shadow-[0_0_8px_rgba(37,99,235,0.5)]"
-                : "bg-gray-300 hover:bg-gray-400"
-            }`}
-            aria-label={`Go to project ${i + 1}`}
-          />
-        ))}
-      </div>
+      <section className="relative px-4 pt-32 pb-24 overflow-hidden sm:px-6 lg:px-8">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute rounded-full top-20 left-10 w-96 h-96 bg-blue-400/30 mix-blend-multiply filter blur-3xl animate-blob"></div>
+          <div className="absolute rounded-full top-40 right-10 w-96 h-96 bg-sky-400/30 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+          <div className="absolute rounded-full bottom-20 left-1/2 w-96 h-96 bg-blue-400/30 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+        </div>
 
-     
+        <div className="relative mx-auto text-center max-w-7xl">
+          <div className="inline-block mb-6">
+            <span className="inline-block px-4 py-2 text-sm font-semibold text-white rounded-full shadow-lg bg-linear-to-r from-blue-600 to-blue-400">
+              Our Portfolio
+            </span>
+          </div>
+          <h1 className="mb-6 text-5xl font-bold sm:text-6xl lg:text-7xl">
+            <span className="block text-gray-900">Our Work</span>
+          </h1>
+          <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600 sm:text-2xl">
+            Explore the innovative solutions we&apos;ve built for our clients.
+            From concept to launch, each project showcases our commitment to
+            delivering exceptional results and driving real business impact.
+          </p>
+        </div>
+      </section>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 flex flex-col justify-center min-h-screen pt-20 sm:pt-12 lg:pt-12 pb-0">
-        {/* Section Header */}
-        <div className="text-center mb-4 mt-4 pb-5 ">
-          <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-blue-600 to-sky-500 text-white text-xs font-semibold rounded-full shadow-md tracking-wide uppercase">
-            Our Portfolio
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 ">
-            Featured{" "}
-            <span className="bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
-              Projects
-            </span>
-          </h2>
+      <div className="relative z-10 flex flex-col justify-start min-h-[72vh] px-4 pt-20 pb-0 mx-auto max-w-350 sm:px-6 md:px-10 lg:px-16 sm:pt-12 lg:pt-12">
+        {/* Side dot navigation */}
+        <div className="absolute z-30 flex-col hidden gap-3 -translate-y-1/2 right-6 top-1/2 lg:flex">
+          {filteredProjects.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                if (i !== currentIndex) {
+                  setDirection(i > currentIndex ? "down" : "up");
+                  setIsAnimating(true);
+                  setTimeout(() => {
+                    setCurrentIndex(i);
+                    setTimeout(() => setIsAnimating(false), 400);
+                  }, 100);
+                }
+              }}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                i === currentIndex
+                  ? "bg-blue-600 scale-125 shadow-[0_0_8px_rgba(37,99,235,0.5)]"
+                  : "bg-gray-300 hover:bg-gray-400"
+              }`}
+              aria-label={`Go to project ${i + 1}`}
+            />
+          ))}
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="relative z-20 flex justify-center mb-6">
+        {/* <div className="relative z-20 flex justify-center mb-6">
           <div className="flex flex-wrap justify-center gap-2 px-4">
             {filterTabs.map((tab) => (
               <button
@@ -190,7 +158,7 @@ export default function PortfolioShowcase() {
                 onClick={() => handleFilterChange(tab.match)}
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
                   activeFilter === tab.match
-                    ? "bg-gradient-to-r from-blue-600 to-sky-500 text-white border-transparent shadow-lg shadow-blue-500/20"
+                    ? "bg-linear-to-r from-blue-600 to-sky-500 text-white border-transparent shadow-lg shadow-blue-500/20"
                     : "bg-white/80 text-gray-600 border-gray-200 hover:text-gray-900 hover:border-blue-300 hover:shadow-md backdrop-blur-sm"
                 }`}
               >
@@ -198,7 +166,8 @@ export default function PortfolioShowcase() {
               </button>
             ))}
           </div>
-        </div><div
+        </div> */}
+        <div
           className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center transition-all duration-500 ${
             isAnimating
               ? direction === "down"
@@ -214,8 +183,8 @@ export default function PortfolioShowcase() {
               <span className="text-sm tracking-[0.15em] text-gray-400 font-mono">
                 {padIndex(currentIndex + 1)} / {padIndex(totalProjects)}
               </span>
-              <span className="flex items-center gap-2 text-xs tracking-[0.2em] uppercase font-semibold bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent">
-                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-sky-400 inline-block" />
+              <span className="flex items-center gap-2 text-xs tracking-[0.2em] uppercase font-semibold bg-linear-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent">
+                <span className="inline-block w-2 h-2 rounded-full bg-linear-to-r from-blue-500 to-sky-400" />
                 {currentProject.category[0]}
               </span>
             </div>
@@ -226,7 +195,7 @@ export default function PortfolioShowcase() {
             </h1>
 
             {/* Description */}
-            <p className="text-gray-500 text-base sm:text-lg leading-relaxed max-w-xl">
+            <p className="max-w-xl text-base leading-relaxed text-gray-500 sm:text-lg">
               {currentProject.shortDescription}
             </p>
 
@@ -246,12 +215,12 @@ export default function PortfolioShowcase() {
             <div className="flex flex-wrap items-center gap-4 mt-2">
               <Link
                 href={`/portfolio/${currentProject.id}`}
-                className="group relative inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 text-white font-semibold text-sm transition-all duration-300 shadow-xl shadow-blue-500/20 hover:shadow-2xl hover:shadow-blue-500/30 hover:scale-[1.02] overflow-hidden"
+                className="group relative inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500 text-white font-semibold text-sm transition-all duration-300 shadow-xl shadow-blue-500/20 hover:shadow-2xl hover:shadow-blue-500/30 hover:scale-[1.02] overflow-hidden"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   View Case Study
                   <svg
-                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                    className="w-4 h-4 transition-transform group-hover:translate-x-1"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -264,7 +233,7 @@ export default function PortfolioShowcase() {
                     />
                   </svg>
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-blue-500 to-sky-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-linear-to-r from-indigo-500 via-blue-500 to-sky-400 group-hover:opacity-100" />
               </Link>
               {currentProject.link && (
                 <a
@@ -294,24 +263,25 @@ export default function PortfolioShowcase() {
 
           {/* Right: Project Preview (Browser Mockup) */}
           <div className="relative flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[560px]">
+            <div className="relative w-full max-w-140">
               {/* Glow behind */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-blue-400/20 via-sky-300/10 to-indigo-400/20 rounded-3xl blur-2xl -z-10" />
+              <div className="absolute -inset-4 bg-linear-to-br from-blue-400/20 via-sky-300/10 to-indigo-400/20 rounded-3xl blur-2xl -z-10" />
 
               {/* Browser chrome */}
-              <div className="rounded-2xl overflow-hidden border border-white/60 bg-white/40 backdrop-blur-xl shadow-2xl shadow-blue-900/10">
+              <div className="overflow-hidden border shadow-2xl rounded-2xl border-white/60 bg-white/40 backdrop-blur-xl shadow-blue-900/10">
                 {/* Browser top bar */}
-                <div className="flex items-center gap-3 px-5 py-3 bg-white/70 border-b border-gray-200/60">
+                <div className="flex items-center gap-3 px-5 py-3 border-b bg-white/70 border-gray-200/60">
                   {/* Traffic lights */}
                   <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-400" />
+                    <div className="w-3 h-3 bg-red-400 rounded-full" />
                     <div className="w-3 h-3 rounded-full bg-amber-400" />
-                    <div className="w-3 h-3 rounded-full bg-green-400" />
+                    <div className="w-3 h-3 bg-green-400 rounded-full" />
                   </div>
                   {/* URL bar */}
                   <div className="flex-1 mx-4">
                     <div className="bg-gray-100 rounded-lg px-4 py-1.5 text-[11px] text-gray-400 font-mono truncate">
-                      app.{currentProject.clientName
+                      app.
+                      {currentProject.clientName
                         .toLowerCase()
                         .replace(/\s+/g, "")
                         .replace(/[^a-z0-9]/g, "")}
@@ -321,7 +291,7 @@ export default function PortfolioShowcase() {
                 </div>
 
                 {/* Browser content – Project preview */}
-                <div className="relative aspect-[16/10] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+                <div className="relative overflow-hidden aspect-16/10 bg-linear-to-br from-gray-900 via-gray-800 to-gray-900">
                   <ProjectMockup project={currentProject} />
                 </div>
               </div>
@@ -331,14 +301,14 @@ export default function PortfolioShowcase() {
       </div>
 
       {/* Bottom: Pagination + Navigation */}
-      <div className="absolute bottom-6 left-0 right-0 z-20 px-4 sm:px-6 md:px-10 lg:px-16 md:px-10 max-w-[1400px] mx-auto  ">
+      <div className="absolute left-0 right-0 z-20 px-4 mx-auto bottom-6 max-w-350 sm:px-6 md:px-10 lg:px-16">
         <div className="flex items-center justify-between">
           {/* Current / Total */}
           <div className="flex items-baseline gap-1">
-            <span className="text-5xl sm:text-6xl font-black tabular-nums font-mono bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent">
+            <span className="font-mono text-5xl font-black text-transparent sm:text-6xl tabular-nums bg-linear-to-r from-blue-600 to-sky-500 bg-clip-text">
               {padIndex(currentIndex + 1)}
             </span>
-            <span className="text-lg text-gray-400 font-mono ml-2">
+            <span className="ml-2 font-mono text-lg text-gray-400">
               / {padIndex(totalProjects)}
             </span>
           </div>
@@ -348,7 +318,7 @@ export default function PortfolioShowcase() {
             <button
               onClick={() => navigate("up")}
               disabled={isAnimating}
-              className="group w-12 h-12 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-400 hover:text-blue-600 hover:border-blue-400 hover:shadow-lg transition-all duration-200 disabled:opacity-30 bg-white/60 backdrop-blur-sm"
+              className="flex items-center justify-center w-12 h-12 text-gray-400 transition-all duration-200 border-2 border-gray-200 rounded-full group hover:text-blue-600 hover:border-blue-400 hover:shadow-lg disabled:opacity-30 bg-white/60 backdrop-blur-sm"
               aria-label="Previous project"
             >
               <svg
@@ -368,7 +338,7 @@ export default function PortfolioShowcase() {
             <button
               onClick={() => navigate("down")}
               disabled={isAnimating}
-              className="group w-12 h-12 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-400 hover:text-blue-600 hover:border-blue-400 hover:shadow-lg transition-all duration-200 disabled:opacity-30 bg-white/60 backdrop-blur-sm"
+              className="flex items-center justify-center w-12 h-12 text-gray-400 transition-all duration-200 border-2 border-gray-200 rounded-full group hover:text-blue-600 hover:border-blue-400 hover:shadow-lg disabled:opacity-30 bg-white/60 backdrop-blur-sm"
               aria-label="Next project"
             >
               <svg
@@ -396,28 +366,32 @@ export default function PortfolioShowcase() {
 function ProjectMockup({ project }: { project: PortfolioProject }) {
   // Generate a unique dashboard mockup based on project data
   const barHeights = project.results.map(
-    (_, i) => 30 + ((i * 37 + project.id.charCodeAt(0) * 13) % 70)
+    (_, i) => 30 + ((i * 37 + project.id.charCodeAt(0) * 13) % 70),
   );
 
   const accentColor = getCategoryColor(project.category[0]);
 
   return (
-    <div className="p-6 h-full flex flex-col gap-4">
+    <div className="flex flex-col h-full gap-4 p-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <span className="text-white/90 font-bold text-sm tracking-wide">
+        <span className="text-sm font-bold tracking-wide text-white/90">
           {project.clientName}
         </span>
         <div className="flex gap-2">
           <div className={`w-8 h-1 rounded-full ${accentColor.bar}`} />
-          <div className={`w-6 h-1 rounded-full ${accentColor.bar} opacity-50`} />
-          <div className={`w-4 h-1 rounded-full ${accentColor.bar} opacity-30`} />
+          <div
+            className={`w-6 h-1 rounded-full ${accentColor.bar} opacity-50`}
+          />
+          <div
+            className={`w-4 h-1 rounded-full ${accentColor.bar} opacity-30`}
+          />
         </div>
       </div>
 
       {/* Tagline */}
       <div>
-        <p className="text-white/80 font-bold text-base leading-tight">
+        <p className="text-base font-bold leading-tight text-white/80">
           {project.description.split(" ").slice(0, 4).join(" ")}
         </p>
         <p className={`${accentColor.text} font-bold text-base leading-tight`}>
@@ -436,7 +410,7 @@ function ProjectMockup({ project }: { project: PortfolioProject }) {
               key={i}
               className={`rounded-xl px-3 py-3 ${accentColor.card} border ${accentColor.border}`}
             >
-              <p className="text-white font-bold text-lg tabular-nums">
+              <p className="text-lg font-bold text-white tabular-nums">
                 {value}
               </p>
               <p className="text-gray-500 text-[10px] mt-0.5 truncate">
@@ -448,7 +422,7 @@ function ProjectMockup({ project }: { project: PortfolioProject }) {
       </div>
 
       {/* Bar chart */}
-      <div className="flex-1 flex items-end gap-2 pt-2">
+      <div className="flex items-end flex-1 gap-2 pt-2">
         {[...barHeights, ...barHeights].slice(0, 8).map((h, i) => (
           <div
             key={i}
