@@ -1,4 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Readable } from "stream";
+import { existsSync, readFileSync } from "fs";
+import { join } from "path";
+import { google } from "googleapis";
 import { v2 as cloudinary } from "cloudinary";
 import JobApplication from "@/models/JobApplication";
 import { dbConnect } from "@/lib/mongoose";
@@ -16,16 +20,52 @@ type JobApplicationPayload = {
   referralSource?: string;
 };
 
-function requireEnv(name: string): string {
-  const value = process.env[name];
-  if (!value || value.trim().length === 0) {
-    throw new Error(`Missing required environment variable: ${name}`);
-  }
-  return value;
-}
-
 function isNonEmptyString(value: unknown): value is string {
   return typeof value === "string" && value.trim().length > 0;
+}
+
+function buildPdfFileName(fileName: string): string {
+  const base = fileName.replace(/\.pdf$/i, "") || "resume";
+  const safeBase = base.replace(/[^a-zA-Z0-9_-]/g, "_").slice(0, 80);
+  const uniqueSuffix = `${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+  return `${safeBase}_${uniqueSuffix}.pdf`;
+}
+
+const DEFAULT_GOOGLE_DRIVE_FOLDER_ID = "1t7nUtw3_r5LZYmUNksDpc4sekGDnZoLo";
+
+function getGoogleDriveFolderId(): string {
+  const explicitId = process.env.GOOGLE_DRIVE_FOLDER_ID?.trim();
+  if (explicitId) return explicitId;
+
+  const folderUrl = process.env.GOOGLE_DRIVE_FOLDER_URL?.trim();
+  if (folderUrl) {
+    const match = folderUrl.match(/\/folders\/([a-zA-Z0-9_-]+)/);
+    if (match?.[1]) return match[1];
+  }
+
+  return DEFAULT_GOOGLE_DRIVE_FOLDER_ID;
+}
+
+function getOAuth2Client() {
+  const clientId = process.env.GOOGLE_CLIENT_ID?.trim();
+  const clientSecret = process.env.GOOGLE_CLIENT_SECRET?.trim();
+  const redirectUri = process.env.GOOGLE_REDIRECT_URI?.trim();
+  const refreshToken = process.env.GOOGLE_REFRESH_TOKEN?.trim();
+
+  if (!clientId || !clientSecret || !redirectUri || !refreshToken) {
+    throw new Error(
+      "Missing Google OAuth2 credentials. Set GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REDIRECT_URI, and GOOGLE_REFRESH_TOKEN.",
+    );
+  }
+
+  const oAuth2Client = new google.auth.OAuth2(
+    clientId,
+    clientSecret,
+    redirectUri,
+  );
+  oAuth2Client.setCredentials({ refresh_token: refreshToken });
+
+  return oAuth2Client;
 }
 
 function getAllowedOrigins(): string[] {
@@ -60,26 +100,81 @@ export async function OPTIONS(request: NextRequest) {
   });
 }
 
-async function uploadPdfToCloudinary(file: File): Promise<string> {
-  cloudinary.config({ cloudinary_url: requireEnv("CLOUDINARY_URL") });
-
+async function uploadPdfToGoogleDrive(file: File): Promise<string> {
   if (file.type !== "application/pdf") {
     throw new Error("Resume must be a PDF file");
   }
 
+  const folderId = getGoogleDriveFolderId();
+  const auth = getOAuth2Client();
+  const drive = google.drive({
+    version: "v3",
+    auth,
+  });
+
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
+  const fileName = buildPdfFileName(file.name || "resume.pdf");
+
+  const upload = await drive.files.create({
+    requestBody: {
+      name: fileName,
+      parents: [folderId],
+      mimeType: "application/pdf",
+    },
+    media: {
+      mimeType: "application/pdf",
+      body: Readable.from(buffer),
+    },
+    fields: "id, webViewLink",
+    supportsAllDrives: true,
+  });
+
+  const fileId = upload.data.id;
+  if (!fileId) {
+    throw new Error("Google Drive upload failed: missing file id");
+  }
+
+  await drive.permissions.create({
+    fileId,
+    requestBody: {
+      role: "reader",
+      type: "anyone",
+    },
+    supportsAllDrives: true,
+  });
+
+  return (
+    upload.data.webViewLink || `https://drive.google.com/file/d/${fileId}/view`
+  );
+}
+
+async function uploadPdfToCloudinary(file: File): Promise<string> {
+  const cloudinaryUrl = process.env.CLOUDINARY_URL?.trim();
+  if (!cloudinaryUrl) {
+    throw new Error(
+      "CLOUDINARY_URL is missing for Cloudinary fallback upload.",
+    );
+  }
+
+  cloudinary.config({ cloudinary_url: cloudinaryUrl });
+
+  const bytes = await file.arrayBuffer();
+  const buffer = Buffer.from(bytes);
+  const publicId = `resumes/${buildPdfFileName(file.name || "resume.pdf")}`;
 
   const uploadResult = await new Promise<{ secure_url?: string; url?: string }>(
     (resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
         {
-          folder: "resumes",
           resource_type: "raw",
-          use_filename: true,
-          unique_filename: true,
+          public_id: publicId,
+          use_filename: false,
+          unique_filename: false,
+          overwrite: false,
+          format: "pdf",
         },
-        (error, result) => {
+        (error: unknown, result: unknown) => {
           if (error) return reject(error);
           if (!result) return reject(new Error("Cloudinary upload failed"));
           resolve({
@@ -95,8 +190,37 @@ async function uploadPdfToCloudinary(file: File): Promise<string> {
   );
 
   const url = uploadResult.secure_url || uploadResult.url;
-  if (!url) throw new Error("Cloudinary did not return a URL");
+  if (!url) {
+    throw new Error("Cloudinary did not return a URL");
+  }
+
   return url;
+}
+
+function shouldFallbackToCloudinary(error: unknown): boolean {
+  const message =
+    error && typeof error === "object" && "message" in error
+      ? String((error as { message?: unknown }).message).toLowerCase()
+      : "";
+
+  return (
+    message.includes("service accounts do not have storage quota") ||
+    message.includes("missing google service account credentials")
+  );
+}
+
+async function uploadResume(file: File): Promise<string> {
+  try {
+    return await uploadPdfToGoogleDrive(file);
+  } catch (error) {
+    if (
+      process.env.CLOUDINARY_URL?.trim() &&
+      shouldFallbackToCloudinary(error)
+    ) {
+      return uploadPdfToCloudinary(file);
+    }
+    throw error;
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -152,7 +276,7 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      resumeUrl = await uploadPdfToCloudinary(file);
+      resumeUrl = await uploadResume(file);
     } else {
       const body = (await request.json()) as Partial<JobApplicationPayload>;
       jobTitle = body.jobTitle;
@@ -230,6 +354,25 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error("Job application error:", error);
+
+    const isQuotaError =
+      error &&
+      typeof error === "object" &&
+      "message" in error &&
+      typeof (error as { message?: unknown }).message === "string" &&
+      String((error as { message?: unknown }).message)
+        .toLowerCase()
+        .includes("service accounts do not have storage quota");
+
+    if (isQuotaError) {
+      return NextResponse.json(
+        {
+          error:
+            "Google Drive rejected upload because the target is not a Shared Drive folder. Create/use a Shared Drive folder, share it with the service account, and set GOOGLE_DRIVE_FOLDER_ID to that folder.",
+        },
+        { status: 500, headers: corsHeaders(origin) },
+      );
+    }
 
     const message =
       process.env.NODE_ENV !== "production" &&
