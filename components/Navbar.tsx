@@ -62,21 +62,22 @@ export default function Navbar() {
   // ===== TOP BAR LINKS =====
   const topBarLinks = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Why Us", href: "/why-us" },
-    { name: "Insights", href: "/insights" },
-    // { name: "Researchers", href: "/insights" },
     { name: "Work", href: "/portfolio" },
+    { name: "Company", href: "/about" },
+    { name: "Free Site Auditor", href: "/free-seo-aduitor" },
+    // { name: "Why Us", href: "/why-us" },
+    { name: "Blog", href: "/insights" },
+    // { name: "Researchers", href: "/insights" },
     { name: "Internships", href: "/internships" },
     { name: "Contact Us", href: "/contact" },
   ];
 
   // ===== MAIN NAV LINKS =====
   const mainNavLinks = [
-    { name: "Our Services", href: "/services", hasDropdown: true },
+    { name: "Services", href: "/services", hasDropdown: true },
     { name: "Comflo", href: "https://comflo.app/" },
-    { name: "SEO Audit Checker", href: "/free-seo-aduitor" },
-    { name: "n8n Automations", href: "/n8n-agency" },
+    { name: "MVP Studio", href: "/mvp-studio" },
+    { name: "Workflow Studio", href: "/n8n-agency" },
   ];
 
   // Short descriptions for the dropdown cards
