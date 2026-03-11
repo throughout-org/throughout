@@ -1,6 +1,37 @@
+
+<div align="center">
+	<img src="./public/images/logo.png" alt="Throoout Logo" width="180" />
+</div>
+
 # Throoout - Smart Software Solutions
 
 Throoout is a modern software engineering company specializing in custom web, mobile, and AI solutions. We build fast, secure, and scalable digital products for startups and enterprises.
+
+---
+
+## 🌐 Main Pages Overview
+
+| Page | Description |
+|------|-------------|
+| **Home** (`/`) | Landing page with hero, services, about, and trust sections. Modern, animated, and conversion-focused. |
+| **About** (`/about`) | Learn about our mission, vision, core values, and what makes Throoout unique. |
+| **Services** (`/services`) | Explore our full range of software, web, mobile, cloud, and AI/ML solutions. |
+| **Why Us** (`/why-us`) | Discover our strengths, approach, and why clients choose Throoout for their projects. |
+| **Portfolio** (`/portfolio`) | Showcases our best work: web, mobile, AI, and automation projects. |
+| **Portfolio Details** (`/portfolio/[id]`) | In-depth case studies for each project, including challenges, solutions, and results. |
+| **Insights/Blog** (`/insights`) | Latest articles, tech insights, and company news. Dynamic content from Sanity CMS. |
+| **Insight Details** (`/insights/[slug]`) | Full article view for each insight or blog post. |
+| **Internships** (`/internships`) | Open internship opportunities with details and application form. |
+| **Internship Details** (`/internships/[slug]`) | Detailed info and application for each internship role. |
+| **Contact** (`/contact`) | Contact form, WhatsApp, and company info for inquiries and support. |
+| **Free SEO Auditor** (`/free-seo-aduitor`) | Free tool to analyze your website’s SEO and get actionable recommendations. |
+| **MVP Studio** (`/mvp-studio`) | Launch your SaaS MVP in 3 weeks with our fixed-scope, AI-accelerated process. |
+| **n8n Agency** (`/n8n-agency`) | Workflow automation, integration, and managed n8n services for businesses. |
+| **WhatsApp Automation** (`/whatsapp_automation`) | AI chatbot, CRM integration, and sales automation for WhatsApp. |
+| **Privacy Policy** (`/privacy-policy`) | Our privacy practices and data protection policies. |
+| **Terms of Service** (`/terms-of-service`) | Legal terms for using our website and services. |
+
+---
 
 ## 🚀 Features
 
