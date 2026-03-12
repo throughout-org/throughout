@@ -49,8 +49,8 @@ export default function FreeSeoAuditor() {
   }, [hasScrolled]);
 
   return (
-    <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[80vh] bg-gradient-to-br from-blue-50 via-blue-100 to-white">
-      {/* Animated Background (reuse HeroSection style) */}
+    <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[80vh] bg-gradient-to-br from-blue-100 via-white to-blue-200">
+      {/* Trendy Glassmorphism Animated Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-tr from-blue-300/30 via-blue-200/20 to-blue-100/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
         <div className="absolute top-40 right-10 w-96 h-96 bg-gradient-to-br from-blue-200/20 via-blue-100/20 to-blue-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
@@ -59,26 +59,30 @@ export default function FreeSeoAuditor() {
 
       <div className="relative max-w-5xl mx-auto z-10 ">
         {/* Badge */}
-        <div className="text-center">
-          <div className="inline-flex items-center gap-2 px-5 py-2 bg-white/80 backdrop-blur-md rounded-full shadow-xl mb-4 animate-fade-in border border-blue-100">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-5 py-2 bg-white/80 backdrop-blur-md rounded-full shadow-xl mb-0 animate-fade-in border border-blue-100">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gradient-to-r from-blue-500 to-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-r from-blue-500 to-blue-400"></span>
             </span>
-            <span className="ml-2 text-lg">🚀</span>
+            {/* <span className="ml-2 text-lg">🚀</span> */}
             <span className="text-base font-bold bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent tracking-wide">Free SEO Auditor</span>
           </div>
         </div>
         {/* Heading */}
-        <h1 className="text-5xl pt-8 pb-8 sm:text-6xl font-extrabold text-center mb-4 mt-8 bg-gradient-to-r from-blue-700 via-blue-500 to-blue-600 bg-clip-text text-transparent drop-shadow-xl animate-gradient-x">
-          Why isn’t your site ranking #1?
-        </h1>
-        <p className="text-lg sm:text-xl text-gray-700/80 text-center mb-8 pb-20 max-w-4xl mx-auto font-medium animate-fade-in">
-          <span className="px-3 py-1 rounded-full bg-blue-50/80 text-blue-700 font-semibold shadow-sm">Discover technical errors in seconds. Instant analysis, no credit card required.</span>
-        </p>
+         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 pb-6 mt-4 animate-slide-up text-center pt-2">
+            <span className="block text-gray-900 mb-2"> Why isn’t your site</span>
+            <span className="block pb-4 bg-gradient-to-r from-blue-600 via-sky-600 to-blue-00 bg-clip-text text-transparent animate-gradient-x">
+              ranking #1?
+            </span>
+          </h1>
+   <p className="text-xl text-center sm:text-2xl text-gray-600 max-w-4xl mx-auto mb-10 leading-relaxed animate-fade-in-delay">
+            Discover technical errors in seconds. Instant analysis, no credit card required.
+          </p>
+       
         {/* Search Bar */}
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 mt-4 justify-center mb-12 animate-fade-in">
-          <div className="flex flex-col flex-1">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 mt-4 justify-center  animate-fade-in">
+          <div className="flex flex-row w-full max-w-2xl mx-auto rounded-full bg-white shadow-xl overflow-hidden">
             <input
               type="text"
               required
@@ -88,30 +92,33 @@ export default function FreeSeoAuditor() {
                 setDomain(e.target.value);
                 setDomainError("");
               }}
-              className="px-6 py-4 rounded-full border-2 border-blue-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-lg shadow-xl outline-none transition-all bg-white/70 backdrop-blur-md font-semibold placeholder:text-blue-400 w-full"
+              className="flex-1 px-8 py-5 text-xl font-semibold outline-none bg-white border-none rounded-l-full placeholder:text-gray-400 focus:ring-0"
               disabled={loading}
               autoComplete="off"
+              style={{ boxShadow: 'none' }}
             />
-            {domainError && (
-              <div className="relative w-full flex justify-center mt-2">
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 z-20">
-                  <div className="flex items-center bg-white border border-blue-200 shadow-lg rounded px-3 py-2 text-sm font-semibold text-blue-800 min-w-[220px] animate-shake">
-                    <span className="text-orange-500 text-lg mr-2">&#9888;</span>
-                    <span>{domainError.replace('Please enter a valid website URL (e.g. site.com or https://site.com)', 'Please enter a URL.')}</span>
-                  </div>
-                  <div className="absolute left-1/2 -translate-x-1/2 -top-2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-blue-100"></div>
-                </div>
-              </div>
-            )}
+            <button
+              type="submit"
+              className="px-10 py-5 rounded  bg-gradient-to-r from-blue-400 to-blue-500 text-white text-xl font-extrabold rounded-r-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300 disabled:opacity-60"
+              disabled={loading}
+              style={{ border: 'none', boxShadow: 'none' }}
+            >
+              {loading ? <span className="flex items-center gap-2"><span className="animate-spin inline-block w-6 h-6 border-2 border-t-2 border-t-white border-white/40 rounded-full"></span>Analyzing...</span> : <span className="flex items-center gap-2">Analyze Now</span>}
+            </button>
           </div>
-          <button
-            type="submit"
-            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-400 text-white text-lg font-extrabold rounded-full shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 border border-white/30 backdrop-blur-md disabled:opacity-60 animate-pulse"
-            disabled={loading}
-          >
-            {loading ? <span className="flex items-center gap-2"><span className="animate-spin inline-block w-5 h-5 border-2 border-t-2 border-t-white border-white/40 rounded-full"></span>Analyzing...</span> : <span className="flex items-center gap-2"><span className="text-xl">🔍</span>Analyze Now</span>}
-          </button>
+         
         </form>
+         {domainError && (
+            <div className="relative w-full flex justify-center mt-0 mb-6">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 z-20">
+                <div className="flex items-center bg-white border border-blue-200 shadow-lg rounded px-4 py-3 text-base font-semibold text-blue-800 min-w-[240px] animate-shake">
+                  <span className="text-orange-500 text-lg mr-2">&#9888;</span>
+                  <span>{domainError.replace('Please enter a valid website URL (e.g. site.com or https://site.com)', 'Please enter a URL.')}</span>
+                </div>
+                <div className="absolute left-1/2 -translate-x-1/2 -top-2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-blue-100"></div>
+              </div>
+            </div>
+          )}
       </div>
          <div className="relative max-w-5xl mx-auto z-60 ">
         {loading && (
