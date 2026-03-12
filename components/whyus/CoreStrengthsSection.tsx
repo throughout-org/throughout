@@ -3,25 +3,25 @@ export default function CoreStrengthsSection() {
     {
       icon: '⚡',
       title: 'Fast Delivery',
-      description: 'Quick turnaround times without compromising on quality or attention to detail',
+      description: 'Quick turnaround times without compromising on quality or attention to detail.',
       color: 'from-yellow-500 to-orange-500'
     },
     {
       icon: '🏗️',
       title: 'Clean Architecture',
-      description: 'Maintainable and scalable code structure following industry best practices',
+      description: 'Maintainable and scalable code structure following industry best practices.',
       color: 'from-blue-500 to-cyan-500'
     },
     {
       icon: '💬',
       title: 'Clear Communication',
-      description: 'Regular updates and transparent process keeping you informed every step',
+      description: 'Regular updates and a transparent process keeping you informed at every step.',
       color: 'from-sky-500 to-pink-500'
     },
     {
       icon: '🚀',
       title: 'Modern Tech Stack',
-      description: 'Latest tools, frameworks, and best practices for cutting-edge solutions',
+      description: 'Latest tools, frameworks, and best practices for cutting-edge solutions.',
       color: 'from-green-500 to-emerald-500'
     },
   ];
@@ -32,7 +32,7 @@ export default function CoreStrengthsSection() {
         <h2 className="text-3xl font-bold text-gray-900 mb-3">
           Our <span className="bg-gradient-to-r from-blue-600 to-sky-300 bg-clip-text text-transparent pb-4 font-bold">Core Strengths</span>
         </h2>
-        <p className="text-gray-600">What sets us apart from the competition</p>
+        <p className="text-gray-600">We combine fast execution with clean, maintainable code and transparent communication — all on a modern tech stack.</p>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {strengths.map((strength, index) => (
