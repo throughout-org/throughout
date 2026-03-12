@@ -189,7 +189,7 @@ export default function Navbar() {
                           className={`flex items-center gap-1 px-2.5 py-1.5 text-xs xl:text-sm font-semibold transition-all duration-200 cursor-pointer rounded-lg ${
                             isActive("/services")
                               ? "text-white bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 shadow-md scale-105"
-                              : "text-gray-900 hover:text-gray-900 hover:bg-gray-100/60"
+                              : "text-gray-900 hover:text-gray-900 hover:bg-blue-300/20"
                           }`}
                         >
                           {link.name}
@@ -307,7 +307,7 @@ export default function Navbar() {
                       className={`px-2.5 py-1.5 text-xs xl:text-sm font-semibold transition-all duration-200 rounded-lg whitespace-nowrap ${
                         isActive(link.href)
                           ? "text-gray-900 bg-blue-100 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 text-white scale-105 shadow-xl border-white/30"
-                          : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/60"
+                          : "text-gray-700 hover:text-gray-900 hover:bg-blue-300/20"
                       }`}
                     >
                       {link.name}

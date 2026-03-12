@@ -18,7 +18,7 @@ export default function ServicesCTASection() {
       >
         <div className="relative z-10 flex flex-col max-w-5xl gap-6 mx-auto text-left">
           <h2 className="text-4xl font-bold text-gray-700 sm:text-5xl lg:text-6xl">
-            Ready to build your next product?
+            Ready to Build Something Amazing?
           </h2>
           <p className="mb-8 text-xl leading-relaxed text-gray-700">
             We help startups design, build and launch real software not just
