@@ -16,8 +16,7 @@ export default function MissionVisionSection() {
             </h2>
           </div>
           <p className="text-gray-700 leading-relaxed text-lg">
-            To <span className="font-semibold text-cyan-600">empower businesses</span> with cutting-edge technology solutions that drive growth, innovation, and digital transformation. 
-            We believe in building long-term partnerships by delivering exceptional value through quality software development.
+            To <span className="font-semibold text-cyan-600">empower businesses</span> with cutting-edge technology solutions that drive growth, innovation, and digital transformation. We believe in building long-term partnerships by delivering exceptional value through quality software development.
           </p>
           <div className="mt-6 flex items-center gap-2 text-sm text-sky-600 font-semibold">
             <span>Building Your Future</span>
@@ -44,8 +43,7 @@ export default function MissionVisionSection() {
             </h2>
           </div>
           <p className="text-gray-700 leading-relaxed text-lg">
-            To become the <span className="font-semibold text-cyan-600">most trusted technology partner</span> for businesses worldwide, 
-            recognized for delivering innovative solutions that transform ideas into impactful digital products and drive sustainable business success.
+            To become the <span className="font-semibold text-cyan-600">most trusted technology partner</span> for businesses worldwide, recognized for delivering innovative solutions that transform ideas into impactful digital products and drive sustainable business success.
           </p>
           <div className="mt-6 flex items-center gap-2 text-sm text-sky-600 font-semibold">
             <span>Shaping Tomorrow</span>

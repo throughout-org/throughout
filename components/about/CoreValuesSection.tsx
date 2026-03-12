@@ -1,9 +1,9 @@
 export default function CoreValuesSection() {
   const values = [
-    { title: 'Innovation', description: 'Embracing new technologies', icon: '💡', color: 'from-yellow-500 to-orange-500' },
-    { title: 'Excellence', description: 'Delivering quality work', icon: '⭐', color: 'from-blue-500 to-cyan-500' },
-    { title: 'Integrity', description: 'Building trust & honesty', icon: '🤝', color: 'from-sky-500 to-pink-500' },
-    { title: 'Growth', description: 'Continuous improvement', icon: '🚀', color: 'from-green-500 to-emerald-500' },
+    { title: 'Innovation', description: 'Embracing new technologies and creative thinking', icon: '💡', color: 'from-yellow-500 to-orange-500' },
+    { title: 'Excellence', description: 'Delivering quality work in every project we touch', icon: '⭐', color: 'from-blue-500 to-cyan-500' },
+    { title: 'Integrity', description: 'Building trust through honesty and transparency', icon: '🤝', color: 'from-sky-500 to-pink-500' },
+    { title: 'Growth', description: 'Continuous improvement for us and our clients', icon: '🚀', color: 'from-green-500 to-emerald-500' },
   ];
 
   return (
