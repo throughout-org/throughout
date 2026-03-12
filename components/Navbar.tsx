@@ -5,6 +5,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { services } from "@/data/services";
+import { openCalendlyPopup } from "@/components/CalendlyPopup";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -94,6 +95,12 @@ export default function Navbar() {
       "Intelligent logic that automates your workflow.",
     "ui-ux-design": "Designs that convert visitors into loyal users.",
     seo: "Data-driven strategies to dominate search rankings.",
+  };
+
+  const handleCalendlyClick: React.MouseEventHandler<HTMLAnchorElement> = (
+    e,
+  ) => {
+    openCalendlyPopup(e as unknown as React.MouseEvent<HTMLElement>);
   };
 
   return (
@@ -311,17 +318,18 @@ export default function Navbar() {
 
               {/* Desktop CTA Button */}
               <Link
-                href="/contact"
+                href="https://calendly.com/throughoutwithyou/30min"
+                onClick={handleCalendlyClick}
                 className="group/cta hidden lg:inline-flex items-center gap-1.5 px-4 py-2 text-xs xl:px-7 xl:py-3 xl:text-sm xl:gap-2 font-extrabold text-white bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 rounded-full transition-all duration-300 tracking-wide uppercase relative overflow-hidden hover:scale-105 hover:shadow-xl border border-white/30"
                 style={{
                   boxShadow: "0 4px 20px rgba(56,189,248,0.3)",
                 }}
               >
                 <span className="relative z-10 hidden xl:inline">
-                  Talk to an Expert
+                  Book a Free Call
                 </span>
                 <span className="relative z-10 xl:hidden">
-                  Talk to an Expert
+                  Book a Free Call
                 </span>
                 <svg
                   className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover/cta:translate-x-1"
@@ -542,7 +550,7 @@ export default function Navbar() {
                   opacity: isMenuOpen ? 1 : 0,
                 }}
               >
-                Talk to an Expert
+                Book a Free Call
               </Link>
             </div>
           </div>

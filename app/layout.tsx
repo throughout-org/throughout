@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Montserrat, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -117,6 +118,11 @@ export default function RootLayout({
         />
         {/* Preload manifest only; Next.js handles fonts and CSS */}
         <link rel="preload" as="manifest" href="/site.webmanifest" />
+        {/* Calendly widget styles */}
+        <link
+          rel="stylesheet"
+          href="https://assets.calendly.com/assets/external/widget.css"
+        />
         {/* Google tag (gtag.js) */}
         <script
           async
@@ -153,11 +159,10 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${jetbrainsMono.variable} antialiased font-sans`}
       >
-        <script
-          type="text/javascript"
+        <Script
           src="https://assets.calendly.com/assets/external/widget.js"
-          async
-        ></script>
+          strategy="afterInteractive"
+        />
         {/* Meta Pixel (noscript) */}
         <noscript>
           <img

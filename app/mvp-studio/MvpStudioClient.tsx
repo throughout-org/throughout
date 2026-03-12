@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { DM_Sans, Syne } from "next/font/google";
 import Image from "next/image";
 import { portfolioProjects } from "@/data/portfolio";
+import { CalendlyButton } from "@/components/CalendlyPopup";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -227,6 +228,30 @@ export default function MvpStudioClient() {
         </div>
       </section>
 
+      <section className="bg-white px-[5%] pb-24">
+        <div className="mx-auto max-w-300 flex flex-col items-center justify-center gap-4 text-center">
+          <p className="text-[0.9rem] text-slate-600">
+            Ready to validate your SaaS idea? Book a free MVP feasibility call.
+          </p>
+          <CalendlyButton className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500 px-8 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_6px_24px_rgba(56,189,248,0.18),0_2px_10px_rgba(99,102,241,0.1)] transition hover:-translate-y-0.5 hover:opacity-90">
+            Free MVP Feasibility Call
+            <svg
+              className="w-4 h-4 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </CalendlyButton>
+        </div>
+      </section>
+
       <section className="bg-white px-[5%] py-24">
         <div className="mx-auto max-w-300">
           <div className="grid items-start grid-cols-1 gap-16 lg:grid-cols-2">
@@ -415,35 +440,6 @@ export default function MvpStudioClient() {
                       </span>
                       <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.7rem] text-slate-600">
                         Auth + payments
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex gap-6 transition-all duration-700 translate-y-6 opacity-0 reveal">
-                  <div className="-ml-12.25 flex h-12 w-12 items-center justify-center rounded-full border-2 border-blue-300 bg-white font-bold">
-                    4
-                  </div>
-                  <div className="step-body">
-                    <div className="mb-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-sky-500">
-                      End of Week 3
-                    </div>
-                    <div className="mb-2 text-lg font-bold">
-                      Launch and Handover
-                    </div>
-                    <p className="text-[0.88rem] leading-[1.7] text-slate-600">
-                      Production launch, full source ownership, and post-launch
-                      bug support included.
-                    </p>
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.7rem] text-slate-600">
-                        Production deploy
-                      </span>
-                      <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.7rem] text-slate-600">
-                        Code ownership
-                      </span>
-                      <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.7rem] text-slate-600">
-                        30-day bug cover
                       </span>
                     </div>
                   </div>
@@ -1219,12 +1215,9 @@ export default function MvpStudioClient() {
               what it costs, and whether we are the right fit.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 my-5">
-              <a
-                href="/contact"
-                className="inline-flex items-center rounded-lg border border-white/30 bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500 px-8 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_6px_24px_rgba(56,189,248,0.18),0_2px_10px_rgba(99,102,241,0.1)] transition hover:-translate-y-0.5 hover:opacity-90"
-              >
+              <CalendlyButton className="inline-flex items-center rounded-lg border border-white/30 bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500 px-8 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_6px_24px_rgba(56,189,248,0.18),0_2px_10px_rgba(99,102,241,0.1)] transition hover:-translate-y-0.5 hover:opacity-90">
                 Free MVP Feasibility Call
-              </a>
+              </CalendlyButton>
               <a
                 href="#pricing"
                 className="inline-flex items-center rounded-lg border border-blue-400/30 bg-white/80 px-8 py-3.5 text-[0.95rem] font-semibold text-slate-900 transition hover:-translate-y-0.5 hover:bg-white"

@@ -1,75 +1,54 @@
 "use client";
 
-import React, { useState } from "react";
-import dynamic from "next/dynamic";
-const InlineWidget = dynamic(() => import("react-calendly").then(mod => mod.InlineWidget), { ssr: false });
+import React from "react";
+import { CalendlyButton } from "@/components/CalendlyPopup";
 
 export default function ServicesCTASection() {
-  const [showCalendly, setShowCalendly] = useState(false);
-
   return (
     <>
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Light Gradient Background with Blobs */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-sky-50 to-sky-50">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-blue-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        <div className="absolute top-40 right-10 w-96 h-96 bg-sky-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-20 left-1/2 w-96 h-96 bg-sky-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
-      </div>
+      <section
+        className="relative px-4 py-24 m-[60px] overflow-hidden shadow-lg sm:px-6 lg:px-8"
+        style={{
+          borderRadius: "50px",
+          border: "10px solid #ffffff",
+          backgroundImage:
+            "linear-gradient(to right, rgb(15 23 42 / 7%), rgb(15 23 42 / 0%)), url(/images/ctabg.png)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="relative z-10 flex flex-col max-w-5xl gap-6 mx-auto text-left">
+          <h2 className="text-4xl font-bold text-gray-700 sm:text-5xl lg:text-6xl">
+            Ready to build your next product?
+          </h2>
+          <p className="mb-8 text-xl leading-relaxed text-gray-700">
+            We help startups design, build and launch real software — not just
+            ideas.
+          </p>
 
-      <div className="relative max-w-5xl mx-auto text-center z-10">
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-10">
-          Ready to Build Something Amazing?
-        </h2>
-        {/* <p className="text-xl text-gray-700 mb-10 max-w-2xl mx-auto leading-relaxed">
-          Let&apos;s collaborate and turn your vision into a powerful digital
-          reality. Our expert team is ready to help you succeed.
-        </p> */}
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button
-            type="button"
-            onClick={() => setShowCalendly(true)}
-            className="group px-8 py-4 bg-gradient-to-r from-sky-400 via-sky-500 to-sky-600 text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-3"
-          >
-            Book Free Consultation
-            <svg
-              className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </button>
-          {/* Calendly Modal */}
-          {showCalendly && (
-            <div
-              className="calendly-popup"
-              onClick={() => setShowCalendly(false)}
-            >
-              <div
-                className="calendly-stoppropagation"
-                onClick={(e) => e.stopPropagation()}
+          <div className="flex flex-col items-start justify-start gap-4 sm:flex-row">
+            <CalendlyButton className="flex items-center gap-3 px-8 py-4 text-lg font-bold text-white transition-all duration-300 rounded-full group bg-gradient-to-r from-sky-400 via-sky-500 to-sky-600 hover:shadow-2xl hover:scale-105">
+              Book Free Strategy Call
+              <svg
+                className="w-5 h-5 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                <InlineWidget
-                  url="https://calendly.com/turing-global2025/30min"
-                  styles={{ height: "700px", width: "100%" }}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
                 />
-              </div>
-            </div>
-          )}
+              </svg>
+            </CalendlyButton>
 
-          {/* <a
+            {/* <a
             href="https://wa.me/707007992"
             target="_blank"
             rel="noopener noreferrer"
-            className="group px-8 py-4 bg-white text-gray-900 border-2 border-gray-200 text-lg font-bold rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-3"
+            className="flex items-center gap-3 px-8 py-4 text-lg font-bold text-gray-900 transition-all duration-300 bg-white border-2 border-gray-200 rounded-full group hover:shadow-xl hover:scale-105"
           >
             <svg
               className="w-6 h-6 text-green-500"
@@ -80,10 +59,10 @@ export default function ServicesCTASection() {
             </svg>
             Chat on WhatsApp
           </a> */}
-        </div>
+          </div>
 
-        {/* Trust Indicators */}
-        {/* <div className="mt-12 flex flex-wrap justify-center gap-8 text-gray-900 text-sm">
+          {/* Trust Indicators */}
+          {/* <div className="flex flex-wrap justify-center gap-8 mt-12 text-sm text-gray-900">
           <div className="flex items-center gap-2">
             <svg
               className="w-5 h-5 text-green-500"
@@ -127,9 +106,9 @@ export default function ServicesCTASection() {
             <span>24/7 Support</span>
           </div>
         </div> */}
-      </div>
-    </section>
-  <style jsx global>{`
+        </div>
+      </section>
+      <style jsx global>{`
         @keyframes fade-in-up {
           from {
             opacity: 0;
@@ -142,30 +121,6 @@ export default function ServicesCTASection() {
         }
         .animate-fade-in-up {
           animation: fade-in-up 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        /* Calendly popup overlay */
-        .calendly-popup {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          background-color: rgba(0, 0, 0, 0.5);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 9999;
-          padding: 20px;
-        }
-
-        /* Calendly widget itself */
-        .calendly-popup .calendly-inline-widget {
-          width: 100%;
-          max-width: 900px;
-          height: 700px;
-          border-radius: 8px;
-          /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); */
-          min-width: 1000px;
         }
       `}</style>
     </>
