@@ -10,6 +10,7 @@ import WhatWeDoSection from "@/components/about/WhatWeDoSection";
 import WhyChooseUsSection from "@/components/about/WhyChooseUsSection";
 import TrendyTuringLabel from "@/components/TrendyTuringLabel";
 import CoreStrengthsSection from "@/components/whyus/CoreStrengthsSection";
+import OurApproachSection from "@/components/whyus/OurApproachSection";
 
 export const metadata: Metadata = {
   title: "About Throoout - Your Trusted Software Development Partner",
@@ -83,6 +84,9 @@ export default function AboutPage() {
 
           {/* Core Strengths */}
           <CoreStrengthsSection />
+
+           {/* Our Approach */}
+          <OurApproachSection />
 
           {/* What We Do */}
           {/* <WhatWeDoSection /> */}

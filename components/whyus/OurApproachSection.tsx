@@ -3,14 +3,14 @@ export default function OurApproachSection() {
     {
       step: '01',
       title: 'Client-Centric Focus',
-      description: 'Your success is our priority. We take time to understand your unique needs and goals.',
+      description: 'We take time to understand your unique needs and goals before writing a single line of code.',
       icon: '🎯',
       color: 'from-blue-500 to-cyan-500'
     },
     {
       step: '02',
       title: 'Agile Methodology',
-      description: 'Flexible and iterative development process that adapts to changing requirements.',
+      description: 'Flexible and iterative development that adapts smoothly to evolving requirements.',
       icon: '🔄',
       color: 'from-sky-500 to-pink-500'
     },
@@ -24,7 +24,7 @@ export default function OurApproachSection() {
     {
       step: '04',
       title: 'Continuous Support',
-      description: '24/7 maintenance and support to keep your applications running smoothly.',
+      description: '24/7 maintenance and support to keep your applications running at peak performance.',
       icon: '🛟',
       color: 'from-orange-500 to-red-500'
     },

@@ -19,16 +19,15 @@ export default function ServicesCTASection() {
       >
         <div className="relative z-10 flex flex-col max-w-5xl gap-6 mx-auto text-left">
           <h2 className="text-4xl font-bold text-gray-700 sm:text-5xl lg:text-6xl">
-            Ready to build your next product?
+            Ready to Build Something Amazing?
           </h2>
           <p className="mb-8 text-xl leading-relaxed text-gray-700">
-            We help startups design, build and launch real software — not just
-            ideas.
+           Building the future, one line of code at a time. We transform ideas into powerful digital solutions.
           </p>
 
           <div className="flex flex-col items-start justify-start gap-4 sm:flex-row">
             <CalendlyButton className="flex items-center gap-3 px-8 py-4 text-lg font-bold text-white transition-all duration-300 rounded-full group bg-gradient-to-r from-sky-400 via-sky-500 to-sky-600 hover:shadow-2xl hover:scale-105">
-              Book Free Strategy Call
+              Book Free Consultation 
               <svg
                 className="w-5 h-5 transition-transform group-hover:translate-x-1"
                 fill="none"
