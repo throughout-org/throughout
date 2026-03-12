@@ -7,14 +7,13 @@ export default function ServicesCTASection() {
   return (
     <>
       <section
-        className="relative px-4 py-24 m-[60px] overflow-hidden shadow-lg sm:px-6 lg:px-8"
+        className="relative px-4 py-24 overflow-hidden shadow-lg services-cta-wrapper sm:px-6 lg:px-8"
         style={{
           borderRadius: "50px",
           border: "10px solid #ffffff",
           backgroundImage:
             "linear-gradient(to right, rgb(15 23 42 / 7%), rgb(15 23 42 / 0%)), url(/images/ctabg.png)",
           backgroundSize: "cover",
-          backgroundPosition: "center",
         }}
       >
         <div className="relative z-10 flex flex-col max-w-5xl gap-6 mx-auto text-left">
@@ -22,12 +21,12 @@ export default function ServicesCTASection() {
             Ready to build your next product?
           </h2>
           <p className="mb-8 text-xl leading-relaxed text-gray-700">
-            We help startups design, build and launch real software — not just
+            We help startups design, build and launch real software not just
             ideas.
           </p>
 
           <div className="flex flex-col items-start justify-start gap-4 sm:flex-row">
-            <CalendlyButton className="flex items-center gap-3 px-8 py-4 text-lg font-bold text-white transition-all duration-300 rounded-full group bg-gradient-to-r from-sky-400 via-sky-500 to-sky-600 hover:shadow-2xl hover:scale-105">
+            <CalendlyButton className="flex items-center gap-3 px-8 py-4 text-lg font-bold text-white transition-all duration-300 rounded-full group bg-linear-to-r from-sky-400 via-sky-500 to-sky-600 hover:scale-105 hover:shadow-2xl">
               Book Free Strategy Call
               <svg
                 className="w-5 h-5 transition-transform group-hover:translate-x-1"
@@ -109,6 +108,18 @@ export default function ServicesCTASection() {
         </div>
       </section>
       <style jsx global>{`
+        .services-cta-wrapper {
+          background-position: center right;
+          margin: 0 10px 80px;
+        }
+
+        @media (min-width: 640px) {
+          .services-cta-wrapper {
+            background-position: center;
+            margin: 60px;
+          }
+        }
+
         @keyframes fade-in-up {
           from {
             opacity: 0;

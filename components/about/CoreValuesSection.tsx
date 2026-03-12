@@ -7,23 +7,23 @@ export default function CoreValuesSection() {
   ];
 
   return (
-    <div className="mb-12">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-3">
-          Our <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Core Values</span>
+    <div className="px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mb-8 text-center">
+        <h2 className="mb-3 text-3xl font-bold text-gray-900">
+          Our <span className="text-transparent bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text">Core Values</span>
         </h2>
         <p className="text-gray-600">Principles that guide everything we do</p>
       </div>
-      <div className="grid md:grid-cols-4 gap-4">
+      <div className="grid gap-4 md:grid-cols-4">
         {values.map((value, index) => (
           <div
             key={index}
-            className="group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105"
+            className="relative p-6 transition-all duration-300 bg-white border border-gray-100 shadow-md group rounded-2xl hover:shadow-xl hover:scale-105"
           >
             <div className={`w-12 h-12 bg-gradient-to-br from-blue-200 to-cyan-50 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
               {value.icon}
             </div>
-            <h3 className="font-bold text-gray-900 mb-2">{value.title}</h3>
+            <h3 className="mb-2 font-bold text-gray-900">{value.title}</h3>
             <p className="text-sm text-gray-600">{value.description}</p>
           </div>
         ))}

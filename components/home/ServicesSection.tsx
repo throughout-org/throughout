@@ -1,56 +1,98 @@
 'use client';
 import Link from 'next/link';
-import { services } from '@/data/services';
+
+const coreServices = [
+  {
+    id: '01',
+    title: 'MVP Studio',
+    description:
+      'Launch your product fast. We design, build, and ship production-ready MVPs for startups and new ventures.',
+    href: '/mvp-studio',
+    icon: '🚀',
+  },
+  {
+    id: '02',
+    title: 'Product Engineering',
+    description:
+      'Web, mobile, and cloud applications built with scalable architecture and modern frameworks.',
+    href: '/services/software-development',
+    icon: '⚙️',
+  },
+  {
+    id: '03',
+    title: 'AI & Automation',
+    description:
+      'Integrate LLMs, intelligent workflows, and data automation to streamline operations and unlock new capabilities.',
+    href: '/services/ai-automation',
+    icon: '🤖',
+  },
+];
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="services" className="bg-white px-4 py-24 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="block bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent pb-4 font-bold">
-              Our Services
+        <div className="mb-14 text-center">
+          <h2 className="mb-6 text-4xl font-bold sm:text-5xl lg:text-6xl">
+            <span className="block bg-linear-to-r from-sky-500 via-blue-500 to-cyan-500 bg-clip-text pb-2 text-transparent">
+              Our Core Services
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From web applications to AI solutions, we cover the full spectrum of modern software development
+          <p className="mx-auto max-w-3xl text-lg text-gray-600 sm:text-xl">
+            We focus on three core capabilities that help companies design,
+            build, and launch modern digital products.
           </p>
         </div>
+
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service) => (
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {coreServices.map((service) => (
             <Link
               key={service.id}
-              href={`/services/${service.slug}`}
+              href={service.href}
               className="group relative"
             >
-              {/* Compact Card */}
-              <div className="relative h-full bg-gradient-to-br from-sky-100 to-sky-100 rounded-2xl p-6 border border-sky-200 hover:border-sky shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
-                {/* Gradient Accent Border */}
-                <div className={`absolute inset-0 bg-gradient-to-br via-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-                <div className="absolute inset-[1px] bg-white rounded-2xl"></div>
-                {/* Hover Arrow Overlay */}
-                <div className={`absolute pt-1 top-4 right-4 w-10 h-10 bg-gradient-to-br via-blue-400 rounded-full shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300`}>
-                  <span className="text-white text-xl pb-2 font-bold">→</span>
+              <div className="relative h-full overflow-hidden rounded-2xl border border-sky-100 bg-linear-to-br from-white to-sky-50/40 p-6 shadow-md transition-all duration-300 group-hover:-translate-y-1.5 group-hover:border-sky-300 group-hover:shadow-xl">
+                <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-sky-500 via-blue-500 to-cyan-500 opacity-70" />
+
+                <div className="mb-5 flex items-center justify-between">
+                  <span className="text-sm font-semibold tracking-[0.18em] text-sky-500">
+                    {service.id}
+                  </span>
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                    {service.icon}
+                  </span>
                 </div>
+
                 <div className="relative">
-                  {/* Icon */}
-                  <div className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br via-blue-200 rounded-xl mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
-                    <span className="text-2xl">{service.icon}</span>
-                  </div>
-                  {/* Title */}
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-blue-200 transition-all duration-300">
+                  <h3 className="mb-3 text-xl font-bold text-slate-900 transition-colors duration-300 group-hover:text-sky-700">
                     {service.title}
                   </h3>
-                  {/* Description */}
-                  <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-2">
-                    {service.hero.subheadline.substring(0, 80)}...
+                  <p className="text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+                    {service.description}
                   </p>
+                  <span className="mt-5 inline-flex items-center text-sm font-semibold text-sky-600 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                    Learn more
+                    <span className="ml-2">→</span>
+                  </span>
                 </div>
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* Explore Button */}
+        <div className="mt-12 flex justify-center">
+          <Link
+            href="/services"
+            className="group inline-flex items-center rounded-full border border-sky-200 bg-white px-7 py-3.5 text-sm font-semibold tracking-wide text-sky-700 shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-400 hover:bg-sky-50 hover:shadow-lg"
+          >
+            Explore All Services
+            <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
+          </Link>
         </div>
       </div>
     </section>
