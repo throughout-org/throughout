@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { FiTrendingUp, FiSettings, FiCpu } from 'react-icons/fi';
 
 const coreServices = [
   {
@@ -8,7 +9,7 @@ const coreServices = [
     description:
       'Launch your product fast. We design, build, and ship production-ready MVPs for startups and new ventures.',
     href: '/mvp-studio',
-    icon: '🚀',
+    icon: <FiTrendingUp />,
   },
   {
     id: '02',
@@ -16,7 +17,7 @@ const coreServices = [
     description:
       'Web, mobile, and cloud applications built with scalable architecture and modern frameworks.',
     href: '/services/software-development',
-    icon: '⚙️',
+    icon: <FiSettings />,
   },
   {
     id: '03',
@@ -24,7 +25,7 @@ const coreServices = [
     description:
       'Integrate LLMs, intelligent workflows, and data automation to streamline operations and unlock new capabilities.',
     href: '/services/ai-automation',
-    icon: '🤖',
+    icon: <FiCpu />,
   },
 ];
 

@@ -1,4 +1,5 @@
 'use client';
+import { FiStar } from "react-icons/fi";
 
 interface ScalableBannerProps {
   headline: string;
@@ -29,7 +30,7 @@ export default function ScalableBanner({ headline, description }: ScalableBanner
             {/* Badge */}
             {/* <div className="inline-block mb-4">
               <span className="px-5 py-2 bg-gradient-to-r from-blue-500 via-sky-500 to-sky-500 text-white text-sm font-bold rounded-full shadow-lg animate-pulse-subtle">
-                ✨ Enterprise Ready
+                <FiStar className="inline-block w-4 h-4 mr-1" /> Enterprise Ready
               </span>
             </div> */}
             

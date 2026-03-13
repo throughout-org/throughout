@@ -6,53 +6,53 @@ import { services } from '@/data/services';
 
 export default function ServicesGridSection() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+    <section className="px-4 py-24 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        {/* <div className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-gray-900 sm:text-5xl">
             Our Expertise
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto text-lg text-gray-600">
             Choose from our comprehensive suite of services designed to elevate your business
           </p>
-        </div>
+        </div> */}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <Link
               key={service.id}
               href={`/services/${service.slug}`}
-              className="group relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+              className="relative overflow-hidden transition-all duration-500 bg-white shadow-xl group rounded-3xl hover:shadow-2xl hover:-translate-y-2"
             >
               {/* Gradient Background on Hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-0`}></div>
               
               {/* Card Content */}
-              <div className="relative p-8 flex flex-col h-full z-10">
+              <div className="relative z-10 flex flex-col h-full p-8">
                 {/* Icon with Gradient Background */}
                 <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
                   <span className="text-3xl filter drop-shadow-sm">{service.icon}</span>
                 </div>
 
                 {/* Badge */}
-                <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute transition-opacity duration-300 opacity-0 top-6 right-6 group-hover:opacity-100">
                   <div className={`px-3 py-1 bg-gradient-to-r ${service.gradient} text-white text-xs font-semibold rounded-full shadow-lg`}>
                     Recommended
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-sky-600 transition-all duration-300">
+                <h3 className="mb-3 text-2xl font-bold text-gray-900 transition-all duration-300 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-sky-600">
                   {service.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-600 mb-6 line-clamp-2">
+                <p className="mb-6 text-gray-600 line-clamp-2">
                   {service.hero.subheadline}
                 </p>
 
                 {/* Features List */}
-                <div className="space-y-2 mb-6">
+                <div className="mb-6 space-y-2">
                   {service.solutionCards.slice(0, 3).map((solution, idx) => (
                     <div key={idx} className="flex items-center text-sm text-gray-600">
                       <svg className={`w-4 h-4 mr-2 text-green-500`} fill="currentColor" viewBox="0 0 20 20">
@@ -64,7 +64,7 @@ export default function ServicesGridSection() {
                 </div>
 
                 {/* CTA Button - Pushed to bottom */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                <div className="flex items-center justify-between pt-4 mt-auto border-t border-gray-100">
                   <span className={`text-sm font-semibold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
                     Explore Service
                   </span>

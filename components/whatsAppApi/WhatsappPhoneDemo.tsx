@@ -93,15 +93,15 @@ export default function WhatsappPhoneDemo() {
       if (!chat) return;
       chat.innerHTML = ""; islandReset();
       setTimeout(() => typeUserMessage("Hi, do you have hoodies?", () => { typingBubble(); }), 800);
-      setTimeout(() => { stopTyping(); islandExpand("Browsing catalog"); msg("Yes! Here are some popular hoodies 👇"); productCarousel(); islandReset(); }, 2600);
+      setTimeout(() => { stopTyping(); islandExpand("Browsing catalog"); msg("Yes! Here are some popular hoodies:"); productCarousel(); islandReset(); }, 2600);
       setTimeout(() => typeUserMessage("I like the first one", () => { typingBubble(); }), 4200);
       setTimeout(() => { stopTyping(); msg("Great choice! Please select your size:"); variantButtons(); }, 6200);
       setTimeout(() => typeUserMessage("Size M", () => { typingBubble(); }), 8200);
-      setTimeout(() => { stopTyping(); msg("Perfect 👍 Price is LKR 6,500. Cash on Delivery available. Please share delivery address."); }, 10200);
+      setTimeout(() => { stopTyping(); msg("Perfect. Price is LKR 6,500. Cash on Delivery available. Please share delivery address."); }, 10200);
       setTimeout(() => typeUserMessage("No 12, Galle Road, Colombo", () => { typingBubble(); }), 12200);
-      setTimeout(() => { stopTyping(); islandExpand("Order confirmed"); msg("✅ Order Confirmed!\nHoodie (Size M)\nDelivery: Colombo\nPayment: COD\n\nThank you for shopping with us!"); islandReset(); }, 14600);
+      setTimeout(() => { stopTyping(); islandExpand("Order confirmed"); msg("Order Confirmed!\nHoodie (Size M)\nDelivery: Colombo\nPayment: COD\n\nThank you for shopping with us!"); islandReset(); }, 14600);
       setTimeout(() => { typingBubble(); }, 17500);
-      setTimeout(() => { stopTyping(); islandExpand("Follow-up"); msg("Hi 👋 Just checking — your hoodie is still available. Would you like to place another order?"); islandReset(); }, 19500);
+      setTimeout(() => { stopTyping(); islandExpand("Follow-up"); msg("Hi! Just checking — your hoodie is still available. Would you like to place another order?"); islandReset(); }, 19500);
       setTimeout(startDemo, 23000);
     }
     startDemo();

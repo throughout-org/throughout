@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FiStar } from "react-icons/fi";
 
 export default function HeroSection() {
   return (
@@ -20,7 +21,7 @@ export default function HeroSection() {
               transition: 'all 0.25s cubic-bezier(.4,2,.6,1)',
             }}
           >
-            ✨ Innovative Software Solutions
+            <FiStar className="inline-block w-4 h-4 mr-1 text-yellow-400" /> Innovative Software Solutions
           </span> */}
           <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full shadow-lg bg-white/80 backdrop-blur-sm animate-fade-in">
             <span className="relative flex w-2 h-2">

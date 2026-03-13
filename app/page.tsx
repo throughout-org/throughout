@@ -106,7 +106,13 @@ export default function Home() {
       {/* Technology Stack Showcase */}
       <TechStackSection />
       {/* Footer */}
-      <ServicesCTASection />
+      <ServicesCTASection
+        headline={"Ready to Build Something Amazing?"}
+        subtext={
+          "Building the future, one line of code at a time. We transform ideas into powerful digital solutions."
+        }
+        buttonText={"Book Free Strategy Call"}
+      />
       {/* <TrendyTuringLabel /> */}
     </div>
   );

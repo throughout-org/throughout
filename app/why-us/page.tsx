@@ -84,7 +84,11 @@ export default function WhyUsPage() {
         </div>
       </section>
 
-      <ServicesCTASection />
+      <ServicesCTASection
+        headline="Ready to Partner with Throoout?"
+        subtext="Let's discuss how our expertise can accelerate your digital transformation journey."
+        buttonText="Schedule a Consultation"
+      />
   {/* <TrendyTuringLabel /> */}
     </main>
   );

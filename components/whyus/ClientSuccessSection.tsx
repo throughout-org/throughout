@@ -1,9 +1,11 @@
+import { FiTarget, FiStar, FiDollarSign, FiZap } from 'react-icons/fi';
+
 export default function ClientSuccessSection() {
   const stats = [
-    { value: '50+', label: 'Projects Completed', icon: '🎯' },
-    { value: '99%', label: 'Client Satisfaction', icon: '⭐' },
-    { value: '45%', label: 'Cost Reduction', icon: '💰' },
-    { value: '3x', label: 'Faster Delivery', icon: '⚡' },
+    { value: '50+', label: 'Projects Completed', icon: <FiTarget /> },
+    { value: '99%', label: 'Client Satisfaction', icon: <FiStar /> },
+    { value: '45%', label: 'Cost Reduction', icon: <FiDollarSign /> },
+    { value: '3x', label: 'Faster Delivery', icon: <FiZap /> },
   ];
 
   const testimonials = [

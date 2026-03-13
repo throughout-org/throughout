@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
+import { FiBriefcase, FiNavigation, FiShoppingCart, FiBook, FiShield, FiClipboard, FiActivity } from 'react-icons/fi';
 
 // Auto-scrollable industries for mobile
 type Industry = {
@@ -116,7 +117,7 @@ export default function IndustriesSection() {
       id: 0,
       name: 'PropTech',
       title: 'Property',
-      icon: '🏢',
+      icon: <FiBriefcase />,
       description: 'Streamline property management with automated workflows. We build platforms that integrate tenant portals, automate lease documentation, and use AI to predict maintenance needs, unlocking the full potential of your real estate portfolio.',
       color: 'from-blue-500 to-cyan-500'
     },
@@ -124,7 +125,7 @@ export default function IndustriesSection() {
       id: 1,
       name: 'Travel',
       title: 'Travel & Hospitality',
-      icon: '✈️',
+      icon: <FiNavigation />,
       description: 'Create seamless booking experiences. We engineer high-concurrency booking engines and dynamic pricing algorithms that handle seasonal traffic spikes, ensuring your guests have a flawless experience from search to check-out.',
       color: 'from-sky-500 to-pink-500'
     },
@@ -132,7 +133,7 @@ export default function IndustriesSection() {
       id: 2,
       name: 'E-Commerce',
       title: 'E-Commerce',
-      icon: '🛒',
+      icon: <FiShoppingCart />,
       description: 'Scale beyond standard templates. We specialize in Headless Commerce (Next.js + Shopify/Laravel) to deliver sub-second page loads, custom payment gateway integrations, and personalized shopping experiences that drive higher conversion rates.',
       color: 'from-green-500 to-emerald-500'
     },
@@ -140,7 +141,7 @@ export default function IndustriesSection() {
       id: 3,
       name: 'EdTech',
       title: 'Education',
-      icon: '📚',
+      icon: <FiBook />,
       description: 'Digitalize the classroom securely. We build interactive Learning Management Systems (LMS) and student portals that support real-time video streaming, gamified learning, and secure data storage for institutions.',
       color: 'from-orange-500 to-red-500'
     },
@@ -148,7 +149,7 @@ export default function IndustriesSection() {
       id: 4,
       name: 'Legal',
       title: 'Legal Services',
-      icon: '⚖️',
+      icon: <FiShield />,
       description: 'Automate the fine print. Our secure solutions help law firms manage case files, automate document drafting using AI, and ensure client confidentiality with bank-grade encryption and access controls.',
       color: 'from-indigo-500 to-blue-500'
     },
@@ -156,7 +157,7 @@ export default function IndustriesSection() {
       id: 5,
       name: 'Compliance',
       title: 'Regulatory Compliance',
-      icon: '📋',
+      icon: <FiClipboard />,
       description: 'Tech that follows the rules. We build auditing tools and compliance dashboards that automatically track regulatory changes, ensuring your business meets industry standards without the manual headache.',
       color: 'from-teal-500 to-cyan-500'
     },
@@ -164,7 +165,7 @@ export default function IndustriesSection() {
       id: 6,
       name: 'HealthTech',
       title: 'Healthcare',
-      icon: '🏥',
+      icon: <FiActivity />,
       description: 'Patient care meets digital efficiency. We develop HIPAA-compliant telemedicine platforms and patient management systems that prioritize data privacy, interoperability, and real-time health monitoring.',
       color: 'from-rose-500 to-pink-500'
     }

@@ -115,10 +115,22 @@ export default function InternshipsPage() {
           </div>
 
           <div className="relative mx-auto text-center max-w-7xl">
-            <div className="inline-block mb-6">
+            {/* <div className="inline-block mb-6">
               <span className="inline-block px-4 py-2 text-sm font-semibold text-white rounded-full shadow-lg bg-linear-to-r from-blue-600 to-blue-400">
                 Internships
               </span>
+            </div> */}
+            {/* Badge */}
+            <div className="mb-8 text-center">
+              <div className="inline-flex items-center gap-2 px-4 py-2 mb-2 rounded-full shadow-lg bg-white/80 backdrop-blur-sm animate-fade-in">
+                <span className="relative flex w-2 h-2">
+                  <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-gradient-to-r from-blue-500 to-sky-500"></span>
+                  <span className="relative inline-flex w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-sky-500"></span>
+                </span>
+                <span className="text-sm font-semibold text-transparent bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text">
+                  Internships
+                </span>
+              </div>
             </div>
             <h1 className="mb-6 text-5xl font-bold sm:text-6xl lg:text-7xl">
               <span className="block text-gray-900">Join Our Team</span>

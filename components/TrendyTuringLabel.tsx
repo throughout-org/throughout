@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { FiActivity } from "react-icons/fi";
 
 export default function TrendyTuringLabel() {
   return (
@@ -62,7 +63,7 @@ export default function TrendyTuringLabel() {
             className="flex items-center rounded-4xl gap-2 px-4 py-1.5 bg-gradient-to-r from-sky-100 via-blue-200 to-blue-300 text-blue-900 font-extrabold rounded-2xl shadow-xl border border-blue-100 scale-105 hover:scale-110 hover:shadow-2xl hover:bg-blue-50/80 transition-all duration-300 text-base backdrop-blur-lg ring-1 ring-white/40 w-full max-w-xs lg:w-auto lg:max-w-none"
             style={{ backdropFilter: "blur(12px) saturate(1.3)" }}
           >
-            <span className="inline-block text-xl">🔬</span>
+            <span className="inline-block text-xl"><FiActivity className="w-5 h-5" /></span>
             <span className="whitespace-nowrap">Reserch & Development</span>
           </a>
         </div>

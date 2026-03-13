@@ -1,6 +1,7 @@
 "use client";
 
 import { ServiceCard } from '@/data/services';
+import { FiTrendingUp, FiZap, FiAward, FiTarget, FiActivity, FiStar, FiSun, FiCpu } from 'react-icons/fi';
 
 interface WhatWeOfferSectionProps {
   headline: string;
@@ -9,7 +10,7 @@ interface WhatWeOfferSectionProps {
 }
 
 export default function WhatWeOfferSection({ headline, intro, cards }: WhatWeOfferSectionProps) {
-  const cardIcons = ['🚀', '⚡', '💎', '🎯', '🔥', '✨', '🌟', '💡'];
+  const cardIcons = [<FiTrendingUp key="1" />, <FiZap key="2" />, <FiAward key="3" />, <FiTarget key="4" />, <FiActivity key="5" />, <FiStar key="6" />, <FiSun key="7" />, <FiCpu key="8" />];
   const gradientColors = [
     'from-blue-500/10 to-cyan-500/10',
     'from-sky-500/10 to-pink-500/10',

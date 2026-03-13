@@ -1,25 +1,27 @@
+import { FiZap, FiLayers, FiMessageSquare, FiTrendingUp } from 'react-icons/fi';
+
 export default function CoreStrengthsSection() {
   const strengths = [
     {
-      icon: '⚡',
+      icon: <FiZap />,
       title: 'Fast Delivery',
       description: 'Quick turnaround times without compromising on quality or attention to detail.',
       color: 'from-yellow-500 to-orange-500'
     },
     {
-      icon: '🏗️',
+      icon: <FiLayers />,
       title: 'Clean Architecture',
       description: 'Maintainable and scalable code structure following industry best practices.',
       color: 'from-blue-500 to-cyan-500'
     },
     {
-      icon: '💬',
+      icon: <FiMessageSquare />,
       title: 'Clear Communication',
       description: 'Regular updates and a transparent process keeping you informed at every step.',
       color: 'from-sky-500 to-pink-500'
     },
     {
-      icon: '🚀',
+      icon: <FiTrendingUp />,
       title: 'Modern Tech Stack',
       description: 'Latest tools, frameworks, and best practices for cutting-edge solutions.',
       color: 'from-green-500 to-emerald-500'

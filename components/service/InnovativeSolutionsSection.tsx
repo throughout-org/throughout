@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ServiceCard } from '@/data/services';
+import { FiBriefcase } from 'react-icons/fi';
 
 interface InnovativeSolutionsSectionProps {
   cards: ServiceCard[];
@@ -175,7 +176,7 @@ export default function InnovativeSolutionsSection({ cards }: InnovativeSolution
                   <div className="mb-6 relative">
                     <div className="absolute inset-0 bg-white rounded-3xl blur-2xl opacity-50 animate-pulse"></div>
                     <div className="relative text-6xl md:text-8xl text-gray-800 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                      💼
+                      <FiBriefcase className="w-[1em] h-[1em]" />
                     </div>
                   </div>
                   

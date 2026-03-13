@@ -1,6 +1,7 @@
 "use client";
 
 import { EngineeringFeature } from '@/data/services';
+import { FiStar, FiTrendingUp, FiLock, FiZap, FiAward, FiTarget } from 'react-icons/fi';
 
 interface EngineeringDNASectionProps {
   headline: string;
@@ -9,7 +10,7 @@ interface EngineeringDNASectionProps {
 }
 
 export default function EngineeringDNASection({ headline, intro, features }: EngineeringDNASectionProps) {
-  const icons = ['✨', '🚀', '🔐', '⚡', '💎', '🎯'];
+  const icons = [<FiStar key="1" />, <FiTrendingUp key="2" />, <FiLock key="3" />, <FiZap key="4" />, <FiAward key="5" />, <FiTarget key="6" />];
   
   return (
     <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-blue-50/20 to-sky-50/20 overflow-hidden">

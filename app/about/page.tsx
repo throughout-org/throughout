@@ -96,7 +96,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <ServicesCTASection />
+      <ServicesCTASection
+        headline="Ready to Accelerate Your Digital Growth?"
+        subtext="Let's build innovative software solutions that transform your business operations and delight your customers."
+        buttonText="Get in Touch Today"
+      />
       {/* <TrendyTuringLabel /> */}
     </div>
   );

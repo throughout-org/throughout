@@ -5,6 +5,9 @@ import { DM_Sans, Syne } from "next/font/google";
 import Image from "next/image";
 import { portfolioProjects } from "@/data/portfolio";
 import { CalendlyButton } from "@/components/CalendlyPopup";
+import { PrimaryButton, SecondaryButton } from "@/components/ui/Button";
+import { SiNextdotjs, SiTypescript, SiPostgresql, SiTrpc, SiStripe, SiVercel, SiOpenai } from "react-icons/si";
+import { FiShield } from "react-icons/fi";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -68,7 +71,7 @@ export default function MvpStudioClient() {
 
   return (
     <main
-      className={`${syne.variable} ${dmSans.variable} relative overflow-x-hidden bg-linear-to-br from-blue-50 via-blue-50 to-sky-50 font-(--font-dm-sans) text-slate-900`}
+      className={`${syne.variable} ${dmSans.variable} relative overflow-x-hidden bg-gradient-to-br from-blue-50 via-blue-50 to-sky-50 font-(--font-dm-sans) text-slate-900`}
     >
       <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-[5%] pb-20 pt-36 text-center">
         <div className="absolute inset-0 pointer-events-none">
@@ -76,15 +79,28 @@ export default function MvpStudioClient() {
           <div className="animate-blob animation-delay-2000 absolute -left-[5%] bottom-0 h-[50vh] w-[40vw] rounded-full bg-sky-300/20 blur-3xl" />
         </div>
 
-        <div className="relative z-10 mb-8 inline-flex items-center gap-2 rounded-full border border-blue-500/25 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-700">
+        {/* <div className="relative z-10 mb-8 inline-flex items-center gap-2 rounded-full border border-blue-500/25 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-700">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-sky-500" />
           AI-First MVP Studio · Sri Lanka
+        </div> */}
+
+        {/* Badge */}
+        <div className="mb-8 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-2 rounded-full shadow-lg bg-white/80 backdrop-blur-sm animate-fade-in">
+            <span className="relative flex w-2 h-2">
+              <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-gradient-to-r from-blue-500 to-sky-500"></span>
+              <span className="relative inline-flex w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-sky-500"></span>
+            </span>
+            <span className="text-sm font-semibold text-transparent bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text">
+              AI-First MVP Studio · Sri Lanka
+            </span>
+          </div>
         </div>
 
         <h1 className="relative z-10 max-w-225  text-[clamp(3rem,7.5vw,5.4rem)] font-extrabold leading-none tracking-[-0.04em]">
           Your SaaS MVP.
           <br />
-          <em className="not-italic text-transparent bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text">
+          <em className="not-italic text-transparent bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-500 bg-clip-text">
             3 Weeks.
           </em>
           <span className="block text-slate-500">
@@ -104,45 +120,35 @@ export default function MvpStudioClient() {
         </p>
 
         <div className="relative z-10 flex flex-wrap items-center justify-center gap-4 my-5">
-          <a
-            href="#pricing"
-            className="inline-flex items-center rounded-lg border border-white/30 bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500 px-8 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_6px_24px_rgba(56,189,248,0.18),0_2px_10px_rgba(99,102,241,0.1)] transition hover:-translate-y-0.5 hover:opacity-90"
-          >
-            See Packages
-          </a>
-          <a
-            href="#process"
-            className="inline-flex items-center rounded-lg border border-blue-400/30 bg-white/80 px-8 py-3.5 text-[0.95rem] font-semibold text-slate-900 transition hover:-translate-y-0.5 hover:bg-white"
-          >
-            How It Works
-          </a>
+          <PrimaryButton href="#pricing">See Packages</PrimaryButton>
+          <SecondaryButton href="#process">How It Works</SecondaryButton>
         </div>
 
         <div className="relative z-10 flex flex-wrap justify-center gap-10 mt-16">
           <div className="proof-stat">
             <div className=" text-3xl font-extrabold tracking-[-0.03em]">
-              3<span className="text-blue-500">wk</span>
+              3<span className="text-blue-600">wk</span>
             </div>
             <div className="text-xs text-slate-600">Average MVP launch</div>
           </div>
           <div className="hidden w-px bg-blue-300/50 sm:block" />
           <div className="proof-stat">
             <div className=" text-3xl font-extrabold tracking-[-0.03em]">
-              80<span className="text-blue-500">%</span>
+              80<span className="text-blue-600">%</span>
             </div>
             <div className="text-xs text-slate-600">Less than US/EU rates</div>
           </div>
           <div className="hidden w-px bg-blue-300/50 sm:block" />
           <div className="proof-stat">
             <div className=" text-3xl font-extrabold tracking-[-0.03em]">
-              0<span className="text-blue-500">h</span>
+              0<span className="text-blue-600">h</span>
             </div>
             <div className="text-xs text-slate-600">Hourly billing. Ever.</div>
           </div>
           <div className="hidden w-px bg-blue-300/50 sm:block" />
           <div className="proof-stat">
             <div className=" text-3xl font-extrabold tracking-[-0.03em]">
-              1<span className="text-blue-500"> team</span>
+              1<span className="text-blue-600"> team</span>
             </div>
             <div className="text-xs text-slate-600">Direct founder access</div>
           </div>
@@ -172,7 +178,7 @@ export default function MvpStudioClient() {
       <section className="bg-white px-[5%] py-24">
         <div className="mx-auto max-w-300">
           <div className="mb-10 text-center transition-all duration-700 translate-y-6 opacity-0 reveal">
-            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-sky-500">
+            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
               MVPs We&apos;ve Shipped
             </p>
             <h2 className="text-[clamp(1.9rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-0.03em]">
@@ -229,11 +235,11 @@ export default function MvpStudioClient() {
       </section>
 
       <section className="bg-white px-[5%] pb-24">
-        <div className="mx-auto max-w-300 flex flex-col items-center justify-center gap-4 text-center">
+        <div className="flex flex-col items-center justify-center gap-4 mx-auto text-center max-w-300">
           <p className="text-[0.9rem] text-slate-600">
             Ready to validate your SaaS idea? Book a free MVP feasibility call.
           </p>
-          <CalendlyButton className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500 px-8 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_6px_24px_rgba(56,189,248,0.18),0_2px_10px_rgba(99,102,241,0.1)] transition hover:-translate-y-0.5 hover:opacity-90">
+          <CalendlyButton className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-500 px-8 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_6px_24px_rgba(56,189,248,0.18),0_2px_10px_rgba(99,102,241,0.1)] transition hover:-translate-y-0.5 hover:opacity-90">
             Free MVP Feasibility Call
             <svg
               className="w-4 h-4 transition-transform group-hover:translate-x-1"
@@ -256,13 +262,13 @@ export default function MvpStudioClient() {
         <div className="mx-auto max-w-300">
           <div className="grid items-start grid-cols-1 gap-16 lg:grid-cols-2">
             <div className="transition-all duration-700 translate-y-6 opacity-0 reveal">
-              <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-sky-500">
+              <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
                 Why Throoout
               </p>
               <h2 className="mb-5  text-[clamp(1.9rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-0.03em]">
                 Most agencies build everything you ask for.
                 <br />
-                <em className="not-italic text-blue-500">
+                <em className="not-italic text-blue-600">
                   We build what gets your first users.
                 </em>
               </h2>
@@ -308,7 +314,7 @@ export default function MvpStudioClient() {
                 </div>
               </div>
               <div className="flex gap-4 p-6 transition border rounded-xl border-blue-200/70 bg-sky-50 hover:translate-x-1 hover:border-blue-500/35">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[10px] bg-indigo-400/20 text-[0.72rem] font-bold">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[10px] bg-cyan-400/20 text-[0.72rem] font-bold">
                   Direct
                 </div>
                 <div>
@@ -346,13 +352,13 @@ export default function MvpStudioClient() {
             <div>
               <div className="mb-8 transition-all duration-700 translate-y-6 opacity-0 reveal">
                 <div>
-                  <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-sky-500">
+                  <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
                     How It Works
                   </p>
                   <h2 className=" text-[clamp(1.9rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-0.03em]">
                     Three weeks.
                     <br />
-                    <em className="not-italic text-blue-500">End to end.</em>
+                    <em className="not-italic text-blue-600">End to end.</em>
                   </h2>
                 </div>
               </div>
@@ -363,7 +369,7 @@ export default function MvpStudioClient() {
                     1
                   </div>
                   <div className="step-body">
-                    <div className="mb-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-sky-500">
+                    <div className="mb-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-blue-600">
                       Before Week 1
                     </div>
                     <div className="mb-2 text-lg font-bold">
@@ -392,7 +398,7 @@ export default function MvpStudioClient() {
                     2
                   </div>
                   <div className="step-body">
-                    <div className="mb-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-sky-500">
+                    <div className="mb-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-blue-600">
                       Week 1
                     </div>
                     <div className="mb-2 text-lg font-bold">
@@ -421,7 +427,7 @@ export default function MvpStudioClient() {
                     3
                   </div>
                   <div className="step-body">
-                    <div className="mb-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-sky-500">
+                    <div className="mb-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-blue-600">
                       Weeks 2 and 3
                     </div>
                     <div className="mb-2 text-lg font-bold">
@@ -478,8 +484,8 @@ export default function MvpStudioClient() {
                       <div>• Integrations + QA pass</div>
                     </div>
                   </div>
-                  <div className="overflow-hidden border rounded-lg border-indigo-300/60 bg-indigo-500/10">
-                    <div className="flex justify-between px-4 py-2 text-[0.72rem] font-semibold text-indigo-600">
+                  <div className="overflow-hidden border rounded-lg border-cyan-300/60 bg-cyan-500/10">
+                    <div className="flex justify-between px-4 py-2 text-[0.72rem] font-semibold text-blue-600">
                       <span>Week 3 - Launch</span>
                       <span>7 days</span>
                     </div>
@@ -490,7 +496,7 @@ export default function MvpStudioClient() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-4 rounded-lg border border-sky-300/60 bg-sky-400/10 p-3 text-center text-[0.78rem] text-slate-800">
+                <div className="mt-4 rounded-lg border border-sky-300/60 bg-sky-400/10 p-3 text-center text-[0.78rem] text-blue-600">
                   Our average MVP goes live around day 21 with a shippable core
                   before final handoff.
                 </div>
@@ -503,7 +509,7 @@ export default function MvpStudioClient() {
       <section id="pricing" className="bg-white px-[5%] py-24">
         <div className="mx-auto max-w-300">
           <div className="mb-8 text-center transition-all duration-700 translate-y-6 opacity-0 reveal">
-            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-sky-500">
+            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
               Transparent Pricing
             </p>
             <h2 className=" text-[clamp(1.9rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-0.03em]">
@@ -578,8 +584,8 @@ export default function MvpStudioClient() {
               </a>
             </div>
 
-            <div className="relative transition-all duration-700 translate-y-6 border border-blue-500 shadow-xl opacity-0 reveal rounded-2xl bg-linear-to-br from-sky-100 via-blue-50 to-indigo-50 p-7 shadow-blue-200/60 hover:-translate-y-1">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500 px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
+            <div className="relative transition-all duration-700 translate-y-6 border border-blue-500 shadow-xl opacity-0 reveal rounded-2xl bg-gradient-to-br from-sky-100 via-blue-50 to-cyan-50 p-7 shadow-blue-200/60 hover:-translate-y-1">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-500 px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
                 Most Popular
               </div>
               <p className="pt-2 mb-2 text-xs font-semibold tracking-widest text-blue-700 uppercase">
@@ -601,7 +607,7 @@ export default function MvpStudioClient() {
                 real users, real data launched in 21 days. This is our flagship
                 sprint.
               </p>
-              <ul className="mt-5 flex flex-1 flex-col gap-2 text-[0.85rem] text-slate-800">
+              <ul className="mt-5 flex flex-1 flex-col gap-2 text-[0.85rem] text-blue-600">
                 <li className="flex items-start gap-2">
                   <span className="mt-0.5 text-blue-600">✓</span>
                   <span>Everything in Landing Page</span>
@@ -645,7 +651,7 @@ export default function MvpStudioClient() {
               </ul>
               <a
                 href="/contact"
-                className="flex items-center justify-center px-4 py-3 mt-6 font-semibold text-white transition border rounded-lg shadow-lg border-white/30 bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500 hover:opacity-90"
+                className="flex items-center justify-center px-4 py-3 mt-6 font-semibold text-white transition border rounded-lg shadow-lg border-white/30 bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-500 hover:opacity-90"
               >
                 Book Free Discovery →
               </a>
@@ -723,7 +729,7 @@ export default function MvpStudioClient() {
       <section className="bg-blue-50/70 px-[5%] py-24">
         <div className="mx-auto max-w-300">
           <div className="mb-8 transition-all duration-700 translate-y-6 opacity-0 reveal">
-            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-sky-500">
+            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
               Market Context
             </p>
             <h2 className=" text-[clamp(1.9rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-0.03em]">
@@ -753,7 +759,7 @@ export default function MvpStudioClient() {
                   <span className="px-2 py-1 font-semibold text-center text-blue-600 rounded-md bg-blue-500/10">
                     Throoout: 3 weeks
                   </span>
-                  <span className="px-2 py-1 text-center text-indigo-600 rounded-md bg-indigo-500/10">
+                  <span className="px-2 py-1 text-center text-blue-600 rounded-md bg-cyan-500/10">
                     Enterprise agency: 8-16 weeks
                   </span>
                   <span className="px-2 py-1 text-center rounded-md bg-sky-500/10 text-sky-700">
@@ -791,7 +797,7 @@ export default function MvpStudioClient() {
                   <span className="px-2 py-1 font-semibold text-center text-blue-600 rounded-md bg-blue-500/10">
                     ~$4,800
                   </span>
-                  <span className="px-2 py-1 text-center text-indigo-600 rounded-md bg-indigo-500/10">
+                  <span className="px-2 py-1 text-center text-blue-600 rounded-md bg-cyan-500/10">
                     Often undisclosed
                   </span>
                   <span className="px-2 py-1 text-center rounded-md bg-sky-500/10 text-sky-700">
@@ -816,7 +822,7 @@ export default function MvpStudioClient() {
                   <span className="px-2 py-1 text-center rounded-md bg-sky-500/10 text-sky-700">
                     Varies by team
                   </span>
-                  <span className="px-2 py-1 text-center text-indigo-600 rounded-md bg-indigo-500/10">
+                  <span className="px-2 py-1 text-center text-blue-600 rounded-md bg-cyan-500/10">
                     Rarely
                   </span>
                 </div>
@@ -826,7 +832,7 @@ export default function MvpStudioClient() {
             <div className="hidden overflow-x-auto bg-white border shadow-lg rounded-2xl border-blue-200/80 shadow-blue-100/40 lg:block">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="bg-linear-to-r from-sky-50 to-blue-50">
+                  <tr className="bg-gradient-to-r from-sky-50 to-blue-50">
                     <th className="px-6 py-4 text-xs font-semibold tracking-wide uppercase text-slate-500">
                       What matters
                     </th>
@@ -852,7 +858,7 @@ export default function MvpStudioClient() {
                     <td className="border-t border-blue-100 bg-blue-500/10 px-6 py-4 text-center text-[0.9rem] font-semibold text-blue-600">
                       3 weeks
                     </td>
-                    <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-indigo-600">
+                    <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-blue-600">
                       8-16 weeks
                     </td>
                     <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-sky-600">
@@ -886,7 +892,7 @@ export default function MvpStudioClient() {
                     <td className="border-t border-blue-100 bg-blue-500/10 px-6 py-4 text-center text-[0.9rem] font-semibold text-blue-600">
                       ~$4,800
                     </td>
-                    <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-indigo-600">
+                    <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-blue-600">
                       Often undisclosed
                     </td>
                     <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-sky-600">
@@ -909,7 +915,7 @@ export default function MvpStudioClient() {
                     <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-sky-600">
                       Varies by team
                     </td>
-                    <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-indigo-600">
+                    <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-blue-600">
                       Rarely
                     </td>
                   </tr>
@@ -943,7 +949,7 @@ export default function MvpStudioClient() {
                     <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-sky-600">
                       Usually yes
                     </td>
-                    <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-indigo-600">
+                    <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-blue-600">
                       Sometimes
                     </td>
                   </tr>
@@ -960,7 +966,7 @@ export default function MvpStudioClient() {
                     <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-slate-500">
                       Limited window
                     </td>
-                    <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-indigo-600">
+                    <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-blue-600">
                       Rarely included
                     </td>
                   </tr>
@@ -977,7 +983,7 @@ export default function MvpStudioClient() {
                     <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-slate-500">
                       Lead form
                     </td>
-                    <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-indigo-600">
+                    <td className="border-t border-blue-100 px-6 py-4 text-center text-[0.9rem] text-blue-600">
                       No standard
                     </td>
                   </tr>
@@ -994,9 +1000,9 @@ export default function MvpStudioClient() {
 
       <section className="bg-white px-[5%] py-24">
         <div className="mx-auto max-w-300">
-          <div className="grid grid-cols-1 gap-10 rounded-2xl border border-blue-200/80 bg-linear-to-r from-white to-sky-50 p-8 lg:grid-cols-[1.1fr_1fr] lg:p-10">
+          <div className="grid grid-cols-1 gap-10 rounded-2xl border border-blue-200/80 bg-gradient-to-r from-white to-sky-50 p-8 lg:grid-cols-[1.1fr_1fr] lg:p-10">
             <div className="transition-all duration-700 translate-y-6 opacity-0 reveal">
-              <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-sky-500">
+              <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
                 Who Builds Your MVP
               </p>
               <h2 className="text-[clamp(1.7rem,3.5vw,2.6rem)] font-extrabold leading-[1.15] tracking-[-0.03em] text-slate-900">
@@ -1027,7 +1033,7 @@ export default function MvpStudioClient() {
       <section className="bg-white px-[5%] py-24">
         <div className="mx-auto max-w-300">
           <div className="mb-8 text-center transition-all duration-700 translate-y-6 opacity-0 reveal">
-            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-sky-500">
+            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
               Our Stack
             </p>
             <h2 className=" text-[clamp(1.9rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-0.03em]">
@@ -1039,70 +1045,70 @@ export default function MvpStudioClient() {
             </p>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="p-5 text-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-sky-50 hover:-translate-y-1">
-              <div className="mb-2 text-2xl font-extrabold tracking-[-0.03em] text-blue-600">
-                N
+            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
+              <div className="mb-4 text-blue-600">
+                <SiNextdotjs size={40} />
               </div>
-              <div className="mb-1  text-[1rem] font-bold">Next.js 14</div>
+              <div className="mb-1 text-[1rem] font-bold">Next.js 14</div>
               <div className="text-[0.73rem] text-slate-600">
                 Frontend and SSR
               </div>
             </div>
-            <div className="p-5 text-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-sky-50 hover:-translate-y-1">
-              <div className="mb-2 text-2xl font-extrabold tracking-[-0.03em] text-blue-600">
-                TS
+            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
+              <div className="mb-4 text-blue-600">
+                <SiTypescript size={40} />
               </div>
-              <div className="mb-1  text-[1rem] font-bold">TypeScript</div>
+              <div className="mb-1 text-[1rem] font-bold">TypeScript</div>
               <div className="text-[0.73rem] text-slate-600">
                 Type-safe codebase
               </div>
             </div>
-            <div className="p-5 text-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-sky-50 hover:-translate-y-1">
-              <div className="mb-2 text-2xl font-extrabold tracking-[-0.03em] text-blue-600">
-                PG
+            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
+              <div className="mb-4 text-blue-600">
+                <SiPostgresql size={40} />
               </div>
-              <div className="mb-1  text-[1rem] font-bold">PostgreSQL</div>
+              <div className="mb-1 text-[1rem] font-bold">PostgreSQL</div>
               <div className="text-[0.73rem] text-slate-600">
                 Primary database
               </div>
             </div>
-            <div className="p-5 text-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-sky-50 hover:-translate-y-1">
-              <div className="mb-2 text-2xl font-extrabold tracking-[-0.03em] text-blue-600">
-                API
+            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
+              <div className="mb-4 text-blue-600">
+                <SiTrpc size={40} />
               </div>
-              <div className="mb-1  text-[1rem] font-bold">tRPC / REST</div>
+              <div className="mb-1 text-[1rem] font-bold">tRPC / REST</div>
               <div className="text-[0.73rem] text-slate-600">API layer</div>
             </div>
-            <div className="p-5 text-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-sky-50 hover:-translate-y-1">
-              <div className="mb-2 text-2xl font-extrabold tracking-[-0.03em] text-blue-600">
-                AU
+            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
+              <div className="mb-4 text-blue-600">
+                <FiShield size={40} />
               </div>
-              <div className="mb-1  text-[1rem] font-bold">NextAuth.js</div>
+              <div className="mb-1 text-[1rem] font-bold">NextAuth.js</div>
               <div className="text-[0.73rem] text-slate-600">
                 Authentication
               </div>
             </div>
-            <div className="p-5 text-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-sky-50 hover:-translate-y-1">
-              <div className="mb-2 text-2xl font-extrabold tracking-[-0.03em] text-blue-600">
-                $
+            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
+              <div className="mb-4 text-blue-600">
+                <SiStripe size={40} />
               </div>
-              <div className="mb-1  text-[1rem] font-bold">Stripe</div>
+              <div className="mb-1 text-[1rem] font-bold">Stripe</div>
               <div className="text-[0.73rem] text-slate-600">Payments</div>
             </div>
-            <div className="p-5 text-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-sky-50 hover:-translate-y-1">
-              <div className="mb-2 text-2xl font-extrabold tracking-[-0.03em] text-blue-600">
-                CL
+            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
+              <div className="mb-4 text-blue-600">
+                <SiVercel size={40} />
               </div>
-              <div className="mb-1  text-[1rem] font-bold">Vercel / AWS</div>
+              <div className="mb-1 text-[1rem] font-bold">Vercel / AWS</div>
               <div className="text-[0.73rem] text-slate-600">
                 Hosting and CDN
               </div>
             </div>
-            <div className="p-5 text-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-sky-50 hover:-translate-y-1">
-              <div className="mb-2 text-2xl font-extrabold tracking-[-0.03em] text-blue-600">
-                AI
+            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
+              <div className="mb-4 text-blue-600">
+                <SiOpenai size={40} />
               </div>
-              <div className="mb-1  text-[1rem] font-bold">AI Tooling</div>
+              <div className="mb-1 text-[1rem] font-bold">AI Tooling</div>
               <div className="text-[0.73rem] text-slate-600">
                 Accelerated development
               </div>
@@ -1114,7 +1120,7 @@ export default function MvpStudioClient() {
       <section className="bg-blue-50/70 px-[5%] py-24">
         <div className="mx-auto max-w-300">
           <div className="mb-8 transition-all duration-700 translate-y-6 opacity-0 reveal">
-            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-sky-500">
+            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
               Common Questions
             </p>
             <h2 className=" text-[clamp(1.9rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-0.03em]">
@@ -1206,7 +1212,7 @@ export default function MvpStudioClient() {
               Ready to stop planning
               <br />
               and start{" "}
-              <em className="not-italic text-transparent bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text">
+              <em className="not-italic text-transparent bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-500 bg-clip-text">
                 building?
               </em>
             </h2>
@@ -1215,15 +1221,10 @@ export default function MvpStudioClient() {
               what it costs, and whether we are the right fit.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 my-5">
-              <CalendlyButton className="inline-flex items-center rounded-lg border border-white/30 bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500 px-8 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_6px_24px_rgba(56,189,248,0.18),0_2px_10px_rgba(99,102,241,0.1)] transition hover:-translate-y-0.5 hover:opacity-90">
+              <CalendlyButton className="inline-flex items-center rounded-lg border border-white/30 bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-500 px-8 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_6px_24px_rgba(56,189,248,0.18),0_2px_10px_rgba(99,102,241,0.1)] transition hover:-translate-y-0.5 hover:opacity-90">
                 Free MVP Feasibility Call
               </CalendlyButton>
-              <a
-                href="#pricing"
-                className="inline-flex items-center rounded-lg border border-blue-400/30 bg-white/80 px-8 py-3.5 text-[0.95rem] font-semibold text-slate-900 transition hover:-translate-y-0.5 hover:bg-white"
-              >
-                View Pricing
-              </a>
+              <SecondaryButton href="#pricing">View Pricing</SecondaryButton>
             </div>
             <p className="mt-3 text-[0.8rem] text-slate-500">
               We&apos;ll tell you honestly if your idea is buildable in 3 weeks.

@@ -1,27 +1,29 @@
+import { FiMonitor, FiSmartphone, FiCloud, FiCpu } from "react-icons/fi";
+
 export default function WhatWeDoSection() {
   const services = [
     {
       title: 'Web Development',
       description: 'Modern, responsive web applications',
-      icon: '💻',
+      icon: <FiMonitor />,
       color: 'from-blue-200 to-cyan-50'
     },
     {
       title: 'Mobile Apps',
       description: 'iOS & Android native apps',
-      icon: '📱',
+      icon: <FiSmartphone />,
       color: 'from-blue-200 to-cyan-50'
     },
     {
       title: 'Cloud Solutions',
       description: 'Scalable infrastructure',
-      icon: '☁️',
+      icon: <FiCloud />,
       color: 'from-blue-200 to-cyan-50'
     },
     {
       title: 'AI & ML',
       description: 'Intelligent automation',
-      icon: '🤖',
+      icon: <FiCpu />,
       color: 'from-blue-200 to-cyan-50'
     },
   ];

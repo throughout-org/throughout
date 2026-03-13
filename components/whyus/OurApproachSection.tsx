@@ -1,31 +1,33 @@
+import { FiTarget, FiRefreshCw, FiCheckCircle, FiLifeBuoy } from 'react-icons/fi';
+
 export default function OurApproachSection() {
   const approaches = [
     {
       step: '01',
       title: 'Client-Centric Focus',
       description: 'We take time to understand your unique needs and goals before writing a single line of code.',
-      icon: '🎯',
+      icon: <FiTarget />,
       color: 'from-blue-500 to-cyan-500'
     },
     {
       step: '02',
       title: 'Agile Methodology',
       description: 'Flexible and iterative development that adapts smoothly to evolving requirements.',
-      icon: '🔄',
+      icon: <FiRefreshCw />,
       color: 'from-sky-500 to-pink-500'
     },
     {
       step: '03',
       title: 'Quality Assurance',
       description: 'Rigorous testing and code reviews ensure bug-free, reliable software delivery.',
-      icon: '✅',
+      icon: <FiCheckCircle />,
       color: 'from-green-500 to-emerald-500'
     },
     {
       step: '04',
       title: 'Continuous Support',
       description: '24/7 maintenance and support to keep your applications running at peak performance.',
-      icon: '🛟',
+      icon: <FiLifeBuoy />,
       color: 'from-orange-500 to-red-500'
     },
   ];

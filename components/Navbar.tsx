@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { services } from "@/data/services";
 import { openCalendlyPopup } from "@/components/CalendlyPopup";
+import { FiSearch } from "react-icons/fi";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -62,12 +63,13 @@ export default function Navbar() {
 
   // ===== TOP BAR LINKS =====
   const topBarLinks = [
-    { name: "Home", href: "/" },
+    // { name: "Home", href: "/" },
     { name: "Work", href: "/portfolio" },
     { name: "Company", href: "/about" },
-    { name: "Free Site Auditor", href: "/free-seo-aduitor" },
-    // { name: "Why Us", href: "/why-us" },
+    { name: "Case Studies", href: "/case-studies" },
     { name: "Blog", href: "/insights" },
+    { name: "Free Site Auditor", href: "/free-seo-aduitor" },
+    { name: "Comflo", href: "https://comflo.app/" },
     // { name: "Researchers", href: "/insights" },
     { name: "Internships", href: "/internships" },
     { name: "Contact Us", href: "/contact" },
@@ -75,26 +77,40 @@ export default function Navbar() {
 
   // ===== MAIN NAV LINKS =====
   const mainNavLinks = [
-    { name: "Services", href: "/services", hasDropdown: true },
-    { name: "Comflo", href: "https://comflo.app/" },
-    { name: "MVP Studio", href: "/mvp-studio" },
-    { name: "Workflow Studio", href: "/n8n-agency" },
+    { name: "Engineering", href: "/services", hasDropdown: true },
+    { name: "MVP Studio", href: "/throoout-mvp-studio" },
+    {
+      name: "AI",
+      href: "/throoout-ai",
+    },
+    {
+      name: "Products",
+      href: "/throoout-products",
+    },
   ];
 
   // Short descriptions for the dropdown cards
   const serviceDescriptions: Record<string, string> = {
     "software-development":
-      "High-performance engineering for modern digital business.",
-    "custom-ecommerce-development":
-      "Limitless commerce built on headless architecture.",
-    "shopify-ecommerce": "Scalable storefronts tailored for high growth.",
+      "Robust custom software built for scalability, performance, and modern digital products.",
+
+    "cms-development":
+      "Flexible CMS platforms including WordPress, headless CMS, and content-driven architectures.",
+
+    "shopify-development":
+      "Custom Shopify storefronts and integrations designed for high-growth e-commerce brands.",
+
     "cloud-server-solutions":
-      "Resilient infrastructure for total peace of mind.",
-    "wordpress-development": "Enterprise-level power on a familiar platform.",
-    "ai-integrations-automation":
-      "Intelligent logic that automates your workflow.",
-    "ui-ux-design": "Designs that convert visitors into loyal users.",
-    seo: "Data-driven strategies to dominate search rankings.",
+      "Scalable cloud infrastructure, DevOps automation, and secure server architecture.",
+
+    "workflow-automation":
+      "Automate repetitive tasks and connect systems with intelligent workflows and AI-driven automation.",
+
+    "ui-ux-engineering":
+      "User-centered interfaces designed to improve usability, engagement, and conversion.",
+
+    "ai-driven-seo":
+      "Modern SEO powered by AI tools, data analysis, and search intelligence strategies.",
   };
 
   const handleCalendlyClick: React.MouseEventHandler<HTMLAnchorElement> = (
@@ -116,7 +132,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-[1600px] mx-auto px-8">
-          <div className="flex items-center justify-center h-10 gap-8">
+          <div className="flex items-center justify-center h-10 gap-5">
             {topBarLinks.map((link) => (
               <Link
                 key={link.name}
@@ -279,7 +295,7 @@ export default function Navbar() {
                                 }}
                               >
                                 <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-2xl transition-all duration-300 shadow-md rounded-xl bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-500 group-hover/card:shadow-lg group-hover/card:scale-110">
-                                  🔎
+                                  <FiSearch className="text-white w-5 h-5" />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                   <p className="text-sm font-bold leading-tight text-gray-900 transition-colors duration-200 group-hover/card:text-blue-700">

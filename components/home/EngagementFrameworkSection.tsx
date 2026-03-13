@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { FiUsers, FiCompass, FiSettings, FiTrendingUp } from 'react-icons/fi';
 
 export default function EngagementFrameworkSection() {
   const [activeStep, setActiveStep] = useState(0);
@@ -22,7 +23,7 @@ export default function EngagementFrameworkSection() {
     {
       number: '01',
       title: 'Discovery & Alignment',
-      icon: '🤝',
+      icon: <FiUsers />,
       headline: 'Identify Priorities',
       description: "We don't guess. We analyze your current infrastructure and business goals to identify exactly what needs to be built. We align technical requirements with your customer's needs.",
       color: 'from-blue-600 via-blue-500 to-blue-400',
@@ -33,7 +34,7 @@ export default function EngagementFrameworkSection() {
     {
       number: '02',
       title: 'Strategic Roadmap',
-      icon: '🧭',
+      icon: <FiCompass />,
       headline: 'Define Success Criteria',
       description: 'Before a line of code is written, we define what "winning" looks like. We craft a technical specification and project plan that outlines scope, budget, and timeline.',
       color: 'from-blue-600 via-blue-500 to-blue-400',
@@ -44,7 +45,7 @@ export default function EngagementFrameworkSection() {
     {
       number: '03',
       title: 'Agile Execution',
-      icon: '⚙️',
+      icon: <FiSettings />,
       headline: 'Iterative Milestones',
       description: 'We break the project into short, achievable sprints. This gives you clear visibility into progress and allows us to adapt quickly to feedback without derailing the project.',
       color: 'from-blue-600 via-blue-500 to-blue-400',
@@ -55,7 +56,7 @@ export default function EngagementFrameworkSection() {
     {
       number: '04',
       title: 'Continuous Evolution',
-      icon: '📈',
+      icon: <FiTrendingUp />,
       headline: 'Measurable Outcomes',
       description: 'Launch is just the beginning. We monitor performance metrics and user feedback to continuously improve the software, ensuring it scales as your business grows.',
       color: 'from-blue-600 via-blue-500 to-blue-400',

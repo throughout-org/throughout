@@ -1,39 +1,41 @@
+import { FiUsers, FiRefreshCw, FiCheckCircle, FiClock, FiLifeBuoy, FiDollarSign } from "react-icons/fi";
+
 export default function WhyChooseUsSection() {
   const benefits = [
     {
       title: "Expert Team",
       description: "Experienced developers with proven track records",
-      icon: "👥",
+      icon: <FiUsers />,
       color: "from-blue-200 to-cyan-50",
     },
     {
       title: "Agile Process",
       description: "Flexible and iterative development",
-      icon: "🔄",
+      icon: <FiRefreshCw />,
       color: "from-blue-200 to-cyan-50",
     },
     {
       title: "Quality Code",
       description: "Clean, maintainable, tested code",
-      icon: "✅",
+      icon: <FiCheckCircle />,
       color: "from-blue-200 to-cyan-50",
     },
     {
       title: "On-Time Delivery",
       description: "Meeting deadlines consistently",
-      icon: "⏱️",
+      icon: <FiClock />,
       color: "from-blue-200 to-cyan-50",
     },
     {
       title: "24/7 Support",
       description: "Always here when you need us",
-      icon: "🛟",
+      icon: <FiLifeBuoy />,
       color: "from-blue-200 to-cyan-50",
     },
     {
       title: "Best Value",
       description: "Competitive pricing, premium quality",
-      icon: "💰",
+      icon: <FiDollarSign />,
       color: "from-blue-200 to-cyan-50",
     },
   ];

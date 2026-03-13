@@ -1,30 +1,32 @@
+import { FiPenTool, FiSettings, FiSmartphone, FiCloud } from 'react-icons/fi';
+
 export default function TechnologyExpertiseSection() {
   const technologies = [
     {
       category: 'Frontend',
       description: 'Modern UI/UX with cutting-edge frameworks',
-      icon: '🎨',
+      icon: <FiPenTool />,
       color: 'from-blue-500 to-cyan-500',
       techs: ['React', 'Next.js', 'Vue', 'Tailwind']
     },
     {
       category: 'Backend',
       description: 'Robust server-side solutions',
-      icon: '⚙️',
+      icon: <FiSettings />,
       color: 'from-sky-500 to-pink-500',
       techs: ['Node.js', 'Python', 'Java', 'PHP']
     },
     {
       category: 'Mobile',
       description: 'Native and cross-platform apps',
-      icon: '📱',
+      icon: <FiSmartphone />,
       color: 'from-green-500 to-emerald-500',
       techs: ['React Native', 'Flutter', 'iOS', 'Android']
     },
     {
       category: 'Cloud & DevOps',
       description: 'Scalable infrastructure solutions',
-      icon: '☁️',
+      icon: <FiCloud />,
       color: 'from-orange-500 to-red-500',
       techs: ['AWS', 'Azure', 'Docker', 'Kubernetes']
     },
