@@ -1,13 +1,14 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { DM_Sans, Syne } from "next/font/google";
 import Image from "next/image";
 import { portfolioProjects } from "@/data/portfolio";
 import { CalendlyButton } from "@/components/CalendlyPopup";
 import { PrimaryButton, SecondaryButton } from "@/components/ui/Button";
 import { SiNextdotjs, SiTypescript, SiPostgresql, SiTrpc, SiStripe, SiVercel, SiOpenai } from "react-icons/si";
-import { FiShield } from "react-icons/fi";
+import { FiShield, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import ServicesCTASection from "@/components/services/ServicesCTASection";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -25,6 +26,15 @@ const dmSans = DM_Sans({
 
 export default function MvpStudioClient() {
   const featuredProjects = portfolioProjects.slice(0, 3);
+  const [currentCaseStudyIndex, setCurrentCaseStudyIndex] = useState(0);
+
+  const handleNextCaseStudy = () => {
+    setCurrentCaseStudyIndex((prev) => (prev + 1) % featuredProjects.length);
+  };
+
+  const handlePrevCaseStudy = () => {
+    setCurrentCaseStudyIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
+  };
 
   const getDeliveryLine = (results: string[]) => {
     const timeline = results.find((item) =>
@@ -46,8 +56,8 @@ export default function MvpStudioClient() {
           const parent = entry.target.parentElement;
           const siblings = parent
             ? Array.from(
-                parent.querySelectorAll<HTMLElement>(".reveal:not(.visible)"),
-              )
+              parent.querySelectorAll<HTMLElement>(".reveal:not(.visible)"),
+            )
             : [];
 
           const delay =
@@ -71,7 +81,7 @@ export default function MvpStudioClient() {
 
   return (
     <main
-      className={`${syne.variable} ${dmSans.variable} relative overflow-x-hidden bg-gradient-to-br from-blue-50 via-blue-50 to-sky-50 font-(--font-dm-sans) text-slate-900`}
+      className={`${syne.variable} ${dmSans.variable} relative overflow-x-hidden bg-gradient-to-br from-blue-50 via-blue-50 to-sky-50 text-slate-900`}
     >
       <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-[5%] pb-20 pt-36 text-center">
         <div className="absolute inset-0 pointer-events-none">
@@ -155,7 +165,7 @@ export default function MvpStudioClient() {
         </div>
       </section>
 
-      <div className="border-y border-blue-200/70 bg-white/80 px-[5%] py-4">
+      {/* <div className="border-y border-blue-200/70 bg-white/80 px-[5%] py-4">
         <div className="mx-auto flex max-w-300 flex-wrap justify-center gap-2.5">
           <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
             AI-Assisted Delivery
@@ -173,63 +183,111 @@ export default function MvpStudioClient() {
             Founder-to-Founder Updates
           </span>
         </div>
-      </div>
+      </div> */}
 
       <section className="bg-white px-[5%] py-24">
         <div className="mx-auto max-w-300">
-          <div className="mb-10 text-center transition-all duration-700 translate-y-6 opacity-0 reveal">
+          <div className="mb-16 text-center transition-all duration-700 translate-y-6 opacity-0 reveal">
             <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
               MVPs We&apos;ve Shipped
             </p>
             <h2 className="text-[clamp(1.9rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-0.03em]">
               Real products. <em>Real outcomes.</em>
             </h2>
-            <p className="mx-auto mt-3 max-w-160 text-[0.95rem] leading-[1.8] text-slate-600">
-              Proof first. Here are selected builds from our portfolio with
-              delivery context, stack, and measurable results.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-            {featuredProjects.map((project) => (
-              <article
-                key={project.id}
-                className="overflow-hidden transition-all duration-700 translate-y-6 bg-white border shadow-md opacity-0 rounded-2xl border-blue-200/70 shadow-blue-100/40 reveal hover:-translate-y-1 hover:shadow-xl"
-              >
-                <div className="relative w-full h-48 overflow-hidden border-b border-blue-100">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-slate-900">
-                    {project.title}
-                  </h3>
-                  <p className="mt-2 text-[0.86rem] leading-[1.7] text-slate-600">
-                    {project.shortDescription}
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {project.technologies.slice(0, 3).map((tech) => (
-                      <span
-                        key={`${project.id}-${tech}`}
-                        className="rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-[0.68rem] font-semibold text-blue-700"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+          <div className="relative transition-all duration-700 translate-y-6 opacity-0 reveal group max-w-5xl mx-auto">
+            {/* Navigation Arrows */}
+            <button
+              onClick={handlePrevCaseStudy}
+              className="absolute left-0 z-20 flex items-center justify-center w-12 h-12 transition-all -translate-y-1/2 bg-white border rounded-full shadow-lg border-slate-100 top-1/2 text-slate-400 hover:text-blue-600 hover:shadow-xl md:-left-5 cursor-pointer"
+              aria-label="Previous case study"
+            >
+              <FiChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={handleNextCaseStudy}
+              className="absolute right-0 z-20 flex items-center justify-center w-12 h-12 transition-all -translate-y-1/2 bg-white border rounded-full shadow-lg border-slate-100 top-1/2 text-slate-400 hover:text-blue-600 hover:shadow-xl md:-right-5 cursor-pointer"
+              aria-label="Next case study"
+            >
+              <FiChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Case Study Container */}
+            <div className="overflow-hidden">
+              <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentCaseStudyIndex * 100}%)` }}>
+                {featuredProjects.map((project) => (
+                  <div key={project.id} className="w-full shrink-0">
+                    <div className="flex flex-col md:flex-row">
+                      {/* Image - Right */}
+                      <div className="relative min-h-[300px] w-full md:w-1/2 rounded-[2rem]">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover rounded-[2rem]"
+                        />
+                      </div>
+
+                      {/* Text Content - Left */}
+                      <div className="flex flex-col justify-center p-8 md:w-1/2 lg:p-14">
+                        <h3 className="text-2xl font-bold text-slate-900 md:text-3xl">
+                          {project.title}
+                        </h3>
+                        <p className="mt-4 text-[0.95rem] leading-[1.8] text-slate-600">
+                          {project.shortDescription}
+                        </p>
+
+                        <div className="flex flex-wrap gap-2 mt-6">
+                          {project.technologies.slice(0, 4).map((tech) => (
+                            <span
+                              key={`${project.id}-${tech}`}
+                              className="rounded-full bg-slate-50 border border-slate-200 px-3 py-1.5 text-[0.75rem] font-medium text-slate-600"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+
+                        <div className="pt-6 mt-8 border-t border-slate-100">
+                          <div className="flex flex-col gap-4 sm:flex-row sm:gap-8">
+                            <div>
+                              <p className="mb-1 text-[0.75rem] font-medium uppercase tracking-[0.1em] text-slate-400">
+                                Delivery
+                              </p>
+                              <p className="font-semibold text-slate-900">
+                                {getDeliveryLine(project.results)}
+                              </p>
+                            </div>
+                            <div>
+                              <p className="mb-1 text-[0.75rem] font-medium uppercase tracking-[0.1em] text-slate-400">
+                                Result
+                              </p>
+                              <p className="font-semibold text-blue-600">
+                                {project.results[0]}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <p className="mt-4 text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-slate-500">
-                    Delivery: {getDeliveryLine(project.results)}
-                  </p>
-                  <p className="mt-1 text-[0.84rem] font-medium text-slate-700">
-                    Result: {project.results[0]}
-                  </p>
-                </div>
-              </article>
-            ))}
+                ))}
+              </div>
+            </div>
+
+            {/* Dots indicator */}
+            <div className="flex justify-center gap-2 mt-8">
+              {featuredProjects.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentCaseStudyIndex(idx)}
+                  className={`h-2 rounded-full transition-all duration-300 ${currentCaseStudyIndex === idx ? "w-8 bg-blue-600" : "w-2 bg-slate-200 hover:bg-slate-300"
+                    }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -998,7 +1056,7 @@ export default function MvpStudioClient() {
         </div>
       </section>
 
-      <section className="bg-white px-[5%] py-24">
+      {/* <section className="bg-white px-[5%] py-24">
         <div className="mx-auto max-w-300">
           <div className="grid grid-cols-1 gap-10 rounded-2xl border border-blue-200/80 bg-gradient-to-r from-white to-sky-50 p-8 lg:grid-cols-[1.1fr_1fr] lg:p-10">
             <div className="transition-all duration-700 translate-y-6 opacity-0 reveal">
@@ -1028,7 +1086,7 @@ export default function MvpStudioClient() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="bg-white px-[5%] py-24">
         <div className="mx-auto max-w-300">
@@ -1204,7 +1262,7 @@ export default function MvpStudioClient() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-white px-[5%] py-24">
+      {/* <section className="relative overflow-hidden bg-white px-[5%] py-24">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_120%_at_50%_100%,rgba(56,189,248,0.2)_0%,transparent_60%)]" />
         <div className="mx-auto max-w-300">
           <div className="relative mx-auto text-center transition-all duration-700 translate-y-6 opacity-0 reveal max-w-190">
@@ -1231,7 +1289,15 @@ export default function MvpStudioClient() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <ServicesCTASection
+        headline={"Ready to stop planning and start building?"}
+        subtext={
+          "In one 30-minute call, we can map what is achievable in 3 weeks, what it costs, and whether we are the right fit. We'll tell you honestly if your idea is buildable in 3 weeks."
+        }
+        buttonText={"Free MVP Feasibility Call"}
+      />
 
       <script
         type="application/ld+json"

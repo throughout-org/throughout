@@ -180,7 +180,7 @@ export default function EngagementFrameworkSection() {
                     {activeStep === index && (
                       <span className={`absolute inset-0 rounded-full pointer-events-none ${step.glowColor} opacity-30 z-0`}></span>
                     )}
-                    <span className="relative z-10 text-2xl">{step.icon}</span>
+                    <span className="relative z-10 text-2xl text-white">{step.icon}</span>
                     <span className="relative z-10 text-[11px] font-bold mt-0.5 tracking-wide text-white drop-shadow-sm" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.12)' }}>{step.number}</span>
                   </button>
                 );

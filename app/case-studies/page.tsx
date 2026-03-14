@@ -100,7 +100,7 @@ export default function CaseStudiesPage() {
                             </div>
                             <Link
                                 href={`/case-studies/${featured.id}`}
-                                className="inline-flex items-center text-indigo-600 font-bold hover:text-indigo-800 transition-colors text-lg"
+                                className="inline-flex items-center text-blue-600 font-bold hover:text-blue-800 transition-colors text-lg"
                             >
                                 Read Full Case Study <FiArrowRight className="ml-2" />
                             </Link>

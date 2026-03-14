@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FiStar } from "react-icons/fi";
+import Button from "../Button";
 
 export default function HeroSection() {
   return (
@@ -52,29 +53,12 @@ export default function HeroSection() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col justify-center gap-4 mb-16 sm:flex-row">
-          <Link
-            href="/portfolio"
-            className="relative px-8 py-4 overflow-hidden text-lg font-extrabold text-white transition-all duration-300 border rounded-full shadow-xl group bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 hover:shadow-2xl hover:scale-105 border-white/30 backdrop-blur-md"
-            style={{
-              boxShadow:
-                "0 6px 32px 0 rgba(56,189,248,0.18), 0 2px 12px 0 rgba(99,102,241,0.10)",
-              transition: "all 0.25s cubic-bezier(.4,2,.6,1)",
-            }}
-          >
-            <span className="relative z-10 flex items-center justify-center gap-2">
-              View Our Work
-              <span className="transition-transform group-hover:translate-x-1">
-                →
-              </span>
-            </span>
-            <div className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-r from-indigo-500 via-blue-500 to-sky-400 group-hover:opacity-100"></div>
-          </Link>
-          <Link
-            href="/contact"
-            className="flex justify-center px-8 py-4 text-lg font-bold text-gray-900 transition-all duration-300 bg-white border-2 border-gray-200 rounded-full hover:border-gray-900 hover:shadow-lg"
-          >
+          <Button variant="primary" href="/portfolio" className="max-w-[280px]">
+            View Our Work
+          </Button>
+          <Button variant="secondary" href="/contact" className="max-w-[280px]">
             Book a Free Call
-          </Link>
+          </Button>
         </div>
 
         {/* Trust Indicators */}
@@ -90,3 +74,4 @@ export default function HeroSection() {
     </section>
   );
 }
+

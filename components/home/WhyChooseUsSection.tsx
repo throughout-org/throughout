@@ -24,7 +24,7 @@ export default function WhyChooseUsSection() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((item, index) => (
             <div key={index} className="flex flex-col items-center p-6 text-center transition-shadow duration-300 bg-white border border-blue-100 shadow-sm rounded-2xl hover:shadow-md">
-              <div className="flex items-center justify-center mb-3 text-3xl rounded-full w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200">
+              <div className="flex items-center justify-center mb-3 text-3xl rounded-full w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-300">
                 {item.icon}
               </div>
               <h3 className="mb-1 text-lg font-bold text-blue-900">{item.title}</h3>

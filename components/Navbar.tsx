@@ -7,6 +7,7 @@ import Link from "next/link";
 import { services } from "@/data/services";
 import { openCalendlyPopup } from "@/components/CalendlyPopup";
 import { FiSearch } from "react-icons/fi";
+import Button from "./Button";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -125,11 +126,10 @@ export default function Navbar() {
       {/* LAYER 1 — TOP BAR (black, simple links)                      */}
       {/* ============================================================ */}
       <div
-        className={`fixed top-0 left-0 w-full z-50 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 transition-all duration-500 hidden lg:block ${
-          isScrolled
+        className={`fixed top-0 left-0 w-full z-50 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 transition-all duration-500 hidden lg:block ${isScrolled
             ? "-translate-y-full opacity-0"
             : "translate-y-0 opacity-100"
-        }`}
+          }`}
       >
         <div className="max-w-[1600px] mx-auto px-8">
           <div className="flex items-center justify-center h-10 gap-5">
@@ -137,11 +137,10 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-[13px] font-medium transition-all duration-300 rounded-full px-3 py-0 ${
-                  isActive(link.href)
+                className={`text-[13px] font-medium transition-all duration-300 rounded-full px-3 py-0 ${isActive(link.href)
                     ? "text-white bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 shadow-md scale-105"
                     : "text-gray-300 hover:text-white"
-                }`}
+                  }`}
               >
                 {link.name}
               </Link>
@@ -154,18 +153,16 @@ export default function Navbar() {
       {/* LAYER 2 — MAIN NAV BAR (red, with logo + primary links)      */}
       {/* ============================================================ */}
       <nav
-        className={`fixed w-full z-40 transition-all duration-500 ${
-          isScrolled ? "top-0" : "lg:top-10 top-0"
-        }`}
+        className={`fixed w-full z-40 transition-all duration-500 ${isScrolled ? "top-0" : "lg:top-10 top-0"
+          }`}
       >
         {/* Background band (full-width) */}
         <div className="bg-transparent">
           <div className="max-w-[1600px] mx-auto px-4 lg:px-4 xl:px-8">
             {/* Main bar container */}
             <div
-              className={`relative flex items-center justify-between transition-all duration-500 ${
-                isScrolled ? "py-2" : "py-3"
-              }  backdrop-blur-xl rounded-2xl mx-2 my-1.5 px-4 md:rounded-full md:mx-3 md:my-2 md:px-6 lg:mx-0 lg:px-4 lg:my-2 xl:px-8 bg-white/80 lg:bg-transparent`}
+              className={`relative flex items-center justify-between transition-all duration-500 ${isScrolled ? "py-2" : "py-3"
+                }  backdrop-blur-xl rounded-2xl mx-2 my-1.5 px-4 md:rounded-full md:mx-3 md:my-2 md:px-6 lg:mx-0 lg:px-4 lg:my-2 xl:px-8 bg-white/80 lg:bg-transparent`}
               style={{
                 boxShadow:
                   "0 6px 30px rgba(7, 10, 49, 0.12), 0 0 0 1px rgba(8, 13, 41, 0.05)",
@@ -202,11 +199,10 @@ export default function Navbar() {
                       >
                         <button
                           onClick={() => setIsServicesOpen((prev) => !prev)}
-                          className={`flex items-center gap-1 px-2.5 py-1.5 text-xs xl:text-sm font-semibold transition-all duration-200 cursor-pointer rounded-lg ${
-                            isActive("/services")
+                          className={`flex items-center gap-1 px-2.5 py-1.5 text-xs xl:text-sm font-semibold transition-all duration-200 cursor-pointer rounded-lg ${isActive("/services")
                               ? "text-white bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 shadow-md scale-105"
                               : "text-gray-900 hover:text-gray-900 hover:bg-blue-300/20"
-                          }`}
+                            }`}
                         >
                           {link.name}
                           <svg
@@ -226,11 +222,10 @@ export default function Navbar() {
 
                         {/* ===== MEGA DROPDOWN ===== */}
                         <div
-                          className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 transition-all duration-300 ease-out origin-top z-50 ${
-                            isServicesOpen
+                          className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 transition-all duration-300 ease-out origin-top z-50 ${isServicesOpen
                               ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
                               : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
-                          }`}
+                            }`}
                           style={{
                             width: "min(860px, calc(100vw - 40px))",
                           }}
@@ -249,11 +244,10 @@ export default function Navbar() {
                                   key={service.id}
                                   href={`/services/${service.slug}`}
                                   onClick={() => setIsServicesOpen(false)}
-                                  className={`group/card flex items-start gap-3.5 p-4 rounded-xl border transition-all duration-300 hover:shadow-lg hover:scale-[1.03] ${
-                                    isActive(`/services/${service.slug}`)
+                                  className={`group/card flex items-start gap-3.5 p-4 rounded-xl border transition-all duration-300 hover:shadow-lg hover:scale-[1.03] ${isActive(`/services/${service.slug}`)
                                       ? "bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 border-white/30 shadow-xl scale-[1.02]"
                                       : "bg-gray-50/80 border-gray-200/80 hover:bg-white hover:border-gray-300"
-                                  }`}
+                                    }`}
                                   style={{
                                     animation: isServicesOpen
                                       ? `dropdownCardIn 0.35s ease-out forwards ${idx * 0.04}s`
@@ -320,11 +314,10 @@ export default function Navbar() {
                       href={link.href}
                       target={isExternal ? "_blank" : undefined}
                       rel={isExternal ? "noopener noreferrer" : undefined}
-                      className={`px-2.5 py-1.5 text-xs xl:text-sm font-semibold transition-all duration-200 rounded-lg whitespace-nowrap ${
-                        isActive(link.href)
+                      className={`px-2.5 py-1.5 text-xs xl:text-sm font-semibold transition-all duration-200 rounded-lg whitespace-nowrap ${isActive(link.href)
                           ? "text-gray-900 bg-blue-100 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 text-white scale-105 shadow-xl border-white/30"
                           : "text-gray-700 hover:text-gray-900 hover:bg-blue-300/20"
-                      }`}
+                        }`}
                     >
                       {link.name}
                     </Link>
@@ -374,23 +367,20 @@ export default function Navbar() {
               >
                 <div className="flex flex-col justify-between w-6 h-5">
                   <span
-                    className={`w-full h-0.5 rounded-full transition-all duration-300 ${
-                      isMenuOpen
+                    className={`w-full h-0.5 rounded-full transition-all duration-300 ${isMenuOpen
                         ? "bg-gray-800 rotate-45 translate-y-[9px]"
                         : "bg-gray-800"
-                    }`}
+                      }`}
                   ></span>
                   <span
-                    className={`w-full h-0.5 rounded-full transition-all duration-300 ${
-                      isMenuOpen ? "opacity-0 bg-gray-800" : "bg-gray-800"
-                    }`}
+                    className={`w-full h-0.5 rounded-full transition-all duration-300 ${isMenuOpen ? "opacity-0 bg-gray-800" : "bg-gray-800"
+                      }`}
                   ></span>
                   <span
-                    className={`w-full h-0.5 rounded-full transition-all duration-300 ${
-                      isMenuOpen
+                    className={`w-full h-0.5 rounded-full transition-all duration-300 ${isMenuOpen
                         ? "bg-gray-800 -rotate-45 -translate-y-[9px]"
                         : "bg-gray-800"
-                    }`}
+                      }`}
                   ></span>
                 </div>
               </button>
@@ -400,11 +390,10 @@ export default function Navbar() {
 
         {/* ===== MOBILE MENU ===== */}
         <div
-          className={`lg:hidden fixed inset-0 z-40 transition-all duration-500 flex flex-col ${
-            isMenuOpen
+          className={`lg:hidden fixed inset-0 z-40 transition-all duration-500 flex flex-col ${isMenuOpen
               ? "opacity-100 visible"
               : "opacity-0 invisible pointer-events-none"
-          }`}
+            }`}
           style={{ top: isScrolled ? "65px" : "72px" }}
         >
           {/* Backdrop */}
@@ -426,11 +415,10 @@ export default function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`text-xs font-medium px-3 py-1.5 rounded-full transition-all duration-300 border ${
-                      isActive(link.href)
+                    className={`text-xs font-medium px-3 py-1.5 rounded-full transition-all duration-300 border ${isActive(link.href)
                         ? "bg-gray-900 text-white border-gray-900"
                         : "bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100"
-                    }`}
+                      }`}
                     style={{
                       animation: isMenuOpen
                         ? `slideIn 0.4s ease-out forwards ${idx * 0.04}s`
@@ -458,11 +446,10 @@ export default function Navbar() {
                     <div key={link.name}>
                       <button
                         onClick={() => setMobileServicesOpen((prev) => !prev)}
-                        className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-300 cursor-pointer ${
-                          mobileServicesOpen
+                        className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-300 cursor-pointer ${mobileServicesOpen
                             ? "bg-gray-900 text-white"
                             : "bg-gray-50 text-gray-800 hover:bg-gray-100"
-                        }`}
+                          }`}
                         style={{
                           animation: isMenuOpen
                             ? `slideIn 0.4s ease-out forwards ${(index + 8) * 0.04}s`
@@ -488,11 +475,10 @@ export default function Navbar() {
 
                       {/* Mobile services submenu */}
                       <div
-                        className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                          mobileServicesOpen
+                        className={`overflow-hidden transition-all duration-500 ease-in-out ${mobileServicesOpen
                             ? "max-h-[700px] opacity-100 mt-2"
                             : "max-h-0 opacity-0 mt-0"
-                        }`}
+                          }`}
                       >
                         <div className="space-y-1.5 pl-2">
                           {services.map((service, sIdx) => (
@@ -535,11 +521,10 @@ export default function Navbar() {
                     target={isExternal ? "_blank" : undefined}
                     rel={isExternal ? "noopener noreferrer" : undefined}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`block px-4 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${
-                      isActive(link.href)
+                    className={`block px-4 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${isActive(link.href)
                         ? "bg-gray-900 text-white"
                         : "bg-gray-50 text-gray-800 hover:bg-gray-100"
-                    }`}
+                      }`}
                     style={{
                       animation: isMenuOpen
                         ? `slideIn 0.4s ease-out forwards ${(index + 8) * 0.04}s`
@@ -555,19 +540,7 @@ export default function Navbar() {
 
             {/* Mobile CTA */}
             <div className="px-5 pb-5">
-              <Link
-                href="/contact"
-                onClick={() => setIsMenuOpen(false)}
-                className="block w-full text-center px-6 py-3.5 text-sm font-extrabold text-white bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 uppercase tracking-wide"
-                style={{
-                  animation: isMenuOpen
-                    ? "slideIn 0.4s ease-out forwards 0.6s"
-                    : "none",
-                  opacity: isMenuOpen ? 1 : 0,
-                }}
-              >
-                Book a Free Call
-              </Link>
+              <Button isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
             </div>
           </div>
         </div>

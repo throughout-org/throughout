@@ -27,7 +27,7 @@ export default function ServicesCTASection({
         }}
       >
         <div className="relative z-10 flex flex-col max-w-6xl gap-6 mr-auto text-left">
-          <h2 className="text-4xl font-bold text-gray-700 sm:text-5xl lg:text-6xl">
+          <h2 className="text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl">
             {headline}
           </h2>
           <p className="mb-8 text-xl leading-relaxed text-gray-700">
