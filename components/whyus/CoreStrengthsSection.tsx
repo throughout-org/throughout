@@ -3,25 +3,25 @@ import { FiZap, FiLayers, FiMessageSquare, FiTrendingUp } from 'react-icons/fi';
 export default function CoreStrengthsSection() {
   const strengths = [
     {
-      icon: <FiZap />,
+      icon: <FiZap className='text-white'/>,
       title: 'Fast Delivery',
       description: 'Quick turnaround times without compromising on quality or attention to detail.',
       color: 'from-yellow-500 to-orange-500'
     },
     {
-      icon: <FiLayers />,
+      icon: <FiLayers className='text-white'/>,
       title: 'Clean Architecture',
       description: 'Maintainable and scalable code structure following industry best practices.',
       color: 'from-blue-500 to-cyan-500'
     },
     {
-      icon: <FiMessageSquare />,
+      icon: <FiMessageSquare className='text-white'/>,
       title: 'Clear Communication',
       description: 'Regular updates and a transparent process keeping you informed at every step.',
       color: 'from-sky-500 to-pink-500'
     },
     {
-      icon: <FiTrendingUp />,
+      icon: <FiTrendingUp className='text-white'/>,
       title: 'Modern Tech Stack',
       description: 'Latest tools, frameworks, and best practices for cutting-edge solutions.',
       color: 'from-green-500 to-emerald-500'
@@ -42,7 +42,7 @@ export default function CoreStrengthsSection() {
             key={index}
             className="group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:-translate-y-2"
           >
-            <div className={`w-16 h-16 bg-gradient-to-br from-blue-500 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+            <div className={`w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
               {strength.icon}
             </div>
             <h3 className="font-bold text-gray-900 mb-2 text-lg">{strength.title}</h3>

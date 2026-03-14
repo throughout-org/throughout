@@ -10,7 +10,7 @@ export default function TrustSection() {
       title: "Clean Engineering",
       description:
         "We enforce strict coding standards, peer reviews, and automated code analysis (SonarQube) to keep your software maintainable as it grows.",
-      icon: <FiCode />,
+      icon: <FiCode className='text-white'/>,
       color: "from-blue-500 to-cyan-300",
     },
     {
@@ -18,7 +18,7 @@ export default function TrustSection() {
       title: "Modern Infrastructure",
       description:
         "We use Infrastructure as Code and automated CI/CD pipelines to deploy software faster and reduce operational risks.",
-      icon: <FiTrendingUp />,
+      icon: <FiTrendingUp className='text-white'/>,
       color: "from-blue-500 to-cyan-300",
     },
     {
@@ -26,7 +26,7 @@ export default function TrustSection() {
       title: "Security First",
       description:
         "We follow industry security standards including the OWASP Top 10 to protect your application from vulnerabilities.",
-      icon: <FiLock />,
+      icon: <FiLock className='text-white'/>,
       color: "from-blue-500 to-cyan-300",
     },
     {
@@ -34,7 +34,7 @@ export default function TrustSection() {
       title: "Data Privacy",
       description:
         "We implement strong encryption and data governance practices to ensure your application meets global privacy standards.",
-      icon: <FiShield />,
+      icon: <FiShield className='text-white'/>,
       color: "from-blue-500 to-cyan-300",
     },
   ];

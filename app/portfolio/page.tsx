@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PortfolioShowcase from "@/components/portfolio/PortfolioShowcase";
+import ServicesCTASection from "@/components/services/ServicesCTASection";
 
 export const metadata: Metadata = {
   title: "Portfolio | Our Work - Throoout",
@@ -31,5 +32,16 @@ export const metadata: Metadata = {
 };
 
 export default function PortfolioPage() {
-  return <PortfolioShowcase />;
+  return (
+    <>
+      <PortfolioShowcase />
+      <ServicesCTASection
+        headline={"Ready to Build Something Amazing?"}
+        subtext={
+          "Building the future, one line of code at a time. We transform ideas into powerful digital solutions."
+        }
+        buttonText={"Book Free Strategy Call"}
+      />
+    </>
+  );
 }

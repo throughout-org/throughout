@@ -68,7 +68,7 @@ export const services: Service[] = [
     title: "Software Development",
     slug: "software-development",
     gradient: "from-blue-500 to-cyan-500",
-    icon: <FiMonitor />,
+    icon: <FiMonitor className='text-white' />,
     hero: {
       headline: "Engineering Scalable Software for the Future",
       subheadline:
@@ -310,7 +310,7 @@ export const services: Service[] = [
     title: "Shopify Development",
     slug: "shopify-development",
     gradient: "from-teal-500 to-cyan-500",
-    icon: <FiShoppingBag />,
+    icon: <FiShoppingBag className='text-white' />,
     hero: {
       headline: "Expert Shopify Development & Optimization",
       subheadline:
@@ -411,7 +411,7 @@ export const services: Service[] = [
     title: "Cloud & Server Solutions",
     slug: "cloud-server-solutions",
     gradient: "from-green-500 to-emerald-500",
-    icon: <FiCloud />,
+    icon: <FiCloud className='text-white' />,
     hero: {
       headline: "Resilient Cloud Infrastructure & DevOps",
       subheadline:
@@ -511,7 +511,7 @@ export const services: Service[] = [
     title: "CMS Development",
     slug: "cms-development",
     gradient: "from-orange-500 to-red-500",
-    icon: <FiEdit3 />,
+    icon: <FiEdit3 className='text-white' />,
     hero: {
       headline: "High-Performance Custom WordPress",
       subheadline:
@@ -612,7 +612,7 @@ export const services: Service[] = [
     title: "Workflow Automation",
     slug: "workflow-automation",
     gradient: "from-indigo-500 to-blue-500",
-    icon: <FiCpu />,
+    icon: <FiCpu className='text-white' />,
     hero: {
       headline: "Automate Your Business With AI",
       subheadline:
@@ -734,7 +734,7 @@ export const services: Service[] = [
     title: "UI/UX Engineering",
     slug: "ui-ux-engineering",
     gradient: "from-violet-500 to-purple-500",
-    icon: <FiPenTool />,
+    icon: <FiPenTool className='text-white' />,
     hero: {
       headline: "Design That Drives User Action",
       subheadline:
@@ -835,7 +835,7 @@ export const services: Service[] = [
     title: "AI-Driven SEO",
     slug: "ai-driven-seo",
     gradient: "from-green-400 to-blue-600",
-    icon: <FiTrendingUp />,
+    icon: <FiTrendingUp className='text-white' />,
     hero: {
       headline: "SEO That Gets Results",
       subheadline:

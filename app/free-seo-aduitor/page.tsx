@@ -3,6 +3,7 @@ import React from "react";
 import FreeSeoAuditor from "../../components/free-seo-aduitor/FreeSeoAuditor";
 
 import type { Metadata } from "next";
+import ServicesCTASection from "@/components/services/ServicesCTASection";
 
 export const metadata: Metadata = {
   title: "Free SEO Audit Tool | Instant Website SEO Checker",
@@ -40,5 +41,9 @@ export const metadata: Metadata = {
 
 
 export default function FreeSeoAuditorPage() {
-  return <FreeSeoAuditor />;
+  return (
+    <>
+      <FreeSeoAuditor />
+    </>
+  );
 }

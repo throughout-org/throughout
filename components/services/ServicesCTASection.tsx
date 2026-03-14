@@ -17,7 +17,7 @@ export default function ServicesCTASection({
   return (
     <>
       <section
-        className="relative px-4 py-24 overflow-hidden shadow-lg services-cta-wrapper sm:px-6 lg:px-8"
+        className="relative px-4 py-24 overflow-hidden shadow-lg services-cta-wrapper lg:p-20"
         style={{
           borderRadius: "50px",
           border: "10px solid #ffffff",
@@ -26,7 +26,7 @@ export default function ServicesCTASection({
           backgroundSize: "cover",
         }}
       >
-        <div className="relative z-10 flex flex-col max-w-5xl gap-6 mx-auto text-left">
+        <div className="relative z-10 flex flex-col max-w-6xl gap-6 mr-auto text-left">
           <h2 className="text-4xl font-bold text-gray-700 sm:text-5xl lg:text-6xl">
             {headline}
           </h2>
@@ -36,7 +36,7 @@ export default function ServicesCTASection({
 
           <div className="flex flex-col items-start justify-start gap-4 sm:flex-row">
             <CalendlyButton className="flex items-center gap-3 px-8 py-4 text-lg font-bold text-white transition-all duration-300 rounded-full group bg-linear-to-r from-sky-400 via-sky-500 to-sky-600 hover:scale-105 hover:shadow-2xl">
-             {buttonText} 
+              {buttonText}
               <svg
                 className="w-5 h-5 transition-transform group-hover:translate-x-1"
                 fill="none"

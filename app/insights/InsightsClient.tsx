@@ -44,7 +44,7 @@ export default function InsightsClient() {
   }, []);
 
   return (
-    <div className="min-h-screen pb-24 bg-linear-to-br from-slate-50 to-indigo-50">
+    <div className="min-h-screen pb-24">
       {/* Hero Section */}
       <section className="relative px-4 pt-32 pb-24 overflow-hidden sm:px-6 lg:px-8">
         {/* Animated Background Elements */}

@@ -9,7 +9,7 @@ const coreServices = [
     description:
       'Launch your product fast. We design, build, and ship production-ready MVPs for startups and new ventures.',
     href: '/mvp-studio',
-    icon: <FiTrendingUp />,
+    icon: <FiTrendingUp className="text-white" />,
   },
   {
     id: '02',
@@ -17,7 +17,7 @@ const coreServices = [
     description:
       'Web, mobile, and cloud applications built with scalable architecture and modern frameworks.',
     href: '/services/software-development',
-    icon: <FiSettings />,
+    icon: <FiSettings className="text-white" />,
   },
   {
     id: '03',
@@ -25,7 +25,7 @@ const coreServices = [
     description:
       'Integrate LLMs, intelligent workflows, and data automation to streamline operations and unlock new capabilities.',
     href: '/services/ai-automation',
-    icon: <FiCpu />,
+    icon: <FiCpu className="text-white" />,
   },
 ];
 
@@ -61,7 +61,7 @@ export default function ServicesSection() {
                   <span className="text-sm font-semibold tracking-[0.18em] text-sky-500">
                     {service.id}
                   </span>
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-100 to-blue-200 text-xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                     {service.icon}
                   </span>
                 </div>

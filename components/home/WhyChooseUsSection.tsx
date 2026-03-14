@@ -2,10 +2,10 @@ import { FiZap, FiLayers, FiMessageSquare, FiTrendingUp } from "react-icons/fi";
 
 export default function WhyChooseUsSection() {
   const features = [
-    { icon: <FiZap />, title: 'Fast Iterations', description: 'We ship in short development cycles so you see real progress every week.' },
-    { icon: <FiLayers />, title: 'Scalable Architecture', description: 'We design systems that remain stable as your product and users grow.' },
-    { icon: <FiMessageSquare />, title: 'Transparent Collaboration', description: 'You get clear progress updates, sprint reviews, and direct access to the team.' },
-    { icon: <FiTrendingUp />, title: 'Modern Tech Stack', description: 'We use proven frameworks and cloud infrastructure to build future-ready products.' }
+    { icon: <FiZap className="text-white"/>, title: 'Fast Iterations', description: 'We ship in short development cycles so you see real progress every week.' },
+    { icon: <FiLayers className="text-white"/>, title: 'Scalable Architecture', description: 'We design systems that remain stable as your product and users grow.' },
+    { icon: <FiMessageSquare className="text-white"/>, title: 'Transparent Collaboration', description: 'You get clear progress updates, sprint reviews, and direct access to the team.' },
+    { icon: <FiTrendingUp className="text-white"/>, title: 'Modern Tech Stack', description: 'We use proven frameworks and cloud infrastructure to build future-ready products.' }
   ];
 
   return (

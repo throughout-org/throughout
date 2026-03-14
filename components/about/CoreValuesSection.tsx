@@ -2,10 +2,10 @@ import { FiZap, FiAward, FiUsers, FiTrendingUp } from "react-icons/fi";
 
 export default function CoreValuesSection() {
   const values = [
-    { title: 'Innovation', description: 'Embracing new technologies and creative thinking', icon: <FiZap />, color: 'from-yellow-500 to-orange-500' },
-    { title: 'Excellence', description: 'Delivering quality work in every project we touch', icon: <FiAward />, color: 'from-blue-500 to-cyan-500' },
-    { title: 'Integrity', description: 'Building trust through honesty and transparency', icon: <FiUsers />, color: 'from-sky-500 to-pink-500' },
-    { title: 'Growth', description: 'Continuous improvement for us and our clients', icon: <FiTrendingUp />, color: 'from-green-500 to-emerald-500' },
+    { title: 'Innovation', description: 'Embracing new technologies and creative thinking', icon: <FiZap className="text-white" />, color: 'from-yellow-500 to-orange-500' },
+    { title: 'Excellence', description: 'Delivering quality work in every project we touch', icon: <FiAward className="text-white" />, color: 'from-blue-500 to-cyan-500' },
+    { title: 'Integrity', description: 'Building trust through honesty and transparency', icon: <FiUsers className="text-white" />, color: 'from-sky-500 to-pink-500' },
+    { title: 'Growth', description: 'Continuous improvement for us and our clients', icon: <FiTrendingUp className="text-white" />, color: 'from-green-500 to-emerald-500' },
   ];
 
   return (
@@ -22,7 +22,7 @@ export default function CoreValuesSection() {
             key={index}
             className="relative p-6 transition-all duration-300 bg-white border border-gray-100 shadow-md group rounded-2xl hover:shadow-xl hover:scale-105"
           >
-            <div className={`w-12 h-12 bg-gradient-to-br from-blue-200 to-cyan-50 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
+            <div className={`w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
               {value.icon}
             </div>
             <h3 className="mb-2 font-bold text-gray-900">{value.title}</h3>

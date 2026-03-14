@@ -180,19 +180,19 @@ export default function CaseStudiesPage() {
 
                 {/* Testimonial Section */}
                 <section className="w-full bg-gray-900 py-24 px-6 relative overflow-hidden mt-12">
-                    <div className="absolute inset-0 z-0 bg-gradient-to-b from-gray-900 to-indigo-950"></div>
+                    <div className="absolute inset-0 z-0 bg-gradient-to-b from-gray-900 to-blue-950"></div>
                     <div className="relative z-10 max-w-4xl mx-auto text-center">
-                        <svg className="w-12 h-12 text-indigo-500 mx-auto mb-6 opacity-80" fill="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-12 h-12 text-blue-500 mx-auto mb-6 opacity-80" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                         </svg>
                         <h2 className="text-2xl md:text-4xl font-light text-white leading-relaxed mb-8">
                             &quot;Throoout helped us scale our e-commerce platform and dramatically improve our search visibility. The ROI was virtually immediate.&quot;
                         </h2>
                         <div className="flex items-center justify-center gap-4">
-                            <div className="w-12 h-12 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full shadow-lg border-2 border-indigo-300"></div>
+                            <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full shadow-lg border-2 border-blue-300"></div>
                             <div className="text-left">
                                 <p className="text-white font-bold text-lg">Sarah Jenkins</p>
-                                <p className="text-indigo-300 font-medium">Founder, Retail Brand</p>
+                                <p className="text-blue-300 font-medium">Founder, Retail Brand</p>
                             </div>
                         </div>
                     </div>
@@ -217,15 +217,14 @@ export default function CaseStudiesPage() {
                         </div>
                     </div>
                 </section> */}
-
-                <ServicesCTASection
-                    headline={"Ready to Build Something Amazing?"}
-                    subtext={
-                        "Building the future, one line of code at a time. We transform ideas into powerful digital solutions."
-                    }
-                    buttonText={"Book Free Strategy Call"}
-                />
             </main>
+            <ServicesCTASection
+                headline={"Ready to Build Something Amazing?"}
+                subtext={
+                    "Building the future, one line of code at a time. We transform ideas into powerful digital solutions."
+                }
+                buttonText={"Book Free Strategy Call"}
+            />
         </>
     );
 }

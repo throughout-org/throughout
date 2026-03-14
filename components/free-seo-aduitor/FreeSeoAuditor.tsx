@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { FiTrendingUp, FiZap, FiMail, FiSmartphone, FiType, FiAlertTriangle, FiHash } from "react-icons/fi";
 import SeoUnlockPopup from "./SeoUnlockPopup";
+import ServicesCTASection from "../services/ServicesCTASection";
 
 export default function FreeSeoAuditor() {
   const [domain, setDomain] = useState("");
@@ -53,7 +54,7 @@ export default function FreeSeoAuditor() {
   }, [hasScrolled]);
 
   return (
-    <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[80vh] bg-gradient-to-br from-blue-100 via-white to-blue-200">
+    <section className="relative pt-32 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[80vh] bg-gradient-to-br from-blue-100 via-white to-blue-200">
       {/* Trendy Glassmorphism Animated Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute rounded-full top-20 left-10 w-96 h-96 bg-gradient-to-tr from-blue-300/30 via-blue-200/20 to-blue-100/20 mix-blend-multiply filter blur-3xl animate-blob"></div>
@@ -61,7 +62,7 @@ export default function FreeSeoAuditor() {
         <div className="absolute rounded-full bottom-20 left-1/2 w-96 h-96 bg-gradient-to-tl from-blue-100/20 via-blue-200/20 to-blue-300/20 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto ">
+      <div className="relative z-10 max-w-5xl mx-auto pb-[100px]">
         {/* Badge */}
         {/* <div className="mb-16 text-center">
           <div className="inline-flex items-center gap-2 px-5 py-2 mb-0 border border-blue-100 rounded-full shadow-xl bg-white/80 backdrop-blur-md animate-fade-in">
@@ -154,7 +155,7 @@ export default function FreeSeoAuditor() {
           </div>
         )}
       </div>
-      <div className="relative max-w-5xl mx-auto z-60 ">
+      <div className="relative max-w-5xl mx-auto z-60">
         {loading && (
           <div className="relative bg-white/80 rounded-3xl shadow-2xl p-8 mt-4 backdrop-blur-md border border-blue-200 overflow-hidden flex flex-col items-center justify-center min-h-[400px] animate-fade-in">
             <div
@@ -462,6 +463,14 @@ export default function FreeSeoAuditor() {
           }
         `}</style>
       </div>
+
+      <ServicesCTASection
+        headline={"Ready to Build Something Amazing?"}
+        subtext={
+          "Building the future, one line of code at a time. We transform ideas into powerful digital solutions."
+        }
+        buttonText={"Book Free Strategy Call"}
+      />
     </section>
   );
 }

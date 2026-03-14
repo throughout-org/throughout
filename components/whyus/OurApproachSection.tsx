@@ -6,28 +6,28 @@ export default function OurApproachSection() {
       step: '01',
       title: 'Client-Centric Focus',
       description: 'We take time to understand your unique needs and goals before writing a single line of code.',
-      icon: <FiTarget />,
+      icon: <FiTarget className='text-white' />,
       color: 'from-blue-500 to-cyan-500'
     },
     {
       step: '02',
       title: 'Agile Methodology',
       description: 'Flexible and iterative development that adapts smoothly to evolving requirements.',
-      icon: <FiRefreshCw />,
+      icon: <FiRefreshCw className='text-white' />,
       color: 'from-sky-500 to-pink-500'
     },
     {
       step: '03',
       title: 'Quality Assurance',
       description: 'Rigorous testing and code reviews ensure bug-free, reliable software delivery.',
-      icon: <FiCheckCircle />,
+      icon: <FiCheckCircle className='text-white' />,
       color: 'from-green-500 to-emerald-500'
     },
     {
       step: '04',
       title: 'Continuous Support',
       description: '24/7 maintenance and support to keep your applications running at peak performance.',
-      icon: <FiLifeBuoy />,
+      icon: <FiLifeBuoy className='text-white' />,
       color: 'from-orange-500 to-red-500'
     },
   ];
@@ -47,7 +47,7 @@ export default function OurApproachSection() {
             className="relative group bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100"
           >
             <div className="flex items-start gap-4">
-              <div className={`flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-200 to-cyan-50 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+              <div className={`flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                 {approach.icon}
               </div>
               <div className="flex-1">

@@ -181,7 +181,7 @@ export default function IndustriesSection() {
     return () => clearInterval(interval);
   }, [tabCount]);
 
-  
+
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br ">
       <div className="max-w-7xl mx-auto">
@@ -191,7 +191,7 @@ export default function IndustriesSection() {
             Industries We Serve
           </span> */}
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            
+
             <span className="block bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent pb-4 font-bold">
               Reshaping Industries Through Technology
             </span>
@@ -209,11 +209,10 @@ export default function IndustriesSection() {
               <button
                 key={industry.id}
                 onClick={() => setActiveTab(industry.id)}
-                className={`group relative flex-1 px-4 py-4 rounded-2xl font-semibold transition-all duration-300 ${
-                  activeTab === industry.id
+                className={`group relative flex-1 px-4 py-4 rounded-2xl font-semibold transition-all duration-300 ${activeTab === industry.id
                     ? 'bg-gradient-to-br from-blue-50 to-sky-50 text-blue-700 shadow-md border-2 border-blue-200'
                     : 'text-gray-600 hover:bg-gray-50'
-                }`}
+                  }`}
               >
                 <div className="flex flex-col items-center gap-2">
                   <span className="text-3xl transform group-hover:scale-110 transition-transform duration-300">
@@ -240,11 +239,10 @@ export default function IndustriesSection() {
             {industries.map((industry) => (
               <div
                 key={industry.id}
-                className={`transition-all duration-500 ${
-                  activeTab === industry.id
+                className={`transition-all duration-500 ${activeTab === industry.id
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 absolute inset-0 pointer-events-none -translate-y-4'
-                }`}
+                  }`}
               >
                 <div className="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-10 ">
                   <div className="max-w-4xl mx-auto">
