@@ -245,7 +245,7 @@ export default async function ServiceDetailPage({
       )}
 
       {/* Scalable Solutions Banner */}
-      <ScalableBanner
+      {/* <ScalableBanner
         headline={
           isAI
             ? "Automate your workflows and unlock AI-powered intelligence"
@@ -256,7 +256,7 @@ export default async function ServiceDetailPage({
             ? "Stop wasting time on repetitive tasks. Our AI solutions automate business processes, extract insights from documents, and provide intelligent customer support through custom chatbots. From data automation to machine learning integration, we help you leverage AI to reduce costs, improve efficiency, and stay ahead of the competition."
             : service.scalableBanner.description
         }
-      />
+      /> */}
 
       {/* Engagement Models Section */}
       {/* <EngagementModelsSection
