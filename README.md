@@ -173,9 +173,53 @@ The main gradient colors can be adjusted in [app/page.tsx](app/page.tsx):
 
 ## 🧩 API Endpoints
 
-- **Job Applications**: `POST /api/job-applications` (stores in MongoDB, uploads resume to Cloudinary, sends confirmation email)
-- **SEO Audit**: `POST /api/seo-audit` (frontend proxy to external audit service)
 
+
+
+## 🗂️ Sanity Studio Setup
+
+To edit blog/insights content, use Sanity Studio:
+
+1. Clone or access your Sanity Studio project.
+2. Run `npx sanity start` in the Studio directory.
+3. Configure `src/sanity/client.ts` with your projectId, dataset, and API token.
+4. Edit content in Studio and publish.
+
+## 🐳 Docker Usage
+
+To build and run the app with Docker:
+
+```bash
+docker build -t throoout .
+docker run -p 3000:3000 throoout
+```
+
+## 🔑 Environment Example
+
+Copy `.env.example` to `.env.local` and fill in your secrets:
+
+```bash
+cp .env.example .env.local
+```
+
+## 📤 API Request/Response Formats
+
+### Job Applications
+**POST** `/api/job-applications`
+Request: `{ name, email, resume, ... }`
+Response: `{ success: true, message: "Application received" }`
+
+### SEO Audit
+**POST** `/api/seo-audit`
+Request: `{ url }`
+Response: `{ score, recommendations, ... }`
+
+## 🤝 Contribution Guide
+
+1. Fork the repo and create a branch.
+2. Run `npm run lint` before submitting PRs.
+3. Describe your changes clearly in the PR.
+4. For major features, open an issue first.
 
 ## 📱 Contact Methods
 
