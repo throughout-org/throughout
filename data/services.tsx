@@ -557,69 +557,88 @@ export const services: Service[] = [
     gradient: "from-orange-500 to-red-500",
     icon: <FiEdit3 className="text-white" />,
     hero: {
-      headline: "High-Performance Custom WordPress",
+      headline: "Flexible Content Management Systems",
       subheadline:
-        "We push WordPress beyond its limits with custom plugin development, headless setups, and API integrations—secure, fast, and scalable.",
-      primaryCTA: "Discuss My Site",
-      secondaryCTA: "Technical Audit",
+        "We build powerful content management platforms that combine the simplicity of traditional CMS tools with the performance and flexibility of modern web architecture. From custom WordPress solutions to headless CMS setups, we help businesses manage content at scale.",
+      primaryCTA: "Discuss Your Project",
+      secondaryCTA: "Request Technical Audit",
       visualStrategy:
         "Abstract representation of the WordPress block editor connecting to raw PHP code",
-      badgeText: "WordPress Experts",
+      badgeText: "CMS Development",
       trustIndicators: [
         "Custom Development",
         "Security Hardened",
         "SEO Optimized",
       ],
     },
-    solutionsGridHeadline: "Advanced WP Engineering",
+    solutionsGridBadgeText: "CMS Engineering",
+    solutionsGridHeadline: "Advanced Content Platform Development",
     solutionsGridIntro:
-      "Ideal for publishers and businesses who need the ease of WordPress but the power of a custom app.",
+      "We design and develop content management systems that go beyond simple website editing. Our CMS solutions support high-performance websites, publishing platforms, and complex digital ecosystems.",
     solutionCards: [
       {
-        title: "Custom Theme Development",
-        concept: "Unique Design",
+        title: "Custom CMS Development",
+        concept: "WordPress / Headless CMS",
         content:
-          "No bloated page builders. We code lightweight, custom themes from scratch that load instantly and pass Core Web Vitals assessments.",
+          "Tailored CMS platforms built around your content workflows. We develop custom themes, plugins, and integrations to ensure flexibility, performance, and long-term maintainability.",
+        idealFor: [
+          "corporate websites",
+          "publishing platforms",
+          "marketing websites",
+        ],
       },
       {
-        title: "Advanced WooCommerce",
-        concept: "E-Commerce",
+        title: "Advanced WooCommerce Platforms",
+        concept: "Custom E-Commerce CMS",
         content:
-          "We extend WooCommerce with custom shipping logic, subscription models, and dynamic pricing rules tailored to your business operations.",
+          "Extend the CMS into a powerful commerce platform using advanced WooCommerce development and custom business logic. WooCommerce runs on top of WordPress and allows businesses to transform their CMS into a full commerce system.",
+        idealFor: [
+          "online stores",
+          "subscription platforms",
+          "product catalog systems",
+        ],
       },
       {
-        title: "API Integration & Plugins",
-        concept: "Connectivity",
+        title: "API Integrations & CMS Automation",
+        concept: "Custom Plugins & APIs",
         content:
-          "Need WordPress to talk to your CRM or Mobile App? We build secure REST API endpoints and custom plugins to sync your data.",
+          "Modern businesses rely on connected systems. We develop secure APIs and custom plugins to integrate your CMS with external platforms and internal tools.",
+        idealFor: [
+          "CRM integrations",
+          "mobile applications",
+          "marketing automation",
+        ],
       },
     ],
-    engineeringDNAHeadline: "Secure & Scalable WP",
-    engineeringDNAIntro: "",
+    engineeringDNABadgeText: "Engineering Standards",
+    engineeringDNAHeadline: "Built for Stability and Growth",
+    engineeringDNAIntro:
+      "Content platforms must remain fast, secure, and maintainable even as they grow. Our engineering process focuses on building CMS systems that scale without becoming difficult to manage.",
     engineeringFeatures: [
       {
-        title: "Vulnerability Protection",
-        copy: "WordPress targets are common. We harden your installation by disabling unused XML-RPC, securing login paths, and implementing WAFs.",
+        title: "Security Hardening",
+        copy: "CMS platforms are frequent attack targets. We secure installations by restricting vulnerable endpoints, implementing authentication protection, and configuring firewall layers.",
       },
       {
         title: "Database Optimization",
-        copy: "We clean and index your MySQL database to ensure that even sites with 10,000+ posts load quickly for users.",
+        copy: "Large content libraries can slow down poorly structured systems. We optimize database queries and indexing to ensure fast page loads even with thousands of posts.",
       },
       {
         title: "Code Quality Standards",
-        copy: "We follow strict WordPress Coding Standards (WPCS). This ensures your site is compatible with future updates and easy for other developers to maintain.",
+        copy: "Our development follows official coding standards to ensure compatibility with future updates and maintainable codebases. We follow guidelines established by organizations like WordPress Foundation to ensure long-term compatibility.",
       },
     ],
     technologies: {
-      headline: "Technologies",
+      badgeText: "Technology",
+      headline: "CMS Development Stack",
       description:
-        "We build custom WordPress solutions using PHP and MySQL foundations, enhanced with modern JavaScript and React for dynamic Gutenberg blocks, alongside WooCommerce for robust e-commerce functionality.",
+        "Our CMS solutions combine reliable backend systems with modern frontend technologies to deliver high-performance digital platforms. WooCommerce extends the capabilities of WordPress and powers millions of online stores worldwide.",
       stack: [
         { name: "WordPress", icon: "/images/tech/wordpress.svg" },
         { name: "PHP", icon: "/images/tech/php.svg" },
-        { name: "MySQL", icon: "/images/tech/mysql.svg" },
         { name: "JavaScript", icon: "/images/tech/javascript.svg" },
         { name: "React", icon: "/images/tech/react.svg" },
+        { name: "MySQL", icon: "/images/tech/mysql.svg" },
         { name: "WooCommerce", icon: "/images/tech/woocommerce.svg" },
       ],
     },
@@ -646,9 +665,10 @@ export const services: Service[] = [
       ],
     },
     finalCTA: {
-      headline: "A WordPress Site That Actually Performs",
-      subtext: "Fast, secure, and built for growth.",
-      buttonText: "Schedule WordPress Call",
+      headline: "Build a CMS That Scales with Your Business",
+      subtext:
+        "Whether you need a custom content platform, an optimized publishing system, or an integrated commerce CMS, we design solutions that are fast, secure, and easy to manage.",
+      buttonText: "Schedule CMS Consultation",
     },
   },
   {
@@ -780,63 +800,78 @@ export const services: Service[] = [
     gradient: "from-violet-500 to-purple-500",
     icon: <FiPenTool className="text-white" />,
     hero: {
-      headline: "Design That Drives User Action",
+      headline: "Design Systems That Power Great Products",
       subheadline:
-        "We don't just make things look good. We design intuitive, accessible, and conversion-focused interfaces that developers love to build.",
+        "We design intuitive, scalable interfaces that help users accomplish tasks quickly and confidently. Our UI/UX engineering process focuses on usability, accessibility, and conversion-driven design.",
       primaryCTA: "Start Design Project",
       secondaryCTA: "View Design Process",
       visualStrategy:
         'A floating "glassmorphism" style UI card with cursor interactions and wireframe lines',
-      badgeText: "UI/UX Design",
+      badgeText: "UI/UX Engineering",
       trustIndicators: [
         "User Research",
         "Accessibility First",
         "Conversion Focused",
       ],
     },
-    solutionsGridHeadline: "User Experience Services",
+    solutionsGridBadgeText: "Design Capabilities",
+    solutionsGridHeadline: "User Experience & Interface Design",
     solutionsGridIntro:
-      "From initial research to pixel-perfect prototypes, we cover the full design lifecycle.",
+      "We create digital experiences that balance visual design, usability, and technical feasibility. Our process covers the full lifecycle from research and wireframes to high-fidelity interface systems.",
     solutionCards: [
       {
-        title: "Wireframing & Prototyping",
-        concept: "Blueprinting",
+        title: "Wireframes & Interactive Prototypes",
+        concept: "Product Blueprinting",
         content:
-          "We visualize the user journey early. Interactive prototypes allow you to test flows and validate ideas before writing a single line of code.",
+          "Before development begins, we map the product structure and user flows. Interactive prototypes help validate ideas early and reduce costly redesign during development.",
+        idealFor: [
+          "SaaS products",
+          "mobile-first applications",
+          "complex digital platforms",
+        ],
       },
       {
-        title: "High-Fidelity UI Design",
-        concept: "Visual Identity",
+        title: "High-Fidelity Interface Design",
+        concept: "UI Systems",
         content:
-          "Modern, aesthetic interfaces tailored to your brand. We design responsive systems that look stunning on mobile, tablet, and desktop.",
+          "We design modern, responsive interfaces that align with your brand identity and deliver a consistent experience across devices.",
+        idealFor: ["web platforms", "dashboards", "e-commerce interfaces"],
       },
       {
-        title: "Design Systems",
-        concept: "Consistency",
+        title: "Scalable Design Systems",
+        concept: "Component Libraries",
         content:
-          "We build comprehensive component libraries and style guides. This ensures UI consistency across your product and speeds up future development.",
+          "Design systems ensure that your product remains visually consistent as it grows. We build reusable components and UI standards that simplify future development.",
+        idealFor: [
+          "large applications",
+          "growing product teams",
+          "multi-platform products",
+        ],
       },
     ],
-    engineeringDNAHeadline: "Designed for Development",
-    engineeringDNAIntro: "",
+    engineeringDNABadgeText: "Design Workflow",
+    engineeringDNAHeadline: "Designed for Real Product Development",
+    engineeringDNAIntro:
+      "Design should integrate seamlessly with development workflows. Our UI/UX process ensures that every design decision is practical, testable, and developer-friendly.",
     engineeringFeatures: [
       {
-        title: "Developer Handoff",
-        copy: "We speak code. Our designs are delivered in Figma with auto-layout, clear layer naming, and CSS properties ready for your developers.",
+        title: "Developer-Ready Handoff",
+        copy: "Design files are structured with clear component organization, auto-layout systems, and documented properties to ensure smooth collaboration with developers.",
       },
       {
-        title: "Accessibility (WCAG)",
-        copy: "Inclusive design is a priority. We ensure color contrast, font sizing, and navigation structures meet WCAG standards for accessibility.",
+        title: "Accessibility-First Design",
+        copy: "We follow accessibility guidelines to ensure interfaces remain usable for all users. This includes proper contrast ratios, readable typography, and logical navigation structures. Standards such as World Wide Web Consortium accessibility guidelines help ensure inclusive user experiences.",
       },
       {
-        title: "Data-Backed Decisions",
-        copy: "We don't guess. We use user persona research and competitive analysis to make design decisions that solve actual user problems.",
+        title: "Research-Driven Decisions",
+        copy: "Every design decision is backed by research, user behavior analysis, and competitive benchmarking to ensure the final interface solves real user problems.",
       },
     ],
     technologies: {
-      headline: "Technologies",
+      badgeText: "Tools & Platforms",
+      headline: "Modern Design Tooling",
       description:
-        "We design with industry-leading tools like Figma and Adobe XD, building component libraries in Storybook, and ensuring seamless developer handoff through Zeplin for pixel-perfect implementation.",
+        "Our design workflow uses industry-standard tools that enable efficient collaboration between designers and developers. Design: Figma, Adobe XD, Sketch. Design Systems: Storybook. Developer Handoff: Zeplin. Tools like Figma enable collaborative design workflows and real-time prototyping.",
       stack: [
         { name: "Figma", icon: "/images/tech/figma.svg" },
         { name: "Adobe XD", icon: "/images/tech/adobexd.svg" },
@@ -869,8 +904,9 @@ export const services: Service[] = [
       ],
     },
     finalCTA: {
-      headline: "Turn Visitors into Users",
-      subtext: "Let's design an interface that works as good as it looks.",
+      headline: "Turn Ideas into Exceptional Interfaces",
+      subtext:
+        "Whether you're building a new digital product or improving an existing one, we design user experiences that are intuitive, scalable, and ready for development.",
       buttonText: "Schedule Design Consultation",
     },
   },
@@ -881,56 +917,80 @@ export const services: Service[] = [
     gradient: "from-green-400 to-blue-600",
     icon: <FiTrendingUp className="text-white" />,
     hero: {
-      headline: "SEO That Gets Results",
+      headline: "Search Optimization Powered by Data & Automation",
       subheadline:
-        "Boost your rankings and drive organic traffic with proven SEO strategies.",
+        "We combine technical SEO expertise with AI-powered research and automation to improve search visibility, grow organic traffic, and scale content strategies efficiently.",
       primaryCTA: "Start SEO Audit",
-      secondaryCTA: "View SEO Packages",
+      secondaryCTA: "Explore SEO Strategy",
       visualStrategy: "A graph with upward-trending lines and search icons",
-      badgeText: "SEO",
+      badgeText: "AI-Driven SEO",
       trustIndicators: ["Technical SEO", "Content Strategy", "Proven Results"],
     },
-    solutionsGridHeadline: "SEO Services",
-    solutionsGridIntro: "Comprehensive SEO solutions for every business.",
+    solutionsGridBadgeText: "SEO Capabilities",
+    solutionsGridHeadline: "Technical SEO & Growth Systems",
+    solutionsGridIntro:
+      "Our SEO approach focuses on building a strong technical foundation while using data and automation to identify high-value opportunities for organic growth.",
     solutionCards: [
       {
-        title: "Technical SEO Audit",
-        concept: "Site Health",
+        title: "Technical SEO Audits",
+        concept: "Site Health & Indexation",
         content:
-          "We analyze your website for crawl issues, speed, mobile usability, and indexation.",
+          "We analyze your website's technical structure to identify issues that prevent search engines from properly crawling and ranking your pages. Audit areas include crawlability and indexation, page speed and Core Web Vitals, mobile usability, and internal linking structure.",
+        idealFor: [
+          "crawlability and indexation",
+          "page speed and Core Web Vitals",
+          "mobile usability",
+          "internal linking structure",
+        ],
       },
       {
         title: "On-Page Optimization",
         concept: "Content & Structure",
         content:
-          "We optimize your site structure, meta tags, headings, and content.",
+          "We optimize the structure of your pages to improve search relevance and user experience. This includes metadata improvements, semantic structure, and internal linking strategies.",
+        idealFor: [
+          "page titles and meta descriptions",
+          "heading hierarchy",
+          "keyword targeting",
+          "internal linking improvements",
+        ],
       },
       {
-        title: "Content Strategy",
-        concept: "Authority Building",
-        content: "We develop a content plan that targets high-value keywords.",
+        title: "AI-Assisted Content Strategy",
+        concept: "Search Growth Planning",
+        content:
+          "Content growth requires strategic planning. We use AI research tools to identify search opportunities, analyze competitors, and develop scalable content strategies.",
+        idealFor: [
+          "keyword opportunity analysis",
+          "topic clustering",
+          "search intent optimization",
+          "long-term content roadmaps",
+        ],
       },
     ],
-    engineeringDNAHeadline: "SEO That Works With Your Code",
-    engineeringDNAIntro: "",
+    engineeringDNABadgeText: "Search Engineering",
+    engineeringDNAHeadline: "SEO Built Into Your Infrastructure",
+    engineeringDNAIntro:
+      "Modern SEO is closely tied to performance and technical architecture. Our engineering-driven approach ensures your site is optimized both for users and search engines.",
     engineeringFeatures: [
       {
-        title: "Schema & Structured Data",
-        copy: "We implement JSON-LD and Open Graph to enhance your search listings.",
+        title: "Structured Data Implementation",
+        copy: "We implement structured data using JSON-LD to improve search engine understanding and enhance search results with rich snippets. Standards developed by organizations like World Wide Web Consortium help define how structured data is interpreted.",
       },
       {
         title: "Performance Optimization",
-        copy: "We improve Core Web Vitals and reduce load times.",
+        copy: "Website speed directly affects search performance. We optimize page loading time, reduce unnecessary scripts, and improve Core Web Vitals.",
       },
       {
-        title: "SEO Automation",
-        copy: "We use the latest tools to automate reporting and keyword tracking.",
+        title: "SEO Automation & Monitoring",
+        copy: "We build automated reporting and monitoring systems that track keyword performance, technical issues, and organic growth trends.",
       },
     ],
     technologies: {
-      headline: "Technologies",
+      badgeText: "Technology",
+      headline: "Analytics & SEO Platforms",
       description:
-        "We leverage industry-leading SEO tools and analytics platforms.",
+        "We use modern analytics and SEO tools to monitor performance and identify growth opportunities. Tools such as Google Search Console and Ahrefs help monitor search visibility and track ranking performance.",
       stack: [
         { name: "Google Search Console", icon: "/images/tech/gsc.svg" },
         { name: "Ahrefs", icon: "/images/tech/ahrefs.svg" },
@@ -961,8 +1021,9 @@ export const services: Service[] = [
       ],
     },
     finalCTA: {
-      headline: "Ready to Rank Higher?",
-      subtext: "Let’s unlock your site’s full SEO potential.",
+      headline: "Ready to Grow Your Organic Traffic?",
+      subtext:
+        "Whether you need a technical SEO audit or a long-term search growth strategy, we help businesses build sustainable organic traffic through data-driven optimization.",
       buttonText: "Schedule SEO Consultation",
     },
   },
