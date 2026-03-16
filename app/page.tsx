@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import HeroSection from "@/components/home/HeroSection";
+import Link from "next/link";
+import InnerBanner from "@/components/ui/InnerBanner";
 import ServicesSection from "@/components/home/ServicesSection";
-import AboutSection from "@/components/home/AboutSection";
 import TechStackSection from "@/components/home/TechStackSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
 import IndustriesSection from "@/components/home/IndustriesSection";
 import EngagementFrameworkSection from "@/components/home/EngagementFrameworkSection";
 import TrustSection from "@/components/home/TrustSection";
 import ServicesCTASection from "@/components/services/ServicesCTASection";
-import TrendyTuringLabel from "@/components/TrendyTuringLabel";
 
 export const metadata: Metadata = {
   title: "Throoout - Smart Software Solutions | Web & Mobile App Development",
@@ -84,7 +81,34 @@ export default function Home() {
       {/* Navigation */}
 
       {/* Hero Section */}
-      <HeroSection />
+      <InnerBanner
+        badgeText="Product Engineering Studio"
+        title={
+          <>
+            Launch Your Product Faster
+            <br className="hidden md:block" />
+            With a Dedicated Engineering Team
+          </>
+        }
+        description="From MVPs to enterprise platforms, we build fast, scalable software using modern technologies."
+        cta={
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold text-white transition-all duration-300 rounded-full shadow-lg bg-linear-to-r from-[#3698fd] via-[#3698fd] to-[#377bff] hover:shadow-xl hover:scale-[1.02]"
+            >
+              View Our Work
+              <span aria-hidden="true">→</span>
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-gray-900 transition-all duration-300 bg-white border-2 border-gray-200 rounded-full hover:border-gray-900 hover:shadow-lg"
+            >
+              Book a Free Call
+            </Link>
+          </div>
+        }
+      />
 
       {/* Services Section */}
       <ServicesSection />

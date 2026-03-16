@@ -1,12 +1,19 @@
 import React from "react";
+import BannerBadge from "@/components/ui/BannerBadge";
 
 interface InnerBannerProps {
   badgeText: string;
   title: React.ReactNode;
   description: React.ReactNode;
+  cta?: React.ReactNode;
 }
 
-export default function InnerBanner({ badgeText, title, description }: InnerBannerProps) {
+export default function InnerBanner({
+  badgeText,
+  title,
+  description,
+  cta,
+}: InnerBannerProps) {
   return (
     <section className="relative px-4 pt-32 pb-24 overflow-hidden sm:px-6 lg:px-8">
       {/* Animated Background Elements */}
@@ -19,22 +26,15 @@ export default function InnerBanner({ badgeText, title, description }: InnerBann
       <div className="relative z-10 mx-auto text-center max-w-7xl">
         {/* Badge */}
         <div className="mb-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-2 rounded-full shadow-lg bg-white/80 backdrop-blur-sm animate-fade-in">
-            <span className="relative flex w-2 h-2">
-              <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-gradient-to-r from-blue-500 to-sky-500"></span>
-              <span className="relative inline-flex w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-sky-500"></span>
-            </span>
-            <span className="text-sm font-semibold text-transparent bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text uppercase tracking-widest">
-              {badgeText}
-            </span>
-          </div>
+          <BannerBadge text={badgeText} />
         </div>
-        <h1 className="mb-6 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
-          <span className="block text-gray-900 leading-tight">{title}</span>
+        <h1 className="mb-6 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+          <span className="block leading-tight text-gray-900">{title}</span>
         </h1>
-        <div className="max-w-3xl mx-auto text-lg sm:text-xl md:text-2xl leading-relaxed text-gray-600">
+        <div className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-600 sm:text-xl md:text-2xl">
           {description}
         </div>
+        {cta && <div className="mt-10">{cta}</div>}
       </div>
     </section>
   );

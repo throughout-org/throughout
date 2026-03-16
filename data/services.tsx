@@ -1,5 +1,13 @@
-import React from 'react';
-import { FiMonitor, FiShoppingBag, FiCloud, FiEdit3, FiCpu, FiPenTool, FiTrendingUp } from 'react-icons/fi';
+import React from "react";
+import {
+  FiMonitor,
+  FiShoppingBag,
+  FiCloud,
+  FiEdit3,
+  FiCpu,
+  FiPenTool,
+  FiTrendingUp,
+} from "react-icons/fi";
 
 export interface ServiceHero {
   headline: string;
@@ -68,88 +76,99 @@ export const services: Service[] = [
     title: "Software Development",
     slug: "software-development",
     gradient: "from-blue-500 to-cyan-500",
-    icon: <FiMonitor className='text-white' />,
+    icon: <FiMonitor className="text-white" />,
     hero: {
-      headline: "Engineering Scalable Software for the Future",
+      headline: "Engineering Scalable Software Systems",
       subheadline:
-        "We build high-performance web applications, dynamic admin panels, and real-time APIs using industry-leading technologies like Laravel, Next.js, and Python.",
+        "We design and build high-performance web applications, backend systems, and APIs that power modern digital businesses. Our team develops reliable software architectures using technologies like Laravel, Next.js, Node.js, and Python.",
       primaryCTA: "Start Your Project",
-      secondaryCTA: "View Our Tech Stack",
+      secondaryCTA: "View Our Engineering Stack",
       visualStrategy:
         "Abstract geometric lines connecting server icons, representing connectivity and structure",
-      badgeText: "Software Excellence",
+      badgeText: "Software Development",
       trustIndicators: [
         "Free Consultation",
         "Agile Development",
         "Expert Team",
       ],
     },
-    solutionsGridHeadline: "Comprehensive Development Solutions",
+    solutionsGridHeadline: "Full-Stack Software Engineering",
     solutionsGridIntro:
-      "Whether you need a lightning-fast frontend or a complex automation backend, our stack covers the full lifecycle.",
+      "From fast user interfaces to complex backend platforms, we build software systems designed for performance, reliability, and long-term scalability.",
     solutionCards: [
       {
-        title: "High-Speed Web Applications (Next.js / React)",
-        concept: "Focus on speed and SEO",
+        title: "High-Performance Web Applications (Next.js / React)",
+        concept: "Next.js / React",
         content:
-          "We engineer blazing-fast, SEO-optimized user interfaces. By leveraging Server-Side Rendering (SSR) with Next.js, we ensure your application ranks higher on Google and provides an app-like experience for users.",
+          "Modern web applications designed for speed, SEO performance, and seamless user experience. By leveraging server-side rendering and optimized frontend architecture, we deliver fast, scalable interfaces that feel like native apps.",
         idealFor: [
-          "E-commerce stores",
-          "Corporate dashboards",
-          "Interactive platforms",
+          "E-commerce platforms",
+          "SaaS dashboards",
+          "Interactive digital platforms",
         ],
       },
       {
-        title: "Enterprise Backend Systems (Laravel)",
-        concept: "Focus on stability and management",
+        title: "Backend Platforms & APIs (Laravel)",
+        concept: "Laravel",
         content:
-          "Robust and secure backends built on Laravel. We specialize in developing complex admin panels, multi-vendor marketplaces, and RESTful APIs that serve as the backbone of your digital business.",
-        idealFor: ["SaaS platforms", "CRM systems", "Inventory management"],
-      },
-      {
-        title: "Real-Time & High Concurrency (Node.js / Nest.js)",
-        concept: "Focus on data traffic and live updates",
-        content:
-          "Event-driven architecture designed for scale. Using Nest.js, we build lightweight, efficient microservices capable of handling thousands of simultaneous connections for real-time features.",
-        idealFor: ["Chat apps", "Live streaming feeds", "Notification systems"],
-      },
-      {
-        title: "Automation & Data Intelligence (Python)",
-        concept: "Focus on efficiency",
-        content:
-          "Automate the repetitive and analyze the complex. From data scraping pipelines to custom API automation scripts, our Python solutions reduce manual workload and unlock data insights.",
+          "Secure and scalable backend systems that power complex business platforms. Our Laravel architecture enables robust admin panels, REST APIs, and enterprise-level applications.",
         idealFor: [
-          "Business process automation",
-          "AI integration",
-          "Data analysis",
+          "SaaS platforms",
+          "CRM systems",
+          "Marketplace platforms",
+          "Business management systems",
+        ],
+      },
+      {
+        title: "Real-Time Systems & Microservices (Node.js / Nest.js)",
+        concept: "Node.js / Nest.js",
+        content:
+          "Event-driven architectures designed for high concurrency and real-time communication. These systems efficiently manage thousands of simultaneous connections and dynamic data flows.",
+        idealFor: [
+          "Chat and messaging platforms",
+          "Live activity feeds",
+          "Notification systems",
+          "Streaming applications",
+        ],
+      },
+      {
+        title: "Automation & Data Processing (Python)",
+        concept: "Python",
+        content:
+          "Automated workflows and data systems that eliminate manual tasks and unlock valuable insights. Our Python solutions integrate with APIs, process large datasets, and support intelligent automation.",
+        idealFor: [
+          "workflow automation",
+          "data processing pipelines",
+          "AI integrations",
+          "reporting systems",
         ],
       },
     ],
-    engineeringDNAHeadline: "Why Startups & Enterprises Trust Our Code",
+    engineeringDNAHeadline: "Built with Engineering Discipline",
     engineeringDNAIntro:
-      "We don't just write code; we follow strict engineering protocols to ensure stability, security, and scalability.",
+      "Reliable software requires more than just writing code. Our development process follows strict engineering standards to ensure long-term stability and maintainability.",
     engineeringFeatures: [
       {
-        title: "Clean Architecture & Code Quality",
-        copy: "We strictly adhere to industry standards (PSR for PHP, ESLint for JS). Every line of code undergoes review to ensure maintainability, reducing future technical debt.",
+        title: "Clean Architecture & Maintainable Code",
+        copy: "We follow established engineering standards such as PSR for PHP and modern JavaScript practices to keep the codebase structured, scalable, and easy to maintain.",
       },
       {
-        title: "CI/CD & DevOps Ready",
-        copy: "Deployment shouldn't be a risk. We set up automated CI/CD pipelines (GitHub Actions/GitLab) to ensure smooth, zero-downtime updates for your live application.",
+        title: "Continuous Integration & Deployment",
+        copy: "Automated CI/CD pipelines ensure reliable deployments and safe updates. We configure pipelines using modern tools so releases happen smoothly with minimal risk.",
       },
       {
-        title: "Security First (OWASP Standards)",
-        copy: "Security is baked in, not added on. We develop with OWASP Top 10 security considerations, ensuring your data is safe from SQL injection, XSS, and other common vulnerabilities.",
+        title: "Security-First Development",
+        copy: "Security considerations are integrated from the beginning. We follow OWASP security principles to protect applications from common vulnerabilities.",
       },
       {
         title: "Scalable Infrastructure",
-        copy: "Future-proof by design. Whether on AWS or a VPS, we architect your server environment (using Docker) to handle growth spikes without crashing.",
+        copy: "Applications are designed to scale with demand. We configure infrastructure environments using containerized systems and modern cloud architecture.",
       },
     ],
     technologies: {
-      headline: "Powered by Modern Tech",
+      headline: "Modern Technologies We Work With",
       description:
-        "We harness modern frameworks like React.js and Next.js, alongside robust back-end technologies such as Laravel, Node.js, and Python, to craft powerful and scalable web applications.",
+        "Our engineering stack includes modern frameworks and reliable infrastructure tools used to build scalable digital platforms.",
       stack: [
         { name: "React", icon: "/images/tech/react.svg" },
         { name: "Next.js", icon: "/images/tech/nextjs.svg" },
@@ -195,7 +214,8 @@ export const services: Service[] = [
     },
     finalCTA: {
       headline: "Ready to Build Your Platform?",
-      subtext: "Let's discuss your architecture and roadmap.",
+      subtext:
+        "Tell us about your project and our engineering team will help you design the right architecture and development roadmap.",
       buttonText: "Schedule Software Consultation",
     },
   },
@@ -310,7 +330,7 @@ export const services: Service[] = [
     title: "Shopify Development",
     slug: "shopify-development",
     gradient: "from-teal-500 to-cyan-500",
-    icon: <FiShoppingBag className='text-white' />,
+    icon: <FiShoppingBag className="text-white" />,
     hero: {
       headline: "Expert Shopify Development & Optimization",
       subheadline:
@@ -411,7 +431,7 @@ export const services: Service[] = [
     title: "Cloud & Server Solutions",
     slug: "cloud-server-solutions",
     gradient: "from-green-500 to-emerald-500",
-    icon: <FiCloud className='text-white' />,
+    icon: <FiCloud className="text-white" />,
     hero: {
       headline: "Resilient Cloud Infrastructure & DevOps",
       subheadline:
@@ -511,7 +531,7 @@ export const services: Service[] = [
     title: "CMS Development",
     slug: "cms-development",
     gradient: "from-orange-500 to-red-500",
-    icon: <FiEdit3 className='text-white' />,
+    icon: <FiEdit3 className="text-white" />,
     hero: {
       headline: "High-Performance Custom WordPress",
       subheadline:
@@ -612,7 +632,7 @@ export const services: Service[] = [
     title: "Workflow Automation",
     slug: "workflow-automation",
     gradient: "from-indigo-500 to-blue-500",
-    icon: <FiCpu className='text-white' />,
+    icon: <FiCpu className="text-white" />,
     hero: {
       headline: "Automate Your Business With AI",
       subheadline:
@@ -734,7 +754,7 @@ export const services: Service[] = [
     title: "UI/UX Engineering",
     slug: "ui-ux-engineering",
     gradient: "from-violet-500 to-purple-500",
-    icon: <FiPenTool className='text-white' />,
+    icon: <FiPenTool className="text-white" />,
     hero: {
       headline: "Design That Drives User Action",
       subheadline:
@@ -835,7 +855,7 @@ export const services: Service[] = [
     title: "AI-Driven SEO",
     slug: "ai-driven-seo",
     gradient: "from-green-400 to-blue-600",
-    icon: <FiTrendingUp className='text-white' />,
+    icon: <FiTrendingUp className="text-white" />,
     hero: {
       headline: "SEO That Gets Results",
       subheadline:

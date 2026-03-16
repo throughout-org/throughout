@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { services, getServiceBySlug } from "@/data/services";
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/service/HeroSection";
+import InnerBanner from "@/components/ui/InnerBanner";
 import WhatWeOfferSection from "@/components/service/WhatWeOfferSection";
 import InnovativeSolutionsSection from "@/components/service/InnovativeSolutionsSection";
 import EngineeringDNASection from "@/components/service/EngineeringDNASection";
 import TechnologiesSection from "@/components/service/TechnologiesSection";
-import ScalableBanner from "@/components/service/ScalableBanner";
-import EngagementModelsSection from "@/components/service/EngagementModelsSection";
-import FinalCTASection from "@/components/service/FinalCTASection";
-import Footer from "@/components/Footer";
-import TrendyTuringLabel from "@/components/TrendyTuringLabel";
 import ServicesCTASection from "@/components/services/ServicesCTASection";
 
 export async function generateStaticParams() {
@@ -95,13 +88,27 @@ export default async function ServiceDetailPage({
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <HeroSection
-        headline={service.hero.headline}
-        subheadline={service.hero.subheadline}
-        primaryCTA={service.hero.primaryCTA}
-        secondaryCTA={isAI ? "Explore AI Solutions" : service.hero.secondaryCTA}
-        badgeText={service.hero.badgeText}
-        trustIndicators={service.hero.trustIndicators}
+      <InnerBanner
+        badgeText={service.hero.badgeText || service.title}
+        title={service.hero.headline}
+        description={service.hero.subheadline}
+        cta={
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold text-white transition-all duration-300 rounded-full shadow-lg bg-linear-to-r from-[#3698fd] via-[#3698fd] to-[#377bff] hover:shadow-xl hover:scale-[1.02]"
+            >
+              {service.hero.primaryCTA}
+              <span aria-hidden="true">→</span>
+            </Link>
+            <Link
+              href="#technologies"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-gray-900 transition-all duration-300 bg-white border-2 border-gray-200 rounded-full hover:border-gray-900 hover:shadow-lg"
+            >
+              {isAI ? "Explore AI Solutions" : service.hero.secondaryCTA}
+            </Link>
+          </div>
+        }
       />
 
       {/* What We Offer Section */}
@@ -144,56 +151,28 @@ export default async function ServiceDetailPage({
       )}
 
       {/* Innovative Solutions Section (skip for AI, already covered above) */}
-      {!isAI && <InnovativeSolutionsSection cards={service.solutionCards} />}
+      {/* {!isAI && (
+        <InnovativeSolutionsSection
+          badgeText={service.hero.badgeText || service.title}
+          headline={service.solutionsGridHeadline}
+          intro={service.solutionsGridIntro}
+          cards={service.solutionCards}
+        />
+      )} */}
 
       {/* Engineering DNA Section */}
       <EngineeringDNASection
-        headline={
-          isAI
-            ? "Responsible AI Implementation"
-            : service.engineeringDNAHeadline
-        }
-        intro={isAI ? "" : service.engineeringDNAIntro}
-        features={
-          isAI
-            ? [
-                {
-                  title: "Data Privacy & Security",
-                  copy: "We ensure your proprietary data is sanitized before interacting with public models, or we deploy local LLMs to keep data entirely within your infrastructure.",
-                },
-                {
-                  title: "Model Fine-Tuning",
-                  copy: "Generic models aren't enough. We fine-tune models on your specific industry terminology to ensure high accuracy in responses.",
-                },
-                {
-                  title: "Cost Optimization",
-                  copy: "Token usage can get expensive. We architect efficient prompt engineering strategies and caching layers to keep your AI running costs low.",
-                },
-              ]
-            : service.engineeringFeatures
-        }
+        badgeText={"How We Build"}
+        headline={service.engineeringDNAHeadline}
+        intro={service.engineeringDNAIntro}
+        features={service.engineeringFeatures}
       />
 
       {/* Technologies Section */}
       <TechnologiesSection
-        headline={isAI ? "Technologies" : service.technologies.headline}
-        description={
-          isAI
-            ? "We integrate cutting-edge AI technologies including OpenAI APIs and open-source models, leveraging Python with LangChain for orchestration, vector databases for semantic search, and PyTorch for custom model training."
-            : service.technologies.description
-        }
-        stack={
-          isAI
-            ? [
-                { name: "OpenAI", icon: "/images/tech/openai.svg" },
-                { name: "Python", icon: "/images/tech/python.svg" },
-                { name: "LangChain", icon: "/images/tech/langchain.svg" },
-                { name: "Pinecone", icon: "/images/tech/pinecone.svg" },
-                { name: "PyTorch", icon: "/images/tech/pytorch.svg" },
-                { name: "Hugging Face", icon: "/images/tech/huggingface.svg" },
-              ]
-            : service.technologies.stack
-        }
+        headline={service.technologies.headline}
+        description={service.technologies.description}
+        stack={service.technologies.stack}
       />
 
       {/* AI-specific: Secure Self-Hosted AI Infrastructure */}
