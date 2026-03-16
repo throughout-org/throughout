@@ -678,90 +678,92 @@ export const services: Service[] = [
     gradient: "from-indigo-500 to-blue-500",
     icon: <FiCpu className="text-white" />,
     hero: {
-      headline: "Automate Your Business With AI",
+      headline: "Automate Business Processes with Intelligent Systems",
       subheadline:
-        "We build AI systems that automate workflows and add intelligent features to modern software.",
-      primaryCTA: "Book AI Consultation",
-      secondaryCTA: "Explore AI Use Cases",
+        "We design automation systems that eliminate repetitive tasks, connect business tools, and streamline operations. Using modern APIs, AI models, and workflow orchestration, we help companies run more efficiently.",
+      primaryCTA: "Start Automation Project",
+      secondaryCTA: "Explore Automation Use Cases",
       visualStrategy:
         "A glowing network of nodes representing AI processing data points",
-      badgeText: "Throoout AI",
+      badgeText: "Workflow Automation",
       trustIndicators: [
         "Custom AI Models",
         "Process Automation",
         "Data Security",
       ],
     },
-    solutionsGridHeadline: "AI Solutions for Real Problems",
+    solutionsGridBadgeText: "Automation Capabilities",
+    solutionsGridHeadline: "AI-Powered Workflow Automation",
     solutionsGridIntro:
-      "Eliminate repetitive tasks and manual processes using intelligent automation. We design AI-powered workflows that process data, trigger actions, and connect systems automatically.",
+      "Manual workflows slow down teams and introduce errors. Our automation systems connect your tools, process data automatically, and trigger actions across your digital infrastructure.",
     solutionCards: [
       {
         title: "AI Workflow Automation",
-        concept: "Customer Support",
+        concept: "Business Process Automation",
         content:
-          "We build AI assistants trained on your company data. Using Retrieval-Augmented Generation (RAG), your bot gives accurate, context-aware answers.",
+          "Automate repetitive operational tasks using intelligent workflows that process information and trigger actions across systems.",
         idealFor: [
-          "Automated report generation",
-          "Email classification and routing",
-          "CRM data synchronization",
-          "Internal operations automation",
-          "Intelligent document processing",
-        ],
-      },
-      {
-        title: "AI for SaaS Products",
-        concept: "Efficiency",
-        content:
-          "We integrate AI capabilities directly into software platforms, helping startups build smarter products. AI features can dramatically improve usability, insights, and automation inside your product.",
-        idealFor: [
-          "AI copilots and assistants",
-          "Smart search and summarization",
-          "Recommendation systems",
-          "Knowledge assistants powered by RAG",
-          "Automated content or data analysis",
+          "automated reporting",
+          "email classification and routing",
+          "CRM synchronization",
+          "internal operations automation",
         ],
       },
       {
         title: "AI Customer Assistants",
-        concept: "Data Extraction",
+        concept: "Knowledge & Support Automation",
         content:
-          "Provide instant and accurate support using custom AI assistants trained on your company knowledge. Unlike generic chatbots, these assistants understand your business data and deliver relevant answers.",
+          "Custom AI assistants trained on your company knowledge base to provide fast and accurate responses for customers or internal teams. These assistants often use architectures like Retrieval-Augmented Generation (RAG) built on models from providers such as OpenAI.",
         idealFor: [
-          "Customer support assistants",
-          "Internal knowledge bots",
+          "customer support assistants",
+          "internal knowledge bots",
           "onboarding assistants",
-          "documentation search bots",
+          "documentation search",
+        ],
+      },
+      {
+        title: "Intelligent Data Processing",
+        concept: "Automation for Data & Documents",
+        content:
+          "Automate document analysis and data extraction workflows that would normally require manual effort.",
+        idealFor: [
+          "document processing",
+          "structured data extraction",
+          "automated data classification",
+          "report generation",
         ],
       },
     ],
-    engineeringDNAHeadline: "Responsible AI Implementation",
-    engineeringDNAIntro: "",
+    engineeringDNABadgeText: "Engineering Approach",
+    engineeringDNAHeadline: "Building Reliable Automation Systems",
+    engineeringDNAIntro:
+      "Automation systems must be secure, scalable, and cost-efficient. Our implementation process ensures your workflows remain reliable as your operations grow.",
     engineeringFeatures: [
       {
         title: "Data Privacy & Security",
-        copy: "We ensure your proprietary data is sanitized before interacting with public models, or we deploy local LLMs to keep data entirely within your infrastructure.",
+        copy: "Sensitive company data is protected through secure processing pipelines. When necessary, we deploy private AI models to ensure data remains within your infrastructure.",
       },
       {
-        title: "Model Fine-Tuning",
-        copy: "Generic models aren't enough. We fine-tune models on your specific industry terminology to ensure high accuracy in responses.",
+        title: "Model Optimization",
+        copy: "AI models are configured and fine-tuned to understand your industry context and operational workflows, improving accuracy and reliability.",
       },
       {
-        title: "Cost Optimization",
-        copy: "Token usage can get expensive. We architect efficient prompt engineering strategies and caching layers to keep your AI running costs low.",
+        title: "Cost-Efficient Architecture",
+        copy: "AI automation can become expensive if poorly designed. We optimize prompt strategies, caching systems, and workflow orchestration to reduce operational costs.",
       },
     ],
     technologies: {
-      headline: "Technologies",
+      badgeText: "Technology",
+      headline: "Automation & AI Technologies",
       description:
-        "We integrate cutting-edge AI technologies including OpenAI APIs and open-source models, leveraging Python with LangChain for orchestration, vector databases for semantic search, and PyTorch for custom model training.",
+        "Our automation systems combine modern AI frameworks with scalable backend technologies. AI Platforms: OpenAI, Hugging Face. Programming & Orchestration: Python, LangChain. Vector Search & Data Systems: Pinecone. Machine Learning Frameworks: PyTorch. Tools such as LangChain help orchestrate AI workflows and connect multiple models and data sources.",
       stack: [
         { name: "OpenAI", icon: "/images/tech/openai.svg" },
+        { name: "Hugging Face", icon: "/images/tech/huggingface.svg" },
         { name: "Python", icon: "/images/tech/python.svg" },
         { name: "LangChain", icon: "/images/tech/langchain.svg" },
         { name: "Pinecone", icon: "/images/tech/pinecone.svg" },
         { name: "PyTorch", icon: "/images/tech/pytorch.svg" },
-        { name: "Hugging Face", icon: "/images/tech/huggingface.svg" },
       ],
     },
     scalableBanner: {
@@ -788,9 +790,10 @@ export const services: Service[] = [
       ],
     },
     finalCTA: {
-      headline: "Future-Proof Your Business",
-      subtext: "Discover how AI can reduce costs and increase efficiency.",
-      buttonText: "Schedule AI Consultation",
+      headline: "Automate Your Operations",
+      subtext:
+        "Whether you're looking to automate internal workflows, build AI-powered assistants, or integrate intelligent automation into your systems, we design solutions that reduce manual work and improve efficiency.",
+      buttonText: "Schedule Automation Consultation",
     },
   },
   {
