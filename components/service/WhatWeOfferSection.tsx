@@ -1,26 +1,50 @@
 "use client";
 
-import { ServiceCard } from '@/data/services';
-import { FiTrendingUp, FiZap, FiAward, FiTarget, FiActivity, FiStar, FiSun, FiCpu } from 'react-icons/fi';
-import ServiceSectionHeader from '@/components/service/ServiceSectionHeader';
+import { ServiceCard } from "@/data/services";
+import {
+  FiTrendingUp,
+  FiZap,
+  FiAward,
+  FiTarget,
+  FiActivity,
+  FiStar,
+  FiSun,
+  FiCpu,
+} from "react-icons/fi";
+import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 interface WhatWeOfferSectionProps {
+  badgeText?: string;
   headline: string;
   intro: string;
   cards: ServiceCard[];
 }
 
-export default function WhatWeOfferSection({ headline, intro, cards }: WhatWeOfferSectionProps) {
-  const cardIcons = [<FiTrendingUp key="1" />, <FiZap key="2" />, <FiAward key="3" />, <FiTarget key="4" />, <FiActivity key="5" />, <FiStar key="6" />, <FiSun key="7" />, <FiCpu key="8" />];
+export default function WhatWeOfferSection({
+  badgeText = "WHAT WE OFFER",
+  headline,
+  intro,
+  cards,
+}: WhatWeOfferSectionProps) {
+  const cardIcons = [
+    <FiTrendingUp key="1" />,
+    <FiZap key="2" />,
+    <FiAward key="3" />,
+    <FiTarget key="4" />,
+    <FiActivity key="5" />,
+    <FiStar key="6" />,
+    <FiSun key="7" />,
+    <FiCpu key="8" />,
+  ];
   const gradientColors = [
-    'from-blue-500/10 to-cyan-500/10',
-    'from-sky-500/10 to-pink-500/10',
-    'from-orange-500/10 to-red-500/10',
-    'from-green-500/10 to-emerald-500/10',
-    'from-indigo-500/10 to-blue-500/10',
-    'from-rose-500/10 to-pink-500/10',
-    'from-amber-500/10 to-yellow-500/10',
-    'from-teal-500/10 to-cyan-500/10',
+    "from-blue-500/10 to-cyan-500/10",
+    "from-sky-500/10 to-pink-500/10",
+    "from-orange-500/10 to-red-500/10",
+    "from-green-500/10 to-emerald-500/10",
+    "from-indigo-500/10 to-blue-500/10",
+    "from-rose-500/10 to-pink-500/10",
+    "from-amber-500/10 to-yellow-500/10",
+    "from-teal-500/10 to-cyan-500/10",
   ];
 
   return (
@@ -34,7 +58,7 @@ export default function WhatWeOfferSection({ headline, intro, cards }: WhatWeOff
       <div className="relative mx-auto max-w-7xl">
         {/* Header Section */}
         <ServiceSectionHeader
-          badgeText="WHAT WE OFFER"
+          badgeText={badgeText}
           headline={headline}
           intro={intro}
         />
@@ -42,14 +66,16 @@ export default function WhatWeOfferSection({ headline, intro, cards }: WhatWeOff
         {/* Cards Grid */}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {cards.map((card, index) => (
-            <div 
+            <div
               key={index}
               className="relative p-8 transition-all duration-500 border group bg-white/80 backdrop-blur-sm border-gray-200/50 rounded-3xl hover:shadow-2xl hover:border-sky-200 hover:-translate-y-2 animate-fade-in-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Gradient Overlay on Hover */}
-              <div className={`absolute inset-0 bg-linear-to-br ${gradientColors[index % gradientColors.length]} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-              
+              <div
+                className={`absolute inset-0 bg-linear-to-br ${gradientColors[index % gradientColors.length]} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+              ></div>
+
               <div className="relative z-10">
                 {/* Icon and Concept Badge */}
                 <div className="flex items-start justify-between mb-6">
@@ -61,7 +87,7 @@ export default function WhatWeOfferSection({ headline, intro, cards }: WhatWeOff
                       </span>
                     </div>
                   </div>
-                  
+
                   {card.concept && (
                     <span className="px-4 py-1.5 bg-linear-to-r from-blue-50 to-sky-50 group-hover:from-blue-100 group-hover:to-sky-100 text-blue-700 text-xs font-bold rounded-full border border-blue-100 transition-all duration-300">
                       {card.concept}
@@ -73,7 +99,7 @@ export default function WhatWeOfferSection({ headline, intro, cards }: WhatWeOff
                 <h3 className="mb-4 text-2xl font-bold text-gray-900 transition-all duration-300 group-hover:text-transparent group-hover:bg-linear-to-r group-hover:from-blue-600 group-hover:to-sky-600 group-hover:bg-clip-text">
                   {card.title}
                 </h3>
-                
+
                 {/* Content */}
                 <p className="mb-6 text-base leading-relaxed text-gray-600">
                   {card.content}
@@ -83,15 +109,25 @@ export default function WhatWeOfferSection({ headline, intro, cards }: WhatWeOff
                 {card.idealFor && card.idealFor.length > 0 && (
                   <div className="pt-6 transition-colors duration-300 border-t border-gray-100 group-hover:border-sky-100">
                     <div className="flex items-center gap-2 mb-3">
-                      <svg className="w-4 h-4 text-sky-500" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      <svg
+                        className="w-4 h-4 text-sky-500"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
                       </svg>
-                      <p className="text-sm font-bold text-gray-700">Perfect for:</p>
+                      <p className="text-sm font-bold text-gray-700">
+                        Perfect for:
+                      </p>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {card.idealFor.map((item, idx) => (
-                        <span 
-                          key={idx} 
+                        <span
+                          key={idx}
                           className="px-3 py-1.5 bg-linear-to-r from-gray-50 to-gray-100 group-hover:from-blue-50 group-hover:to-sky-50 text-gray-700 group-hover:text-blue-700 text-sm font-medium rounded-lg border border-gray-200 group-hover:border-blue-200 transition-all duration-300 hover:scale-105"
                         >
                           {item}
@@ -111,16 +147,34 @@ export default function WhatWeOfferSection({ headline, intro, cards }: WhatWeOff
 
       <style jsx>{`
         @keyframes fade-in {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
         @keyframes slide-up {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
         @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
         .animate-fade-in {
           animation: fade-in 0.6s ease-out;

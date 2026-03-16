@@ -4,6 +4,7 @@ import Image from "next/image";
 import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 interface TechnologiesSectionProps {
+  badgeText?: string;
   headline: string;
   description?: string;
   stack: {
@@ -12,6 +13,7 @@ interface TechnologiesSectionProps {
   }[];
 }
 export default function TechnologiesSection({
+  badgeText = "TECHNOLOGIES",
   headline,
   description,
   stack,
@@ -32,7 +34,7 @@ export default function TechnologiesSection({
       <div className="relative mx-auto max-w-7xl">
         {/* Header */}
         <ServiceSectionHeader
-          badgeText="TECHNOLOGIES"
+          badgeText={badgeText}
           headline={headline}
           intro={description}
         />

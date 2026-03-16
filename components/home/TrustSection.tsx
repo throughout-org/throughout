@@ -2,15 +2,21 @@
 
 import React from "react";
 import { FiCode, FiTrendingUp, FiLock, FiShield } from "react-icons/fi";
+import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 export default function TrustSection() {
+  const badgeText = "ENGINEERING";
+  const headline = "Engineering Standards We Follow";
+  const intro =
+    "Our development practices ensure every product we build is secure, scalable, and built for long-term stability.";
+
   const standards = [
     {
       number: "01",
       title: "Clean Engineering",
       description:
         "We enforce strict coding standards, peer reviews, and automated code analysis (SonarQube) to keep your software maintainable as it grows.",
-      icon: <FiCode className='text-white'/>,
+      icon: <FiCode className="text-white" />,
       color: "from-blue-500 to-cyan-300",
     },
     {
@@ -18,7 +24,7 @@ export default function TrustSection() {
       title: "Modern Infrastructure",
       description:
         "We use Infrastructure as Code and automated CI/CD pipelines to deploy software faster and reduce operational risks.",
-      icon: <FiTrendingUp className='text-white'/>,
+      icon: <FiTrendingUp className="text-white" />,
       color: "from-blue-500 to-cyan-300",
     },
     {
@@ -26,7 +32,7 @@ export default function TrustSection() {
       title: "Security First",
       description:
         "We follow industry security standards including the OWASP Top 10 to protect your application from vulnerabilities.",
-      icon: <FiLock className='text-white'/>,
+      icon: <FiLock className="text-white" />,
       color: "from-blue-500 to-cyan-300",
     },
     {
@@ -34,7 +40,7 @@ export default function TrustSection() {
       title: "Data Privacy",
       description:
         "We implement strong encryption and data governance practices to ensure your application meets global privacy standards.",
-      icon: <FiShield className='text-white'/>,
+      icon: <FiShield className="text-white" />,
       color: "from-blue-500 to-cyan-300",
     },
   ];
@@ -55,18 +61,11 @@ export default function TrustSection() {
 
       <div className="container relative z-10 px-4 mx-auto">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-            Engineering Standards We{" "}
-            <span className="pb-4 font-bold text-transparent bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text">
-              Follow
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600">
-            Our development practices ensure every product we build is secure,
-            scalable, and built for long-term stability.
-          </p>
-        </div>
+        <ServiceSectionHeader
+          badgeText={badgeText}
+          headline={headline}
+          intro={intro}
+        />
 
         {/* Standards Grid */}
         <div className="grid gap-6 mx-auto md:grid-cols-2 lg:grid-cols-4 max-w-7xl">

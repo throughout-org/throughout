@@ -38,13 +38,16 @@ export interface Service {
   gradient: string;
   icon: React.ReactNode;
   hero: ServiceHero;
+  solutionsGridBadgeText?: string;
   solutionsGridHeadline: string;
   solutionsGridIntro: string;
   solutionCards: ServiceCard[];
+  engineeringDNABadgeText?: string;
   engineeringDNAHeadline: string;
   engineeringDNAIntro: string;
   engineeringFeatures: EngineeringFeature[];
   technologies: {
+    badgeText?: string;
     headline: string;
     description?: string;
     stack: {
@@ -332,67 +335,87 @@ export const services: Service[] = [
     gradient: "from-teal-500 to-cyan-500",
     icon: <FiShoppingBag className="text-white" />,
     hero: {
-      headline: "Expert Shopify Development & Optimization",
+      headline: "Build High-Performance Shopify Stores",
       subheadline:
-        "Maximize your revenue with custom Shopify themes, app integrations, and Headless Shopify solutions tailored for high-growth brands.",
-      primaryCTA: "Start Shopify Store",
+        "We design and engineer scalable Shopify storefronts tailored for modern e-commerce brands. From custom themes to headless architectures, our solutions focus on performance, flexibility, and conversion growth.",
+      primaryCTA: "Start Shopify Project",
       secondaryCTA: "Explore Headless Shopify",
       visualStrategy:
         "Clean icons of Shopify connecting to inventory, shipping, and marketing tools",
-      badgeText: "Shopify Experts",
+      badgeText: "Shopify Development",
       trustIndicators: [
         "Custom Themes",
         "App Integration",
         "Performance Optimized",
       ],
     },
-    solutionsGridHeadline: "Shopify Ecosystem Services",
+    solutionsGridBadgeText: "Shopify Engineering",
+    solutionsGridHeadline: "Shopify Development Services",
     solutionsGridIntro:
-      "We help you unlock the full potential of the world's leading commerce platform.",
+      "We help brands unlock the full potential of the Shopify ecosystem by building fast, flexible, and scalable commerce platforms.",
     solutionCards: [
       {
-        title: "Custom Theme Development",
-        concept: "Branding & UX",
+        title: "Custom Shopify Themes",
+        concept: "Liquid Development",
         content:
-          "Stand out from the crowd. We write clean Liquid code to create pixel-perfect, branded themes that load fast and look unique.",
+          "Unique storefronts designed to match your brand identity and deliver a seamless shopping experience. Our themes are built with clean Liquid code to ensure fast performance and easy scalability.",
+        idealFor: [
+          "emerging e-commerce brands",
+          "product-focused businesses",
+          "high-conversion storefronts",
+        ],
       },
       {
-        title: "Headless Shopify (Hydrogen/Next.js)",
-        concept: "Enterprise Performance",
+        title: "Headless Shopify",
+        concept: "Hydrogen / Next.js",
         content:
-          "Combine Shopify's backend stability with a custom React frontend. This offers total design freedom and blistering speed for high-volume stores.",
+          "Combine Shopify's powerful commerce backend with a custom frontend built using modern frameworks. Headless architecture gives your brand full control over design, speed, and advanced functionality.",
+        idealFor: [
+          "high-volume stores",
+          "custom shopping experiences",
+          "performance-driven brands",
+        ],
       },
       {
-        title: "App & API Integration",
-        concept: "Functionality",
+        title: "Shopify App & API Integrations",
+        concept: "Custom Apps & Automation",
         content:
-          "Connect your store to ERPs, CRMs, or custom inventory tools. We build custom private apps to bridge the gap between Shopify and your operations.",
+          "Extend Shopify beyond the default capabilities. We develop custom integrations that connect your store with internal systems, third-party platforms, and automation workflows.",
+        idealFor: [
+          "ERP integrations",
+          "CRM connectivity",
+          "inventory automation",
+        ],
       },
     ],
-    engineeringDNAHeadline: "Beyond Basic Setup",
-    engineeringDNAIntro: "",
+    engineeringDNABadgeText: "Performance & Conversion",
+    engineeringDNAHeadline: "Beyond Store Setup",
+    engineeringDNAIntro:
+      "Building a store is only the beginning. We optimize Shopify platforms for performance, usability, and long-term growth.",
     engineeringFeatures: [
       {
         title: "Performance Optimization",
-        copy: "We audit and refactor code to minimize 'app bloat,' ensuring your Core Web Vitals remain green for better SEO.",
+        copy: "We audit your store to eliminate unnecessary scripts and app conflicts, ensuring faster page loads and strong Core Web Vitals performance.",
       },
       {
         title: "Conversion Rate Optimization (CRO)",
-        copy: "Our development is data-driven. We structure layouts and checkout flows based on UX best practices to maximize sales.",
+        copy: "Every design and layout decision is guided by user experience principles to improve product discovery, checkout flow, and overall conversion rates.",
       },
       {
-        title: "Seamless Migration",
-        copy: "Moving from WooCommerce or Magento? We safely migrate your products, customers, and SEO meta-data with zero data loss.",
+        title: "Seamless Platform Migration",
+        copy: "Moving from another platform? We safely migrate products, customers, and SEO data while maintaining store integrity and search rankings. Common migrations include platforms like WooCommerce and Magento into Shopify.",
       },
     ],
     technologies: {
-      headline: "Technologies",
+      badgeText: "Technology",
+      headline: "Shopify Development Stack",
       description:
-        "We leverage the Shopify ecosystem with custom Liquid themes and headless React frontends using Hydrogen, powered by GraphQL APIs for optimal performance and flexibility.",
+        "We leverage the Shopify ecosystem alongside modern web technologies to deliver flexible and high-performance storefronts.",
       stack: [
         { name: "Shopify", icon: "/images/tech/shopify.svg" },
         { name: "Liquid", icon: "/images/tech/liquid.svg" },
         { name: "React", icon: "/images/tech/react.svg" },
+        { name: "Next.js", icon: "/images/tech/nextjs.svg" },
         { name: "GraphQL", icon: "/images/tech/graphql.svg" },
         { name: "Node.js", icon: "/images/tech/nodejs.svg" },
       ],
@@ -421,8 +444,9 @@ export const services: Service[] = [
       ],
     },
     finalCTA: {
-      headline: "Launch Your Brand Today",
-      subtext: "Expert setup, custom design, and ongoing support.",
+      headline: "Launch Your Shopify Store with Confidence",
+      subtext:
+        "Whether you need a custom storefront, a headless commerce architecture, or performance optimization, our team can design and build the right Shopify solution for your brand.",
       buttonText: "Schedule Shopify Consultation",
     },
   },

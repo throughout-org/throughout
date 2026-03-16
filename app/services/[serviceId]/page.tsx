@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { services, getServiceBySlug } from "@/data/services";
 import InnerBanner from "@/components/ui/InnerBanner";
 import WhatWeOfferSection from "@/components/service/WhatWeOfferSection";
-import InnovativeSolutionsSection from "@/components/service/InnovativeSolutionsSection";
 import EngineeringDNASection from "@/components/service/EngineeringDNASection";
 import TechnologiesSection from "@/components/service/TechnologiesSection";
 import ServicesCTASection from "@/components/services/ServicesCTASection";
@@ -113,6 +112,7 @@ export default async function ServiceDetailPage({
 
       {/* What We Offer Section */}
       <WhatWeOfferSection
+        badgeText={service.solutionsGridBadgeText || "WHAT WE OFFER"}
         headline={service.solutionsGridHeadline}
         intro={service.solutionsGridIntro}
         cards={service.solutionCards}
@@ -162,7 +162,7 @@ export default async function ServiceDetailPage({
 
       {/* Engineering DNA Section */}
       <EngineeringDNASection
-        badgeText={"How We Build"}
+        badgeText={service.engineeringDNABadgeText || "How We Build"}
         headline={service.engineeringDNAHeadline}
         intro={service.engineeringDNAIntro}
         features={service.engineeringFeatures}
@@ -170,6 +170,7 @@ export default async function ServiceDetailPage({
 
       {/* Technologies Section */}
       <TechnologiesSection
+        badgeText={service.technologies.badgeText || "TECHNOLOGIES"}
         headline={service.technologies.headline}
         description={service.technologies.description}
         stack={service.technologies.stack}

@@ -1,50 +1,49 @@
-'use client';
-import Link from 'next/link';
-import { FiTrendingUp, FiSettings, FiCpu } from 'react-icons/fi';
+"use client";
+import Link from "next/link";
+import { FiTrendingUp, FiSettings, FiCpu } from "react-icons/fi";
+import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 const coreServices = [
   {
-    id: '01',
-    title: 'MVP Studio',
+    id: "01",
+    title: "MVP Studio",
     description:
-      'Launch your product fast. We design, build, and ship production-ready MVPs for startups and new ventures.',
-    href: '/mvp-studio',
+      "Launch your product fast. We design, build, and ship production-ready MVPs for startups and new ventures.",
+    href: "/mvp-studio",
     icon: <FiTrendingUp className="text-white" />,
   },
   {
-    id: '02',
-    title: 'Product Engineering',
+    id: "02",
+    title: "Product Engineering",
     description:
-      'Web, mobile, and cloud applications built with scalable architecture and modern frameworks.',
-    href: '/services/software-development',
+      "Web, mobile, and cloud applications built with scalable architecture and modern frameworks.",
+    href: "/services/software-development",
     icon: <FiSettings className="text-white" />,
   },
   {
-    id: '03',
-    title: 'AI & Automation',
+    id: "03",
+    title: "AI & Automation",
     description:
-      'Integrate LLMs, intelligent workflows, and data automation to streamline operations and unlock new capabilities.',
-    href: '/services/ai-automation',
+      "Integrate LLMs, intelligent workflows, and data automation to streamline operations and unlock new capabilities.",
+    href: "/services/ai-automation",
     icon: <FiCpu className="text-white" />,
   },
 ];
 
 export default function ServicesSection() {
+  const badgeText = "OUR SERVICES";
+  const headline = "Our Core Services";
+  const intro =
+    "We focus on three core capabilities that help companies design, build, and launch modern digital products.";
+
   return (
     <section id="services" className="bg-white px-4 py-24 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-14 text-center">
-          <h2 className="mb-6 text-4xl font-bold sm:text-5xl lg:text-6xl">
-            <span className="block bg-linear-to-r from-sky-500 via-blue-500 to-cyan-500 bg-clip-text pb-2 text-transparent">
-              Our Core Services
-            </span>
-          </h2>
-          <p className="mx-auto max-w-3xl text-lg text-gray-600 sm:text-xl">
-            We focus on three core capabilities that help companies design,
-            build, and launch modern digital products.
-          </p>
-        </div>
+        <ServiceSectionHeader
+          badgeText={badgeText}
+          headline={headline}
+          intro={intro}
+        />
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -61,7 +60,7 @@ export default function ServicesSection() {
                   <span className="text-sm font-semibold tracking-[0.18em] text-sky-500">
                     {service.id}
                   </span>
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-300 text-xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-blue-500 to-cyan-300 text-xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                     {service.icon}
                   </span>
                 </div>
