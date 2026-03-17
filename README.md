@@ -1,11 +1,11 @@
 
 <div align="center">
-	<img src="./public/images/logo.png" alt="Throoout Logo" width="180" />
+	<img src="./public/images/logo.png" alt="Throughout Logo" width="180" />
 </div>
 
-# Throoout - Smart Software Solutions
+# Throughout - Smart Software Solutions
 
-Throoout is a modern software engineering company specializing in custom web, mobile, and AI solutions. We build fast, secure, and scalable digital products for startups and enterprises.
+Throughout is a modern software engineering company specializing in custom web, mobile, and AI solutions. We build fast, secure, and scalable digital products for startups and enterprises.
 
 ---
 
@@ -14,9 +14,9 @@ Throoout is a modern software engineering company specializing in custom web, mo
 | Page | Description |
 |------|-------------|
 | **Home** (`/`) | Landing page with hero, services, about, and trust sections. Modern, animated, and conversion-focused. |
-| **About** (`/about`) | Learn about our mission, vision, core values, and what makes Throoout unique. |
+| **About** (`/about`) | Learn about our mission, vision, core values, and what makes Throughout unique. |
 | **Services** (`/services`) | Explore our full range of software, web, mobile, cloud, and AI/ML solutions. |
-| **Why Us** (`/why-us`) | Discover our strengths, approach, and why clients choose Throoout for their projects. |
+| **Why Us** (`/why-us`) | Discover our strengths, approach, and why clients choose Throughout for their projects. |
 | **Portfolio** (`/portfolio`) | Showcases our best work: web, mobile, AI, and automation projects. |
 | **Portfolio Details** (`/portfolio/[id]`) | In-depth case studies for each project, including challenges, solutions, and results. |
 | **Insights/Blog** (`/insights`) | Latest articles, tech insights, and company news. Dynamic content from Sanity CMS. |
@@ -114,7 +114,7 @@ CLOUDINARY_URL=
 # Email (Gmail SMTP)
 GMAIL_USER=
 GMAIL_PASS=
-MAIL_FROM="Throoout Team"
+MAIL_FROM="Throughout Team"
 
 # Optional: CORS for job applications API
 CORS_ALLOWED_ORIGINS="http://localhost:3000,http://localhost:3001"
@@ -142,7 +142,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-# ![THROOOUT Logo](./public/images/throoout-logo.png)
+# ![THROUGHOUT Logo](./public/images/logo.png)
 
 ## 📦 Scripts
 
@@ -158,7 +158,7 @@ npm run lint    # Run ESLint
 
 ### Update Contact Information
 1. **WhatsApp Number**: Replace the placeholder in [app/page.tsx](app/page.tsx) with your actual WhatsApp number
-2. **Email**: Update `hello@Throoout.com` with your company email
+2. **Email**: Update `hello@throughout.io` with your company email
 
 ### Change Colors
 
@@ -190,8 +190,8 @@ To edit blog/insights content, use Sanity Studio:
 To build and run the app with Docker:
 
 ```bash
-docker build -t throoout .
-docker run -p 3000:3000 throoout
+docker build -t throughout .
+docker run -p 3000:3000 throughout
 ```
 
 ## 🔑 Environment Example
@@ -223,7 +223,7 @@ Response: `{ score, recommendations, ... }`
 
 ## 📱 Contact Methods
 
-- **Email**: hello@Throoout.com
+- **Email**: hello@throughout.io
 - **WhatsApp**: Direct chat integration
 - **Contact Form**: Built-in form submission (API-powered)
 
@@ -251,7 +251,7 @@ npm start
 
 ## 📄 License
 
-© 2026 Throoout. All rights reserved.
+© 2026 Throughout. All rights reserved.
 
 ---
 
