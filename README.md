@@ -1,4 +1,3 @@
-
 <div align="center">
 	<img src="./public/images/logo.png" alt="Throughout Logo" width="180" />
 </div>
@@ -11,25 +10,24 @@ Throughout is a modern software engineering company specializing in custom web, 
 
 ## 🌐 Main Pages Overview
 
-| Page | Description |
-|------|-------------|
-| **Home** (`/`) | Landing page with hero, services, about, and trust sections. Modern, animated, and conversion-focused. |
-| **About** (`/about`) | Learn about our mission, vision, core values, and what makes Throughout unique. |
-| **Services** (`/services`) | Explore our full range of software, web, mobile, cloud, and AI/ML solutions. |
-| **Why Us** (`/why-us`) | Discover our strengths, approach, and why clients choose Throughout for their projects. |
-| **Portfolio** (`/portfolio`) | Showcases our best work: web, mobile, AI, and automation projects. |
-| **Portfolio Details** (`/portfolio/[id]`) | In-depth case studies for each project, including challenges, solutions, and results. |
-| **Insights/Blog** (`/insights`) | Latest articles, tech insights, and company news. Dynamic content from Sanity CMS. |
-| **Insight Details** (`/insights/[slug]`) | Full article view for each insight or blog post. |
-| **Internships** (`/internships`) | Open internship opportunities with details and application form. |
-| **Internship Details** (`/internships/[slug]`) | Detailed info and application for each internship role. |
-| **Contact** (`/contact`) | Contact form, WhatsApp, and company info for inquiries and support. |
-| **Free SEO Auditor** (`/free-seo-aduitor`) | Free tool to analyze your website’s SEO and get actionable recommendations. |
-| **MVP Studio** (`/mvp-studio`) | Launch your SaaS MVP in 3 weeks with our fixed-scope, AI-accelerated process. |
-| **n8n Agency** (`/n8n-agency`) | Workflow automation, integration, and managed n8n services for businesses. |
-| **WhatsApp Automation** (`/whatsapp_automation`) | AI chatbot, CRM integration, and sales automation for WhatsApp. |
-| **Privacy Policy** (`/privacy-policy`) | Our privacy practices and data protection policies. |
-| **Terms of Service** (`/terms-of-service`) | Legal terms for using our website and services. |
+| Page                                             | Description                                                                                            |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| **Home** (`/`)                                   | Landing page with hero, services, about, and trust sections. Modern, animated, and conversion-focused. |
+| **About** (`/about`)                             | Learn about our mission, vision, core values, and what makes Throughout unique.                        |
+| **Services** (`/services`)                       | Explore our full range of software, web, mobile, cloud, and AI/ML solutions.                           |
+| **Why Us** (`/why-us`)                           | Discover our strengths, approach, and why clients choose Throughout for their projects.                |
+| **Portfolio** (`/portfolio`)                     | Showcases our best work: web, mobile, AI, and automation projects.                                     |
+| **Insights/Blog** (`/insights`)                  | Latest articles, tech insights, and company news. Dynamic content from Sanity CMS.                     |
+| **Insight Details** (`/insights/[slug]`)         | Full article view for each insight or blog post.                                                       |
+| **Internships** (`/internships`)                 | Open internship opportunities with details and application form.                                       |
+| **Internship Details** (`/internships/[slug]`)   | Detailed info and application for each internship role.                                                |
+| **Contact** (`/contact`)                         | Contact form, WhatsApp, and company info for inquiries and support.                                    |
+| **Free SEO Auditor** (`/free-seo-aduitor`)       | Free tool to analyze your website’s SEO and get actionable recommendations.                            |
+| **MVP Studio** (`/mvp-studio`)                   | Launch your SaaS MVP in 3 weeks with our fixed-scope, AI-accelerated process.                          |
+| **n8n Agency** (`/n8n-agency`)                   | Workflow automation, integration, and managed n8n services for businesses.                             |
+| **WhatsApp Automation** (`/whatsapp_automation`) | AI chatbot, CRM integration, and sales automation for WhatsApp.                                        |
+| **Privacy Policy** (`/privacy-policy`)           | Our privacy practices and data protection policies.                                                    |
+| **Terms of Service** (`/terms-of-service`)       | Legal terms for using our website and services.                                                        |
 
 ---
 
@@ -44,7 +42,6 @@ Throughout is a modern software engineering company specializing in custom web, 
 - **Insights/Blog**: Dynamic content from Sanity CMS
 - **Image Fallbacks**: Automatic placeholder for missing images
 - **24/7 Support**: Always available for client needs
-
 
 ## 📋 Main Sections
 
@@ -67,7 +64,6 @@ Throughout is a modern software engineering company specializing in custom web, 
 - **CMS**: Sanity.io (with Portable Text)
 - **Content Rendering**: @portabletext/react
 - **Other**: react-calendly, Docker, ESLint, PostCSS
-
 
 ## 📰 Insights & CMS Integration
 
@@ -125,7 +121,6 @@ NEXT_PUBLIC_CONTACT_API_URL=
 NEXT_PUBLIC_CONTACT_API_KEY=
 ```
 
-
 ## 🚦 Getting Started
 
 First, install dependencies:
@@ -153,16 +148,17 @@ npm run start   # Start production server
 npm run lint    # Run ESLint
 ```
 
-
 ## 📝 Customization
 
 ### Update Contact Information
+
 1. **WhatsApp Number**: Replace the placeholder in [app/page.tsx](app/page.tsx) with your actual WhatsApp number
 2. **Email**: Update `hello@throughout.io` with your company email
 
 ### Change Colors
 
 The main gradient colors can be adjusted in [app/page.tsx](app/page.tsx):
+
 - Primary gradient: `from-blue-600 to-sky-600`
 - Background gradient: `from-blue-50 via-sky-50 to-pink-50`
 
@@ -172,9 +168,6 @@ The main gradient colors can be adjusted in [app/page.tsx](app/page.tsx):
 - Insights/blog content: edit in Sanity Studio (see [src/sanity/client.ts](src/sanity/client.ts) for config)
 
 ## 🧩 API Endpoints
-
-
-
 
 ## 🗂️ Sanity Studio Setup
 
@@ -205,11 +198,13 @@ cp .env.example .env.local
 ## 📤 API Request/Response Formats
 
 ### Job Applications
+
 **POST** `/api/job-applications`
 Request: `{ name, email, resume, ... }`
 Response: `{ success: true, message: "Application received" }`
 
 ### SEO Audit
+
 **POST** `/api/seo-audit`
 Request: `{ url }`
 Response: `{ score, recommendations, ... }`
@@ -227,7 +222,6 @@ Response: `{ score, recommendations, ... }`
 - **WhatsApp**: Direct chat integration
 - **Contact Form**: Built-in form submission (API-powered)
 
-
 ## 🎨 Design Features
 
 - Gradient backgrounds with animated blobs
@@ -240,14 +234,12 @@ Response: `{ score, recommendations, ... }`
 - Security best practices (OWASP Top 10)
 - CI/CD ready, Docker support
 
-
 ## 📦 Build for Production
 
 ```bash
 npm run build
 npm start
 ```
-
 
 ## 📄 License
 

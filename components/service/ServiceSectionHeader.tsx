@@ -5,18 +5,24 @@ interface ServiceSectionHeaderProps {
   badgeText: string;
   headline: string;
   intro?: string;
+  align?: "text-center" | "text-left" | "text-right";
+  headlineSize?: string;
 }
 
 export default function ServiceSectionHeader({
   badgeText,
   headline,
   intro,
+  align = "text-center",
+  headlineSize = "text-4xl sm:text-5xl lg:text-6xl",
 }: ServiceSectionHeaderProps) {
   return (
-    <div className="mb-20 text-center">
+    <div className={`mb-20 ${align}`}>
       <BannerBadge text={badgeText} />
 
-      <h2 className="mb-6 text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl animate-slide-up">
+      <h2
+        className={`mb-6 ${headlineSize} font-bold text-gray-900 animate-slide-up`}
+      >
         {headline}
       </h2>
 

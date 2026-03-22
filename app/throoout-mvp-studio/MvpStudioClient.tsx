@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { DM_Sans, Syne } from "next/font/google";
-import Image from "next/image";
-import { portfolioProjects } from "@/data/portfolio";
-import { CalendlyButton } from "@/components/CalendlyPopup";
-import { PrimaryButton, SecondaryButton } from "@/components/ui/Button";
-import { SiNextdotjs, SiTypescript, SiPostgresql, SiTrpc, SiStripe, SiVercel, SiOpenai } from "react-icons/si";
-import { FiShield, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import InnerBanner from "@/components/ui/InnerBanner";
 import ServicesCTASection from "@/components/services/ServicesCTASection";
+import TechStackSection from "@/components/home/TechStackSection";
+import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
+import Button from "@/components/Button";
+import PortfolioShowcase from "@/components/portfolio/PortfolioShowcase";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -24,24 +23,235 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
+const Step1Visual = () => (
+  <div className="relative bg-gradient-to-br from-blue-50 to-sky-50 rounded-3xl p-4 sm:p-6 lg:p-8 border border-blue-100 flex items-center justify-center overflow-hidden h-[300px] lg:h-[350px] w-full shadow-lg shadow-blue-900/5">
+    <div
+      className="absolute inset-0 opacity-[0.15]"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle, #3b82f6 1px, transparent 1px)",
+        backgroundSize: "20px 20px",
+      }}
+    ></div>
+    <div className="relative z-10 w-full max-w-[320px] mx-auto flex flex-col gap-3">
+      <div className="flex items-center gap-3 p-3 bg-white border border-blue-100 shadow-sm rounded-xl">
+        <div className="flex w-8 h-8 bg-blue-100 rounded-lg shrink-0" />
+        <div className="w-full h-2 overflow-hidden rounded-full bg-slate-100">
+          <div className="w-2/3 h-full bg-blue-400"></div>
+        </div>
+      </div>
+      <div className="flex justify-center gap-3 pl-6">
+        <div className="h-6 w-0.5 rounded-full bg-blue-200" />
+      </div>
+      <div className="flex gap-3">
+        <div className="flex items-center flex-1 gap-3 p-3 bg-white border border-blue-100 shadow-sm rounded-xl opacity-80">
+          <div className="flex w-6 h-6 bg-indigo-100 rounded-md shrink-0" />
+          <div className="h-1.5 w-1/2 rounded-full bg-slate-100" />
+        </div>
+        <div className="flex items-center flex-1 gap-3 p-3 bg-white border border-blue-100 shadow-sm rounded-xl">
+          <div className="flex w-6 h-6 rounded-md shrink-0 bg-sky-100" />
+          <div className="h-1.5 w-2/3 rounded-full bg-slate-100" />
+        </div>
+      </div>
+      <div className="flex justify-end gap-3 pr-12">
+        <div className="h-6 w-0.5 rounded-full bg-blue-200" />
+      </div>
+      <div className="flex items-center self-end w-4/5 gap-3 p-3 bg-white border border-blue-100 shadow-sm rounded-xl">
+        <div className="flex w-8 h-8 rounded-lg shrink-0 bg-cyan-100" />
+        <div className="flex w-full flex-col gap-1.5">
+          <div className="h-1.5 w-full rounded-full bg-slate-100" />
+          <div className="h-1.5 w-3/4 rounded-full bg-slate-100" />
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const Step2Visual = () => (
+  <div className="relative flex h-[300px] w-full items-center justify-center overflow-hidden rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 to-sky-50 p-4 shadow-lg shadow-blue-900/5 sm:p-6 lg:h-[350px] lg:p-8">
+    <div
+      className="absolute inset-0 opacity-[0.15]"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle, #3b82f6 1px, transparent 1px)",
+        backgroundSize: "20px 20px",
+      }}
+    ></div>
+    <div className="relative z-10 w-full text-center">
+      <div className="mx-auto w-full max-w-[520px] px-2">
+        <div className="flex items-center justify-center gap-3 mb-4 sm:mb-6 sm:gap-5">
+          <div className="flex items-center justify-center overflow-hidden rounded-xl border border-gray-100 bg-white p-2 shadow-sm sm:p-2.5">
+            <img
+              alt="Lovable"
+              className="object-contain w-8 h-8 rounded-lg sm:h-12 sm:w-12"
+              src="/images/logos/lovable.jpeg"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+                e.currentTarget.parentElement!.innerHTML =
+                  '<div class="w-8 h-8 sm:w-12 sm:h-12 bg-gray-100 rounded-lg"></div>';
+              }}
+            />
+          </div>
+          <div className="flex items-center justify-center overflow-hidden rounded-xl border border-gray-100 bg-white p-2 shadow-sm sm:p-2.5">
+            <img
+              alt="Cursor"
+              className="object-contain w-8 h-8 rounded-lg sm:h-12 sm:w-12"
+              src="/images/logos/cursor.png"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+                e.currentTarget.parentElement!.innerHTML =
+                  '<div class="w-8 h-8 sm:w-12 sm:h-12 bg-gray-100 rounded-lg"></div>';
+              }}
+            />
+          </div>
+          <div className="flex items-center justify-center overflow-hidden rounded-xl border border-gray-100 bg-white p-2 shadow-sm sm:p-2.5">
+            <img
+              alt="ChatGPT"
+              className="object-contain w-8 h-8 rounded-lg sm:h-12 sm:w-12"
+              src="/images/logos/chatgpt.png"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+                e.currentTarget.parentElement!.innerHTML =
+                  '<div class="w-8 h-8 sm:w-12 sm:h-12 bg-gray-100 rounded-lg"></div>';
+              }}
+            />
+          </div>
+          <div className="flex items-center justify-center overflow-hidden rounded-xl border border-gray-100 bg-white p-2 shadow-sm sm:p-2.5">
+            <img
+              alt="Claude"
+              className="object-contain w-8 h-8 rounded-lg sm:h-12 sm:w-12"
+              src="/images/logos/claude.png"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+                e.currentTarget.parentElement!.innerHTML =
+                  '<div class="w-8 h-8 sm:w-12 sm:h-12 bg-gray-100 rounded-lg"></div>';
+              }}
+            />
+          </div>
+        </div>
+        <div className="relative w-full max-w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0b1020] text-left shadow-2xl">
+          <div className="flex items-center gap-2 border-b border-white/10 bg-white/5 px-2 py-1.5 sm:px-3 sm:py-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]"></span>
+            <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]"></span>
+            <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]"></span>
+            <span className="ml-auto font-mono text-[10px] text-white/60">
+              app/api/route.ts
+            </span>
+          </div>
+          <div className="p-3 overflow-x-auto sm:p-4">
+            <pre className="m-0 block p-0 font-mono text-[11px] leading-5 text-white/90 sm:text-xs sm:leading-6">
+              <span className="text-purple-400">import</span> {"{"} NextResponse{" "}
+              {"}"} <span className="text-purple-400">from</span>{" "}
+              <span className="text-emerald-300">"next/server"</span>;{"\n\n"}
+              <span className="text-purple-400">
+                export async function
+              </span>{" "}
+              <span className="text-blue-400">POST</span>(request: Request){" "}
+              {"{"}
+              {"\n  "}
+              <span className="text-purple-400">const</span> {"{"} prompt {"}"}{" "}
+              = <span className="text-purple-400">await</span> request.json();
+              {"\n  "}
+              <span className="text-purple-400">return</span> NextResponse.json(
+              {"{"} result:{" "}
+              <span className="text-emerald-300">
+                "AI-Assisted Development"
+              </span>{" "}
+              {"}"});
+              {"\n}"}
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const Step3Visual = () => (
+  <div className="relative flex h-[300px] w-full items-center justify-center overflow-hidden rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 to-sky-50 p-4 shadow-lg shadow-blue-900/5 sm:p-6 lg:h-[350px] lg:p-8">
+    <div
+      className="absolute inset-0 opacity-[0.15]"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle, #3b82f6 1px, transparent 1px)",
+        backgroundSize: "20px 20px",
+      }}
+    ></div>
+    <div className="relative z-10 mx-auto w-full max-w-[320px]">
+      <div className="p-4 mb-4 bg-white border shadow-sm rounded-2xl border-sky-100">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full animate-pulse bg-emerald-400" />
+            <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
+              Live Build
+            </div>
+          </div>
+          <div className="rounded-full border border-emerald-100 bg-emerald-50 px-2 py-0.5 text-[10px] font-medium text-emerald-600">
+            100% Passes
+          </div>
+        </div>
+        <div className="space-y-3">
+          <div className="flex items-center gap-3">
+            <div className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100 text-[10px] text-emerald-600">
+              ✓
+            </div>
+            <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-slate-100">
+              <div className="w-full h-full bg-emerald-400"></div>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100 text-[10px] text-emerald-600">
+              ✓
+            </div>
+            <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-slate-100">
+              <div className="w-full h-full bg-emerald-400"></div>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-5 h-5 p-1 bg-blue-100 rounded-full">
+              <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
+            </div>
+            <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-slate-100">
+              <div className="w-2/3 h-full bg-blue-500 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex gap-4">
+        <div className="flex flex-col items-center justify-center flex-1 gap-2 p-3 bg-white border shadow-sm rounded-xl border-sky-100">
+          <div className="text-xl font-bold text-slate-800">
+            22<span className="ml-1 text-xs text-slate-400">ms</span>
+          </div>
+          <div className="text-[9px] font-medium uppercase tracking-wider text-slate-500">
+            Latency
+          </div>
+        </div>
+        <div className="flex flex-col items-center justify-center flex-1 gap-2 p-3 text-white shadow-md rounded-xl bg-gradient-to-br from-blue-500 to-sky-500">
+          <div className="text-xl font-bold">Deploy</div>
+          <div className="text-[9px] font-medium uppercase tracking-wider text-blue-100">
+            Production
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 export default function MvpStudioClient() {
-  const featuredProjects = portfolioProjects.slice(0, 3);
-  const [currentCaseStudyIndex, setCurrentCaseStudyIndex] = useState(0);
+  const pricingBadgeText = "Transparent Pricing";
+  const pricingHeadline = "Fixed scope. Fixed price.";
+  const pricingIntro =
+    "No hourly billing. No change-order surprises. Pick your sprint, lock the scope, start building.";
 
-  const handleNextCaseStudy = () => {
-    setCurrentCaseStudyIndex((prev) => (prev + 1) % featuredProjects.length);
-  };
+  const marketBadgeText = "Market Context";
+  const marketHeadline = "How we stack up honestly.";
+  const marketIntro =
+    "Compare delivery models before you choose a partner. Categories below represent typical options founders evaluate.";
 
-  const handlePrevCaseStudy = () => {
-    setCurrentCaseStudyIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
-  };
+  const faqBadgeText = "Common Questions";
+  const faqHeadline = "The stuff founders actually ask.";
 
-  const getDeliveryLine = (results: string[]) => {
-    const timeline = results.find((item) =>
-      /day|week|weeks|month|months/i.test(item),
-    );
-    return timeline ?? "Delivery timeline shared after scope lock";
-  };
+  const bodyTextClass = "text-[0.95rem] leading-[1.75] text-slate-600";
 
   useEffect(() => {
     const reveals = document.querySelectorAll<HTMLElement>(".reveal");
@@ -56,8 +266,8 @@ export default function MvpStudioClient() {
           const parent = entry.target.parentElement;
           const siblings = parent
             ? Array.from(
-              parent.querySelectorAll<HTMLElement>(".reveal:not(.visible)"),
-            )
+                parent.querySelectorAll<HTMLElement>(".reveal:not(.visible)"),
+              )
             : [];
 
           const delay =
@@ -81,265 +291,49 @@ export default function MvpStudioClient() {
 
   return (
     <main
-      className={`${syne.variable} ${dmSans.variable} relative overflow-x-hidden bg-gradient-to-br from-blue-50 via-blue-50 to-sky-50 text-slate-900`}
+      className={`${syne.variable} ${dmSans.variable} relative overflow-x-hidden  text-slate-900`}
     >
-      <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-[5%] pb-20 pt-36 text-center">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="animate-blob absolute -right-[10%] -top-[20%] h-[80vh] w-[60vw] rounded-full bg-blue-300/25 blur-3xl" />
-          <div className="animate-blob animation-delay-2000 absolute -left-[5%] bottom-0 h-[50vh] w-[40vw] rounded-full bg-sky-300/20 blur-3xl" />
-        </div>
-
-        {/* <div className="relative z-10 mb-8 inline-flex items-center gap-2 rounded-full border border-blue-500/25 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-700">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-sky-500" />
-          AI-First MVP Studio · Sri Lanka
-        </div> */}
-
-        {/* Badge */}
-        <div className="mb-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-2 rounded-full shadow-lg bg-white/80 backdrop-blur-sm animate-fade-in">
-            <span className="relative flex w-2 h-2">
-              <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-gradient-to-r from-blue-500 to-sky-500"></span>
-              <span className="relative inline-flex w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-sky-500"></span>
-            </span>
-            <span className="text-sm font-semibold text-transparent bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text">
-              AI-First MVP Studio · Sri Lanka
-            </span>
-          </div>
-        </div>
-
-        <h1 className="relative z-10 max-w-225  text-[clamp(3rem,7.5vw,5.4rem)] font-extrabold leading-none tracking-[-0.04em]">
-          Your SaaS MVP.
-          <br />
-          <em className="not-italic text-transparent bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-500 bg-clip-text">
+      <InnerBanner
+        badgeText="AI-First MVP Studio · Sri Lanka"
+        title={
+          <>
+            Your SaaS MVP.
+            <br className="hidden md:block" />
             3 Weeks.
-          </em>
-          <span className="block text-slate-500">
-            No Hourly Billing.
-            <br />
-            No Surprises.
-          </span>
-        </h1>
-
-        <p className="relative z-10 mb-10 mt-7 max-w-140 text-[1.05rem] leading-[1.75] text-slate-600">
-          We build SaaS MVPs for founders who need to validate fast before they
-          raise or scale.{" "}
-          <strong className="font-medium text-slate-900">
-            Next.js, AI-accelerated workflows, flat-fee pricing.
-          </strong>{" "}
-          Senior-level engineering at startup-friendly pricing.
-        </p>
-
-        <div className="relative z-10 flex flex-wrap items-center justify-center gap-4 my-5">
-          <PrimaryButton href="#pricing">See Packages</PrimaryButton>
-          <SecondaryButton href="#process">How It Works</SecondaryButton>
-        </div>
-
-        <div className="relative z-10 flex flex-wrap justify-center gap-10 mt-16">
-          <div className="proof-stat">
-            <div className=" text-3xl font-extrabold tracking-[-0.03em]">
-              3<span className="text-blue-600">wk</span>
-            </div>
-            <div className="text-xs text-slate-600">Average MVP launch</div>
-          </div>
-          <div className="hidden w-px bg-blue-300/50 sm:block" />
-          <div className="proof-stat">
-            <div className=" text-3xl font-extrabold tracking-[-0.03em]">
-              80<span className="text-blue-600">%</span>
-            </div>
-            <div className="text-xs text-slate-600">Less than US/EU rates</div>
-          </div>
-          <div className="hidden w-px bg-blue-300/50 sm:block" />
-          <div className="proof-stat">
-            <div className=" text-3xl font-extrabold tracking-[-0.03em]">
-              0<span className="text-blue-600">h</span>
-            </div>
-            <div className="text-xs text-slate-600">Hourly billing. Ever.</div>
-          </div>
-          <div className="hidden w-px bg-blue-300/50 sm:block" />
-          <div className="proof-stat">
-            <div className=" text-3xl font-extrabold tracking-[-0.03em]">
-              1<span className="text-blue-600"> team</span>
-            </div>
-            <div className="text-xs text-slate-600">Direct founder access</div>
-          </div>
-        </div>
-      </section>
-
-      {/* <div className="border-y border-blue-200/70 bg-white/80 px-[5%] py-4">
-        <div className="mx-auto flex max-w-300 flex-wrap justify-center gap-2.5">
-          <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
-            AI-Assisted Delivery
-          </span>
-          <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
-            Next.js and React
-          </span>
-          <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
-            Flat-Fee Sprints
-          </span>
-          <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
-            Launch in 3 Weeks
-          </span>
-          <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.08em] text-slate-600">
-            Founder-to-Founder Updates
-          </span>
-        </div>
-      </div> */}
-
-      <section className="bg-white px-[5%] py-24">
-        <div className="mx-auto max-w-300">
-          <div className="mb-16 text-center transition-all duration-700 translate-y-6 opacity-0 reveal">
-            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
-              MVPs We&apos;ve Shipped
-            </p>
-            <h2 className="text-[clamp(1.9rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-0.03em]">
-              Real products. <em>Real outcomes.</em>
-            </h2>
-          </div>
-
-          <div className="relative transition-all duration-700 translate-y-6 opacity-0 reveal group max-w-5xl mx-auto">
-            {/* Navigation Arrows */}
-            <button
-              onClick={handlePrevCaseStudy}
-              className="absolute left-0 z-20 flex items-center justify-center w-12 h-12 transition-all -translate-y-1/2 bg-white border rounded-full shadow-lg border-slate-100 top-1/2 text-slate-400 hover:text-blue-600 hover:shadow-xl md:-left-5 cursor-pointer"
-              aria-label="Previous case study"
+            <br className="hidden md:block" />
+            No Hourly Billing. No Surprises.
+          </>
+        }
+        description="We build SaaS MVPs for founders who need to validate fast before they raise or scale. Next.js, AI-accelerated workflows, flat-fee pricing. Senior-level engineering at startup-friendly pricing."
+        cta={
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <Button href="#pricing" className="sm:w-auto sm:px-8">
+              See Packages
+            </Button>
+            <Button
+              variant="secondary"
+              href="#process"
+              className="sm:w-auto sm:px-8"
             >
-              <FiChevronLeft className="w-6 h-6" />
-            </button>
-            <button
-              onClick={handleNextCaseStudy}
-              className="absolute right-0 z-20 flex items-center justify-center w-12 h-12 transition-all -translate-y-1/2 bg-white border rounded-full shadow-lg border-slate-100 top-1/2 text-slate-400 hover:text-blue-600 hover:shadow-xl md:-right-5 cursor-pointer"
-              aria-label="Next case study"
-            >
-              <FiChevronRight className="w-6 h-6" />
-            </button>
-
-            {/* Case Study Container */}
-            <div className="overflow-hidden">
-              <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentCaseStudyIndex * 100}%)` }}>
-                {featuredProjects.map((project) => (
-                  <div key={project.id} className="w-full shrink-0">
-                    <div className="flex flex-col md:flex-row">
-                      {/* Image - Right */}
-                      <div className="relative min-h-[300px] w-full md:w-1/2 rounded-[2rem]">
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          className="object-cover rounded-[2rem]"
-                        />
-                      </div>
-
-                      {/* Text Content - Left */}
-                      <div className="flex flex-col justify-center p-8 md:w-1/2 lg:p-14">
-                        <h3 className="text-2xl font-bold text-slate-900 md:text-3xl">
-                          {project.title}
-                        </h3>
-                        <p className="mt-4 text-[0.95rem] leading-[1.8] text-slate-600">
-                          {project.shortDescription}
-                        </p>
-
-                        <div className="flex flex-wrap gap-2 mt-6">
-                          {project.technologies.slice(0, 4).map((tech) => (
-                            <span
-                              key={`${project.id}-${tech}`}
-                              className="rounded-full bg-slate-50 border border-slate-200 px-3 py-1.5 text-[0.75rem] font-medium text-slate-600"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-
-                        <div className="pt-6 mt-8 border-t border-slate-100">
-                          <div className="flex flex-col gap-4 sm:flex-row sm:gap-8">
-                            <div>
-                              <p className="mb-1 text-[0.75rem] font-medium uppercase tracking-[0.1em] text-slate-400">
-                                Delivery
-                              </p>
-                              <p className="font-semibold text-slate-900">
-                                {getDeliveryLine(project.results)}
-                              </p>
-                            </div>
-                            <div>
-                              <p className="mb-1 text-[0.75rem] font-medium uppercase tracking-[0.1em] text-slate-400">
-                                Result
-                              </p>
-                              <p className="font-semibold text-blue-600">
-                                {project.results[0]}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Dots indicator */}
-            <div className="flex justify-center gap-2 mt-8">
-              {featuredProjects.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentCaseStudyIndex(idx)}
-                  className={`h-2 rounded-full transition-all duration-300 ${currentCaseStudyIndex === idx ? "w-8 bg-blue-600" : "w-2 bg-slate-200 hover:bg-slate-300"
-                    }`}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
-            </div>
+              How It Works
+            </Button>
           </div>
-        </div>
-      </section>
+        }
+      />
 
-      <section className="bg-white px-[5%] pb-24">
-        <div className="flex flex-col items-center justify-center gap-4 mx-auto text-center max-w-300">
-          <p className="text-[0.9rem] text-slate-600">
-            Ready to validate your SaaS idea? Book a free MVP feasibility call.
-          </p>
-          <CalendlyButton className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-500 px-8 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_6px_24px_rgba(56,189,248,0.18),0_2px_10px_rgba(99,102,241,0.1)] transition hover:-translate-y-0.5 hover:opacity-90">
-            Free MVP Feasibility Call
-            <svg
-              className="w-4 h-4 transition-transform group-hover:translate-x-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </CalendlyButton>
-        </div>
-      </section>
+      <PortfolioShowcase showBanner={false} />
 
       <section className="bg-white px-[5%] py-24">
         <div className="mx-auto max-w-300">
           <div className="grid items-start grid-cols-1 gap-16 lg:grid-cols-2">
             <div className="transition-all duration-700 translate-y-6 opacity-0 reveal">
-              <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
-                Why Throoout
-              </p>
-              <h2 className="mb-5  text-[clamp(1.9rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-0.03em]">
-                Most agencies build everything you ask for.
-                <br />
-                <em className="not-italic text-blue-600">
-                  We build what gets your first users.
-                </em>
-              </h2>
-              <p className="mb-6 max-w-140 text-[0.97rem] leading-[1.8] text-slate-600">
-                No agency hoops. No freelancer uncertainty. Just a lean,
-                technical team who treats your MVP like it is our own because we
-                know what it costs to launch without traction.
-              </p>
-              <p className="max-w-140 text-[0.97rem] leading-[1.8] text-slate-600">
-                Traditional agencies can take months. Freelancers can be
-                unpredictable. We sit in the middle: dedicated sprint execution
-                with strong engineering systems at startup- friendly pricing.
-              </p>
+              <ServiceSectionHeader
+                badgeText="Why Throoout"
+                headline="Most agencies build everything you ask for. We build what gets your first users."
+                intro="No agency hoops. No freelancer uncertainty. Just a lean, technical team who treats your MVP like it is our own because we know what it costs to launch without traction. Traditional agencies can take months. Freelancers can be unpredictable. We sit in the middle: dedicated sprint execution with strong engineering systems at startup-friendly pricing."
+                align="text-left"
+                headlineSize="text-2xl sm:text-3xl lg:text-4xl"
+              />
             </div>
             <div className="flex flex-col gap-4 transition-all duration-700 translate-y-6 opacity-0 reveal">
               <div className="flex gap-4 p-6 transition border rounded-xl border-blue-200/70 bg-sky-50 hover:translate-x-1 hover:border-blue-500/35">
@@ -350,7 +344,7 @@ export default function MvpStudioClient() {
                   <h4 className="mb-1 text-base font-bold">
                     AI-Accelerated Engineering
                   </h4>
-                  <p className="text-[0.86rem] leading-[1.7] text-slate-600">
+                  <p className={bodyTextClass}>
                     AI handles boilerplate, testing scaffolds, and refactors so
                     senior engineers focus on architecture and product
                     decisions.
@@ -365,7 +359,7 @@ export default function MvpStudioClient() {
                   <h4 className="mb-1 text-base font-bold">
                     Ruthlessly Scoped Sprints
                   </h4>
-                  <p className="text-[0.86rem] leading-[1.7] text-slate-600">
+                  <p className={bodyTextClass}>
                     We prioritize the few features that unlock early traction,
                     then iterate based on real user signals.
                   </p>
@@ -379,7 +373,7 @@ export default function MvpStudioClient() {
                   <h4 className="mb-1 text-base font-bold">
                     Founder-to-Founder Comms
                   </h4>
-                  <p className="text-[0.86rem] leading-[1.7] text-slate-600">
+                  <p className={bodyTextClass}>
                     You speak directly with the team building your product
                     through fast, async, transparent updates.
                   </p>
@@ -393,7 +387,7 @@ export default function MvpStudioClient() {
                   <h4 className="mb-1 text-base font-bold">
                     Flat Fees, Full Transparency
                   </h4>
-                  <p className="text-[0.86rem] leading-[1.7] text-slate-600">
+                  <p className={bodyTextClass}>
                     Scope, timelines, and pricing are agreed before development
                     starts. No surprise invoices.
                   </p>
@@ -404,160 +398,122 @@ export default function MvpStudioClient() {
         </div>
       </section>
 
-      <section id="process" className="bg-blue-50/70 px-[5%] py-24">
+      <section
+        id="process"
+        className="bg-white px-[5%] py-24 border-t border-slate-100"
+      >
         <div className="mx-auto max-w-300">
-          <div className="grid items-start grid-cols-1 gap-16 lg:grid-cols-2">
-            <div>
-              <div className="mb-8 transition-all duration-700 translate-y-6 opacity-0 reveal">
-                <div>
-                  <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
-                    How It Works
-                  </p>
-                  <h2 className=" text-[clamp(1.9rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-0.03em]">
-                    Three weeks.
-                    <br />
-                    <em className="not-italic text-blue-600">End to end.</em>
-                  </h2>
-                </div>
-              </div>
+          <div className="mb-16 text-center transition-all duration-700 translate-y-6 opacity-0 reveal">
+            <ServiceSectionHeader
+              badgeText="How It Works"
+              headline="Three weeks. End to end."
+              intro="A highly technical, transparent sprint process to get you from scope lock to production without bloated timelines or endless meetings."
+            />
+          </div>
 
-              <div className="relative pl-8 border-l border-blue-300/70">
-                <div className="flex gap-6 mb-8 transition-all duration-700 translate-y-6 opacity-0 reveal">
-                  <div className="-ml-12.25 flex h-12 w-12 items-center justify-center rounded-full border-2 border-blue-300 bg-white font-bold">
+          <div className="flex flex-col gap-16 lg:gap-24">
+            {/* Row 1: Discovery */}
+            <div className="grid items-center grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-20">
+              <div className="order-2 transition-all duration-700 translate-y-6 opacity-0 lg:order-1 reveal">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex items-center justify-center w-10 h-10 font-bold leading-none text-blue-600 bg-blue-100 rounded-full shrink-0">
                     1
                   </div>
-                  <div className="step-body">
-                    <div className="mb-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-blue-600">
-                      Before Week 1
-                    </div>
-                    <div className="mb-2 text-lg font-bold">
-                      Discovery and Scope Lock
-                    </div>
-                    <p className="text-[0.88rem] leading-[1.7] text-slate-600">
-                      We align on users, outcomes, and a clear definition of
-                      done before the build begins.
-                    </p>
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.7rem] text-slate-600">
-                        30-min call
-                      </span>
-                      <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.7rem] text-slate-600">
-                        Feature prioritization
-                      </span>
-                      <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.7rem] text-slate-600">
-                        Fixed scope doc
-                      </span>
-                    </div>
+                  <div className="text-sm font-semibold tracking-[0.12em] text-blue-600 uppercase">
+                    Before Week 1
                   </div>
                 </div>
+                <h3 className="mb-4 text-2xl font-bold text-slate-900 sm:text-3xl">
+                  Discovery and Scope Lock
+                </h3>
+                <p className={`${bodyTextClass} mb-6`}>
+                  We align on users, outcomes, and a clear definition of done
+                  before the build begins.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 text-xs font-medium bg-white border border-blue-200 rounded-full text-slate-600">
+                    30-min call
+                  </span>
+                  <span className="px-3 py-1 text-xs font-medium bg-white border border-blue-200 rounded-full text-slate-600">
+                    Feature prioritization
+                  </span>
+                  <span className="px-3 py-1 text-xs font-medium bg-white border border-blue-200 rounded-full text-slate-600">
+                    Fixed scope doc
+                  </span>
+                </div>
+              </div>
+              <div className="order-1 transition-all duration-700 delay-100 translate-y-6 opacity-0 lg:order-2 reveal">
+                <Step1Visual />
+              </div>
+            </div>
 
-                <div className="flex gap-6 mb-8 transition-all duration-700 translate-y-6 opacity-0 reveal">
-                  <div className="-ml-12.25 flex h-12 w-12 items-center justify-center rounded-full border-2 border-blue-300 bg-white font-bold">
+            {/* Row 2: Strategy */}
+            <div className="grid items-center grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-20">
+              <div className="order-1 transition-all duration-700 translate-y-6 opacity-0 lg:order-1 reveal">
+                <Step2Visual />
+              </div>
+              <div className="order-2 transition-all duration-700 delay-100 translate-y-6 opacity-0 lg:order-2 reveal">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex items-center justify-center w-10 h-10 font-bold leading-none text-blue-600 bg-blue-100 rounded-full shrink-0">
                     2
                   </div>
-                  <div className="step-body">
-                    <div className="mb-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-blue-600">
-                      Week 1
-                    </div>
-                    <div className="mb-2 text-lg font-bold">
-                      Strategy, Architecture and Design
-                    </div>
-                    <p className="text-[0.88rem] leading-[1.7] text-slate-600">
-                      Wireframes, architecture, and data model are finalized. A
-                      clickable prototype validates flow before coding.
-                    </p>
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.7rem] text-slate-600">
-                        Wireframes
-                      </span>
-                      <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.7rem] text-slate-600">
-                        DB schema
-                      </span>
-                      <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.7rem] text-slate-600">
-                        Prototype
-                      </span>
-                    </div>
+                  <div className="text-sm font-semibold tracking-[0.12em] text-blue-600 uppercase">
+                    Week 1
                   </div>
                 </div>
-
-                <div className="flex gap-6 mb-8 transition-all duration-700 translate-y-6 opacity-0 reveal">
-                  <div className="-ml-12.25 flex h-12 w-12 items-center justify-center rounded-full border-2 border-blue-300 bg-white font-bold">
-                    3
-                  </div>
-                  <div className="step-body">
-                    <div className="mb-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-blue-600">
-                      Weeks 2 and 3
-                    </div>
-                    <div className="mb-2 text-lg font-bold">
-                      Full Build and QA
-                    </div>
-                    <p className="text-[0.88rem] leading-[1.7] text-slate-600">
-                      Daily progress, deployable increments, and quality passes
-                      keep delivery fast and stable.
-                    </p>
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.7rem] text-slate-600">
-                        Frontend
-                      </span>
-                      <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.7rem] text-slate-600">
-                        Backend API
-                      </span>
-                      <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-[0.7rem] text-slate-600">
-                        Auth + payments
-                      </span>
-                    </div>
-                  </div>
+                <h3 className="mb-4 text-2xl font-bold text-slate-900 sm:text-3xl">
+                  Strategy, Architecture and Design
+                </h3>
+                <p className={`${bodyTextClass} mb-6`}>
+                  Wireframes, architecture, and data model are finalized. A
+                  clickable prototype validates flow before coding.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 text-xs font-medium bg-white border border-blue-200 rounded-full text-slate-600">
+                    Wireframes
+                  </span>
+                  <span className="px-3 py-1 text-xs font-medium bg-white border border-blue-200 rounded-full text-slate-600">
+                    DB schema
+                  </span>
+                  <span className="px-3 py-1 text-xs font-medium bg-white border border-blue-200 rounded-full text-slate-600">
+                    Prototype
+                  </span>
                 </div>
               </div>
             </div>
 
-            <div className="transition-all duration-700 translate-y-6 opacity-0 reveal lg:sticky lg:top-30">
-              <div className="p-6 bg-white border rounded-2xl border-blue-200/80">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-sm font-bold ">Sprint Overview</span>
-                  <span className="rounded-full border border-sky-400/25 bg-sky-400/10 px-3 py-1 text-[0.68rem] font-semibold text-sky-600">
-                    Live Build
+            {/* Row 3: Build & QA */}
+            <div className="grid items-center grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-20">
+              <div className="order-2 transition-all duration-700 translate-y-6 opacity-0 lg:order-1 reveal">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex items-center justify-center w-10 h-10 font-bold leading-none text-blue-600 bg-blue-100 rounded-full shrink-0">
+                    3
+                  </div>
+                  <div className="text-sm font-semibold tracking-[0.12em] text-blue-600 uppercase">
+                    Weeks 2 and 3
+                  </div>
+                </div>
+                <h3 className="mb-4 text-2xl font-bold text-slate-900 sm:text-3xl">
+                  Full Build and QA
+                </h3>
+                <p className={`${bodyTextClass} mb-6`}>
+                  Daily progress, deployable increments, and quality passes keep
+                  delivery fast and stable.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 text-xs font-medium bg-white border border-blue-200 rounded-full text-slate-600">
+                    Frontend
+                  </span>
+                  <span className="px-3 py-1 text-xs font-medium bg-white border border-blue-200 rounded-full text-slate-600">
+                    Backend API
+                  </span>
+                  <span className="px-3 py-1 text-xs font-medium bg-white border border-blue-200 rounded-full text-slate-600">
+                    Auth + payments
                   </span>
                 </div>
-                <div className="flex flex-col gap-3">
-                  <div className="overflow-hidden border rounded-lg border-blue-300/60 bg-blue-500/10">
-                    <div className="flex justify-between px-4 py-2 text-[0.72rem] font-semibold text-blue-600">
-                      <span>Week 1 - Foundation</span>
-                      <span>7 days</span>
-                    </div>
-                    <div className="flex flex-col gap-1 bg-black/5 px-4 py-2 text-[0.72rem] text-slate-700">
-                      <div>• Scope lock</div>
-                      <div>• Wireframes</div>
-                      <div>• Data model + API design</div>
-                    </div>
-                  </div>
-                  <div className="overflow-hidden border rounded-lg border-sky-300/60 bg-sky-400/10">
-                    <div className="flex justify-between px-4 py-2 text-[0.72rem] font-semibold text-sky-600">
-                      <span>Week 2 - Core Build</span>
-                      <span>7 days</span>
-                    </div>
-                    <div className="flex flex-col gap-1 bg-black/5 px-4 py-2 text-[0.72rem] text-slate-700">
-                      <div>• Authentication and roles</div>
-                      <div>• Core feature implementation</div>
-                      <div>• Integrations + QA pass</div>
-                    </div>
-                  </div>
-                  <div className="overflow-hidden border rounded-lg border-cyan-300/60 bg-cyan-500/10">
-                    <div className="flex justify-between px-4 py-2 text-[0.72rem] font-semibold text-blue-600">
-                      <span>Week 3 - Launch</span>
-                      <span>7 days</span>
-                    </div>
-                    <div className="flex flex-col gap-1 bg-black/5 px-4 py-2 text-[0.72rem] text-slate-700">
-                      <div>• Polish and edge cases</div>
-                      <div>• Deployment + docs</div>
-                      <div>• Go live</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-4 rounded-lg border border-sky-300/60 bg-sky-400/10 p-3 text-center text-[0.78rem] text-blue-600">
-                  Our average MVP goes live around day 21 with a shippable core
-                  before final handoff.
-                </div>
+              </div>
+              <div className="order-1 transition-all duration-700 delay-100 translate-y-6 opacity-0 lg:order-2 reveal">
+                <Step3Visual />
               </div>
             </div>
           </div>
@@ -567,16 +523,11 @@ export default function MvpStudioClient() {
       <section id="pricing" className="bg-white px-[5%] py-24">
         <div className="mx-auto max-w-300">
           <div className="mb-8 text-center transition-all duration-700 translate-y-6 opacity-0 reveal">
-            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
-              Transparent Pricing
-            </p>
-            <h2 className=" text-[clamp(1.9rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-0.03em]">
-              Fixed scope. <em>Fixed price.</em>
-            </h2>
-            <p className="mt-3 text-[0.9rem] text-slate-600">
-              No hourly billing. No change-order surprises. Pick your sprint,
-              lock the scope, start building.
-            </p>
+            <ServiceSectionHeader
+              badgeText={pricingBadgeText}
+              headline={pricingHeadline}
+              intro={pricingIntro}
+            />
           </div>
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -595,7 +546,9 @@ export default function MvpStudioClient() {
                   $990
                 </span>
               </div>
-              <p className="mt-4 border-b border-blue-100 pb-4 text-[0.88rem] leading-[1.75] text-slate-600">
+              <p
+                className={`mt-4 border-b border-blue-100 pb-4 ${bodyTextClass}`}
+              >
                 A high-converting, production-ready landing page to validate
                 your idea and start collecting leads before you commit to a full
                 build.
@@ -634,15 +587,16 @@ export default function MvpStudioClient() {
                   <span>Backend / database</span>
                 </li>
               </ul>
-              <a
+              <Button
+                variant="secondary"
                 href="/contact"
-                className="flex items-center justify-center px-4 py-3 mt-6 font-semibold transition border border-blue-200 rounded-lg bg-slate-50 text-slate-900 hover:bg-white"
+                className="mt-6 sm:w-full"
               >
-                Get Started →
-              </a>
+                Get Started
+              </Button>
             </div>
 
-            <div className="relative transition-all duration-700 translate-y-6 border border-blue-500 shadow-xl opacity-0 reveal rounded-2xl bg-gradient-to-br from-sky-100 via-blue-50 to-cyan-50 p-7 shadow-blue-200/60 hover:-translate-y-1">
+            <div className="relative transition-all duration-700 translate-y-6 border border-blue-500 shadow-xl opacity-0 reveal rounded-2xl p-7 shadow-blue-200/60 hover:-translate-y-1">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-500 px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
                 Most Popular
               </div>
@@ -660,12 +614,12 @@ export default function MvpStudioClient() {
                   $3,990
                 </span>
               </div>
-              <p className="mt-4 border-b border-blue-200 pb-4 text-[0.88rem] leading-[1.75] text-slate-700">
+              <p className="mt-4 border-b border-blue-200 pb-4 text-[0.95rem] leading-[1.75] text-slate-700">
                 A fully functional, production-ready SaaS MVP. Core features,
                 real users, real data launched in 21 days. This is our flagship
                 sprint.
               </p>
-              <ul className="mt-5 flex flex-1 flex-col gap-2 text-[0.85rem] text-blue-600">
+              <ul className="mt-5 flex flex-1 flex-col gap-2 text-[0.85rem]">
                 <li className="flex items-start gap-2">
                   <span className="mt-0.5 text-blue-600">✓</span>
                   <span>Everything in Landing Page</span>
@@ -707,12 +661,9 @@ export default function MvpStudioClient() {
                   user role.
                 </li>
               </ul>
-              <a
-                href="/contact"
-                className="flex items-center justify-center px-4 py-3 mt-6 font-semibold text-white transition border rounded-lg shadow-lg border-white/30 bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-500 hover:opacity-90"
-              >
-                Book Free Discovery →
-              </a>
+              <Button href="/contact" className="mt-6 sm:w-full">
+                Book Free Discovery
+              </Button>
             </div>
 
             <div className="transition-all duration-700 translate-y-6 bg-white border shadow-md opacity-0 reveal rounded-2xl border-blue-200/80 p-7 shadow-blue-100/40 hover:-translate-y-1 hover:shadow-xl">
@@ -730,7 +681,9 @@ export default function MvpStudioClient() {
                   $800
                 </span>
               </div>
-              <p className="mt-4 border-b border-blue-100 pb-4 text-[0.88rem] leading-[1.75] text-slate-600">
+              <p
+                className={`mt-4 border-b border-blue-100 pb-4 ${bodyTextClass}`}
+              >
                 Not sure what to build yet? We turn your idea into a bankable
                 technical plan with architecture, wireframes, and cost breakdown
                 in one week.
@@ -769,12 +722,13 @@ export default function MvpStudioClient() {
                   <span>Code / development</span>
                 </li>
               </ul>
-              <a
+              <Button
+                variant="secondary"
                 href="/contact"
-                className="flex items-center justify-center px-4 py-3 mt-6 font-semibold transition border border-blue-200 rounded-lg bg-slate-50 text-slate-900 hover:bg-white"
+                className="mt-6 sm:w-full"
               >
-                Start Here →
-              </a>
+                Start Here
+              </Button>
             </div>
           </div>
           <p className="mt-5 text-xs text-center text-slate-500">
@@ -787,16 +741,11 @@ export default function MvpStudioClient() {
       <section className="bg-blue-50/70 px-[5%] py-24">
         <div className="mx-auto max-w-300">
           <div className="mb-8 transition-all duration-700 translate-y-6 opacity-0 reveal">
-            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
-              Market Context
-            </p>
-            <h2 className=" text-[clamp(1.9rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-0.03em]">
-              How we stack up <em>honestly.</em>
-            </h2>
-            <p className="mt-3 max-w-140 text-[0.97rem] leading-[1.8] text-slate-600">
-              Compare delivery models before you choose a partner. Categories
-              below represent typical options founders evaluate.
-            </p>
+            <ServiceSectionHeader
+              badgeText={marketBadgeText}
+              headline={marketHeadline}
+              intro={marketIntro}
+            />
           </div>
           <div className="transition-all duration-700 translate-y-6 opacity-0 reveal">
             <div className="flex items-center justify-between px-4 py-3 mb-4 bg-white border shadow-sm rounded-xl border-blue-200/70">
@@ -1056,141 +1005,22 @@ export default function MvpStudioClient() {
         </div>
       </section>
 
-      {/* <section className="bg-white px-[5%] py-24">
-        <div className="mx-auto max-w-300">
-          <div className="grid grid-cols-1 gap-10 rounded-2xl border border-blue-200/80 bg-gradient-to-r from-white to-sky-50 p-8 lg:grid-cols-[1.1fr_1fr] lg:p-10">
-            <div className="transition-all duration-700 translate-y-6 opacity-0 reveal">
-              <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
-                Who Builds Your MVP
-              </p>
-              <h2 className="text-[clamp(1.7rem,3.5vw,2.6rem)] font-extrabold leading-[1.15] tracking-[-0.03em] text-slate-900">
-                Founded by engineers who have shipped SaaS products.
-              </h2>
-              <p className="mt-4 max-w-140 text-[0.95rem] leading-[1.8] text-slate-600">
-                You work directly with builders, not layers of account
-                management. The same team who scopes your sprint owns delivery
-                decisions end to end.
-              </p>
-            </div>
-            <div className="transition-all duration-700 translate-y-6 opacity-0 reveal">
-              <div className="p-6 bg-white border border-blue-200 shadow-md rounded-2xl shadow-blue-100/50">
-                <p className="text-sm font-semibold text-slate-900">
-                  Founder Note
-                </p>
-                <p className="mt-3 text-[0.86rem] leading-[1.75] text-slate-600">
-                  Add your founder photo and a short story here to increase
-                  trust even further. This block is intentionally ready for that
-                  final personal layer.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      <section className="bg-white px-[5%] py-24">
-        <div className="mx-auto max-w-300">
-          <div className="mb-8 text-center transition-all duration-700 translate-y-6 opacity-0 reveal">
-            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
-              Our Stack
-            </p>
-            <h2 className=" text-[clamp(1.9rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-0.03em]">
-              Production-grade from <em>day one.</em>
-            </h2>
-            <p className="mx-auto mt-3 max-w-140 text-[0.97rem] leading-[1.8] text-slate-600">
-              We select stable, scalable technologies so your MVP can evolve
-              without a full rewrite.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
-              <div className="mb-4 text-blue-600">
-                <SiNextdotjs size={40} />
-              </div>
-              <div className="mb-1 text-[1rem] font-bold">Next.js 14</div>
-              <div className="text-[0.73rem] text-slate-600">
-                Frontend and SSR
-              </div>
-            </div>
-            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
-              <div className="mb-4 text-blue-600">
-                <SiTypescript size={40} />
-              </div>
-              <div className="mb-1 text-[1rem] font-bold">TypeScript</div>
-              <div className="text-[0.73rem] text-slate-600">
-                Type-safe codebase
-              </div>
-            </div>
-            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
-              <div className="mb-4 text-blue-600">
-                <SiPostgresql size={40} />
-              </div>
-              <div className="mb-1 text-[1rem] font-bold">PostgreSQL</div>
-              <div className="text-[0.73rem] text-slate-600">
-                Primary database
-              </div>
-            </div>
-            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
-              <div className="mb-4 text-blue-600">
-                <SiTrpc size={40} />
-              </div>
-              <div className="mb-1 text-[1rem] font-bold">tRPC / REST</div>
-              <div className="text-[0.73rem] text-slate-600">API layer</div>
-            </div>
-            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
-              <div className="mb-4 text-blue-600">
-                <FiShield size={40} />
-              </div>
-              <div className="mb-1 text-[1rem] font-bold">NextAuth.js</div>
-              <div className="text-[0.73rem] text-slate-600">
-                Authentication
-              </div>
-            </div>
-            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
-              <div className="mb-4 text-blue-600">
-                <SiStripe size={40} />
-              </div>
-              <div className="mb-1 text-[1rem] font-bold">Stripe</div>
-              <div className="text-[0.73rem] text-slate-600">Payments</div>
-            </div>
-            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
-              <div className="mb-4 text-blue-600">
-                <SiVercel size={40} />
-              </div>
-              <div className="mb-1 text-[1rem] font-bold">Vercel / AWS</div>
-              <div className="text-[0.73rem] text-slate-600">
-                Hosting and CDN
-              </div>
-            </div>
-            <div className="p-5 text-center flex flex-col items-center transition-all duration-700 translate-y-6 border opacity-0 reveal rounded-xl border-blue-200/70 bg-white hover:bg-sky-50 hover:shadow-xl hover:shadow-sky-100 hover:-translate-y-1">
-              <div className="mb-4 text-blue-600">
-                <SiOpenai size={40} />
-              </div>
-              <div className="mb-1 text-[1rem] font-bold">AI Tooling</div>
-              <div className="text-[0.73rem] text-slate-600">
-                Accelerated development
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TechStackSection />
 
       <section className="bg-blue-50/70 px-[5%] py-24">
         <div className="mx-auto max-w-300">
           <div className="mb-8 transition-all duration-700 translate-y-6 opacity-0 reveal">
-            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-blue-600">
-              Common Questions
-            </p>
-            <h2 className=" text-[clamp(1.9rem,4vw,3rem)] font-extrabold leading-[1.15] tracking-[-0.03em]">
-              The stuff founders <em>actually ask.</em>
-            </h2>
+            <ServiceSectionHeader
+              badgeText={faqBadgeText}
+              headline={faqHeadline}
+            />
           </div>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             <div className="p-6 transition-all duration-700 translate-y-6 bg-white border opacity-0 reveal rounded-xl border-blue-200/70">
               <div className="mb-2  text-[0.95rem] font-bold">
                 Can you really build a working MVP in 3 weeks?
               </div>
-              <p className="text-[0.86rem] leading-[1.7] text-slate-600">
+              <p className={bodyTextClass}>
                 Yes — with a ruthlessly scoped feature set. The keyword is MVP,
                 not full product. We&apos;ll challenge your list on Day 1 and
                 cut anything that doesn&apos;t help you get your first 100
@@ -1202,7 +1032,7 @@ export default function MvpStudioClient() {
               <div className="mb-2  text-[0.95rem] font-bold">
                 What if I need changes during the build?
               </div>
-              <p className="text-[0.86rem] leading-[1.7] text-slate-600">
+              <p className={bodyTextClass}>
                 Minor adjustments (copy, colours, flow tweaks) are absorbed.
                 Scope additions are scoped and priced transparently —{" "}
                 <b>always before any work begins</b>. We&apos;d rather pause for
@@ -1213,7 +1043,7 @@ export default function MvpStudioClient() {
               <div className="mb-2  text-[0.95rem] font-bold">
                 Do I own the code?
               </div>
-              <p className="text-[0.86rem] leading-[1.7] text-slate-600">
+              <p className={bodyTextClass}>
                 <b>100%, from day one.</b> Everything goes into your GitHub. All
                 IP belongs to you — we have zero claim on anything built during
                 the sprint. You can take the code and work with any developer
@@ -1224,7 +1054,7 @@ export default function MvpStudioClient() {
               <div className="mb-2  text-[0.95rem] font-bold">
                 We&apos;re pre-revenue. Is this right for us?
               </div>
-              <p className="text-[0.86rem] leading-[1.7] text-slate-600">
+              <p className={bodyTextClass}>
                 It&apos;s built for you. Our Strategy Sprint ($800) is
                 specifically designed for founders who are still shaping their
                 idea. You&apos;ll get a full roadmap, wireframes, and a clear
@@ -1236,7 +1066,7 @@ export default function MvpStudioClient() {
               <div className="mb-2  text-[0.95rem] font-bold">
                 What industries do you work in?
               </div>
-              <p className="text-[0.86rem] leading-[1.7] text-slate-600">
+              <p className={bodyTextClass}>
                 SaaS, marketplaces, fintech, e-commerce tools, AI products, and
                 EdTech. We&apos;re comfortable with most B2B and B2C digital
                 products.{" "}
@@ -1251,7 +1081,7 @@ export default function MvpStudioClient() {
               <div className="mb-2  text-[0.95rem] font-bold">
                 What happens after launch?
               </div>
-              <p className="text-[0.86rem] leading-[1.7] text-slate-600">
+              <p className={bodyTextClass}>
                 30-day bug-fix cover is included in every build. After that, we
                 offer ongoing retainers or per-sprint engagements.
                 <b>Most clients continue with us for 2–3 post-MVP sprints</b>
@@ -1261,35 +1091,6 @@ export default function MvpStudioClient() {
           </div>
         </div>
       </section>
-
-      {/* <section className="relative overflow-hidden bg-white px-[5%] py-24">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_120%_at_50%_100%,rgba(56,189,248,0.2)_0%,transparent_60%)]" />
-        <div className="mx-auto max-w-300">
-          <div className="relative mx-auto text-center transition-all duration-700 translate-y-6 opacity-0 reveal max-w-190">
-            <h2 className="mb-4  text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[1.1] tracking-[-0.03em]">
-              Ready to stop planning
-              <br />
-              and start{" "}
-              <em className="not-italic text-transparent bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-500 bg-clip-text">
-                building?
-              </em>
-            </h2>
-            <p className="text-base leading-[1.75] text-slate-600">
-              In one 30-minute call, we can map what is achievable in 3 weeks,
-              what it costs, and whether we are the right fit.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 my-5">
-              <CalendlyButton className="inline-flex items-center rounded-lg border border-white/30 bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-500 px-8 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_6px_24px_rgba(56,189,248,0.18),0_2px_10px_rgba(99,102,241,0.1)] transition hover:-translate-y-0.5 hover:opacity-90">
-                Free MVP Feasibility Call
-              </CalendlyButton>
-              <SecondaryButton href="#pricing">View Pricing</SecondaryButton>
-            </div>
-            <p className="mt-3 text-[0.8rem] text-slate-500">
-              We&apos;ll tell you honestly if your idea is buildable in 3 weeks.
-            </p>
-          </div>
-        </div>
-      </section> */}
 
       <ServicesCTASection
         headline={"Ready to stop planning and start building?"}
