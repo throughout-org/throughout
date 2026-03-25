@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Readable } from "stream";
-import { existsSync, readFileSync } from "fs";
-import { join } from "path";
 import { google } from "googleapis";
 import { v2 as cloudinary } from "cloudinary";
 import JobApplication from "@/models/JobApplication";
@@ -209,6 +207,27 @@ function shouldFallbackToCloudinary(error: unknown): boolean {
   );
 }
 
+function isGoogleInvalidGrant(error: unknown): boolean {
+  if (!error || typeof error !== "object") return false;
+
+  const message =
+    "message" in error ? String((error as { message?: unknown }).message) : "";
+  if (message.toLowerCase().includes("invalid_grant")) return true;
+
+  // googleapis typically throws a GaxiosError with `response.data` containing `{ error: 'invalid_grant', ... }`
+  const maybeResponse = (error as { response?: unknown }).response;
+  if (!maybeResponse || typeof maybeResponse !== "object") return false;
+
+  const maybeData = (maybeResponse as { data?: unknown }).data;
+  if (!maybeData || typeof maybeData !== "object") return false;
+
+  return (
+    "error" in maybeData &&
+    String((maybeData as { error?: unknown }).error).toLowerCase() ===
+      "invalid_grant"
+  );
+}
+
 async function uploadResume(file: File): Promise<string> {
   try {
     return await uploadPdfToGoogleDrive(file);
@@ -354,6 +373,16 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error("Job application error:", error);
+
+    if (isGoogleInvalidGrant(error)) {
+      return NextResponse.json(
+        {
+          error:
+            "Google authentication failed (invalid_grant). This usually means GOOGLE_REFRESH_TOKEN is expired/revoked, the GOOGLE_REDIRECT_URI/client settings don’t match the token, or the server clock is incorrect. Re-generate the refresh token and confirm GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET/GOOGLE_REDIRECT_URI match the OAuth consent configuration.",
+        },
+        { status: 500, headers: corsHeaders(origin) },
+      );
+    }
 
     const isQuotaError =
       error &&
