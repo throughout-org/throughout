@@ -18,18 +18,18 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://throoout.com"),
+  metadataBase: new URL("https://www.throughout.io"),
 
   title: {
-    default: "Custom Software & AI Development Company | Throoout",
-    template: "%s | Throoout",
+    default: "Custom Software & AI Development Company | Throughout (PVT) LTD",
+    template: "%s | Throughout (PVT) LTD",
   },
 
   description:
-    "Throoout is a custom software and AI development company building scalable web, mobile, and cloud solutions for startups and businesses.",
+    "Throughout (PVT) LTD is a custom software and AI development company building scalable web, mobile, and cloud solutions for startups and businesses.",
 
-  creator: "Throoout",
-  publisher: "Throoout",
+  creator: "Throughout (PVT) LTD",
+  publisher: "Throughout (PVT) LTD",
 
   formatDetection: {
     email: false,
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    url: "https://throoout.com",
-    siteName: "Throoout",
-    title: "Custom Software & AI Development Company | Throoout",
+    url: "https://www.throughout.io",
+    siteName: "Throughout (PVT) LTD",
+    title: "Custom Software & AI Development Company | Throughout (PVT) LTD",
     description:
       "Custom software, web, mobile, and AI solutions built to scale modern businesses.",
     images: [
@@ -49,14 +49,14 @@ export const metadata: Metadata = {
         url: "/images/og-default.png",
         width: 1200,
         height: 630,
-        alt: "Throoout Software & AI Development",
+        alt: "Throughout (PVT) LTD Software & AI Development",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Custom Software & AI Development Company | Throoout",
+    title: "Custom Software & AI Development Company | Throughout (PVT) LTD",
     description:
       "Custom software, web, mobile, and AI solutions for modern businesses.",
     images: ["/images/twitter-default.png"],
@@ -90,22 +90,22 @@ export default function RootLayout({
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://throoout.com/#organization",
-    name: "Throoout",
-    url: "https://throoout.com",
-    logo: "https://throoout.com/images/logo.png",
+    "@id": "https://www.throughout.io/#organization",
+    name: "Throughout (PVT) LTD",
+    url: "https://www.throughout.io",
+    logo: "https://www.throughout.io/images/logo.png",
     description:
       "Custom software and AI development company delivering web, mobile, and cloud solutions.",
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "Customer Support",
-      email: "info@throoout.com",
+      email: "info@throughout.io",
       availableLanguage: ["English"],
     },
     sameAs: [
-      "https://twitter.com/throoout",
-      "https://www.linkedin.com/company/throoout",
-      "https://github.com/throoout",
+      "https://twitter.com/throughout",
+      "https://www.linkedin.com/company/throughout",
+      "https://github.com/throughout",
     ],
   };
 

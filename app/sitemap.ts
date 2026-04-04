@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { services } from "@/data/services";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://throoout.com";
+  const baseUrl = "https://www.throughout.io";
   const now = new Date();
 
   // Static pages (indexable only)

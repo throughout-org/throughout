@@ -10,7 +10,7 @@ export default function ClientSuccessSection() {
 
   const testimonials = [
     {
-      quote: 'Throoout delivered our project on time and exceeded our expectations. Their team is professional and highly skilled.',
+      quote: 'Throughout (PVT) LTD delivered our project on time and exceeded our expectations. Their team is professional and highly skilled.',
       author: 'Tech Startup CEO',
       rating: 5
     },

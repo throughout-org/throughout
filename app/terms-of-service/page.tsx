@@ -14,7 +14,7 @@ export default function TermsOfService() {
             <h2 className="text-xl font-bold text-[#154B79] mb-2 flex items-center gap-2">
               1. Agreement to Terms
             </h2>
-            <p className="text-gray-700">These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and <span className="font-semibold text-[#154B79]">Throoout</span>, concerning your access to and use of our website and our development services.</p>
+            <p className="text-gray-700">These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and <span className="font-semibold text-[#154B79]">Throughout (PVT) LTD</span>, concerning your access to and use of our website and our development services.</p>
           </section>
           {/* 2. Services Provided */}
           <section className="mb-8">
@@ -93,7 +93,7 @@ export default function TermsOfService() {
               9. Governing Law
             </h2>
             <div className="text-gray-700 space-y-1 pl-2">
-              <div>These Terms shall be governed by and defined following the laws of Sri Lanka. <span className="font-semibold text-[#154B79]">Throoout</span> and yourself irrevocably consent that the courts of Sri Lanka shall have exclusive jurisdiction to resolve any dispute which may arise in connection with these terms.</div>
+              <div>These Terms shall be governed by and defined following the laws of Sri Lanka. <span className="font-semibold text-[#154B79]">Throughout (PVT) LTD</span> and yourself irrevocably consent that the courts of Sri Lanka shall have exclusive jurisdiction to resolve any dispute which may arise in connection with these terms.</div>
             </div>
           </section>
           {/* 10. Contact Us */}

@@ -8,11 +8,12 @@ import { CalendlyButton } from "@/components/CalendlyPopup";
 import WhatWeOfferSection from "@/components/service/WhatWeOfferSection";
 import TechnologiesSection from "@/components/service/TechnologiesSection";
 import EngineeringDNASection from "@/components/service/EngineeringDNASection";
-import WhatIsThroooutAISection from "@/components/throoout-ai/WhatIsThroooutAISection";
+import WhatIsThroughoutAISection from "@/components/throughout-ai/WhatIsThroughoutAISection";
 import type { EngineeringFeature, ServiceCard } from "@/data/services";
 
 export const metadata: Metadata = {
-  title: "Throoout AI | Artificial Intelligence for Real Business Automation",
+  title:
+    "Throughout (PVT) LTD AI | Artificial Intelligence for Real Business Automation",
   description:
     "We design and deploy AI-powered systems that automate workflows, enhance decision making, and integrate intelligence directly into your digital products.",
 };
@@ -109,11 +110,11 @@ const engineeringFeatures: EngineeringFeature[] = [
   },
 ];
 
-export default function ThroooutAIPage() {
+export default function ThroughoutAIPage() {
   return (
     <>
       <InnerBanner
-        badgeText="Throoout AI"
+        badgeText="Throughout (PVT) LTD AI"
         title={<>Artificial Intelligence for Real Business Automation</>}
         description="We design and deploy AI-powered systems that automate workflows, enhance decision making, and integrate intelligence directly into your digital products."
         cta={
@@ -130,7 +131,7 @@ export default function ThroooutAIPage() {
       />
 
       <main className="min-h-screen">
-        <WhatIsThroooutAISection />
+        <WhatIsThroughoutAISection />
 
         <WhatWeOfferSection
           headline="What We Build"
@@ -151,8 +152,8 @@ export default function ThroooutAIPage() {
         />
 
         <EngineeringDNASection
-          badgeText="Throoout AI"
-          headline="Why Companies Use Throoout AI"
+          badgeText="Throughout (PVT) LTD AI"
+          headline="Why Companies Use Throughout (PVT) LTD AI"
           intro="We focus on practical AI engineering that fits real business operations from day one."
           features={engineeringFeatures}
         />

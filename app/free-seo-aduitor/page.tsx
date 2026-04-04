@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Free SEO Audit Tool | Instant Website SEO Checker",
     description: "Analyze your website SEO for free. Get instant technical SEO audit, health score, and actionable recommendations. No signup required.",
-    url: "https://throoout.com/free-seo-aduitor",
+    url: "https://www.throughout.io/free-seo-aduitor",
     images: [
       {
         url: "/images/og-default.png",
         width: 1200,
         height: 630,
-        alt: "Free SEO Audit Tool by Throoout"
+        alt: "Free SEO Audit Tool by Throughout (PVT) LTD"
       }
     ],
     type: "website"

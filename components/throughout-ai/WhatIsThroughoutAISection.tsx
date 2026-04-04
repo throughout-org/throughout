@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function WhatIsThroooutAISection() {
+export default function WhatIsThroughoutAISection() {
   return (
     <section className="relative px-6 py-16 mx-auto overflow-hidden max-w-7xl lg:py-20">
       {/* <div className="absolute rounded-full top-10 -left-20 w-72 h-72 bg-blue-200/30 blur-3xl" />
@@ -13,7 +13,7 @@ export default function WhatIsThroooutAISection() {
             <span className="relative inline-flex w-2 h-2 rounded-full bg-[#3698fd]"></span>
           </span>
           <span className="text-xs font-bold tracking-widest text-[#3698fd] uppercase">
-            What is Throoout AI
+            What is Throughout (PVT) LTD AI
           </span>
         </div>
 
@@ -24,9 +24,10 @@ export default function WhatIsThroooutAISection() {
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <p className="text-lg leading-relaxed text-gray-600">
             Most companies experiment with artificial intelligence but struggle
-            to integrate it into real workflows. Throoout AI focuses on building
-            practical AI systems that connect with your existing tools, automate
-            repetitive processes, and improve business efficiency.
+            to integrate it into real workflows. Throughout (PVT) LTD AI focuses
+            on building practical AI systems that connect with your existing
+            tools, automate repetitive processes, and improve business
+            efficiency.
           </p>
           <p className="text-lg leading-relaxed text-gray-600">
             Instead of isolated AI features, we build intelligent systems that

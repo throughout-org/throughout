@@ -13,11 +13,11 @@ import CoreStrengthsSection from "@/components/whyus/CoreStrengthsSection";
 import OurApproachSection from "@/components/whyus/OurApproachSection";
 
 export const metadata: Metadata = {
-  title: "About Throoout - Your Trusted Software Development Partner",
+  title: "About Throughout (PVT) LTD - Your Trusted Software Development Partner",
   description:
-    "Learn about Throoout's mission to deliver innovative software solutions. We specialize in web development, mobile apps, cloud solutions, and AI/ML. Discover our core values, vision, and commitment to excellence in software engineering.",
+    "Learn about Throughout (PVT) LTD's mission to deliver innovative software solutions. We specialize in web development, mobile apps, cloud solutions, and AI/ML. Discover our core values, vision, and commitment to excellence in software engineering.",
   keywords: [
-    "about Throoout",
+    "about Throughout (PVT) LTD",
     "software development company",
     "our mission",
     "our vision",
@@ -34,29 +34,29 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://throoout.com/about",
-    siteName: "Throoout",
-    title: "About Throoout - Your Trusted Software Development Partner",
+    url: "https://www.throughout.io/about",
+    siteName: "Throughout (PVT) LTD",
+    title: "About Throughout (PVT) LTD - Your Trusted Software Development Partner",
     description:
-      "Discover Throoout's mission, vision, and values. Expert software development with innovation and excellence.",
+      "Discover Throughout (PVT) LTD's mission, vision, and values. Expert software development with innovation and excellence.",
     images: [
       {
         url: "/images/og-about.png",
         width: 1200,
         height: 630,
-        alt: "About Throoout",
+        alt: "About Throughout (PVT) LTD",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Throoout - Software Development Experts",
+    title: "About Throughout (PVT) LTD - Software Development Experts",
     description:
       "Our mission, vision, and commitment to delivering exceptional software solutions.",
     images: ["/images/twitter-about.png"],
   },
   alternates: {
-    canonical: "https://throoout.com/about",
+    canonical: "https://www.throughout.io/about",
   },
 };
 

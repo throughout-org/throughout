@@ -22,13 +22,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "n8n Agency Services | Workflow Automation Experts",
     description: "Unlock business automation with n8n experts. Custom workflow automation, integration, and managed n8n services for startups and enterprises.",
-    url: "https://throoout.com/n8n-agency",
+    url: "https://www.throughout.io/n8n-agency",
     images: [
       {
         url: "/images/og-default.png",
         width: 1200,
         height: 630,
-        alt: "n8n Agency by Throoout"
+        alt: "n8n Agency by Throughout (PVT) LTD"
       }
     ],
     type: "website"

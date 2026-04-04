@@ -10,10 +10,10 @@ import ClientSuccessSection from '@/components/whyus/ClientSuccessSection';
 import TrendyTuringLabel from '@/components/TrendyTuringLabel';
 
 export const metadata: Metadata = {
-  title: 'Why Choose Throoout - Your Software Development Partner',
-  description: 'Discover why businesses trust Throoout for software development. Fast delivery, clean architecture, 99% client satisfaction, modern tech stack, and proven track record. Get 3x faster delivery with 45% cost reduction.',
+  title: 'Why Choose Throughout (PVT) LTD - Your Software Development Partner',
+  description: 'Discover why businesses trust Throughout (PVT) LTD for software development. Fast delivery, clean architecture, 99% client satisfaction, modern tech stack, and proven track record. Get 3x faster delivery with 45% cost reduction.',
   keywords: [
-    'why choose Throoout',
+    'why choose Throughout (PVT) LTD',
     'software development partner',
     'fast delivery',
     'clean architecture',
@@ -31,27 +31,27 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://throoout.com/why-us',
-    siteName: 'Throoout',
-    title: 'Why Choose Throoout - Your Trusted Development Partner',
+    url: 'https://www.throughout.io/why-us',
+    siteName: 'Throughout (PVT) LTD',
+    title: 'Why Choose Throughout (PVT) LTD - Your Trusted Development Partner',
     description: '99% client satisfaction, 3x faster delivery, 45% cost reduction. Experience excellence in software development.',
     images: [
       {
         url: '/images/og-why-us.png',
         width: 1200,
         height: 630,
-        alt: 'Why Choose Throoout',
+        alt: 'Why Choose Throughout (PVT) LTD',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Why Choose Throoout for Software Development',
+    title: 'Why Choose Throughout (PVT) LTD for Software Development',
     description: 'Fast delivery, modern tech, 99% satisfaction. Your trusted development partner.',
     images: ['/images/twitter-why-us.png'],
   },
   alternates: {
-    canonical: 'https://throoout.com/why-us',
+    canonical: 'https://www.throughout.io/why-us',
   },
 };
 
@@ -85,7 +85,7 @@ export default function WhyUsPage() {
       </section>
 
       <ServicesCTASection
-        headline="Ready to Partner with Throoout?"
+        headline="Ready to Partner with Throughout (PVT) LTD?"
         subtext="Let's discuss how our expertise can accelerate your digital transformation journey."
         buttonText="Schedule a Consultation"
       />

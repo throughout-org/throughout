@@ -353,10 +353,10 @@ export async function POST(request: NextRequest) {
         subject: `Thanks for applying — ${jobTitle}`,
         leadName: name,
         message:
-          `Thanks for applying for the ${jobTitle} position at Throoout.\n\n` +
+          `Thanks for applying for the ${jobTitle} position at Throughout (PVT) LTD.\n\n` +
           `We have received your application and our team will review it soon. ` +
           `If your profile matches what we're looking for, we’ll contact you with next steps.\n\n` +
-          `Best regards,\nThrooout Team`,
+          `Best regards,\nThroughout (PVT) LTD Team`,
       });
     } catch (e) {
       emailResult = { success: false, error: String(e) };

@@ -76,7 +76,7 @@ export default function InsightsClient() {
             <span className="block text-gray-900">Blog</span>
           </h1>
           <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600 sm:text-2xl">
-            The latest insights, ideas and perspectives at Throoout.
+            The latest insights, ideas and perspectives at Throughout (PVT) LTD.
           </p>
         </div>
       </section>

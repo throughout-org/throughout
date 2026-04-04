@@ -41,7 +41,7 @@ export default function Preloader() {
       <div className="relative z-10">
         <Image
           src="/images/singlelogo.png"
-          alt="Throoout"
+          alt="Throughout (PVT) LTD"
           width={192}
           height={192}
           className="animate-pulse"

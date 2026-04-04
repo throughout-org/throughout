@@ -3,7 +3,7 @@ import InsightDetails from "@/components/insights/InsightDetails";
 import { client } from "@/src/sanity/client";
 
 type Params = { slug: string };
-const siteUrl = "https://throoout.com";
+const siteUrl = "https://www.throughout.io";
 const imageLicenseUrl = `${siteUrl}/terms-of-service`;
 const acquireLicensePageUrl = `${siteUrl}/contact`;
 
@@ -38,10 +38,10 @@ export async function generateMetadata({
     };
   }
 
-  const title = `${post.title} | Throoout Insights`;
+  const title = `${post.title} | Throughout (PVT) LTD Insights`;
   const description =
     post.excerpt ||
-    "Explore detailed insights from Throoout on software, AI, and automation.";
+    "Explore detailed insights from Throughout (PVT) LTD on software, AI, and automation.";
   const image = post.imageUrl || `${siteUrl}/images/og-default.png`;
 
   return {
@@ -53,7 +53,7 @@ export async function generateMetadata({
       description,
       url: canonical,
       type: "article",
-      siteName: "Throoout",
+      siteName: "Throughout (PVT) LTD",
       publishedTime: post.date,
       images: [
         {
@@ -90,15 +90,15 @@ export default async function InsightDetailPage({
           name: post.title,
           description:
             post.excerpt ||
-            "Explore detailed insights from Throoout on software, AI, and automation.",
+            "Explore detailed insights from Throughout (PVT) LTD on software, AI, and automation.",
           license: imageLicenseUrl,
           acquireLicensePage: acquireLicensePageUrl,
-          creditText: "Throoout Insights",
+          creditText: "Throughout (PVT) LTD Insights",
           creator: {
             "@type": "Organization",
-            name: "Throoout",
+            name: "Throughout (PVT) LTD",
           },
-          copyrightNotice: "© Throoout",
+          copyrightNotice: "© Throughout (PVT) LTD",
         }
       : null;
 

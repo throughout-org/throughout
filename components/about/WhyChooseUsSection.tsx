@@ -46,7 +46,7 @@ export default function WhyChooseUsSection() {
         <h2 className="mb-3 text-3xl font-bold text-gray-900">
           Why Choose{" "}
           <span className="text-transparent bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text">
-            Throoout
+            Throughout (PVT) LTD
           </span>
         </h2>
         <p className="text-gray-600">Your success is our priority</p>

@@ -9,7 +9,7 @@ export default function AboutSection() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            About <span className="bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text text-transparent">Throoout</span>
+            About <span className="bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text text-transparent">Throughout (PVT) LTD</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-sky-600 mx-auto rounded-full"></div>
         </div>

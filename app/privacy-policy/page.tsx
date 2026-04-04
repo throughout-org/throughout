@@ -17,7 +17,7 @@ export default function PrivacyPolicy() {
             <h2 className="text-xl font-bold text-[#154B79] mb-2 flex items-center gap-2">
                1. Introduction
             </h2>
-            <p className="text-gray-700">Welcome to <span className="font-semibold text-[#154B79]">Throoout </span>. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains what information we collect, how we use it, and your rights in relation to it.<br />
+            <p className="text-gray-700">Welcome to <span className="font-semibold text-[#154B79]">Throughout (PVT) LTD </span>. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains what information we collect, how we use it, and your rights in relation to it.<br />
               By accessing our website and using our services (Software Development, AI Solutions, Cloud Engineering), you consent to the data practices described in this policy.
             </p>
           </section>
@@ -86,7 +86,7 @@ export default function PrivacyPolicy() {
                8. Contact Us
             </h2>
 
-            <p className="text-gray-700">If you have questions or comments about this policy, you may email us at <span className="text-[#154B79]">info@throughout.io</span>, like this 8 point in the <span className="text-[#154B79]"><a href="https://www.throoout.com/privacy-policy">Privacy Policy</a></span></p>
+            <p className="text-gray-700">If you have questions or comments about this policy, you may email us at <span className="text-[#154B79]">info@throughout.io</span>, like this 8 point in the <span className="text-[#154B79]"><a href="https://www.throughout.io/privacy-policy">Privacy Policy</a></span></p>
           </section>
         </div>
       </div>
