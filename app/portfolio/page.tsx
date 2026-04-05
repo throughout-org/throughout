@@ -3,7 +3,7 @@ import PortfolioShowcase from "@/components/portfolio/PortfolioShowcase";
 import ServicesCTASection from "@/components/services/ServicesCTASection";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Our Work - Throoout",
+  title: "Portfolio | Our Work - Throughout (PVT) LTD",
   description:
     "Explore our portfolio of web development, mobile apps, AI solutions, and automation projects. See how we deliver results for our clients.",
   keywords: [
@@ -16,16 +16,16 @@ export const metadata: Metadata = {
     "software development portfolio",
   ],
   openGraph: {
-    title: "Portfolio | Our Work - Throoout",
+    title: "Portfolio | Our Work - Throughout (PVT) LTD",
     description:
       "Explore our portfolio of web, mobile, AI, and automation projects.",
-    url: "https://throoout.com/portfolio",
+    url: "https://www.throughout.io/portfolio",
     images: [
       {
         url: "/images/og-portfolio.png",
         width: 1200,
         height: 630,
-        alt: "Throoout Portfolio",
+        alt: "Throughout (PVT) LTD Portfolio",
       },
     ],
   },

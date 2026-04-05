@@ -145,7 +145,7 @@ export default function MVPDevelopmentCaseStudy() {
             <div className="bg-blue-50/50 rounded-3xl p-10 border border-blue-100 relative">
               <FiCheckCircle className="absolute top-8 right-8 w-12 h-12 text-blue-200 opacity-50" />
               <p className="text-xl md:text-2xl text-gray-900 font-medium italic mb-8 leading-relaxed">
-                &quot;I've dealt with dev shops before that overpromise and stretch out timelines for months. Throoout was completely different. We defined the scope aggressively, and they delivered a beautifully functioning app in 4 weeks. We got our first 50 early-adopter signups two days after launch.&quot;
+                &quot;I've dealt with dev shops before that overpromise and stretch out timelines for months. Throughout (PVT) LTD was completely different. We defined the scope aggressively, and they delivered a beautifully functioning app in 4 weeks. We got our first 50 early-adopter signups two days after launch.&quot;
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-blue-200 rounded-full overflow-hidden flex items-center justify-center font-bold text-xl text-blue-700">S</div>

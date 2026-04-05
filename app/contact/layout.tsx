@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Us - Get in Touch with Throoout | Free Consultation',
-  description: 'Ready to start your project? Contact Throoout for a free consultation. Get expert advice on web development, mobile apps, cloud solutions, and custom software. Email: info@throoout.com',
+  title: 'Contact Us - Get in Touch with Throughout (PVT) LTD | Free Consultation',
+  description: 'Ready to start your project? Contact Throughout (PVT) LTD for a free consultation. Get expert advice on web development, mobile apps, cloud solutions, and custom software. Email: info@throughout.io',
   keywords: [
-    'contact Throoout',
+    'contact Throughout (PVT) LTD',
     'get in touch',
     'free consultation',
     'software development inquiry',
@@ -18,27 +18,27 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://throoout.com/contact',
-    siteName: 'Throoout',
-    title: 'Contact Throoout - Free Consultation & Project Quote',
+    url: 'https://www.throughout.io/contact',
+    siteName: 'Throughout (PVT) LTD',
+    title: 'Contact Throughout (PVT) LTD - Free Consultation & Project Quote',
     description: 'Get in touch with our team for expert software development services. Free consultation available.',
     images: [
       {
         url: '/images/og-contact.png',
         width: 1200,
         height: 630,
-        alt: 'Contact Throoout',
+        alt: 'Contact Throughout (PVT) LTD',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact Throoout - Start Your Project',
+    title: 'Contact Throughout (PVT) LTD - Start Your Project',
     description: 'Get in touch for a free consultation on your software development needs.',
     images: ['/images/twitter-contact.png'],
   },
   alternates: {
-    canonical: 'https://throoout.com/contact',
+    canonical: 'https://www.throughout.io/contact',
   },
 };
 

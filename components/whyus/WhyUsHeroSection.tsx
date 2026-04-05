@@ -20,7 +20,7 @@ export default function WhyUsHeroSection() {
         <h1 className="mb-6 text-5xl font-bold text-center sm:text-6xl lg:text-7xl">
           <span className="block mb-2 text-gray-900">Why Partner</span>
           <span className="block pb-4 font-bold text-transparent bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text">
-            With Throoout
+            With Throughout (PVT) LTD
           </span>
         </h1>
 

@@ -43,7 +43,7 @@ export async function sendEmail({
           <div style="background-color: #FFFFFF; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
             <!-- Header with Logo -->
             <div style="padding: 30px 30px 0; text-align: left;">
-              <img src="https://www.throoout.com/images/logo.png" alt="Throoout Logo" style="max-width: 140px; height: auto;" />
+              <img src="https://www.throughout.io/images/logo.png" alt="Throughout (PVT) LTD Logo" style="max-width: 140px; height: auto;" />
             </div>
 
             <!-- Content -->
@@ -58,7 +58,7 @@ export async function sendEmail({
             <div style="background-color: #E5E7EB; padding: 20px 30px; text-align: center;">
               <p style="color: #063667; margin: 0; font-size: 13px;">
                 Best regards,<br/>
-                <strong style="color: #3599F9; font-size: 16px;">${process.env.MAIL_FROM || "Throoout Team"}</strong>
+                <strong style="color: #3599F9; font-size: 16px;">${process.env.MAIL_FROM || "Throughout (PVT) LTD Team"}</strong>
               </p>
               <p style="color: #6B7280; margin-top: 15px; font-size: 12px;">
                 This is an automated message. Please do not reply to this email.
@@ -70,7 +70,7 @@ export async function sendEmail({
       </html>
     `;
 
-    const fromName = process.env.MAIL_FROM || "Throoout";
+    const fromName = process.env.MAIL_FROM || "Throughout (PVT) LTD";
     const fromEmail = process.env.GMAIL_USER;
 
     const result = await transporter.sendMail({

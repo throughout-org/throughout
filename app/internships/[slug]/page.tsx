@@ -21,20 +21,20 @@ export async function generateMetadata({
   const internship = getInternshipBySlug(slug);
   if (!internship) {
     return {
-      title: "Internship Not Found | Throoout",
+      title: "Internship Not Found | Throughout (PVT) LTD",
     };
   }
   return {
-    title: `${internship.title} - Internship | Throoout`,
+    title: `${internship.title} - Internship | Throughout (PVT) LTD`,
     description: internship.description.substring(0, 160),
     openGraph: {
-      title: `${internship.title} - Internship | Throoout`,
+      title: `${internship.title} - Internship | Throughout (PVT) LTD`,
       description: internship.description.substring(0, 160),
-      url: `https://throoout.com/internships/${internship.slug}`,
+      url: `https://www.throughout.io/internships/${internship.slug}`,
       type: "article",
       images: [
         {
-          url: "https://throoout.com/og-internships.png",
+          url: "https://www.throughout.io/og-internships.png",
           width: 1200,
           height: 630,
           alt: internship.title,
@@ -43,13 +43,13 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${internship.title} - Internship | Throoout`,
+      title: `${internship.title} - Internship | Throughout (PVT) LTD`,
       description: internship.description.substring(0, 160),
-      images: ["https://throoout.com/og-internships.png"],
-      site: "@throoout",
+      images: ["https://www.throughout.io/og-internships.png"],
+      site: "@throughout",
     },
     alternates: {
-      canonical: `https://throoout.com/internships/${internship.slug}`,
+      canonical: `https://www.throughout.io/internships/${internship.slug}`,
     },
   };
 }
@@ -75,16 +75,16 @@ export default async function InternshipDetailPage({
     employmentType: "Internship",
     hiringOrganization: {
       "@type": "Organization",
-      name: "Throoout",
-      sameAs: "https://throoout.com",
+      name: "Throughout (PVT) LTD",
+      sameAs: "https://www.throughout.io",
     },
     jobLocationType: "TELECOMMUTE",
     identifier: {
       "@type": "PropertyValue",
-      name: "Throoout",
+      name: "Throughout (PVT) LTD",
       value: internship.id,
     },
-    url: `https://throoout.com/internships/${internship.slug}`,
+    url: `https://www.throughout.io/internships/${internship.slug}`,
     validThrough: `${new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString().split("T")[0]}`,
   };
 
@@ -94,18 +94,18 @@ export default async function InternshipDetailPage({
         <meta name="robots" content="index, follow" />
         <meta
           name="keywords"
-          content={`internship, ${internship.title}, ${internship.slug.replace(/-/g, " ")}, jobs, careers, startup, Throoout, Sri Lanka, remote, product development, AI, automation, software engineering, digital marketing, business development`}
+          content={`internship, ${internship.title}, ${internship.slug.replace(/-/g, " ")}, jobs, careers, startup, Throughout (PVT) LTD, Sri Lanka, remote, product development, AI, automation, software engineering, digital marketing, business development`}
         />
         <link
           rel="canonical"
-          href={`https://throoout.com/internships/${internship.slug}`}
+          href={`https://www.throughout.io/internships/${internship.slug}`}
         />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPosting) }}
         />
       </Head>
-      <div className="relative min-h-screen overflow-hidden bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50">
+      <div className="relative min-h-screen overflow-hidden">
         {/* Animated Background Elements */}
         {/* <div className="absolute inset-0 pointer-events-none">
         <div className="absolute rounded-full top-24 left-10 w-96 h-96 bg-blue-400/30 mix-blend-multiply filter blur-3xl animate-blob"></div>
@@ -143,10 +143,9 @@ export default async function InternshipDetailPage({
         </div> */}
 
           {/* Hero Section */}
-          {/* Hero Section */}
           <section className="px-4 pt-10">
             <div className="mx-auto max-w-7xl">
-              <div className="relative p-8 overflow-hidden text-white border shadow-xl bg-linear-to-r from-sky-500 via-blue-600 to-indigo-600 rounded-3xl md:p-12 border-white/20">
+              <div className="relative p-8 overflow-hidden text-white border shadow-lg bg-linear-to-r from-sky-500 via-blue-600 to-indigo-600 rounded-3xl md:p-12 border-white/20">
                 <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.35),transparent_50%)]"></div>
                 <div className="relative">
                   <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
@@ -230,7 +229,7 @@ export default async function InternshipDetailPage({
                 {/* Left Column - Job Details */}
                 <div className="space-y-8 lg:col-span-2">
                   {/* About the Role */}
-                  <div className="p-8 border shadow-xl bg-white/70 rounded-3xl border-white/40 backdrop-blur-2xl">
+                  <div className="p-8 border shadow-lg bg-white/70 rounded-3xl border-white/40 backdrop-blur-2xl">
                     <h2 className="mb-4 text-2xl font-bold">About the Role</h2>
                     <div className="prose prose-blue max-w-none">
                       {internship.description
@@ -247,7 +246,7 @@ export default async function InternshipDetailPage({
                   </div>
 
                   {/* Key Responsibilities */}
-                  <div className="p-8 border shadow-xl bg-white/70 rounded-3xl border-white/40 backdrop-blur-2xl">
+                  <div className="p-8 border shadow-lg bg-white/70 rounded-3xl border-white/40 backdrop-blur-2xl">
                     <h2 className="mb-6 text-2xl font-bold">
                       Key Responsibilities
                     </h2>
@@ -283,7 +282,7 @@ export default async function InternshipDetailPage({
                   </div>
 
                   {/* Requirements */}
-                  <div className="p-8 border shadow-xl bg-white/70 rounded-3xl border-white/40 backdrop-blur-2xl">
+                  <div className="p-8 border shadow-lg bg-white/70 rounded-3xl border-white/40 backdrop-blur-2xl">
                     <h2 className="mb-4 text-2xl font-bold">
                       {internship.requirements.title}
                     </h2>
@@ -334,7 +333,7 @@ export default async function InternshipDetailPage({
                   </div>
 
                   {/* What You'll Gain */}
-                  <div className="p-8 border shadow-xl bg-linear-to-br from-white/70 via-blue-50/70 to-indigo-50/70 rounded-3xl border-white/40 backdrop-blur-2xl">
+                  <div className="p-8 border shadow-lg bg-linear-to-br from-white/70 via-blue-50/70 to-indigo-50/70 rounded-3xl border-white/40 backdrop-blur-2xl">
                     <h2 className="mb-6 text-2xl font-bold">
                       What You&apos;ll Gain
                     </h2>
@@ -363,7 +362,7 @@ export default async function InternshipDetailPage({
                   </div>
 
                   {/* Important Note */}
-                  <div className="p-6 border-l-4 shadow-xl rounded-2xl bg-amber-50/80 border-amber-500 backdrop-blur-2xl">
+                  <div className="p-6 border-l-4 shadow-lg rounded-2xl bg-amber-50/80 border-amber-500 backdrop-blur-2xl">
                     <div className="flex items-start">
                       <svg
                         className="w-6 h-6 text-amber-600 mr-3 mt-0.5 shrink-0"

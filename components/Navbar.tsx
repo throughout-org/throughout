@@ -79,14 +79,14 @@ export default function Navbar() {
   // ===== MAIN NAV LINKS =====
   const mainNavLinks = [
     { name: "Engineering", href: "/services", hasDropdown: true },
-    { name: "MVP Studio", href: "/throoout-mvp-studio" },
+    { name: "MVP Studio", href: "/mvp-studio" },
     {
       name: "AI",
-      href: "/throoout-ai",
+      href: "/ai",
     },
     {
       name: "Products",
-      href: "/throoout-products",
+      href: "/products",
     },
   ];
 
@@ -179,7 +179,7 @@ export default function Navbar() {
               >
                 <Image
                   src="/images/logo.png"
-                  alt="Throoout Logo"
+                  alt="Throughout (PVT) LTD Logo"
                   width={190}
                   height={90}
                   className="w-auto h-11 md:h-14 lg:h-12 xl:h-16"

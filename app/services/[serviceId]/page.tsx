@@ -24,13 +24,13 @@ export async function generateMetadata({
 
   if (!service) {
     return {
-      title: "Service Not Found | Throoout",
+      title: "Service Not Found | Throughout (PVT) LTD",
       description: "The requested service page could not be found.",
     };
   }
 
   return {
-    title: `${service.title} - ${service.hero.headline} | Throoout`,
+    title: `${service.title} - ${service.hero.headline} | Throughout (PVT) LTD`,
     description: service.hero.subheadline,
     keywords: [
       service.title.toLowerCase(),
@@ -45,8 +45,8 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       locale: "en_US",
-      url: `https://throoout.com/services/${serviceId}`,
-      siteName: "Throoout",
+      url: `https://www.throughout.io/services/${serviceId}`,
+      siteName: "Throughout (PVT) LTD",
       title: `${service.title} - ${service.hero.headline}`,
       description: service.hero.subheadline,
       images: [
@@ -60,12 +60,12 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${service.title} | Throoout`,
+      title: `${service.title} | Throughout (PVT) LTD`,
       description: service.hero.subheadline,
       images: [`/images/twitter-${serviceId}.png`],
     },
     alternates: {
-      canonical: `https://throoout.com/services/${serviceId}`,
+      canonical: `https://www.throughout.io/services/${serviceId}`,
     },
   };
 }

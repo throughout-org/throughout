@@ -328,7 +328,7 @@ export default function MvpStudioClient() {
           <div className="grid items-start grid-cols-1 gap-16 lg:grid-cols-2">
             <div className="transition-all duration-700 translate-y-6 opacity-0 reveal">
               <ServiceSectionHeader
-                badgeText="Why Throoout"
+                badgeText="Why Throughout (PVT) LTD"
                 headline="Most agencies build everything you ask for. We build what gets your first users."
                 intro="No agency hoops. No freelancer uncertainty. Just a lean, technical team who treats your MVP like it is our own because we know what it costs to launch without traction. Traditional agencies can take months. Freelancers can be unpredictable. We sit in the middle: dedicated sprint execution with strong engineering systems at startup-friendly pricing."
                 align="text-left"
@@ -764,7 +764,7 @@ export default function MvpStudioClient() {
                 </p>
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <span className="px-2 py-1 font-semibold text-center text-blue-600 rounded-md bg-blue-500/10">
-                    Throoout: 3 weeks
+                    Throughout (PVT) LTD: 3 weeks
                   </span>
                   <span className="px-2 py-1 text-center text-blue-600 rounded-md bg-cyan-500/10">
                     Enterprise agency: 8-16 weeks
@@ -844,7 +844,7 @@ export default function MvpStudioClient() {
                       What matters
                     </th>
                     <th className="px-6 py-4 text-xs font-semibold tracking-wide text-center text-blue-600 uppercase">
-                      Throoout
+                      Throughout (PVT) LTD
                     </th>
                     <th className="px-6 py-4 text-xs font-semibold tracking-wide text-center uppercase text-slate-500">
                       Enterprise Agency

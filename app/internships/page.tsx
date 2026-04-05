@@ -1,18 +1,19 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getOpenInternships } from "@/data/internships";
+import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 export const metadata: Metadata = {
-  title: "Internship Opportunities | Throoout",
+  title: "Internship Opportunities | Throughout (PVT) LTD",
   description:
-    "Join our team and gain hands-on experience in a fast-paced startup environment. Explore internship opportunities at Throoout.",
+    "Join our team and gain hands-on experience in a fast-paced startup environment. Explore internship opportunities at Throughout (PVT) LTD.",
   keywords: [
     "internship",
     "internships",
     "jobs",
     "careers",
     "startup",
-    "Throoout",
+    "Throughout (PVT) LTD",
     "Sri Lanka",
     "remote",
     "work from home",
@@ -27,30 +28,30 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "Internship Opportunities | Throoout",
+    title: "Internship Opportunities | Throughout (PVT) LTD",
     description:
-      "Join our team and gain hands-on experience in a fast-paced startup environment. Explore internship opportunities at Throoout.",
-    url: "https://throoout.com/internships",
+      "Join our team and gain hands-on experience in a fast-paced startup environment. Explore internship opportunities at Throughout (PVT) LTD.",
+    url: "https://www.throughout.io/internships",
     type: "website",
     images: [
       {
-        url: "https://throoout.com/og-internships.png",
+        url: "https://www.throughout.io/og-internships.png",
         width: 1200,
         height: 630,
-        alt: "Internship Opportunities at Throoout",
+        alt: "Internship Opportunities at Throughout (PVT) LTD",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Internship Opportunities | Throoout",
+    title: "Internship Opportunities | Throughout (PVT) LTD",
     description:
-      "Join our team and gain hands-on experience in a fast-paced startup environment. Explore internship opportunities at Throoout.",
-    images: ["https://throoout.com/og-internships.png"],
-    site: "@throoout",
+      "Join our team and gain hands-on experience in a fast-paced startup environment. Explore internship opportunities at Throughout (PVT) LTD.",
+    images: ["https://www.throughout.io/og-internships.png"],
+    site: "@throughout",
   },
   alternates: {
-    canonical: "https://throoout.com/internships",
+    canonical: "https://www.throughout.io/internships",
   },
 };
 
@@ -72,9 +73,9 @@ export default function InternshipsPage() {
     employmentType: "INTERN",
     hiringOrganization: {
       "@type": "Organization",
-      name: "Throoout",
-      sameAs: "https://throoout.com",
-      logo: "https://throoout.com/images/logo.png",
+      name: "Throughout (PVT) LTD",
+      sameAs: "https://www.throughout.io",
+      logo: "https://www.throughout.io/images/logo.png",
     },
     applicantLocationRequirements: {
       "@type": "Country",
@@ -85,10 +86,10 @@ export default function InternshipsPage() {
       : undefined,
     identifier: {
       "@type": "PropertyValue",
-      name: "Throoout",
+      name: "Throughout (PVT) LTD",
       value: internship.id,
     },
-    url: `https://throoout.com/internships/${internship.slug}`,
+    url: `https://www.throughout.io/internships/${internship.slug}`,
     directApply: true,
   }));
 
@@ -104,7 +105,7 @@ export default function InternshipsPage() {
           ),
         }}
       />
-      <div className="min-h-screen bg-linear-to-b from-gray-50 to-white">
+      <div className="min-h-screen">
         {/* Hero Section */}
         <section className="relative px-4 pt-32 pb-24 overflow-hidden sm:px-6 lg:px-8">
           {/* Animated Background Elements */}
@@ -143,9 +144,72 @@ export default function InternshipsPage() {
           </div>
         </section>
 
+        {/* Interview Process Section */}
+        <section className="px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <ServiceSectionHeader
+              badgeText="Interview Process"
+              headline="Interview process"
+              intro="We've built a simple and consistent 4 step process to evaluate whether Throughout is the right fit for you and vice versa."
+              headlineSize="text-3xl sm:text-4xl"
+            />
+
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+              <div className="p-6 bg-white border border-gray-200 shadow-sm rounded-2xl">
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Screening
+                </h3>
+                <p className="mt-3 text-gray-600">
+                  HR screens your CV and you will be shortlisted if you match
+                  the requirements
+                </p>
+                <p className="mt-6 text-3xl font-bold text-blue-600">01</p>
+              </div>
+
+              <div className="p-6 bg-white border border-gray-200 shadow-sm rounded-2xl">
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Assignment
+                </h3>
+                <p className="mt-3 text-gray-600">
+                  Shortlisted candidates will receive an assignment to help us
+                  understand your expertise
+                </p>
+                <p className="mt-6 text-3xl font-bold text-blue-600">02</p>
+              </div>
+
+              <div className="p-6 bg-white border border-gray-200 shadow-sm rounded-2xl">
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Interview
+                </h3>
+                <p className="mt-3 text-gray-600">
+                  Your communication, problem-solving and technical skills will
+                  be assessed one-on-one
+                </p>
+                <p className="mt-6 text-3xl font-bold text-blue-600">03</p>
+              </div>
+
+              <div className="p-6 bg-white border border-gray-200 shadow-sm rounded-2xl">
+                <h3 className="text-xl font-semibold text-gray-900">Offer</h3>
+                <p className="mt-3 text-gray-600">
+                  You will receive an email from HR within 3 to 4 days if you
+                  have gotten through
+                </p>
+                <p className="mt-6 text-3xl font-bold text-blue-600">04</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Internships Grid */}
         <section className="px-4 py-20">
           <div className="mx-auto max-w-7xl">
+            <ServiceSectionHeader
+              badgeText="Open Roles"
+              headline="Careers at Throughout"
+              // intro="Explore current internship openings and apply to the role that matches your skills and growth goals."
+              headlineSize="text-3xl sm:text-4xl"
+            />
+
             {/* <div className="mb-12 text-center">
             <h2 className="mb-4 text-3xl font-bold md:text-4xl">
               Current Opportunities
@@ -166,93 +230,124 @@ export default function InternshipsPage() {
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-8">
                 {internships.map((internship) => (
                   <Link
                     key={internship.id}
                     href={`/internships/${internship.slug}`}
-                    className="group"
+                    className="block w-full group"
                   >
-                    <div className="h-full p-8 transition-all duration-300 bg-white border-2 border-transparent shadow-lg rounded-xl hover:shadow-2xl hover:border-blue-500">
-                      {/* Status Badge */}
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="inline-block px-3 py-1 text-xs font-semibold text-green-800 bg-green-100 rounded-full">
-                          Open
-                        </span>
-                        <span className="text-sm text-gray-500">
-                          {internship.duration}
-                        </span>
-                      </div>
-
+                    <div className="w-full h-full p-8 transition-all duration-300 bg-white border-2 border-transparent shadow-lg rounded-xl hover:shadow-2xl hover:border-blue-500">
                       {/* Title */}
                       <h3 className="mb-4 text-2xl font-bold text-gray-800 transition-colors group-hover:text-blue-600">
                         {internship.title}
                       </h3>
-
-                      {/* Details */}
-                      <div className="mb-6 space-y-3">
-                        <div className="flex items-center text-gray-600">
-                          <svg
-                            className="w-5 h-5 mr-2"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                          </svg>
-                          <span className="font-semibold">Paid Internship</span>
-                        </div>
-
-                        <div className="flex items-center text-gray-600">
-                          <svg
-                            className="w-5 h-5 mr-2"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                            />
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                            />
-                          </svg>
-                          <span>{internship.location}</span>
-                        </div>
-                      </div>
 
                       {/* Description Preview */}
                       <p className="mb-6 text-gray-600 line-clamp-3">
                         {internship.description.split("\n\n")[0]}
                       </p>
 
-                      {/* CTA */}
-                      <div className="flex items-center font-semibold text-blue-600 transition-transform group-hover:translate-x-2">
-                        Learn More & Apply
-                        <svg
-                          className="w-5 h-5 ml-2"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
+                      {/* Details + CTA (single row) */}
+                      <div className="flex items-center justify-between gap-6 mb-6">
+                        <div className="flex items-center gap-6 text-sm font-medium text-gray-600">
+                          <div className="flex items-center whitespace-nowrap">
+                            <svg
+                              className="w-5 h-5 mr-2"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M5 13l4 4L19 7"
+                              />
+                            </svg>
+                            <span>Open</span>
+                          </div>
+
+                          <div className="flex items-center whitespace-nowrap">
+                            <svg
+                              className="w-5 h-5 mr-2"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M12 8v4l3 3"
+                              />
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                              />
+                            </svg>
+                            <span>{internship.duration}</span>
+                          </div>
+
+                          <div className="flex items-center whitespace-nowrap">
+                            <svg
+                              className="w-5 h-5 mr-2"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                              />
+                            </svg>
+                            <span>Paid Internship</span>
+                          </div>
+
+                          <div className="flex items-center whitespace-nowrap">
+                            <svg
+                              className="w-5 h-5 mr-2"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                              />
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                              />
+                            </svg>
+                            <span>{internship.location}</span>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center font-semibold text-blue-600 transition-transform whitespace-nowrap group-hover:translate-x-2 shrink-0">
+                          Learn More & Apply
+                          <svg
+                            className="w-5 h-5 ml-2"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                        </div>
                       </div>
                     </div>
                   </Link>
@@ -263,11 +358,14 @@ export default function InternshipsPage() {
         </section>
 
         {/* SEO FAQ Section */}
-        <section className="px-4 py-16" id="internship-faq">
+        {/* <section className="px-4 py-16" id="internship-faq">
           <div className="max-w-3xl mx-auto">
-            <h2 className="mb-8 text-3xl font-bold text-center">
-              Frequently Asked Questions (FAQ)
-            </h2>
+            <ServiceSectionHeader
+              badgeText="FAQ"
+              headline="Frequently Asked Questions (FAQ)"
+              align="text-center"
+              headlineSize="text-3xl"
+            />
             <div itemScope itemType="https://schema.org/FAQPage">
               <div
                 itemScope
@@ -395,7 +493,6 @@ export default function InternshipsPage() {
               </div>
             </div>
           </div>
-          {/* JSON-LD for FAQPage */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -455,7 +552,7 @@ export default function InternshipsPage() {
               }),
             }}
           />
-        </section>
+        </section> */}
       </div>
     </>
   );

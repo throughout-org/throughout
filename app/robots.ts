@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl = "https://www.throoout.com";
+  const siteUrl = "https://www.throughout.io";
 
   return {
     rules: [

@@ -11,7 +11,7 @@ import AiMediaImageHighlight from "@/components/AiMediaImageHighlight";
 
 export const metadata: Metadata = {
   title: "WhatsApp Automation Platform | AI Chatbot & CRM Integration",
-  description: "Automate WhatsApp for business: AI chatbot, CRM integration, instant lead capture, and sales automation. Boost engagement and conversions with Throoout's WhatsApp Automation.",
+  description: "Automate WhatsApp for business: AI chatbot, CRM integration, instant lead capture, and sales automation. Boost engagement and conversions with Throughout (PVT) LTD's WhatsApp Automation.",
   keywords: [
     "whatsapp automation",
     "whatsapp api",
@@ -23,14 +23,14 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "WhatsApp Automation Platform | AI Chatbot & CRM Integration",
-    description: "Automate WhatsApp for business: AI chatbot, CRM integration, instant lead capture, and sales automation. Boost engagement and conversions with Throoout's WhatsApp Automation.",
-    url: "https://throoout.com/whatsapp_automation",
+    description: "Automate WhatsApp for business: AI chatbot, CRM integration, instant lead capture, and sales automation. Boost engagement and conversions with Throughout (PVT) LTD's WhatsApp Automation.",
+    url: "https://www.throughout.io/whatsapp_automation",
     images: [
       {
         url: "/images/og-default.png",
         width: 1200,
         height: 630,
-        alt: "WhatsApp Automation by Throoout"
+        alt: "WhatsApp Automation by Throughout (PVT) LTD"
       }
     ],
     type: "website"
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "WhatsApp Automation Platform | AI Chatbot & CRM Integration",
-    description: "Automate WhatsApp for business: AI chatbot, CRM integration, instant lead capture, and sales automation. Boost engagement and conversions with Throoout's WhatsApp Automation.",
+    description: "Automate WhatsApp for business: AI chatbot, CRM integration, instant lead capture, and sales automation. Boost engagement and conversions with Throughout (PVT) LTD's WhatsApp Automation.",
     images: ["/images/twitter-default.png"]
   }
 };

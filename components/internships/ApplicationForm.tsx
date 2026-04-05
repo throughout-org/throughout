@@ -76,7 +76,7 @@ export default function ApplicationForm({
   };
 
   return (
-    <div className="p-8 border shadow-2xl bg-white/70 rounded-3xl border-white/40 backdrop-blur-2xl">
+    <div className="p-8 border shadow-lg bg-white/70 rounded-3xl border-white/40 backdrop-blur-2xl">
       <div className="mb-8">
         <h2 className="mb-2 text-3xl font-bold">Apply Now</h2>
         <p className="text-gray-600">
@@ -228,14 +228,24 @@ export default function ApplicationForm({
           >
             Where did you hear about us? <span className="text-red-500">*</span>
           </label>
-          <input
-            type="text"
+          <select
             id="referralSource"
             name="referralSource"
             required
+            defaultValue=""
             className="w-full px-4 py-3 transition-all border shadow-sm border-white/50 bg-white/70 rounded-2xl focus:ring-2 focus:ring-sky-400 focus:border-transparent"
-            placeholder="e.g., LinkedIn, Instagram, friend, university, other"
-          />
+          >
+            <option value="" disabled>
+              Select one
+            </option>
+            <option value="LinkedIn">LinkedIn</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Friend">Friend</option>
+            <option value="University">University</option>
+            <option value="Google Search">Google Search</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
 
         {/* Resume Upload */}

@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="flex items-center justify-center md:justify-start mb-4">
               <Image
                 src="/images/logo.png"
-                alt="Throoout Logo"
+                alt="Throughout (PVT) LTD Logo"
                 width={160}
                 height={72}
                 className="h-10 w-auto brightness-0 invert"
@@ -24,7 +24,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-4 pt-2 justify-center md:justify-start">
               <a
-                href="https://www.linkedin.com/company/throoout"
+                href="https://www.linkedin.com/company/throughout"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gray-800 hover:bg-blue-600 flex items-center justify-center transition-all duration-300 transform hover:scale-110"
@@ -38,7 +38,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.facebook.com/throoout"
+                href="https://www.facebook.com/throughout"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gray-800 hover:bg-blue-600 flex items-center justify-center transition-all duration-300 transform hover:scale-110"
@@ -52,7 +52,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.instagram.com/throoout/"
+                href="https://www.instagram.com/throughout/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gray-800 hover:bg-blue-600 flex items-center justify-center transition-all duration-300 transform hover:scale-110"
@@ -310,7 +310,8 @@ export default function Footer() {
         <div className="py-6 flex flex-col md:flex-row justify-between items-center md:items-center gap-4 text-center md:text-left">
           <div className="w-full flex flex-col md:flex-row md:justify-between md:items-center gap-4">
             <p className="text-gray-400 text-sm text-center md:text-left w-full md:w-auto">
-              © {new Date().getFullYear()} Throoout. All rights reserved.
+              © {new Date().getFullYear()} Throughout (PVT) LTD. All rights
+              reserved.
             </p>
             <div className="flex flex-col md:flex-row gap-2 md:gap-6 text-sm items-center justify-center w-full md:w-auto">
               <Link

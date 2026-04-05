@@ -8,7 +8,7 @@ interface Post {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://throoout.com";
+  const baseUrl = "https://www.throughout.io";
 
   // Fetch only indexable blog posts
   const posts = await client.fetch(`

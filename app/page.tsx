@@ -10,9 +10,9 @@ import TrustSection from "@/components/home/TrustSection";
 import ServicesCTASection from "@/components/services/ServicesCTASection";
 
 export const metadata: Metadata = {
-  title: "Throoout - Smart Software Solutions | Web & Mobile App Development",
+  title: "Throughout (PVT) LTD - Smart Software Solutions | Web & Mobile App Development",
   description:
-    "Transform your business with Throoout's expert software development services. We build fast, secure, and scalable web applications, mobile apps, APIs, and automation solutions. Get started with a free consultation today.",
+    "Transform your business with Throughout (PVT) LTD's expert software development services. We build fast, secure, and scalable web applications, mobile apps, APIs, and automation solutions. Get started with a free consultation today.",
   keywords: [
     "software development",
     "web application development",
@@ -32,14 +32,14 @@ export const metadata: Metadata = {
     "full stack development",
   ],
   authors: [{ name: "Bavaram Karunaharan", url: "https://bavaram.info" }],
-  creator: "Throoout",
-  publisher: "Throoout",
+  creator: "Throughout (PVT) LTD",
+  publisher: "Throughout (PVT) LTD",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://throoout.com",
-    siteName: "Throoout",
-    title: "Throoout - Smart Software Solutions | Web & Mobile App Development",
+    url: "https://www.throughout.io",
+    siteName: "Throughout (PVT) LTD",
+    title: "Throughout (PVT) LTD - Smart Software Solutions | Web & Mobile App Development",
     description:
       "Transform your business with expert software development. Fast, secure, and scalable digital solutions.",
     images: [
@@ -47,17 +47,17 @@ export const metadata: Metadata = {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Throoout - Smart Software Solutions",
+        alt: "Throughout (PVT) LTD - Smart Software Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Throoout - Smart Software Solutions",
+    title: "Throughout (PVT) LTD - Smart Software Solutions",
     description:
       "Expert software development for web, mobile, and cloud solutions.",
     images: ["/images/twitter-image.png"],
-    creator: "@throoout",
+    creator: "@throughout",
   },
   robots: {
     index: true,
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://throoout.com",
+    canonical: "https://www.throughout.io",
   },
 };
 
