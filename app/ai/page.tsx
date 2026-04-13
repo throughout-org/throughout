@@ -114,7 +114,7 @@ export default function ThroughoutAIPage() {
     <>
       <InnerBanner
         badgeText="Throughout (PVT) LTD AI"
-        title={<>Artificial Intelligence for Real Business Automation</>}
+        title="Artificial Intelligence for Real Business Automation"
         description="We design and deploy AI-powered systems that automate workflows, enhance decision making, and integrate intelligence directly into your digital products."
         cta={
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

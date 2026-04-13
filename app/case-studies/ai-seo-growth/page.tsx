@@ -17,6 +17,7 @@ export default function AISEOCaseStudy() {
         badgeText="AI + SEO"
         title="AI SEO Growth Experiment"
         description="Running an intensive SEO growth experiment using AI to scale content, optimize technical aspects, and significantly boost organic visibility."
+        cta={null}
       />
 
       <div className="w-full max-w-7xl mx-auto px-6 py-16 lg:py-24 flex flex-col lg:flex-row gap-16">

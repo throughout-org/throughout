@@ -5,17 +5,18 @@ interface InnerBannerProps {
   badgeText: string;
   title: React.ReactNode;
   description: React.ReactNode;
-  cta?: React.ReactNode;
+  cta?: React.ReactNode | null;
   isBackgroundColored?: boolean;
 }
 
-export default function InnerBanner({
-  badgeText,
-  title,
-  description,
-  cta,
-  isBackgroundColored = true,
-}) {
+export default function InnerBanner(props: InnerBannerProps) {
+  const {
+    badgeText = "Welcome to Throughout (PVT) LTD",
+    title = "Smart Software Solutions for Your Business",
+    description = "Transform your business with Throughout (PVT) LTD's expert software development services. We build fast, secure, and scalable web applications, mobile apps, APIs, and automation solutions. Get started with a free consultation today.",
+    cta = null,
+    isBackgroundColored = true,
+  } = props;
   return (
     <section className="relative px-4 pt-32 pb-24 overflow-hidden sm:px-6 lg:px-8">
       {/* Animated Background Elements */}
