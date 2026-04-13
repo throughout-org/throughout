@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import InnerBanner from "@/components/ui/InnerBanner";
+import AntigravityParticles from "@/components/ui/AntigravityParticles";
+import TypewriterText from "@/components/ui/TypewriterText";
 import ServicesSection from "@/components/home/ServicesSection";
 import TechStackSection from "@/components/home/TechStackSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
@@ -80,35 +82,47 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       {/* Navigation */}
 
-      {/* Hero Section */}
-      <InnerBanner
-        badgeText="Product Engineering Studio"
-        title={
-          <>
-            Launch Your Product Faster
-            <br className="hidden md:block" />
-            With a Dedicated Engineering Team
-          </>
-        }
-        description="From MVPs to enterprise platforms, we build fast, scalable software using modern technologies."
-        cta={
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold text-white transition-all duration-300 rounded-full shadow-lg bg-linear-to-r from-[#3698fd] via-[#3698fd] to-[#377bff] hover:shadow-xl hover:scale-[1.02]"
-            >
-              View Our Work
-              <span aria-hidden="true">→</span>
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-gray-900 transition-all duration-300 bg-white border-2 border-gray-200 rounded-full hover:border-gray-900 hover:shadow-lg"
-            >
-              Book a Free Call
-            </Link>
-          </div>
-        }
-      />
+      {/* Hero Section with Background Animation */}
+      <div className="relative isolate min-h-screen flex items-stretch">
+        <div className="absolute inset-0 w-full h-full">
+          <AntigravityParticles />
+        </div>
+        <div className="relative z-10  w-full h-full items-center justify-center  md:mt-8 lg:mt-16 xl:mt-24 sm:mt-6">
+          <InnerBanner
+            badgeText="Product Engineering Studio"
+            title={
+              <TypewriterText
+                lines={[
+                  { text: "Launch Your Product Faster", breakAfter: true },
+                  { text: "With a Dedicated Engineering Team" },
+                ]}
+                typingSpeed={105}
+                delayBetweenLines={300}
+                startDelay={500}
+              />
+            }
+            description="From MVPs to enterprise platforms, we build fast, scalable software using modern technologies."
+            cta={
+              <div className="flex flex-col justify-center gap-4 sm:flex-row ">
+                <Link
+                  href="/portfolio"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold text-white transition-all duration-300 rounded-full shadow-lg bg-linear-to-r from-[#3698fd] via-[#3698fd] to-[#377bff] hover:shadow-xl hover:scale-[1.02]"
+                >
+                  View Our Work
+                  <span aria-hidden="true">→</span>
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-gray-900 transition-all duration-300 bg-white border-2 border-gray-200 rounded-full hover:border-gray-900 hover:shadow-lg"
+                >
+                  Book a Free Call
+                </Link>
+              </div>
+            }
+            isBackgroundColored={false}
+          />
+        </div>
+      </div>
 
       {/* Services Section */}
       <ServicesSection />
