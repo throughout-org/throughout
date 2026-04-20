@@ -5,11 +5,13 @@ import { useState, FormEvent } from "react";
 interface ApplicationFormProps {
   internshipTitle: string;
   internshipSlug: string;
+  status?: "open" | "closed";
 }
 
 export default function ApplicationForm({
   internshipTitle,
   internshipSlug,
+  status = "open",
 }: ApplicationFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
@@ -84,6 +86,34 @@ export default function ApplicationForm({
           <span className="font-semibold">{internshipTitle}</span>
         </p>
       </div>
+
+      {status === "closed" && (
+        <div className="p-4 mb-6 border rounded-lg border-amber-200 bg-amber-50">
+          <div className="flex items-start">
+            <svg
+              className="w-5 h-5 text-amber-600 mt-0.5 mr-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 9v2m0 4v2m0 4v2m-6-2a2 2 0 11-4 0 2 2 0 014 0zM9 7a2 2 0 11-4 0 2 2 0 014 0zm12 0a2 2 0 11-4 0 2 2 0 014 0zm-6 6a2 2 0 11-4 0 2 2 0 014 0zm6 0a2 2 0 11-4 0 2 2 0 014 0z"
+              />
+            </svg>
+            <div>
+              <h3 className="mb-1 font-semibold text-amber-800">
+                Position Closed
+              </h3>
+              <p className="text-sm text-amber-700">
+                This internship position is no longer accepting applications.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {submitStatus === "success" && (
         <div className="p-4 mb-6 border border-green-200 rounded-lg bg-green-50">
@@ -275,11 +305,17 @@ export default function ApplicationForm({
         <div className="pt-4">
           <button
             type="submit"
-            disabled={isSubmitting}
-            className="group relative w-full px-8 py-4 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 text-white text-base sm:text-lg font-extrabold rounded-full overflow-hidden shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-white/30 backdrop-blur-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+            disabled={isSubmitting || status === "closed"}
+            className={`group relative w-full px-8 py-4 text-white text-base sm:text-lg font-extrabold rounded-full overflow-hidden shadow-xl transition-all duration-300 border backdrop-blur-md flex items-center justify-center ${
+              status === "closed"
+                ? "bg-gray-400 border-gray-300 cursor-not-allowed opacity-60"
+                : "bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 border-white/30 hover:shadow-2xl hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+            }`}
             style={{
               boxShadow:
-                "0 6px 32px 0 rgba(56,189,248,0.18), 0 2px 12px 0 rgba(99,102,241,0.10)",
+                status === "closed"
+                  ? undefined
+                  : "0 6px 32px 0 rgba(56,189,248,0.18), 0 2px 12px 0 rgba(99,102,241,0.10)",
               transition: "all 0.25s cubic-bezier(.4,2,.6,1)",
             }}
           >
@@ -305,6 +341,23 @@ export default function ApplicationForm({
                   ></path>
                 </svg>
                 Submitting Application...
+              </>
+            ) : status === "closed" ? (
+              <>
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  />
+                </svg>
+                Position Closed
               </>
             ) : (
               <>

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { getOpenInternships } from "@/data/internships";
+import { getInternshipsFromCrm } from "@/lib/internshipsApi";
 import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 export const metadata: Metadata = {
@@ -55,8 +55,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function InternshipsPage() {
-  const internships = getOpenInternships();
+export default async function InternshipsPage() {
+  const internships = await getInternshipsFromCrm();
   const datePosted = new Date().toISOString().split("T")[0];
   const validThrough = new Date(new Date().setMonth(new Date().getMonth() + 3))
     .toISOString()

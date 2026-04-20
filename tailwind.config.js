@@ -40,6 +40,13 @@ module.exports = {
         accent: '#2563eb', // blue-600
         accent2: '#60a5fa', // blue-400
         border: '#232a36',
+        brand: {
+          DEFAULT: '#6AB4FE',
+          light: '#EAF3FD',
+          pale: '#A8CEF4',
+          dark: '#003366',
+          secondary: '#A8CEF4',
+        },
       },
       borderRadius: {
         xl: '1.25rem',

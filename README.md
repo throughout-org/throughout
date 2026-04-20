@@ -79,11 +79,12 @@ Throughout is a modern software engineering company specializing in custom web, 
 
 ### Internships
 
-- **Dynamic Internships Page**: Internship listings are rendered from [data/internships.ts](data/internships.ts).
+- **Dynamic Internships Page**: Internship listings are fetched from the CRM Jobs API (`/api/jobs`) and rendered dynamically.
 - **Rich Metadata**: Each internship includes title, duration, stipend, location, status, description, responsibilities, requirements, skills, and benefits.
-- **How to Update**: Add, edit, or remove internships in [data/internships.ts](data/internships.ts). Each internship is an object in the exported array.
+- **How to Update**: Add, edit, or close openings from CRM at `/jobs/openings`.
 - **Dynamic Routing**: Individual internship details are available at `/internships/[slug]`.
-- **Open/Closed Status**: Only internships with `status: "open"` are shown on the main page. Use the helper functions `getOpenInternships()` and `getInternshipBySlug(slug)` from [data/internships.ts](data/internships.ts).
+- **Open/Closed Status**: Only openings with `status: "open"` are shown on the main internships page.
+- **Fallback Behavior**: If the CRM API is unreachable, the website falls back to [data/internships.ts](data/internships.ts).
 
 ### Dependencies
 
@@ -119,6 +120,9 @@ CORS_ALLOWED_ORIGINS="http://localhost:3000,http://localhost:3001"
 NEXT_PUBLIC_SEO_AUDIT_API_URL="http://127.0.0.1:8000/free-seo-audit"
 NEXT_PUBLIC_CONTACT_API_URL=
 NEXT_PUBLIC_CONTACT_API_KEY=
+
+# Optional: CRM source for internships page
+CRM_PUBLIC_API_BASE_URL="https://crm.throughout.io"
 ```
 
 ## 🚦 Getting Started
