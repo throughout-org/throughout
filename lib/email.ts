@@ -1,13 +1,13 @@
 import nodemailer from "nodemailer";
 
-// Configure email transporter with Gmail SMTP settings
+// Configure email transporter with Zoho SMTP settings
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
+  host: "smtppro.zoho.com",
   port: 587,
   secure: false,
   auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_PASS,
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
   },
 });
 
@@ -23,9 +23,9 @@ export async function sendEmail({
   leadName: string;
 }) {
   try {
-    // Check if Gmail credentials are configured
-    if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
-      console.warn("Gmail credentials not configured. Skipping email send.");
+    // Check if SMTP credentials are configured
+    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.warn("SMTP credentials not configured. Skipping email send.");
       return { success: true, skipped: true };
     }
 
@@ -71,7 +71,7 @@ export async function sendEmail({
     `;
 
     const fromName = process.env.MAIL_FROM || "Throughout (PVT) LTD";
-    const fromEmail = process.env.GMAIL_USER;
+    const fromEmail = process.env.SMTP_USER;
 
     const result = await transporter.sendMail({
       from: `"${fromName}" <${fromEmail}>`,

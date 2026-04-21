@@ -4,6 +4,23 @@ import { getInternshipBySlugFromCrm } from "@/lib/internshipsApi";
 import ApplicationForm from "@/components/internships/ApplicationForm";
 import Head from "next/head";
 
+export const revalidate = 60; // Revalidate every 60 seconds (ISR)
+export const dynamicParams = true; // Allow new slugs not known at build time
+
+/** Strip HTML tags and decode basic HTML entities for plain-text use */
+function stripHtml(html: string): string {
+  return html
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 type Params = { slug: string };
 
 export async function generateMetadata({
@@ -20,10 +37,10 @@ export async function generateMetadata({
   }
   return {
     title: `${internship.title} - Internship | Throughout (PVT) LTD`,
-    description: internship.description.substring(0, 160),
+    description: stripHtml(internship.description).substring(0, 160),
     openGraph: {
       title: `${internship.title} - Internship | Throughout (PVT) LTD`,
-      description: internship.description.substring(0, 160),
+      description: stripHtml(internship.description).substring(0, 160),
       url: `https://www.throughout.io/internships/${internship.slug}`,
       type: "article",
       images: [
@@ -38,7 +55,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: `${internship.title} - Internship | Throughout (PVT) LTD`,
-      description: internship.description.substring(0, 160),
+      description: stripHtml(internship.description).substring(0, 160),
       images: ["https://www.throughout.io/og-internships.png"],
       site: "@throughout",
     },

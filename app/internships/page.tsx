@@ -3,6 +3,22 @@ import Link from "next/link";
 import { getInternshipsFromCrm } from "@/lib/internshipsApi";
 import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
+export const revalidate = 60; // Revalidate every 60 seconds (ISR)
+
+/** Strip HTML tags and decode basic HTML entities for plain-text previews */
+function stripHtml(html: string): string {
+  return html
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 export const metadata: Metadata = {
   title: "Internship Opportunities | Throughout (PVT) LTD",
   description:
@@ -245,7 +261,7 @@ export default async function InternshipsPage() {
 
                       {/* Description Preview */}
                       <p className="mb-6 text-gray-600 line-clamp-3">
-                        {internship.description.split("\n\n")[0]}
+                        {stripHtml(internship.description)}
                       </p>
 
                       {/* Details + CTA (single row) */}
