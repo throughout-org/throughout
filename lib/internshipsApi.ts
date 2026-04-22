@@ -1,6 +1,6 @@
 import { type Internship } from "@/data/internships";
 
-const DEFAULT_CRM_BASE_URL = "https://crm.throughout.io";
+const DEFAULT_CRM_BASE_URL = "https://crm.throoout.com";
 
 type JobsApiResponse = {
   success: boolean;
