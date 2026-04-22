@@ -3,9 +3,6 @@ import { useState } from "react";
 import { InlineWidget } from "react-calendly";
 
 export default function ContactInfoSection() {
-  const CONTACT_API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL ?? "";
-  const CONTACT_API_KEY = process.env.NEXT_PUBLIC_CONTACT_API_KEY ?? "";
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,25 +17,15 @@ export default function ContactInfoSection() {
     setIsSubmitting(true);
     setSubmitMessage("");
     try {
-      const [firstname, ...lastnameArr] = formData.name.trim().split(" ");
-      const lastname = lastnameArr.join(" ");
-      const payload = {
-        app_name: "throughout",
-        email: formData.email,
-        firstname: firstname || "",
-        lastname: lastname || "",
-        phoneno: formData.phone,
-        description: formData.message,
-        type: "contact",
-        other: "-",
-      };
-      const res = await fetch(CONTACT_API_URL, {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": CONTACT_API_KEY,
-        },
-        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        }),
       });
       if (res.ok) {
         setSubmitMessage("Thank you! We will get back to you soon.");
