@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { getInternshipBySlugFromCrm } from "@/lib/internshipsApi";
 import ApplicationForm from "@/components/internships/ApplicationForm";
 import Head from "next/head";
+import BannerBadge from "@/components/ui/BannerBadge";
+import { text } from "stream/consumers";
 
 export const revalidate = 60; // Revalidate every 60 seconds (ISR)
 export const dynamicParams = true; // Allow new slugs not known at build time
@@ -144,13 +146,16 @@ export default async function InternshipDetailPage({
           <section className="px-4 mb-12 animate-fade-in-delay">
             <div className="mx-auto max-w-7xl">
               <div className="relative p-8 overflow-hidden border shadow-2xl bg-white/70 rounded-3xl md:p-12 border-white/60 backdrop-blur-2xl ring-1 ring-black/5">
-                {/* Decorative accent line */}
-                {/* <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-brand via-indigo-500 to-sky-400"></div> */}
-
+    
                 <div className="relative z-10">
-                  <div className="inline-flex items-center px-4 py-1.5 mb-6 text-xs font-bold tracking-wider  uppercase bg-black/80 border border-gray-700 rounded-full backdrop-blur-md">
-                    <span className="w-2 h-2 mr-2 bg-black rounded-full animate-pulse"></span>
-                    Internship Opportunity
+                  <div className="inline-flex border-blue-500 border items-center gap-2 px-4 py-2 mt-0 mb-6 rounded-full shadow-lg bg-white/80 backdrop-blur-sm animate-fade-in">
+                    <span className="relative flex w-2 h-2">
+                      <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-linear-to-r from-blue-500 to-sky-500"></span>
+                      <span className="relative inline-flex w-2 h-2 rounded-full bg-linear-to-r from-blue-500 to-sky-500"></span>
+                    </span>
+                    <span className="text-sm  font-semibold text-transparent bg-linear-to-r from-blue-600 to-sky-600 bg-clip-text uppercase tracking-widest">
+                      Internship Opportunity
+                    </span>
                   </div>
 
                   <h1 className="mb-8 text-4xl font-extrabold tracking-tight md:text-6xl bg-clip-text bg-gradient-to-r from-brand-dark via-brand-secondary to-brand-dark">
