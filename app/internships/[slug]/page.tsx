@@ -146,14 +146,13 @@ export default async function InternshipDetailPage({
           <section className="px-4 mb-12 animate-fade-in-delay">
             <div className="mx-auto max-w-7xl">
               <div className="relative p-8 overflow-hidden border shadow-2xl bg-white/70 rounded-3xl md:p-12 border-white/60 backdrop-blur-2xl ring-1 ring-black/5">
-    
                 <div className="relative z-10">
-                  <div className="inline-flex border-blue-500 border items-center gap-2 px-4 py-2 mt-0 mb-6 rounded-full shadow-lg bg-white/80 backdrop-blur-sm animate-fade-in">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 mt-0 mb-6 border border-blue-500 rounded-full shadow-lg bg-white/80 backdrop-blur-sm animate-fade-in">
                     <span className="relative flex w-2 h-2">
                       <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-linear-to-r from-blue-500 to-sky-500"></span>
                       <span className="relative inline-flex w-2 h-2 rounded-full bg-linear-to-r from-blue-500 to-sky-500"></span>
                     </span>
-                    <span className="text-sm  font-semibold text-transparent bg-linear-to-r from-blue-600 to-sky-600 bg-clip-text uppercase tracking-widest">
+                    <span className="text-sm font-semibold tracking-widest text-transparent uppercase bg-linear-to-r from-blue-600 to-sky-600 bg-clip-text">
                       Internship Opportunity
                     </span>
                   </div>
@@ -302,6 +301,7 @@ export default async function InternshipDetailPage({
                         .description-content ul {
                           margin: 1rem 0;
                           padding-left: 2rem;
+                          list-style: disc;
                         }
                         .description-content li {
                           margin: 0.5rem 0;
@@ -316,6 +316,48 @@ export default async function InternshipDetailPage({
                           font-style: italic;
                           color: #6b7280;
                         }
+                        .description-content {
+                          overflow-x: auto;
+                        }
+                        .description-content table {
+                          width: 100%;
+                          min-width: 520px;
+                          margin: 1.5rem 0;
+                          border-collapse: separate;
+                          border-spacing: 0;
+                          overflow: hidden;
+                          border: 1px solid #dbeafe;
+                          border-radius: 0.75rem;
+                          background: #ffffff;
+                          box-shadow: 0 10px 25px -20px rgba(15, 23, 42, 0.45);
+                        }
+                        .description-content th,
+                        .description-content td {
+                          padding: 0.875rem 1rem;
+                          border-right: 1px solid #e5e7eb;
+                          border-bottom: 1px solid #e5e7eb;
+                          text-align: left;
+                          vertical-align: top;
+                          font-size: 0.95rem;
+                          line-height: 1.55;
+                          color: #4b5563;
+                        }
+                        .description-content th:last-child,
+                        .description-content td:last-child {
+                          border-right: 0;
+                        }
+                        .description-content tr:last-child td {
+                          border-bottom: 0;
+                        }
+                        .description-content th,
+                        .description-content tr:first-child td {
+                          background: #eff6ff;
+                          font-weight: 700;
+                          color: #1f2937;
+                        }
+                        .description-content tr:nth-child(even):not(:first-child) td {
+                          background: #f8fafc;
+                        }
                       `}</style>
                       <div
                         className="description-content"
@@ -323,7 +365,7 @@ export default async function InternshipDetailPage({
                           __html: internship.description,
                         }}
                       />
-                    </div>
+                    </div>  
                   </div>
                 </div>
 

@@ -188,7 +188,7 @@ export default function ApplicationForm({
             name="name"
             required
             className="w-full px-4 py-3 transition-all border shadow-sm border-white/50 bg-white/70 rounded-2xl focus:ring-2 focus:ring-sky-400 focus:border-transparent"
-            placeholder="John Doe"
+            placeholder="Enter your full name"
           />
         </div>
 
@@ -206,7 +206,7 @@ export default function ApplicationForm({
             name="email"
             required
             className="w-full px-4 py-3 transition-all border shadow-sm border-white/50 bg-white/70 rounded-2xl focus:ring-2 focus:ring-sky-400 focus:border-transparent"
-            placeholder="john@example.com"
+            placeholder="Enter your email address"
           />
         </div>
 
@@ -224,7 +224,7 @@ export default function ApplicationForm({
             name="phone"
             required
             className="w-full px-4 py-3 transition-all border shadow-sm border-white/50 bg-white/70 rounded-2xl focus:ring-2 focus:ring-sky-400 focus:border-transparent"
-            placeholder="+94 77 123 4567"
+            placeholder="Enter your phone number"
           />
         </div>
 
