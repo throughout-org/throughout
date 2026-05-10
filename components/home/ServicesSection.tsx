@@ -1,98 +1,190 @@
 "use client";
+
+import Image from "next/image";
 import Link from "next/link";
-import { FiTrendingUp, FiSettings, FiCpu } from "react-icons/fi";
+import {
+  FiArrowRight,
+  FiBarChart2,
+  FiCpu,
+  FiLayers,
+  FiSettings,
+  FiTrendingUp,
+} from "react-icons/fi";
 import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 const coreServices = [
   {
     id: "01",
     title: "MVP Studio",
+    kicker: "Validate, launch, learn",
     description:
-      "Launch your product fast. We design, build, and ship production-ready MVPs for startups and new ventures.",
+      "Shape the first version of your product with focused discovery, sharp UX flows, and a build plan that gets you to market faster.",
     href: "/mvp-studio",
-    icon: <FiTrendingUp className="text-white" />,
+    icon: <FiTrendingUp />,
+    image:
+      "/images/our-services/Corporate Strategy Workshop with Colorful Ideas Wall.jpeg",
+    features: [
+      "Product strategy",
+      "Prototype to launch",
+      "Founder-friendly scope",
+    ],
   },
   {
     id: "02",
     title: "Product Engineering",
+    kicker: "Web, mobile, cloud",
     description:
-      "Web, mobile, and cloud applications built with scalable architecture and modern frameworks.",
+      "Build reliable applications with modern architecture, clean implementation, and the engineering discipline needed for long-term scale.",
     href: "/services/software-development",
-    icon: <FiSettings className="text-white" />,
+    icon: <FiSettings />,
+    image: "/images/our-services/Pair programming.jpeg",
+    features: [
+      "Next.js applications",
+      "APIs and integrations",
+      "Cloud-ready systems",
+    ],
   },
   {
     id: "03",
     title: "AI & Automation",
+    kicker: "Intelligent workflows",
     description:
-      "Integrate LLMs, intelligent workflows, and data automation to streamline operations and unlock new capabilities.",
+      "Connect LLMs, data, and business workflows so your team can reduce manual work and make better operational decisions.",
     href: "/services/ai-automation",
-    icon: <FiCpu className="text-white" />,
+    icon: <FiCpu />,
+    image:
+      "/images/our-services/Monitoring and analyzing website traffic and user.jpeg",
+    features: ["AI assistants", "Workflow automation", "Analytics dashboards"],
+  },
+];
+
+const deliveryHighlights = [
+  {
+    icon: <FiLayers />,
+    title: "Structured delivery",
+    description:
+      "Clear milestones, lean scope, and progress you can inspect every week.",
+  },
+  {
+    icon: <FiBarChart2 />,
+    title: "Built for outcomes",
+    description:
+      "Every build decision connects back to speed, reliability, or growth.",
+  },
+  {
+    icon: <FiCpu />,
+    title: "Automation-ready",
+    description:
+      "We design systems that can grow into AI and workflow automation later.",
   },
 ];
 
 export default function ServicesSection() {
-  const badgeText = "OUR SERVICES";
-  const headline = "Our Core Services";
-  const intro =
-    "We focus on three core capabilities that help companies design, build, and launch modern digital products.";
-
   return (
-    <section id="services" className="bg-white px-4 py-24 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section id="services" className="px-4 py-20 bg-slate-50 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
         <ServiceSectionHeader
-          badgeText={badgeText}
-          headline={headline}
-          intro={intro}
+          badgeText="OUR SERVICES"
+          headline="Core Capabilities for Building Modern Digital Products"
+          intro="From early product strategy to production engineering and AI automation, we help teams move from idea to operating software."
         />
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {coreServices.map((service) => (
-            <Link
+        <div className="grid gap-5 lg:grid-cols-3">
+          {coreServices.map((service, index) => (
+            <article
               key={service.id}
-              href={service.href}
-              className="group relative"
+              className={`group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/10 ${
+                index === 0 ? "lg:mt-6" : index === 2 ? "lg:mt-10" : ""
+              }`}
             >
-              <div className="relative h-full overflow-hidden rounded-2xl border border-sky-100 bg-linear-to-br from-white to-sky-50/40 p-6 shadow-md transition-all duration-300 group-hover:-translate-y-1.5 group-hover:border-sky-300 group-hover:shadow-xl">
-                <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-sky-500 via-blue-500 to-cyan-500 opacity-70" />
-
-                <div className="mb-5 flex items-center justify-between">
-                  <span className="text-sm font-semibold tracking-[0.18em] text-sky-500">
-                    {service.id}
-                  </span>
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-blue-500 to-cyan-300 text-xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                    {service.icon}
-                  </span>
+              <div className="relative aspect-[4/3] overflow-hidden bg-slate-900">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, 100vw"
+                  className="object-cover transition duration-700 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/15 to-transparent" />
+                <div className="absolute flex items-center gap-2 px-3 py-2 text-xs font-bold rounded-full shadow-sm left-5 top-5 bg-white/90 text-slate-950 backdrop-blur">
+                  <span className="text-lg text-sky-600">{service.icon}</span>
+                  {service.id}
                 </div>
-
-                <div className="relative">
-                  <h3 className="mb-3 text-xl font-bold text-slate-900 transition-colors duration-300 group-hover:text-sky-700">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-slate-600 sm:text-[15px]">
-                    {service.description}
-                  </p>
-                  <span className="mt-5 inline-flex items-center text-sm font-semibold text-sky-600 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
-                    Learn more
-                    <span className="ml-2">→</span>
-                  </span>
-                </div>
+                <p className="absolute bottom-5 left-5 right-5 text-xs font-bold uppercase tracking-[0.16em] text-white">
+                  {service.kicker}
+                </p>
               </div>
-            </Link>
+
+              <div className="p-6">
+                <h3 className="text-xl font-bold tracking-tight text-slate-950">
+                  {service.title}
+                </h3>
+                <p className="mt-3 min-h-[96px] text-sm leading-6 text-slate-600">
+                  {service.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mt-5">
+                  {service.features.map((feature) => (
+                    <span
+                      key={feature}
+                      className="rounded-full border border-sky-100 bg-sky-50 px-3 py-1.5 text-xs font-semibold text-sky-800"
+                    >
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+
+                <Link
+                  href={service.href}
+                  className="inline-flex items-center gap-2 mt-6 text-sm font-bold transition text-slate-950 hover:text-sky-700"
+                >
+                  Learn more
+                  <FiArrowRight className="transition group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </article>
           ))}
         </div>
 
-        {/* Explore Button */}
-        <div className="mt-12 flex justify-center">
-          <Link
-            href="/services"
-            className="group inline-flex items-center rounded-full border border-sky-200 bg-white px-7 py-3.5 text-sm font-semibold tracking-wide text-sky-700 shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-400 hover:bg-sky-50 hover:shadow-lg"
-          >
-            Explore All Services
-            <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
-          </Link>
+        <div className="mt-[3.75rem] overflow-hidden bg-white border shadow-lg rounded-3xl border-slate-200 shadow-slate-900/5">
+          <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="relative min-h-[320px] overflow-hidden rounded-[25px]">
+              <Image
+                src="/images/our-services/colleagues-working-project-discussing-details.jpg"
+                alt="Team collaborating on a digital product"
+                fill
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="rounded-[25px] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-950/35 to-transparent" />
+            </div>
+
+            <div className="p-6 sm:p-8 lg:p-10">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-sky-700">
+                How we work
+              </p>
+              <h3 className="max-w-2xl mt-3 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
+                Senior product thinking, practical engineering, and measurable
+                progress.
+              </h3>
+
+              <div className="grid gap-4 mt-8 sm:grid-cols-3">
+                {deliveryHighlights.map((item) => (
+                  <div key={item.title} className="p-4 rounded-2xl bg-slate-50">
+                    <div className="flex items-center justify-center w-10 h-10 text-lg text-white rounded-xl bg-slate-950">
+                      {item.icon}
+                    </div>
+                    <h4 className="mt-4 text-sm font-bold text-slate-950">
+                      {item.title}
+                    </h4>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

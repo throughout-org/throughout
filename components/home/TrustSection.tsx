@@ -1,8 +1,7 @@
 "use client";
-
 import React from "react";
+import { motion, type Variants } from "framer-motion";
 import { FiCode, FiTrendingUp, FiLock, FiShield } from "react-icons/fi";
-import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 export default function TrustSection() {
   const badgeText = "ENGINEERING";
@@ -16,122 +15,122 @@ export default function TrustSection() {
       title: "Clean Engineering",
       description:
         "We enforce strict coding standards, peer reviews, and automated code analysis (SonarQube) to keep your software maintainable as it grows.",
-      icon: <FiCode className="text-white" />,
-      color: "from-blue-500 to-cyan-300",
+      icon: <FiCode />,
+      color: "from-blue-500 to-indigo-500",
+      glow: "shadow-blue-500/20",
     },
     {
       number: "02",
       title: "Modern Infrastructure",
       description:
         "We use Infrastructure as Code and automated CI/CD pipelines to deploy software faster and reduce operational risks.",
-      icon: <FiTrendingUp className="text-white" />,
-      color: "from-blue-500 to-cyan-300",
+      icon: <FiTrendingUp />,
+      color: "from-emerald-500 to-teal-500",
+      glow: "shadow-emerald-500/20",
     },
     {
       number: "03",
       title: "Security First",
       description:
         "We follow industry security standards including the OWASP Top 10 to protect your application from vulnerabilities.",
-      icon: <FiLock className="text-white" />,
-      color: "from-blue-500 to-cyan-300",
+      icon: <FiLock />,
+      color: "from-orange-500 to-red-500",
+      glow: "shadow-orange-500/20",
     },
     {
       number: "04",
       title: "Data Privacy",
       description:
         "We implement strong encryption and data governance practices to ensure your application meets global privacy standards.",
-      icon: <FiShield className="text-white" />,
-      color: "from-blue-500 to-cyan-300",
+      icon: <FiShield />,
+      color: "from-fuchsia-500 to-purple-500",
+      glow: "shadow-fuchsia-500/20",
     },
   ];
 
-  return (
-    <section className="relative py-20 overflow-hidden bg-white">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 2px 2px, #6366f1 1px, transparent 0)",
-            backgroundSize: "40px 40px",
-          }}
-        ></div>
-      </div>
+  const container: Variants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
 
-      <div className="container relative z-10 px-4 mx-auto">
+  const item: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  return (
+    <section className="relative py-24 overflow-hidden bg-white">
+      {/* Background Decorative Elements */}
+      {/* <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] bg-blue-100 mix-blend-multiply filter blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] bg-indigo-100 mix-blend-multiply filter blur-[120px] rounded-full"></div>
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
+      </div> */}
+
+      <div className="container relative z-10 px-4 mx-auto max-w-7xl">
         {/* Section Header */}
-        <ServiceSectionHeader
-          badgeText={badgeText}
-          headline={headline}
-          intro={intro}
-        />
+        <div className="mb-16 md:mb-20">
+          <div className="flex flex-col items-center text-center">
+            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest text-blue-600 uppercase border border-blue-200 rounded-full bg-blue-50">
+              {badgeText}
+            </span>
+            <h2 className="mb-6 text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl lg:text-6xl">
+              {headline}
+            </h2>
+            <p className="max-w-2xl text-lg text-slate-600 md:text-xl">
+              {intro}
+            </p>
+          </div>
+        </div>
 
         {/* Standards Grid */}
-        <div className="grid gap-6 mx-auto md:grid-cols-2 lg:grid-cols-4 max-w-7xl">
+        <motion.div 
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid gap-6 md:grid-cols-2"
+        >
           {standards.map((standard, index) => (
-            <div
+            <motion.div
+              variants={item}
               key={index}
-              className="relative p-6 transition-all duration-300 bg-white border border-gray-100 shadow-md group rounded-2xl hover:shadow-xl hover:border-gray-200"
+              className="relative p-8 overflow-hidden transition-all duration-500 border rounded-3xl bg-white shadow-lg border-slate-100 hover:border-slate-200 group hover:-translate-y-1 hover:shadow-xl hover:bg-slate-50"
             >
-              {/* Number Badge */}
-              <div className="flex items-start justify-between mb-4">
-                <div
-                  className={`flex items-center justify-center w-14 h-14 bg-gradient-to-br ${standard.color} rounded-xl shadow-lg transform group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <span className="text-2xl">{standard.icon}</span>
-                </div>
-                <span className="text-sm font-bold text-gray-400">
-                  {standard.number}
-                </span>
+              {/* Giant Background Number */}
+              <div className="absolute top-4 right-6 text-8xl font-black text-slate-900/[0.03] transition-colors duration-500 select-none group-hover:text-slate-900/[0.06]">
+                {standard.number}
               </div>
 
-              {/* Content */}
-              <h3
-                className={`text-xl font-bold mb-3 bg-gradient-to-r ${standard.color} bg-clip-text text-transparent`}
-              >
-                {standard.title}
-              </h3>
+              {/* Icon & Title Row */}
+              <div className="relative z-10 flex items-center gap-6 mb-6">
+                <div
+                  className={`flex items-center justify-center w-16 h-16 text-3xl text-white rounded-2xl bg-gradient-to-br ${standard.color} shadow-lg ${standard.glow} group-hover:scale-110 transition-transform duration-500`}
+                >
+                  {standard.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900">
+                  {standard.title}
+                </h3>
+              </div>
 
-              <p className="text-sm leading-relaxed text-gray-600">
+              {/* Description */}
+              <p className="relative z-10 leading-relaxed text-slate-600 text-lg group-hover:text-slate-700 transition-colors duration-300">
                 {standard.description}
               </p>
 
-              {/* Hover Effect Border */}
-              <div
-                className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${standard.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none`}
-              ></div>
-            </div>
+              {/* Glowing Accent Line at the bottom */}
+              <div className={`absolute bottom-0 left-0 h-1 w-0 group-hover:w-full bg-gradient-to-r ${standard.color} transition-all duration-700 ease-in-out opacity-0 group-hover:opacity-100`}></div>
+            </motion.div>
           ))}
-        </div>
-
-        {/* Trust Indicators */}
-        <div className="grid max-w-5xl grid-cols-2 gap-8 mx-auto mt-16 md:grid-cols-4">
-          <div className="text-center">
-            <div className="mb-2 text-2xl font-bold text-transparent sm:text-3xl bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text">
-              CI/CD
-            </div>
-            <p className="text-sm text-gray-600">Automated Deployments</p>
-          </div>
-          <div className="text-center">
-            <div className="mb-2 text-2xl font-bold text-transparent sm:text-3xl bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text">
-              OWASP
-            </div>
-            <p className="text-sm text-gray-600">Security Standards</p>
-          </div>
-          <div className="text-center">
-            <div className="mb-2 text-2xl font-bold text-transparent sm:text-3xl bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text">
-              24/7
-            </div>
-            <p className="text-sm text-gray-600">Infrastructure Monitoring</p>
-          </div>
-          <div className="text-center">
-            <div className="mb-2 text-2xl font-bold text-transparent sm:text-3xl bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text">
-              Cloud
-            </div>
-            <p className="text-sm text-gray-600">Scalable Architecture</p>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

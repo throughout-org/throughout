@@ -5,9 +5,9 @@ import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 export default function TechStackSection() {
   const badgeText = "TECHNOLOGY";
-  const headline = "Our Tech Stack";
+  const headline = "Technology Stack";
   const intro =
-    "We work with industry-leading technologies to build modern, scalable solutions";
+    "We work with proven technologies for fast, reliable, and maintainable product delivery.";
 
   const techStack = [
     { name: "React", icon: "/images/tech/react.svg" },
@@ -33,8 +33,8 @@ export default function TechStackSection() {
   ];
 
   return (
-    <section className="py-24 overflow-hidden bg-white">
-      <div className="px-4 mx-auto mb-16 max-w-7xl sm:px-6 lg:px-8">
+    <section className="overflow-hidden bg-white py-20">
+      <div className="mx-auto mb-10 max-w-7xl px-4 sm:px-6 lg:px-8">
         <ServiceSectionHeader
           badgeText={badgeText}
           headline={headline}
@@ -43,46 +43,46 @@ export default function TechStackSection() {
       </div>
 
       {/* Scrolling Tech Icons - Full Width */}
-      <div className="relative py-8 overflow-hidden">
+      <div className="relative overflow-hidden py-6">
         <div className="flex gap-6 animate-scroll-left">
           {/* Duplicate the array twice for seamless infinite scroll */}
           {[...techStack, ...techStack].map((tech, index) => (
             <div
               key={index}
-              className={`group relative flex-shrink-0 w-[160px] animate-float`}
+              className="group relative w-[144px] flex-shrink-0 animate-float"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               {/* Card */}
-              <div className="relative h-full p-6 transition-all duration-500 border shadow-lg bg-white/80 backdrop-blur-sm rounded-4xl border-gray-200/50 hover:shadow-2xl hover:-translate-y-2">
+              <div className="relative h-full rounded-3xl border border-slate-200/70 bg-white/90 p-5 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-900/10">
                 {/* Gradient Overlay on Hover */}
-                <div className="absolute inset-0 transition-all duration-500 bg-gradient-to-br from-sky-500/0 via-blue-500/0 to-cyan-500/0 group-hover:from-sky-500/10 group-hover:via-blue-500/10 group-hover:to-cyan-500/10 rounded-4xl"></div>
+                <div className="absolute inset-0 rounded-3xl bg-sky-500/0 transition-all duration-300 group-hover:bg-sky-500/5"></div>
 
                 {/* Content */}
                 <div className="relative flex flex-col items-center gap-4">
                   {/* Icon Container with Glow Effect */}
                   <div className="relative">
-                    <div className="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-br from-white via-white to-gray-100 rounded-4xl blur-md group-hover:opacity-40"></div>
-                    <div className="relative flex items-center justify-center w-16 h-16 transition-transform duration-500 bg-gradient-to-br rounded-4xl group-hover:scale-110">
+                    <div className="absolute inset-0 rounded-2xl bg-slate-100 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-70"></div>
+                    <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-105">
                       <Image
                         src={tech.icon}
                         alt={tech.name}
-                        width={48}
-                        height={48}
-                        className="object-contain transition-all duration-500 drop-shadow-sm group-hover:drop-shadow-lg"
+                        width={44}
+                        height={44}
+                        className="object-contain transition-all duration-300 drop-shadow-sm group-hover:drop-shadow-md"
                       />
                     </div>
                   </div>
 
                   {/* Tech Name */}
                   <div className="text-center">
-                    <span className="text-sm font-bold text-gray-800 transition-all duration-300 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-sky-600 group-hover:to-blue-600 group-hover:bg-clip-text">
+                    <span className="text-sm font-bold text-slate-800 transition-colors duration-300 group-hover:text-sky-700">
                       {tech.name}
                     </span>
                   </div>
                 </div>
 
                 {/* Bottom Accent Line */}
-                <div className="absolute bottom-0 w-8/12 h-1 transition-transform duration-500 transform scale-x-0 -translate-x-1/2 rounded-full left-1/2 bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-500 group-hover:scale-x-100"></div>
+                <div className="absolute bottom-0 left-1/2 h-1 w-8/12 -translate-x-1/2 scale-x-0 rounded-full bg-sky-500 transition-transform duration-300 group-hover:scale-x-100"></div>
               </div>
             </div>
           ))}

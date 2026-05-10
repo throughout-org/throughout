@@ -19,6 +19,33 @@ function stripHtml(html: string): string {
     .trim();
 }
 
+const processSteps = [
+  {
+    number: "01",
+    title: "Screening",
+    description:
+      "HR reviews your CV and shortlists candidates who match the role requirements.",
+  },
+  {
+    number: "02",
+    title: "Assignment",
+    description:
+      "Shortlisted candidates receive a practical task so we can understand how you think and execute.",
+  },
+  {
+    number: "03",
+    title: "Interview",
+    description:
+      "We assess communication, problem-solving, role fit, and your ability to work with ownership.",
+  },
+  {
+    number: "04",
+    title: "Offer",
+    description:
+      "Successful candidates hear back from HR within 3 to 4 days after the final conversation.",
+  },
+];
+
 export const metadata: Metadata = {
   title: "Internship Opportunities | Throughout (PVT) LTD",
   description:
@@ -161,209 +188,104 @@ export default async function InternshipsPage() {
         </section>
 
         {/* Interview Process Section */}
-        <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <section id="process" className="px-4 py-20 bg-white sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <ServiceSectionHeader
               badgeText="Interview Process"
-              headline="Interview process"
-              intro="We've built a simple and consistent 4 step process to evaluate whether Throughout is the right fit for you and vice versa."
+              headline="A Clear Hiring Flow"
+              intro="A simple, consistent process helps both sides understand fit before making a commitment."
               headlineSize="text-3xl sm:text-4xl"
             />
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-              <div className="p-6 bg-white border border-gray-200 shadow-sm rounded-2xl">
-                <h3 className="text-xl font-semibold text-gray-900">
-                  Screening
-                </h3>
-                <p className="mt-3 text-gray-600">
-                  HR screens your CV and you will be shortlisted if you match
-                  the requirements
-                </p>
-                <p className="mt-6 text-3xl font-bold text-blue-600">01</p>
-              </div>
-
-              <div className="p-6 bg-white border border-gray-200 shadow-sm rounded-2xl">
-                <h3 className="text-xl font-semibold text-gray-900">
-                  Assignment
-                </h3>
-                <p className="mt-3 text-gray-600">
-                  Shortlisted candidates will receive an assignment to help us
-                  understand your expertise
-                </p>
-                <p className="mt-6 text-3xl font-bold text-blue-600">02</p>
-              </div>
-
-              <div className="p-6 bg-white border border-gray-200 shadow-sm rounded-2xl">
-                <h3 className="text-xl font-semibold text-gray-900">
-                  Interview
-                </h3>
-                <p className="mt-3 text-gray-600">
-                  Your communication, problem-solving and technical skills will
-                  be assessed one-on-one
-                </p>
-                <p className="mt-6 text-3xl font-bold text-blue-600">03</p>
-              </div>
-
-              <div className="p-6 bg-white border border-gray-200 shadow-sm rounded-2xl">
-                <h3 className="text-xl font-semibold text-gray-900">Offer</h3>
-                <p className="mt-3 text-gray-600">
-                  You will receive an email from HR within 3 to 4 days if you
-                  have gotten through
-                </p>
-                <p className="mt-6 text-3xl font-bold text-blue-600">04</p>
-              </div>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {processSteps.map((step) => (
+                <article
+                  key={step.number}
+                  className="p-6 transition border rounded-3xl border-slate-200 bg-slate-50 hover:-translate-y-1 hover:bg-white hover:shadow-xl hover:shadow-slate-900/10"
+                >
+                  <span className="text-xs font-bold uppercase tracking-[0.16em] text-sky-700">
+                    {step.number}
+                  </span>
+                  <h3 className="mt-5 text-xl font-bold text-slate-950">
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">
+                    {step.description}
+                  </p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Internships Grid */}
-        <section className="px-4 py-20">
+        <section
+          id="open-roles"
+          className="px-4 py-20 bg-slate-50 sm:px-6 lg:px-8"
+        >
           <div className="mx-auto max-w-7xl">
             <ServiceSectionHeader
               badgeText="Open Roles"
               headline="Careers at Throughout"
-              // intro="Explore current internship openings and apply to the role that matches your skills and growth goals."
+              intro="Choose the internship that matches your strengths and growth goals."
               headlineSize="text-3xl sm:text-4xl"
             />
 
-            {/* <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-              Current Opportunities
-            </h2>
-            <p className="text-lg text-gray-600">
-              {internships.length}{" "}
-              {internships.length === 1 ? "position" : "positions"} available
-            </p>
-          </div> */}
-
             {internships.length === 0 ? (
-              <div className="py-12 text-center">
-                <p className="text-xl text-gray-600">
-                  No internship positions available at the moment.
-                </p>
-                <p className="mt-4 text-gray-500">
-                  Check back soon for new opportunities!
+              <div className="p-10 text-center bg-white border shadow-sm rounded-3xl border-slate-200">
+                <h3 className="text-2xl font-bold text-slate-950">
+                  No roles open right now
+                </h3>
+                <p className="mt-3 text-slate-600">
+                  Check back soon for new internship opportunities.
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 gap-8">
+              <div className="grid gap-5">
                 {internships.map((internship) => (
                   <Link
                     key={internship.id}
                     href={`/internships/${internship.slug}`}
-                    className="block w-full group"
+                    className="block p-6 transition bg-white border shadow-sm group rounded-3xl border-slate-200 hover:-translate-y-1 hover:border-sky-200 hover:shadow-xl hover:shadow-slate-900/10 sm:p-8"
                   >
-                    <div className="w-full h-full p-8 transition-all duration-300 bg-white border-2 border-transparent shadow-lg rounded-xl hover:shadow-2xl hover:border-blue-500">
-                      {/* Title */}
-                      <h3 className="mb-4 text-2xl font-bold text-gray-800 transition-colors group-hover:text-blue-600">
-                        {internship.title}
-                      </h3>
-
-                      {/* Description Preview */}
-                      <p className="mb-6 text-gray-600 line-clamp-3">
-                        {stripHtml(internship.description)}
-                      </p>
-
-                      {/* Details + CTA (single row) */}
-                      <div className="flex items-center justify-between gap-6 mb-6">
-                        <div className="flex items-center gap-6 text-sm font-medium text-gray-600">
-                          <div className="flex items-center whitespace-nowrap">
-                            <svg
-                              className="w-5 h-5 mr-2"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M5 13l4 4L19 7"
-                              />
-                            </svg>
-                            <span>Open</span>
-                          </div>
-
-                          <div className="flex items-center whitespace-nowrap">
-                            <svg
-                              className="w-5 h-5 mr-2"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M12 8v4l3 3"
-                              />
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                              />
-                            </svg>
-                            <span>{internship.duration}</span>
-                          </div>
-
-                          <div className="flex items-center whitespace-nowrap">
-                            <svg
-                              className="w-5 h-5 mr-2"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                              />
-                            </svg>
-                            <span>Paid Internship</span>
-                          </div>
-
-                          <div className="flex items-center whitespace-nowrap">
-                            <svg
-                              className="w-5 h-5 mr-2"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                              />
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                              />
-                            </svg>
-                            <span>{internship.location}</span>
-                          </div>
-                        </div>
-
-                        <div className="flex items-center font-semibold text-blue-600 transition-transform whitespace-nowrap group-hover:translate-x-2 shrink-0">
-                          Learn More & Apply
-                          <svg
-                            className="w-5 h-5 ml-2"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
+                    <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-center">
+                      <div className="max-w-3xl">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span
+                            className={`rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em] ${
+                              internship.status === "open"
+                                ? "bg-emerald-50 text-emerald-700"
+                                : "bg-rose-50 text-rose-700"
+                            }`}
                           >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M9 5l7 7-7 7"
-                            />
-                          </svg>
+                            {internship.status === "open" ? "Open" : "Closed"}
+                          </span>
+                          <span className="rounded-full bg-sky-50 px-3 py-1.5 text-xs font-bold text-sky-700">
+                            Paid Internship
+                          </span>
                         </div>
+
+                        <h3 className="mt-4 text-2xl font-bold tracking-tight transition text-slate-950 group-hover:text-sky-700">
+                          {internship.title}
+                        </h3>
+                        <p className="mt-3 text-sm leading-6 line-clamp-2 text-slate-600">
+                          {stripHtml(internship.description)}
+                        </p>
+
+                        <div className="flex flex-wrap gap-2 mt-5 text-sm font-semibold text-slate-600">
+                          <span className="rounded-full bg-slate-100 px-3 py-1.5">
+                            {internship.duration}
+                          </span>
+                          <span className="rounded-full bg-slate-100 px-3 py-1.5">
+                            {internship.location}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="inline-flex items-center gap-2 px-5 py-3 text-sm font-bold text-white transition rounded-full shrink-0 bg-slate-950 group-hover:bg-sky-600">
+                        Learn more & apply
+                        <span className="transition group-hover:translate-x-1">
+                          →
+                        </span>
                       </div>
                     </div>
                   </Link>

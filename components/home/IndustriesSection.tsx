@@ -1,503 +1,276 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+
+import React, { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import {
-  FiBriefcase,
-  FiNavigation,
-  FiShoppingCart,
-  FiBook,
-  FiShield,
-  FiClipboard,
   FiActivity,
+  FiArrowRight,
+  FiBook,
+  FiBriefcase,
+  FiClipboard,
+  FiNavigation,
+  FiShield,
+  FiShoppingCart,
 } from "react-icons/fi";
 import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
-// Auto-scrollable industries for mobile
 type Industry = {
   id: number;
-  icon: React.ReactNode;
+  name: string;
   title: string;
+  eyebrow: string;
+  icon: React.ReactNode;
   description: string;
+  tags: string[];
+  metric: string;
+  media: {
+    type: "video" | "image";
+    src: string;
+  };
 };
 
-interface AutoScrollIndustriesProps {
-  industries: Industry[];
-}
+const industryVideos = {
+  sleep:
+    "/images/industries/From KlickPin CF 28 Fresh Sleep Routine Tips for Everyday - Pin-74661306318443830.mp4",
+  soloTravel:
+    "/images/industries/From KlickPin CF Copy these budget-friendly solo travel tips that bring style function and personality together for a polished look that still feels personal and - Pin-580542208257093841.mp4",
+  travel:
+    "/images/industries/From KlickPin CF Pin by Daniella Marroquín on Guardado rápido _ Cool instagram pictures Travel video ideas Beautiful places to travel.mp4",
+  education:
+    "/images/industries/medium-shot-young-pastor-preaching-church.jpg",
+};
 
-function AutoScrollIndustries({ industries }: AutoScrollIndustriesProps) {
-  const scrollRef = useRef<HTMLDivElement | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const cardCount = industries.length;
+const industries: Industry[] = [
+  {
+    id: 0,
+    name: "PropTech",
+    title: "Property Operations",
+    eyebrow: "Tenant, asset, and workflow systems",
+    icon: <FiBriefcase />,
+    description:
+      "We build property platforms that connect tenant portals, lease workflows, maintenance requests, and reporting into one operational layer.",
+    tags: ["Tenant portals", "AI maintenance", "Workflow automation"],
+    metric: "Portfolio-ready platforms",
+    media: { type: "video", src: industryVideos.soloTravel },
+  },
+  {
+    id: 1,
+    name: "Travel",
+    title: "Travel & Hospitality",
+    eyebrow: "Booking experiences built for peak demand",
+    icon: <FiNavigation />,
+    description:
+      "From booking engines to dynamic pricing, we engineer travel products that stay fast and reliable during high-traffic windows.",
+    tags: ["Booking engines", "Dynamic pricing", "Guest portals"],
+    metric: "High-concurrency flows",
+    media: { type: "video", src: industryVideos.travel },
+  },
+  {
+    id: 2,
+    name: "Commerce",
+    title: "E-Commerce",
+    eyebrow: "Conversion-focused storefronts",
+    icon: <FiShoppingCart />,
+    description:
+      "We create headless storefronts, payment integrations, and personalized shopping journeys that help teams scale beyond template limits.",
+    tags: ["Headless commerce", "Payment gateways", "Personalization"],
+    metric: "Sub-second storefronts",
+    media: { type: "video", src: industryVideos.soloTravel },
+  },
+  {
+    id: 3,
+    name: "EdTech",
+    title: "Education Platforms",
+    eyebrow: "Learning systems for modern institutions",
+    icon: <FiBook />,
+    description:
+      "We design LMS products, student portals, and secure media experiences for institutions that need learning to feel smooth and measurable.",
+    tags: ["LMS platforms", "Video learning", "Student portals"],
+    metric: "Structured learning paths",
+    media: { type: "image", src: industryVideos.education },
+  },
+  {
+    id: 4,
+    name: "Legal",
+    title: "Legal Services",
+    eyebrow: "Secure systems for sensitive work",
+    icon: <FiShield />,
+    description:
+      "We help legal teams manage cases, automate document drafting, and protect client data with controlled access and secure workflows.",
+    tags: ["Case management", "AI drafting", "Access control"],
+    metric: "Confidential by design",
+    media: { type: "video", src: industryVideos.soloTravel },
+  },
+  {
+    id: 5,
+    name: "Compliance",
+    title: "Regulatory Compliance",
+    eyebrow: "Audit trails without manual overhead",
+    icon: <FiClipboard />,
+    description:
+      "We build compliance dashboards and audit tools that track obligations, surface risk, and make reporting easier for internal teams.",
+    tags: ["Audit tools", "Risk dashboards", "Auto tracking"],
+    metric: "Always visible status",
+    media: { type: "video", src: industryVideos.sleep },
+  },
+  {
+    id: 6,
+    name: "HealthTech",
+    title: "Healthcare",
+    eyebrow: "Private, reliable patient experiences",
+    icon: <FiActivity />,
+    description:
+      "We develop telemedicine, patient management, and monitoring systems that prioritize privacy, interoperability, and dependable care.",
+    tags: ["Telemedicine", "Patient portals", "Monitoring"],
+    metric: "Care-first workflows",
+    media: { type: "video", src: industryVideos.sleep },
+  },
+];
 
-  // Auto-scroll effect
+export default function IndustriesSection() {
+  const [activeIndustryId, setActiveIndustryId] = useState(industries[0].id);
+  const activeIndustry = useMemo(
+    () =>
+      industries.find((industry) => industry.id === activeIndustryId) ??
+      industries[0],
+    [activeIndustryId],
+  );
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % cardCount);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, [cardCount]);
+    const interval = window.setInterval(() => {
+      setActiveIndustryId((currentId) => {
+        const currentIndex = industries.findIndex(
+          (industry) => industry.id === currentId,
+        );
+        return industries[(currentIndex + 1) % industries.length].id;
+      });
+    }, 5000);
 
-  // Scroll to active card
-  useEffect(() => {
-    if (scrollRef.current) {
-      const container = scrollRef.current;
-      const children = container.children as HTMLCollectionOf<HTMLElement>;
-      const card = children[activeIndex];
-      if (card) {
-        // Only scroll horizontally, never vertically
-        const containerRect = container.getBoundingClientRect();
-        const cardRect = card.getBoundingClientRect();
-        // If card is out of view horizontally, scroll only horizontally
-        if (
-          cardRect.left < containerRect.left ||
-          cardRect.right > containerRect.right
-        ) {
-          const scrollLeft =
-            card.offsetLeft - container.offsetWidth / 2 + card.offsetWidth / 2;
-          container.scrollTo({ left: scrollLeft, behavior: "smooth" });
-        }
-      }
-    }
-  }, [activeIndex]);
+    return () => window.clearInterval(interval);
+  }, []);
 
   return (
-    <div className="w-full">
-      <div
-        ref={scrollRef}
-        className="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory px-2"
-        style={{
-          scrollBehavior: "smooth",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-          borderBottom: "none",
-        }}
-      >
-        {industries.map((industry: Industry, idx: number) => (
-          <div
-            key={industry.id}
-            className="min-w-[90vw] max-w-[90vw] snap-center flex-shrink-0"
-            style={{ scrollSnapAlign: "center" }}
-          >
-            <div className="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 border border-gray-200">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 bg-gradient-to-br via-blue-200 rounded-3xl flex items-center justify-center shadow-md p-0.5">
-                  <div className="w-full h-full bg-white rounded-3xl flex items-center justify-center">
-                    <span className="text-3xl">{industry.icon}</span>
-                  </div>
+    <section className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        <ServiceSectionHeader
+          badgeText="INDUSTRIES"
+          headline="Sector-Specific Products, Built With Real Operating Context"
+          intro="We design software around the workflows, risks, and growth patterns that make each industry different."
+        />
+
+        <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
+          <div className="relative min-h-[520px] overflow-hidden rounded-3xl bg-slate-950 shadow-xl shadow-slate-900/15">
+            {activeIndustry.media.type === "video" ? (
+              <video
+                key={activeIndustry.media.src}
+                className="absolute inset-0 h-full w-full object-cover"
+                src={activeIndustry.media.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            ) : (
+              <Image
+                key={activeIndustry.media.src}
+                className="absolute inset-0 h-full w-full object-cover"
+                src={activeIndustry.media.src}
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 45vw, 100vw"
+              />
+            )}
+
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/55 to-slate-950/10" />
+
+            <div className="relative z-10 flex h-full min-h-[520px] flex-col justify-between p-6 sm:p-8">
+              <div className="flex items-center justify-between gap-4">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-2 text-sm font-semibold text-white backdrop-blur-md">
+                  <span className="text-lg">{activeIndustry.icon}</span>
+                  {activeIndustry.name}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900">
-                  {industry.title}
+                <span className="rounded-full bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-slate-950">
+                  {String(activeIndustry.id + 1).padStart(2, "0")}
+                </span>
+              </div>
+
+              <div className="max-w-xl">
+                <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-sky-200">
+                  {activeIndustry.eyebrow}
+                </p>
+                <h3 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                  {activeIndustry.title}
                 </h3>
-              </div>
-              <p className="text-base text-gray-600 leading-relaxed mb-4">
-                {industry.description}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {industry.id === 0 && (
-                  <>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Tenant Portals
+                <p className="mt-4 text-base leading-7 text-slate-100 sm:text-lg">
+                  {activeIndustry.description}
+                </p>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {activeIndustry.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md"
+                    >
+                      {tag}
                     </span>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      AI Maintenance
-                    </span>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Automated Workflows
-                    </span>
-                  </>
-                )}
-                {industry.id === 1 && (
-                  <>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Booking Engines
-                    </span>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Dynamic Pricing
-                    </span>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      High Concurrency
-                    </span>
-                  </>
-                )}
-                {industry.id === 2 && (
-                  <>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Headless Commerce
-                    </span>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Payment Gateways
-                    </span>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Personalization
-                    </span>
-                  </>
-                )}
-                {industry.id === 3 && (
-                  <>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      LMS Platforms
-                    </span>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Video Streaming
-                    </span>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Gamified Learning
-                    </span>
-                  </>
-                )}
-                {industry.id === 4 && (
-                  <>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Case Management
-                    </span>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      AI Drafting
-                    </span>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Bank-Grade Security
-                    </span>
-                  </>
-                )}
-                {industry.id === 5 && (
-                  <>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Auditing Tools
-                    </span>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Compliance Dashboards
-                    </span>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Auto Tracking
-                    </span>
-                  </>
-                )}
-                {industry.id === 6 && (
-                  <>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      HIPAA Compliant
-                    </span>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Telemedicine
-                    </span>
-                    <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                      Real-time Monitoring
-                    </span>
-                  </>
-                )}
-              </div>
-              <div>
-                <a
+                  ))}
+                </div>
+
+                <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-4 py-2 text-xs bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-500 text-white font-semibold rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300"
+                  className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-sky-100"
                 >
-                  Explore {industry.title} Solutions
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </a>
+                  Explore solutions
+                  <FiArrowRight />
+                </Link>
               </div>
             </div>
           </div>
-        ))}
-      </div>
-      {/* Dots */}
-      <div className="flex justify-center gap-2 mt-4">
-        {industries.map((_: Industry, idx: number) => (
-          <button
-            key={idx}
-            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${activeIndex === idx ? "bg-blue-500 scale-110" : "bg-gray-300"}`}
-            onClick={() => setActiveIndex(idx)}
-            aria-label={`Go to industry ${idx + 1}`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
 
-export default function IndustriesSection() {
-  const [activeTab, setActiveTab] = useState(0);
-  const badgeText = "INDUSTRIES";
-  const headline = "Reshaping Industries Through Technology";
-  const intro = "Tailored digital solutions for sector-specific challenges.";
+          <div className="grid gap-3 sm:grid-cols-2">
+            {industries.map((industry) => {
+              const isActive = activeIndustry.id === industry.id;
 
-  const industries = [
-    {
-      id: 0,
-      name: "PropTech",
-      title: "Property",
-      icon: <FiBriefcase />,
-      description:
-        "Streamline property management with automated workflows. We build platforms that integrate tenant portals, automate lease documentation, and use AI to predict maintenance needs, unlocking the full potential of your real estate portfolio.",
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      id: 1,
-      name: "Travel",
-      title: "Travel & Hospitality",
-      icon: <FiNavigation />,
-      description:
-        "Create seamless booking experiences. We engineer high-concurrency booking engines and dynamic pricing algorithms that handle seasonal traffic spikes, ensuring your guests have a flawless experience from search to check-out.",
-      color: "from-sky-500 to-pink-500",
-    },
-    {
-      id: 2,
-      name: "E-Commerce",
-      title: "E-Commerce",
-      icon: <FiShoppingCart />,
-      description:
-        "Scale beyond standard templates. We specialize in Headless Commerce (Next.js + Shopify/Laravel) to deliver sub-second page loads, custom payment gateway integrations, and personalized shopping experiences that drive higher conversion rates.",
-      color: "from-green-500 to-emerald-500",
-    },
-    {
-      id: 3,
-      name: "EdTech",
-      title: "Education",
-      icon: <FiBook />,
-      description:
-        "Digitalize the classroom securely. We build interactive Learning Management Systems (LMS) and student portals that support real-time video streaming, gamified learning, and secure data storage for institutions.",
-      color: "from-orange-500 to-red-500",
-    },
-    {
-      id: 4,
-      name: "Legal",
-      title: "Legal Services",
-      icon: <FiShield />,
-      description:
-        "Automate the fine print. Our secure solutions help law firms manage case files, automate document drafting using AI, and ensure client confidentiality with bank-grade encryption and access controls.",
-      color: "from-indigo-500 to-blue-500",
-    },
-    {
-      id: 5,
-      name: "Compliance",
-      title: "Regulatory Compliance",
-      icon: <FiClipboard />,
-      description:
-        "Tech that follows the rules. We build auditing tools and compliance dashboards that automatically track regulatory changes, ensuring your business meets industry standards without the manual headache.",
-      color: "from-teal-500 to-cyan-500",
-    },
-    {
-      id: 6,
-      name: "HealthTech",
-      title: "Healthcare",
-      icon: <FiActivity />,
-      description:
-        "Patient care meets digital efficiency. We develop HIPAA-compliant telemedicine platforms and patient management systems that prioritize data privacy, interoperability, and real-time health monitoring.",
-      color: "from-rose-500 to-pink-500",
-    },
-  ];
-
-  const tabCount = industries.length;
-
-  // Auto-scroll effect for desktop tabs
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveTab((prev) => (prev + 1) % tabCount);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, [tabCount]);
-
-  return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br ">
-      <div className="max-w-7xl mx-auto">
-        <ServiceSectionHeader
-          badgeText={badgeText}
-          headline={headline}
-          intro={intro}
-        />
-
-        {/* Tab Navigation */}
-        <div className="relative mb-4">
-          {/* Desktop Tabs */}
-          <div className="hidden lg:flex items-center justify-center gap-2 p-2 bg-white rounded-2xl shadow-xl max-w-6xl mx-auto">
-            {industries.map((industry) => (
-              <button
-                key={industry.id}
-                onClick={() => setActiveTab(industry.id)}
-                className={`group relative flex-1 px-4 py-4 rounded-2xl font-semibold transition-all duration-300 ${
-                  activeTab === industry.id
-                    ? "bg-gradient-to-br from-blue-50 to-sky-50 text-blue-700 shadow-md border-2 border-blue-200"
-                    : "text-gray-600 hover:bg-gray-50"
-                }`}
-              >
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-3xl transform group-hover:scale-110 transition-transform duration-300">
-                    {industry.icon}
-                  </span>
-                  <span className="text-sm">{industry.name}</span>
-                </div>
-                {activeTab === industry.id && (
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-gradient-to-r from-blue-500 to-sky-500 rounded-t-full"></div>
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Tab Content */}
-        <div className="relative">
-          {/* Mobile auto-scrollable industry cards with dots */}
-          <div className="block lg:hidden">
-            <AutoScrollIndustries industries={industries} />
-          </div>
-          <div className="hidden lg:block">
-            {industries.map((industry) => (
-              <div
-                key={industry.id}
-                className={`transition-all duration-500 ${
-                  activeTab === industry.id
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 absolute inset-0 pointer-events-none -translate-y-4"
-                }`}
-              >
-                <div className="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-10 ">
-                  <div className="max-w-4xl mx-auto">
-                    {/* Icon and Title Row */}
-                    <div className="flex items-center gap-6 mb-6">
-                      <div
-                        className={`w-20 h-20 bg-gradient-to-br via-blue-200 rounded-3xl flex items-center justify-center shadow-md p-0.5`}
-                      >
-                        <div className="w-full h-full bg-white rounded-3xl flex items-center justify-center">
-                          <span className="text-4xl">{industry.icon}</span>
-                        </div>
-                      </div>
-                      <h3 className="text-3xl font-bold text-gray-900">
-                        {industry.title}
-                      </h3>
+              return (
+                <button
+                  key={industry.id}
+                  type="button"
+                  onClick={() => setActiveIndustryId(industry.id)}
+                  onMouseEnter={() => setActiveIndustryId(industry.id)}
+                  className={`group min-h-[172px] rounded-2xl border p-5 text-left transition ${
+                    isActive
+                      ? "border-sky-300 bg-sky-50 shadow-lg shadow-sky-900/10"
+                      : "border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-white"
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center rounded-xl text-xl transition ${
+                        isActive
+                          ? "bg-sky-600 text-white"
+                          : "bg-white text-slate-700 group-hover:bg-slate-900 group-hover:text-white"
+                      }`}
+                    >
+                      {industry.icon}
                     </div>
-                    {/* Description */}
-                    <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                      {industry.description}
-                    </p>
-                    {/* Key Features */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {industry.id === 0 && (
-                        <>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Tenant Portals
-                          </span>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            AI Maintenance
-                          </span>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Automated Workflows
-                          </span>
-                        </>
-                      )}
-                      {industry.id === 1 && (
-                        <>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Booking Engines
-                          </span>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Dynamic Pricing
-                          </span>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            High Concurrency
-                          </span>
-                        </>
-                      )}
-                      {industry.id === 2 && (
-                        <>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Headless Commerce
-                          </span>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Payment Gateways
-                          </span>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Personalization
-                          </span>
-                        </>
-                      )}
-                      {industry.id === 3 && (
-                        <>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            LMS Platforms
-                          </span>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Video Streaming
-                          </span>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Gamified Learning
-                          </span>
-                        </>
-                      )}
-                      {industry.id === 4 && (
-                        <>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Case Management
-                          </span>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            AI Drafting
-                          </span>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Bank-Grade Security
-                          </span>
-                        </>
-                      )}
-                      {industry.id === 5 && (
-                        <>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Auditing Tools
-                          </span>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Compliance Dashboards
-                          </span>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Auto Tracking
-                          </span>
-                        </>
-                      )}
-                      {industry.id === 6 && (
-                        <>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            HIPAA Compliant
-                          </span>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Telemedicine
-                          </span>
-                          <span className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-full text-sm sm:text-base font-semibold border-2 border-sky-200 shadow-sm transition-all">
-                            Real-time Monitoring
-                          </span>
-                        </>
-                      )}
-                    </div>
-                    {/* CTA Button */}
-                    <div>
-                      <a
-                        href="/contact"
-                        className={`inline-flex items-center gap-2 px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-500 text-white font-semibold rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300`}
-                      >
-                        Explore {industry.title} Solutions
-                        <svg
-                          className="w-4 h-4 sm:w-5 sm:h-5"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M13 7l5 5m0 0l-5 5m5-5H6"
-                          />
-                        </svg>
-                      </a>
-                    </div>
+                    <span className="text-xs font-bold text-slate-400">
+                      {String(industry.id + 1).padStart(2, "0")}
+                    </span>
                   </div>
-                </div>
-              </div>
-            ))}
+
+                  <h3 className="mt-4 text-lg font-bold text-slate-950">
+                    {industry.title}
+                  </h3>
+                  <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-600">
+                    {industry.eyebrow}
+                  </p>
+                  <p className="mt-4 text-xs font-bold uppercase tracking-wider text-sky-700">
+                    {industry.metric}
+                  </p>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -14,20 +14,20 @@ export default function ServiceSectionHeader({
   headline,
   intro,
   align = "text-center",
-  headlineSize = "text-4xl sm:text-5xl lg:text-6xl",
+  headlineSize = "text-3xl sm:text-4xl lg:text-5xl",
 }: ServiceSectionHeaderProps) {
   return (
-    <div className={`mb-20 ${align}`}>
+    <div className={`mb-12 ${align}`}>
       <BannerBadge text={badgeText} />
 
       <h2
-        className={`mb-6 ${headlineSize} font-bold text-gray-900 animate-slide-up`}
+        className={`mb-4 mt-3 ${headlineSize} font-bold tracking-tight text-slate-950 animate-slide-up`}
       >
         {headline}
       </h2>
 
       {intro && (
-        <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600 animate-fade-in-delay">
+        <p className="mx-auto max-w-3xl text-base leading-7 text-slate-600 sm:text-lg animate-fade-in-delay">
           {intro}
         </p>
       )}
