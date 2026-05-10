@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CalendlyButton } from "@/components/CalendlyPopup";
 
 interface FinalCTASectionProps {
@@ -14,28 +14,46 @@ export default function ServicesCTASection({
   subtext,
   buttonText,
 }: FinalCTASectionProps) {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 500);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <>
-      <section
-        className="relative px-4 py-24 overflow-hidden shadow-lg services-cta-wrapper lg:p-20"
-        style={{
-          borderRadius: "50px",
-          border: "10px solid #ffffff",
-          backgroundImage:
-            "linear-gradient(to right, rgb(15 23 42 / 7%), rgb(15 23 42 / 0%)), url(/images/ctabg.png)",
-          backgroundSize: "cover",
-        }}
-      >
-        <div className="relative z-10 flex flex-col max-w-6xl gap-6 mr-auto text-left">
-          <h2 className="text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl">
+      <section className="relative overflow-hidden border-[10px] border-white px-6 py-16 shadow-xl services-cta-wrapper rounded-3xl bg-slate-950 shadow-slate-900/15 sm:px-8 lg:p-16">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "url(/images/ctabg.png)",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        />
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/78 to-slate-950/45" /> */}
+
+        <div className="relative z-10 flex flex-col max-w-5xl gap-5 text-left">
+          <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-5xl">
             {headline}
           </h2>
-          <p className="mb-8 text-xl leading-relaxed text-gray-700">
+          <p className="max-w-2xl leading-7 text-black text-black-300 sm:text-lg">
             {subtext}
           </p>
 
-          <div className="flex flex-col items-start justify-start gap-4 sm:flex-row">
-            <CalendlyButton className="flex items-center gap-3 px-8 py-4 text-lg font-bold text-white transition-all duration-300 rounded-full group bg-linear-to-r from-sky-400 via-sky-500 to-sky-600 hover:scale-105 hover:shadow-2xl">
+          <div className="flex flex-col items-start justify-start gap-3 sm:flex-row">
+            <CalendlyButton className="group flex items-center gap-3 rounded-full bg-sky-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-sky-950/20 transition hover:bg-sky-500 hover:shadow-xl">
               {buttonText}
               <svg
                 className="w-5 h-5 transition-transform group-hover:translate-x-1"
@@ -116,16 +134,39 @@ export default function ServicesCTASection({
         </div> */}
         </div>
       </section>
+      <button
+        type="button"
+        aria-label="Scroll to top"
+        onClick={scrollToTop}
+        className={`fixed bottom-5 right-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-950 shadow-lg shadow-slate-900/15 transition duration-300 hover:-translate-y-0.5 hover:bg-sky-50 hover:text-sky-700 ${
+          showScrollTop
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-3 opacity-0"
+        }`}
+      >
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2.25}
+            d="M5 15l7-7 7 7"
+          />
+        </svg>
+      </button>
       <style jsx global>{`
         .services-cta-wrapper {
-          background-position: center right;
-          margin: 0 10px 80px;
+          margin: 0 16px 72px;
         }
 
         @media (min-width: 640px) {
           .services-cta-wrapper {
-            background-position: center;
-            margin: 60px;
+            margin: 48px;
           }
         }
 

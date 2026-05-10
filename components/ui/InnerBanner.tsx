@@ -18,7 +18,7 @@ export default function InnerBanner(props: InnerBannerProps) {
     isBackgroundColored = true,
   } = props;
   return (
-    <section className="relative px-4 pt-32 pb-24 overflow-hidden sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden px-4 py-24 sm:px-6 lg:px-8">
       {/* Animated Background Elements */}
       {isBackgroundColored && (
         <div className="absolute inset-0 z-0">
@@ -28,18 +28,18 @@ export default function InnerBanner(props: InnerBannerProps) {
         </div>
       )}
 
-      <div className="relative z-10 mx-auto text-center max-w-7xl">
+      <div className="relative z-10 mx-auto max-w-7xl text-center">
         {/* Badge */}
-        <div className="mb-8 text-center">
+        <div className="mb-6 text-center">
           <BannerBadge text={badgeText} />
         </div>
-        <h1 className="mb-6 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
-          <span className="block leading-tight text-gray-900">{title}</span>
+        <h1 className="mb-5 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+          <span className="block leading-tight text-slate-950">{title}</span>
         </h1>
-        <div className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-600 sm:text-xl md:text-2xl">
+        <div className="mx-auto max-w-3xl text-base leading-7 text-slate-600 sm:text-lg lg:text-xl">
           {description}
         </div>
-        {cta && <div className="mt-10">{cta}</div>}
+        {cta && <div className="mt-8">{cta}</div>}
       </div>
     </section>
   );

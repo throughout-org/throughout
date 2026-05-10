@@ -7,8 +7,6 @@ import ServicesSection from "@/components/home/ServicesSection";
 import TechStackSection from "@/components/home/TechStackSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
 import IndustriesSection from "@/components/home/IndustriesSection";
-import EngagementFrameworkSection from "@/components/home/EngagementFrameworkSection";
-import TrustSection from "@/components/home/TrustSection";
 import ServicesCTASection from "@/components/services/ServicesCTASection";
 
 export const metadata: Metadata = {
@@ -83,11 +81,11 @@ export default function Home() {
       {/* Navigation */}
 
       {/* Hero Section with Background Animation */}
-      <div className="relative isolate min-h-screen flex items-stretch">
+      <div className="relative flex min-h-screen items-stretch isolate">
         <div className="absolute inset-0 w-full h-full">
           <AntigravityParticles />
         </div>
-        <div className="relative z-10  w-full h-full items-center justify-center  md:mt-8 lg:mt-16 xl:mt-24 sm:mt-6">
+        <div className="relative z-10 flex h-full w-full items-center justify-center pt-20 sm:pt-24 lg:pt-28">
           <InnerBanner
             badgeText="Product Engineering Studio"
             title={
@@ -103,17 +101,17 @@ export default function Home() {
             }
             description="From MVPs to enterprise platforms, we build fast, scalable software using modern technologies."
             cta={
-              <div className="flex flex-col justify-center gap-4 sm:flex-row ">
+              <div className="flex flex-col justify-center gap-3 sm:flex-row">
                 <Link
                   href="/portfolio"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold text-white transition-all duration-300 rounded-full shadow-lg bg-linear-to-r from-[#3698fd] via-[#3698fd] to-[#377bff] hover:shadow-xl hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-sky-900/15 transition hover:bg-sky-700 hover:shadow-xl"
                 >
                   View Our Work
                   <span aria-hidden="true">→</span>
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-gray-900 transition-all duration-300 bg-white border-2 border-gray-200 rounded-full hover:border-gray-900 hover:shadow-lg"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-7 py-3.5 text-base font-bold text-slate-900 transition hover:border-slate-300 hover:bg-slate-50 hover:shadow-lg"
                 >
                   Book a Free Call
                 </Link>
@@ -137,10 +135,10 @@ export default function Home() {
       <IndustriesSection />
 
       {/* Engagement Framework */}
-      <EngagementFrameworkSection />
+      {/* <EngagementFrameworkSection /> */}
 
       {/* Trust Section */}
-      <TrustSection />
+      {/* <TrustSection /> */}
       {/* Technology Stack Showcase */}
       <TechStackSection />
       {/* Footer */}

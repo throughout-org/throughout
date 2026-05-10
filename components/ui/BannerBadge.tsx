@@ -6,12 +6,12 @@ interface BannerBadgeProps {
 
 export default function BannerBadge({ text }: BannerBadgeProps) {
   return (
-    <div className="inline-flex items-center gap-2 px-4 py-2 mb-2 rounded-full shadow-lg bg-white/80 backdrop-blur-sm animate-fade-in">
+    <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-sky-100 bg-white/85 px-3.5 py-2 shadow-sm backdrop-blur-sm animate-fade-in">
       <span className="relative flex w-2 h-2">
-        <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-linear-to-r from-blue-500 to-sky-500"></span>
-        <span className="relative inline-flex w-2 h-2 rounded-full bg-linear-to-r from-blue-500 to-sky-500"></span>
+        <span className="absolute inline-flex h-full w-full rounded-full bg-sky-500 opacity-75 animate-ping"></span>
+        <span className="relative inline-flex h-2 w-2 rounded-full bg-sky-500"></span>
       </span>
-      <span className="text-sm font-semibold text-transparent bg-linear-to-r from-blue-600 to-sky-600 bg-clip-text uppercase tracking-widest">
+      <span className="text-xs font-bold uppercase tracking-[0.16em] text-sky-700">
         {text}
       </span>
     </div>

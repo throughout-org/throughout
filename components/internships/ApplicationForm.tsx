@@ -77,18 +77,26 @@ export default function ApplicationForm({
     }
   };
 
+  const fieldClassName =
+    "w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 shadow-sm transition focus:border-sky-400 focus:outline-none focus:ring-4 focus:ring-sky-100";
+
   return (
-    <div className="p-8 border shadow-lg bg-white/70 rounded-3xl border-white/40 backdrop-blur-2xl">
+    <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-900/5 sm:p-8">
       <div className="mb-8">
-        <h2 className="mb-2 text-3xl font-bold">Apply Now</h2>
-        <p className="text-gray-600">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-sky-700">
+          Application
+        </p>
+        <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-950">
+          Apply Now
+        </h2>
+        <p className="mt-2 text-sm leading-6 text-slate-600">
           Submit your application for{" "}
-          <span className="font-semibold">{internshipTitle}</span>
+          <span className="font-bold text-slate-950">{internshipTitle}</span>
         </p>
       </div>
 
       {status === "closed" && (
-        <div className="p-4 mb-6 border rounded-lg border-amber-200 bg-amber-50">
+        <div className="p-4 mb-6 border rounded-2xl border-amber-200 bg-amber-50">
           <div className="flex items-start">
             <svg
               className="w-5 h-5 text-amber-600 mt-0.5 mr-3"
@@ -116,7 +124,7 @@ export default function ApplicationForm({
       )}
 
       {submitStatus === "success" && (
-        <div className="p-4 mb-6 border border-green-200 rounded-lg bg-green-50">
+        <div className="p-4 mb-6 border border-green-200 rounded-2xl bg-green-50">
           <div className="flex items-start">
             <svg
               className="w-5 h-5 text-green-600 mt-0.5 mr-3"
@@ -145,7 +153,7 @@ export default function ApplicationForm({
       )}
 
       {submitStatus === "error" && (
-        <div className="p-4 mb-6 border border-red-200 rounded-lg bg-red-50">
+        <div className="p-4 mb-6 border border-red-200 rounded-2xl bg-red-50">
           <div className="flex items-start">
             <svg
               className="w-5 h-5 text-red-600 mt-0.5 mr-3"
@@ -178,7 +186,7 @@ export default function ApplicationForm({
         <div>
           <label
             htmlFor="name"
-            className="block mb-2 text-sm font-semibold text-gray-700"
+            className="block mb-2 text-sm font-bold text-slate-700"
           >
             Full Name <span className="text-red-500">*</span>
           </label>
@@ -187,7 +195,7 @@ export default function ApplicationForm({
             id="name"
             name="name"
             required
-            className="w-full px-4 py-3 transition-all border shadow-sm border-white/50 bg-white/70 rounded-2xl focus:ring-2 focus:ring-sky-400 focus:border-transparent"
+            className={fieldClassName}
             placeholder="Enter your full name"
           />
         </div>
@@ -196,7 +204,7 @@ export default function ApplicationForm({
         <div>
           <label
             htmlFor="email"
-            className="block mb-2 text-sm font-semibold text-gray-700"
+            className="block mb-2 text-sm font-bold text-slate-700"
           >
             Email Address <span className="text-red-500">*</span>
           </label>
@@ -205,7 +213,7 @@ export default function ApplicationForm({
             id="email"
             name="email"
             required
-            className="w-full px-4 py-3 transition-all border shadow-sm border-white/50 bg-white/70 rounded-2xl focus:ring-2 focus:ring-sky-400 focus:border-transparent"
+            className={fieldClassName}
             placeholder="Enter your email address"
           />
         </div>
@@ -214,7 +222,7 @@ export default function ApplicationForm({
         <div>
           <label
             htmlFor="phone"
-            className="block mb-2 text-sm font-semibold text-gray-700"
+            className="block mb-2 text-sm font-bold text-slate-700"
           >
             Phone Number <span className="text-red-500">*</span>
           </label>
@@ -223,7 +231,7 @@ export default function ApplicationForm({
             id="phone"
             name="phone"
             required
-            className="w-full px-4 py-3 transition-all border shadow-sm border-white/50 bg-white/70 rounded-2xl focus:ring-2 focus:ring-sky-400 focus:border-transparent"
+            className={fieldClassName}
             placeholder="Enter your phone number"
           />
         </div>
@@ -232,7 +240,7 @@ export default function ApplicationForm({
         <div>
           <label
             htmlFor="coverLetter"
-            className="block mb-2 text-sm font-semibold text-gray-700"
+            className="block mb-2 text-sm font-bold text-slate-700"
           >
             Cover Letter <span className="text-red-500">*</span>
           </label>
@@ -241,10 +249,10 @@ export default function ApplicationForm({
             name="coverLetter"
             required
             rows={6}
-            className="w-full px-4 py-3 transition-all border shadow-sm resize-y border-white/50 bg-white/70 rounded-2xl focus:ring-2 focus:ring-sky-400 focus:border-transparent"
+            className={`${fieldClassName} resize-y`}
             placeholder="Tell us why you're interested in this internship and what makes you a great fit..."
           />
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-2 text-xs leading-5 text-slate-500">
             Share your motivation, relevant experience, and what you hope to
             achieve.
           </p>
@@ -254,7 +262,7 @@ export default function ApplicationForm({
         <div>
           <label
             htmlFor="referralSource"
-            className="block mb-2 text-sm font-semibold text-gray-700"
+            className="block mb-2 text-sm font-bold text-slate-700"
           >
             Where did you hear about us? <span className="text-red-500">*</span>
           </label>
@@ -263,7 +271,7 @@ export default function ApplicationForm({
             name="referralSource"
             required
             defaultValue=""
-            className="w-full px-4 py-3 transition-all border shadow-sm border-white/50 bg-white/70 rounded-2xl focus:ring-2 focus:ring-sky-400 focus:border-transparent"
+            className={fieldClassName}
           >
             <option value="" disabled>
               Select one
@@ -282,7 +290,7 @@ export default function ApplicationForm({
         <div>
           <label
             htmlFor="resume"
-            className="block mb-2 text-sm font-semibold text-gray-700"
+            className="block mb-2 text-sm font-bold text-slate-700"
           >
             Resume (PDF only) <span className="text-red-500">*</span>
           </label>
@@ -293,10 +301,10 @@ export default function ApplicationForm({
               name="resume"
               accept=".pdf,application/pdf"
               required
-              className="w-full px-4 py-3 transition-all border shadow-sm cursor-pointer border-white/50 bg-white/70 rounded-2xl focus:ring-2 focus:ring-sky-400 focus:border-transparent file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-extrabold file:bg-gradient-to-r file:from-sky-400 file:via-blue-500 file:to-indigo-500 file:text-white hover:file:opacity-90"
+              className={`${fieldClassName} cursor-pointer file:mr-4 file:rounded-full file:border-0 file:bg-slate-950 file:px-4 file:py-2 file:text-sm file:font-bold file:text-white hover:file:bg-sky-700`}
             />
           </div>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-2 text-xs leading-5 text-slate-500">
             Upload your resume in PDF format (Max 5MB)
           </p>
         </div>
@@ -306,18 +314,11 @@ export default function ApplicationForm({
           <button
             type="submit"
             disabled={isSubmitting || status === "closed"}
-            className={`group relative w-full px-8 py-4 text-white text-base sm:text-lg font-extrabold rounded-full overflow-hidden shadow-xl transition-all duration-300 border backdrop-blur-md flex items-center justify-center ${
+            className={`group relative flex w-full items-center justify-center overflow-hidden rounded-full px-8 py-4 text-base font-bold text-white shadow-lg transition ${
               status === "closed"
-                ? "bg-gray-400 border-gray-300 cursor-not-allowed opacity-60"
-                : "bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 border-white/30 hover:shadow-2xl hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                ? "cursor-not-allowed bg-slate-400 opacity-60"
+                : "bg-sky-600 shadow-sky-900/15 hover:bg-sky-700 disabled:cursor-not-allowed disabled:opacity-50"
             }`}
-            style={{
-              boxShadow:
-                status === "closed"
-                  ? undefined
-                  : "0 6px 32px 0 rgba(56,189,248,0.18), 0 2px 12px 0 rgba(99,102,241,0.10)",
-              transition: "all 0.25s cubic-bezier(.4,2,.6,1)",
-            }}
           >
             {isSubmitting ? (
               <>
@@ -381,7 +382,7 @@ export default function ApplicationForm({
         </div>
 
         {/* Privacy Notice */}
-        <p className="text-xs text-center text-gray-500">
+        <p className="text-xs leading-5 text-center text-slate-500">
           By submitting this form, you agree to our processing of your personal
           data for recruitment purposes.
         </p>
