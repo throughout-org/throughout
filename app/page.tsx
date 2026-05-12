@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import InnerBanner from "@/components/ui/InnerBanner";
-import AntigravityParticles from "@/components/ui/AntigravityParticles";
+import ParticlesClient from "@/components/ui/ParticlesClient";
 import TypewriterText from "@/components/ui/TypewriterText";
 import ServicesSection from "@/components/home/ServicesSection";
-import TechStackSection from "@/components/home/TechStackSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
-import IndustriesSection from "@/components/home/IndustriesSection";
-import ServicesCTASection from "@/components/services/ServicesCTASection";
+import TechStackSection from "@/components/home/TechStackSection";
+
+const IndustriesSection = dynamic(
+  () => import("@/components/home/IndustriesSection")
+);
+
+const ServicesCTASection = dynamic(
+  () => import("@/components/services/ServicesCTASection")
+);
 
 export const metadata: Metadata = {
   title: "Throughout (PVT) LTD - Smart Software Solutions | Web & Mobile App Development",
@@ -83,7 +90,7 @@ export default function Home() {
       {/* Hero Section with Background Animation */}
       <div className="relative flex min-h-screen items-stretch isolate">
         <div className="absolute inset-0 w-full h-full">
-          <AntigravityParticles />
+          <ParticlesClient />
         </div>
         <div className="relative z-10 flex h-full w-full items-center justify-center pt-20 sm:pt-24 lg:pt-28">
           <InnerBanner
