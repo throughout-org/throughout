@@ -1,49 +1,48 @@
-import ContactHeroSection from '@/components/contact/ContactHeroSection';
-import ContactInfoSection from '@/components/contact/ContactInfoSection';
-import ContactMapSection from '@/components/contact/ContactMapSection';
-import ContactFAQSection from '@/components/contact/ContactFAQSection';
-import ServicesCTASection from '@/components/services/ServicesCTASection';
-import TrendyTuringLabel from '@/components/TrendyTuringLabel';
+import Link from "next/link";
+import ContactInfoSection from "@/components/contact/ContactInfoSection";
+import ServicesCTASection from "@/components/services/ServicesCTASection";
+import InnerBanner from "@/components/ui/InnerBanner";
+import AntigravityParticles from "@/components/ui/AntigravityParticles";
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* <ContactHeroSection /> */}
-      {/* Hero Section */}
-      <section className="relative px-4 pt-32 pb-24 overflow-hidden sm:px-6 lg:px-8">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute rounded-full top-20 left-10 w-96 h-96 bg-blue-400/30 mix-blend-multiply filter blur-3xl animate-blob"></div>
-          <div className="absolute rounded-full top-40 right-10 w-96 h-96 bg-sky-400/30 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-          <div className="absolute rounded-full bottom-20 left-1/2 w-96 h-96 bg-blue-400/30 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+      <div className="relative flex min-h-[78vh] items-stretch isolate">
+        <div className="absolute inset-0 h-full w-full">
+          <AntigravityParticles />
         </div>
-
-        <div className="relative mx-auto text-center max-w-7xl">
-          {/* Badge */}
-          <div className="mb-8 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 mb-2 rounded-full shadow-lg bg-white/80 backdrop-blur-sm animate-fade-in">
-              <span className="relative flex w-2 h-2">
-                <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-gradient-to-r from-blue-500 to-sky-500"></span>
-                <span className="relative inline-flex w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-sky-500"></span>
-              </span>
-              <span className="text-sm font-semibold text-transparent bg-gradient-to-r from-blue-600 to-sky-600 bg-clip-text">
-                Let's Connect
-              </span>
-            </div>
-          </div>
-          <h1 className="mb-6 text-5xl font-bold sm:text-6xl lg:text-7xl">
-            <span className="block text-gray-900">Get In Touch</span>
-          </h1>
-          <p className="max-w-3xl mx-auto text-xl leading-relaxed text-gray-600 sm:text-2xl">
-            We'd love to hear from you. Let's build something amazing together.
-          </p>
+        <div className="relative z-10 flex w-full items-center justify-center pt-20 sm:pt-24 lg:pt-28">
+          <InnerBanner
+            badgeText="Let's Connect"
+            title={
+              <>
+                Tell Us What You Want <br className="hidden md:block" />
+                to Build Next
+              </>
+            }
+            description="Share your idea, product challenge, or software need. We will help you shape the next practical step."
+            cta={
+              <div className="flex flex-col justify-center gap-3 sm:flex-row">
+                <Link
+                  href="https://calendly.com/throughoutwithyou/30min"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-sky-900/15 transition hover:bg-sky-700 hover:shadow-xl"
+                >
+                  Book a Free Call
+                  <span aria-hidden="true">-&gt;</span>
+                </Link>
+                <Link
+                  href="mailto:info@throughout.io"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-7 py-3.5 text-base font-bold text-slate-900 transition hover:border-slate-300 hover:bg-slate-50 hover:shadow-lg"
+                >
+                  Email Us
+                </Link>
+              </div>
+            }
+            isBackgroundColored={false}
+          />
         </div>
-      </section>
+      </div>
       <ContactInfoSection />
-      {/* <ContactMapSection /> */}
-      {/* <ContactFAQSection /> */}
-      {/* <ServicesCTASection /> */}
-      {/* <TrendyTuringLabel /> */}
 
       <ServicesCTASection
         headline={"Ready to Build Something Amazing?"}

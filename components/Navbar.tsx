@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { services } from "@/data/services";
 import { openCalendlyPopup } from "@/components/CalendlyPopup";
-import { FiSearch } from "react-icons/fi";
 import Button from "./Button";
 
 export default function Navbar() {
@@ -21,8 +20,12 @@ export default function Navbar() {
 
   // Close services dropdown on route change
   useEffect(() => {
-    setIsServicesOpen(false);
-    setMobileServicesOpen(false);
+    const timeoutId = window.setTimeout(() => {
+      setIsServicesOpen(false);
+      setMobileServicesOpen(false);
+    }, 0);
+
+    return () => window.clearTimeout(timeoutId);
   }, [pathname]);
 
   // Close dropdown when clicking outside
@@ -69,8 +72,6 @@ export default function Navbar() {
     { name: "Company", href: "/about" },
     { name: "Case Studies", href: "/case-studies" },
     { name: "Blog", href: "/insights" },
-    { name: "Free Site Auditor", href: "/free-seo-aduitor" },
-    { name: "Comflo", href: "https://comflo.app/" },
     // { name: "Researchers", href: "/insights" },
     { name: "Internships", href: "/internships" },
     { name: "Contact Us", href: "/contact" },
@@ -79,16 +80,19 @@ export default function Navbar() {
   // ===== MAIN NAV LINKS =====
   const mainNavLinks = [
     { name: "Engineering", href: "/services", hasDropdown: true },
-    { name: "MVP Studio", href: "/mvp-studio" },
     {
-      name: "AI",
-      href: "/ai",
+      name: "Comflo",
+      href: "https://comflo.app/",
     },
     {
-      name: "Products",
-      href: "/products",
+      name: "Rankout",
+      href: "https://rankout.app/",
     },
   ];
+
+  const visibleServices = services.filter(
+    (service) => service.slug !== "ai-driven-seo",
+  );
 
   // Short descriptions for the dropdown cards
   const serviceDescriptions: Record<string, string> = {
@@ -245,7 +249,7 @@ export default function Navbar() {
                           >
                             {/* Services Grid — 3 columns */}
                             <div className="grid grid-cols-3 gap-3">
-                              {services.map((service, idx) => (
+                              {visibleServices.map((service, idx) => (
                                 <Link
                                   key={service.id}
                                   href={`/services/${service.slug}`}
@@ -280,31 +284,6 @@ export default function Navbar() {
                                   </div>
                                 </Link>
                               ))}
-
-                              {/* View All Services — same card style */}
-                              <Link
-                                href="/services"
-                                onClick={() => setIsServicesOpen(false)}
-                                className="group/card flex items-start gap-3.5 p-4 rounded-xl border transition-all duration-300 hover:shadow-lg hover:scale-[1.03] bg-gray-50/80 border-gray-200/80 hover:bg-white hover:border-gray-300"
-                                style={{
-                                  animation: isServicesOpen
-                                    ? `dropdownCardIn 0.35s ease-out forwards ${services.length * 0.04}s`
-                                    : "none",
-                                  opacity: isServicesOpen ? 1 : 0,
-                                }}
-                              >
-                                <div className="flex items-center justify-center w-12 h-12 text-2xl transition-all duration-300 shadow-md shrink-0 rounded-xl bg-linear-to-br from-blue-500 to-cyan-300 group-hover/card:shadow-lg group-hover/card:scale-110">
-                                  <FiSearch className="w-5 h-5 text-white" />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <p className="text-sm font-bold leading-tight text-gray-900 transition-colors duration-200 group-hover/card:text-blue-700">
-                                    View All Services
-                                  </p>
-                                  <p className="mt-1 text-xs leading-relaxed text-gray-500 line-clamp-2">
-                                    Explore our complete range of solutions.
-                                  </p>
-                                </div>
-                              </Link>
                             </div>
                           </div>
                         </div>
@@ -331,39 +310,13 @@ export default function Navbar() {
                 })}
               </div>
 
-              {/* Desktop CTA Button */}
-              <Link
+              <Button
                 href="https://calendly.com/throughoutwithyou/30min"
                 onClick={handleCalendlyClick}
-                className="group/cta hidden lg:inline-flex items-center gap-1.5 px-4 py-2 text-xs xl:px-7 xl:py-3 xl:text-sm xl:gap-2 font-extrabold text-white bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 rounded-full transition-all duration-300 tracking-wide uppercase relative overflow-hidden hover:scale-105 hover:shadow-xl border border-white/30"
-                style={{
-                  boxShadow: "0 4px 20px rgba(56,189,248,0.3)",
-                }}
+                className="hidden lg:inline-flex lg:w-auto lg:px-4 lg:py-2 lg:text-xs xl:px-7 xl:py-3 xl:text-sm"
               >
-                <span className="relative z-10 hidden xl:inline">
-                  Book a Free Call
-                </span>
-                <span className="relative z-10 xl:hidden">
-                  Book a Free Call
-                </span>
-                <svg
-                  className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover/cta:translate-x-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </svg>
-                {/* Shimmer effect on hover */}
-                <span className="absolute inset-0 z-0 overflow-hidden transition-opacity duration-300 rounded-full opacity-0 group-hover/cta:opacity-100">
-                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent animate-[shimmer_1.5s_ease-in-out_infinite]" />
-                </span>
-              </Link>
+                Book a Free Call
+              </Button>
 
               {/* Mobile Menu Button */}
               <button
@@ -494,7 +447,7 @@ export default function Navbar() {
                         }`}
                       >
                         <div className="space-y-1.5 pl-2">
-                          {services.map((service, sIdx) => (
+                          {visibleServices.map((service, sIdx) => (
                             <Link
                               key={service.id}
                               href={`/services/${service.slug}`}
