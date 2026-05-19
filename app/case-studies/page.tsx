@@ -9,9 +9,10 @@ import {
   FiMonitor,
 } from "react-icons/fi";
 import { Metadata } from "next";
-import { PrimaryButton, SecondaryButton } from "@/components/ui/Button";
 import InnerBanner from "@/components/ui/InnerBanner";
+import AntigravityParticles from "@/components/ui/AntigravityParticles";
 import ServicesCTASection from "@/components/services/ServicesCTASection";
+import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 export const metadata: Metadata = {
   title: "Case Studies | Real Results & Real Projects",
@@ -72,22 +73,52 @@ export default function CaseStudiesPage() {
   const gridItems = caseStudies.slice(1);
 
   return (
-    <>
-      {/* Hero Section */}
-      <InnerBanner
-        badgeText="Case Studies"
-        title={
-          <>
-            Real projects. <br className="hidden md:block" />
-            Real problems. Real results.
-          </>
-        }
-        description="Explore how we design, build, and optimize digital products that help companies grow faster and operate more efficiently."
-      />
-      <main className="flex flex-col items-center min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
+      <div className="relative flex min-h-[78vh] items-stretch isolate">
+        <div className="absolute inset-0 h-full w-full">
+          <AntigravityParticles />
+        </div>
+        <div className="relative z-10 flex w-full items-center justify-center pt-20 sm:pt-24 lg:pt-28">
+          <InnerBanner
+            badgeText="Case Studies"
+            title={
+              <>
+                Real Projects. <br className="hidden md:block" />
+                Real Problems. Real Results.
+              </>
+            }
+            description="Explore how we design, build, and optimize digital products that help companies grow faster and operate more efficiently."
+            cta={
+              <div className="flex flex-col justify-center gap-3 sm:flex-row">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-sky-900/15 transition hover:bg-sky-700 hover:shadow-xl"
+                >
+                  Start a Project
+                  <span aria-hidden="true">-&gt;</span>
+                </Link>
+                <Link
+                  href="/portfolio"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-7 py-3.5 text-base font-bold text-slate-900 transition hover:border-slate-300 hover:bg-slate-50 hover:shadow-lg"
+                >
+                  View Portfolio
+                </Link>
+              </div>
+            }
+            isBackgroundColored={false}
+          />
+        </div>
+      </div>
+
+      <main className="flex min-h-screen flex-col items-center bg-slate-50">
         {/* Featured Case Study */}
-        <section className="w-full px-6 py-16 mx-auto max-w-7xl lg:py-24">
-          <div className="flex flex-col overflow-hidden transition-all duration-300 transform bg-white border border-gray-100 shadow-xl lg:flex-row rounded-3xl hover:shadow-2xl hover:-translate-y-1">
+        <section className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+          <ServiceSectionHeader
+            badgeText="FEATURED STORY"
+            headline="A Practical Look at Performance, Growth, and Delivery"
+            intro="Each case study focuses on the problem, the engineering approach, and the business result."
+          />
+          <div className="flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/10 lg:flex-row">
             <div className="flex flex-col justify-center p-10 lg:w-1/2 lg:p-16">
               <div className="flex items-center mb-6 space-x-3">
                 <span
@@ -95,42 +126,42 @@ export default function CaseStudiesPage() {
                 >
                   {featured.icon}
                 </span>
-                <span className="text-sm font-semibold tracking-widest text-gray-500 uppercase">
+                <span className="text-sm font-bold uppercase tracking-[0.16em] text-slate-500">
                   Featured
                 </span>
               </div>
-              <h2 className="mb-4 text-3xl font-bold text-gray-900 lg:text-4xl">
+              <h2 className="mb-4 text-3xl font-bold tracking-tight text-slate-950 lg:text-4xl">
                 {featured.title}
               </h2>
               <div className="flex flex-wrap gap-3 mb-6">
-                <span className="px-3 py-1 text-sm font-medium text-gray-600 bg-gray-100 rounded-full">
+                <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm font-semibold text-slate-600">
                   {featured.industry}
                 </span>
-                <span className="px-3 py-1 text-sm font-medium text-[#3698fd] rounded-full bg-[#3698fd]/10">
+                <span className="rounded-full border border-sky-100 bg-sky-50 px-3 py-1 text-sm font-semibold text-sky-800">
                   {featured.service}
                 </span>
               </div>
-              <p className="mb-8 text-lg text-gray-600">
+              <p className="mb-8 text-base leading-7 text-slate-600 lg:text-lg">
                 Watch how we managed to take a sluggish, unoptimized website and
                 transform it into a lightning-fast experience that users love
                 and search engines reward.
               </p>
-              <div className="p-6 mb-8 border border-blue-100 bg-blue-50 rounded-2xl">
-                <p className="mb-1 text-sm font-bold tracking-wider text-[#3698fd] uppercase">
+              <div className="mb-8 rounded-2xl border border-sky-100 bg-sky-50 p-6">
+                <p className="mb-1 text-sm font-bold uppercase tracking-[0.16em] text-sky-700">
                   Key Result
                 </p>
-                <p className="text-2xl font-black text-gray-900">
+                <p className="text-2xl font-black text-slate-950">
                   {featured.result}
                 </p>
               </div>
               <Link
                 href={`/case-studies/${featured.id}`}
-                className="inline-flex items-center text-[#3698fd] font-bold hover:text-[#377bff] transition-colors text-lg"
+                className="inline-flex items-center text-lg font-bold text-sky-700 transition hover:text-sky-900"
               >
                 Read Full Case Study <FiArrowRight className="ml-2" />
               </Link>
             </div>
-            <div className="lg:w-1/2 bg-gray-900 relative min-h-[400px] flex items-center justify-center p-12 overflow-hidden">
+            <div className="relative flex min-h-[400px] items-center justify-center overflow-hidden bg-slate-950 p-12 lg:w-1/2">
               {/* A stylized placeholder for an image representing performance */}
               <div className="absolute inset-0 z-0 bg-gradient-to-br from-blue-900 to-gray-900 opacity-90" />
               <div className="z-10 flex flex-col w-full max-w-sm space-y-4">
@@ -165,24 +196,19 @@ export default function CaseStudiesPage() {
         </section>
 
         {/* Case Study Grid */}
-        <section className="w-full px-6 py-12 mx-auto max-w-7xl lg:py-16">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <h2 className="mb-2 text-3xl font-bold text-gray-900">
-                More Success Stories
-              </h2>
-              <p className="text-lg text-gray-600">
-                Explore our recent work across different verticals.
-              </p>
-            </div>
-          </div>
+        <section className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <ServiceSectionHeader
+            badgeText="MORE WORK"
+            headline="More Success Stories"
+            intro="Explore recent work across different product, automation, and commerce challenges."
+          />
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
-            {gridItems.map((study, idx) => (
+            {gridItems.map((study) => (
               <Link
                 key={study.id}
                 href={`/case-studies/${study.id}`}
-                className="relative flex flex-col h-full p-8 overflow-hidden transition-all duration-300 transform bg-white border border-gray-100 shadow-sm group rounded-3xl hover:shadow-xl hover:-translate-y-1"
+                className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/10"
               >
                 <div className="absolute top-0 right-0 p-8 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
                   <FiArrowRight className="w-6 h-6 text-gray-400 transition-transform duration-300 transform translate-x-4 group-hover:text-[#3698fd] group-hover:translate-x-0" />
@@ -195,53 +221,25 @@ export default function CaseStudiesPage() {
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 text-xs font-semibold tracking-wider text-gray-600 uppercase bg-gray-100 rounded-full">
+                  <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-slate-600">
                     {study.industry}
                   </span>
                 </div>
 
-                <h3 className="mb-3 text-2xl font-bold text-gray-900 transition-colors group-hover:text-[#3698fd]">
+                <h3 className="mb-3 text-2xl font-bold text-slate-950 transition-colors group-hover:text-sky-700">
                   {study.title}
                 </h3>
 
-                <div className="pt-6 mt-auto border-t border-gray-100">
-                  <p className="mb-1 text-sm font-medium tracking-wider text-gray-500 uppercase">
+                <div className="mt-auto border-t border-slate-100 pt-6">
+                  <p className="mb-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500">
                     Impact
                   </p>
-                  <p className="text-xl font-bold text-gray-900">
+                  <p className="text-xl font-bold text-slate-950">
                     {study.result}
                   </p>
                 </div>
               </Link>
             ))}
-          </div>
-        </section>
-
-        {/* Testimonial Section */}
-        <section className="relative w-full px-6 py-24 mt-12 overflow-hidden bg-gray-900">
-          <div className="absolute inset-0 z-0 bg-gradient-to-b from-gray-900 to-blue-950"></div>
-          <div className="relative z-10 max-w-4xl mx-auto text-center">
-            <svg
-              className="w-12 h-12 mx-auto mb-6 text-blue-500 opacity-80"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-            </svg>
-            <h2 className="mb-8 text-2xl font-light leading-relaxed text-white md:text-4xl">
-              &quot;Throughout (PVT) LTD helped us scale our e-commerce platform and
-              dramatically improve our search visibility. The ROI was virtually
-              immediate.&quot;
-            </h2>
-            <div className="flex items-center justify-center gap-4">
-              <div className="w-12 h-12 border-2 border-blue-300 rounded-full shadow-lg bg-gradient-to-br from-blue-400 to-blue-600"></div>
-              <div className="text-left">
-                <p className="text-lg font-bold text-white">Sarah Jenkins</p>
-                <p className="font-medium text-blue-300">
-                  Founder, Retail Brand
-                </p>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -272,6 +270,6 @@ export default function CaseStudiesPage() {
         }
         buttonText={"Book Free Strategy Call"}
       />
-    </>
+    </div>
   );
 }

@@ -1,52 +1,60 @@
-import { FiZap, FiLayers, FiMessageSquare, FiTrendingUp } from 'react-icons/fi';
+import { FiZap, FiLayers, FiMessageSquare, FiTrendingUp } from "react-icons/fi";
+import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 export default function CoreStrengthsSection() {
   const strengths = [
     {
-      icon: <FiZap className='text-white'/>,
-      title: 'Fast Delivery',
-      description: 'Quick turnaround times without compromising on quality or attention to detail.',
-      color: 'from-yellow-500 to-orange-500'
+      icon: <FiZap className="text-white" />,
+      title: "Fast Delivery",
+      description:
+        "Quick turnaround times without compromising on quality or attention to detail.",
+      color: "from-yellow-500 to-orange-500",
     },
     {
-      icon: <FiLayers className='text-white'/>,
-      title: 'Clean Architecture',
-      description: 'Maintainable and scalable code structure following industry best practices.',
-      color: 'from-blue-500 to-cyan-500'
+      icon: <FiLayers className="text-white" />,
+      title: "Clean Architecture",
+      description:
+        "Maintainable and scalable code structure following industry best practices.",
+      color: "from-blue-500 to-cyan-500",
     },
     {
-      icon: <FiMessageSquare className='text-white'/>,
-      title: 'Clear Communication',
-      description: 'Regular updates and a transparent process keeping you informed at every step.',
-      color: 'from-sky-500 to-pink-500'
+      icon: <FiMessageSquare className="text-white" />,
+      title: "Clear Communication",
+      description:
+        "Regular updates and a transparent process keeping you informed at every step.",
+      color: "from-sky-500 to-pink-500",
     },
     {
-      icon: <FiTrendingUp className='text-white'/>,
-      title: 'Modern Tech Stack',
-      description: 'Latest tools, frameworks, and best practices for cutting-edge solutions.',
-      color: 'from-green-500 to-emerald-500'
+      icon: <FiTrendingUp className="text-white" />,
+      title: "Modern Tech Stack",
+      description:
+        "Latest tools, frameworks, and best practices for cutting-edge solutions.",
+      color: "from-green-500 to-emerald-500",
     },
   ];
 
   return (
-    <div className="mb-12">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-3">
-          Our <span className="bg-gradient-to-r from-blue-600 to-sky-300 bg-clip-text text-transparent pb-4 font-bold">Core Strengths</span>
-        </h2>
-        <p className="text-gray-600">We combine fast execution with clean, maintainable code and transparent communication — all on a modern tech stack.</p>
-      </div>
+    <div className="py-16">
+      <ServiceSectionHeader
+        badgeText="CORE STRENGTHS"
+        headline="Fast Execution With Engineering Discipline"
+        intro="We combine fast delivery with clean, maintainable code and transparent communication on a modern technology stack."
+      />
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {strengths.map((strength, index) => (
           <div
             key={index}
-            className="group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:-translate-y-2"
+            className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/10"
           >
-            <div className={`w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-2xl transition group-hover:bg-sky-600">
               {strength.icon}
             </div>
-            <h3 className="font-bold text-gray-900 mb-2 text-lg">{strength.title}</h3>
-            <p className="text-sm text-gray-600">{strength.description}</p>
+            <h3 className="mb-2 text-lg font-bold text-slate-950">
+              {strength.title}
+            </h3>
+            <p className="text-sm leading-6 text-slate-600">
+              {strength.description}
+            </p>
           </div>
         ))}
       </div>
