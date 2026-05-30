@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import InnerBanner from "@/components/ui/InnerBanner";
+import HeroCTA from "@/components/ui/HeroCTA";
 import AntigravityParticles from "@/components/ui/AntigravityParticles";
 import TypewriterText from "@/components/ui/TypewriterText";
 import ServicesSection from "@/components/home/ServicesSection";
 import TechStackSection from "@/components/home/TechStackSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
 import IndustriesSection from "@/components/home/IndustriesSection";
+import LatestBlogsSection from "@/components/home/LatestBlogsSection";
 import ServicesCTASection from "@/components/services/ServicesCTASection";
 
 export const metadata: Metadata = {
@@ -100,23 +101,7 @@ export default function Home() {
               />
             }
             description="From MVPs to enterprise platforms, we build fast, scalable software using modern technologies."
-            cta={
-              <div className="flex flex-col justify-center gap-3 sm:flex-row">
-                <Link
-                  href="/portfolio"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-sky-900/15 transition hover:bg-sky-700 hover:shadow-xl"
-                >
-                  View Our Work
-                  <span aria-hidden="true">→</span>
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-7 py-3.5 text-base font-bold text-slate-900 transition hover:border-slate-300 hover:bg-slate-50 hover:shadow-lg"
-                >
-                  Book a Free Call
-                </Link>
-              </div>
-            }
+            cta={<HeroCTA />}
             isBackgroundColored={false}
           />
         </div>
@@ -141,6 +126,9 @@ export default function Home() {
       {/* <TrustSection /> */}
       {/* Technology Stack Showcase */}
       <TechStackSection />
+      {/* Latest Blogs */}
+      <LatestBlogsSection />
+
       {/* Footer */}
       <ServicesCTASection
         headline={"Ready to Build Something Amazing?"}

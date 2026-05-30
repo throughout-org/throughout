@@ -1,78 +1,80 @@
 import type { Metadata } from "next";
-import ServicesHeroSection from "@/components/services/ServicesHeroSection";
-import ServicesGridSection from "@/components/services/ServicesGridSection";
+import Image from "next/image";
+import Link from "next/link";
+import { services } from "@/data/services";
+import InnerBanner from "@/components/ui/InnerBanner";
 import ServicesCTASection from "@/components/services/ServicesCTASection";
-import TrendyTuringLabel from "@/components/TrendyTuringLabel";
+import EngineeringPageClient from "./EngineeringPageClient";
 
 export const metadata: Metadata = {
-  title: "Our Services - Custom Software Development Solutions | Throughout (PVT) LTD",
+  title: "Engineering Services | Throughout (PVT) LTD",
   description:
-    "Explore Throughout (PVT) LTD's comprehensive software development services: Web Development, Mobile Apps, Cloud Solutions, API Development, E-commerce, AI/ML, DevOps, and UI/UX Design. Custom solutions tailored to your business needs.",
-  keywords: [
-    "software development services",
-    "web development",
-    "mobile app development",
-    "cloud solutions",
-    "API development",
-    "e-commerce development",
-    "AI ML solutions",
-    "DevOps services",
-    "UI UX design",
-    "custom software",
-    "enterprise solutions",
-    "React development",
-    "Next.js development",
-    "Node.js development",
-    "Flutter development",
-    "AWS cloud services",
-    "Azure cloud services",
-  ],
+    "Full-stack engineering services: Software Development, UI/UX, Shopify, CMS, Cloud Infrastructure, and Workflow Automation — all under one roof.",
+  alternates: { canonical: "https://www.throughout.io/services" },
   openGraph: {
-    type: "website",
-    locale: "en_US",
+    title: "Engineering Services | Throughout (PVT) LTD",
+    description:
+      "One engineering team covering every layer — web, mobile, cloud, automation, and design.",
     url: "https://www.throughout.io/services",
     siteName: "Throughout (PVT) LTD",
-    title: "Our Services - Custom Software Development | Throughout (PVT) LTD",
-    description:
-      "Comprehensive software development services including web, mobile, cloud, AI/ML, and more.",
-    images: [
-      {
-        url: "/images/og-services.png",
-        width: 1200,
-        height: 630,
-        alt: "Throughout (PVT) LTD Services",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Software Development Services | Throughout (PVT) LTD",
-    description: "Web, mobile, cloud, AI/ML, and custom software solutions.",
-    images: ["/images/twitter-services.png"],
-  },
-  alternates: {
-    canonical: "https://www.throughout.io/services",
+    type: "website",
   },
 };
 
+const visibleServices = services.filter((s) => s.slug !== "ai-driven-seo");
+
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 ">
-      {/* Hero Section */}
-      <ServicesHeroSection />
-
-      {/* Services Grid */}
-      <ServicesGridSection />
-
-      {/* CTA Section */}
-      <ServicesCTASection
-        headline={"Ready to Build Something Amazing?"}
-        subtext={
-          "Building the future, one line of code at a time. We transform ideas into powerful digital solutions."
+    <div className="min-h-screen bg-white">
+      {/* Hero */}
+      <InnerBanner
+        fullScreen
+        badgeText="Engineering"
+        title="One Team. Every Layer."
+        description="From product interfaces to cloud infrastructure, we handle the full engineering stack — so you don't have to stitch together multiple vendors."
+        cta={
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-600 px-8 py-4 text-base font-bold text-white shadow-lg hover:bg-sky-700 hover:shadow-xl transition"
+            >
+              Start a Project →
+            </Link>
+            <Link
+              href="#software-development"
+              className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-8 py-4 text-base font-bold text-slate-900 hover:border-slate-300 hover:bg-slate-50 hover:shadow-lg transition"
+            >
+              Explore Services
+            </Link>
+          </div>
         }
-        buttonText={"Book Free Strategy Call"}
       />
-      {/* <TrendyTuringLabel /> */}
+
+      {/* Quick-jump pill nav */}
+      <div className="sticky top-14 z-30 bg-white/90 backdrop-blur-sm border-b border-slate-100 shadow-sm">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex gap-1 overflow-x-auto py-3 scrollbar-none">
+            {visibleServices.map((service) => (
+              <a
+                key={service.slug}
+                href={`#${service.slug}`}
+                className="shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-950 transition whitespace-nowrap"
+              >
+                {service.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Service sections */}
+      <EngineeringPageClient services={visibleServices} />
+
+      <ServicesCTASection
+        headline="Ready to Build?"
+        subtext="Tell us what you need. One team, every layer, no hand-offs."
+        buttonText="Book a Free Call"
+      />
     </div>
   );
 }

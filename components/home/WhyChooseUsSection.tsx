@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
   FiArrowRight,
   FiCode,
@@ -44,6 +45,8 @@ const strengths = [
   },
 ];
 
+const steps = ["Plan", "Build", "Review", "Improve"];
+
 export default function WhyChooseUsSection() {
   return (
     <section id="why-us" className="bg-white px-4 py-20 sm:px-6 lg:px-8">
@@ -55,7 +58,14 @@ export default function WhyChooseUsSection() {
         />
 
         <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
-          <div className="relative overflow-hidden rounded-3xl bg-slate-950 p-8 text-white shadow-xl shadow-slate-900/20">
+          {/* Left dark card */}
+          <motion.div
+            initial={{ opacity: 0, x: -32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="relative overflow-hidden rounded-3xl bg-slate-950 p-8 text-white shadow-xl shadow-slate-900/20"
+          >
             <div className="absolute inset-x-0 top-0 h-1 bg-sky-500" />
 
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-sky-200">
@@ -71,8 +81,19 @@ export default function WhyChooseUsSection() {
             </p>
 
             <div className="mt-10 space-y-4">
-              {["Plan", "Build", "Review", "Improve"].map((step, index) => (
-                <div key={step} className="flex items-center gap-4">
+              {steps.map((step, index) => (
+                <motion.div
+                  key={step}
+                  initial={{ opacity: 0, x: -16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.4,
+                    ease: "easeOut",
+                    delay: 0.3 + index * 0.1,
+                  }}
+                  className="flex items-center gap-4"
+                >
                   <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-sm font-bold">
                     {String(index + 1).padStart(2, "0")}
                   </span>
@@ -80,37 +101,51 @@ export default function WhyChooseUsSection() {
                   <span className="min-w-20 text-right text-sm font-semibold text-slate-200">
                     {step}
                   </span>
-                </div>
+                </motion.div>
               ))}
             </div>
 
-            <a
+            <motion.a
               href="/contact"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.15 }}
               className="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-sky-100"
             >
               Start a project
               <FiArrowRight />
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
 
+          {/* Strength cards grid */}
           <div className="grid gap-4 sm:grid-cols-2">
-            {strengths.map((strength) => (
-              <article
+            {strengths.map((strength, index) => (
+              <motion.article
                 key={strength.id}
-                className="group rounded-3xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-1 hover:bg-white hover:shadow-xl hover:shadow-slate-900/10"
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.22, 1, 0.36, 1],
+                  delay: index * 0.08,
+                }}
+                whileHover={{ y: -5, transition: { duration: 0.2, ease: "easeOut" } }}
+                className="group rounded-3xl border border-slate-200 bg-slate-50 p-6 transition-shadow hover:bg-white hover:shadow-xl hover:shadow-slate-900/10"
               >
                 <div className="flex items-start justify-between gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-2xl text-slate-950 shadow-sm transition group-hover:bg-slate-950 group-hover:text-white">
+                  <motion.div
+                    whileHover={{ rotate: [0, -8, 8, 0], transition: { duration: 0.35 } }}
+                    className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-2xl text-slate-950 shadow-sm transition group-hover:bg-slate-950 group-hover:text-white"
+                  >
                     {strength.icon}
-                  </div>
+                  </motion.div>
                   <span className="text-sm font-bold text-slate-400">
                     {strength.id}
                   </span>
                 </div>
 
-                <div
-                  className={`mt-7 h-1 w-12 rounded-full ${strength.accent}`}
-                />
+                <div className={`mt-7 h-1 w-12 rounded-full ${strength.accent}`} />
 
                 <h3 className="mt-5 text-xl font-bold tracking-tight text-slate-950">
                   {strength.title}
@@ -118,7 +153,7 @@ export default function WhyChooseUsSection() {
                 <p className="mt-3 text-sm leading-6 text-slate-600">
                   {strength.description}
                 </p>
-              </article>
+              </motion.article>
             ))}
           </div>
         </div>

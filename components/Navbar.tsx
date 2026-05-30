@@ -65,29 +65,13 @@ export default function Navbar() {
     }, 200);
   }, []);
 
-  // ===== TOP BAR LINKS =====
-  const topBarLinks = [
-    // { name: "Home", href: "/" },
-    { name: "Work", href: "/portfolio" },
-    { name: "Company", href: "/about" },
-    { name: "Case Studies", href: "/case-studies" },
-    { name: "Blog", href: "/insights" },
-    // { name: "Researchers", href: "/insights" },
-    { name: "Internships", href: "/internships" },
-    { name: "Contact Us", href: "/contact" },
-  ];
-
   // ===== MAIN NAV LINKS =====
   const mainNavLinks = [
-    { name: "Engineering", href: "/services", hasDropdown: true },
-    {
-      name: "Comflo",
-      href: "https://comflo.app/",
-    },
-    {
-      name: "Rankout",
-      href: "https://rankout.app/",
-    },
+    { name: "Digital Marketing", href: "/digital-marketing", hasDropdown: false },
+    { name: "Engineering", href: "/services", hasDropdown: false },
+    { name: "Design", href: "/design", hasDropdown: false },
+    { name: "Comflo", href: "https://comflo.app/" },
+    { name: "Rankout", href: "https://rankout.app/" },
   ];
 
   const visibleServices = services.filter(
@@ -127,42 +111,9 @@ export default function Navbar() {
   return (
     <>
       {/* ============================================================ */}
-      {/* LAYER 1 — TOP BAR (black, simple links)                      */}
+      {/* MAIN NAV BAR                                                  */}
       {/* ============================================================ */}
-      <div
-        className={`fixed top-0 left-0 w-full z-50 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 transition-all duration-500 hidden lg:block ${
-          isScrolled
-            ? "-translate-y-full opacity-0"
-            : "translate-y-0 opacity-100"
-        }`}
-      >
-        <div className="max-w-[1600px] mx-auto px-8">
-          <div className="flex items-center justify-center h-10 gap-5">
-            {topBarLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`text-[13px] font-medium transition-all duration-300 rounded-full px-3 py-0 ${
-                  isActive(link.href)
-                    ? "text-white bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 shadow-md scale-105"
-                    : "text-gray-300 hover:text-white"
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* ============================================================ */}
-      {/* LAYER 2 — MAIN NAV BAR (red, with logo + primary links)      */}
-      {/* ============================================================ */}
-      <nav
-        className={`fixed w-full z-40 transition-all duration-500 ${
-          isScrolled ? "top-0" : "lg:top-10 top-0"
-        }`}
-      >
+      <nav className="fixed top-0 w-full z-40 transition-all duration-500">
         {/* Background band (full-width) */}
         <div className="bg-transparent">
           <div className="max-w-[1600px] mx-auto px-4 lg:px-4 xl:px-8">
@@ -209,8 +160,8 @@ export default function Navbar() {
                           onClick={() => setIsServicesOpen((prev) => !prev)}
                           className={`flex items-center gap-1 px-2.5 py-1.5 text-xs xl:text-sm font-semibold transition-all duration-200 cursor-pointer rounded-lg ${
                             isActive("/services")
-                              ? "text-white bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 shadow-md scale-105"
-                              : "text-gray-900 hover:text-gray-900 hover:bg-blue-300/20"
+                              ? "text-white bg-sky-600 shadow-md scale-105"
+                              : "text-gray-900 hover:text-gray-900 hover:bg-slate-100"
                           }`}
                         >
                           {link.name}
@@ -266,7 +217,7 @@ export default function Navbar() {
                                     opacity: isServicesOpen ? 1 : 0,
                                   }}
                                 >
-                                  <div className="flex items-center justify-center w-12 h-12 text-2xl transition-all duration-300 shadow-md shrink-0 rounded-xl bg-linear-to-br from-blue-500 to-cyan-300 group-hover/card:shadow-lg group-hover/card:scale-110">
+                                  <div className="flex items-center justify-center w-12 h-12 text-2xl transition-all duration-300 shadow-md shrink-0 rounded-xl bg-sky-600 group-hover/card:shadow-lg group-hover/card:scale-110">
                                     {service.icon}
                                   </div>
                                   <div className="flex-1 min-w-0">
@@ -300,8 +251,8 @@ export default function Navbar() {
                       rel={isExternal ? "noopener noreferrer" : undefined}
                       className={`px-2.5 py-1.5 text-xs xl:text-sm font-semibold transition-all duration-200 rounded-lg whitespace-nowrap ${
                         isActive(link.href)
-                          ? "text-gray-900 bg-blue-100 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 text-white scale-105 shadow-xl border-white/30"
-                          : "text-gray-700 hover:text-gray-900 hover:bg-blue-300/20"
+                          ? "bg-sky-600 text-white scale-105 shadow-sm"
+                          : "text-gray-700 hover:text-gray-900 hover:bg-slate-100"
                       }`}
                     >
                       {link.name}
@@ -367,39 +318,10 @@ export default function Navbar() {
 
           {/* Scrollable Menu Content */}
           <div className="relative mx-4 mt-2 bg-white rounded-2xl shadow-2xl max-h-[85vh] overflow-y-auto border border-gray-200">
-            {/* Top bar links section */}
-            <div className="px-5 pt-5 pb-3 border-b border-gray-100">
-              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">
-                Quick Links
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {topBarLinks.map((link, idx) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`text-xs font-medium px-3 py-1.5 rounded-full transition-all duration-300 border ${
-                      isActive(link.href)
-                        ? "bg-gray-900 text-white border-gray-900"
-                        : "bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100"
-                    }`}
-                    style={{
-                      animation: isMenuOpen
-                        ? `slideIn 0.4s ease-out forwards ${idx * 0.04}s`
-                        : "none",
-                      opacity: isMenuOpen ? 1 : 0,
-                    }}
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
             {/* Main nav links section */}
             <div className="px-5 py-4 space-y-2">
-              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">
-                Services
+              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 pt-1">
+                Navigation
               </p>
 
               {mainNavLinks.map((link, index) => {
@@ -463,7 +385,7 @@ export default function Navbar() {
                                 opacity: mobileServicesOpen ? 1 : 0,
                               }}
                             >
-                              <span className="shrink-0 w-9 h-9 rounded-lg bg-linear-to-br from-[#3698fd] to-[#2f7fe0] flex items-center justify-center text-base shadow-sm">
+                              <span className="shrink-0 w-9 h-9 rounded-lg bg-sky-600 flex items-center justify-center text-base shadow-sm">
                                 {service.icon}
                               </span>
                               <span className="text-sm font-semibold text-gray-700">

@@ -10,21 +10,24 @@ import {
 
 const quickLinks = [
   { label: "Home", href: "/" },
-  { label: "MVP Studio", href: "/mvp-studio" },
   { label: "About Us", href: "/about" },
   { label: "Work", href: "/portfolio" },
-  { label: "Insights", href: "/insights" },
-  { label: "Book Free Call", href: "/contact" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Blog", href: "/insights" },
+  { label: "Internships", href: "/internships" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 const services = [
-  { label: "Software Development", href: "/services/software-development" },
-  { label: "E-Commerce Solutions", href: "/services/ecommerce-development" },
-  { label: "Shopify Development", href: "/services/shopify-development" },
-  { label: "Cloud & Server", href: "/services/cloud-server-management" },
-  { label: "WordPress Development", href: "/services/wordpress-development" },
-  { label: "AI & Automation", href: "/services/ai-automation" },
-  { label: "UI/UX Design", href: "/services/ui-ux-design" },
+  { label: "Digital Marketing", href: "/digital-marketing" },
+  { label: "Design", href: "/design" },
+  { label: "Software Development", href: "/services#software-development" },
+  { label: "UI/UX Engineering", href: "/services#ui-ux-engineering" },
+  { label: "Shopify Development", href: "/services#shopify-development" },
+  { label: "CMS Development", href: "/services#cms-development" },
+  { label: "Cloud & Server", href: "/services#cloud-server-solutions" },
+  { label: "Workflow Automation", href: "/services#workflow-automation" },
+  { label: "AI Solutions", href: "/ai" },
 ];
 
 const socials = [
@@ -88,8 +91,8 @@ export default function Footer() {
             </Link>
 
             <p className="max-w-sm mt-5 text-sm leading-6 text-slate-400">
-              Product engineering, MVP development, and AI automation for teams
-              that need reliable software delivered with momentum.
+              We combine Digital Marketing, Engineering, and AI to build and
+              grow digital products and businesses.
             </p>
 
             <div className="flex gap-2 mt-6">

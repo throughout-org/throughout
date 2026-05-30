@@ -88,6 +88,7 @@ export default async function ServiceDetailPage({
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <InnerBanner
+        fullScreen
         badgeText={service.hero.badgeText || service.title}
         title={service.hero.headline}
         description={service.hero.subheadline}
