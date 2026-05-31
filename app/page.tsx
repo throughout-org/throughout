@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import InnerBanner from "@/components/ui/InnerBanner";
 import HeroCTA from "@/components/ui/HeroCTA";
 import AntigravityParticles from "@/components/ui/AntigravityParticles";
@@ -11,7 +12,7 @@ import LatestBlogsSection from "@/components/home/LatestBlogsSection";
 import ServicesCTASection from "@/components/services/ServicesCTASection";
 
 export const metadata: Metadata = {
-  title: "Throughout (PVT) LTD - Smart Software Solutions | Web & Mobile App Development",
+  title: "Digital Marketing, Engineering & Design Agency | Throughout (PVT) LTD",
   description:
     "Transform your business with Throughout (PVT) LTD's expert software development services. We build fast, secure, and scalable web applications, mobile apps, APIs, and automation solutions. Get started with a free consultation today.",
   keywords: [
@@ -76,10 +77,61 @@ export const metadata: Metadata = {
   },
 };
 
+const homepageFAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What services does Throughout (PVT) LTD offer?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Throughout offers three core services: Digital Marketing (SEO, paid ads, social media, content strategy), Engineering (web and mobile app development, cloud infrastructure, AI automation), and Design (brand identity, UI/UX design, web design, and creative visuals).",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is Throughout a digital marketing agency or a software company?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Throughout is a full-stack digital growth studio — we combine Digital Marketing, Engineering, and Design under one team. This means we can handle everything from building your website to running your marketing campaigns and designing your brand identity.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does Throughout work with startups?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, Throughout specializes in working with startups, e-commerce businesses, and agencies. We offer lean, founder-friendly engagement models that deliver results without enterprise-scale costs.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Where is Throughout located and do you work internationally?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Throughout (PVT) LTD is based in Colombo, Sri Lanka, and works with clients worldwide. We serve clients across Sri Lanka, the UK, Australia, the UAE, and beyond.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How can I get started with Throughout?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You can book a free strategy call via our Calendly link, fill out our contact form at throughout.io/contact, or email us at info@throughout.io. We'll get back to you within 24 hours.",
+      },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageFAQ) }}
+      />
 
       {/* Hero Section with Background Animation */}
       <div className="relative flex min-h-screen items-stretch isolate">
