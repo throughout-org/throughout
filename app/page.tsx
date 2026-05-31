@@ -88,19 +88,19 @@ export default function Home() {
         </div>
         <div className="relative z-10 flex h-full w-full items-center justify-center pt-20 sm:pt-24 lg:pt-28">
           <InnerBanner
-            badgeText="Product Engineering Studio"
+            badgeText="Digital Growth Studio"
             title={
               <TypewriterText
                 lines={[
-                  { text: "Launch Your Product Faster", breakAfter: true },
-                  { text: "With a Dedicated Engineering Team" },
+                  { text: "Design. Engineer. Market.", breakAfter: true },
+                  { text: "Grow With One Team." },
                 ]}
-                typingSpeed={105}
+                typingSpeed={80}
                 delayBetweenLines={300}
-                startDelay={500}
+                startDelay={400}
               />
             }
-            description="From MVPs to enterprise platforms, we build fast, scalable software using modern technologies."
+            description="Throughout combines creative design, modern engineering, and data-driven marketing into a single coordinated growth engine for your business."
             cta={<HeroCTA />}
             isBackgroundColored={false}
           />
@@ -131,11 +131,11 @@ export default function Home() {
 
       {/* Footer */}
       <ServicesCTASection
-        headline={"Ready to Build Something Amazing?"}
+        headline={"Ready to Grow Your Digital Business?"}
         subtext={
-          "Building the future, one line of code at a time. We transform ideas into powerful digital solutions."
+          "Design. Engineering. Marketing. One team, one goal — building and growing your digital presence with momentum."
         }
-        buttonText={"Book Free Strategy Call"}
+        buttonText={"Get a Free Strategy Call"}
       />
       {/* <TrendyTuringLabel /> */}
     </div>

@@ -5,89 +5,77 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   FiArrowRight,
-  FiBarChart2,
-  FiCpu,
-  FiLayers,
-  FiSettings,
+  FiCode,
+  FiPenTool,
   FiTrendingUp,
+  FiZap,
+  FiTarget,
+  FiLayout,
 } from "react-icons/fi";
 import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 const coreServices = [
   {
     id: "01",
-    title: "MVP Studio",
-    kicker: "Validate, launch, learn",
+    title: "Digital Marketing",
+    kicker: "Grow. Convert. Retain.",
     description:
-      "Shape the first version of your product with focused discovery, sharp UX flows, and a build plan that gets you to market faster.",
-    href: "/mvp-studio",
+      "SEO, paid ads, social media, and content strategy built around your audience. We run campaigns that generate leads and build lasting brand authority.",
+    href: "/digital-marketing",
     icon: <FiTrendingUp />,
-    image:
-      "/images/our-services/Corporate Strategy Workshop with Colorful Ideas Wall.jpeg",
-    features: [
-      "Product strategy",
-      "Prototype to launch",
-      "Founder-friendly scope",
-    ],
+    image: "/images/ai-generated/brand-identity-studio.png",
+    features: ["SEO & Paid Ads", "Social Media", "Content Strategy"],
   },
   {
     id: "02",
-    title: "Product Engineering",
-    kicker: "Web, mobile, cloud",
+    title: "Engineering",
+    kicker: "Web, mobile, cloud, AI",
     description:
-      "Build reliable applications with modern architecture, clean implementation, and the engineering discipline needed for long-term scale.",
-    href: "/services/software-development",
-    icon: <FiSettings />,
-    image: "/images/our-services/Pair programming.jpeg",
-    features: [
-      "Next.js applications",
-      "APIs and integrations",
-      "Cloud-ready systems",
-    ],
+      "From MVPs to enterprise platforms — we build fast, scalable software using modern technologies and engineering discipline that holds up at scale.",
+    href: "/engineering",
+    icon: <FiCode />,
+    image: "/images/ai-generated/engineering-workspace.png",
+    features: ["Web & Mobile Apps", "Cloud & DevOps", "AI Automation"],
   },
   {
     id: "03",
-    title: "AI & Automation",
-    kicker: "Intelligent workflows",
+    title: "Design",
+    kicker: "Brand, UI/UX, creatives",
     description:
-      "Connect LLMs, data, and business workflows so your team can reduce manual work and make better operational decisions.",
-    href: "/services/ai-automation",
-    icon: <FiCpu />,
-    image:
-      "/images/our-services/Monitoring and analyzing website traffic and user.jpeg",
-    features: ["AI assistants", "Workflow automation", "Analytics dashboards"],
+      "Brand identity, user interface design, and creative visuals that make your business look premium, communicate clearly, and convert consistently.",
+    href: "/design",
+    icon: <FiPenTool />,
+    image: "/images/ai-generated/ux-design-studio.png",
+    features: ["Brand Identity", "UI/UX Design", "Web & Ad Creatives"],
   },
 ];
 
-const deliveryHighlights = [
+const highlights = [
   {
-    icon: <FiLayers />,
-    title: "Structured delivery",
-    description:
-      "Clear milestones, lean scope, and progress you can inspect every week.",
+    icon: <FiTrendingUp />,
+    title: "Marketing that converts",
+    description: "Data-driven campaigns tied to real business outcomes, not vanity metrics.",
   },
   {
-    icon: <FiBarChart2 />,
-    title: "Built for outcomes",
-    description:
-      "Every build decision connects back to speed, reliability, or growth.",
+    icon: <FiZap />,
+    title: "Engineering that scales",
+    description: "Clean architecture, modern stack, and delivery you can inspect every week.",
   },
   {
-    icon: <FiCpu />,
-    title: "Automation-ready",
-    description:
-      "We design systems that can grow into AI and workflow automation later.",
+    icon: <FiLayout />,
+    title: "Design that sells",
+    description: "Every visual decision is made to build trust and guide users to action.",
   },
 ];
 
-const EASE_OUT_EXPO = [0.22, 1, 0.36, 1] as [number, number, number, number];
+const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40 },
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: EASE_OUT_EXPO, delay: i * 0.1 },
+    transition: { duration: 0.55, ease: EASE, delay: i * 0.1 },
   }),
 };
 
@@ -96,7 +84,7 @@ const panelVariants = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.15 },
+    transition: { duration: 0.6, ease: EASE, delay: 0.15 },
   },
 };
 
@@ -106,8 +94,8 @@ export default function ServicesSection() {
       <div className="mx-auto max-w-7xl">
         <ServiceSectionHeader
           badgeText="OUR SERVICES"
-          headline="Core Capabilities for Building Modern Digital Products"
-          intro="From early product strategy to production engineering and AI automation, we help teams move from idea to operating software."
+          headline="Three Capabilities. One Team."
+          intro="We combine Digital Marketing, Engineering, and Design into a single, coordinated growth engine for your business."
         />
 
         <div className="grid gap-5 lg:grid-cols-3">
@@ -173,6 +161,7 @@ export default function ServicesSection() {
           ))}
         </div>
 
+        {/* Bottom panel */}
         <motion.div
           variants={panelVariants}
           initial="hidden"
@@ -184,7 +173,7 @@ export default function ServicesSection() {
             <div className="relative min-h-[320px] overflow-hidden rounded-[25px]">
               <Image
                 src="/images/our-services/colleagues-working-project-discussing-details.jpg"
-                alt="Team collaborating on a digital product"
+                alt="Throughout team working together"
                 fill
                 sizes="(min-width: 1024px) 45vw, 100vw"
                 className="rounded-[25px] object-cover"
@@ -194,15 +183,14 @@ export default function ServicesSection() {
 
             <div className="p-6 sm:p-8 lg:p-10">
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-sky-700">
-                How we work
+                Why it works
               </p>
               <h3 className="max-w-2xl mt-3 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
-                Senior product thinking, practical engineering, and measurable
-                progress.
+                When marketing, engineering, and design share one team — everything moves faster.
               </h3>
 
               <div className="grid gap-4 mt-8 sm:grid-cols-3">
-                {deliveryHighlights.map((item, i) => (
+                {highlights.map((item, i) => (
                   <motion.div
                     key={item.title}
                     initial={{ opacity: 0, y: 20 }}
@@ -211,7 +199,7 @@ export default function ServicesSection() {
                     transition={{ duration: 0.45, ease: "easeOut", delay: 0.2 + i * 0.1 }}
                     className="p-4 rounded-2xl bg-slate-50"
                   >
-                    <div className="flex items-center justify-center w-10 h-10 text-lg text-white rounded-xl bg-slate-950">
+                    <div className="flex items-center justify-center w-10 h-10 text-lg text-white rounded-xl bg-sky-600">
                       {item.icon}
                     </div>
                     <h4 className="mt-4 text-sm font-bold text-slate-950">

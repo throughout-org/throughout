@@ -12,10 +12,10 @@ export default function HeroCTA() {
         transition={{ duration: 0.15, ease: "easeOut" }}
       >
         <Link
-          href="/portfolio"
+          href="/contact"
           className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-sky-900/15 transition hover:bg-sky-700 hover:shadow-xl"
         >
-          View Our Work
+          Get a Free Strategy Call
           <span aria-hidden="true">→</span>
         </Link>
       </motion.div>
@@ -26,10 +26,10 @@ export default function HeroCTA() {
         transition={{ duration: 0.15, ease: "easeOut" }}
       >
         <Link
-          href="/contact"
+          href="/portfolio"
           className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-7 py-3.5 text-base font-bold text-slate-900 transition hover:border-slate-300 hover:bg-slate-50 hover:shadow-lg"
         >
-          Book a Free Call
+          View Our Work
         </Link>
       </motion.div>
     </div>
