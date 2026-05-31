@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Montserrat, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import NavbarSpacer from "@/components/NavbarSpacer";
 import Footer from "@/components/Footer";
 
 const montserrat = Montserrat({
@@ -265,6 +266,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </noscript>
 
         <Navbar />
+        <NavbarSpacer />
         {children}
         <Footer />
       </body>
