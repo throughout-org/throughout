@@ -7,24 +7,22 @@ import {
   FiMapPin,
   FiMessageCircle,
 } from "react-icons/fi";
+import NewsletterSignup from "@/components/ui/NewsletterSignup";
 
-const quickLinks = [
+const resources = [
   { label: "Home", href: "/" },
-  { label: "MVP Studio", href: "/mvp-studio" },
   { label: "About Us", href: "/about" },
   { label: "Work", href: "/portfolio" },
-  { label: "Insights", href: "/insights" },
-  { label: "Book Free Call", href: "/contact" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Blog", href: "/insights" },
+  { label: "Internships", href: "/internships" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 const services = [
-  { label: "Software Development", href: "/services/software-development" },
-  { label: "E-Commerce Solutions", href: "/services/ecommerce-development" },
-  { label: "Shopify Development", href: "/services/shopify-development" },
-  { label: "Cloud & Server", href: "/services/cloud-server-management" },
-  { label: "WordPress Development", href: "/services/wordpress-development" },
-  { label: "AI & Automation", href: "/services/ai-automation" },
-  { label: "UI/UX Design", href: "/services/ui-ux-design" },
+  { label: "Digital Marketing", href: "/digital-marketing" },
+  { label: "Engineering", href: "/engineering" },
+  { label: "Design", href: "/design" },
 ];
 
 const socials = [
@@ -75,6 +73,17 @@ export default function Footer() {
   return (
     <footer className="text-white bg-slate-950">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        {/* Newsletter strip */}
+        <div className="flex flex-col gap-4 py-8 border-b border-white/10 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h3 className="text-base font-bold text-white">Get Digital Growth Insights</h3>
+            <p className="text-xs text-slate-400 mt-1">SEO tips, marketing strategies, and engineering insights — delivered monthly.</p>
+          </div>
+          <div className="sm:w-96 shrink-0">
+            <NewsletterSignup source="footer" heading="" subtext="" />
+          </div>
+        </div>
+
         <div className="grid gap-10 py-14 lg:grid-cols-[1.15fr_0.85fr_0.95fr_1.05fr]">
           <div>
             <Link href="/" className="inline-flex items-center">
@@ -88,8 +97,8 @@ export default function Footer() {
             </Link>
 
             <p className="max-w-sm mt-5 text-sm leading-6 text-slate-400">
-              Product engineering, MVP development, and AI automation for teams
-              that need reliable software delivered with momentum.
+              We combine Digital Marketing, Engineering, and AI to build and
+              grow digital products and businesses.
             </p>
 
             <div className="flex gap-2 mt-6">
@@ -108,12 +117,12 @@ export default function Footer() {
             </div>
           </div>
 
-          <nav aria-label="Footer quick links">
+          <nav aria-label="Footer resources">
             <h3 className="text-sm font-bold uppercase tracking-[0.16em] text-white">
-              Company
+              Resources
             </h3>
             <ul className="mt-5 space-y-3">
-              {quickLinks.map((item) => (
+              {resources.map((item) => (
                 <FooterLink
                   key={item.href}
                   href={item.href}
@@ -176,6 +185,7 @@ export default function Footer() {
               <FiArrowUpRight />
             </Link>
           </div>
+
         </div>
 
         <div className="flex flex-col gap-4 py-6 text-sm border-t border-white/10 text-slate-500 md:flex-row md:items-center md:justify-between">

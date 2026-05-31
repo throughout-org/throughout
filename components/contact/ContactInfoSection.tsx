@@ -1,8 +1,19 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { InlineWidget } from "react-calendly";
+import { trackContactFormSubmit, trackCalendlyBooked } from "@/lib/analytics";
 
 export default function ContactInfoSection() {
+  // Track Calendly booking completions from the inline widget
+  useEffect(() => {
+    const handler = (e: MessageEvent) => {
+      if (e.origin !== "https://calendly.com") return;
+      if (e.data?.event === "calendly.event_scheduled") trackCalendlyBooked();
+    };
+    window.addEventListener("message", handler);
+    return () => window.removeEventListener("message", handler);
+  }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,6 +41,7 @@ export default function ContactInfoSection() {
       if (res.ok) {
         setSubmitMessage("Thank you! We will get back to you soon.");
         setFormData({ name: "", email: "", phone: "", message: "" });
+        trackContactFormSubmit("contact_page");
       } else {
         setSubmitMessage("Failed to send. Please try again later.");
       }

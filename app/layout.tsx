@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Montserrat, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import NavbarSpacer from "@/components/NavbarSpacer";
 import Footer from "@/components/Footer";
 
 const montserrat = Montserrat({
@@ -21,168 +22,251 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.throughout.io"),
 
   title: {
-    default: "Custom Software & AI Development Company | Throughout (PVT) LTD",
+    default: "Digital Marketing, Engineering & Design Agency | Throughout (PVT) LTD",
     template: "%s | Throughout (PVT) LTD",
   },
 
   description:
-    "Throughout (PVT) LTD is a custom software and AI development company building scalable web, mobile, and cloud solutions for startups and businesses.",
+    "Throughout (PVT) LTD is a full-stack digital growth studio combining Digital Marketing, Engineering, and Design to build and grow businesses online.",
+
+  keywords: [
+    "digital marketing agency",
+    "software engineering company",
+    "web design agency",
+    "SEO agency Sri Lanka",
+    "digital growth studio",
+    "brand identity design",
+    "UI UX design",
+    "web development company",
+    "AI automation",
+    "Shopify development",
+    "Throughout Sri Lanka",
+    "digital agency Colombo",
+  ],
 
   creator: "Throughout (PVT) LTD",
   publisher: "Throughout (PVT) LTD",
 
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
+  formatDetection: { email: false, address: false, telephone: false },
 
   openGraph: {
     type: "website",
     url: "https://www.throughout.io",
     siteName: "Throughout (PVT) LTD",
-    title: "Custom Software & AI Development Company | Throughout (PVT) LTD",
+    title: "Digital Marketing, Engineering & Design | Throughout (PVT) LTD",
     description:
-      "Custom software, web, mobile, and AI solutions built to scale modern businesses.",
-    images: [
-      {
-        url: "/images/og-default.png",
-        width: 1200,
-        height: 630,
-        alt: "Throughout (PVT) LTD Software & AI Development",
-      },
-    ],
+      "Full-stack digital growth — design, engineering, and marketing under one roof for startups and growing businesses.",
+    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Throughout (PVT) LTD" }],
+    locale: "en_US",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Custom Software & AI Development Company | Throughout (PVT) LTD",
-    description:
-      "Custom software, web, mobile, and AI solutions for modern businesses.",
+    title: "Digital Marketing, Engineering & Design | Throughout (PVT) LTD",
+    description: "Full-stack digital growth — design, engineering, and marketing under one roof.",
     images: ["/images/twitter-default.png"],
+    creator: "@throughout_io",
   },
 
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+    googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 },
   },
 
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
-
+  icons: { icon: "/favicon.ico", apple: "/apple-touch-icon.png" },
   manifest: "/site.webmanifest",
+
+  alternates: { canonical: "https://www.throughout.io" },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": "https://www.throughout.io/#organization",
-    name: "Throughout (PVT) LTD",
-    url: "https://www.throughout.io",
-    logo: "https://www.throughout.io/images/logo.png",
-    description:
-      "Custom software and AI development company delivering web, mobile, and cloud solutions.",
-    contactPoint: {
+const GA_ID = "G-70B910BNDJ";
+const FB_PIXEL_ID = "1251107350497461";
+
+// ── Schema Markup ────────────────────────────────────────────────────────────
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.throughout.io/#organization",
+  name: "Throughout (PVT) LTD",
+  alternateName: "Throughout",
+  url: "https://www.throughout.io",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://www.throughout.io/images/logo.png",
+    width: 190,
+    height: 90,
+  },
+  description:
+    "Throughout is a full-stack digital growth studio combining Digital Marketing, Engineering, and Design to build and grow digital businesses.",
+  foundingDate: "2022",
+  areaServed: ["Sri Lanka", "Worldwide"],
+  serviceType: ["Digital Marketing", "Software Engineering", "UI/UX Design", "Brand Identity", "Web Development", "AI Automation"],
+  contactPoint: [
+    {
       "@type": "ContactPoint",
-      contactType: "Customer Support",
+      contactType: "Sales",
       email: "info@throughout.io",
       availableLanguage: ["English"],
+      url: "https://www.throughout.io/contact",
     },
-    sameAs: [
-      "https://twitter.com/throughout",
-      "https://www.linkedin.com/company/throughout",
-      "https://github.com/throughout",
-    ],
-  };
+    {
+      "@type": "ContactPoint",
+      contactType: "Customer Support",
+      telephone: "+94707007992",
+      availableLanguage: ["English"],
+    },
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "LK",
+    addressLocality: "Colombo",
+  },
+  sameAs: [
+    "https://www.linkedin.com/company/throughout-io",
+    "https://www.facebook.com/throughout.io",
+    "https://www.instagram.com/throughout.io",
+  ],
+};
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.throughout.io/#website",
+  name: "Throughout (PVT) LTD",
+  url: "https://www.throughout.io",
+  publisher: { "@id": "https://www.throughout.io/#organization" },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: { "@type": "EntryPoint", urlTemplate: "https://www.throughout.io/insights?q={search_term_string}" },
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.throughout.io/digital-marketing#service",
+      name: "Digital Marketing",
+      provider: { "@id": "https://www.throughout.io/#organization" },
+      description: "SEO, paid advertising, social media management, content strategy, and email marketing to grow your digital presence and generate leads.",
+      url: "https://www.throughout.io/digital-marketing",
+      serviceType: "Digital Marketing",
+      areaServed: ["Sri Lanka", "Worldwide"],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Digital Marketing Services",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO & Content Strategy" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Google & Meta Ads" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media Management" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Email Marketing" } },
+        ],
+      },
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.throughout.io/engineering#service",
+      name: "Engineering",
+      provider: { "@id": "https://www.throughout.io/#organization" },
+      description: "Web and mobile app development, cloud infrastructure, AI automation, and workflow engineering for startups and growing businesses.",
+      url: "https://www.throughout.io/engineering",
+      serviceType: "Software Engineering",
+      areaServed: ["Sri Lanka", "Worldwide"],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Engineering Services",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web & Mobile App Development" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Cloud & DevOps" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI & Automation" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Shopify Development" } },
+        ],
+      },
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.throughout.io/design#service",
+      name: "Design",
+      provider: { "@id": "https://www.throughout.io/#organization" },
+      description: "Brand identity, UI/UX design, web design, and creative visual production for businesses that want to look premium and convert consistently.",
+      url: "https://www.throughout.io/design",
+      serviceType: "Design",
+      areaServed: ["Sri Lanka", "Worldwide"],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Design Services",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Brand Identity & Logo Design" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "UI/UX Design" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Design" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media Creatives" } },
+        ],
+      },
+    },
+  ],
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <meta
-          name="facebook-domain-verification"
-          content="uf6mvfowatdceibrh83b3u1e5xdtpb"
-        />
-        {/* Preload manifest only; Next.js handles fonts and CSS */}
+        <meta name="facebook-domain-verification" content="uf6mvfowatdceibrh83b3u1e5xdtpb" />
         <link rel="preload" as="manifest" href="/site.webmanifest" />
-        {/* Calendly widget styles */}
-        <link
-          rel="stylesheet"
-          href="https://assets.calendly.com/assets/external/widget.css"
-        />
-        {/* Google tag (gtag.js) */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-70B910BNDJ"
-        ></script>
+        <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
+
+        {/* Google Analytics 4 */}
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-70B910BNDJ');
+              gtag('config', '${GA_ID}', {
+                send_page_view: true,
+                cookie_flags: 'SameSite=None;Secure'
+              });
             `,
           }}
         />
-        {/* Meta Pixel Code */}
+
+        {/* Meta Pixel */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              !function(f,b,e,v,n,t,s)
-              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-              n.queue=[];t=b.createElement(e);t.async=!0;
-              t.src=v;s=b.getElementsByTagName(e)[0];
-              s.parentNode.insertBefore(t,s)}(window, document,'script',
-              'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '1251107350497461');
+              !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+              n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+              (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '${FB_PIXEL_ID}');
               fbq('track', 'PageView');
             `,
           }}
         />
+
+        {/* Schema Markup */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
       </head>
-      <body
-        className={`${montserrat.variable} ${jetbrainsMono.variable} antialiased font-sans`}
-      >
-        <Script
-          src="https://assets.calendly.com/assets/external/widget.js"
-          strategy="afterInteractive"
-        />
-        {/* Meta Pixel (noscript) */}
+
+      <body className={`${montserrat.variable} ${jetbrainsMono.variable} antialiased font-sans`}>
+        <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
+
+        {/* Meta Pixel noscript */}
         <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=1251107350497461&ev=PageView&noscript=1"
+          <img height="1" width="1" style={{ display: "none" }}
+            src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
           />
         </noscript>
-        {/* Organization Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
-          }}
-        />
-        {/* <Preloader /> */}
+
         <Navbar />
-        {/* Spacer to prevent fixed navbar from hiding content */}
-        <div className="h-0 lg:h-[40px]" />
+        <NavbarSpacer />
         {children}
         <Footer />
       </body>

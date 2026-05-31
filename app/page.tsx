@@ -1,23 +1,17 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
-import Link from "next/link";
+import Script from "next/script";
 import InnerBanner from "@/components/ui/InnerBanner";
-import ParticlesClient from "@/components/ui/ParticlesClient";
+import HeroCTA from "@/components/ui/HeroCTA";
+import AntigravityParticles from "@/components/ui/AntigravityParticles";
 import TypewriterText from "@/components/ui/TypewriterText";
 import ServicesSection from "@/components/home/ServicesSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
-import TechStackSection from "@/components/home/TechStackSection";
-
-const IndustriesSection = dynamic(
-  () => import("@/components/home/IndustriesSection")
-);
-
-const ServicesCTASection = dynamic(
-  () => import("@/components/services/ServicesCTASection")
-);
+import IndustriesSection from "@/components/home/IndustriesSection";
+import LatestBlogsSection from "@/components/home/LatestBlogsSection";
+import ServicesCTASection from "@/components/services/ServicesCTASection";
 
 export const metadata: Metadata = {
-  title: "Throughout (PVT) LTD - Smart Software Solutions | Web & Mobile App Development",
+  title: "Digital Marketing, Engineering & Design Agency | Throughout (PVT) LTD",
   description:
     "Transform your business with Throughout (PVT) LTD's expert software development services. We build fast, secure, and scalable web applications, mobile apps, APIs, and automation solutions. Get started with a free consultation today.",
   keywords: [
@@ -82,10 +76,61 @@ export const metadata: Metadata = {
   },
 };
 
+const homepageFAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What services does Throughout (PVT) LTD offer?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Throughout offers three core services: Digital Marketing (SEO, paid ads, social media, content strategy), Engineering (web and mobile app development, cloud infrastructure, AI automation), and Design (brand identity, UI/UX design, web design, and creative visuals).",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is Throughout a digital marketing agency or a software company?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Throughout is a full-stack digital growth studio — we combine Digital Marketing, Engineering, and Design under one team. This means we can handle everything from building your website to running your marketing campaigns and designing your brand identity.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does Throughout work with startups?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, Throughout specializes in working with startups, e-commerce businesses, and agencies. We offer lean, founder-friendly engagement models that deliver results without enterprise-scale costs.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Where is Throughout located and do you work internationally?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Throughout (PVT) LTD is based in Colombo, Sri Lanka, and works with clients worldwide. We serve clients across Sri Lanka, the UK, Australia, the UAE, and beyond.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How can I get started with Throughout?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You can book a free strategy call via our Calendly link, fill out our contact form at throughout.io/contact, or email us at info@throughout.io. We'll get back to you within 24 hours.",
+      },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageFAQ) }}
+      />
 
       {/* Hero Section with Background Animation */}
       <div className="relative flex min-h-screen items-stretch isolate">
@@ -94,36 +139,20 @@ export default function Home() {
         </div>
         <div className="relative z-10 flex h-full w-full items-center justify-center pt-20 sm:pt-24 lg:pt-28">
           <InnerBanner
-            badgeText="Product Engineering Studio"
+            badgeText="Digital Growth Studio"
             title={
               <TypewriterText
                 lines={[
-                  { text: "Launch Your Product Faster", breakAfter: true },
-                  { text: "With a Dedicated Engineering Team" },
+                  { text: "Design. Engineer. Market.", breakAfter: true },
+                  { text: "Grow With One Team." },
                 ]}
-                typingSpeed={105}
+                typingSpeed={80}
                 delayBetweenLines={300}
-                startDelay={500}
+                startDelay={400}
               />
             }
-            description="From MVPs to enterprise platforms, we build fast, scalable software using modern technologies."
-            cta={
-              <div className="flex flex-col justify-center gap-3 sm:flex-row">
-                <Link
-                  href="/portfolio"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-sky-900/15 transition hover:bg-sky-700 hover:shadow-xl"
-                >
-                  View Our Work
-                  <span aria-hidden="true">→</span>
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-7 py-3.5 text-base font-bold text-slate-900 transition hover:border-slate-300 hover:bg-slate-50 hover:shadow-lg"
-                >
-                  Book a Free Call
-                </Link>
-              </div>
-            }
+            description="Throughout combines creative design, modern engineering, and data-driven marketing into a single coordinated growth engine for your business."
+            cta={<HeroCTA />}
             isBackgroundColored={false}
           />
         </div>
@@ -148,13 +177,16 @@ export default function Home() {
       {/* <TrustSection /> */}
       {/* Technology Stack Showcase */}
       <TechStackSection />
+      {/* Latest Blogs */}
+      <LatestBlogsSection />
+
       {/* Footer */}
       <ServicesCTASection
-        headline={"Ready to Build Something Amazing?"}
+        headline={"Ready to Grow Your Digital Business?"}
         subtext={
-          "Building the future, one line of code at a time. We transform ideas into powerful digital solutions."
+          "Design. Engineering. Marketing. One team, one goal — building and growing your digital presence with momentum."
         }
-        buttonText={"Book Free Strategy Call"}
+        buttonText={"Get a Free Strategy Call"}
       />
       {/* <TrendyTuringLabel /> */}
     </div>

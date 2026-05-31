@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FiActivity,
   FiArrowRight,
@@ -165,84 +166,132 @@ export default function IndustriesSection() {
         />
 
         <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
+          {/* Active industry panel */}
           <div className="relative min-h-[520px] overflow-hidden rounded-3xl bg-slate-950 shadow-xl shadow-slate-900/15">
-            {activeIndustry.media.type === "video" ? (
-              <video
-                key={activeIndustry.media.src}
-                className="absolute inset-0 h-full w-full object-cover"
-                src={activeIndustry.media.src}
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-            ) : (
-              <Image
-                key={activeIndustry.media.src}
-                className="absolute inset-0 h-full w-full object-cover"
-                src={activeIndustry.media.src}
-                alt=""
-                fill
-                sizes="(min-width: 1024px) 45vw, 100vw"
-              />
-            )}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndustry.id + "-media"}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.45 }}
+                className="absolute inset-0"
+              >
+                {activeIndustry.media.type === "video" ? (
+                  <video
+                    className="absolute inset-0 h-full w-full object-cover"
+                    src={activeIndustry.media.src}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  />
+                ) : (
+                  <Image
+                    className="absolute inset-0 h-full w-full object-cover"
+                    src={activeIndustry.media.src}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 45vw, 100vw"
+                  />
+                )}
+              </motion.div>
+            </AnimatePresence>
 
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/55 to-slate-950/10" />
 
             <div className="relative z-10 flex h-full min-h-[520px] flex-col justify-between p-6 sm:p-8">
               <div className="flex items-center justify-between gap-4">
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-2 text-sm font-semibold text-white backdrop-blur-md">
-                  <span className="text-lg">{activeIndustry.icon}</span>
-                  {activeIndustry.name}
-                </div>
-                <span className="rounded-full bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-slate-950">
-                  {String(activeIndustry.id + 1).padStart(2, "0")}
-                </span>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeIndustry.id + "-badge"}
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.3 }}
+                    className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-2 text-sm font-semibold text-white backdrop-blur-md"
+                  >
+                    <span className="text-lg">{activeIndustry.icon}</span>
+                    {activeIndustry.name}
+                  </motion.div>
+                </AnimatePresence>
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={activeIndustry.id + "-num"}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.25 }}
+                    className="rounded-full bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-slate-950"
+                  >
+                    {String(activeIndustry.id + 1).padStart(2, "0")}
+                  </motion.span>
+                </AnimatePresence>
               </div>
 
-              <div className="max-w-xl">
-                <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-sky-200">
-                  {activeIndustry.eyebrow}
-                </p>
-                <h3 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                  {activeIndustry.title}
-                </h3>
-                <p className="mt-4 text-base leading-7 text-slate-100 sm:text-lg">
-                  {activeIndustry.description}
-                </p>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {activeIndustry.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <Link
-                  href="/contact"
-                  className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-sky-100"
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndustry.id + "-content"}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  className="max-w-xl"
                 >
-                  Explore solutions
-                  <FiArrowRight />
-                </Link>
-              </div>
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-sky-200">
+                    {activeIndustry.eyebrow}
+                  </p>
+                  <h3 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                    {activeIndustry.title}
+                  </h3>
+                  <p className="mt-4 text-base leading-7 text-slate-100 sm:text-lg">
+                    {activeIndustry.description}
+                  </p>
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {activeIndustry.tags.map((tag, i) => (
+                      <motion.span
+                        key={tag}
+                        initial={{ opacity: 0, scale: 0.85 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.25, delay: 0.1 + i * 0.06 }}
+                        className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md"
+                      >
+                        {tag}
+                      </motion.span>
+                    ))}
+                  </div>
+
+                  <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}>
+                    <Link
+                      href="/contact"
+                      className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-sky-100"
+                    >
+                      Explore solutions
+                      <FiArrowRight />
+                    </Link>
+                  </motion.div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
 
+          {/* Industry selector grid */}
           <div className="grid gap-3 sm:grid-cols-2">
-            {industries.map((industry) => {
+            {industries.map((industry, index) => {
               const isActive = activeIndustry.id === industry.id;
 
               return (
-                <button
+                <motion.button
                   key={industry.id}
                   type="button"
                   onClick={() => setActiveIndustryId(industry.id)}
                   onMouseEnter={() => setActiveIndustryId(industry.id)}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.06 }}
+                  whileTap={{ scale: 0.97 }}
                   className={`group min-h-[172px] rounded-2xl border p-5 text-left transition ${
                     isActive
                       ? "border-sky-300 bg-sky-50 shadow-lg shadow-sky-900/10"
@@ -273,7 +322,7 @@ export default function IndustriesSection() {
                   <p className="mt-4 text-xs font-bold uppercase tracking-wider text-sky-700">
                     {industry.metric}
                   </p>
-                </button>
+                </motion.button>
               );
             })}
           </div>

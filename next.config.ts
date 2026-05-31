@@ -3,6 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
+  async redirects() {
+    return [
+      { source: "/services", destination: "/engineering", permanent: true },
+      { source: "/services/:path*", destination: "/engineering", permanent: false },
+    ];
+  },
   async headers() {
     return [
       {
