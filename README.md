@@ -8,6 +8,28 @@ Throughout is a modern software engineering company specializing in custom web, 
 
 ---
 
+## Recent Work (Timeline)
+
+Changes made in May 2026 to clean up routes and ensure consistent top spacing across pages:
+
+- 2026-05-31: Added `components/NavbarSpacer.tsx` — a small client component that measures the fixed navbar height and inserts an equal-height spacer so page content aligns consistently under the header.
+- 2026-05-31: Inserted `NavbarSpacer` into `app/layout.tsx` right after the `<Navbar />`.
+- 2026-05-31: Removed unused pages and folders to simplify the site structure:
+	- `app/free-seo-aduitor/page.tsx`
+	- `app/whatsapp_automation/page.tsx`
+	- `app/throughout-products/page.tsx`
+	- `app/why-us/page.tsx`
+	- `app/n8n-agency/page.tsx` (folder cleaned)
+	- `app/products/page.tsx` (folder cleaned)
+	- `app/services/*` (pages removed: `page.tsx`, `EngineeringPageClient.tsx`, dynamic `[serviceId]/page.tsx`)
+	- `app/throughout-ai/page.tsx`
+	- `app/mvp-studio/page.tsx`
+
+Notes:
+- If you removed pages that still have corresponding UI components, consider deleting their component folders (for example `components/n8n-agency`, `components/mvp-studio`, `components/services`, `components/throughout-ai`) when you confirm they are unused.
+- After large removals, run a quick search for leftover imports (IDE or `grep`) and run `npm run build` to catch any missing references.
+
+
 ## 🌐 Main Pages Overview
 
 | Page                                             | Description                                                                                            |
