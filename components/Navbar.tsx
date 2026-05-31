@@ -68,7 +68,7 @@ export default function Navbar() {
   // ===== MAIN NAV LINKS =====
   const mainNavLinks = [
     { name: "Digital Marketing", href: "/digital-marketing", hasDropdown: false },
-    { name: "Engineering", href: "/services", hasDropdown: false },
+    { name: "Engineering", href: "/engineering", hasDropdown: false },
     { name: "Design", href: "/design", hasDropdown: false },
     { name: "Comflo", href: "https://comflo.app/" },
     { name: "Rankout", href: "https://rankout.app/" },
@@ -159,7 +159,7 @@ export default function Navbar() {
                         <button
                           onClick={() => setIsServicesOpen((prev) => !prev)}
                           className={`flex items-center gap-1 px-2.5 py-1.5 text-xs xl:text-sm font-semibold transition-all duration-200 cursor-pointer rounded-lg ${
-                            isActive("/services")
+                            isActive("/engineering")
                               ? "text-white bg-sky-600 shadow-md scale-105"
                               : "text-gray-900 hover:text-gray-900 hover:bg-slate-100"
                           }`}

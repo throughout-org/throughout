@@ -8,7 +8,7 @@ import {
   FiMessageCircle,
 } from "react-icons/fi";
 
-const quickLinks = [
+const resources = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Work", href: "/portfolio" },
@@ -20,14 +20,8 @@ const quickLinks = [
 
 const services = [
   { label: "Digital Marketing", href: "/digital-marketing" },
+  { label: "Engineering", href: "/engineering" },
   { label: "Design", href: "/design" },
-  { label: "Software Development", href: "/services#software-development" },
-  { label: "UI/UX Engineering", href: "/services#ui-ux-engineering" },
-  { label: "Shopify Development", href: "/services#shopify-development" },
-  { label: "CMS Development", href: "/services#cms-development" },
-  { label: "Cloud & Server", href: "/services#cloud-server-solutions" },
-  { label: "Workflow Automation", href: "/services#workflow-automation" },
-  { label: "AI Solutions", href: "/ai" },
 ];
 
 const socials = [
@@ -111,12 +105,12 @@ export default function Footer() {
             </div>
           </div>
 
-          <nav aria-label="Footer quick links">
+          <nav aria-label="Footer resources">
             <h3 className="text-sm font-bold uppercase tracking-[0.16em] text-white">
-              Company
+              Resources
             </h3>
             <ul className="mt-5 space-y-3">
-              {quickLinks.map((item) => (
+              {resources.map((item) => (
                 <FooterLink
                   key={item.href}
                   href={item.href}

@@ -22,7 +22,7 @@ const designServices = [
     headline: "Brands People Remember",
     description:
       "A brand is more than a logo — it's the feeling people get when they interact with your business. We craft complete brand identities that communicate who you are, build trust, and make you the obvious choice.",
-    image: "/images/our-services/Corporate Strategy Workshop with Colorful Ideas Wall.jpeg",
+    image: "/images/ai-generated/brand-identity-studio.png",
     offerings: [
       { icon: <FiPackage />, name: "Logo & Visual Identity" },
       { icon: <FiPenTool />, name: "Brand Guidelines" },
@@ -43,7 +43,7 @@ const designServices = [
     headline: "Interfaces That Feel Effortless",
     description:
       "Good UI/UX removes friction. We design digital interfaces — web apps, mobile apps, SaaS dashboards — that guide users naturally, reduce drop-off, and turn visitors into customers.",
-    image: "/images/our-services/colleagues-working-project-discussing-details.jpg",
+    image: "/images/ai-generated/ux-design-studio.png",
     offerings: [
       { icon: <FiGrid />,   name: "Wireframes & User Flows" },
       { icon: <FiLayout />, name: "High-Fidelity UI Design" },
@@ -64,7 +64,7 @@ const designServices = [
     headline: "Websites That Convert",
     description:
       "Your website is your best sales rep. We design websites and landing pages that communicate your value clearly, look credible instantly, and convert visitors into leads and customers.",
-    image: "/images/our-services/Monitoring and analyzing website traffic and user.jpeg",
+    image: "/images/our-services/Pair programming.jpeg",
     offerings: [
       { icon: <FiMonitor />, name: "Marketing Websites" },
       { icon: <FiZap />,     name: "Landing Pages" },
