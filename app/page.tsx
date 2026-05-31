@@ -9,6 +9,8 @@ import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
 import IndustriesSection from "@/components/home/IndustriesSection";
 import LatestBlogsSection from "@/components/home/LatestBlogsSection";
 import ServicesCTASection from "@/components/services/ServicesCTASection";
+import ParticlesClient from "@/components/ui/ParticlesClient";
+import TechStackSection from "@/components/home/TechStackSection";
 
 export const metadata: Metadata = {
   title: "Digital Marketing, Engineering & Design Agency | Throughout (PVT) LTD",
