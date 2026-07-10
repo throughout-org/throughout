@@ -32,14 +32,19 @@ type Industry = {
 };
 
 const industryVideos = {
-  sleep:
-    "/images/industries/From KlickPin CF 28 Fresh Sleep Routine Tips for Everyday - Pin-74661306318443830.mp4",
-  soloTravel:
-    "/images/industries/From KlickPin CF Copy these budget-friendly solo travel tips that bring style function and personality together for a polished look that still feels personal and - Pin-580542208257093841.mp4",
+  property:"/images/industries/property.mp4",
+  ecommerce:
+    "/images/industries/ecommerce.mp4",
+  health:
+    "/images/industries/health.mp4",
   travel:
-    "/images/industries/From KlickPin CF Pin by Daniella Marroquín on Guardado rápido _ Cool instagram pictures Travel video ideas Beautiful places to travel.mp4",
+    "/images/industries/travel.mp4",
   education:
-    "/images/industries/medium-shot-young-pastor-preaching-church.jpg",
+    "/images/industries/education.mp4",
+  legal:
+    "/images/industries/legal.mp4",
+  audit:
+    "/images/industries/audit.mp4",
 };
 
 const industries: Industry[] = [
@@ -53,7 +58,7 @@ const industries: Industry[] = [
       "We build property platforms that connect tenant portals, lease workflows, maintenance requests, and reporting into one operational layer.",
     tags: ["Tenant portals", "AI maintenance", "Workflow automation"],
     metric: "Portfolio-ready platforms",
-    media: { type: "video", src: industryVideos.soloTravel },
+    media: { type: "video", src: industryVideos.property },
   },
   {
     id: 1,
@@ -77,7 +82,7 @@ const industries: Industry[] = [
       "We create headless storefronts, payment integrations, and personalized shopping journeys that help teams scale beyond template limits.",
     tags: ["Headless commerce", "Payment gateways", "Personalization"],
     metric: "Sub-second storefronts",
-    media: { type: "video", src: industryVideos.soloTravel },
+    media: { type: "video", src: industryVideos.ecommerce },
   },
   {
     id: 3,
@@ -89,7 +94,7 @@ const industries: Industry[] = [
       "We design LMS products, student portals, and secure media experiences for institutions that need learning to feel smooth and measurable.",
     tags: ["LMS platforms", "Video learning", "Student portals"],
     metric: "Structured learning paths",
-    media: { type: "image", src: industryVideos.education },
+    media: { type: "video", src: industryVideos.education },
   },
   {
     id: 4,
@@ -101,7 +106,7 @@ const industries: Industry[] = [
       "We help legal teams manage cases, automate document drafting, and protect client data with controlled access and secure workflows.",
     tags: ["Case management", "AI drafting", "Access control"],
     metric: "Confidential by design",
-    media: { type: "video", src: industryVideos.soloTravel },
+    media: { type: "video", src: industryVideos.legal },
   },
   {
     id: 5,
@@ -113,7 +118,7 @@ const industries: Industry[] = [
       "We build compliance dashboards and audit tools that track obligations, surface risk, and make reporting easier for internal teams.",
     tags: ["Audit tools", "Risk dashboards", "Auto tracking"],
     metric: "Always visible status",
-    media: { type: "video", src: industryVideos.sleep },
+    media: { type: "video", src: industryVideos.audit },
   },
   {
     id: 6,
@@ -125,7 +130,7 @@ const industries: Industry[] = [
       "We develop telemedicine, patient management, and monitoring systems that prioritize privacy, interoperability, and dependable care.",
     tags: ["Telemedicine", "Patient portals", "Monitoring"],
     metric: "Care-first workflows",
-    media: { type: "video", src: industryVideos.sleep },
+    media: { type: "video", src: industryVideos.health },
   },
 ];
 
@@ -146,7 +151,7 @@ export default function IndustriesSection() {
         );
         return industries[(currentIndex + 1) % industries.length].id;
       });
-    }, 5000);
+    }, 30000);
 
     return () => window.clearInterval(interval);
   }, []);

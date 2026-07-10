@@ -5,11 +5,12 @@ import HeroCTA from "@/components/ui/HeroCTA";
 import AntigravityParticles from "@/components/ui/AntigravityParticles";
 import TypewriterText from "@/components/ui/TypewriterText";
 import ServicesSection from "@/components/home/ServicesSection";
-import TechStackSection from "@/components/home/TechStackSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
 import IndustriesSection from "@/components/home/IndustriesSection";
 import LatestBlogsSection from "@/components/home/LatestBlogsSection";
 import ServicesCTASection from "@/components/services/ServicesCTASection";
+import ParticlesClient from "@/components/ui/ParticlesClient";
+import TechStackSection from "@/components/home/TechStackSection";
 
 export const metadata: Metadata = {
   title:
@@ -138,7 +139,7 @@ export default function Home() {
       {/* Hero Section with Background Animation */}
       <div className="relative flex items-stretch min-h-screen isolate">
         <div className="absolute inset-0 w-full h-full">
-          <AntigravityParticles />
+          <ParticlesClient />
         </div>
         <div className="relative z-10 flex items-center justify-center w-full h-full pt-20 sm:pt-24 lg:pt-28">
           <InnerBanner
