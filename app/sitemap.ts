@@ -43,7 +43,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Content
     page("/insights", 0.85, "daily"),
-    page("/internships", 0.6, "weekly"),
+    page("/careers", 0.6, "weekly"),
 
     // Products
     page("/mvp-studio", 0.8, "weekly"),

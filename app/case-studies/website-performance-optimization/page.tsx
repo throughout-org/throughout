@@ -2,6 +2,7 @@ import React from "react";
 import { FiCheckCircle, FiActivity, FiZap, FiImage, FiCode, FiArrowRight } from "react-icons/fi";
 import { Metadata } from "next";
 import InnerBanner from "@/components/ui/InnerBanner";
+import AntigravityParticles from "@/components/ui/AntigravityParticles";
 import { CaseStudySidebar, CaseStudySection } from "@/components/case-studies/CaseStudyLayout";
 
 export const metadata: Metadata = {
@@ -13,11 +14,19 @@ export default function WebsitePerformanceCaseStudy() {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <InnerBanner 
-        badgeText="Performance"
-        title="Website Performance Optimization"
-        description="Taking a sluggish, unoptimized website and transforming it into a lightning-fast experience that users love and search engines reward."
-      />
+      <div className="relative flex min-h-[60vh] items-stretch isolate">
+        <div className="absolute inset-0 h-full w-full">
+          <AntigravityParticles />
+        </div>
+        <div className="relative z-10 flex w-full items-center justify-center pt-20 sm:pt-24 lg:pt-28">
+          <InnerBanner
+            badgeText="Performance"
+            title="Website Performance Optimization"
+            description="Taking a sluggish, unoptimized website and transforming it into a lightning-fast experience that users love and search engines reward."
+            isBackgroundColored={false}
+          />
+        </div>
+      </div>
 
       <div className="w-full max-w-7xl mx-auto px-6 py-16 lg:py-24 flex flex-col lg:flex-row gap-16">
         {/* Main Content */}
@@ -131,22 +140,6 @@ export default function WebsitePerformanceCaseStudy() {
                      </div>
                    </div>
                  </div>
-              </div>
-            </div>
-          </CaseStudySection>
-
-          <CaseStudySection number="5" title="Client Testimonial">
-            <div className="bg-blue-50/50 rounded-3xl p-10 border border-blue-100 relative">
-              <FiCheckCircle className="absolute top-8 right-8 w-12 h-12 text-blue-200 opacity-50" />
-              <p className="text-xl md:text-2xl text-gray-900 font-medium italic mb-8 leading-relaxed">
-                &quot;The difference is night and day. Our mobile conversion rate shot up immediately after the optimization. We didn&apos;t realize how much money we were leaving on the table because of a slow website.&quot;
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gray-300 rounded-full overflow-hidden flex items-center justify-center font-bold text-xl text-gray-500">M</div>
-                <div>
-                  <p className="font-bold text-gray-900">Mark Thompson</p>
-                  <p className="text-sm text-gray-600">CTO, E-commerce Fashion Brand</p>
-                </div>
               </div>
             </div>
           </CaseStudySection>

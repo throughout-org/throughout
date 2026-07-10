@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { getInternshipsFromCrm } from "@/lib/internshipsApi";
+import { getInternshipsFromCrm } from "@/lib/careersApi";
 import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 import InnerBanner from "@/components/ui/InnerBanner";
 import AntigravityParticles from "@/components/ui/AntigravityParticles";
@@ -49,14 +49,14 @@ const processSteps = [
 ];
 
 export const metadata: Metadata = {
-  title: "Internship Opportunities | Throughout (PVT) LTD",
+  title: "Careers | Throughout (PVT) LTD",
   description:
-    "Join our team and gain hands-on experience in a fast-paced startup environment. Explore internship opportunities at Throughout (PVT) LTD.",
+    "Join our team and gain hands-on experience in a fast-paced startup environment. Explore career opportunities at Throughout (PVT) LTD.",
   keywords: [
+    "careers",
     "internship",
     "internships",
     "jobs",
-    "careers",
     "startup",
     "Throughout (PVT) LTD",
     "Sri Lanka",
@@ -73,34 +73,34 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "Internship Opportunities | Throughout (PVT) LTD",
+    title: "Careers | Throughout (PVT) LTD",
     description:
-      "Join our team and gain hands-on experience in a fast-paced startup environment. Explore internship opportunities at Throughout (PVT) LTD.",
-    url: "https://www.throughout.io/internships",
+      "Join our team and gain hands-on experience in a fast-paced startup environment. Explore career opportunities at Throughout (PVT) LTD.",
+    url: "https://www.throughout.io/careers",
     type: "website",
     images: [
       {
-        url: "https://www.throughout.io/og-internships.png",
+        url: "https://www.throughout.io/og-careers.png",
         width: 1200,
         height: 630,
-        alt: "Internship Opportunities at Throughout (PVT) LTD",
+        alt: "Careers at Throughout (PVT) LTD",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Internship Opportunities | Throughout (PVT) LTD",
+    title: "Careers | Throughout (PVT) LTD",
     description:
-      "Join our team and gain hands-on experience in a fast-paced startup environment. Explore internship opportunities at Throughout (PVT) LTD.",
-    images: ["https://www.throughout.io/og-internships.png"],
+      "Join our team and gain hands-on experience in a fast-paced startup environment. Explore career opportunities at Throughout (PVT) LTD.",
+    images: ["https://www.throughout.io/og-careers.png"],
     site: "@throughout",
   },
   alternates: {
-    canonical: "https://www.throughout.io/internships",
+    canonical: "https://www.throughout.io/careers",
   },
 };
 
-export default async function InternshipsPage() {
+export default async function CareersPage() {
   const internships = await getInternshipsFromCrm();
   const datePosted = new Date().toISOString().split("T")[0];
   const validThrough = new Date(new Date().setMonth(new Date().getMonth() + 3))
@@ -134,7 +134,7 @@ export default async function InternshipsPage() {
       name: "Throughout (PVT) LTD",
       value: internship.id,
     },
-    url: `https://www.throughout.io/internships/${internship.slug}`,
+    url: `https://www.throughout.io/careers/${internship.slug}`,
     directApply: true,
   }));
 
@@ -157,7 +157,7 @@ export default async function InternshipsPage() {
           </div>
           <div className="relative z-10 flex w-full items-center justify-center pt-20 sm:pt-24 lg:pt-28">
             <InnerBanner
-              badgeText="Internships"
+              badgeText="Careers"
               title={
                 <>
                   Learn by Working on <br className="hidden md:block" />
@@ -169,14 +169,14 @@ export default async function InternshipsPage() {
                 <div className="flex flex-col justify-center gap-3 sm:flex-row">
                   <Link
                     href="#open-roles"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-sky-900/15 transition hover:bg-sky-700 hover:shadow-xl"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-600 px-7 py-3.5 text-base font-bold text-white transition hover:bg-sky-700"
                   >
                     View Open Roles
                     <span aria-hidden="true">-&gt;</span>
                   </Link>
                   <Link
                     href="#process"
-                    className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-7 py-3.5 text-base font-bold text-slate-900 transition hover:border-slate-300 hover:bg-slate-50 hover:shadow-lg"
+                    className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-7 py-3.5 text-base font-bold text-slate-900 transition hover:border-slate-300 hover:bg-slate-50"
                   >
                     Hiring Process
                   </Link>
@@ -201,7 +201,7 @@ export default async function InternshipsPage() {
               {processSteps.map((step) => (
                 <article
                   key={step.number}
-                  className="p-6 transition border rounded-3xl border-slate-200 bg-slate-50 hover:-translate-y-1 hover:bg-white hover:shadow-xl hover:shadow-slate-900/10"
+                  className="p-6 transition border rounded-3xl border-slate-200 bg-slate-50 hover:-translate-y-1 hover:bg-white hover:border-slate-300"
                 >
                   <span className="text-xs font-bold uppercase tracking-[0.16em] text-sky-700">
                     {step.number}
@@ -226,17 +226,17 @@ export default async function InternshipsPage() {
             <ServiceSectionHeader
               badgeText="Open Roles"
               headline="Careers at Throughout"
-              intro="Choose the internship that matches your strengths and growth goals."
+              intro="Choose the role that matches your strengths and growth goals."
               headlineSize="text-3xl sm:text-4xl"
             />
 
             {internships.length === 0 ? (
-              <div className="p-10 text-center bg-white border shadow-sm rounded-3xl border-slate-200">
+              <div className="p-10 text-center bg-white border rounded-3xl border-slate-200">
                 <h3 className="text-2xl font-bold text-slate-950">
                   No roles open right now
                 </h3>
                 <p className="mt-3 text-slate-600">
-                  Check back soon for new internship opportunities.
+                  Check back soon for new career opportunities.
                 </p>
               </div>
             ) : (
@@ -244,8 +244,8 @@ export default async function InternshipsPage() {
                 {internships.map((internship) => (
                   <Link
                     key={internship.id}
-                    href={`/internships/${internship.slug}`}
-                    className="block p-6 transition bg-white border shadow-sm group rounded-3xl border-slate-200 hover:-translate-y-1 hover:border-sky-200 hover:shadow-xl hover:shadow-slate-900/10 sm:p-8"
+                    href={`/careers/${internship.slug}`}
+                    className="block p-6 transition bg-white border group rounded-3xl border-slate-200 hover:-translate-y-1 hover:border-sky-200 sm:p-8"
                   >
                     <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-center">
                       <div className="max-w-3xl">

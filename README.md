@@ -41,8 +41,8 @@ Notes:
 | **Portfolio** (`/portfolio`)                     | Showcases our best work: web, mobile, AI, and automation projects.                                     |
 | **Insights/Blog** (`/insights`)                  | Latest articles, tech insights, and company news. Dynamic content from Sanity CMS.                     |
 | **Insight Details** (`/insights/[slug]`)         | Full article view for each insight or blog post.                                                       |
-| **Internships** (`/internships`)                 | Open internship opportunities with details and application form.                                       |
-| **Internship Details** (`/internships/[slug]`)   | Detailed info and application for each internship role.                                                |
+| **Careers** (`/careers`)                         | Open career opportunities with details and application form.                                           |
+| **Career Details** (`/careers/[slug]`)           | Detailed info and application for each role.                                                            |
 | **Contact** (`/contact`)                         | Contact form, WhatsApp, and company info for inquiries and support.                                    |
 | **Free SEO Auditor** (`/free-seo-aduitor`)       | Free tool to analyze your website’s SEO and get actionable recommendations.                            |
 | **MVP Studio** (`/mvp-studio`)                   | Launch your SaaS MVP in 3 weeks with our fixed-scope, AI-accelerated process.                          |
@@ -99,13 +99,13 @@ Notes:
 - **How to Update**: Edit in Sanity Studio for production, or update [data/insights.ts](data/insights.ts) for local/demo content.
 - **Content Structure**: The `content` field supports HTML and Portable Text blocks.
 
-### Internships
+### Careers
 
-- **Dynamic Internships Page**: Internship listings are fetched from the CRM Jobs API (`/api/jobs`) and rendered dynamically.
-- **Rich Metadata**: Each internship includes title, duration, stipend, location, status, description, responsibilities, requirements, skills, and benefits.
+- **Dynamic Careers Page**: Role listings are fetched from the CRM Jobs API (`/api/jobs`) and rendered dynamically.
+- **Rich Metadata**: Each role includes title, duration, stipend, location, status, description, responsibilities, requirements, skills, and benefits.
 - **How to Update**: Add, edit, or close openings from CRM at `/jobs/openings`.
-- **Dynamic Routing**: Individual internship details are available at `/internships/[slug]`.
-- **Open/Closed Status**: Only openings with `status: "open"` are shown on the main internships page.
+- **Dynamic Routing**: Individual role details are available at `/careers/[slug]`.
+- **Open/Closed Status**: Only openings with `status: "open"` are shown on the main careers page.
 - **Fallback Behavior**: If the CRM API is unreachable, the website falls back to [data/internships.ts](data/internships.ts).
 
 ### Dependencies
@@ -143,7 +143,7 @@ NEXT_PUBLIC_SEO_AUDIT_API_URL="http://127.0.0.1:8000/free-seo-audit"
 NEXT_PUBLIC_CONTACT_API_URL=
 NEXT_PUBLIC_CONTACT_API_KEY=
 
-# Optional: CRM source for internships page
+# Optional: CRM source for careers page
 CRM_PUBLIC_API_BASE_URL="https://crm.throughout.io"
 ```
 

@@ -13,7 +13,8 @@ import ParticlesClient from "@/components/ui/ParticlesClient";
 import TechStackSection from "@/components/home/TechStackSection";
 
 export const metadata: Metadata = {
-  title: "Digital Marketing, Engineering & Design Agency | Throughout (PVT) LTD",
+  title:
+    "Digital Marketing, Engineering & Design Agency | Throughout (PVT) LTD",
   description:
     "Transform your business with Throughout (PVT) LTD's expert software development services. We build fast, secure, and scalable web applications, mobile apps, APIs, and automation solutions. Get started with a free consultation today.",
   keywords: [
@@ -42,7 +43,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.throughout.io",
     siteName: "Throughout (PVT) LTD",
-    title: "Throughout (PVT) LTD - Smart Software Solutions | Web & Mobile App Development",
+    title:
+      "Throughout (PVT) LTD - Smart Software Solutions | Web & Mobile App Development",
     description:
       "Transform your business with expert software development. Fast, secure, and scalable digital solutions.",
     images: [
@@ -135,11 +137,11 @@ export default function Home() {
       />
 
       {/* Hero Section with Background Animation */}
-      <div className="relative flex min-h-screen items-stretch isolate">
+      <div className="relative flex items-stretch min-h-screen isolate">
         <div className="absolute inset-0 w-full h-full">
           <ParticlesClient />
         </div>
-        <div className="relative z-10 flex h-full w-full items-center justify-center pt-20 sm:pt-24 lg:pt-28">
+        <div className="relative z-10 flex items-center justify-center w-full h-full pt-20 sm:pt-24 lg:pt-28">
           <InnerBanner
             badgeText="Digital Growth Studio"
             title={
@@ -180,7 +182,7 @@ export default function Home() {
       {/* Technology Stack Showcase */}
       <TechStackSection />
       {/* Latest Blogs */}
-      <LatestBlogsSection />
+      {/*  <LatestBlogsSection /> */}
 
       {/* Footer */}
       <ServicesCTASection

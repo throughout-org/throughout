@@ -72,7 +72,7 @@ export default function NewsletterSignup({
 }
 
 function NewsletterForm({
-  email, setEmail, status, error, onSubmit, dark, compact,
+  email, setEmail, status, error, onSubmit, dark,
 }: {
   email: string;
   setEmail: (v: string) => void;
@@ -95,7 +95,7 @@ function NewsletterForm({
           You're in! Check your inbox soon.
         </motion.div>
       ) : (
-        <motion.form key="form" onSubmit={onSubmit} className={`flex gap-2 ${compact ? "flex-col sm:flex-row" : "flex-col"}`}>
+        <motion.form key="form" onSubmit={onSubmit} className="flex gap-2 flex-row">
           <input
             type="email"
             required

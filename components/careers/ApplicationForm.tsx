@@ -78,10 +78,10 @@ export default function ApplicationForm({
   };
 
   const fieldClassName =
-    "w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 shadow-sm transition focus:border-sky-400 focus:outline-none focus:ring-4 focus:ring-sky-100";
+    "w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 transition focus:border-sky-400 focus:outline-none focus:ring-4 focus:ring-sky-100";
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-900/5 sm:p-8">
+    <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
       <div className="mb-8">
         <p className="text-xs font-bold uppercase tracking-[0.16em] text-sky-700">
           Application
@@ -314,10 +314,10 @@ export default function ApplicationForm({
           <button
             type="submit"
             disabled={isSubmitting || status === "closed"}
-            className={`group relative flex w-full items-center justify-center overflow-hidden rounded-full px-8 py-4 text-base font-bold text-white shadow-lg transition ${
+            className={`group relative flex w-full items-center justify-center overflow-hidden rounded-full px-8 py-4 text-base font-bold text-white transition ${
               status === "closed"
                 ? "cursor-not-allowed bg-slate-400 opacity-60"
-                : "bg-sky-600 shadow-sky-900/15 hover:bg-sky-700 disabled:cursor-not-allowed disabled:opacity-50"
+                : "bg-sky-600 hover:bg-sky-700 disabled:cursor-not-allowed disabled:opacity-50"
             }`}
           >
             {isSubmitting ? (
