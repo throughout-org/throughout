@@ -2,6 +2,7 @@ import React from "react";
 import { FiCheckCircle, FiFigma, FiCode, FiCloudLightning, FiTrendingUp } from "react-icons/fi";
 import { Metadata } from "next";
 import InnerBanner from "@/components/ui/InnerBanner";
+import AntigravityParticles from "@/components/ui/AntigravityParticles";
 import { CaseStudySidebar, CaseStudySection } from "@/components/case-studies/CaseStudyLayout";
 
 export const metadata: Metadata = {
@@ -13,11 +14,19 @@ export default function MVPDevelopmentCaseStudy() {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <InnerBanner 
-        badgeText="MVP Studio"
-        title="SaaS MVP Development"
-        description="Taking a completely raw startup idea, validating the core mechanics, and launching a fully functional Minimum Viable Product in under a month."
-      />
+      <div className="relative flex min-h-[60vh] items-stretch isolate">
+        <div className="absolute inset-0 h-full w-full">
+          <AntigravityParticles />
+        </div>
+        <div className="relative z-10 flex w-full items-center justify-center pt-20 sm:pt-24 lg:pt-28">
+          <InnerBanner
+            badgeText="MVP Studio"
+            title="SaaS MVP Development"
+            description="Taking a completely raw startup idea, validating the core mechanics, and launching a fully functional Minimum Viable Product in under a month."
+            isBackgroundColored={false}
+          />
+        </div>
+      </div>
 
       <div className="w-full max-w-7xl mx-auto px-6 py-16 lg:py-24 flex flex-col lg:flex-row gap-16">
         {/* Main Content */}
@@ -138,22 +147,6 @@ export default function MVPDevelopmentCaseStudy() {
                     </div>
                  </div>
                </div>
-            </div>
-          </CaseStudySection>
-
-          <CaseStudySection number="5" title="Client Testimonial">
-            <div className="bg-blue-50/50 rounded-3xl p-10 border border-blue-100 relative">
-              <FiCheckCircle className="absolute top-8 right-8 w-12 h-12 text-blue-200 opacity-50" />
-              <p className="text-xl md:text-2xl text-gray-900 font-medium italic mb-8 leading-relaxed">
-                &quot;I've dealt with dev shops before that overpromise and stretch out timelines for months. Throughout (PVT) LTD was completely different. We defined the scope aggressively, and they delivered a beautifully functioning app in 4 weeks. We got our first 50 early-adopter signups two days after launch.&quot;
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-blue-200 rounded-full overflow-hidden flex items-center justify-center font-bold text-xl text-blue-700">S</div>
-                <div>
-                  <p className="font-bold text-gray-900">Sarah Jenkins</p>
-                  <p className="text-sm text-gray-600">Startup Founder</p>
-                </div>
-              </div>
             </div>
           </CaseStudySection>
 

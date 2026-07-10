@@ -1,7 +1,8 @@
 import React from "react";
-import { FiCheckCircle, FiClock, FiDatabase, FiRefreshCw, FiPieChart } from "react-icons/fi";
+import { FiClock, FiDatabase, FiRefreshCw, FiPieChart } from "react-icons/fi";
 import { Metadata } from "next";
 import InnerBanner from "@/components/ui/InnerBanner";
+import AntigravityParticles from "@/components/ui/AntigravityParticles";
 import { CaseStudySidebar, CaseStudySection } from "@/components/case-studies/CaseStudyLayout";
 
 export const metadata: Metadata = {
@@ -13,11 +14,19 @@ export default function WorkflowAutomationCaseStudy() {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <InnerBanner 
-        badgeText="Automation"
-        title="Workflow Automation System"
-        description="Eliminating bottlenecks by replacing messy spreadsheets with an automated pipeline that captures leads, updates CRMs, and triggers intelligent follow-ups instantly."
-      />
+      <div className="relative flex min-h-[60vh] items-stretch isolate">
+        <div className="absolute inset-0 h-full w-full">
+          <AntigravityParticles />
+        </div>
+        <div className="relative z-10 flex w-full items-center justify-center pt-20 sm:pt-24 lg:pt-28">
+          <InnerBanner
+            badgeText="Automation"
+            title="Workflow Automation System"
+            description="Eliminating bottlenecks by replacing messy spreadsheets with an automated pipeline that captures leads, updates CRMs, and triggers intelligent follow-ups instantly."
+            isBackgroundColored={false}
+          />
+        </div>
+      </div>
 
       <div className="w-full max-w-7xl mx-auto px-6 py-16 lg:py-24 flex flex-col lg:flex-row gap-16">
         {/* Main Content */}
@@ -120,22 +129,6 @@ export default function WorkflowAutomationCaseStudy() {
                     <p className="text-[10px] text-gray-500">(Notify Sales)</p>
                   </div>
                </div>
-            </div>
-          </CaseStudySection>
-
-          <CaseStudySection number="5" title="Client Testimonial">
-            <div className="bg-emerald-50 rounded-3xl p-10 border border-emerald-100 relative">
-              <FiCheckCircle className="absolute top-8 right-8 w-12 h-12 text-emerald-200 opacity-50" />
-              <p className="text-xl md:text-2xl text-gray-900 font-medium italic mb-8 leading-relaxed">
-                &quot;It used to take us agonizingly long to follow up with potential clients. Now, the moment someone requests a quote, our reps are instantly notified with the exact context laid out perfectly in their CRM. This automation is like having a perfectly disciplined assistant.&quot;
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-teal-200 rounded-full overflow-hidden flex items-center justify-center font-bold text-xl text-teal-700">P</div>
-                <div>
-                  <p className="font-bold text-gray-900">Peter Chang</p>
-                  <p className="text-sm text-gray-600">Director of Operations</p>
-                </div>
-              </div>
             </div>
           </CaseStudySection>
 

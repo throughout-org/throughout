@@ -1,7 +1,8 @@
 import React from "react";
-import { FiCheckCircle, FiShoppingCart, FiSmartphone, FiLayout, FiDollarSign } from "react-icons/fi";
+import { FiShoppingCart, FiSmartphone, FiLayout, FiDollarSign } from "react-icons/fi";
 import { Metadata } from "next";
 import InnerBanner from "@/components/ui/InnerBanner";
+import AntigravityParticles from "@/components/ui/AntigravityParticles";
 import { CaseStudySidebar, CaseStudySection } from "@/components/case-studies/CaseStudyLayout";
 
 export const metadata: Metadata = {
@@ -13,11 +14,19 @@ export default function ShopifyConversionCaseStudy() {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <InnerBanner 
-        badgeText="Shopify UX"
-        title="Shopify Store Conversion Improvement"
-        description="Fixing an underperforming storefront by reimagining the user experience, streamlining checkout, and creating lightning-fast product pages."
-      />
+      <div className="relative flex min-h-[60vh] items-stretch isolate">
+        <div className="absolute inset-0 h-full w-full">
+          <AntigravityParticles />
+        </div>
+        <div className="relative z-10 flex w-full items-center justify-center pt-20 sm:pt-24 lg:pt-28">
+          <InnerBanner
+            badgeText="Shopify UX"
+            title="Shopify Store Conversion Improvement"
+            description="Fixing an underperforming storefront by reimagining the user experience, streamlining checkout, and creating lightning-fast product pages."
+            isBackgroundColored={false}
+          />
+        </div>
+      </div>
 
       <div className="w-full max-w-7xl mx-auto px-6 py-16 lg:py-24 flex flex-col lg:flex-row gap-16">
         {/* Main Content */}
@@ -119,22 +128,6 @@ export default function ShopifyConversionCaseStudy() {
                    </svg>
                  </div>
                </div>
-            </div>
-          </CaseStudySection>
-
-          <CaseStudySection number="5" title="Client Testimonial">
-            <div className="bg-orange-50 rounded-3xl p-10 border border-orange-100 relative">
-              <FiCheckCircle className="absolute top-8 right-8 w-12 h-12 text-orange-200 opacity-50" />
-              <p className="text-xl md:text-2xl text-gray-900 font-medium italic mb-8 leading-relaxed">
-                &quot;The redesign changed the trajectory of our business. We were pouring money into ads without seeing returns. The new storefront is beautiful, functional, and most importantly, it actually turns our visitors into paying customers.&quot;
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-red-200 rounded-full overflow-hidden flex items-center justify-center font-bold text-xl text-red-700">D</div>
-                <div>
-                  <p className="font-bold text-gray-900">David Reynolds</p>
-                  <p className="text-sm text-gray-600">Founder</p>
-                </div>
-              </div>
             </div>
           </CaseStudySection>
 

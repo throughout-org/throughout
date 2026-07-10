@@ -1,7 +1,8 @@
 import React from "react";
-import { FiCheckCircle, FiTrendingUp, FiTarget, FiSearch, FiEdit3 } from "react-icons/fi";
+import { FiTrendingUp, FiTarget, FiSearch, FiEdit3 } from "react-icons/fi";
 import { Metadata } from "next";
 import InnerBanner from "@/components/ui/InnerBanner";
+import AntigravityParticles from "@/components/ui/AntigravityParticles";
 import { CaseStudySidebar, CaseStudySection } from "@/components/case-studies/CaseStudyLayout";
 
 export const metadata: Metadata = {
@@ -13,12 +14,20 @@ export default function AISEOCaseStudy() {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <InnerBanner 
-        badgeText="AI + SEO"
-        title="AI SEO Growth Experiment"
-        description="Running an intensive SEO growth experiment using AI to scale content, optimize technical aspects, and significantly boost organic visibility."
-        cta={null}
-      />
+      <div className="relative flex min-h-[60vh] items-stretch isolate">
+        <div className="absolute inset-0 h-full w-full">
+          <AntigravityParticles />
+        </div>
+        <div className="relative z-10 flex w-full items-center justify-center pt-20 sm:pt-24 lg:pt-28">
+          <InnerBanner
+            badgeText="AI + SEO"
+            title="AI SEO Growth Experiment"
+            description="Running an intensive SEO growth experiment using AI to scale content, optimize technical aspects, and significantly boost organic visibility."
+            cta={null}
+            isBackgroundColored={false}
+          />
+        </div>
+      </div>
 
       <div className="w-full max-w-7xl mx-auto px-6 py-16 lg:py-24 flex flex-col lg:flex-row gap-16">
         {/* Main Content */}
@@ -111,22 +120,6 @@ export default function AISEOCaseStudy() {
                    <path d="M0,200 Q100,180 200,160 T400,100 T600,60 T800,20" fill="none" stroke="#EC4899" strokeWidth="4" strokeLinecap="round" strokeDasharray="10 5" opacity="0.6"/>
                  </svg>
                </div>
-            </div>
-          </CaseStudySection>
-
-          <CaseStudySection number="5" title="Client Testimonial">
-            <div className="bg-purple-50 rounded-3xl p-10 border border-purple-100 relative">
-              <FiCheckCircle className="absolute top-8 right-8 w-12 h-12 text-purple-200 opacity-50" />
-              <p className="text-xl md:text-2xl text-gray-900 font-medium italic mb-8 leading-relaxed">
-                &quot;The exponential growth in organic traffic over just three months was staggering. We went from being virtually invisible for our target keywords to ranking in the top 10 consistently. The AI-driven approach is absolutely the future of SEO.&quot;
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-pink-200 rounded-full overflow-hidden flex items-center justify-center font-bold text-xl text-pink-700">L</div>
-                <div>
-                  <p className="font-bold text-gray-900">Laura H.</p>
-                  <p className="text-sm text-gray-600">Editor-in-Chief</p>
-                </div>
-              </div>
             </div>
           </CaseStudySection>
 
