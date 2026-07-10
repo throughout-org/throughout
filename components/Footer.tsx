@@ -15,7 +15,7 @@ const resources = [
   { label: "Work", href: "/portfolio" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Blog", href: "/insights" },
-  { label: "Internships", href: "/internships" },
+  { label: "Careers", href: "/careers" },
   { label: "Contact Us", href: "/contact" },
 ];
 
@@ -179,7 +179,7 @@ export default function Footer() {
 
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-5 py-3 mt-5 text-sm font-bold text-white transition rounded-full shadow-lg bg-sky-600 shadow-sky-950/20 hover:bg-sky-500"
+              className="inline-flex items-center gap-2 px-5 py-3 mt-5 text-sm font-bold text-white transition rounded-full bg-sky-600 hover:bg-sky-500"
             >
               Book a free call
               <FiArrowUpRight />

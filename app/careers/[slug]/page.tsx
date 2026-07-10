@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getInternshipBySlugFromCrm } from "@/lib/internshipsApi";
-import ApplicationForm from "@/components/internships/ApplicationForm";
+import { getInternshipBySlugFromCrm } from "@/lib/careersApi";
+import ApplicationForm from "@/components/careers/ApplicationForm";
 import Head from "next/head";
 import BannerBadge from "@/components/ui/BannerBadge";
 import { text } from "stream/consumers";
@@ -34,20 +34,20 @@ export async function generateMetadata({
   const internship = await getInternshipBySlugFromCrm(slug);
   if (!internship) {
     return {
-      title: "Internship Not Found | Throughout (PVT) LTD",
+      title: "Role Not Found | Careers | Throughout (PVT) LTD",
     };
   }
   return {
-    title: `${internship.title} - Internship | Throughout (PVT) LTD`,
+    title: `${internship.title} | Careers | Throughout (PVT) LTD`,
     description: stripHtml(internship.description).substring(0, 160),
     openGraph: {
-      title: `${internship.title} - Internship | Throughout (PVT) LTD`,
+      title: `${internship.title} | Careers | Throughout (PVT) LTD`,
       description: stripHtml(internship.description).substring(0, 160),
-      url: `https://www.throughout.io/internships/${internship.slug}`,
+      url: `https://www.throughout.io/careers/${internship.slug}`,
       type: "article",
       images: [
         {
-          url: "https://www.throughout.io/og-internships.png",
+          url: "https://www.throughout.io/og-careers.png",
           width: 1200,
           height: 630,
           alt: internship.title,
@@ -56,18 +56,18 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${internship.title} - Internship | Throughout (PVT) LTD`,
+      title: `${internship.title} | Careers | Throughout (PVT) LTD`,
       description: stripHtml(internship.description).substring(0, 160),
-      images: ["https://www.throughout.io/og-internships.png"],
+      images: ["https://www.throughout.io/og-careers.png"],
       site: "@throughout",
     },
     alternates: {
-      canonical: `https://www.throughout.io/internships/${internship.slug}`,
+      canonical: `https://www.throughout.io/careers/${internship.slug}`,
     },
   };
 }
 
-export default async function InternshipDetailPage({
+export default async function CareerDetailPage({
   params,
 }: {
   params: Promise<Params>;
@@ -97,7 +97,7 @@ export default async function InternshipDetailPage({
       name: "Throughout (PVT) LTD",
       value: internship.id,
     },
-    url: `https://www.throughout.io/internships/${internship.slug}`,
+    url: `https://www.throughout.io/careers/${internship.slug}`,
     validThrough: `${new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString().split("T")[0]}`,
   };
 
@@ -107,11 +107,11 @@ export default async function InternshipDetailPage({
         <meta name="robots" content="index, follow" />
         <meta
           name="keywords"
-          content={`internship, ${internship.title}, ${internship.slug.replace(/-/g, " ")}, jobs, careers, startup, Throughout (PVT) LTD, Sri Lanka, remote, product development, AI, automation, software engineering, digital marketing, business development`}
+          content={`careers, ${internship.title}, ${internship.slug.replace(/-/g, " ")}, jobs, internship, startup, Throughout (PVT) LTD, Sri Lanka, remote, product development, AI, automation, software engineering, digital marketing, business development`}
         />
         <link
           rel="canonical"
-          href={`https://www.throughout.io/internships/${internship.slug}`}
+          href={`https://www.throughout.io/careers/${internship.slug}`}
         />
         <script
           type="application/ld+json"
@@ -130,30 +130,30 @@ export default async function InternshipDetailPage({
           {/* Back Button */}
           {/* <div className="px-4 mx-auto mb-8 max-w-7xl animate-fade-in">
             <Link
-              href="/internships"
-              className="group inline-flex items-center gap-3 px-6 py-2.5 text-sm font-semibold text-brand transition-all duration-300 bg-white/60 border border-white/50 rounded-full shadow-[0_4px_20px_-4px_rgba(51,153,254,0.15)] hover:shadow-[0_8px_30px_-4px_rgba(51,153,254,0.3)] hover:bg-white/80 hover:-translate-y-0.5 backdrop-blur-xl"
+              href="/careers"
+              className="group inline-flex items-center gap-3 px-6 py-2.5 text-sm font-semibold text-brand transition-all duration-300 bg-white/60 border border-white/50 rounded-full shadow-[0_2px_10px_-4px_rgba(51,153,254,0.08)] hover:shadow-[0_4px_16px_-4px_rgba(51,153,254,0.15)] hover:bg-white/80 hover:-translate-y-0.5 backdrop-blur-xl"
             >
               <div className="flex items-center justify-center w-6 h-6 transition-transform duration-300 rounded-full bg-brand-light group-hover:-translate-x-1">
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                 </svg>
               </div>
-              All Internships
+              All Careers
             </Link>
           </div> */}
 
           {/* Hero Section */}
           <section className="px-4 mb-12 animate-fade-in-delay">
             <div className="mx-auto max-w-7xl">
-              <div className="relative p-8 overflow-hidden border shadow-2xl bg-white/70 rounded-3xl md:p-12 border-white/60 backdrop-blur-2xl ring-1 ring-black/5">
+              <div className="relative p-8 overflow-hidden border bg-white/70 rounded-3xl md:p-12 border-white/60 backdrop-blur-2xl ring-1 ring-black/5">
                 <div className="relative z-10">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 mt-0 mb-6 border border-blue-500 rounded-full shadow-lg bg-white/80 backdrop-blur-sm animate-fade-in">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 mt-0 mb-6 border border-blue-500 rounded-full bg-white/80 backdrop-blur-sm animate-fade-in">
                     <span className="relative flex w-2 h-2">
                       <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-linear-to-r from-blue-500 to-sky-500"></span>
                       <span className="relative inline-flex w-2 h-2 rounded-full bg-linear-to-r from-blue-500 to-sky-500"></span>
                     </span>
                     <span className="text-sm font-semibold tracking-widest text-transparent uppercase bg-linear-to-r from-blue-600 to-sky-600 bg-clip-text">
-                      Internship Opportunity
+                      Career Opportunity
                     </span>
                   </div>
 
@@ -164,7 +164,7 @@ export default async function InternshipDetailPage({
                   <div className="flex flex-wrap items-center gap-4 text-sm font-medium">
                     {/* Status Badge */}
                     <div
-                      className={`flex items-center px-4 py-2 rounded-xl border backdrop-blur-md transition-all duration-300 hover:shadow-md ${internship.status === "open" ? "bg-emerald-50/80 text-emerald-700 border-emerald-200/60" : "bg-red-50/80 text-red-700 border-red-200/60"}`}
+                      className={`flex items-center px-4 py-2 rounded-xl border backdrop-blur-md transition-all duration-300 ${internship.status === "open" ? "bg-emerald-50/80 text-emerald-700 border-emerald-200/60" : "bg-red-50/80 text-red-700 border-red-200/60"}`}
                     >
                       <svg
                         className="w-4 h-4 mr-2"
@@ -185,7 +185,7 @@ export default async function InternshipDetailPage({
                     </div>
 
                     {/* Duration Badge */}
-                    <div className="flex items-center px-4 py-2 text-indigo-700 transition-all duration-300 border bg-indigo-50/80 rounded-xl border-indigo-200/60 backdrop-blur-md hover:shadow-md">
+                    <div className="flex items-center px-4 py-2 text-indigo-700 transition-all duration-300 border bg-indigo-50/80 rounded-xl border-indigo-200/60 backdrop-blur-md">
                       <svg
                         className="w-4 h-4 mr-2"
                         fill="none"
@@ -203,7 +203,7 @@ export default async function InternshipDetailPage({
                     </div>
 
                     {/* Stipend Badge */}
-                    <div className="flex items-center px-4 py-2 transition-all duration-300 border text-amber-700 bg-amber-50/80 rounded-xl border-amber-200/60 backdrop-blur-md hover:shadow-md">
+                    <div className="flex items-center px-4 py-2 transition-all duration-300 border text-amber-700 bg-amber-50/80 rounded-xl border-amber-200/60 backdrop-blur-md">
                       <svg
                         className="w-4 h-4 mr-2"
                         fill="none"
@@ -221,7 +221,7 @@ export default async function InternshipDetailPage({
                     </div>
 
                     {/* Location Badge */}
-                    <div className="flex items-center px-4 py-2 transition-all duration-300 border text-sky-700 bg-sky-50/80 rounded-xl border-sky-200/60 backdrop-blur-md hover:shadow-md">
+                    <div className="flex items-center px-4 py-2 transition-all duration-300 border text-sky-700 bg-sky-50/80 rounded-xl border-sky-200/60 backdrop-blur-md">
                       <svg
                         className="w-4 h-4 mr-2"
                         fill="none"
@@ -256,7 +256,7 @@ export default async function InternshipDetailPage({
                 {/* Left Column - Job Details */}
                 <div className="space-y-8 lg:col-span-2">
                   {/* About the Role */}
-                  <div className="p-8 transition-all duration-500 border shadow-xl bg-white/70 group rounded-3xl border-white/60 backdrop-blur-xl hover:shadow-2xl hover:bg-white/80 animate-fade-in-delay-2">
+                  <div className="p-8 transition-all duration-500 border bg-white/70 group rounded-3xl border-white/60 backdrop-blur-xl hover:bg-white/80 animate-fade-in-delay-2">
                     {/* <div className="flex items-center gap-4 mb-6">
                       <div className="p-3 bg-brand-light rounded-2xl">
                         <svg
@@ -329,7 +329,6 @@ export default async function InternshipDetailPage({
                           border: 1px solid #dbeafe;
                           border-radius: 0.75rem;
                           background: #ffffff;
-                          box-shadow: 0 10px 25px -20px rgba(15, 23, 42, 0.45);
                         }
                         .description-content th,
                         .description-content td {
@@ -372,7 +371,7 @@ export default async function InternshipDetailPage({
                 {/* Right Column - Application Form */}
                 <div className="lg:col-span-1 animate-fade-in-delay-2">
                   <div className="sticky top-28">
-                    <div className="relative overflow-hidden rounded-[2rem] shadow-lg border border-gray-200">
+                    <div className="relative overflow-hidden rounded-[2rem] border border-gray-200">
                       <div className="relative h-full bg-white/95 backdrop-blur-3xl rounded-[2rem]">
                         <ApplicationForm
                           internshipTitle={internship.title}
