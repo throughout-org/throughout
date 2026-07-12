@@ -70,6 +70,7 @@ export default function Navbar() {
     { name: "Digital Marketing", href: "/digital-marketing", hasDropdown: false },
     { name: "Engineering", href: "/engineering", hasDropdown: false },
     { name: "Design", href: "/design", hasDropdown: false },
+    { name: "Agency Partners", href: "/agency-partners", hasDropdown: false },
     { name: "Comflo", href: "https://comflo.app/" },
     { name: "Rankout", href: "https://rankout.app/" },
   ];

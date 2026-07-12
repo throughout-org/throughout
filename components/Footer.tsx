@@ -16,6 +16,7 @@ const resources = [
   { label: "Case Studies", href: "/case-studies" },
   { label: "Blog", href: "/insights" },
   { label: "Careers", href: "/careers" },
+  { label: "Agency Partners", href: "/agency-partners" },
   { label: "Contact Us", href: "/contact" },
 ];
 
@@ -23,6 +24,11 @@ const services = [
   { label: "Digital Marketing", href: "/digital-marketing" },
   { label: "Engineering", href: "/engineering" },
   { label: "Design", href: "/design" },
+];
+
+const products = [
+  { label: "Comflo", href: "https://comflo.app/" },
+  { label: "Rankout", href: "https://rankout.app/" },
 ];
 
 const socials = [
@@ -56,10 +62,13 @@ const socials = [
 ];
 
 function FooterLink({ href, label }: { href: string; label: string }) {
+  const isExternal = href.startsWith("http");
   return (
     <li>
       <Link
         href={href}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
         className="inline-flex items-center gap-2 text-sm transition group text-slate-400 hover:text-sky-300"
       >
         <span className="w-1 h-1 transition rounded-full bg-slate-600 group-hover:bg-sky-400" />
@@ -84,7 +93,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid gap-10 py-14 lg:grid-cols-[1.15fr_0.85fr_0.95fr_1.05fr]">
+        <div className="grid gap-10 py-14 lg:grid-cols-[1.1fr_0.8fr_0.75fr_0.75fr_1fr]">
           <div>
             <Link href="/" className="inline-flex items-center">
               <Image
@@ -138,6 +147,21 @@ export default function Footer() {
             </h3>
             <ul className="mt-5 space-y-3">
               {services.map((item) => (
+                <FooterLink
+                  key={item.href}
+                  href={item.href}
+                  label={item.label}
+                />
+              ))}
+            </ul>
+          </nav>
+
+          <nav aria-label="Footer products">
+            <h3 className="text-sm font-bold uppercase tracking-[0.16em] text-white">
+              Products
+            </h3>
+            <ul className="mt-5 space-y-3">
+              {products.map((item) => (
                 <FooterLink
                   key={item.href}
                   href={item.href}
