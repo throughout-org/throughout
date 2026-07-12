@@ -207,6 +207,17 @@ const servicesSchema = {
         ],
       },
     },
+    {
+      "@type": "Service",
+      "@id": "https://www.throughout.io/agency-partners#service",
+      name: "Agency Partner Programme",
+      provider: { "@id": "https://www.throughout.io/#organization" },
+      description: "A dedicated, revenue-shared engineering team that works exclusively for marketing, creative, branding, and growth agencies as their technical delivery arm — full transparency on costs, timesheets, and profit split.",
+      url: "https://www.throughout.io/agency-partners",
+      serviceType: "White Label Software Development",
+      areaServed: ["Sri Lanka", "Worldwide"],
+      audience: { "@type": "Audience", audienceType: "Marketing, creative, branding, and growth agencies" },
+    },
   ],
 };
 
