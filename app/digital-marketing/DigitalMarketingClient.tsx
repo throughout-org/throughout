@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { DesignVisual, MarketingVisual, EngineeringVisual } from "./DmAnimatedVisuals";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   FiArrowRight, FiCheck,
@@ -23,7 +23,7 @@ const pillars = [
     headline: "Creative That Stops the Scroll",
     description:
       "Brand identity, visual design, and UI/UX that make your business impossible to ignore. We craft experiences people remember — from logos to landing pages.",
-    Visual: DesignVisual,
+    image: "/images/ai-generated/ux-design-studio.png",
     services: [
       { icon: <FiLayout />,    name: "Brand Identity & Logo Design" },
       { icon: <FiPenTool />,   name: "UI/UX Design" },
@@ -41,7 +41,7 @@ const pillars = [
     headline: "Strategy That Drives Real Growth",
     description:
       "SEO, paid ads, social media, and content strategy that turn visitors into customers. Data-driven campaigns built around what your audience actually responds to.",
-    Visual: MarketingVisual,
+    image: "/images/our-services/Monitoring and analyzing website traffic and user.jpeg",
     services: [
       { icon: <FiSearch />,    name: "SEO & Content Strategy" },
       { icon: <FiTarget />,    name: "Google & Meta Ads" },
@@ -59,7 +59,7 @@ const pillars = [
     headline: "Tech That Powers Your Marketing",
     description:
       "High-converting landing pages, marketing automation, CRM integrations, and tracking infrastructure — engineering built specifically to support growth goals.",
-    Visual: EngineeringVisual,
+    image: "/images/ai-generated/engineering-workspace.png",
     services: [
       { icon: <FiLayout />, name: "High-Converting Landing Pages" },
       { icon: <FiZap />,    name: "Marketing Automation" },
@@ -201,7 +201,7 @@ export default function DigitalMarketingClient() {
           >
             <div className="mx-auto max-w-7xl">
               <div className={`grid gap-12 lg:grid-cols-2 lg:items-center ${!isEven ? "lg:grid-flow-dense" : ""}`}>
-                {/* Animated visual */}
+                {/* Image */}
                 <motion.div
                   initial={{ opacity: 0, x: isEven ? -28 : 28 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -209,12 +209,19 @@ export default function DigitalMarketingClient() {
                   transition={{ duration: 0.6, ease: EASE }}
                   className={`${!isEven ? "lg:col-start-2" : ""}`}
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-xl shadow-slate-900/20 border border-white/5">
-                    <pillar.Visual />
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-slate-900 shadow-xl shadow-slate-900/20">
+                    <Image
+                      src={pillar.image}
+                      alt={pillar.headline}
+                      fill
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent" />
                     {/* Label badge */}
-                    <div className="absolute top-4 left-4 flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-3 py-1.5 backdrop-blur-md z-10">
-                      <span className="text-sky-400 text-sm">{pillar.icon}</span>
-                      <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-white">{pillar.label}</span>
+                    <div className="absolute top-5 left-5 flex items-center gap-2 rounded-full bg-white/90 px-3 py-2 backdrop-blur-sm">
+                      <span className="text-sky-600 text-lg">{pillar.icon}</span>
+                      <span className="text-xs font-bold uppercase tracking-[0.12em] text-slate-950">{pillar.label}</span>
                     </div>
                   </div>
                 </motion.div>
