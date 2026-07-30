@@ -1,8 +1,8 @@
 import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 const commercialStructure = [
-  "60% net profit to your agency. After all team costs and allowable expenses are deducted, sixty percent of net revenue goes to you.",
-  "40% net profit to Throughout. Our share covers management, recruitment, and company operations.",
+  "Your agency's share of net profit. After all team costs and allowable expenses are deducted, your agency receives its agreed share of the remaining net revenue.",
+  "Throughout's share of net profit. Our share covers management, recruitment, and company operations.",
   "All allowable costs shared transparently — salaries, EPF/ETF, tools, hosting, office overhead — deducted before the split, fully documented.",
   "Monthly settlement. You receive an invoice from Throughout for their 40% share within 7 days of the monthly report. Net 14 payment terms.",
 ];
@@ -52,7 +52,7 @@ export default function AgencyPartnersCommercial() {
           badgeText="Partnership terms"
           headline="Simple, transparent, and built to last."
           intro="The commercial structure is designed to align our incentives with yours — we grow when you grow."
-          align="text-left"
+          align="text-center"
         />
         <div className="grid gap-8 lg:grid-cols-2">
           <CommercialCard

@@ -26,11 +26,6 @@ const faqs = [
     answer:
       "Salary ranges for every role are agreed jointly between your agency and Throughout before any offer is made. This ensures the cost structure is transparent and that you are not surprised by expenses. Throughout handles the actual employment, payroll, and statutory contributions — but the agreed bands are visible to you.",
   },
-  {
-    question: "How many partnership slots do you have available?",
-    answer:
-      "We are currently accepting applications for 3 to 4 agency partnerships. We deliberately limit the number of partners to ensure every agency gets a truly dedicated team — not a shared resource pool. If you are interested, we recommend reaching out early to discuss fit before slots are filled.",
-  },
 ];
 
 export default function AgencyPartnersFAQ() {

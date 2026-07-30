@@ -61,7 +61,7 @@ export default function AgencyPartnersFeatures() {
           badgeText="What's included"
           headline="Everything technical. Handled."
           intro="A full-stack delivery capability embedded into your agency — without the overhead of running an engineering team."
-          align="text-left"
+          align="text-center"
         />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (

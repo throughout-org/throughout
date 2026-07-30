@@ -36,7 +36,7 @@ export default function AgencyPartnersProblem() {
           badgeText="The problem we solve"
           headline="Great agencies lose on delivery."
           intro="You win the client. Then the real challenge starts — finding reliable technical people to actually build what was promised."
-          align="text-left"
+          align="text-center"
         />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {problems.map((problem) => (

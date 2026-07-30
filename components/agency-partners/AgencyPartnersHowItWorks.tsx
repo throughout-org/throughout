@@ -37,24 +37,20 @@ export default function AgencyPartnersHowItWorks() {
   return (
     <section id="how-it-works" className="px-4 py-20 bg-white sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-wrap items-start gap-12 mb-16 lg:gap-20">
-          <div className="flex-1 min-w-[280px]">
-            <BannerBadge text="How the partnership works" />
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-              A dedicated team built around your agency.
-            </h2>
-          </div>
-          <div className="flex-1 min-w-[280px] pt-2">
-            <p className="text-base leading-7 text-slate-600 sm:text-lg">
-              This is not a project-by-project vendor relationship. Throughout
-              becomes the technical arm of your agency — a team that grows
-              with you, understands your clients, and is accountable to your
-              standards.
-            </p>
-          </div>
+        <div className="mx-auto mb-16 max-w-4xl text-center">
+          <BannerBadge text="How the partnership works" />
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+            A dedicated team built around your agency.
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
+            This is not a project-by-project vendor relationship. Throughout
+            becomes the technical arm of your agency — a team that grows
+            with you, understands your clients, and is accountable to your
+            standards.
+          </p>
         </div>
 
-        <div className="flex flex-col">
+        <div className="mx-auto flex max-w-4xl flex-col gap-8">
           {steps.map((step, index) => (
             <div key={step.number} className="relative grid grid-cols-[48px_1fr] gap-6 sm:grid-cols-[64px_1fr] sm:gap-8">
               {index !== steps.length - 1 && (
@@ -63,7 +59,7 @@ export default function AgencyPartnersHowItWorks() {
               <div className="relative z-10 flex items-center justify-center w-12 h-12 mt-1 text-sm font-bold text-white rounded-full shrink-0 bg-slate-950 sm:w-16 sm:h-16">
                 {step.number}
               </div>
-              <div className="pb-14">
+              <div className="pb-8">
                 <h3 className="text-lg font-bold text-slate-950 sm:text-xl">
                   {step.title}
                 </h3>
