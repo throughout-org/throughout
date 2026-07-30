@@ -8,48 +8,26 @@ Throughout is a modern software engineering company specializing in custom web, 
 
 ---
 
-## Recent Work (Timeline)
-
-Changes made in May 2026 to clean up routes and ensure consistent top spacing across pages:
-
-- 2026-05-31: Added `components/NavbarSpacer.tsx` — a small client component that measures the fixed navbar height and inserts an equal-height spacer so page content aligns consistently under the header.
-- 2026-05-31: Inserted `NavbarSpacer` into `app/layout.tsx` right after the `<Navbar />`.
-- 2026-05-31: Removed unused pages and folders to simplify the site structure:
-	- `app/free-seo-aduitor/page.tsx`
-	- `app/whatsapp_automation/page.tsx`
-	- `app/throughout-products/page.tsx`
-	- `app/why-us/page.tsx`
-	- `app/n8n-agency/page.tsx` (folder cleaned)
-	- `app/products/page.tsx` (folder cleaned)
-	- `app/services/*` (pages removed: `page.tsx`, `EngineeringPageClient.tsx`, dynamic `[serviceId]/page.tsx`)
-	- `app/throughout-ai/page.tsx`
-	- `app/mvp-studio/page.tsx`
-
-Notes:
-- If you removed pages that still have corresponding UI components, consider deleting their component folders (for example `components/n8n-agency`, `components/mvp-studio`, `components/services`, `components/throughout-ai`) when you confirm they are unused.
-- After large removals, run a quick search for leftover imports (IDE or `grep`) and run `npm run build` to catch any missing references.
-
-
 ## 🌐 Main Pages Overview
 
-| Page                                             | Description                                                                                            |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| **Home** (`/`)                                   | Landing page with hero, services, about, and trust sections. Modern, animated, and conversion-focused. |
-| **About** (`/about`)                             | Learn about our mission, vision, core values, and what makes Throughout unique.                        |
-| **Services** (`/services`)                       | Explore our full range of software, web, mobile, cloud, and AI/ML solutions.                           |
-| **Why Us** (`/why-us`)                           | Discover our strengths, approach, and why clients choose Throughout for their projects.                |
-| **Portfolio** (`/portfolio`)                     | Showcases our best work: web, mobile, AI, and automation projects.                                     |
-| **Insights/Blog** (`/insights`)                  | Latest articles, tech insights, and company news. Dynamic content from Sanity CMS.                     |
-| **Insight Details** (`/insights/[slug]`)         | Full article view for each insight or blog post.                                                       |
-| **Careers** (`/careers`)                         | Open career opportunities with details and application form.                                           |
-| **Career Details** (`/careers/[slug]`)           | Detailed info and application for each role.                                                            |
-| **Contact** (`/contact`)                         | Contact form, WhatsApp, and company info for inquiries and support.                                    |
-| **Free SEO Auditor** (`/free-seo-aduitor`)       | Free tool to analyze your website’s SEO and get actionable recommendations.                            |
-| **MVP Studio** (`/mvp-studio`)                   | Launch your SaaS MVP in 3 weeks with our fixed-scope, AI-accelerated process.                          |
-| **n8n Agency** (`/n8n-agency`)                   | Workflow automation, integration, and managed n8n services for businesses.                             |
-| **WhatsApp Automation** (`/whatsapp_automation`) | AI chatbot, CRM integration, and sales automation for WhatsApp.                                        |
-| **Privacy Policy** (`/privacy-policy`)           | Our privacy practices and data protection policies.                                                    |
-| **Terms of Service** (`/terms-of-service`)       | Legal terms for using our website and services.                                                        |
+| Page                                              | Description                                                                          |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Home** (`/`)                                     | Landing page with hero, services, about, and trust sections.                        |
+| **About** (`/about`)                               | Mission, vision, core values, and what makes Throughout unique.                     |
+| **Engineering** (`/engineering`)                   | Custom software, web, and mobile engineering services.                              |
+| **Design** (`/design`)                             | Product and brand design services.                                                  |
+| **Digital Marketing** (`/digital-marketing`)       | SEO, growth, and digital marketing services.                                        |
+| **Agency Partners** (`/agency-partners`)           | Partner programme for agencies reselling Throughout's services.                     |
+| **Portfolio** (`/portfolio`)                       | Showcases our best work: web, mobile, AI, and automation projects.                  |
+| **Case Studies** (`/case-studies`)                 | Detailed write-ups of real client projects and results.                             |
+| **Case Study Detail** (`/case-studies/[slug]`)     | AI SEO growth, SaaS MVP launch, Shopify conversion, performance, and automation.     |
+| **Insights/Blog** (`/insights`)                    | Latest articles, tech insights, and company news. Dynamic content from Sanity CMS.  |
+| **Insight Details** (`/insights/[slug]`)           | Full article view for each insight or blog post.                                    |
+| **Careers** (`/careers`)                           | Open career opportunities with details and application form.                        |
+| **Career Details** (`/careers/[slug]`)             | Detailed info and application for each role.                                        |
+| **Contact** (`/contact`)                           | Contact form, WhatsApp, and company info for inquiries and support.                 |
+| **Privacy Policy** (`/privacy-policy`)             | Our privacy practices and data protection policies.                                 |
+| **Terms of Service** (`/terms-of-service`)         | Legal terms for using our website and services.                                     |
 
 ---
 
@@ -57,35 +35,28 @@ Notes:
 
 - **Modern Design**: Clean, minimal, and professional UI with blue/sky gradient theme
 - **Fully Responsive**: Works perfectly on mobile, tablet, and desktop
-- **Smooth Animations**: Engaging scroll animations and hover effects
-- **Contact Form**: Interactive form with validation and API integration
+- **Smooth Animations**: Framer Motion transitions and scroll/hover effects
+- **Contact Form**: Interactive form with validation and email delivery via Nodemailer
+- **Newsletter Signup**: Mailchimp-powered subscription
+- **Job Applications**: Resume uploads to Google Drive, application tracking in MongoDB, and email notifications
 - **WhatsApp Integration**: Direct link to chat on WhatsApp
 - **SEO Optimized**: Proper meta tags, Open Graph, and Twitter card support
 - **Insights/Blog**: Dynamic content from Sanity CMS
 - **Image Fallbacks**: Automatic placeholder for missing images
 - **24/7 Support**: Always available for client needs
 
-## 📋 Main Sections
-
-1. **Navigation Bar** – Fixed header with smooth scrolling
-2. **Hero Section** – Eye-catching headline with animated gradient background
-3. **About Us** – Mission, vision, and core values
-4. **Services** – Web, mobile, cloud, and AI solutions
-5. **Why Choose Us** – Key differentiators and strengths
-6. **Insights/Blog** – Latest tech articles and company news
-7. **Contact** – Form, WhatsApp, and email integration
-8. **Footer** – Company information and links
-
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 16.0.10
+- **Framework**: Next.js 16
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS 4
-- **React**: 19.2.3
-- **Node.js**: 20.x (required)
+- **React**: 19
+- **Animation**: Framer Motion, tsParticles
 - **CMS**: Sanity.io (with Portable Text)
-- **Content Rendering**: @portabletext/react
-- **Other**: react-calendly, Docker, ESLint, PostCSS
+- **Database**: MongoDB (via Mongoose)
+- **File Storage**: Cloudinary (resumes), Google Drive (via googleapis)
+- **Email**: Nodemailer (SMTP), Mailchimp (newsletter)
+- **Other**: react-calendly, ESLint
 
 ## 📰 Insights & CMS Integration
 
@@ -101,11 +72,10 @@ Notes:
 
 ### Careers
 
-- **Dynamic Careers Page**: Role listings are fetched from the CRM Jobs API (`/api/jobs`) and rendered dynamically.
+- **Dynamic Careers Page**: Role listings are fetched from the CRM's internship/job API and rendered dynamically.
 - **Rich Metadata**: Each role includes title, duration, stipend, location, status, description, responsibilities, requirements, skills, and benefits.
-- **How to Update**: Add, edit, or close openings from CRM at `/jobs/openings`.
+- **How to Update**: Add, edit, or close openings from the CRM.
 - **Dynamic Routing**: Individual role details are available at `/careers/[slug]`.
-- **Open/Closed Status**: Only openings with `status: "open"` are shown on the main careers page.
 - **Fallback Behavior**: If the CRM API is unreachable, the website falls back to [data/internships.ts](data/internships.ts).
 
 ### Dependencies
@@ -127,21 +97,26 @@ NEXT_PUBLIC_SANITY_API_TOKEN=
 # MongoDB
 MONGODB_URI=
 
-# Cloudinary (for resume uploads)
-CLOUDINARY_URL=
-
-# Email (Gmail SMTP)
-GMAIL_USER=
-GMAIL_PASS=
+# Contact form email (Zoho SMTP via Nodemailer)
+SMTP_USER=
+SMTP_PASS=
 MAIL_FROM="Throughout Team"
 
-# Optional: CORS for job applications API
-CORS_ALLOWED_ORIGINS="http://localhost:3000,http://localhost:3001"
+# Newsletter (Mailchimp)
+MAILCHIMP_API_KEY=
+MAILCHIMP_LIST_ID=
+
+# Cloudinary (resume uploads)
+CLOUDINARY_URL=
+
+# Google OAuth2 (Drive uploads for job applications)
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_REDIRECT_URI=
+GOOGLE_DRIVE_FOLDER_ID=
 
 # Optional: External APIs
 NEXT_PUBLIC_SEO_AUDIT_API_URL="http://127.0.0.1:8000/free-seo-audit"
-NEXT_PUBLIC_CONTACT_API_URL=
-NEXT_PUBLIC_CONTACT_API_KEY=
 
 # Optional: CRM source for careers page
 CRM_PUBLIC_API_BASE_URL="https://crm.throughout.io"
@@ -163,8 +138,6 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-# ![THROUGHOUT Logo](./public/images/logo.png)
-
 ## 📦 Scripts
 
 ```bash
@@ -178,15 +151,8 @@ npm run lint    # Run ESLint
 
 ### Update Contact Information
 
-1. **WhatsApp Number**: Replace the placeholder in [app/page.tsx](app/page.tsx) with your actual WhatsApp number
-2. **Email**: Update `hello@throughout.io` with your company email
-
-### Change Colors
-
-The main gradient colors can be adjusted in [app/page.tsx](app/page.tsx):
-
-- Primary gradient: `from-blue-600 to-sky-600`
-- Background gradient: `from-blue-50 via-sky-50 to-pink-50`
+1. **WhatsApp Number**: Update the WhatsApp link/number used across the site (e.g. contact and footer components).
+2. **Email**: Update `hello@throughout.io` with your company email.
 
 ### Update Content
 
@@ -194,6 +160,30 @@ The main gradient colors can be adjusted in [app/page.tsx](app/page.tsx):
 - Insights/blog content: edit in Sanity Studio (see [src/sanity/client.ts](src/sanity/client.ts) for config)
 
 ## 🧩 API Endpoints
+
+| Endpoint                    | Method | Description                                                        |
+| ---------------------------- | ------ | ------------------------------------------------------------------- |
+| `/api/contact`               | POST   | Sends contact form submissions via email (Nodemailer/Zoho SMTP).   |
+| `/api/newsletter`            | POST   | Subscribes an email address to the Mailchimp newsletter list.      |
+| `/api/job-applications`      | POST   | Uploads resume to Google Drive, stores the application in MongoDB, and emails a notification. |
+| `/api/seo-audit`             | POST   | Proxies a URL to the external SEO audit service.                   |
+| `/api/google/auth`           | GET    | Starts the Google OAuth2 flow (Drive access for resume uploads).   |
+| `/api/google/callback`       | GET    | Google OAuth2 redirect callback; exchanges the code for tokens.    |
+
+### Job Applications
+
+**POST** `/api/job-applications`
+Request: `{ jobTitle, name, email, phone, coverLetter, resumeUrl, referralSource? }`
+
+### Newsletter
+
+**POST** `/api/newsletter`
+Request: `{ email, firstName?, source? }`
+
+### SEO Audit
+
+**POST** `/api/seo-audit`
+Request: forwarded as-is to `NEXT_PUBLIC_SEO_AUDIT_API_URL`'s backing service.
 
 ## 🗂️ Sanity Studio Setup
 
@@ -203,37 +193,6 @@ To edit blog/insights content, use Sanity Studio:
 2. Run `npx sanity start` in the Studio directory.
 3. Configure `src/sanity/client.ts` with your projectId, dataset, and API token.
 4. Edit content in Studio and publish.
-
-## 🐳 Docker Usage
-
-To build and run the app with Docker:
-
-```bash
-docker build -t throughout .
-docker run -p 3000:3000 throughout
-```
-
-## 🔑 Environment Example
-
-Copy `.env.example` to `.env.local` and fill in your secrets:
-
-```bash
-cp .env.example .env.local
-```
-
-## 📤 API Request/Response Formats
-
-### Job Applications
-
-**POST** `/api/job-applications`
-Request: `{ name, email, resume, ... }`
-Response: `{ success: true, message: "Application received" }`
-
-### SEO Audit
-
-**POST** `/api/seo-audit`
-Request: `{ url }`
-Response: `{ score, recommendations, ... }`
 
 ## 🤝 Contribution Guide
 
@@ -257,15 +216,6 @@ Response: `{ score, recommendations, ... }`
 - Accessible and semantic HTML
 - Portable Text rendering for rich content
 - Image fallback for broken/missing images in insights
-- Security best practices (OWASP Top 10)
-- CI/CD ready, Docker support
-
-## 📦 Build for Production
-
-```bash
-npm run build
-npm start
-```
 
 ## 📄 License
 
