@@ -20,6 +20,25 @@ async function fetchPostMeta(slug: string) {
   return post;
 }
 
+async function fetchPost(slug: string) {
+  const post = await client.fetch(
+    `*[_type == "post" && slug.current == $slug][0]{
+      _id,
+      title,
+      slug,
+      content,
+      category,
+      date,
+      image {
+        asset->{url}
+      },
+      excerpt
+    }`,
+    { slug },
+  );
+  return post;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -79,17 +98,20 @@ export default async function InsightDetailPage({
   params: Promise<Params>;
 }) {
   const { slug } = await params;
-  const post = slug ? await fetchPostMeta(slug) : null;
+  const [meta, post] = await Promise.all([
+    slug ? fetchPostMeta(slug) : null,
+    slug ? fetchPost(slug) : null,
+  ]);
 
   const imageObject =
-    post && post.imageUrl
+    meta && meta.imageUrl
       ? {
           "@context": "https://schema.org",
           "@type": "ImageObject",
-          contentUrl: post.imageUrl,
-          name: post.title,
+          contentUrl: meta.imageUrl,
+          name: meta.title,
           description:
-            post.excerpt ||
+            meta.excerpt ||
             "Explore detailed insights from Throughout (PVT) LTD on software, AI, and automation.",
           license: imageLicenseUrl,
           acquireLicensePage: acquireLicensePageUrl,
@@ -110,7 +132,7 @@ export default async function InsightDetailPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(imageObject) }}
         />
       )}
-      <InsightDetails slug={slug} />
+      <InsightDetails post={post} />
     </>
   );
 }

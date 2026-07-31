@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"Get-CimInstance Win32_Process -Filter \\\\\"name = 'node.exe'\\\\\" | Select-Object ProcessId, CommandLine\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/)"
+    ]
+  }
+}

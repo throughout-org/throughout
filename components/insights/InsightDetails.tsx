@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import { client } from "@/src/sanity/client";
 import { PortableText, PortableTextComponents } from "@portabletext/react";
+import type { TypedObject } from "@portabletext/types";
 // Custom components for PortableText to style lists
 const ptComponents: PortableTextComponents = {
   list: {
@@ -24,66 +23,22 @@ const ptComponents: PortableTextComponents = {
   },
 };
 
+type Insight = {
+  _id: string;
+  title: string;
+  slug: { current: string } | string;
+  content: TypedObject[] | string;
+  category: string[];
+  date: string;
+  image?: { asset?: { url: string } } | string;
+  excerpt: string;
+};
+
 interface InsightDetailsProps {
-  slug: string;
+  post: Insight | null;
 }
 
-export default function InsightDetails({ slug }: InsightDetailsProps) {
-  const [insight, setInsight] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchInsights() {
-      setLoading(true);
-      const data = await client.fetch(
-        `*[_type == "post"] | order(date desc) {
-          _id,
-          title,
-          slug,
-          content,
-          category,
-          date,
-          image {
-            asset->{url}
-          },
-          excerpt
-        }`,
-      );
-      const found = data.find((i: any) => (i.slug?.current || i.slug) === slug);
-      setInsight(found || null);
-      setLoading(false);
-    }
-    fetchInsights();
-  }, [slug]);
-
-  console.log("InsightDetails - insight:", insight);
-
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <svg
-          className="w-10 h-10 mb-4 text-blue-500 animate-spin"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <circle
-            className="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            strokeWidth="4"
-          ></circle>
-          <path
-            className="opacity-75"
-            fill="currentColor"
-            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-          ></path>
-        </svg>
-      </div>
-    );
-  }
+export default function InsightDetails({ post: insight }: InsightDetailsProps) {
   if (!insight) {
     return (
       <div className="py-24 text-2xl text-center text-gray-500">
@@ -130,7 +85,11 @@ export default function InsightDetails({ slug }: InsightDetailsProps) {
       <div className="mb-4 text-gray-500">{insight.date}</div>
       <div className="w-full mb-8 overflow-hidden rounded-xl">
         <Image
-          src={insight.image?.asset?.url || insight.image}
+          src={
+            typeof insight.image === "string"
+              ? insight.image
+              : insight.image?.asset?.url || "/images/insights/placeholder.png"
+          }
           alt={insight.title}
           width={1200}
           height={600}

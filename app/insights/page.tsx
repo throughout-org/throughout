@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import InsightsClient from "./InsightsClient";
 import { client } from "@/src/sanity/client";
-import ServicesCTASection from "@/components/services/ServicesCTASection";
+import SplitCTABanner from "@/components/insights/SplitCTABanner";
 
 const siteUrl = "https://www.throughout.io";
 const pagePath = "/insights";
@@ -15,6 +15,17 @@ type InsightImageMeta = {
   imageUrl?: string;
 };
 
+type Post = {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  content: Record<string, unknown>;
+  category: string[];
+  date: string;
+  image?: { asset?: { url: string } } | string;
+  excerpt: string;
+};
+
 async function fetchInsightImages(): Promise<InsightImageMeta[]> {
   const posts = await client.fetch(
     `*[_type == "post"] | order(date desc) {
@@ -22,6 +33,25 @@ async function fetchInsightImages(): Promise<InsightImageMeta[]> {
       title,
       excerpt,
       "imageUrl": coalesce(image.asset->url, "")
+    }`,
+  );
+
+  return Array.isArray(posts) ? posts : [];
+}
+
+async function fetchPosts(): Promise<Post[]> {
+  const posts = await client.fetch(
+    `*[_type == "post"] | order(date desc) {
+      _id,
+      title,
+      slug,
+      content,
+      category,
+      date,
+      image {
+        asset->{url}
+      },
+      excerpt
     }`,
   );
 
@@ -61,9 +91,12 @@ export const metadata: Metadata = {
 };
 
 export default async function InsightsPage() {
-  const posts = await fetchInsightImages();
+  const [posts, imagePosts] = await Promise.all([
+    fetchPosts(),
+    fetchInsightImages(),
+  ]);
 
-  const imageObjects = posts
+  const imageObjects = imagePosts
     .filter(
       (post) => typeof post.imageUrl === "string" && post.imageUrl.length > 0,
     )
@@ -96,14 +129,8 @@ export default async function InsightsPage() {
           }}
         />
       )}
-      <InsightsClient />
-      <ServicesCTASection
-        headline={"Ready to Build Something Amazing?"}
-        subtext={
-          "Building the future, one line of code at a time. We transform ideas into powerful digital solutions."
-        }
-        buttonText={"Book Free Strategy Call"}
-      />
+      <InsightsClient posts={posts} />
+      <SplitCTABanner />
     </>
   );
 }

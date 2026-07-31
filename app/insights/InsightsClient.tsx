@@ -1,12 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { client } from "@/src/sanity/client";
-import InnerBanner from "@/components/ui/InnerBanner";
-import AntigravityParticles from "@/components/ui/AntigravityParticles";
-import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
+import { motion } from "framer-motion";
 
 type Post = {
   _id: string;
@@ -19,196 +16,213 @@ type Post = {
   excerpt: string;
 };
 
-export default function InsightsClient() {
-  const [page, setPage] = useState(1);
-  const [posts, setPosts] = useState<Post[]>([]);
-  const perPage = 6; // Show 6 insights per page
-  const totalPages = Math.ceil(posts.length / perPage);
-  const paginated = posts.slice((page - 1) * perPage, page * perPage);
+interface InsightsClientProps {
+  posts: Post[];
+}
 
-  useEffect(() => {
-    async function fetchBlogs() {
-      const data = await client.fetch(
-        `*[_type == "post"] | order(date desc) {
-          _id,
-          title,
-          slug,
-          content,
-          category,
-          date,
-          image {
-            asset->{url}
-          },
-          excerpt
-        }`,
-      );
-      setPosts(data);
-    }
-    fetchBlogs();
-  }, []);
+const EASE_OUT_EXPO = [0.22, 1, 0.36, 1] as [number, number, number, number];
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  show: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: EASE_OUT_EXPO, delay: Math.min(i, 8) * 0.08 },
+  }),
+};
+
+function getImageSrc(image: Post["image"]) {
+  if (typeof image === "string") return image;
+  if (image?.asset?.url) return image.asset.url;
+  return "/images/insights/placeholder.png";
+}
+
+function formatDate(date: string) {
+  const parsed = new Date(date);
+  if (Number.isNaN(parsed.getTime())) return date;
+  return parsed.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+const PER_PAGE = 6;
+
+export default function InsightsClient({ posts }: InsightsClientProps) {
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("All");
+  const [page, setPage] = useState(1);
+
+  const categories = useMemo(() => {
+    const set = new Set<string>();
+    posts.forEach((post) => post.category?.forEach((c) => set.add(c)));
+    return ["All", ...Array.from(set).sort()];
+  }, [posts]);
+
+  const filtered = useMemo(() => {
+    const query = search.trim().toLowerCase();
+    return posts.filter((post) => {
+      const matchesCategory =
+        category === "All" || post.category?.includes(category);
+      const matchesSearch =
+        !query ||
+        post.title.toLowerCase().includes(query) ||
+        post.excerpt?.toLowerCase().includes(query);
+      return matchesCategory && matchesSearch;
+    });
+  }, [posts, search, category]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
+  const paginated = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  function handleSearchChange(value: string) {
+    setSearch(value);
+    setPage(1);
+  }
+
+  function handleCategoryChange(value: string) {
+    setCategory(value);
+    setPage(1);
+  }
 
   return (
-    <div className="min-h-screen bg-white pb-24">
-      <div className="relative flex min-h-[78vh] items-stretch isolate">
-        <div className="absolute inset-0 h-full w-full">
-          <AntigravityParticles />
+    <div className="min-h-screen bg-dark pb-24 pt-32 sm:pt-40">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mx-auto max-w-2xl text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            Blog
+          </h1>
+          <p className="mt-4 text-base leading-7 text-slate-400">
+            Ideas, engineering notes, and product thinking from the Throughout
+            team.
+          </p>
         </div>
-        <div className="relative z-10 flex w-full items-center justify-center pt-20 sm:pt-24 lg:pt-28">
-          <InnerBanner
-            badgeText="Insights"
-            title={
-              <>
-                Ideas for Building Better <br className="hidden md:block" />
-                Digital Products
-              </>
-            }
-            description="The latest thinking from Throughout on software engineering, automation, product strategy, and practical technology decisions."
-            cta={
-              <div className="flex flex-col justify-center gap-3 sm:flex-row">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-sky-900/15 transition hover:bg-sky-700 hover:shadow-xl"
-                >
-                  Talk to Us
-                  <span aria-hidden="true">-&gt;</span>
-                </Link>
-                <Link
-                  href="/portfolio"
-                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-7 py-3.5 text-base font-bold text-slate-900 transition hover:border-slate-300 hover:bg-slate-50 hover:shadow-lg"
-                >
-                  View Our Work
-                </Link>
+
+        {/* Search + Category filter */}
+        <div className="mx-auto mt-10 flex w-full max-w-xl flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <div className="relative w-full sm:w-72">
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              placeholder="Search"
+              className="w-full rounded-full border border-border bg-card px-5 py-2.5 pr-11 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-accent2/60"
+            />
+            <svg
+              className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
+              />
+            </svg>
+          </div>
+          <div className="relative w-full sm:w-48">
+            <select
+              value={category}
+              onChange={(e) => handleCategoryChange(e.target.value)}
+              className="w-full appearance-none rounded-full border border-border bg-card px-5 py-2.5 text-sm text-slate-300 outline-none transition focus:border-accent2/60"
+            >
+              {categories.map((cat) => (
+                <option key={cat} value={cat} className="bg-card text-white">
+                  {cat}
+                </option>
+              ))}
+            </select>
+            <svg
+              className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
+        </div>
+
+        {/* Grid */}
+        <div className="mt-16">
+          {filtered.length === 0 ? (
+            <div className="py-20 text-center text-slate-500">
+              No insights match your search.
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 gap-x-12 gap-y-16 md:grid-cols-2">
+                {paginated.map((post, i) => (
+                  <motion.div
+                    key={post._id}
+                    variants={cardVariants}
+                    initial="hidden"
+                    animate="show"
+                    custom={i}
+                    className="group overflow-hidden rounded-2xl border border-border transition-colors duration-300 hover:border-accent2/40"
+                  >
+                    <Link
+                      href={`/insights/${post.slug?.current || ""}`}
+                      className="block"
+                    >
+                      <div className="p-6 pb-4">
+                        <div className="mb-4 flex items-center justify-between text-xs font-medium uppercase tracking-wider text-slate-500">
+                          <span>{formatDate(post.date)}</span>
+                          {post.category?.length > 0 && (
+                            <span>{post.category.join(", ")}</span>
+                          )}
+                        </div>
+                        <h2 className="text-2xl font-bold leading-snug text-white transition-colors duration-300 group-hover:text-accent2 sm:text-3xl">
+                          {post.title}
+                        </h2>
+                      </div>
+                      <div className="relative aspect-[16/9] w-full overflow-hidden bg-card">
+                        <Image
+                          src={getImageSrc(post.image)}
+                          alt={post.title}
+                          fill
+                          sizes="(min-width: 768px) 50vw, 100vw"
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        />
+                      </div>
+                    </Link>
+                  </motion.div>
+                ))}
               </div>
-            }
-            isBackgroundColored={false}
-          />
+
+              {totalPages > 1 && (
+                <div className="mt-16 flex justify-center">
+                  <nav className="inline-flex gap-2">
+                    {Array.from({ length: totalPages }, (_, i) => (
+                      <button
+                        key={i + 1}
+                        onClick={() => setPage(i + 1)}
+                        className={
+                          (page === i + 1
+                            ? "bg-accent text-white"
+                            : "bg-card text-slate-400 hover:text-white") +
+                          " rounded-full px-4 py-2 text-sm font-semibold transition"
+                        }
+                      >
+                        {i + 1}
+                      </button>
+                    ))}
+                  </nav>
+                </div>
+              )}
+            </>
+          )}
         </div>
       </div>
-
-      {/* Insights Grid */}
-      {posts.length === 0 ? (
-        <div className="flex items-center justify-center py-20 col-span-full">
-          <svg
-            className="w-10 h-10 mb-4 text-blue-500 animate-spin"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <circle
-              className="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              strokeWidth="4"
-            ></circle>
-            <path
-              className="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-            ></path>
-          </svg>
-        </div>
-      ) : (
-        <section className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-7xl">
-            <ServiceSectionHeader
-              badgeText="LATEST INSIGHTS"
-              headline="Practical Notes From the Work"
-              intro="Short reads on the decisions, systems, and patterns behind reliable digital products."
-            />
-            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-              {paginated.map((post) => (
-                <div
-                  key={post._id}
-                  className="group relative flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/10"
-                >
-                  <Image
-                    src={
-                      typeof post.image === "string"
-                        ? post.image
-                        : post.image &&
-                            "asset" in post.image &&
-                            post.image.asset &&
-                            post.image.asset.url
-                          ? post.image.asset.url
-                          : "/images/insights/placeholder.png"
-                    }
-                    alt={post.title}
-                    width={600}
-                    height={260}
-                    className="h-52 w-full rounded-2xl object-cover transition duration-700 group-hover:scale-[1.03]"
-                    quality={75}
-                    priority
-                  />
-                  <div className="relative z-10 flex flex-col justify-between flex-1 p-4">
-                    <div>
-                      <div className="">
-                        <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-bold text-slate-600">
-                          {post.date}
-                        </span>
-                      </div>
-                      <h2 className="mt-3 mb-3 line-clamp-2 text-xl font-bold text-slate-950 transition group-hover:text-sky-700">
-                        {post.title}
-                      </h2>
-                      <p className="mb-4 line-clamp-3 text-base leading-7 text-slate-600">
-                        {post.excerpt}
-                      </p>
-                    </div>
-                    <div className="flex justify-start w-full">
-                      <Link
-                        href={`/insights/${
-                          post.slug && post.slug.current
-                            ? post.slug.current
-                            : ""
-                        }`}
-                        className="mt-auto inline-flex items-center gap-2 rounded-full bg-sky-600 px-5 py-3 text-center text-sm font-bold text-white shadow-lg shadow-sky-900/15 transition hover:bg-sky-700 hover:shadow-xl"
-                      >
-                        Read More
-                        <svg
-                          className="w-5 h-5 ml-1"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                          />
-                        </svg>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 z-20 h-1 origin-left scale-x-0 bg-sky-600 transition-transform duration-500 group-hover:scale-x-100" />
-                </div>
-              ))}
-            </div>
-
-            {totalPages > 6 && (
-              <div className="flex justify-center mt-14">
-                <nav className="inline-flex space-x-2">
-                  {Array.from({ length: totalPages }, (_, i) => (
-                    <button
-                      key={i + 1}
-                      onClick={() => setPage(i + 1)}
-                      className={
-                        (page === i + 1
-                          ? "bg-slate-950 text-white shadow "
-                          : "bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 ") +
-                        "px-5 py-2 rounded-full font-bold transition"
-                      }
-                    >
-                      {i + 1}
-                    </button>
-                  ))}
-                </nav>
-              </div>
-            )}
-          </div>
-        </section>
-      )}
     </div>
   );
 }
