@@ -224,3 +224,4 @@ To edit blog/insights content, use Sanity Studio:
 ---
 
 **Note**: Make sure to update the WhatsApp number and email address before deploying to production!
+
