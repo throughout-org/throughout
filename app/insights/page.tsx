@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import InsightsClient from "./InsightsClient";
 import { client } from "@/src/sanity/client";
-import SplitCTABanner from "@/components/insights/SplitCTABanner";
+import ServicesCTASection from "@/components/services/ServicesCTASection";
 
 const siteUrl = "https://www.throughout.io";
 const pagePath = "/insights";
@@ -15,6 +15,12 @@ type InsightImageMeta = {
   imageUrl?: string;
 };
 
+type Author = {
+  name: string;
+  role?: string;
+  avatarUrl?: string;
+};
+
 type Post = {
   _id: string;
   title: string;
@@ -24,6 +30,7 @@ type Post = {
   date: string;
   image?: { asset?: { url: string } } | string;
   excerpt: string;
+  author?: Author | null;
 };
 
 async function fetchInsightImages(): Promise<InsightImageMeta[]> {
@@ -51,7 +58,12 @@ async function fetchPosts(): Promise<Post[]> {
       image {
         asset->{url}
       },
-      excerpt
+      excerpt,
+      author->{
+        name,
+        role,
+        "avatarUrl": image.asset->url
+      }
     }`,
   );
 
@@ -130,7 +142,11 @@ export default async function InsightsPage() {
         />
       )}
       <InsightsClient posts={posts} />
-      <SplitCTABanner />
+      <ServicesCTASection
+        headline="Ready to Grow Your Digital Business?"
+        subtext="Design. Engineering. Marketing. One team, one goal — building and growing your digital presence with momentum."
+        buttonText="Get a Free Strategy Call"
+      />
     </>
   );
 }

@@ -32,7 +32,12 @@ async function fetchPost(slug: string) {
       image {
         asset->{url}
       },
-      excerpt
+      excerpt,
+      author->{
+        name,
+        role,
+        "avatarUrl": image.asset->url
+      }
     }`,
     { slug },
   );
