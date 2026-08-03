@@ -100,13 +100,6 @@ const designServices = [
   },
 ];
 
-const stats = [
-  { stat: "0.05s", label: "Time users take to form an opinion about your website" },
-  { stat: "75%",   label: "Of credibility judgements are based on visual design alone" },
-  { stat: "200%",  label: "Higher conversion rates on well-designed landing pages" },
-  { stat: "3×",    label: "More likely to return when a site has good UX" },
-];
-
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   show: (i: number) => ({
@@ -285,38 +278,6 @@ export default function DesignPageClient() {
         );
       })}
 
-      {/* Stats banner */}
-      <section className="bg-slate-950 px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55, ease: EASE }}
-            className="text-center mb-12"
-          >
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-400 mb-3">Why design matters</p>
-            <h2 className="text-4xl font-bold text-white sm:text-5xl max-w-3xl mx-auto">
-              Great design is the difference between ignored and chosen.
-            </h2>
-          </motion.div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((item, i) => (
-              <motion.div
-                key={item.stat}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, ease: EASE, delay: i * 0.09 }}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"
-              >
-                <p className="text-4xl font-extrabold text-white mb-2">{item.stat}</p>
-                <p className="text-sm text-slate-400 leading-6">{item.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

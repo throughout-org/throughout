@@ -5,6 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+type Author = {
+  name: string;
+  role?: string;
+  avatarUrl?: string;
+};
+
 type Post = {
   _id: string;
   title: string;
@@ -14,6 +20,7 @@ type Post = {
   date: string;
   image?: { asset?: { url: string } } | string;
   excerpt: string;
+  author?: Author | null;
 };
 
 interface InsightsClientProps {
@@ -87,14 +94,14 @@ export default function InsightsClient({ posts }: InsightsClientProps) {
   }
 
   return (
-    <div className="min-h-screen bg-dark pb-24 pt-32 sm:pt-40">
+    <div className="min-h-screen bg-white pb-24 pt-32 sm:pt-40">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
             Blog
           </h1>
-          <p className="mt-4 text-base leading-7 text-slate-400">
+          <p className="mt-4 text-base leading-7 text-slate-600">
             Ideas, engineering notes, and product thinking from the Throughout
             team.
           </p>
@@ -108,10 +115,10 @@ export default function InsightsClient({ posts }: InsightsClientProps) {
               value={search}
               onChange={(e) => handleSearchChange(e.target.value)}
               placeholder="Search"
-              className="w-full rounded-full border border-border bg-card px-5 py-2.5 pr-11 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-accent2/60"
+              className="w-full rounded-full border border-slate-200 bg-white px-5 py-2.5 pr-11 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-sky-500"
             />
             <svg
-              className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500"
+              className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -128,16 +135,16 @@ export default function InsightsClient({ posts }: InsightsClientProps) {
             <select
               value={category}
               onChange={(e) => handleCategoryChange(e.target.value)}
-              className="w-full appearance-none rounded-full border border-border bg-card px-5 py-2.5 text-sm text-slate-300 outline-none transition focus:border-accent2/60"
+              className="w-full appearance-none rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-sky-500"
             >
               {categories.map((cat) => (
-                <option key={cat} value={cat} className="bg-card text-white">
+                <option key={cat} value={cat} className="bg-white text-slate-900">
                   {cat}
                 </option>
               ))}
             </select>
             <svg
-              className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500"
+              className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -168,7 +175,7 @@ export default function InsightsClient({ posts }: InsightsClientProps) {
                     initial="hidden"
                     animate="show"
                     custom={i}
-                    className="group overflow-hidden rounded-2xl border border-border transition-colors duration-300 hover:border-accent2/40"
+                    className="group overflow-hidden rounded-2xl border border-slate-200 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/10"
                   >
                     <Link
                       href={`/insights/${post.slug?.current || ""}`}
@@ -181,11 +188,45 @@ export default function InsightsClient({ posts }: InsightsClientProps) {
                             <span>{post.category.join(", ")}</span>
                           )}
                         </div>
-                        <h2 className="text-2xl font-bold leading-snug text-white transition-colors duration-300 group-hover:text-accent2 sm:text-3xl">
+                        <h2 className="text-2xl font-bold leading-snug text-slate-950 transition-colors duration-300 group-hover:text-sky-700 sm:text-3xl">
                           {post.title}
                         </h2>
+                        {post.author && (
+                          <div className="mt-4 flex items-center gap-3">
+                            <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full bg-slate-100">
+                              {post.author.avatarUrl ? (
+                                <Image
+                                  src={post.author.avatarUrl}
+                                  alt={post.author.name}
+                                  fill
+                                  sizes="36px"
+                                  className="object-cover"
+                                />
+                              ) : (
+                                <div className="flex h-full w-full items-center justify-center text-xs font-bold text-slate-500">
+                                  {post.author.name
+                                    .split(" ")
+                                    .map((part) => part[0])
+                                    .slice(0, 2)
+                                    .join("")
+                                    .toUpperCase()}
+                                </div>
+                              )}
+                            </div>
+                            <div>
+                              <p className="text-sm font-semibold text-slate-950">
+                                {post.author.name}
+                              </p>
+                              {post.author.role && (
+                                <p className="text-xs text-slate-500">
+                                  {post.author.role}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        )}
                       </div>
-                      <div className="relative aspect-[16/9] w-full overflow-hidden bg-card">
+                      <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
                         <Image
                           src={getImageSrc(post.image)}
                           alt={post.title}
@@ -208,8 +249,8 @@ export default function InsightsClient({ posts }: InsightsClientProps) {
                         onClick={() => setPage(i + 1)}
                         className={
                           (page === i + 1
-                            ? "bg-accent text-white"
-                            : "bg-card text-slate-400 hover:text-white") +
+                            ? "bg-slate-950 text-white shadow"
+                            : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50") +
                           " rounded-full px-4 py-2 text-sm font-semibold transition"
                         }
                       >

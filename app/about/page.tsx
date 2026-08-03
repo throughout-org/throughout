@@ -5,10 +5,11 @@ import AntigravityParticles from "@/components/ui/AntigravityParticles";
 import ServicesCTASection from "@/components/services/ServicesCTASection";
 import MissionVisionSection from "@/components/about/MissionVisionSection";
 import CoreValuesSection from "@/components/about/CoreValuesSection";
+import TeamSection from "@/components/about/TeamSection";
 import CoreStrengthsSection from "@/components/whyus/CoreStrengthsSection";
 import OurApproachSection from "@/components/whyus/OurApproachSection";
 
-export const metadata: Metadata = {
+export const metsssadata: Metadata = {
   title:
     "About Throughout (PVT) LTD - Your Trusted Software Development Partner",
   description:
@@ -101,6 +102,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl">
           <MissionVisionSection />
           <CoreValuesSection />
+          <TeamSection />
           <CoreStrengthsSection />
           <OurApproachSection />
         </div>

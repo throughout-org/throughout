@@ -23,6 +23,12 @@ const ptComponents: PortableTextComponents = {
   },
 };
 
+type Author = {
+  name: string;
+  role?: string;
+  avatarUrl?: string;
+};
+
 type Insight = {
   _id: string;
   title: string;
@@ -32,6 +38,7 @@ type Insight = {
   date: string;
   image?: { asset?: { url: string } } | string;
   excerpt: string;
+  author?: Author | null;
 };
 
 interface InsightDetailsProps {
@@ -83,6 +90,38 @@ export default function InsightDetails({ post: insight }: InsightDetailsProps) {
         ))}
       </div>
       <div className="mb-4 text-gray-500">{insight.date}</div>
+      {insight.author && (
+        <div className="mb-6 flex items-center gap-3">
+          <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-slate-200">
+            {insight.author.avatarUrl ? (
+              <Image
+                src={insight.author.avatarUrl}
+                alt={insight.author.name}
+                fill
+                sizes="40px"
+                className="object-cover"
+              />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center text-xs font-bold text-slate-500">
+                {insight.author.name
+                  .split(" ")
+                  .map((part) => part[0])
+                  .slice(0, 2)
+                  .join("")
+                  .toUpperCase()}
+              </div>
+            )}
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-slate-900">
+              {insight.author.name}
+            </p>
+            {insight.author.role && (
+              <p className="text-xs text-slate-500">{insight.author.role}</p>
+            )}
+          </div>
+        </div>
+      )}
       <div className="w-full mb-8 overflow-hidden rounded-xl">
         <Image
           src={
