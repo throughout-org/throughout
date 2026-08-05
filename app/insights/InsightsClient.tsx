@@ -10,7 +10,6 @@ type Post = {
   _id: string;
   title: string;
   slug: { current: string };
-  content: Record<string, unknown>;
   category: string[];
   date: string;
   image?: { asset?: { url: string } } | string;

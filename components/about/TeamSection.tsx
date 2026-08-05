@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 type TeamMember = {
@@ -58,13 +55,9 @@ export default function TeamSection() {
         intro="The people behind the strategy, engineering, and client relationships."
       />
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
-        {team.map((member, index) => (
-          <motion.div
+        {team.map((member) => (
+          <div
             key={member.name}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.4, delay: index * 0.06 }}
             className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-slate-200 shadow-sm transition-shadow duration-300 hover:shadow-lg"
           >
             {member.photo ? (
@@ -93,7 +86,7 @@ export default function TeamSection() {
                 {member.role}
               </p>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

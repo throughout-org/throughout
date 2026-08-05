@@ -53,7 +53,7 @@ export default function ShopifyConversionCaseStudy() {
 
           <CaseStudySection number="2" title="The Problem" heading="Traffic without traction.">
             <p className="text-lg text-gray-600 leading-relaxed">
-              The brand was successfully driving traffic to their store through paid ads, but the traffic simply wasn't converting to sales. Customers were dropping off primarily at the product details page and abandoning full carts. The UX was confusing, the images took too long to load on mobile, and the checkout flow involved too many unnecessary steps.
+              {"The brand was successfully driving traffic to their store through paid ads, but the traffic simply wasn't converting to sales. Customers were dropping off primarily at the product details page and abandoning full carts. The UX was confusing, the images took too long to load on mobile, and the checkout flow involved too many unnecessary steps."}
             </p>
           </CaseStudySection>
 
@@ -74,7 +74,7 @@ export default function ShopifyConversionCaseStudy() {
                   <FiSmartphone className="w-5 h-5" />
                 </div>
                 <h4 className="font-bold text-gray-900 mb-2">Mobile-First UI</h4>
-                <p className="text-gray-600 text-sm">Created a sticky "Buy Now" bar on mobile to ensure the conversion button is always accessible.</p>
+                <p className="text-gray-600 text-sm">Created a sticky &quot;Buy Now&quot; bar on mobile to ensure the conversion button is always accessible.</p>
               </div>
               <div className="bg-white border text-left border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
                 <div className="w-10 h-10 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center mb-4">

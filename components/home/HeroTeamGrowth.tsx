@@ -29,7 +29,7 @@ export default function HeroTeamGrowth() {
 
   return (
     <div
-      className="mt-5 flex h-24 items-center justify-center"
+      className="flex items-center justify-center h-24 mt-5"
       aria-label="Throughout team: Insaf, Bavaram, Aysha, Janith, and Amrith"
     >
       {team.map((member, index) => {
@@ -40,12 +40,12 @@ export default function HeroTeamGrowth() {
             key={member.name}
             className={`transition-[width,margin,opacity,transform] duration-700 ease-out ${
               visible
-                ? `w-16 opacity-100 sm:w-24 ${index === 0 ? "ml-0" : "ml-3 sm:ml-4"} translate-y-0 scale-100`
+                ? `w-16 opacity-100 sm:w-20 ${index === 0 ? "ml-0" : "ml-3 sm:ml-4"} translate-y-0 scale-100`
                 : "ml-0 w-0 translate-y-2 scale-75 opacity-0"
             }`}
             aria-hidden={!visible}
           >
-            <div className="relative h-16 w-16 overflow-hidden rounded-full bg-slate-200 sm:h-24 sm:w-24">
+            <div className="relative w-16 h-16 overflow-hidden rounded-full bg-slate-200 sm:h-20 sm:w-20">
               <Image
                 src={member.src}
                 alt={member.name}

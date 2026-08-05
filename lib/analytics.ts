@@ -1,5 +1,4 @@
 const GA_ID = "G-70B910BNDJ";
-const FB_PIXEL_ID = "1251107350497461";
 
 declare global {
   interface Window {

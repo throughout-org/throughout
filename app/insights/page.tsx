@@ -17,7 +17,6 @@ type Post = {
   _id: string;
   title: string;
   slug: { current: string };
-  content: Record<string, unknown>;
   category: string[];
   date: string;
   image?: { asset?: { url: string } } | string;
@@ -31,7 +30,6 @@ async function fetchPosts(): Promise<Post[]> {
       _id,
       title,
       slug,
-      content,
       category,
       date,
       image {

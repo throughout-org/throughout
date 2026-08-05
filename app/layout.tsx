@@ -226,12 +226,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         <meta name="facebook-domain-verification" content="uf6mvfowatdceibrh83b3u1e5xdtpb" />
-        <link rel="preload" as="manifest" href="/site.webmanifest" />
-        <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
-
-        {/* Google Analytics 4 */}
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
-        <script
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -245,8 +243,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
 
-        {/* Meta Pixel */}
-        <script
+        <Script
+          id="meta-pixel"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -267,11 +266,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
 
       <body className={`${montserrat.variable} ${jetbrainsMono.variable} antialiased font-sans`}>
-        <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
-
         {/* Meta Pixel noscript */}
         <noscript>
-          <img height="1" width="1" style={{ display: "none" }}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img alt="" height="1" width="1" style={{ display: "none" }}
             src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
           />
         </noscript>

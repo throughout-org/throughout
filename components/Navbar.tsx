@@ -1,468 +1,117 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useRef, useCallback } from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { services } from "@/data/services";
-import { openCalendlyPopup } from "@/components/CalendlyPopup";
-import Button from "./Button";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { CalendlyButton } from "@/components/CalendlyPopup";
+
+const navigation = [
+  { name: "Engineering", href: "/engineering" },
+  { name: "Design", href: "/design" },
+  { name: "Marketing", href: "/digital-marketing" },
+  { name: "Dedicated Teams", href: "/dedicated-teams" },
+];
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const servicesDropdownRef = useRef<HTMLDivElement>(null);
-  const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Close services dropdown on route change
   useEffect(() => {
-    const timeoutId = window.setTimeout(() => {
-      setIsServicesOpen(false);
-      setMobileServicesOpen(false);
-    }, 0);
+    if (!isMenuOpen) return;
 
-    return () => window.clearTimeout(timeoutId);
-  }, [pathname]);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        servicesDropdownRef.current &&
-        !servicesDropdownRef.current.contains(e.target as Node)
-      ) {
-        setIsServicesOpen(false);
-      }
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMenuOpen(false);
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isMenuOpen]);
 
-  const isActive = (href: string) => {
-    if (!pathname) return false;
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
-  };
-
-  const handleServicesEnter = useCallback(() => {
-    if (servicesTimeoutRef.current) clearTimeout(servicesTimeoutRef.current);
-    setIsServicesOpen(true);
-  }, []);
-
-  const handleServicesLeave = useCallback(() => {
-    servicesTimeoutRef.current = setTimeout(() => {
-      setIsServicesOpen(false);
-    }, 200);
-  }, []);
-
-  // ===== MAIN NAV LINKS =====
-  const mainNavLinks = [
-    { name: "Engineering", href: "/engineering", hasDropdown: false },
-    { name: "Design", href: "/design", hasDropdown: false },
-    { name: "Marketing", href: "/digital-marketing", hasDropdown: false },
-    { name: "Dedicated Teams", href: "/dedicated-teams", hasDropdown: false },
-  ];
-
-  const visibleServices = services.filter(
-    (service) => service.slug !== "ai-driven-seo",
-  );
-
-  // Short descriptions for the dropdown cards
-  const serviceDescriptions: Record<string, string> = {
-    "software-development":
-      "Robust custom software built for scalability, performance, and modern digital products.",
-
-    "cms-development":
-      "Flexible CMS platforms including WordPress, headless CMS, and content-driven architectures.",
-
-    "shopify-development":
-      "Custom Shopify storefronts and integrations designed for high-growth e-commerce brands.",
-
-    "cloud-server-solutions":
-      "Scalable cloud infrastructure, DevOps automation, and secure server architecture.",
-
-    "workflow-automation":
-      "Automate repetitive tasks and connect systems with intelligent workflows and AI-driven automation.",
-
-    "ui-ux-engineering":
-      "User-centered interfaces designed to improve usability, engagement, and conversion.",
-
-    "ai-driven-seo":
-      "Modern SEO powered by AI tools, data analysis, and search intelligence strategies.",
-  };
-
-  const handleCalendlyClick: React.MouseEventHandler<HTMLAnchorElement> = (
-    e,
-  ) => {
-    openCalendlyPopup(e as unknown as React.MouseEvent<HTMLElement>);
-  };
+  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <>
-      {/* ============================================================ */}
-      {/* MAIN NAV BAR                                                  */}
-      {/* ============================================================ */}
-      <nav className="fixed top-0 w-full z-40 transition-all duration-500">
-        {/* Background band (full-width) */}
-        <div className="bg-transparent">
-          <div className="max-w-[1600px] mx-auto px-4 lg:px-4 xl:px-8">
-            {/* Main bar container */}
-            <div
-              className={`relative flex items-center justify-between transition-all duration-500 ${
-                isScrolled ? "py-2" : "py-3"
-              }  backdrop-blur-xl rounded-2xl mx-2 my-1.5 px-4 md:rounded-full md:mx-3 md:my-2 md:px-6 lg:mx-0 lg:px-4 lg:my-2 xl:px-8 bg-white/80 lg:bg-transparent`}
-              style={{
-                boxShadow:
-                  "0 6px 30px rgba(7, 10, 49, 0.12), 0 0 0 1px rgba(8, 13, 41, 0.05)",
-              }}
-            >
-              {/* Logo */}
+    <nav className="fixed inset-x-0 top-0 z-40" aria-label="Main navigation">
+      <div className="mx-auto max-w-[1600px] px-4 xl:px-8">
+        <div className="relative mx-2 my-1.5 flex items-center justify-between rounded-2xl bg-white/90 px-4 py-3 shadow-[0_6px_30px_rgba(7,10,49,0.12),0_0_0_1px_rgba(8,13,41,0.05)] backdrop-blur-xl md:mx-3 md:my-2 md:rounded-full md:px-6 lg:mx-0 lg:px-4 xl:px-8">
+          <Link href="/" className="relative z-50 flex shrink-0 items-center" aria-label="Throughout home">
+            <Image
+              src="/images/logo.png"
+              alt="Throughout"
+              width={190}
+              height={90}
+              className="h-11 w-auto md:h-14 lg:h-12 xl:h-16"
+              priority
+              sizes="190px"
+            />
+          </Link>
+
+          <div className="hidden items-center gap-1 lg:flex xl:gap-3">
+            {navigation.map((link) => (
               <Link
-                href="/"
-                className="relative z-50 flex items-center shrink-0"
+                key={link.href}
+                href={link.href}
+                aria-current={isActive(link.href) ? "page" : undefined}
+                className={`whitespace-nowrap rounded-lg px-2.5 py-1.5 text-xs font-semibold transition-colors xl:text-sm ${
+                  isActive(link.href)
+                    ? "bg-sky-600 text-white"
+                    : "text-slate-700 hover:bg-slate-100 hover:text-slate-950"
+                }`}
               >
-                <Image
-                  src="/images/logo.png"
-                  alt="Throughout (PVT) LTD Logo"
-                  width={190}
-                  height={90}
-                  className="w-auto h-11 md:h-14 lg:h-12 xl:h-16"
-                  priority
-                />
+                {link.name}
               </Link>
-
-              {/* ===== Desktop Main Nav Links ===== */}
-              <div className="items-center hidden gap-0.5 lg:flex xl:gap-3">
-                {mainNavLinks.map((link) => {
-                  const isExternal = link.href.startsWith("http");
-                  // Our Services with dropdown
-                  if (link.hasDropdown) {
-                    return (
-                      <div
-                        key={link.name}
-                        ref={servicesDropdownRef}
-                        className="static"
-                        onMouseEnter={handleServicesEnter}
-                        onMouseLeave={handleServicesLeave}
-                      >
-                        <button
-                          onClick={() => setIsServicesOpen((prev) => !prev)}
-                          className={`flex items-center gap-1 px-2.5 py-1.5 text-xs xl:text-sm font-semibold transition-all duration-200 cursor-pointer rounded-lg ${
-                            isActive("/engineering")
-                              ? "text-white bg-sky-600 shadow-md scale-105"
-                              : "text-gray-900 hover:text-gray-900 hover:bg-slate-100"
-                          }`}
-                        >
-                          {link.name}
-                          <svg
-                            className={`w-4 h-4 transition-transform duration-300 ${isServicesOpen ? "rotate-180" : ""}`}
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M19 9l-7 7-7-7"
-                            />
-                          </svg>
-                        </button>
-
-                        {/* ===== MEGA DROPDOWN ===== */}
-                        <div
-                          className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 transition-all duration-300 ease-out origin-top z-50 ${
-                            isServicesOpen
-                              ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
-                              : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
-                          }`}
-                          style={{
-                            width: "min(860px, calc(100vw - 40px))",
-                          }}
-                        >
-                          <div
-                            className="relative z-10 p-5 bg-white border border-gray-200 rounded-2xl"
-                            style={{
-                              boxShadow:
-                                "0 25px 60px -12px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.06)",
-                            }}
-                          >
-                            {/* Services Grid — 3 columns */}
-                            <div className="grid grid-cols-3 gap-3">
-                              {visibleServices.map((service, idx) => (
-                                <Link
-                                  key={service.id}
-                                  href={`/services/${service.slug}`}
-                                  onClick={() => setIsServicesOpen(false)}
-                                  className={`group/card flex items-start gap-3.5 p-4 rounded-xl border transition-all duration-300 hover:shadow-lg hover:scale-[1.03] ${
-                                    isActive(`/services/${service.slug}`)
-                                      ? "bg-transparent border-[#3698fd] shadow-xl scale-[1.02]"
-                                      : "bg-gray-50/80 border-gray-200/80 hover:bg-white hover:border-gray-300"
-                                  }`}
-                                  style={{
-                                    animation: isServicesOpen
-                                      ? `dropdownCardIn 0.35s ease-out forwards ${idx * 0.04}s`
-                                      : "none",
-                                    opacity: isServicesOpen ? 1 : 0,
-                                  }}
-                                >
-                                  <div className="flex items-center justify-center w-12 h-12 text-2xl transition-all duration-300 shadow-md shrink-0 rounded-xl bg-sky-600 group-hover/card:shadow-lg group-hover/card:scale-110">
-                                    {service.icon}
-                                  </div>
-                                  <div className="flex-1 min-w-0">
-                                    <p
-                                      className={`text-sm font-bold transition-colors duration-200 leading-tight `}
-                                    >
-                                      {service.title}
-                                    </p>
-                                    <p
-                                      className={`mt-1 text-xs leading-relaxed text-gray-500 line-clamp-2`}
-                                    >
-                                      {serviceDescriptions[service.slug] ||
-                                        service.hero.subheadline.slice(0, 80)}
-                                    </p>
-                                  </div>
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  }
-
-                  // Regular main nav link
-                  return (
-                    <Link
-                      key={link.name}
-                      href={link.href}
-                      target={isExternal ? "_blank" : undefined}
-                      rel={isExternal ? "noopener noreferrer" : undefined}
-                      className={`px-2.5 py-1.5 text-xs xl:text-sm font-semibold transition-all duration-200 rounded-lg whitespace-nowrap ${
-                        isActive(link.href)
-                          ? "bg-sky-600 text-white scale-105 shadow-sm"
-                          : "text-gray-700 hover:text-gray-900 hover:bg-slate-100"
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
-                  );
-                })}
-              </div>
-
-              <Button
-                href="https://calendly.com/throughoutwithyou/30min"
-                onClick={handleCalendlyClick}
-                className="hidden lg:inline-flex lg:w-auto lg:px-4 lg:py-2 lg:text-xs xl:px-7 xl:py-3 xl:text-sm"
-              >
-                Book a Free Consultation
-              </Button>
-
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="lg:hidden relative w-11 h-11 flex items-center justify-center focus:outline-none z-[60] rounded-full bg-gray-100 border border-gray-200 hover:bg-gray-200 transition-all duration-300 shadow-sm"
-                aria-label="Toggle menu"
-              >
-                <div className="flex flex-col justify-between w-6 h-5">
-                  <span
-                    className={`w-full h-0.5 rounded-full transition-all duration-300 ${
-                      isMenuOpen
-                        ? "bg-gray-800 rotate-45 translate-y-[9px]"
-                        : "bg-gray-800"
-                    }`}
-                  ></span>
-                  <span
-                    className={`w-full h-0.5 rounded-full transition-all duration-300 ${
-                      isMenuOpen ? "opacity-0 bg-gray-800" : "bg-gray-800"
-                    }`}
-                  ></span>
-                  <span
-                    className={`w-full h-0.5 rounded-full transition-all duration-300 ${
-                      isMenuOpen
-                        ? "bg-gray-800 -rotate-45 -translate-y-[9px]"
-                        : "bg-gray-800"
-                    }`}
-                  ></span>
-                </div>
-              </button>
-            </div>
+            ))}
           </div>
+
+          <CalendlyButton className="hidden min-h-11 rounded-full bg-sky-600 px-4 py-2 text-xs font-bold text-white transition hover:bg-sky-700 lg:inline-flex lg:items-center xl:px-7 xl:text-sm">
+            Book a Free Consultation
+          </CalendlyButton>
+
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            className="relative z-[60] flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-slate-100 transition hover:bg-slate-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 lg:hidden"
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          >
+            <span className="sr-only">{isMenuOpen ? "Close menu" : "Open menu"}</span>
+            <span aria-hidden="true" className="relative h-5 w-6">
+              <span className={`absolute left-0 top-0.5 h-0.5 w-full rounded-full bg-slate-800 transition-transform ${isMenuOpen ? "translate-y-2 rotate-45" : ""}`} />
+              <span className={`absolute left-0 top-2.5 h-0.5 w-full rounded-full bg-slate-800 transition-opacity ${isMenuOpen ? "opacity-0" : ""}`} />
+              <span className={`absolute bottom-0.5 left-0 h-0.5 w-full rounded-full bg-slate-800 transition-transform ${isMenuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+            </span>
+          </button>
         </div>
+      </div>
 
-        {/* ===== MOBILE MENU ===== */}
-        <div
-          className={`lg:hidden fixed inset-0 z-40 transition-all duration-500 flex flex-col ${
-            isMenuOpen
-              ? "opacity-100 visible"
-              : "opacity-0 invisible pointer-events-none"
-          }`}
-          style={{ top: isScrolled ? "65px" : "72px" }}
-        >
-          {/* Backdrop */}
-          <div
-            className="absolute inset-0 backdrop-blur-sm"
-            onClick={() => setIsMenuOpen(false)}
-          />
-
-          {/* Scrollable Menu Content */}
-          <div className="relative mx-4 mt-2 bg-white rounded-2xl shadow-2xl max-h-[85vh] overflow-y-auto border border-gray-200">
-            {/* Main nav links section */}
-            <div className="px-5 py-4 space-y-2">
-              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 pt-1">
-                Navigation
-              </p>
-
-              {mainNavLinks.map((link, index) => {
-                const isExternal = link.href.startsWith("http");
-                // Our Services with expandable submenu
-                if (link.hasDropdown) {
-                  return (
-                    <div key={link.name}>
-                      <button
-                        onClick={() => setMobileServicesOpen((prev) => !prev)}
-                        className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-300 cursor-pointer ${
-                          mobileServicesOpen
-                            ? "bg-gray-900 text-white"
-                            : "bg-gray-50 text-gray-800 hover:bg-gray-100"
-                        }`}
-                        style={{
-                          animation: isMenuOpen
-                            ? `slideIn 0.4s ease-out forwards ${(index + 8) * 0.04}s`
-                            : "none",
-                          opacity: isMenuOpen ? 1 : 0,
-                        }}
-                      >
-                        <span className="text-sm font-bold">{link.name}</span>
-                        <svg
-                          className={`w-4 h-4 transition-transform duration-300 ${mobileServicesOpen ? "rotate-180" : ""}`}
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth={2.5}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-
-                      {/* Mobile services submenu */}
-                      <div
-                        className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                          mobileServicesOpen
-                            ? "max-h-[700px] opacity-100 mt-2"
-                            : "max-h-0 opacity-0 mt-0"
-                        }`}
-                      >
-                        <div className="space-y-1.5 pl-2">
-                          {visibleServices.map((service, sIdx) => (
-                            <Link
-                              key={service.id}
-                              href={`/services/${service.slug}`}
-                              onClick={() => {
-                                setIsMenuOpen(false);
-                                setMobileServicesOpen(false);
-                              }}
-                              className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-white border border-gray-100 shadow-sm hover:bg-gray-50 hover:shadow-md transition-all duration-300"
-                              style={{
-                                animation: mobileServicesOpen
-                                  ? `slideIn 0.35s ease-out forwards ${sIdx * 0.04}s`
-                                  : "none",
-                                opacity: mobileServicesOpen ? 1 : 0,
-                              }}
-                            >
-                              <span className="shrink-0 w-9 h-9 rounded-lg bg-sky-600 flex items-center justify-center text-base shadow-sm">
-                                {service.icon}
-                              </span>
-                              <span className="text-sm font-semibold text-gray-700">
-                                {service.title}
-                              </span>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                }
-
-                // Regular mobile main nav link
-                return (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    target={isExternal ? "_blank" : undefined}
-                    rel={isExternal ? "noopener noreferrer" : undefined}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block px-4 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${
-                      isActive(link.href)
-                        ? "bg-gray-900 text-white"
-                        : "bg-gray-50 text-gray-800 hover:bg-gray-100"
-                    }`}
-                    style={{
-                      animation: isMenuOpen
-                        ? `slideIn 0.4s ease-out forwards ${(index + 8) * 0.04}s`
-                        : "none",
-                      opacity: isMenuOpen ? 1 : 0,
-                    }}
-                  >
-                    {link.name}
-                  </Link>
-                );
-              })}
-            </div>
-
-            {/* Mobile CTA */}
-            <div className="px-5 pb-5">
-              <Button isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-            </div>
-          </div>
+      <div
+        id="mobile-navigation"
+        className={`absolute inset-x-4 top-full rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl transition-[opacity,transform,visibility] duration-200 lg:hidden ${
+          isMenuOpen
+            ? "visible translate-y-0 opacity-100"
+            : "invisible -translate-y-2 opacity-0"
+        }`}
+      >
+        <div className="space-y-2">
+          {navigation.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsMenuOpen(false)}
+              aria-current={isActive(link.href) ? "page" : undefined}
+              className={`block min-h-11 rounded-xl px-4 py-3 text-sm font-bold ${
+                isActive(link.href) ? "bg-slate-950 text-white" : "bg-slate-50 text-slate-800"
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
         </div>
-      </nav>
-
-      {/* Animations */}
-      <style jsx>{`
-        @keyframes slideIn {
-          from {
-            opacity: 0;
-            transform: translateY(12px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        @keyframes dropdownCardIn {
-          from {
-            opacity: 0;
-            transform: translateY(8px) scale(0.97);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
-        @keyframes shimmer {
-          0% {
-            transform: translateX(-100%);
-          }
-          100% {
-            transform: translateX(100%);
-          }
-        }
-      `}</style>
-    </>
+        <CalendlyButton className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-sky-600 px-5 py-3 text-sm font-bold text-white transition hover:bg-sky-700">
+          Book a Free Consultation
+        </CalendlyButton>
+      </div>
+    </nav>
   );
 }

@@ -54,7 +54,7 @@ export default function AISEOCaseStudy() {
 
           <CaseStudySection number="2" title="The Problem" heading="Stagnant traffic and invisible content.">
             <p className="text-lg text-gray-600 leading-relaxed">
-              Despite publishing highly informational content, the client's website had shockingly low organic visibility. Their content wasn't structured for modern search engines, and they lacked the resources to manually research keywords and optimize existing posts. Traffic was flatlining and entirely reliant on unpredictable social media algorithms.
+              {"Despite publishing highly informational content, the client's website had shockingly low organic visibility. Their content wasn't structured for modern search engines, and they lacked the resources to manually research keywords and optimize existing posts. Traffic was flatlining and entirely reliant on unpredictable social media algorithms."}
             </p>
           </CaseStudySection>
 
