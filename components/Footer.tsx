@@ -14,11 +14,11 @@ const resources = [
   { label: "Work", href: "/portfolio" },
   { label: "Blog", href: "/insights" },
   { label: "Careers", href: "/careers" },
-  { label: "Dedicated Teams", href: "/dedicated-teams" },
   { label: "Contact Us", href: "/contact" },
 ];
 
 const services = [
+  { label: "Dedicated Teams", href: "/dedicated-teams" },
   { label: "Digital Marketing", href: "/digital-marketing" },
   { label: "Engineering", href: "/engineering" },
   { label: "Design", href: "/design" },
@@ -83,7 +83,9 @@ export default function Footer() {
         {/* Newsletter strip */}
         <div className="flex flex-col gap-4 py-8 border-b border-white/10 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h3 className="text-base font-bold text-white">Sign up to our newsletter</h3>
+            <h3 className="text-xl font-bold tracking-tight text-white sm:text-[35px]">
+              Sign up to our newsletter
+            </h3>
           </div>
           <div className="w-full shrink-0 sm:w-96">
             <NewsletterSignup source="footer" heading="" subtext="" />
@@ -206,7 +208,6 @@ export default function Footer() {
               <FiArrowUpRight className="shrink-0" aria-hidden="true" />
             </Link>
           </div>
-
         </div>
 
         <div className="flex flex-col gap-4 py-6 text-sm border-t border-white/10 text-slate-500 md:flex-row md:items-center md:justify-between">

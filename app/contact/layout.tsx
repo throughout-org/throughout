@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Us - Get in Touch with Throughout (PVT) LTD | Free Consultation',
-  description: 'Ready to start your project? Contact Throughout (PVT) LTD for a free consultation. Get expert advice on web development, mobile apps, cloud solutions, and custom software. Email: info@throughout.io',
+  title: 'Contact Throughout | Book a Free Consultation',
+  description: 'Talk to Throughout about a digital product, dedicated team, engineering, design, data, AI, DevOps, QA, or marketing requirement.',
   keywords: [
     'contact Throughout (PVT) LTD',
     'get in touch',

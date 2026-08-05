@@ -15,6 +15,7 @@ import {
 } from "react-icons/fi";
 import { CalendlyButton } from "@/components/CalendlyPopup";
 import HeroCursorField from "@/components/home/HeroCursorField";
+import HeroTeamGrowth from "@/components/home/HeroTeamGrowth";
 import ServiceFAQ from "@/components/service/ServiceFAQ";
 
 const capabilities = [
@@ -127,7 +128,7 @@ const ctaTeam = [
   },
   {
     name: "Amrith",
-    src: "/images/team/Amrith.png",
+    src: "/images/team/amrith.png",
     position: "lg:bottom-9 lg:right-16",
     objectPosition: "50% 36%",
     delay: "-4.2s",
@@ -141,17 +142,18 @@ export default function HomepageRedesign() {
         <HeroCursorField />
         <div className="mx-auto max-w-7xl">
           <div className="max-w-5xl mx-auto text-center">
-            <p className="mx-auto inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-800 shadow-sm">
+            <p className="mx-auto hidden items-center gap-2 rounded-full border border-sky-200 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-800 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-sky-500" /> Dedicated
               digital teams
             </p>
-            <h1 className="mt-7 text-balance text-4xl font-extrabold leading-[1.05] tracking-[-0.045em] text-slate-950 sm:text-6xl lg:text-7xl">
+            <HeroTeamGrowth />
+            <h1 className="mt-6 text-balance text-4xl font-extrabold leading-[1.05] tracking-[-0.045em] text-slate-950 sm:text-6xl lg:text-7xl">
               The right team to build, launch and scale your digital product.
             </h1>
             <p className="max-w-3xl mx-auto text-base leading-7 mt-7 text-pretty text-slate-600 sm:text-xl sm:leading-8">
               Throughout assembles dedicated engineering, design, data, AI,
               DevOps, QA, and marketing expertise for startups, agencies, and
-              product companies—without a drawn-out hiring cycle.
+              product companies without a drawn-out hiring cycle.
             </p>
             <div className="flex flex-col items-center justify-center gap-3 mt-9 sm:flex-row">
               <PrimaryCTA className="w-full sm:w-auto" />
@@ -419,7 +421,7 @@ export default function HomepageRedesign() {
               {ctaTeam.map((member) => (
                 <div
                   key={member.name}
-                  className="cta-avatar-float relative overflow-hidden border-2 rounded-full shadow-lg h-14 w-14 border-slate-800 bg-slate-700"
+                  className="relative overflow-hidden border-2 rounded-full shadow-lg cta-avatar-float h-14 w-14 border-slate-800 bg-slate-700"
                   style={{ animationDelay: member.delay }}
                 >
                   <Image

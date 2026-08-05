@@ -19,7 +19,7 @@ const team: TeamMember[] = [
   {
     name: "Insaf Inhaam",
     role: "CTO and Co-Founder",
-    photo: "/images/team/Insaf .jpg",
+    photo: "/images/team/Insaf.png",
   },
   {
     name: "Janith Viranga",
@@ -29,12 +29,12 @@ const team: TeamMember[] = [
   {
     name: "Aysha Shahani",
     role: "Software Engineer",
-    photo: "/images/team/sampleGirl1.jpg",
+    photo: "/images/team/aysha-bg.png",
   },
   {
     name: "Amrith Shylendra",
     role: "Sales Executive",
-    photo: "/images/team/Amrith.png",
+    photo: "/images/team/amrith.png",
   },
 ];
 

@@ -1,19 +1,11 @@
 import type { Metadata } from "next";
 import InsightsClient from "./InsightsClient";
 import { client } from "@/src/sanity/client";
-import ServicesCTASection from "@/components/services/ServicesCTASection";
 
 const siteUrl = "https://www.throughout.io";
 const pagePath = "/insights";
 const imageLicenseUrl = `${siteUrl}/privacy-policy#terms-of-service`;
 const acquireLicensePageUrl = `${siteUrl}/contact`;
-
-type InsightImageMeta = {
-  _id: string;
-  title: string;
-  excerpt?: string;
-  imageUrl?: string;
-};
 
 type Author = {
   name: string;
@@ -32,19 +24,6 @@ type Post = {
   excerpt: string;
   author?: Author | null;
 };
-
-async function fetchInsightImages(): Promise<InsightImageMeta[]> {
-  const posts = await client.fetch(
-    `*[_type == "post"] | order(date desc) {
-      _id,
-      title,
-      excerpt,
-      "imageUrl": coalesce(image.asset->url, "")
-    }`,
-  );
-
-  return Array.isArray(posts) ? posts : [];
-}
 
 async function fetchPosts(): Promise<Post[]> {
   const posts = await client.fetch(
@@ -103,19 +82,16 @@ export const metadata: Metadata = {
 };
 
 export default async function InsightsPage() {
-  const [posts, imagePosts] = await Promise.all([
-    fetchPosts(),
-    fetchInsightImages(),
-  ]);
+  const posts = await fetchPosts();
 
-  const imageObjects = imagePosts
+  const imageObjects = posts
     .filter(
-      (post) => typeof post.imageUrl === "string" && post.imageUrl.length > 0,
+      (post) => typeof post.image !== "string" && Boolean(post.image?.asset?.url),
     )
     .map((post) => ({
       "@context": "https://schema.org",
       "@type": "ImageObject",
-      contentUrl: post.imageUrl,
+      contentUrl: typeof post.image === "string" ? post.image : post.image?.asset?.url,
       name: post.title,
       description: post.excerpt || post.title,
       license: imageLicenseUrl,
@@ -142,11 +118,6 @@ export default async function InsightsPage() {
         />
       )}
       <InsightsClient posts={posts} />
-      <ServicesCTASection
-        headline="Ready to Grow Your Digital Business?"
-        subtext="Design. Engineering. Marketing. One team, one goal — building and growing your digital presence with momentum."
-        buttonText="Get a Free Strategy Call"
-      />
     </>
   );
 }
