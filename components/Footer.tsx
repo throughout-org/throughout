@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   FiArrowUpRight,
-  FiGlobe,
   FiMail,
   FiMapPin,
   FiMessageCircle,
@@ -13,10 +12,9 @@ const resources = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Work", href: "/portfolio" },
-  { label: "Case Studies", href: "/case-studies" },
   { label: "Blog", href: "/insights" },
   { label: "Careers", href: "/careers" },
-  { label: "Agency Partners", href: "/agency-partners" },
+  { label: "Dedicated Teams", href: "/dedicated-teams" },
   { label: "Contact Us", href: "/contact" },
 ];
 
@@ -85,10 +83,9 @@ export default function Footer() {
         {/* Newsletter strip */}
         <div className="flex flex-col gap-4 py-8 border-b border-white/10 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h3 className="text-base font-bold text-white">Get Digital Growth Insights</h3>
-            <p className="text-xs text-slate-400 mt-1">SEO tips, marketing strategies, and engineering insights — delivered monthly.</p>
+            <h3 className="text-base font-bold text-white">Sign up to our newsletter</h3>
           </div>
-          <div className="sm:w-96 shrink-0">
+          <div className="w-full shrink-0 sm:w-96">
             <NewsletterSignup source="footer" heading="" subtext="" />
           </div>
         </div>
@@ -106,8 +103,8 @@ export default function Footer() {
             </Link>
 
             <p className="max-w-sm mt-5 text-sm leading-6 text-slate-400">
-              We combine Digital Marketing, Engineering, and AI to build and
-              grow digital products and businesses.
+              Dedicated engineering, design, data, AI, DevOps, QA, and marketing
+              teams for ambitious digital products.
             </p>
 
             <div className="flex gap-2 mt-6">
@@ -203,10 +200,10 @@ export default function Footer() {
 
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-5 py-3 mt-5 text-sm font-bold text-white transition rounded-full bg-sky-600 hover:bg-sky-500"
+              className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-sky-600 px-4 py-2.5 text-xs font-bold text-white transition hover:bg-sky-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300 xl:px-5 xl:text-sm"
             >
-              Book a free call
-              <FiArrowUpRight />
+              Book a free consultation
+              <FiArrowUpRight className="shrink-0" aria-hidden="true" />
             </Link>
           </div>
 
@@ -223,18 +220,8 @@ export default function Footer() {
               href="/privacy-policy"
               className="transition hover:text-sky-300"
             >
-              Privacy Policy
+              TERMS &amp; PRIVACY POLICY
             </Link>
-            <Link
-              href="/terms-of-service"
-              className="transition hover:text-sky-300"
-            >
-              Terms of Service
-            </Link>
-            <span className="inline-flex items-center gap-1.5">
-              <FiGlobe className="w-4 h-4" />
-              Remote-first team
-            </span>
           </div>
         </div>
       </div>

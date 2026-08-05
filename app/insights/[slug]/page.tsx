@@ -4,7 +4,7 @@ import { client } from "@/src/sanity/client";
 
 type Params = { slug: string };
 const siteUrl = "https://www.throughout.io";
-const imageLicenseUrl = `${siteUrl}/terms-of-service`;
+const imageLicenseUrl = `${siteUrl}/privacy-policy#terms-of-service`;
 const acquireLicensePageUrl = `${siteUrl}/contact`;
 
 async function fetchPostMeta(slug: string) {

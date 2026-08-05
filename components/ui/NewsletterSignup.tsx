@@ -92,30 +92,46 @@ function NewsletterForm({
           className={`flex items-center gap-2 text-sm font-semibold ${dark ? "text-emerald-400" : "text-emerald-600"}`}
         >
           <FiCheck />
-          You're in! Check your inbox soon.
+          You&apos;re in! Check your inbox soon.
         </motion.div>
       ) : (
-        <motion.form key="form" onSubmit={onSubmit} className="flex gap-2 flex-row">
+        <motion.form
+          key="form"
+          onSubmit={onSubmit}
+          className={dark
+            ? "relative flex items-center rounded-full border border-white/85 bg-transparent p-1.5 pl-4 transition focus-within:border-sky-300 focus-within:ring-2 focus-within:ring-sky-400/20"
+            : "relative flex flex-row gap-2"}
+        >
           <input
             type="email"
             required
+            aria-label="Email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="your@email.com"
-            className={`flex-1 rounded-full px-4 py-2.5 text-sm outline-none transition focus:ring-2 focus:ring-sky-500 ${
+            placeholder={dark ? "jason@gmail.com" : "your@email.com"}
+            className={`min-w-0 flex-1 outline-none transition ${
               dark
-                ? "bg-white/10 border border-white/15 text-white placeholder-slate-400"
-                : "bg-white border border-slate-200 text-slate-950 placeholder-slate-400"
+                ? "bg-transparent px-2 py-2 text-sm text-white placeholder:text-slate-400 sm:text-base"
+                : "rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-950 placeholder-slate-400 focus:ring-2 focus:ring-sky-500"
             }`}
           />
           <button
             type="submit"
             disabled={status === "loading"}
-            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-sky-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-sky-700 disabled:opacity-60 shrink-0"
+            aria-label="Subscribe to newsletter"
+            className={dark
+              ? "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-lg text-slate-950 transition hover:scale-105 hover:bg-sky-100 disabled:opacity-60 sm:h-11 sm:w-11"
+              : "inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full bg-sky-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-sky-700 disabled:opacity-60"}
           >
-            {status === "loading" ? "Subscribing…" : <>Subscribe <FiArrowRight /></>}
+            {status === "loading" ? (
+              <span aria-hidden="true">…</span>
+            ) : dark ? (
+              <FiArrowRight aria-hidden="true" />
+            ) : (
+              <>Subscribe <FiArrowRight aria-hidden="true" /></>
+            )}
           </button>
-          {error && <p className={`text-xs mt-1 ${dark ? "text-red-400" : "text-red-600"}`}>{error}</p>}
+          {error && <p role="alert" className={`absolute left-4 top-full mt-2 text-xs ${dark ? "text-red-400" : "text-red-600"}`}>{error}</p>}
         </motion.form>
       )}
     </AnimatePresence>
