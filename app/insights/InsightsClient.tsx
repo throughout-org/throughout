@@ -188,7 +188,7 @@ export default function InsightsClient({ posts }: InsightsClientProps) {
                             <span>{post.category.join(", ")}</span>
                           )}
                         </div>
-                        <h2 className="text-2xl font-bold leading-snug text-slate-950 transition-colors duration-300 group-hover:text-sky-700 sm:text-3xl">
+                        <h2 className="text-lg font-bold leading-snug text-slate-950 transition-colors duration-300 group-hover:text-sky-700 sm:text-xl">
                           {post.title}
                         </h2>
                         {post.author && (
