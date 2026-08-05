@@ -67,12 +67,10 @@ export default function Navbar() {
 
   // ===== MAIN NAV LINKS =====
   const mainNavLinks = [
-    { name: "Digital Marketing", href: "/digital-marketing", hasDropdown: false },
     { name: "Engineering", href: "/engineering", hasDropdown: false },
     { name: "Design", href: "/design", hasDropdown: false },
-    { name: "Agency Partners", href: "/agency-partners", hasDropdown: false },
-    { name: "Comflo", href: "https://comflo.app/" },
-    { name: "Rankout", href: "https://rankout.app/" },
+    { name: "Marketing", href: "/digital-marketing", hasDropdown: false },
+    { name: "Dedicated Teams", href: "/dedicated-teams", hasDropdown: false },
   ];
 
   const visibleServices = services.filter(
@@ -267,7 +265,7 @@ export default function Navbar() {
                 onClick={handleCalendlyClick}
                 className="hidden lg:inline-flex lg:w-auto lg:px-4 lg:py-2 lg:text-xs xl:px-7 xl:py-3 xl:text-sm"
               >
-                Book a Free Call
+                Book a Free Consultation
               </Button>
 
               {/* Mobile Menu Button */}

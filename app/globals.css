@@ -44,6 +44,7 @@
     transform: translateY(-16px);
   }
 }
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
@@ -132,8 +133,36 @@ html {
   overflow-x: hidden;
 }
 
+::selection {
+  background: #bae6fd;
+  color: #082f49;
+}
+
+:focus-visible {
+  outline-color: #0284c7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   overflow-x: hidden;
+}
+
+.legal-copy ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.legal-copy li + li {
+  margin-top: 0.5rem;
 }
 
 /* Custom Animations */
@@ -313,4 +342,22 @@ body {
 
 .blog-inner-content a:active {
   color: #003d7a !important;
+}
+
+@keyframes cta-avatar-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+.cta-avatar-float {
+  animation-name: cta-avatar-float;
+  animation-duration: 4.8s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }

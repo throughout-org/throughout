@@ -1,90 +1,51 @@
 import type { Metadata } from "next";
-import ServicesCTASection from "@/components/services/ServicesCTASection";
-import ServiceFAQ from "@/components/service/ServiceFAQ";
-import DesignPageClient from "./DesignPageClient";
+import { FiCompass, FiGrid, FiLayout, FiMonitor, FiPenTool, FiUsers } from "react-icons/fi";
+import UnifiedServicePage from "@/components/service/UnifiedServicePage";
 
-const designFaqs = [
-  {
-    question: "What design services does Throughout offer?",
-    answer:
-      "Brand identity and logo design, UI/UX design, web design, motion and video graphics, and social media creatives — covering everything from first brand concept to a finished, developer-ready interface.",
-  },
-  {
-    question: "Do you design brand identity or only UI/UX?",
-    answer:
-      "Both. We build complete brand identities — logo, guidelines, positioning, collateral — as well as UI/UX design for web apps, mobile apps, and SaaS dashboards.",
-  },
-  {
-    question: "Will the design files be ready for developers to build?",
-    answer:
-      "Yes. Every UI/UX project is handed off with clean components, annotations, and a design system, so it's build-ready whether our engineering team or yours implements it.",
-  },
-  {
-    question: "Can Throughout design and build the final product?",
-    answer:
-      "Yes. Because Design, Engineering, and Digital Marketing sit under one team, we can take a project from brand concept through to a fully built, launched product without handing it to a separate vendor.",
-  },
-  {
-    question: "Do you follow accessibility standards?",
-    answer:
-      "Yes. WCAG accessibility considerations are built into our UI/UX process from the first wireframe, not added as an afterthought.",
-  },
-  {
-    question: "How do I start a design project with Throughout?",
-    answer:
-      "Book a free design call. We'll review your brand or product, recommend the right scope, and outline a clear timeline before any commitment.",
-  },
+const faqs = [
+  { question: "What design services does Throughout offer?", answer: "We provide product strategy, user research, UX and interface design, prototyping, design systems, websites, and brand identity." },
+  { question: "Do you design brand identities or only digital products?", answer: "Both. We can create a visual identity, design a product experience, or connect both into one consistent system." },
+  { question: "Are the files ready for engineering?", answer: "Yes. Product work is organised around reusable components, responsive behaviour, interaction notes, and clear engineering handoff." },
+  { question: "Can Throughout design and build the product?", answer: "Yes. Our designers and engineers can work as one team from discovery and prototyping through implementation and launch." },
+  { question: "How does a design engagement begin?", answer: "We begin with a free consultation to understand the product, users, current experience, constraints, and the decision the design work needs to support." },
 ];
 
 export const metadata: Metadata = {
-  title: "Design Services | Throughout (PVT) LTD",
-  description:
-    "Brand identity, UI/UX design, web design, motion graphics, and creative direction — design that builds trust and drives conversions.",
-  keywords: [
-    "brand identity design agency",
-    "UI UX design agency",
-    "web design company",
-    "logo design Sri Lanka",
-    "creative design studio",
-    "motion graphics agency",
-    "social media creatives agency",
-    "Throughout (PVT) LTD",
-    "Throughout design",
-  ],
-  robots: { index: true, follow: true },
+  title: "Product & UI/UX Design Services",
+  description: "Product strategy, UX research, UI design, prototypes, design systems, web design, and brand identity for useful digital products.",
   alternates: { canonical: "https://www.throughout.io/design" },
-  openGraph: {
-    title: "Design Services | Throughout (PVT) LTD",
-    description:
-      "Creative design services covering brand identity, UI/UX, web design, and visual communication.",
-    url: "https://www.throughout.io/design",
-    siteName: "Throughout (PVT) LTD",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Design Services | Throughout (PVT) LTD",
-    description:
-      "Creative design services covering brand identity, UI/UX, web design, and visual communication.",
-  },
+  openGraph: { type: "website", url: "https://www.throughout.io/design", title: "Product & UI/UX Design Services | Throughout", description: "Turn complex product decisions into clear, useful, and build-ready digital experiences." },
 };
 
 export default function DesignPage() {
-  return (
-    <>
-      <DesignPageClient />
-      <ServiceFAQ
-        id="faq"
-        badgeText="Common questions"
-        headline="Design, Answered."
-        intro="What clients usually ask before starting a design engagement with us."
-        faqs={designFaqs}
-      />
-      <ServicesCTASection
-        headline="Ready to Build a Brand That Stands Out?"
-        subtext="Let's create designs that communicate clearly, convert consistently, and make your business look like the best option in the room."
-        buttonText="Book a Free Design Call"
-      />
-    </>
-  );
+  return <UnifiedServicePage
+    eyebrow="Design"
+    title="Design that makes the product easier to choose and use."
+    intro="We turn product goals and user needs into clear interfaces, coherent systems, and build-ready experiences."
+    primaryCTA="Start a Design Project"
+    outcomes={[
+      { title: "Clearer decisions", copy: "Research and product thinking focus the work before visual detail takes over." },
+      { title: "Less friction", copy: "Flows and interfaces help users understand what to do and why it matters." },
+      { title: "Ready to build", copy: "Reusable components and responsive behaviour make engineering handoff practical." },
+    ]}
+    capabilitiesTitle="From product thinking to polished interface."
+    capabilitiesIntro="A connected design practice for products, websites, and brands."
+    capabilities={[
+      { icon: FiCompass, title: "Product strategy", copy: "Problem framing, feature priorities, experience direction, and roadmap support." },
+      { icon: FiUsers, title: "UX research", copy: "User flows, interviews, journey mapping, and evidence-led product decisions." },
+      { icon: FiLayout, title: "UI/UX design", copy: "Clear web, mobile, dashboard, and SaaS interfaces designed around real tasks." },
+      { icon: FiPenTool, title: "Prototypes", copy: "Interactive concepts that make flows testable before engineering investment." },
+      { icon: FiGrid, title: "Design systems", copy: "Reusable foundations that improve consistency and delivery speed." },
+      { icon: FiMonitor, title: "Web & brand design", copy: "Conversion-focused websites and visual identities with a coherent digital expression." },
+    ]}
+    process={[
+      { title: "Discover", copy: "We align on the audience, problem, business goal, evidence, and constraints." },
+      { title: "Explore", copy: "We map flows, test directions, and turn the strongest route into a working prototype." },
+      { title: "Refine & hand off", copy: "We resolve the system, responsive states, interactions, and implementation details." },
+    ]}
+    faqs={faqs}
+    faqTitle="Design, answered."
+    finalTitle="Ready to make the experience clearer?"
+    finalCopy="Bring us the product, website, or brand challenge. We will help define the right design scope and next step."
+  />;
 }

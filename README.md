@@ -17,7 +17,7 @@ Throughout is a modern software engineering company specializing in custom web, 
 | **Engineering** (`/engineering`)                   | Custom software, web, and mobile engineering services.                              |
 | **Design** (`/design`)                             | Product and brand design services.                                                  |
 | **Digital Marketing** (`/digital-marketing`)       | SEO, growth, and digital marketing services.                                        |
-| **Agency Partners** (`/agency-partners`)           | Partner programme for agencies reselling Throughout's services.                     |
+| **Dedicated Teams** (`/dedicated-teams`)           | Long-term offshore teams for startups, product companies, agencies, and businesses. |
 | **Portfolio** (`/portfolio`)                       | Showcases our best work: web, mobile, AI, and automation projects.                  |
 | **Case Studies** (`/case-studies`)                 | Detailed write-ups of real client projects and results.                             |
 | **Case Study Detail** (`/case-studies/[slug]`)     | AI SEO growth, SaaS MVP launch, Shopify conversion, performance, and automation.     |
@@ -224,4 +224,3 @@ To edit blog/insights content, use Sanity Studio:
 ---
 
 **Note**: Make sure to update the WhatsApp number and email address before deploying to production!
-

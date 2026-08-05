@@ -1,5 +1,3 @@
-import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
-
 export interface ServiceFAQItem {
   question: string;
   answer: string;
@@ -11,6 +9,7 @@ interface ServiceFAQProps {
   headline: string;
   intro?: string;
   faqs: ServiceFAQItem[];
+  includeSchema?: boolean;
 }
 
 export default function ServiceFAQ({
@@ -19,31 +18,37 @@ export default function ServiceFAQ({
   headline,
   intro,
   faqs,
+  includeSchema = true,
 }: ServiceFAQProps) {
   return (
-    <section id={id} className="px-4 py-20 bg-slate-50 sm:px-6 lg:px-8 scroll-mt-20">
+    <section id={id} className="scroll-mt-20 bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
       <div className="mx-auto max-w-4xl">
-        <ServiceSectionHeader
-          badgeText={badgeText}
-          headline={headline}
-          intro={intro}
-          headlineSize="text-3xl sm:text-4xl"
-        />
-        <div className="space-y-4">
+        <div className="text-center">
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-sky-700">
+            {badgeText}
+          </p>
+          <h2 className="mt-4 text-3xl font-extrabold tracking-[-0.035em] text-slate-950 sm:text-5xl">
+            {headline}
+          </h2>
+          {intro && (
+            <p className="mx-auto mt-5 max-w-2xl leading-7 text-slate-600">
+              {intro}
+            </p>
+          )}
+        </div>
+        <div className="mt-12 divide-y divide-slate-200 border-y border-slate-200">
           {faqs.map((faq) => (
             <details
               key={faq.question}
-              className="p-6 bg-white border shadow-sm group rounded-2xl border-slate-200 open:border-sky-200 open:ring-1 open:ring-sky-100"
+              className="group py-6"
             >
-              <summary className="flex items-center justify-between gap-4 text-slate-950 cursor-pointer list-none">
-                <h3 className="text-base font-bold sm:text-lg">
-                  {faq.question}
-                </h3>
-                <span className="flex items-center justify-center w-8 h-8 text-lg font-bold transition-transform duration-300 rounded-full shrink-0 bg-slate-100 text-slate-500 group-open:rotate-45 group-open:bg-sky-100 group-open:text-sky-700">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-left text-lg font-bold text-slate-950 marker:content-none">
+                <span>{faq.question}</span>
+                <span className="text-2xl font-normal text-sky-700 transition group-open:rotate-45" aria-hidden="true">
                   +
                 </span>
               </summary>
-              <p className="mt-4 text-sm leading-6 text-slate-600 sm:text-base">
+              <p className="max-w-3xl pt-4 leading-7 text-slate-600">
                 {faq.answer}
               </p>
             </details>
@@ -51,23 +56,25 @@ export default function ServiceFAQ({
         </div>
       </div>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqs.map((faq) => ({
-              "@type": "Question",
-              name: faq.question,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: faq.answer,
-              },
-            })),
-          }),
-        }}
-      />
+      {includeSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: faqs.map((faq) => ({
+                "@type": "Question",
+                name: faq.question,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: faq.answer,
+                },
+              })),
+            }),
+          }}
+        />
+      )}
     </section>
   );
 }

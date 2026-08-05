@@ -5,7 +5,7 @@ import ServicesCTASection from "@/components/services/ServicesCTASection";
 
 const siteUrl = "https://www.throughout.io";
 const pagePath = "/insights";
-const imageLicenseUrl = `${siteUrl}/terms-of-service`;
+const imageLicenseUrl = `${siteUrl}/privacy-policy#terms-of-service`;
 const acquireLicensePageUrl = `${siteUrl}/contact`;
 
 type InsightImageMeta = {

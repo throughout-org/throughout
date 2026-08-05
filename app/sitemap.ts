@@ -28,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     page("/digital-marketing", 0.95, "weekly"),
     page("/engineering", 0.95, "weekly"),
     page("/design", 0.95, "weekly"),
-    page("/agency-partners", 0.95, "weekly"),
+    page("/dedicated-teams", 0.95, "weekly"),
 
     // Work & portfolio
     page("/portfolio", 0.9, "weekly"),
@@ -36,7 +36,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Company
     page("/about", 0.8, "monthly"),
     page("/contact", 0.85, "monthly"),
-    page("/case-studies", 0.8, "weekly"),
     page("/case-studies/ai-seo-growth", 0.7, "monthly"),
     page("/case-studies/mvp-product-launch", 0.7, "monthly"),
     page("/case-studies/shopify-store-conversion", 0.7, "monthly"),
@@ -49,7 +48,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Legal
     page("/privacy-policy", 0.3, "monthly"),
-    page("/terms-of-service", 0.3, "monthly"),
 
     // Blog posts
     ...blogSlugs.map((slug) => page(`/insights/${slug}`, 0.75, "monthly")),
