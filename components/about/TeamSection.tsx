@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 type TeamMember = {
@@ -19,7 +16,7 @@ const team: TeamMember[] = [
   {
     name: "Insaf Inhaam",
     role: "CTO and Co-Founder",
-    photo: "/images/team/Insaf .jpg",
+    photo: "/images/team/Insaf.png",
   },
   {
     name: "Janith Viranga",
@@ -29,12 +26,12 @@ const team: TeamMember[] = [
   {
     name: "Aysha Shahani",
     role: "Software Engineer",
-    photo: "/images/team/sampleGirl1.jpg",
+    photo: "/images/team/aysha-bg.png",
   },
   {
     name: "Amrith Shylendra",
     role: "Sales Executive",
-    photo: "/images/team/Amrith.png",
+    photo: "/images/team/amrith.png",
   },
 ];
 
@@ -58,13 +55,9 @@ export default function TeamSection() {
         intro="The people behind the strategy, engineering, and client relationships."
       />
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
-        {team.map((member, index) => (
-          <motion.div
+        {team.map((member) => (
+          <div
             key={member.name}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.4, delay: index * 0.06 }}
             className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-slate-200 shadow-sm transition-shadow duration-300 hover:shadow-lg"
           >
             {member.photo ? (
@@ -93,7 +86,7 @@ export default function TeamSection() {
                 {member.role}
               </p>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

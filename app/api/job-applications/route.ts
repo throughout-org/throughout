@@ -366,7 +366,7 @@ export async function POST(request: NextRequest) {
       {
         success: true,
         message: "Application submitted successfully!",
-        data: created,
+        data: { id: String(created._id) },
         email: emailResult,
       },
       { status: 201, headers: corsHeaders(origin) },

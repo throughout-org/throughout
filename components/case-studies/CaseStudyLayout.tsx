@@ -1,7 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { FiCheckCircle } from "react-icons/fi";
-import { PrimaryButton } from "@/components/ui/Button";
 
 interface CaseStudySidebarProps {
   metrics: {

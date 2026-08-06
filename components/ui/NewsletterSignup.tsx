@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowRight, FiCheck, FiMail } from "react-icons/fi";
 import { trackNewsletterSignup } from "@/lib/analytics";
 
@@ -83,20 +82,16 @@ function NewsletterForm({
   compact?: boolean;
 }) {
   return (
-    <AnimatePresence mode="wait">
+    <div aria-live="polite">
       {status === "success" ? (
-        <motion.div
-          key="success"
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
+        <div
           className={`flex items-center gap-2 text-sm font-semibold ${dark ? "text-emerald-400" : "text-emerald-600"}`}
         >
           <FiCheck />
           You&apos;re in! Check your inbox soon.
-        </motion.div>
+        </div>
       ) : (
-        <motion.form
-          key="form"
+        <form
           onSubmit={onSubmit}
           className={dark
             ? "relative flex items-center rounded-full border border-white/85 bg-transparent p-1.5 pl-4 transition focus-within:border-sky-300 focus-within:ring-2 focus-within:ring-sky-400/20"
@@ -132,8 +127,8 @@ function NewsletterForm({
             )}
           </button>
           {error && <p role="alert" className={`absolute left-4 top-full mt-2 text-xs ${dark ? "text-red-400" : "text-red-600"}`}>{error}</p>}
-        </motion.form>
+        </form>
       )}
-    </AnimatePresence>
+    </div>
   );
 }

@@ -59,7 +59,7 @@ export default function MVPDevelopmentCaseStudy() {
 
           <CaseStudySection number="3" title="Our Solution" heading="Fast. Lean. Scalable.">
             <p className="text-lg text-gray-600 leading-relaxed mb-8">
-              Through our MVP Studio approach, we stripped away the "nice-to-have" features and laser-focused entirely on building the core functionality that solved the users' immediate pain points.
+              {"Through our MVP Studio approach, we stripped away the \"nice-to-have\" features and laser-focused entirely on building the core functionality that solved the users' immediate pain points."}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white border text-left border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">

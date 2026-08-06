@@ -9,7 +9,10 @@ const MC_URL = `https://${MC_DC}.api.mailchimp.com/3.0/lists/${MC_LIST_ID}/membe
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, firstName, source } = await req.json();
+    const body = (await req.json()) as Record<string, unknown>;
+    const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
+    const firstName = typeof body.firstName === "string" ? body.firstName.trim().slice(0, 80) : "";
+    const source = typeof body.source === "string" ? body.source.trim().slice(0, 80) : "website";
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ success: false, error: "Invalid email address" }, { status: 400 });
@@ -32,10 +35,10 @@ export async function POST(req: NextRequest) {
         email_address: email,
         status_if_new: "subscribed",
         merge_fields: {
-          FNAME: firstName ?? "",
-          SOURCE: source ?? "website",
+          FNAME: firstName,
+          SOURCE: source,
         },
-        tags: ["website", source ?? "footer"],
+        tags: ["website", source],
       }),
     });
 

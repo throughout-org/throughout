@@ -87,6 +87,7 @@ export async function getInternshipsFromCrm(options?: {
     const params = includeClosed ? "?includeAll=true" : "";
     const response = await fetch(`${baseUrl}/api/jobs${params}`, {
       next: { revalidate: 60 },
+      signal: AbortSignal.timeout(8_000),
     });
 
     if (!response.ok) {
@@ -118,6 +119,7 @@ export async function getInternshipBySlugFromCrm(
       `${baseUrl}/api/jobs?slug=${encodeURIComponent(slug)}`,
       {
         next: { revalidate: 60 },
+        signal: AbortSignal.timeout(8_000),
       },
     );
 
