@@ -3,19 +3,13 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { FiArrowRight, FiSearch } from "react-icons/fi";
 
-type Author = {
-  name: string;
-  role?: string;
-  avatarUrl?: string;
-};
-
+type Author = { name: string; role?: string; avatarUrl?: string };
 type Post = {
   _id: string;
   title: string;
   slug: { current: string };
-  content: Record<string, unknown>;
   category: string[];
   date: string;
   image?: { asset?: { url: string } } | string;
@@ -23,247 +17,106 @@ type Post = {
   author?: Author | null;
 };
 
-interface InsightsClientProps {
-  posts: Post[];
-}
-
-const EASE_OUT_EXPO = [0.22, 1, 0.36, 1] as [number, number, number, number];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: EASE_OUT_EXPO, delay: Math.min(i, 8) * 0.08 },
-  }),
-};
-
-function getImageSrc(image: Post["image"]) {
-  if (typeof image === "string") return image;
-  if (image?.asset?.url) return image.asset.url;
-  return "/images/insights/placeholder.png";
-}
+const PER_PAGE = 7;
 
 function formatDate(date: string) {
   const parsed = new Date(date);
   if (Number.isNaN(parsed.getTime())) return date;
-  return parsed.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
+  return parsed.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
-const PER_PAGE = 6;
+function PostMeta({ post }: { post: Post }) {
+  return (
+    <div className="space-y-4">
+      {post.author && (
+        <div className="flex items-center gap-3.5">
+          <div className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-slate-200 text-sm font-bold text-slate-700 ring-1 ring-slate-200">
+            {post.author.avatarUrl ? (
+              <Image src={post.author.avatarUrl} alt={post.author.name} fill sizes="56px" className="object-cover" />
+            ) : (
+              <span aria-hidden="true">{post.author.name.split(" ").map((part) => part[0]).slice(0, 2).join("").toUpperCase()}</span>
+            )}
+          </div>
+          <div className="min-w-0">
+            <p className="truncate text-base font-bold text-slate-950 sm:text-lg">{post.author.name}</p>
+            {post.author.role && <p className="mt-0.5 truncate text-sm text-slate-500">{post.author.role}</p>}
+          </div>
+        </div>
+      )}
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
+        <time dateTime={post.date}>{formatDate(post.date)}</time>
+        {post.category?.[0] && <><span aria-hidden="true" className="h-1 w-1 rounded-full bg-slate-300" /><span>{post.category[0]}</span></>}
+      </div>
+    </div>
+  );
+}
 
-export default function InsightsClient({ posts }: InsightsClientProps) {
+export default function InsightsClient({ posts }: { posts: Post[] }) {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
   const [page, setPage] = useState(1);
 
-  const categories = useMemo(() => {
-    const set = new Set<string>();
-    posts.forEach((post) => post.category?.forEach((c) => set.add(c)));
-    return ["All", ...Array.from(set).sort()];
-  }, [posts]);
-
+  const categories = useMemo(() => ["All", ...Array.from(new Set(posts.flatMap((post) => post.category || []))).sort()], [posts]);
   const filtered = useMemo(() => {
     const query = search.trim().toLowerCase();
-    return posts.filter((post) => {
-      const matchesCategory =
-        category === "All" || post.category?.includes(category);
-      const matchesSearch =
-        !query ||
-        post.title.toLowerCase().includes(query) ||
-        post.excerpt?.toLowerCase().includes(query);
-      return matchesCategory && matchesSearch;
-    });
+    return posts.filter((post) =>
+      (category === "All" || post.category?.includes(category)) &&
+      (!query || post.title.toLowerCase().includes(query) || post.excerpt?.toLowerCase().includes(query)),
+    );
   }, [posts, search, category]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
-  const paginated = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+  const visiblePosts = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
 
-  function handleSearchChange(value: string) {
-    setSearch(value);
-    setPage(1);
-  }
-
-  function handleCategoryChange(value: string) {
-    setCategory(value);
-    setPage(1);
-  }
+  const updateSearch = (value: string) => { setSearch(value); setPage(1); };
+  const updateCategory = (value: string) => { setCategory(value); setPage(1); };
 
   return (
-    <div className="min-h-screen bg-white pb-24 pt-32 sm:pt-40">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
-            Blog
-          </h1>
-          <p className="mt-4 text-base leading-7 text-slate-600">
-            Ideas, engineering notes, and product thinking from the Throughout
-            team.
-          </p>
-        </div>
-
-        {/* Search + Category filter */}
-        <div className="mx-auto mt-10 flex w-full max-w-xl flex-col items-center gap-3 sm:flex-row sm:justify-center">
-          <div className="relative w-full sm:w-72">
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => handleSearchChange(e.target.value)}
-              placeholder="Search"
-              className="w-full rounded-full border border-slate-200 bg-white px-5 py-2.5 pr-11 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-sky-500"
-            />
-            <svg
-              className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
-              />
-            </svg>
-          </div>
-          <div className="relative w-full sm:w-48">
-            <select
-              value={category}
-              onChange={(e) => handleCategoryChange(e.target.value)}
-              className="w-full appearance-none rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-sky-500"
-            >
-              {categories.map((cat) => (
-                <option key={cat} value={cat} className="bg-white text-slate-900">
-                  {cat}
-                </option>
-              ))}
-            </select>
-            <svg
-              className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+    <main className="min-h-screen bg-white text-slate-950">
+      <section className="border-b border-slate-200 px-4 pb-16 pt-32 sm:px-6 sm:pb-20 sm:pt-40 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-sky-700">Insights</p>
+          <div className="mt-6 grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+            <h1 className="max-w-4xl text-balance text-4xl font-extrabold leading-[1.05] tracking-[-0.045em] sm:text-6xl">Useful thinking for digital teams.</h1>
+            <p className="max-w-xl text-lg leading-8 text-slate-600">Practical notes on engineering, product design, AI, marketing, and building capable teams.</p>
           </div>
         </div>
+      </section>
 
-        {/* Grid */}
-        <div className="mt-16">
-          {filtered.length === 0 ? (
-            <div className="py-20 text-center text-slate-500">
-              No insights match your search.
+      <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="border-b border-slate-200 pb-8">
+            <div className="relative w-full max-w-lg">
+              <input aria-label="Search insights" id="insights-search" type="search" value={search} onChange={(event) => updateSearch(event.target.value)} placeholder="Search insights" className="min-h-11 w-full rounded-full border border-slate-300 bg-white py-2.5 pl-4 pr-11 text-sm outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-100" />
+              <FiSearch className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true" />
             </div>
+            <div aria-label="Filter insights by category" className="mt-4 flex min-w-0 flex-wrap gap-2">
+              {categories.map((item) => <button key={item} type="button" onClick={() => updateCategory(item)} className={`shrink-0 rounded-full px-4 py-2 text-xs font-bold transition ${category === item ? "bg-slate-950 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>{item}</button>)}
+            </div>
+          </div>
+
+          {visiblePosts.length === 0 ? (
+            <div className="py-24 text-center"><h2 className="text-2xl font-bold">No matching insights</h2><p className="mt-3 text-slate-600">Try another search or category.</p></div>
           ) : (
             <>
-              <div className="grid grid-cols-1 gap-x-12 gap-y-16 md:grid-cols-2">
-                {paginated.map((post, i) => (
-                  <motion.div
-                    key={post._id}
-                    variants={cardVariants}
-                    initial="hidden"
-                    animate="show"
-                    custom={i}
-                    className="group overflow-hidden rounded-2xl border border-slate-200 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/10"
-                  >
-                    <Link
-                      href={`/insights/${post.slug?.current || ""}`}
-                      className="block"
-                    >
-                      <div className="p-6 pb-4">
-                        <div className="mb-4 flex items-center justify-between text-xs font-medium uppercase tracking-wider text-slate-500">
-                          <span>{formatDate(post.date)}</span>
-                          {post.category?.length > 0 && (
-                            <span>{post.category.join(", ")}</span>
-                          )}
-                        </div>
-                        <h2 className="text-lg font-bold leading-snug text-slate-950 transition-colors duration-300 group-hover:text-sky-700 sm:text-xl">
-                          {post.title}
-                        </h2>
-                        {post.author && (
-                          <div className="mt-4 flex items-center gap-3">
-                            <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full bg-slate-100">
-                              {post.author.avatarUrl ? (
-                                <Image
-                                  src={post.author.avatarUrl}
-                                  alt={post.author.name}
-                                  fill
-                                  sizes="36px"
-                                  className="object-cover"
-                                />
-                              ) : (
-                                <div className="flex h-full w-full items-center justify-center text-xs font-bold text-slate-500">
-                                  {post.author.name
-                                    .split(" ")
-                                    .map((part) => part[0])
-                                    .slice(0, 2)
-                                    .join("")
-                                    .toUpperCase()}
-                                </div>
-                              )}
-                            </div>
-                            <div>
-                              <p className="text-sm font-semibold text-slate-950">
-                                {post.author.name}
-                              </p>
-                              {post.author.role && (
-                                <p className="text-xs text-slate-500">
-                                  {post.author.role}
-                                </p>
-                              )}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                      <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
-                        <Image
-                          src={getImageSrc(post.image)}
-                          alt={post.title}
-                          fill
-                          sizes="(min-width: 768px) 50vw, 100vw"
-                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                        />
-                      </div>
+              <div>
+                {visiblePosts.map((post) => (
+                  <article key={post._id} className="border-b border-slate-200 py-10 sm:py-12">
+                    <Link href={`/insights/${post.slug.current}`} className="group block">
+                      <PostMeta post={post} />
+                      <h2 className="mt-5 max-w-6xl text-2xl font-extrabold leading-tight tracking-[-0.025em] transition group-hover:text-sky-700 sm:text-3xl lg:text-4xl">{post.title}</h2>
+                      {post.excerpt && <p className="mt-4 max-w-6xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">{post.excerpt}</p>}
+                      <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-sky-700">Read article <FiArrowRight className="transition group-hover:translate-x-1" aria-hidden="true" /></span>
                     </Link>
-                  </motion.div>
+                  </article>
                 ))}
               </div>
 
-              {totalPages > 1 && (
-                <div className="mt-16 flex justify-center">
-                  <nav className="inline-flex gap-2">
-                    {Array.from({ length: totalPages }, (_, i) => (
-                      <button
-                        key={i + 1}
-                        onClick={() => setPage(i + 1)}
-                        className={
-                          (page === i + 1
-                            ? "bg-slate-950 text-white shadow"
-                            : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50") +
-                          " rounded-full px-4 py-2 text-sm font-semibold transition"
-                        }
-                      >
-                        {i + 1}
-                      </button>
-                    ))}
-                  </nav>
-                </div>
-              )}
+              {totalPages > 1 && <nav aria-label="Insights pagination" className="mt-16 flex justify-center gap-2">{Array.from({ length: totalPages }, (_, index) => <button key={index + 1} type="button" aria-current={page === index + 1 ? "page" : undefined} onClick={() => setPage(index + 1)} className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold transition ${page === index + 1 ? "bg-slate-950 text-white" : "border border-slate-300 hover:bg-slate-50"}`}>{index + 1}</button>)}</nav>}
             </>
           )}
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

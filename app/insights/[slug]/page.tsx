@@ -1,26 +1,14 @@
 import type { Metadata } from "next";
+import { cache } from "react";
 import InsightDetails from "@/components/insights/InsightDetails";
 import { client } from "@/src/sanity/client";
 
 type Params = { slug: string };
 const siteUrl = "https://www.throughout.io";
-const imageLicenseUrl = `${siteUrl}/terms-of-service`;
+const imageLicenseUrl = `${siteUrl}/privacy-policy#terms-of-service`;
 const acquireLicensePageUrl = `${siteUrl}/contact`;
 
-async function fetchPostMeta(slug: string) {
-  const post = await client.fetch(
-    `*[_type == "post" && slug.current == $slug][0]{
-      title,
-      excerpt,
-      "imageUrl": coalesce(image.asset->url, ""),
-      date
-    }`,
-    { slug },
-  );
-  return post;
-}
-
-async function fetchPost(slug: string) {
+const fetchPost = cache(async (slug: string) => {
   const post = await client.fetch(
     `*[_type == "post" && slug.current == $slug][0]{
       _id,
@@ -32,6 +20,7 @@ async function fetchPost(slug: string) {
       image {
         asset->{url}
       },
+      "imageUrl": coalesce(image.asset->url, ""),
       excerpt,
       author->{
         name,
@@ -42,7 +31,7 @@ async function fetchPost(slug: string) {
     { slug },
   );
   return post;
-}
+});
 
 export async function generateMetadata({
   params,
@@ -50,7 +39,7 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = slug ? await fetchPostMeta(slug) : null;
+  const post = slug ? await fetchPost(slug) : null;
 
   const canonical = `${siteUrl}/insights/${slug}`;
 
@@ -103,20 +92,17 @@ export default async function InsightDetailPage({
   params: Promise<Params>;
 }) {
   const { slug } = await params;
-  const [meta, post] = await Promise.all([
-    slug ? fetchPostMeta(slug) : null,
-    slug ? fetchPost(slug) : null,
-  ]);
+  const post = slug ? await fetchPost(slug) : null;
 
   const imageObject =
-    meta && meta.imageUrl
+    post && post.imageUrl
       ? {
           "@context": "https://schema.org",
           "@type": "ImageObject",
-          contentUrl: meta.imageUrl,
-          name: meta.title,
+          contentUrl: post.imageUrl,
+          name: post.title,
           description:
-            meta.excerpt ||
+            post.excerpt ||
             "Explore detailed insights from Throughout (PVT) LTD on software, AI, and automation.",
           license: imageLicenseUrl,
           acquireLicensePage: acquireLicensePageUrl,

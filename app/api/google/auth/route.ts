@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { google } from "googleapis";
 
 export const runtime = "nodejs";
@@ -17,7 +17,7 @@ function getOAuth2Client() {
   return new google.auth.OAuth2(clientId, clientSecret, redirectUri);
 }
 
-export async function GET(_request: NextRequest) {
+export async function GET() {
   try {
     const oAuth2Client = getOAuth2Client();
 

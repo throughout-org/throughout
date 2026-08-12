@@ -10,38 +10,40 @@ Throughout is a modern software engineering company specializing in custom web, 
 
 ## 🌐 Main Pages Overview
 
-| Page                                              | Description                                                                          |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| **Home** (`/`)                                     | Landing page with hero, services, about, and trust sections.                        |
-| **About** (`/about`)                               | Mission, vision, core values, and what makes Throughout unique.                     |
-| **Engineering** (`/engineering`)                   | Custom software, web, and mobile engineering services.                              |
-| **Design** (`/design`)                             | Product and brand design services.                                                  |
-| **Digital Marketing** (`/digital-marketing`)       | SEO, growth, and digital marketing services.                                        |
-| **Agency Partners** (`/agency-partners`)           | Partner programme for agencies reselling Throughout's services.                     |
-| **Portfolio** (`/portfolio`)                       | Showcases our best work: web, mobile, AI, and automation projects.                  |
-| **Case Studies** (`/case-studies`)                 | Detailed write-ups of real client projects and results.                             |
-| **Case Study Detail** (`/case-studies/[slug]`)     | AI SEO growth, SaaS MVP launch, Shopify conversion, performance, and automation.     |
-| **Insights/Blog** (`/insights`)                    | Latest articles, tech insights, and company news. Dynamic content from Sanity CMS.  |
-| **Insight Details** (`/insights/[slug]`)           | Full article view for each insight or blog post.                                    |
-| **Careers** (`/careers`)                           | Open career opportunities with details and application form.                        |
-| **Career Details** (`/careers/[slug]`)             | Detailed info and application for each role.                                        |
-| **Contact** (`/contact`)                           | Contact form, WhatsApp, and company info for inquiries and support.                 |
-| **Privacy Policy** (`/privacy-policy`)             | Our privacy practices and data protection policies.                                 |
-| **Terms of Service** (`/terms-of-service`)         | Legal terms for using our website and services.                                     |
+| Page                                          | Description                                                                          |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Home** (`/`)                                 | Redesigned landing page with hero, team growth highlight, and core sections.        |
+| **About** (`/about`)                           | Mission, vision, core values, and what makes Throughout unique.                     |
+| **Engineering** (`/engineering`)               | Custom software, web, and mobile engineering services.                              |
+| **Design** (`/design`)                         | Product and brand design services.                                                  |
+| **Digital Marketing** (`/digital-marketing`)   | SEO, growth, and digital marketing services.                                        |
+| **Dedicated Teams** (`/dedicated-teams`)       | Long-term offshore teams for startups, product companies, agencies, and businesses. |
+| **Portfolio** (`/portfolio`)                   | Showcases our best work: web, mobile, AI, and automation projects.                  |
+| **Case Studies** (`/case-studies`)             | Detailed write-ups of real client projects and results.                             |
+| **Case Study Detail** (`/case-studies/[slug]`) | AI SEO growth, SaaS MVP launch, Shopify conversion, performance, and automation.     |
+| **Insights/Blog** (`/insights`)                | Latest articles, tech insights, and company news. Dynamic content from Sanity CMS.  |
+| **Insight Details** (`/insights/[slug]`)       | Full article view for each insight or blog post.                                    |
+| **Careers** (`/careers`)                       | Open career opportunities with details and application form.                        |
+| **Career Details** (`/careers/[slug]`)         | Detailed info and application for each role.                                        |
+| **Contact** (`/contact`)                       | Contact form, WhatsApp, and company info for inquiries and support.                 |
+| **Agency Partners** (`/agency-partners`)       | White-label engineering page for agency partners (not currently linked in the nav). |
+| **Privacy Policy** (`/privacy-policy`)         | Our privacy practices and data protection policies.                                 |
+| **Terms of Service** (`/terms-of-service`)     | Legal terms for using our website and services.                                     |
+
+The primary nav (see [components/Navbar.tsx](components/Navbar.tsx)) links **Engineering**, **Design**, **Marketing**, and **Dedicated Teams**. Service pages (Engineering, Design, Digital Marketing, Agency Partners) now share a single [UnifiedServicePage](components/service/UnifiedServicePage.tsx) component driven by per-page content.
 
 ---
 
 ## 🚀 Features
 
-- **Modern Design**: Clean, minimal, and professional UI with blue/sky gradient theme
+- **Redesigned Homepage**: New hero with a cursor field effect and a team-growth highlight section ([components/home/HomepageRedesign.tsx](components/home/HomepageRedesign.tsx))
 - **Fully Responsive**: Works perfectly on mobile, tablet, and desktop
-- **Smooth Animations**: Framer Motion transitions and scroll/hover effects
 - **Contact Form**: Interactive form with validation and email delivery via Nodemailer
 - **Newsletter Signup**: Mailchimp-powered subscription
 - **Job Applications**: Resume uploads to Google Drive, application tracking in MongoDB, and email notifications
 - **WhatsApp Integration**: Direct link to chat on WhatsApp
 - **SEO Optimized**: Proper meta tags, Open Graph, and Twitter card support
-- **Insights/Blog**: Dynamic content from Sanity CMS
+- **Insights/Blog**: Dynamic content from Sanity CMS, now with its own embedded Sanity Studio (`studio-throoout/`)
 - **Image Fallbacks**: Automatic placeholder for missing images
 - **24/7 Support**: Always available for client needs
 
@@ -50,13 +52,14 @@ Throughout is a modern software engineering company specializing in custom web, 
 - **Framework**: Next.js 16
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS 4
-- **React**: 19
-- **Animation**: Framer Motion, tsParticles
-- **CMS**: Sanity.io (with Portable Text)
+- **React**: 19 (React Compiler via `babel-plugin-react-compiler`)
+- **CMS**: Sanity.io (`@sanity/client` + `@portabletext/react`, with a local Sanity Studio in [studio-throoout/](studio-throoout/))
 - **Database**: MongoDB (via Mongoose)
 - **File Storage**: Cloudinary (resumes), Google Drive (via googleapis)
 - **Email**: Nodemailer (SMTP), Mailchimp (newsletter)
-- **Other**: react-calendly, ESLint
+- **Icons**: react-icons
+
+> The site was recently streamlined to a smaller set of core dependencies — Framer Motion, tsParticles, `next-sanity`, and `react-calendly` have been removed in favor of lighter, purpose-built implementations (e.g. `components/home/HeroCursorField.tsx`, `components/CalendlyPopup.tsx`).
 
 ## 📰 Insights & CMS Integration
 
@@ -65,10 +68,10 @@ Throughout is a modern software engineering company specializing in custom web, 
 
 ### Editing Insights
 
-- **Sanity CMS**: Most insights/blog content is managed via Sanity Studio ([src/sanity/client.ts](src/sanity/client.ts)).
+- **Sanity CMS**: Insights/blog content is managed via the bundled Sanity Studio ([studio-throoout/](studio-throoout/)), configured against the client in [src/sanity/client.ts](src/sanity/client.ts).
 - **Local Data**: Some demo/sample insights are stored in [data/insights.ts](data/insights.ts) for development or fallback.
 - **How to Update**: Edit in Sanity Studio for production, or update [data/insights.ts](data/insights.ts) for local/demo content.
-- **Content Structure**: The `content` field supports HTML and Portable Text blocks.
+- **Content Structure**: The `content` field supports HTML and Portable Text blocks (see [studio-throoout/schemaTypes/](studio-throoout/schemaTypes/)).
 
 ### Careers
 
@@ -76,28 +79,17 @@ Throughout is a modern software engineering company specializing in custom web, 
 - **Rich Metadata**: Each role includes title, duration, stipend, location, status, description, responsibilities, requirements, skills, and benefits.
 - **How to Update**: Add, edit, or close openings from the CRM.
 - **Dynamic Routing**: Individual role details are available at `/careers/[slug]`.
-- **Fallback Behavior**: If the CRM API is unreachable, the website falls back to [data/internships.ts](data/internships.ts).
-
-### Dependencies
-
-If you add or update content structure, make sure to install:
-
-```bash
-npm install @portabletext/react @sanity/image-url next-sanity react-calendly
-```
+- **CRM Base URL**: Configured via `CRM_PUBLIC_API_BASE_URL` / `NEXT_PUBLIC_CRM_API_BASE_URL`.
 
 ## 🔐 Environment Variables
 
 Create a `.env.local` file at the project root and set the following values:
 
 ```bash
-# Sanity
-NEXT_PUBLIC_SANITY_API_TOKEN=
-
 # MongoDB
 MONGODB_URI=
 
-# Contact form email (Zoho SMTP via Nodemailer)
+# Contact form email (SMTP via Nodemailer)
 SMTP_USER=
 SMTP_PASS=
 MAIL_FROM="Throughout Team"
@@ -113,14 +105,19 @@ CLOUDINARY_URL=
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 GOOGLE_REDIRECT_URI=
+GOOGLE_REFRESH_TOKEN=
 GOOGLE_DRIVE_FOLDER_ID=
+GOOGLE_DRIVE_FOLDER_URL=
 
-# Optional: External APIs
-NEXT_PUBLIC_SEO_AUDIT_API_URL="http://127.0.0.1:8000/free-seo-audit"
-
-# Optional: CRM source for careers page
+# CRM source for careers page
 CRM_PUBLIC_API_BASE_URL="https://crm.throughout.io"
+NEXT_PUBLIC_CRM_API_BASE_URL="https://crm.throughout.io"
+
+# Optional: restrict CORS on API routes
+CORS_ALLOWED_ORIGINS=
 ```
+
+The Sanity client itself (project ID/dataset) is configured directly in [src/sanity/client.ts](src/sanity/client.ts) rather than via environment variables. The SEO audit endpoint currently proxies to a hardcoded local service URL in [app/api/seo-audit/route.ts](app/api/seo-audit/route.ts).
 
 ## 🚦 Getting Started
 
@@ -151,24 +148,25 @@ npm run lint    # Run ESLint
 
 ### Update Contact Information
 
-1. **WhatsApp Number**: Update the WhatsApp link/number used across the site (e.g. contact and footer components).
+1. **WhatsApp Number**: Update the WhatsApp link/number used across the site (e.g. [components/Footer.tsx](components/Footer.tsx) and [components/contact/ContactInfoSection.tsx](components/contact/ContactInfoSection.tsx)).
 2. **Email**: Update `hello@throughout.io` with your company email.
 
 ### Update Content
 
-- Landing page content: edit in [app/page.tsx](app/page.tsx)
-- Insights/blog content: edit in Sanity Studio (see [src/sanity/client.ts](src/sanity/client.ts) for config)
+- Landing page content: edit in [app/page.tsx](app/page.tsx) and [components/home/HomepageRedesign.tsx](components/home/HomepageRedesign.tsx)
+- Service pages: edit per-page content passed into [components/service/UnifiedServicePage.tsx](components/service/UnifiedServicePage.tsx)
+- Insights/blog content: edit in Sanity Studio ([studio-throoout/](studio-throoout/), config in [src/sanity/client.ts](src/sanity/client.ts))
 
 ## 🧩 API Endpoints
 
-| Endpoint                    | Method | Description                                                        |
-| ---------------------------- | ------ | ------------------------------------------------------------------- |
-| `/api/contact`               | POST   | Sends contact form submissions via email (Nodemailer/Zoho SMTP).   |
-| `/api/newsletter`            | POST   | Subscribes an email address to the Mailchimp newsletter list.      |
-| `/api/job-applications`      | POST   | Uploads resume to Google Drive, stores the application in MongoDB, and emails a notification. |
-| `/api/seo-audit`             | POST   | Proxies a URL to the external SEO audit service.                   |
-| `/api/google/auth`           | GET    | Starts the Google OAuth2 flow (Drive access for resume uploads).   |
-| `/api/google/callback`       | GET    | Google OAuth2 redirect callback; exchanges the code for tokens.    |
+| Endpoint                | Method | Description                                                                                    |
+| ------------------------ | ------ | ------------------------------------------------------------------------------------------------ |
+| `/api/contact`           | POST   | Sends contact form submissions via email (Nodemailer/SMTP).                                    |
+| `/api/newsletter`        | POST   | Subscribes an email address to the Mailchimp newsletter list.                                  |
+| `/api/job-applications`  | POST   | Uploads resume to Google Drive, stores the application in MongoDB, and emails a notification.  |
+| `/api/seo-audit`         | POST   | Proxies a URL to the external SEO audit service.                                               |
+| `/api/google/auth`       | GET    | Starts the Google OAuth2 flow (Drive access for resume uploads).                               |
+| `/api/google/callback`   | GET    | Google OAuth2 redirect callback; exchanges the code for tokens.                                |
 
 ### Job Applications
 
@@ -183,16 +181,20 @@ Request: `{ email, firstName?, source? }`
 ### SEO Audit
 
 **POST** `/api/seo-audit`
-Request: forwarded as-is to `NEXT_PUBLIC_SEO_AUDIT_API_URL`'s backing service.
+Request: forwarded as-is to the SEO audit backing service.
 
 ## 🗂️ Sanity Studio Setup
 
-To edit blog/insights content, use Sanity Studio:
+A Sanity Studio is bundled in [studio-throoout/](studio-throoout/) for editing blog/insights content:
 
-1. Clone or access your Sanity Studio project.
-2. Run `npx sanity start` in the Studio directory.
-3. Configure `src/sanity/client.ts` with your projectId, dataset, and API token.
-4. Edit content in Studio and publish.
+```bash
+cd studio-throoout
+npm install
+npm run dev      # local studio at http://localhost:3333
+npm run deploy   # deploy the hosted studio
+```
+
+Schema types (post, author, block content) live in [studio-throoout/schemaTypes/](studio-throoout/schemaTypes/). The Next.js app reads published content via [src/sanity/client.ts](src/sanity/client.ts) (project ID `vqsz4nvb`, dataset `production`).
 
 ## 🤝 Contribution Guide
 
@@ -207,16 +209,6 @@ To edit blog/insights content, use Sanity Studio:
 - **WhatsApp**: Direct chat integration
 - **Contact Form**: Built-in form submission (API-powered)
 
-## 🎨 Design Features
-
-- Gradient backgrounds with animated blobs
-- Smooth hover transitions
-- Rounded corners and soft shadows
-- Mobile-first responsive design
-- Accessible and semantic HTML
-- Portable Text rendering for rich content
-- Image fallback for broken/missing images in insights
-
 ## 📄 License
 
 © 2026 Throughout. All rights reserved.
@@ -224,4 +216,4 @@ To edit blog/insights content, use Sanity Studio:
 ---
 
 **Note**: Make sure to update the WhatsApp number and email address before deploying to production!
-
+</content>

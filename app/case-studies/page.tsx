@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   title: "Case Studies | Real Results & Real Projects",
   description:
     "Explore how we design, build, and optimize digital products that help companies grow faster and operate more efficiently.",
+  robots: {
+    index: false,
+    follow: true,
+    googleBot: { index: false, follow: true },
+  },
 };
 
 const caseStudies = [

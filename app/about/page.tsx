@@ -1,119 +1,111 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import InnerBanner from "@/components/ui/InnerBanner";
-import AntigravityParticles from "@/components/ui/AntigravityParticles";
-import ServicesCTASection from "@/components/services/ServicesCTASection";
-import MissionVisionSection from "@/components/about/MissionVisionSection";
-import CoreValuesSection from "@/components/about/CoreValuesSection";
+import { FiArrowRight, FiCode, FiMessageSquare, FiUsers } from "react-icons/fi";
 import TeamSection from "@/components/about/TeamSection";
-import CoreStrengthsSection from "@/components/whyus/CoreStrengthsSection";
-import OurApproachSection from "@/components/whyus/OurApproachSection";
 
-export const metsssadata: Metadata = {
-  title:
-    "About Throughout (PVT) LTD - Your Trusted Software Development Partner",
+export const metadata: Metadata = {
+  title: "About Throughout | Dedicated Digital Product Teams",
   description:
-    "Learn about Throughout (PVT) LTD's mission to deliver innovative software solutions. We specialize in web development, mobile apps, cloud solutions, and AI/ML. Discover our core values, vision, and commitment to excellence in software engineering.",
-  keywords: [
-    "about Throughout (PVT) LTD",
-    "software development company",
-    "our mission",
-    "our vision",
-    "company values",
-    "innovation",
-    "excellence",
-    "integrity",
-    "software engineering team",
-    "agile methodology",
-    "quality assurance",
-    "client success",
-    "digital transformation experts",
-  ],
+    "Meet Throughout, a Sri Lanka-based team helping startups, agencies, and product companies build dependable digital products and dedicated offshore teams.",
+  alternates: { canonical: "https://www.throughout.io/about" },
   openGraph: {
     type: "website",
-    locale: "en_US",
     url: "https://www.throughout.io/about",
-    siteName: "Throughout (PVT) LTD",
-    title:
-      "About Throughout (PVT) LTD - Your Trusted Software Development Partner",
+    title: "About Throughout | Dedicated Digital Product Teams",
     description:
-      "Discover Throughout (PVT) LTD's mission, vision, and values. Expert software development with innovation and excellence.",
-    images: [
-      {
-        url: "/images/og-about.png",
-        width: 1200,
-        height: 630,
-        alt: "About Throughout (PVT) LTD",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "About Throughout (PVT) LTD - Software Development Experts",
-    description:
-      "Our mission, vision, and commitment to delivering exceptional software solutions.",
-    images: ["/images/twitter-about.png"],
-  },
-  alternates: {
-    canonical: "https://www.throughout.io/about",
+      "A focused engineering, design, data, AI, QA, DevOps, and marketing team for ambitious digital products.",
+    images: [{ url: "/about/opengraph-image", width: 1200, height: 630, alt: "About Throughout" }],
   },
 };
 
+const principles = [
+  {
+    icon: FiCode,
+    title: "Depth over headcount",
+    copy: "We shape teams around the work, with the technical judgement needed to make sound product decisions.",
+  },
+  {
+    icon: FiMessageSquare,
+    title: "Work stays visible",
+    copy: "Direct communication, clear ownership, and regular reviews keep delivery easy to follow.",
+  },
+  {
+    icon: FiUsers,
+    title: "Built to work together",
+    copy: "Our specialists integrate with your team, tools, and working rhythm instead of operating at a distance.",
+  },
+];
+
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <div className="relative flex min-h-[78vh] items-stretch isolate">
-        <div className="absolute inset-0 h-full w-full">
-          <AntigravityParticles />
-        </div>
-        <div className="relative z-10 flex w-full items-center justify-center pt-20 sm:pt-24 lg:pt-28">
-          <InnerBanner
-            badgeText="About Throughout"
-            title={
-              <>
-                Engineering Digital Products <br className="hidden md:block" />
-                With Practical Momentum
-              </>
-            }
-            description="A dedicated product engineering team combining strategy, clean architecture, and transparent delivery to turn ideas into dependable software."
-            cta={
-              <div className="flex flex-col justify-center gap-3 sm:flex-row">
-                <Link
-                  href="/portfolio"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-sky-900/15 transition hover:bg-sky-700 hover:shadow-xl"
-                >
-                  View Our Work
-                  <span aria-hidden="true">-&gt;</span>
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-7 py-3.5 text-base font-bold text-slate-900 transition hover:border-slate-300 hover:bg-slate-50 hover:shadow-lg"
-                >
-                  Book a Free Call
-                </Link>
-              </div>
-            }
-            isBackgroundColored={false}
-          />
-        </div>
-      </div>
-
-      <section className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-white text-slate-950">
+      <section className="border-b border-slate-200 px-4 pb-20 pt-32 sm:px-6 sm:pb-24 sm:pt-40 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <MissionVisionSection />
-          <CoreValuesSection />
-          <TeamSection />
-          <CoreStrengthsSection />
-          <OurApproachSection />
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-sky-700">About Throughout</p>
+          <div className="mt-6 grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+            <h1 className="max-w-4xl text-balance text-4xl font-extrabold leading-[1.05] tracking-[-0.045em] sm:text-6xl">
+              A focused team for ambitious digital products.
+            </h1>
+            <p className="max-w-xl text-lg leading-8 text-slate-600">
+              We help startups, agencies, and product companies build dependable products and long-term digital teams.
+            </p>
+          </div>
         </div>
       </section>
 
-      <ServicesCTASection
-        headline="Ready to Accelerate Your Digital Growth?"
-        subtext="Let's build innovative software solutions that transform your business operations and delight your customers."
-        buttonText="Get in Touch Today"
-      />
-      {/* <TrendyTuringLabel /> */}
-    </div>
+      <section className="px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-sky-700">Who we are</p>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-[-0.035em] sm:text-4xl">One team, shaped around the work.</h2>
+          </div>
+          <div className="space-y-5 text-lg leading-8 text-slate-600">
+            <p>
+              Throughout is a Sri Lanka-based digital delivery company bringing together engineering, product design, data, AI, quality assurance, DevOps, and marketing expertise.
+            </p>
+            <p>
+              Companies work with us for a defined project or to build a dedicated offshore team that becomes part of their day-to-day operation. In both models, the aim is the same: capable people, clear communication, and dependable delivery.
+            </p>
+            <div className="pt-2">
+              <Link href="/#engagement-models" className="inline-flex items-center gap-2 text-sm font-bold text-sky-700 hover:text-sky-900">
+                Explore how we work <FiArrowRight aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-px overflow-hidden rounded-3xl border border-slate-200 bg-slate-200 md:grid-cols-3">
+            {principles.map(({ icon: Icon, title, copy }) => (
+              <article key={title} className="bg-white p-7 sm:p-8">
+                <Icon className="text-2xl text-sky-700" aria-hidden="true" />
+                <h2 className="mt-5 text-xl font-bold tracking-tight">{title}</h2>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <TeamSection />
+        </div>
+      </section>
+
+      <section className="px-4 pb-20 sm:px-6 sm:pb-24 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-7 rounded-3xl bg-slate-950 px-6 py-12 text-white sm:px-10 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-sky-300">Work with us</p>
+            <h2 className="mt-3 max-w-2xl text-3xl font-extrabold tracking-tight">Build the product or team you need next.</h2>
+          </div>
+          <Link href="/contact" className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-950 transition hover:bg-sky-100">
+            Book a Free Consultation <FiArrowRight aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }

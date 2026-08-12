@@ -2,9 +2,6 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getInternshipBySlugFromCrm } from "@/lib/careersApi";
 import ApplicationForm from "@/components/careers/ApplicationForm";
-import Head from "next/head";
-import BannerBadge from "@/components/ui/BannerBadge";
-import { text } from "stream/consumers";
 
 export const revalidate = 60; // Revalidate every 60 seconds (ISR)
 export const dynamicParams = true; // Allow new slugs not known at build time
@@ -103,21 +100,10 @@ export default async function CareerDetailPage({
 
   return (
     <>
-      <Head>
-        <meta name="robots" content="index, follow" />
-        <meta
-          name="keywords"
-          content={`careers, ${internship.title}, ${internship.slug.replace(/-/g, " ")}, jobs, internship, startup, Throughout (PVT) LTD, Sri Lanka, remote, product development, AI, automation, software engineering, digital marketing, business development`}
-        />
-        <link
-          rel="canonical"
-          href={`https://www.throughout.io/careers/${internship.slug}`}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPosting) }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPosting) }}
+      />
       <div className="relative min-h-screen overflow-hidden font-sans">
         {/* Animated Background Elements */}
         {/* <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">

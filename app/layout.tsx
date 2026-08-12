@@ -209,14 +209,14 @@ const servicesSchema = {
     },
     {
       "@type": "Service",
-      "@id": "https://www.throughout.io/agency-partners#service",
-      name: "Agency Partner Programme",
+      "@id": "https://www.throughout.io/dedicated-teams#service",
+      name: "Dedicated Offshore Teams",
       provider: { "@id": "https://www.throughout.io/#organization" },
-      description: "A dedicated, revenue-shared engineering team that works exclusively for marketing, creative, branding, and growth agencies as their technical delivery arm — full transparency on costs, timesheets, and profit split.",
-      url: "https://www.throughout.io/agency-partners",
-      serviceType: "White Label Software Development",
+      description: "Long-term dedicated offshore engineering, design, data, QA, DevOps, AI, and marketing teams shaped around a company's roadmap and working rhythm.",
+      url: "https://www.throughout.io/dedicated-teams",
+      serviceType: "Dedicated Offshore Team",
       areaServed: ["Sri Lanka", "Worldwide"],
-      audience: { "@type": "Audience", audienceType: "Marketing, creative, branding, and growth agencies" },
+      audience: { "@type": "Audience", audienceType: "Startups, product companies, digital agencies, and growing businesses" },
     },
   ],
 };
@@ -240,12 +240,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* End Google Tag Manager */}
 
         <meta name="facebook-domain-verification" content="uf6mvfowatdceibrh83b3u1e5xdtpb" />
-        <link rel="preload" as="manifest" href="/site.webmanifest" />
-        <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
-
-        {/* Google Analytics 4 */}
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
-        <script
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -259,8 +257,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
 
-        {/* Meta Pixel */}
-        <script
+        <Script
+          id="meta-pixel"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -291,12 +290,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-
-        <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
-
         {/* Meta Pixel noscript */}
         <noscript>
-          <img height="1" width="1" style={{ display: "none" }}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img alt="" height="1" width="1" style={{ display: "none" }}
             src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
           />
         </noscript>
