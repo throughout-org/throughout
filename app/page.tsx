@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     url: "https://www.throughout.io",
     title: "Dedicated Teams That Build, Launch and Scale Digital Products",
     description:
-      "Senior engineering, design, data, AI, DevOps, QA, and marketing expertise—assembled around your goals.",
+      "Senior engineering, design, data, AI, DevOps, QA, and marketing expertise assembled around your goals.",
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Throughout dedicated digital teams" }],
   },
   twitter: {

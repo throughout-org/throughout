@@ -65,7 +65,7 @@ export default function ProductDashboardPreview({ product }: { product: ProductN
               className="rounded-xl bg-white/10 p-2.5"
             >
               <span className="block text-[0.58rem] text-white/55">{label}</span>
-              <strong className="mt-1 block text-sm">{value}</strong>
+              <strong className="block mt-1 text-sm">{value}</strong>
             </motion.div>
           ))}
         </div>
@@ -73,7 +73,7 @@ export default function ProductDashboardPreview({ product }: { product: ProductN
           initial={{ opacity: 0, y: 12 }}
           animate={active ? { opacity: 1, y: 0 } : {}}
           transition={transition(0.32)}
-          className="mt-3 rounded-xl bg-white p-3 text-slate-900"
+          className="p-3 mt-3 bg-white rounded-xl text-slate-900"
         >
           <div className="flex items-center justify-between text-[0.62rem] font-bold">
             <span>Current sale</span><span>3 items</span>
@@ -100,8 +100,13 @@ export default function ProductDashboardPreview({ product }: { product: ProductN
             animate={active ? { opacity: 1, x: 0 } : {}}
             transition={transition()}
           >
-            <span className="text-[0.6rem] text-white/55">Search visibility</span>
-            <strong className="mt-1 block text-2xl">
+
+
+
+
+
+            <span className="text-[0.6rem] text-slate-500">Search visibility</span>
+            <strong className="block mt-1 text-2xl">
               {active ? <CountUp to={82.4} suffix="%" /> : "0%"}
             </strong>
           </motion.div>
@@ -145,7 +150,7 @@ export default function ProductDashboardPreview({ product }: { product: ProductN
           className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 p-2.5"
         >
           <span className={`flex h-8 w-8 items-center justify-center rounded-full text-[0.6rem] font-bold ${colour}`}>{initials}</span>
-          <span className="min-w-0 flex-1">
+          <span className="flex-1 min-w-0">
             <strong className="block truncate text-[0.68rem]">{name}</strong>
             <span className="block text-[0.58rem] text-slate-500">{status}</span>
           </span>

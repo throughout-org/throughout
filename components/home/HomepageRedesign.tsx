@@ -51,7 +51,7 @@ const capabilities = [
   {
     icon: FiShield,
     title: "Quality assurance",
-    copy: "Manual and automated testing embedded into delivery—not left until launch.",
+    copy: "Manual and automated testing embedded into delivery, not left until launch.",
     href: "/engineering",
   },
   {
@@ -82,7 +82,7 @@ const products = [
     name: "Rankout",
     label: "Search visibility",
     description:
-      "One platform to research, automate, implement, and measure SEO, AEO, and GEO—with every AI-drafted change under your control.",
+      "One platform to research, automate, implement, and measure SEO, AEO, and GEO, with every AI-drafted change under your control.",
     href: "https://rankout.app/",
     icon: FiBarChart2,
     accent: "rankout",
@@ -91,7 +91,7 @@ const products = [
     name: "Comflo",
     label: "Commerce operations",
     description:
-      "A connected workspace for customer conversations, orders, channels, and retention—built for growing ecommerce businesses.",
+      "A connected workspace for customer conversations, orders, channels, and retention, built for growing ecommerce businesses.",
     href: "https://comflo.app/",
     icon: FiMessageCircle,
     accent: "comflo",
@@ -112,7 +112,7 @@ const productStyles = {
     card: "bg-transparent border-[#dedbd3]",
     icon: "bg-[#ea2804] text-white",
     glow: "hidden",
-    visual: "bg-[#3a3a3a] text-white",
+    visual: "bg-transparent text-slate-950 shadow-none",
     badge: "bg-[#ffe4dc] text-[#9f1c04]",
     accent: "text-[#ea2804]",
     status: "bg-[#ea2804]",
@@ -293,7 +293,7 @@ export default function HomepageRedesign() {
               </h3>
               <p className="max-w-xl mt-4 leading-7 text-slate-700">
                 Build a stable, managed team that integrates with your company,
-                tools, rituals, and roadmap—without building the hiring
+                tools, rituals, and roadmap without building the hiring
                 operation alone.
               </p>
               <ul className="mt-8 space-y-3 text-sm text-slate-700">
@@ -381,7 +381,7 @@ export default function HomepageRedesign() {
             </div>
             <p className="max-w-2xl text-lg leading-8 text-slate-600 lg:justify-self-end">
               The same product thinking, engineering discipline, and attention
-              to detail we bring to every partnership—tested in software we
+              to detail we bring to every partnership. Tested in software we
               own, operate, and keep improving.
             </p>
           </div>
@@ -475,7 +475,7 @@ export default function HomepageRedesign() {
               {
                 icon: FiUsers,
                 title: "Talent matched to the work",
-                copy: "Team shape starts with your roadmap, technical environment, and collaboration needs—not a generic bench.",
+                copy: "Team shape starts with your roadmap, technical environment, and collaboration needs, not a generic bench.",
               },
               {
                 icon: FiZap,

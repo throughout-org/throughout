@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     siteName: "Throughout (PVT) LTD",
     title: "Digital Marketing, Engineering & Design | Throughout (PVT) LTD",
     description:
-      "Full-stack digital growth — design, engineering, and marketing under one roof for startups and growing businesses.",
+      "Full-stack digital growth with design, engineering, and marketing under one roof for startups and growing businesses.",
     images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Throughout (PVT) LTD" }],
     locale: "en_US",
   },
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Digital Marketing, Engineering & Design | Throughout (PVT) LTD",
-    description: "Full-stack digital growth — design, engineering, and marketing under one roof.",
+    description: "Full-stack digital growth with design, engineering, and marketing under one roof.",
     images: ["/images/twitter-default.png"],
     creator: "@throughout_io",
   },
