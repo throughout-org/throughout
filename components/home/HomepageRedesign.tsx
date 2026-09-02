@@ -2,13 +2,17 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   FiArrowRight,
+  FiBarChart2,
   FiCheck,
   FiCode,
+  FiExternalLink,
   FiLayers,
+  FiMessageCircle,
   FiPenTool,
   FiSearch,
   FiServer,
   FiShield,
+  FiShoppingBag,
   FiTrendingUp,
   FiUsers,
   FiZap,
@@ -16,6 +20,7 @@ import {
 import { CalendlyButton } from "@/components/CalendlyPopup";
 import HeroCursorField from "@/components/home/HeroCursorField";
 import HeroTeamGrowth from "@/components/home/HeroTeamGrowth";
+import ProductDashboardPreview from "@/components/home/ProductDashboardPreview";
 import ServiceFAQ from "@/components/service/ServiceFAQ";
 
 const capabilities = [
@@ -62,6 +67,66 @@ const capabilities = [
     href: "/digital-marketing",
   },
 ];
+
+const products = [
+  {
+    name: "Checkout",
+    label: "Point of sale",
+    description:
+      "An offline-first POS that brings sales, inventory, customers, purchasing, and reporting into one beautifully simple system.",
+    href: "https://checkout.throughout.io/",
+    icon: FiShoppingBag,
+    accent: "checkout",
+  },
+  {
+    name: "Rankout",
+    label: "Search visibility",
+    description:
+      "One platform to research, automate, implement, and measure SEO, AEO, and GEO—with every AI-drafted change under your control.",
+    href: "https://rankout.app/",
+    icon: FiBarChart2,
+    accent: "rankout",
+  },
+  {
+    name: "Comflo",
+    label: "Commerce operations",
+    description:
+      "A connected workspace for customer conversations, orders, channels, and retention—built for growing ecommerce businesses.",
+    href: "https://comflo.app/",
+    icon: FiMessageCircle,
+    accent: "comflo",
+  },
+] as const;
+
+const productStyles = {
+  checkout: {
+    card: "bg-transparent border-[#dedee2]",
+    icon: "bg-[#2b2b68] text-white",
+    glow: "hidden",
+    visual: "bg-[#2b2b68] text-white",
+    badge: "bg-[#dff7f7] text-[#176f70]",
+    accent: "text-[#1eb4b4]",
+    status: "bg-[#1eb4b4]",
+  },
+  rankout: {
+    card: "bg-transparent border-[#dedbd3]",
+    icon: "bg-[#ea2804] text-white",
+    glow: "hidden",
+    visual: "bg-[#3a3a3a] text-white",
+    badge: "bg-[#ffe4dc] text-[#9f1c04]",
+    accent: "text-[#ea2804]",
+    status: "bg-[#ea2804]",
+  },
+  comflo: {
+    card: "bg-transparent border-[#d7e6df]",
+    icon: "bg-[#0e2e24] text-[#19c37d]",
+    glow: "hidden",
+    visual: "bg-white text-slate-900",
+    badge: "bg-[#dff8ec] text-[#0e2e24]",
+    accent: "text-[#19c37d]",
+    status: "bg-[#19c37d]",
+  },
+} as const;
 
 export const homepageFAQs = [
   {
@@ -138,7 +203,7 @@ const ctaTeam = [
 export default function HomepageRedesign() {
   return (
     <>
-      <section className="relative px-4 pt-24 pb-20 overflow-hidden border-b isolate border-slate-200 sm:px-6 sm:pb-28 sm:pt-32 lg:px-8 lg:pt-36">
+      <section className="relative -mt-20 overflow-hidden border-b border-slate-200 px-4 pb-20 pt-44 isolate sm:px-6 sm:pb-28 sm:pt-56 md:-mt-24 lg:-mt-[88px] lg:px-8 lg:pt-56 xl:-mt-[104px] xl:pt-64">
         <HeroCursorField />
         <div className="mx-auto max-w-7xl">
           <div className="max-w-5xl mx-auto text-center">
@@ -295,6 +360,92 @@ export default function HomepageRedesign() {
                 </span>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <div
+          aria-hidden="true"
+          className="absolute left-1/2 top-0 h-96 w-[48rem] -translate-x-1/2 rounded-full bg-sky-100/70 blur-3xl"
+        />
+        <div className="relative mx-auto max-w-7xl">
+          <div className="grid gap-7 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-sky-700">
+                Products by Throughout
+              </p>
+              <h2 className="mt-4 text-3xl font-extrabold tracking-[-0.035em] sm:text-5xl">
+                We don&apos;t just build for clients. We build our own.
+              </h2>
+            </div>
+            <p className="max-w-2xl text-lg leading-8 text-slate-600 lg:justify-self-end">
+              The same product thinking, engineering discipline, and attention
+              to detail we bring to every partnership—tested in software we
+              own, operate, and keep improving.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {products.map((product) => {
+              const Icon = product.icon;
+              const styles = productStyles[product.accent];
+
+              return (
+                <a
+                  key={product.name}
+                  href={product.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Visit ${product.name} (opens in a new tab)`}
+                  className={`group relative flex min-h-[31rem] flex-col overflow-hidden rounded-[2rem] border p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-slate-900/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-600 sm:p-7 ${styles.card}`}
+                >
+                  <div
+                    aria-hidden="true"
+                    className={`absolute -right-16 -top-16 h-44 w-44 rounded-full blur-3xl ${styles.glow}`}
+                  />
+                  <div className="relative flex items-center justify-between">
+                    <span
+                      className={`flex h-12 w-12 items-center justify-center rounded-2xl text-xl shadow-sm ${styles.icon}`}
+                    >
+                      <Icon aria-hidden="true" />
+                    </span>
+                    <span
+                      className={`rounded-full px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.13em] ${styles.badge}`}
+                    >
+                      {product.label}
+                    </span>
+                  </div>
+
+                  <div className="relative mt-8">
+                    <h3 className="text-3xl font-extrabold tracking-[-0.035em] text-slate-950">
+                      {product.name}
+                      <span className={styles.accent}>.</span>
+                    </h3>
+                    <p className="mt-4 text-sm leading-6 text-slate-700">
+                      {product.description}
+                    </p>
+                  </div>
+
+                  <div
+                    className={`relative mt-8 flex-1 overflow-hidden rounded-[1.4rem] border border-black/10 p-4 shadow-xl shadow-slate-900/10 transition duration-500 group-hover:-translate-y-1 ${styles.visual}`}
+                    aria-hidden="true"
+                  >
+                    <div className="flex items-center justify-between text-[0.65rem] font-semibold opacity-70">
+                      <span>{product.name} / Overview</span>
+                      <span className={`h-2 w-2 rounded-full ${styles.status}`} />
+                    </div>
+
+                    <ProductDashboardPreview product={product.name} />
+                  </div>
+
+                  <span className="relative mt-6 inline-flex items-center gap-2 text-sm font-bold text-slate-950">
+                    Explore {product.name}
+                    <FiExternalLink className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+                  </span>
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
