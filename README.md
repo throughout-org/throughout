@@ -12,7 +12,7 @@ Throughout is a modern software engineering company specializing in custom web, 
 
 | Page                                          | Description                                                                          |
 | ---------------------------------------------- | ------------------------------------------------------------------------------------- |
-| **Home** (`/`)                                 | Redesigned landing page with hero, team growth highlight, and core sections.        |
+| **Home** (`/`)                                 | Redesigned landing page: hero, team growth highlight, and a products-we've-built showcase with animated dashboard previews. |
 | **About** (`/about`)                           | Mission, vision, core values, and what makes Throughout unique.                     |
 | **Engineering** (`/engineering`)               | Custom software, web, and mobile engineering services.                              |
 | **Design** (`/design`)                         | Product and brand design services.                                                  |
@@ -36,8 +36,9 @@ The primary nav (see [components/Navbar.tsx](components/Navbar.tsx)) links **Eng
 
 ## 🚀 Features
 
-- **Redesigned Homepage**: New hero with a cursor field effect and a team-growth highlight section ([components/home/HomepageRedesign.tsx](components/home/HomepageRedesign.tsx))
+- **Redesigned Homepage**: New hero with a cursor field effect, a team-growth highlight, and a product showcase (Checkout, Rankout, Comflo) with animated, count-up dashboard mockups ([components/home/HomepageRedesign.tsx](components/home/HomepageRedesign.tsx), [components/home/ProductDashboardPreview.tsx](components/home/ProductDashboardPreview.tsx))
 - **Fully Responsive**: Works perfectly on mobile, tablet, and desktop
+- **Analytics**: Google Tag Manager (in addition to GA and Meta Pixel) wired up in the root layout
 - **Contact Form**: Interactive form with validation and email delivery via Nodemailer
 - **Newsletter Signup**: Mailchimp-powered subscription
 - **Job Applications**: Resume uploads to Google Drive, application tracking in MongoDB, and email notifications
@@ -53,13 +54,14 @@ The primary nav (see [components/Navbar.tsx](components/Navbar.tsx)) links **Eng
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS 4
 - **React**: 19 (React Compiler via `babel-plugin-react-compiler`)
+- **Animation**: `motion` (Framer Motion's successor package), used for the homepage product dashboard previews
 - **CMS**: Sanity.io (`@sanity/client` + `@portabletext/react`, with a local Sanity Studio in [studio-throoout/](studio-throoout/))
 - **Database**: MongoDB (via Mongoose)
 - **File Storage**: Cloudinary (resumes), Google Drive (via googleapis)
 - **Email**: Nodemailer (SMTP), Mailchimp (newsletter)
 - **Icons**: react-icons
 
-> The site was recently streamlined to a smaller set of core dependencies — Framer Motion, tsParticles, `next-sanity`, and `react-calendly` have been removed in favor of lighter, purpose-built implementations (e.g. `components/home/HeroCursorField.tsx`, `components/CalendlyPopup.tsx`).
+> The site was streamlined to a smaller set of core dependencies — tsParticles, `next-sanity`, and `react-calendly` have been removed in favor of lighter, purpose-built implementations (e.g. `components/home/HeroCursorField.tsx`, `components/CalendlyPopup.tsx`). Animation later returned in a targeted way via the `motion` package for the product showcase.
 
 ## 📰 Insights & CMS Integration
 
