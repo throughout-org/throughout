@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Montserrat, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import NavbarSpacer from "@/components/NavbarSpacer";
-import Footer from "@/components/Footer";
+import SiteChrome from "@/components/SiteChrome";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -298,10 +296,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         </noscript>
 
-        <Navbar />
-        <NavbarSpacer />
-        {children}
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );
