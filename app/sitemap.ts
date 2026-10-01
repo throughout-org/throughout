@@ -30,9 +30,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     page("/design", 0.95, "weekly"),
     page("/dedicated-teams", 0.95, "weekly"),
 
-    // Work & portfolio
-    page("/portfolio", 0.9, "weekly"),
-
     // Company
     page("/about", 0.8, "monthly"),
     page("/contact", 0.85, "monthly"),

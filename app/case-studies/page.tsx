@@ -102,12 +102,6 @@ export default function CaseStudiesPage() {
                   Start a Project
                   <span aria-hidden="true">-&gt;</span>
                 </Link>
-                <Link
-                  href="/portfolio"
-                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-7 py-3.5 text-base font-bold text-slate-900 transition hover:border-slate-300 hover:bg-slate-50 hover:shadow-lg"
-                >
-                  View Portfolio
-                </Link>
               </div>
             }
             isBackgroundColored={false}

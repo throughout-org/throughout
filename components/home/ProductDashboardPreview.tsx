@@ -73,7 +73,7 @@ export default function ProductDashboardPreview({ product }: { product: ProductN
           initial={{ opacity: 0, y: 12 }}
           animate={active ? { opacity: 1, y: 0 } : {}}
           transition={transition(0.32)}
-          className="p-3 mt-3 bg-white rounded-xl text-slate-900"
+          className="p-3 mt-3 bg-white rounded-xl text-ink"
         >
           <div className="flex items-center justify-between text-[0.62rem] font-bold">
             <span>Current sale</span><span>3 items</span>
@@ -105,7 +105,7 @@ export default function ProductDashboardPreview({ product }: { product: ProductN
 
 
 
-            <span className="text-[0.6rem] text-slate-500">Search visibility</span>
+            <span className="text-[0.6rem] text-ink-3">Search visibility</span>
             <strong className="block mt-1 text-2xl">
               {active ? <CountUp to={82.4} suffix="%" /> : "0%"}
             </strong>
@@ -147,12 +147,12 @@ export default function ProductDashboardPreview({ product }: { product: ProductN
           initial={{ opacity: 0, x: 18, scale: 0.98 }}
           animate={active ? { opacity: 1, x: 0, scale: 1 } : {}}
           transition={transition(index * 0.16)}
-          className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 p-2.5"
+          className="flex items-center gap-3 rounded-xl border border-hairline bg-canvas-soft p-2.5"
         >
           <span className={`flex h-8 w-8 items-center justify-center rounded-full text-[0.6rem] font-bold ${colour}`}>{initials}</span>
           <span className="flex-1 min-w-0">
             <strong className="block truncate text-[0.68rem]">{name}</strong>
-            <span className="block text-[0.58rem] text-slate-500">{status}</span>
+            <span className="block text-[0.58rem] text-ink-3">{status}</span>
           </span>
           <motion.span
             animate={active && !reduceMotion ? { scale: [1, 1.45, 1], opacity: [1, 0.55, 1] } : {}}

@@ -35,7 +35,7 @@ const faqSchema = {
 
 export default function Home() {
   return (
-    <main className="bg-white text-slate-950">
+    <main className="bg-canvas text-ink">
       <Script id="homepage-faq-schema" type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </Script>

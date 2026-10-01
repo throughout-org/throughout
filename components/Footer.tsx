@@ -11,7 +11,7 @@ import NewsletterSignup from "@/components/ui/NewsletterSignup";
 const resources = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Work", href: "/portfolio" },
+  { label: "Work", href: "/case-studies" },
   { label: "Blog", href: "/insights" },
   { label: "Careers", href: "/careers" },
   { label: "Contact Us", href: "/contact" },
@@ -67,9 +67,9 @@ function FooterLink({ href, label }: { href: string; label: string }) {
         href={href}
         target={isExternal ? "_blank" : undefined}
         rel={isExternal ? "noopener noreferrer" : undefined}
-        className="inline-flex items-center gap-2 text-sm transition group text-slate-400 hover:text-sky-300"
+        className="inline-flex items-center gap-2 text-sm transition group text-dark-ink-muted hover:text-dark-ink"
       >
-        <span className="w-1 h-1 transition rounded-full bg-slate-600 group-hover:bg-sky-400" />
+        <span className="w-1 h-1 transition rounded-full bg-dark-hairline group-hover:bg-primary-hover" />
         {label}
       </Link>
     </li>
@@ -78,12 +78,12 @@ function FooterLink({ href, label }: { href: string; label: string }) {
 
 export default function Footer() {
   return (
-    <footer className="text-white bg-slate-950">
+    <footer className="text-dark-ink bg-dark-canvas">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         {/* Newsletter strip */}
-        <div className="flex flex-col gap-4 py-8 border-b border-white/10 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 py-8 border-b border-dark-hairline sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h3 className="text-xl font-bold tracking-tight text-white sm:text-[35px]">
+            <h3 className="text-xl font-semibold tracking-tight text-dark-ink sm:text-[32px]">
               Sign up to our newsletter
             </h3>
           </div>
@@ -104,7 +104,7 @@ export default function Footer() {
               />
             </Link>
 
-            <p className="max-w-sm mt-5 text-sm leading-6 text-slate-400">
+            <p className="max-w-sm mt-5 text-sm leading-6 text-dark-ink-muted">
               Dedicated engineering, design, data, AI, DevOps, QA, and marketing
               teams for ambitious digital products.
             </p>
@@ -117,7 +117,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="flex items-center justify-center w-10 h-10 transition border rounded-full border-white/10 bg-white/5 text-slate-300 hover:border-sky-400/40 hover:bg-sky-400/10 hover:text-sky-200"
+                  className="flex items-center justify-center w-10 h-10 transition border rounded-full border-dark-hairline bg-dark-surface-1 text-dark-ink-muted hover:border-primary/40 hover:bg-primary/10 hover:text-dark-ink"
                 >
                   {social.icon}
                 </a>
@@ -126,7 +126,7 @@ export default function Footer() {
           </div>
 
           <nav aria-label="Footer resources">
-            <h3 className="text-sm font-bold uppercase tracking-[0.16em] text-white">
+            <h3 className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-dark-ink-muted">
               Resources
             </h3>
             <ul className="mt-5 space-y-3">
@@ -141,7 +141,7 @@ export default function Footer() {
           </nav>
 
           <nav aria-label="Footer services">
-            <h3 className="text-sm font-bold uppercase tracking-[0.16em] text-white">
+            <h3 className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-dark-ink-muted">
               Services
             </h3>
             <ul className="mt-5 space-y-3">
@@ -156,7 +156,7 @@ export default function Footer() {
           </nav>
 
           <nav aria-label="Footer products">
-            <h3 className="text-sm font-bold uppercase tracking-[0.16em] text-white">
+            <h3 className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-dark-ink-muted">
               Products
             </h3>
             <ul className="mt-5 space-y-3">
@@ -171,16 +171,16 @@ export default function Footer() {
           </nav>
 
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-[0.16em] text-white">
+            <h3 className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-dark-ink-muted">
               Get in touch
             </h3>
 
             <div className="mt-5">
               <a
                 href="mailto:info@throughout.io"
-                className="flex items-start gap-3 py-4 text-sm transition rounded-2xl text-slate-300"
+                className="flex items-start gap-3 py-4 text-sm transition rounded-2xl text-dark-ink-muted"
               >
-                <FiMail className="mt-0.5 h-5 w-5 shrink-0 text-sky-300" />
+                <FiMail className="mt-0.5 h-5 w-5 shrink-0 text-primary-hover" />
                 <span className="break-all">info@throughout.io</span>
               </a>
 
@@ -188,21 +188,21 @@ export default function Footer() {
                 href="https://wa.me/707007992"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-3 py-4 text-sm transition 5 text-slate-300"
+                className="flex items-start gap-3 py-4 text-sm transition text-dark-ink-muted"
               >
-                <FiMessageCircle className="mt-0.5 h-5 w-5 shrink-0 text-sky-300" />
+                <FiMessageCircle className="mt-0.5 h-5 w-5 shrink-0 text-primary-hover" />
                 <span>+94 070 7007 992</span>
               </a>
 
-              <div className="flex items-start gap-3 py-4 text-sm text-slate-300">
-                <FiMapPin className="mt-0.5 h-5 w-5 shrink-0 text-sky-300" />
+              <div className="flex items-start gap-3 py-4 text-sm text-dark-ink-muted">
+                <FiMapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary-hover" />
                 <span>Available worldwide</span>
               </div>
             </div>
 
             <Link
               href="/contact"
-              className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-sky-600 px-4 py-2.5 text-xs font-bold text-white transition hover:bg-sky-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300 xl:px-5 xl:text-sm"
+              className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary px-4 py-2.5 text-xs font-semibold text-on-primary transition hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary xl:px-5 xl:text-sm"
             >
               Book a free consultation
               <FiArrowUpRight className="shrink-0" aria-hidden="true" />
@@ -210,7 +210,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 py-6 text-sm border-t border-white/10 text-slate-500 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-4 py-6 text-sm border-t border-dark-hairline text-dark-ink-muted md:flex-row md:items-center md:justify-between">
           <p>
             © {new Date().getFullYear()} Throughout (PVT) LTD. All rights
             reserved.
@@ -219,7 +219,7 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <Link
               href="/privacy-policy"
-              className="transition hover:text-sky-300"
+              className="transition hover:text-dark-ink"
             >
               TERMS &amp; PRIVACY POLICY
             </Link>

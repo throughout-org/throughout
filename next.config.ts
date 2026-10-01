@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
       { source: "/services/:path*", destination: "/engineering", permanent: false },
       { source: "/internships", destination: "/careers", permanent: true },
       { source: "/internships/:path*", destination: "/careers/:path*", permanent: true },
+      { source: "/portfolio", destination: "/#featured-work", permanent: true },
     ];
   },
   async headers() {

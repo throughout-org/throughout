@@ -45,7 +45,7 @@ export default function HeroTeamGrowth() {
             }`}
             aria-hidden={!visible}
           >
-            <div className="relative w-16 h-16 overflow-hidden rounded-full bg-slate-200 sm:h-20 sm:w-20">
+            <div className="relative w-16 h-16 overflow-hidden rounded-full bg-canvas-soft sm:h-20 sm:w-20">
               <Image
                 src={member.src}
                 alt={member.name}

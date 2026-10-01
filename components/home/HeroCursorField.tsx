@@ -71,11 +71,19 @@ export default function HeroCursorField() {
   }, []);
 
   return (
-    <div ref={fieldRef} aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 hidden overflow-hidden lg:block">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(226,232,240,0.5),transparent_36%)]" />
-      <div ref={secondaryGlowRef} className="absolute left-0 top-0 h-[34rem] w-[34rem] rounded-full bg-sky-100/45 opacity-0 blur-[110px] transition-opacity duration-700 will-change-transform" />
-      <div ref={primaryGlowRef} className="absolute left-0 top-0 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(125,211,252,0.24)_0%,rgba(191,219,254,0.14)_42%,rgba(255,255,255,0)_72%)] opacity-0 blur-2xl transition-opacity duration-700 will-change-transform" />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.06)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(to_bottom,black,transparent_80%)]" />
+    <div ref={fieldRef} aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      {/* Always-on brand mesh — visible on every device, no JS required */}
+      <div className="absolute -top-32 -left-24 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,rgba(51,153,255,0.32)_0%,rgba(51,153,255,0)_70%)] blur-[90px] sm:h-[38rem] sm:w-[38rem]" />
+      <div className="absolute -top-40 right-[-10rem] h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(34,211,238,0.22)_0%,rgba(34,211,238,0)_70%)] blur-[90px] sm:h-[32rem] sm:w-[32rem]" />
+      <div className="absolute left-1/3 top-40 h-[20rem] w-[20rem] rounded-full bg-[radial-gradient(circle,rgba(0,51,102,0.14)_0%,rgba(0,51,102,0)_72%)] blur-[100px]" />
+
+      {/* Cursor-reactive glow — desktop-with-a-mouse enhancement only */}
+      <div className="hidden lg:block">
+        <div ref={secondaryGlowRef} className="absolute left-0 top-0 h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,rgba(34,211,238,0.18)_0%,rgba(34,211,238,0)_70%)] opacity-0 blur-[110px] transition-opacity duration-700 will-change-transform" />
+        <div ref={primaryGlowRef} className="absolute left-0 top-0 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(51,153,255,0.26)_0%,rgba(51,153,255,0.1)_42%,rgba(255,255,255,0)_72%)] opacity-0 blur-2xl transition-opacity duration-700 will-change-transform" />
+      </div>
+
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(23,23,23,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(23,23,23,0.05)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(to_bottom,black,transparent_80%)]" />
     </div>
   );
 }

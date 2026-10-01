@@ -50,12 +50,12 @@ export default function NewsletterSignup({
 
   if (variant === "inline") {
     return (
-      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+      <div className="rounded-2xl border border-hairline bg-canvas-soft p-6">
         <div className="flex items-center gap-2 mb-2">
-          <FiMail className="text-sky-600" />
-          <h3 className="text-sm font-bold text-slate-950">{heading}</h3>
+          <FiMail className="text-primary" />
+          <h3 className="text-sm font-semibold text-ink">{heading}</h3>
         </div>
-        <p className="text-xs text-slate-600 mb-4">{subtext}</p>
+        <p className="text-xs text-ink-2 mb-4">{subtext}</p>
         <NewsletterForm email={email} setEmail={setEmail} status={status} error={error} onSubmit={handleSubmit} compact />
       </div>
     );
@@ -63,8 +63,8 @@ export default function NewsletterSignup({
 
   return (
     <div>
-      {heading && <h3 className="text-sm font-bold uppercase tracking-[0.16em] text-white mb-1">{heading}</h3>}
-      {subtext && <p className="text-xs text-slate-400 mb-4">{subtext}</p>}
+      {heading && <h3 className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-dark-ink mb-1">{heading}</h3>}
+      {subtext && <p className="text-xs text-dark-ink-muted mb-4">{subtext}</p>}
       <NewsletterForm email={email} setEmail={setEmail} status={status} error={error} onSubmit={handleSubmit} dark />
     </div>
   );
@@ -94,7 +94,7 @@ function NewsletterForm({
         <form
           onSubmit={onSubmit}
           className={dark
-            ? "relative flex items-center rounded-full border border-white/85 bg-transparent p-1.5 pl-4 transition focus-within:border-sky-300 focus-within:ring-2 focus-within:ring-sky-400/20"
+            ? "relative flex items-center rounded-full border border-dark-hairline bg-transparent p-1.5 pl-4 transition focus-within:border-primary-hover focus-within:ring-2 focus-within:ring-primary/20"
             : "relative flex flex-row gap-2"}
         >
           <input
@@ -106,8 +106,8 @@ function NewsletterForm({
             placeholder={dark ? "jason@gmail.com" : "your@email.com"}
             className={`min-w-0 flex-1 outline-none transition ${
               dark
-                ? "bg-transparent px-2 py-2 text-sm text-white placeholder:text-slate-400 sm:text-base"
-                : "rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-950 placeholder-slate-400 focus:ring-2 focus:ring-sky-500"
+                ? "bg-transparent px-2 py-2 text-sm text-dark-ink placeholder:text-dark-ink-muted sm:text-base"
+                : "rounded-full border border-hairline bg-canvas-elevated px-4 py-2.5 text-sm text-ink placeholder-ink-4 focus:ring-2 focus:ring-primary/40"
             }`}
           />
           <button
@@ -115,8 +115,8 @@ function NewsletterForm({
             disabled={status === "loading"}
             aria-label="Subscribe to newsletter"
             className={dark
-              ? "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-lg text-slate-950 transition hover:scale-105 hover:bg-sky-100 disabled:opacity-60 sm:h-11 sm:w-11"
-              : "inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full bg-sky-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-sky-700 disabled:opacity-60"}
+              ? "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-lg text-on-primary transition hover:scale-105 hover:bg-primary-hover disabled:opacity-60 sm:h-11 sm:w-11"
+              : "inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary transition hover:bg-primary-hover disabled:opacity-60"}
           >
             {status === "loading" ? (
               <span aria-hidden="true">…</span>

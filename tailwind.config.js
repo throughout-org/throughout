@@ -31,13 +31,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-jetbrains-mono)', 'monospace'],
       },
       colors: {
         dark: '#10141a',
         card: '#181e26',
-        accent: '#2563eb', // blue-600
+        accent: '#0084d1',
         accent2: '#60a5fa', // blue-400
         border: '#232a36',
         brand: {
@@ -47,6 +47,23 @@ module.exports = {
           dark: '#003366',
           secondary: '#A8CEF4',
         },
+        // Design system — 60% Vercel / 25% Linear / 15% Stripe
+        canvas: { DEFAULT: '#fafafa', elevated: '#ffffff', soft: '#f4f4f7' },
+        ink: { DEFAULT: '#171717', 2: '#48484f', 3: '#85858c', 4: '#a3a3aa' },
+        hairline: { DEFAULT: '#e6e6ea', strong: '#d6d6dc' },
+        primary: {
+          DEFAULT: '#0084d1',
+          hover: '#3399ff',
+          press: '#0069a8',
+          soft: '#eaf3fd',
+          bright: '#3399ff',
+        },
+        'dark-canvas': '#0a0a0d',
+        'dark-surface-1': '#15151a',
+        'dark-surface-2': '#1d1d22',
+        'dark-navy': '#003366',
+        'dark-hairline': '#2a2a30',
+        'dark-ink': { DEFAULT: '#f5f5f7', muted: '#a6a6ae' },
       },
       borderRadius: {
         xl: '1.25rem',

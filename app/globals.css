@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #fafafa;
   --foreground: #171717;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  /* Legacy brand tokens — kept for pages not yet migrated */
   --color-brand: #6ab4fe;
   --color-brand-light: #eaf3fd;
   --color-brand-pale: #a8cef4;
@@ -15,10 +17,55 @@
   --color-brand-secondary: #a8cef4;
   --color-dark: #10141a;
   --color-card: #181e26;
-  --color-accent: #2563eb;
+  --color-accent: #0084d1;
   --color-accent2: #60a5fa;
   --color-border: #232a36;
-  --font-sans: var(--font-montserrat);
+
+  /* Design system — 60% Vercel / 25% Linear / 15% Stripe */
+
+  /* Light surfaces (Vercel near-white canvas + Stripe cool undertone) */
+  --color-canvas: #fafafa;
+  --color-canvas-elevated: #ffffff;
+  --color-canvas-soft: #f4f4f7;
+
+  /* Ink ladder — near-black, never blue-tinted slate */
+  --color-ink: #171717;
+  --color-ink-2: #48484f;
+  --color-ink-3: #85858c;
+  --color-ink-4: #a3a3aa;
+
+  /* Hairline borders (Vercel/Stripe structural workhorse) */
+  --color-hairline: #e6e6ea;
+  --color-hairline-strong: #d6d6dc;
+
+  /* Primary accent — the Throughout logo blue, not a borrowed indigo.
+     `primary` is a deepened, WCAG-AA shade for text-on-fill; `primary-bright`
+     is the literal logo pixel color (#3399ff), reserved for hover states,
+     glows, dots, and gradient stops where contrast isn't load-bearing. */
+  --color-primary: #0084d1;
+  --color-primary-hover: #3399ff;
+  --color-primary-press: #0069a8;
+  --color-primary-soft: #eaf3fd;
+  --color-primary-bright: #3399ff;
+  --color-on-primary: #ffffff;
+
+  /* Dark surface ladder (Linear canvas → surface-1 → surface-2) for closing/comparison bands.
+     The gradient stop toward the brand's own navy (#003366) keeps dark sections
+     tied to the logo instead of reading as generic near-black. */
+  --color-dark-canvas: #0a0a0d;
+  --color-dark-surface-1: #15151a;
+  --color-dark-surface-2: #1d1d22;
+  --color-dark-navy: #003366;
+  --color-dark-hairline: #2a2a30;
+  --color-dark-ink: #f5f5f7;
+  --color-dark-ink-muted: #a6a6ae;
+
+  /* Hero mesh-gradient stops — monochromatic blue family (logo blue + cyan + navy),
+     deliberately no violet/magenta so the accent stays singular, like Linear's rule. */
+  --color-mesh-cyan: #22d3ee;
+  --color-mesh-navy: #003366;
+
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
 }
 
@@ -26,7 +73,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family:
-    var(--font-montserrat),
+    var(--font-inter),
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
@@ -44,12 +91,12 @@ html {
 }
 
 ::selection {
-  background: #bae6fd;
-  color: #082f49;
+  background: #cfe6ff;
+  color: #003366;
 }
 
 :focus-visible {
-  outline-color: #0284c7;
+  outline-color: #0084d1;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -69,6 +116,28 @@ html {
 
 .legal-copy li + li {
   margin-top: 0.5rem;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Elevation ladder — hairline first, shadow only when floating */
+.shadow-whisper {
+  box-shadow: 0 1px 2px rgba(15, 15, 20, 0.04), 0 1px 1px rgba(15, 15, 20, 0.03);
+}
+
+.shadow-card {
+  box-shadow: 0 1px 3px rgba(15, 15, 20, 0.06), 0 8px 24px -4px rgba(15, 15, 20, 0.08);
+}
+
+.shadow-floating {
+  box-shadow: 0 2px 6px rgba(15, 15, 20, 0.06), 0 12px 32px -6px rgba(15, 15, 20, 0.14);
 }
 
 /* Custom Animations */

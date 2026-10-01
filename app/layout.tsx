@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Montserrat, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SiteChrome from "@/components/SiteChrome";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
@@ -277,7 +277,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
       </head>
 
-      <body className={`${montserrat.variable} ${jetbrainsMono.variable} antialiased font-sans`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased font-sans`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
