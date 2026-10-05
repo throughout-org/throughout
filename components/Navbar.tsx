@@ -3,18 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import { CalendlyButton } from "@/components/CalendlyPopup";
 
 const navigation = [
-  { name: "Engineering", href: "/engineering" },
-  { name: "Design", href: "/design" },
-  { name: "Marketing", href: "/digital-marketing" },
-  { name: "Dedicated Teams", href: "/dedicated-teams" },
+  { name: "Services", href: "/#services" },
+  { name: "Work", href: "/#work" },
+  { name: "Products", href: "/#products" },
+  { name: "Team", href: "/#team" },
+  { name: "Contact", href: "/#contact-form" },
 ];
 
 export default function Navbar() {
-  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -27,8 +26,6 @@ export default function Navbar() {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isMenuOpen]);
-
-  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <nav className="fixed inset-x-0 top-0 z-40" aria-label="Main navigation">
@@ -51,12 +48,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                aria-current={isActive(link.href) ? "page" : undefined}
-                className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium transition-colors xl:text-sm ${
-                  isActive(link.href)
-                    ? "bg-primary text-on-primary"
-                    : "text-ink-2 hover:bg-canvas-soft hover:text-ink"
-                }`}
+                className="whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium text-ink-2 transition-colors hover:bg-canvas-soft hover:text-ink xl:text-sm"
               >
                 {link.name}
               </Link>
@@ -99,10 +91,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setIsMenuOpen(false)}
-              aria-current={isActive(link.href) ? "page" : undefined}
-              className={`block min-h-11 rounded-xl px-4 py-3 text-sm font-semibold ${
-                isActive(link.href) ? "bg-ink text-canvas-elevated" : "bg-canvas-soft text-ink"
-              }`}
+              className="block min-h-11 rounded-xl bg-canvas-soft px-4 py-3 text-sm font-semibold text-ink"
             >
               {link.name}
             </Link>

@@ -9,22 +9,22 @@ import {
 import NewsletterSignup from "@/components/ui/NewsletterSignup";
 
 const resources = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  { label: "Work", href: "/case-studies" },
+  { label: "Work", href: "/#work" },
+  { label: "Team", href: "/#team" },
   { label: "Blog", href: "/insights" },
   { label: "Careers", href: "/careers" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Contact Us", href: "/#contact-form" },
 ];
 
 const services = [
-  { label: "Dedicated Teams", href: "/dedicated-teams" },
-  { label: "Digital Marketing", href: "/digital-marketing" },
-  { label: "Engineering", href: "/engineering" },
-  { label: "Design", href: "/design" },
+  { label: "Engineering", href: "/#services" },
+  { label: "Design", href: "/#services" },
+  { label: "Digital Marketing", href: "/#services" },
+  { label: "Dedicated Teams", href: "/#engagement-models" },
 ];
 
 const products = [
+  { label: "Checkout", href: "https://checkout.throughout.io/" },
   { label: "Comflo", href: "https://comflo.app/" },
   { label: "Rankout", href: "https://rankout.app/" },
 ];
@@ -132,7 +132,7 @@ export default function Footer() {
             <ul className="mt-5 space-y-3">
               {resources.map((item) => (
                 <FooterLink
-                  key={item.href}
+                  key={item.label}
                   href={item.href}
                   label={item.label}
                 />
@@ -147,7 +147,7 @@ export default function Footer() {
             <ul className="mt-5 space-y-3">
               {services.map((item) => (
                 <FooterLink
-                  key={item.href}
+                  key={item.label}
                   href={item.href}
                   label={item.label}
                 />
@@ -162,7 +162,7 @@ export default function Footer() {
             <ul className="mt-5 space-y-3">
               {products.map((item) => (
                 <FooterLink
-                  key={item.href}
+                  key={item.label}
                   href={item.href}
                   label={item.label}
                 />
@@ -185,7 +185,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://wa.me/707007992"
+                href="https://wa.me/94707007992"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-3 py-4 text-sm transition text-dark-ink-muted"
@@ -201,7 +201,7 @@ export default function Footer() {
             </div>
 
             <Link
-              href="/contact"
+              href="/#contact-form"
               className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary px-4 py-2.5 text-xs font-semibold text-on-primary transition hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary xl:px-5 xl:text-sm"
             >
               Book a free consultation

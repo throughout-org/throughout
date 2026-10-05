@@ -25,20 +25,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     // Core pages
     page("/", 1.0, "daily"),
-    page("/digital-marketing", 0.95, "weekly"),
-    page("/engineering", 0.95, "weekly"),
-    page("/design", 0.95, "weekly"),
-    page("/dedicated-teams", 0.95, "weekly"),
-
-    // Company
-    page("/about", 0.8, "monthly"),
-    page("/contact", 0.85, "monthly"),
-    page("/case-studies/ai-seo-growth", 0.7, "monthly"),
-    page("/case-studies/mvp-product-launch", 0.7, "monthly"),
-    page("/case-studies/shopify-store-conversion", 0.7, "monthly"),
-    page("/case-studies/website-performance-optimization", 0.7, "monthly"),
-    page("/case-studies/workflow-automation-system", 0.7, "monthly"),
-
     // Content
     page("/insights", 0.85, "daily"),
     page("/careers", 0.6, "weekly"),

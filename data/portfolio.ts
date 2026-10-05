@@ -23,7 +23,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "ScaleLabz is a creative digital agency specializing in video editing, content creation, and social media management. They help brands and creators turn raw content into high-quality, engaging visuals that drive growth. With a focus on visual storytelling and performance, ScaleLabz delivers end-to-end solutions, making them a reliable partner for building a strong digital presence.",
     description:
       "Complete redesign and development of an e-commerce platform using Next.js and Node.js",
-    category: ["Web Development", "E-Commerce"],
+    category: ["Web Development", "Web Design"],
     technologies: ["Next.js", "Node.js", "PostgreSQL", "Stripe", "AWS"],
     image: "/images/portfolio/screencapture-scalelabz.png",
     clientName: "ScaleLabz",
@@ -47,7 +47,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Ado Coffee is a premium coffee brand bringing single-origin Sri Lankan coffee to Switzerland. Sourced from the island’s highlands and crafted through small-batch roasting, the brand focuses on delivering a pure, authentic coffee experience from farm to cup. With an emphasis on quality, sustainability, and origin transparency, Ado Coffee offers both artisanal whole beans and convenient drip coffee formats, designed for modern coffee lovers who value flavor, simplicity, and craftsmanship.",
     description:
       "Custom AI chatbot powered by GPT-4 for enterprise customer support",
-    category: ["AI/ML", "Automation"],
+    category: ["E-Commerce", "Web Development"],
     technologies: ["Python", "GPT-4", "Langchain", "React", "Firebase"],
     image: "/images/portfolio/screencapture-adocoffee-ch.png",
     clientName: "Ado Coffee",

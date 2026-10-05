@@ -6,7 +6,7 @@ import { client } from "@/src/sanity/client";
 type Params = { slug: string };
 const siteUrl = "https://www.throughout.io";
 const imageLicenseUrl = `${siteUrl}/privacy-policy#terms-of-service`;
-const acquireLicensePageUrl = `${siteUrl}/contact`;
+const acquireLicensePageUrl = `${siteUrl}/#contact-form`;
 
 const fetchPost = cache(async (slug: string) => {
   const post = await client.fetch(

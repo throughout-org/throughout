@@ -4,11 +4,18 @@ const nextConfig: NextConfig = {
   /* config options here */
   async redirects() {
     return [
-      { source: "/services", destination: "/engineering", permanent: true },
-      { source: "/services/:path*", destination: "/engineering", permanent: false },
+      { source: "/services/:path*", destination: "/#services", permanent: true },
+      { source: "/engineering", destination: "/#services", permanent: true },
+      { source: "/design", destination: "/#services", permanent: true },
+      { source: "/digital-marketing", destination: "/#services", permanent: true },
+      { source: "/dedicated-teams", destination: "/#engagement-models", permanent: true },
+      { source: "/agency-partners", destination: "/#engagement-models", permanent: true },
+      { source: "/about", destination: "/#team", permanent: true },
+      { source: "/case-studies/:path*", destination: "/#work", permanent: true },
+      { source: "/contact", destination: "/#contact-form", permanent: true },
       { source: "/internships", destination: "/careers", permanent: true },
       { source: "/internships/:path*", destination: "/careers/:path*", permanent: true },
-      { source: "/portfolio", destination: "/#featured-work", permanent: true },
+      { source: "/portfolio", destination: "/#work", permanent: true },
     ];
   },
   async headers() {

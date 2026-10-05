@@ -6,16 +6,10 @@ import {
   FiCheck,
   FiCode,
   FiExternalLink,
-  FiLayers,
   FiMessageCircle,
   FiPenTool,
-  FiSearch,
-  FiServer,
-  FiShield,
   FiShoppingBag,
   FiTrendingUp,
-  FiUsers,
-  FiZap,
 } from "react-icons/fi";
 import { CalendlyButton } from "@/components/CalendlyPopup";
 import GallerySlider from "@/components/home/GallerySlider";
@@ -23,49 +17,49 @@ import HeroCursorField from "@/components/home/HeroCursorField";
 import HeroTeamGrowth from "@/components/home/HeroTeamGrowth";
 import ProductDashboardPreview from "@/components/home/ProductDashboardPreview";
 import ServiceFAQ from "@/components/service/ServiceFAQ";
+import TeamSection from "@/components/about/TeamSection";
+import ContactInfoSection from "@/components/contact/ContactInfoSection";
+import { portfolioProjects } from "@/data/portfolio";
 
-const capabilities = [
+const services = [
   {
     icon: FiCode,
-    title: "Software engineering",
-    copy: "Web, mobile, platform, API, and product development built for maintainability.",
-    href: "/engineering",
+    title: "Engineering",
+    copy: "We design, build, and run web, mobile, and SaaS products, from the first release to scale.",
+    items: [
+      "Web & mobile apps",
+      "SaaS platforms & APIs",
+      "AI features & workflow automation",
+      "Shopify & e-commerce",
+      "Data engineering",
+      "Cloud, DevOps & QA",
+    ],
   },
   {
     icon: FiPenTool,
-    title: "Product & UI/UX design",
-    copy: "Research, product strategy, interfaces, design systems, and conversion-focused experiences.",
-    href: "/design",
-  },
-  {
-    icon: FiZap,
-    title: "AI development",
-    copy: "Useful AI features, workflow automation, agents, and integrations grounded in your operations.",
-    href: "/engineering",
-  },
-  {
-    icon: FiLayers,
-    title: "Data engineering",
-    copy: "Reliable pipelines, data platforms, integrations, and reporting foundations.",
-    href: "/engineering",
-  },
-  {
-    icon: FiShield,
-    title: "Quality assurance",
-    copy: "Manual and automated testing embedded into delivery, not left until launch.",
-    href: "/engineering",
-  },
-  {
-    icon: FiServer,
-    title: "Cloud & DevOps",
-    copy: "Infrastructure, deployment automation, observability, and cloud optimisation.",
-    href: "/engineering",
+    title: "Design",
+    copy: "Interfaces and brands people understand at a glance, designed around real tasks.",
+    items: [
+      "Product strategy & UX research",
+      "UI/UX for web, mobile & dashboards",
+      "Interactive prototypes",
+      "Design systems",
+      "Websites & landing pages",
+      "Brand identity",
+    ],
   },
   {
     icon: FiTrendingUp,
     title: "Digital marketing",
-    copy: "SEO, paid acquisition, content, and campaigns connected to commercial outcomes.",
-    href: "/digital-marketing",
+    copy: "Getting the right people to find you, and turning visits into customers.",
+    items: [
+      "SEO & content strategy",
+      "Google & Meta ads",
+      "Conversion optimisation",
+      "Email & lifecycle marketing",
+      "Social media management",
+      "Analytics & reporting",
+    ],
   },
 ];
 
@@ -177,38 +171,6 @@ function PrimaryCTA({
   );
 }
 
-const ctaTeam = [
-  {
-    name: "Insaf",
-    src: "/images/team/Insaf.png",
-    position: "lg:left-8 lg:top-10",
-    objectPosition: "50% 20%",
-    delay: "0s",
-  },
-
-  {
-    name: "Bavaram",
-    src: "/images/team/bavaram.png",
-    position: "lg:right-10 lg:top-12",
-    objectPosition: "50% 22%",
-    delay: "-1.4s",
-  },
-  {
-    name: "Janith",
-    src: "/images/team/janith.png",
-    position: "lg:bottom-10 lg:left-16",
-    objectPosition: "50% 24%",
-    delay: "-2.8s",
-  },
-  {
-    name: "Amrith",
-    src: "/images/team/amrith.png",
-    position: "lg:bottom-9 lg:right-16",
-    objectPosition: "50% 36%",
-    delay: "-4.2s",
-  },
-];
-
 export default function HomepageRedesign() {
   return (
     <>
@@ -222,20 +184,20 @@ export default function HomepageRedesign() {
             </p>
             <HeroTeamGrowth />
             <h1 className="mt-6 text-balance text-4xl font-semibold leading-[1.05] tracking-[-0.04em] text-ink sm:text-6xl lg:text-7xl">
-              The right team to build, launch and scale your digital product.
+              We build, design, and grow digital products.
             </h1>
             <p className="max-w-3xl mx-auto text-base leading-7 mt-7 text-pretty text-ink-2 sm:text-xl sm:leading-8">
-              Throughout assembles dedicated engineering, design, data, AI,
-              DevOps, QA, and marketing expertise for startups, agencies, and
-              product companies without a drawn-out hiring cycle.
+              Websites, apps, and SaaS platforms engineered properly, designed
+              to be easy to use, and marketed so they find customers. Hire us
+              for a project, or as your own dedicated team.
             </p>
             <div className="flex flex-col items-center justify-center gap-3 mt-9 sm:flex-row">
               <PrimaryCTA className="w-full sm:w-auto" />
               <Link
-                href="#engagement-models"
+                href="#work"
                 className="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-semibold transition bg-canvas-elevated border rounded-full min-h-12 border-hairline-strong text-ink hover:border-ink-4 hover:bg-canvas-soft focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:w-auto"
               >
-                Explore engagement models
+                See our work
               </Link>
             </div>
           </div>
@@ -243,139 +205,112 @@ export default function HomepageRedesign() {
       </section>
 
       <section
-        id="engagement-models"
+        id="services"
         className="px-4 py-20 scroll-mt-24 sm:px-6 sm:py-28 lg:px-8"
       >
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <Eyebrow>Choose the right model</Eyebrow>
+            <Eyebrow>What we do</Eyebrow>
             <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
-              One partner. Two clear ways to work.
+              Everything your product needs, from one team.
             </h2>
             <p className="mt-5 text-lg leading-8 text-ink-2">
-              Choose based on whether you need a defined outcome now or an
-              embedded team for the long term.
+              Take one service or combine all three. Either way, the people you
+              talk to are the people doing the work.
             </p>
           </div>
-          <div className="grid gap-6 mt-12 lg:grid-cols-2">
-            <article className="group relative overflow-hidden rounded-[1.5rem] bg-[radial-gradient(130%_110%_at_100%_0%,#0f2a4d_0%,#0a0a0d_55%)] p-7 text-dark-ink sm:p-10">
-              <div
-                aria-hidden="true"
-                className="absolute -right-10 -top-10 h-56 w-56 rounded-full bg-primary-bright/20 blur-[80px]"
-              />
-              <div className="relative">
-                <span className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-primary-hover">
-                  For a project or service
+          <div className="grid gap-5 mt-12 lg:grid-cols-3">
+            {services.map(({ icon: Icon, title, copy, items }) => (
+              <article
+                key={title}
+                className="p-7 bg-canvas-elevated border rounded-[1.5rem] border-hairline sm:p-8"
+              >
+                <span className="flex items-center justify-center w-12 h-12 text-xl text-on-primary rounded-2xl bg-primary">
+                  <Icon aria-hidden="true" />
                 </span>
-                <h3 className="mt-5 text-3xl font-semibold tracking-[-0.02em]">
-                  Dedicated services
+                <h3 className="mt-6 text-2xl font-semibold tracking-tight text-ink">
+                  {title}
                 </h3>
-                <p className="max-w-xl mt-4 leading-7 text-dark-ink-muted">
-                  A focused team owns a defined product, platform, campaign, or
-                  specialist workstream from planning through delivery.
-                </p>
-                <ul className="mt-8 space-y-3 text-sm text-dark-ink-muted">
-                  {[
-                    "A clear scope, outcome, and delivery rhythm",
-                    "The capabilities your project actually needs",
-                    "Direct communication with the people doing the work",
-                  ].map((item) => (
+                <p className="mt-3 text-sm leading-6 text-ink-2">{copy}</p>
+                <ul className="mt-6 space-y-3 text-sm text-ink">
+                  {items.map((item) => (
                     <li key={item} className="flex gap-3">
                       <FiCheck
-                        className="mt-0.5 shrink-0 text-primary-hover"
+                        className="mt-0.5 shrink-0 text-primary"
                         aria-hidden="true"
                       />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href="#capabilities"
-                  className="inline-flex items-center gap-2 font-semibold text-dark-ink mt-9 hover:text-primary-hover"
-                >
-                  Explore capabilities <FiArrowRight aria-hidden="true" />
-                </Link>
-              </div>
-            </article>
-            <article className="relative overflow-hidden rounded-[1.5rem] border border-primary/20 bg-primary-soft p-7 sm:p-10">
-              <span className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-primary">
-                For long-term capacity
-              </span>
-              <h3 className="mt-5 text-3xl font-semibold tracking-[-0.02em] text-ink">
-                Dedicated offshore teams
-              </h3>
-              <p className="max-w-xl mt-4 leading-7 text-ink-2">
-                Build a stable, managed team that integrates with your company,
-                tools, rituals, and roadmap without building the hiring
-                operation alone.
-              </p>
-              <ul className="mt-8 space-y-3 text-sm text-ink-2">
-                {[
-                  "Roles matched to your roadmap and ways of working",
-                  "A team designed for continuity and knowledge retention",
-                  "Ongoing support for team formation and delivery",
-                ].map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <FiCheck
-                      className="mt-0.5 shrink-0 text-primary"
-                      aria-hidden="true"
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/contact?model=offshore-team"
-                className="inline-flex items-center gap-2 font-semibold mt-9 text-primary hover:text-primary-press"
-              >
-                Build your team <FiArrowRight aria-hidden="true" />
-              </Link>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="capabilities"
-        className="px-4 py-20 scroll-mt-24 bg-canvas-soft sm:px-6 sm:py-28 lg:px-8"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-3xl">
-              <Eyebrow>Capabilities</Eyebrow>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
-                Specialists who work as one delivery team.
-              </h2>
-            </div>
-            <p className="max-w-lg leading-7 text-ink-2">
-              Bring in one capability or combine several around a product,
-              platform, or growth objective.
-            </p>
-          </div>
-          <div className="grid gap-4 mt-12 sm:grid-cols-2 lg:grid-cols-3">
-            {capabilities.map(({ icon: Icon, title, copy, href }) => (
-              <Link
-                key={title}
-                href={href}
-                className="p-6 transition bg-canvas-elevated border group rounded-2xl border-hairline hover:-translate-y-1 hover:border-primary/40 hover:shadow-card focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-              >
-                <span className="flex items-center justify-center w-12 h-12 text-xl text-on-primary transition rounded-2xl bg-ink group-hover:bg-primary">
-                  <Icon aria-hidden="true" />
-                </span>
-                <h3 className="mt-6 text-xl font-semibold tracking-tight text-ink">
-                  {title}
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-ink-2">{copy}</p>
-                <span className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-primary">
-                  Learn more <FiArrowRight aria-hidden="true" />
-                </span>
-              </Link>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+      <section
+        id="work"
+        className="px-4 py-20 scroll-mt-24 bg-canvas-soft sm:px-6 sm:py-28 lg:px-8"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <Eyebrow>Our work</Eyebrow>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
+              Live projects we&apos;ve built for clients.
+            </h2>
+          </div>
+          <div className="grid gap-6 mt-12 md:grid-cols-2">
+            {portfolioProjects.map((project) => (
+              <a
+                key={project.id}
+                href={project.link}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Visit ${project.clientName} (opens in a new tab)`}
+                className="flex flex-col overflow-hidden transition bg-canvas-elevated border group rounded-[1.5rem] border-hairline hover:-translate-y-1 hover:shadow-card focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden border-b border-hairline bg-canvas-soft">
+                  <Image
+                    src={project.image}
+                    alt={`${project.clientName} website`}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover object-top transition duration-500 group-hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="flex flex-col flex-1 p-6 sm:p-7">
+                  <div className="flex flex-wrap gap-2">
+                    {project.category.map((category) => (
+                      <span
+                        key={category}
+                        className="rounded-full bg-primary-soft px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-primary"
+                      >
+                        {category}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="mt-4 text-2xl font-semibold tracking-tight text-ink">
+                    {project.clientName}
+                  </h3>
+                  <p className="mt-1 text-sm font-medium text-ink-2">
+                    {project.title.split(" – ")[1]}
+                  </p>
+                  <p className="mt-4 text-sm leading-6 text-ink-2 line-clamp-3">
+                    {project.shortDescription}
+                  </p>
+                  <span className="inline-flex items-center gap-2 pt-6 mt-auto text-sm font-semibold text-primary">
+                    Visit site
+                    <FiExternalLink aria-hidden="true" />
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="products" className="relative scroll-mt-24 overflow-hidden px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div
           aria-hidden="true"
           className="absolute left-1/2 top-0 h-96 w-[48rem] -translate-x-1/2 rounded-full bg-primary-soft blur-3xl"
@@ -459,68 +394,95 @@ export default function HomepageRedesign() {
         </div>
       </section>
 
-      <section className="px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <div>
-            <Eyebrow>Why Throughout</Eyebrow>
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
-              Built for teams that cannot compromise on delivery.
-            </h2>
-            <p className="mt-5 leading-7 text-ink-2">
-              The goal is not simply to fill seats. It is to form a capable team
-              that can understand the problem, make sound decisions, and keep
-              work moving.
-            </p>
-          </div>
-          <div className="grid gap-px overflow-hidden rounded-[1.5rem] border border-hairline bg-hairline sm:grid-cols-2">
-            {[
-              {
-                icon: FiCode,
-                title: "Technical depth",
-                copy: "Engineering is a core capability, with design, data, QA, DevOps, AI, and growth disciplines working alongside it.",
-              },
-              {
-                icon: FiUsers,
-                title: "Talent matched to the work",
-                copy: "Team shape starts with your roadmap, technical environment, and collaboration needs, not a generic bench.",
-              },
-              {
-                icon: FiZap,
-                title: "Faster formation",
-                copy: "A focused selection and onboarding process helps reduce the operational work between identifying a need and starting delivery.",
-              },
-              {
-                icon: FiSearch,
-                title: "Visible delivery",
-                copy: "Clear ownership, direct communication, and regular review points keep decisions and progress easy to follow.",
-              },
-            ].map(({ icon: Icon, title, copy }) => (
-              <article key={title} className="bg-canvas-elevated p-7 sm:p-8">
-                <Icon className="text-2xl text-primary" aria-hidden="true" />
-                <h3 className="mt-5 text-xl font-semibold text-ink">{title}</h3>
-                <p className="mt-3 text-sm leading-6 text-ink-2">{copy}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+      <section
+        id="engagement-models"
+        className="px-4 py-20 scroll-mt-24 bg-canvas-soft sm:px-6 sm:py-28 lg:px-8"
+      >
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-3xl">
-              <Eyebrow>Life at Throughout</Eyebrow>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
-                Where the work happens, and gets recognised.
-              </h2>
-            </div>
-            <p className="max-w-lg leading-7 text-ink-2">
-              From late nights shipping client work to BestWeb.LK 2026 wins for
-              projects like bavaram.lk, a look behind the delivery.
+          <div className="max-w-3xl">
+            <Eyebrow>Choose the right model</Eyebrow>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
+              One partner. Two clear ways to work.
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-ink-2">
+              Choose based on whether you need a defined outcome now or an
+              embedded team for the long term.
             </p>
           </div>
-          <div className="mt-12">
-            <GallerySlider />
+          <div className="grid gap-6 mt-12 lg:grid-cols-2">
+            <article className="group relative overflow-hidden rounded-[1.5rem] bg-[radial-gradient(130%_110%_at_100%_0%,#0f2a4d_0%,#0a0a0d_55%)] p-7 text-dark-ink sm:p-10">
+              <div
+                aria-hidden="true"
+                className="absolute -right-10 -top-10 h-56 w-56 rounded-full bg-primary-bright/20 blur-[80px]"
+              />
+              <div className="relative">
+                <span className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-primary-hover">
+                  For a project or service
+                </span>
+                <h3 className="mt-5 text-3xl font-semibold tracking-[-0.02em]">
+                  Dedicated services
+                </h3>
+                <p className="max-w-xl mt-4 leading-7 text-dark-ink-muted">
+                  A focused team owns a defined product, platform, campaign, or
+                  specialist workstream from planning through delivery.
+                </p>
+                <ul className="mt-8 space-y-3 text-sm text-dark-ink-muted">
+                  {[
+                    "A clear scope, outcome, and delivery rhythm",
+                    "The capabilities your project actually needs",
+                    "Direct communication with the people doing the work",
+                  ].map((item) => (
+                    <li key={item} className="flex gap-3">
+                      <FiCheck
+                        className="mt-0.5 shrink-0 text-primary-hover"
+                        aria-hidden="true"
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="#services"
+                  className="inline-flex items-center gap-2 font-semibold text-dark-ink mt-9 hover:text-primary-hover"
+                >
+                  See what we do <FiArrowRight aria-hidden="true" />
+                </Link>
+              </div>
+            </article>
+            <article className="relative overflow-hidden rounded-[1.5rem] border border-primary/20 bg-primary-soft p-7 sm:p-10">
+              <span className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-primary">
+                For long-term capacity
+              </span>
+              <h3 className="mt-5 text-3xl font-semibold tracking-[-0.02em] text-ink">
+                Dedicated offshore teams
+              </h3>
+              <p className="max-w-xl mt-4 leading-7 text-ink-2">
+                Build a stable, managed team that integrates with your company,
+                tools, rituals, and roadmap without building the hiring
+                operation alone.
+              </p>
+              <ul className="mt-8 space-y-3 text-sm text-ink-2">
+                {[
+                  "Roles matched to your roadmap and ways of working",
+                  "A team designed for continuity and knowledge retention",
+                  "Ongoing support for team formation and delivery",
+                ].map((item) => (
+                  <li key={item} className="flex gap-3">
+                    <FiCheck
+                      className="mt-0.5 shrink-0 text-primary"
+                      aria-hidden="true"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-2 font-semibold mt-9 text-primary hover:text-primary-press"
+              >
+                Build your team <FiArrowRight aria-hidden="true" />
+              </Link>
+            </article>
           </div>
         </div>
       </section>
@@ -567,6 +529,35 @@ export default function HomepageRedesign() {
         </div>
       </section>
 
+      <section
+        id="team"
+        className="px-4 py-20 scroll-mt-24 sm:px-6 sm:py-28 lg:px-8"
+      >
+        <div className="mx-auto max-w-7xl">
+          <TeamSection />
+        </div>
+      </section>
+
+      <section className="px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <Eyebrow>Life at Throughout</Eyebrow>
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
+                Where the work happens, and gets recognised.
+              </h2>
+            </div>
+            <p className="max-w-lg leading-7 text-ink-2">
+              From late nights shipping client work to BestWeb.LK 2026 wins for
+              projects like bavaram.lk, a look behind the delivery.
+            </p>
+          </div>
+          <div className="mt-12">
+            <GallerySlider />
+          </div>
+        </div>
+      </section>
+
       <ServiceFAQ
         badgeText="Frequently asked questions"
         headline="Before we start."
@@ -574,65 +565,7 @@ export default function HomepageRedesign() {
         includeSchema={false}
       />
 
-      <section className="px-4 pb-20 sm:px-6 sm:pb-28 lg:px-8">
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[1.5rem] bg-[linear-gradient(135deg,#0f2a4d_0%,#0a0a0d_70%)] px-6 py-14 text-center text-dark-ink sm:px-12 sm:py-20 lg:px-40">
-          <div
-            aria-hidden="true"
-            className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full left-1/2 top-1/2 h-80 w-80 bg-primary-bright/20 blur-3xl"
-          />
-
-          {ctaTeam.map((member) => (
-            <div
-              key={member.name}
-              className={`cta-avatar-float absolute hidden h-20 w-20 rounded-full border-4 border-dark-hairline bg-dark-surface-1 p-1 shadow-floating lg:block ${member.position}`}
-              style={{ animationDelay: member.delay }}
-            >
-              <Image
-                src={member.src}
-                alt={`${member.name}, Throughout team member`}
-                fill
-                sizes="80px"
-                className="object-cover rounded-full"
-                style={{ objectPosition: member.objectPosition }}
-              />
-            </div>
-          ))}
-
-          <div className="relative z-10">
-            <div className="flex justify-center mb-6 -space-x-3 lg:hidden">
-              {ctaTeam.map((member) => (
-                <div
-                  key={member.name}
-                  className="relative overflow-hidden border-2 rounded-full shadow-lg cta-avatar-float h-14 w-14 border-dark-surface-1 bg-dark-surface-2"
-                  style={{ animationDelay: member.delay }}
-                >
-                  <Image
-                    src={member.src}
-                    alt={`${member.name}, Throughout team member`}
-                    fill
-                    sizes="56px"
-                    className="object-cover"
-                    style={{ objectPosition: member.objectPosition }}
-                  />
-                </div>
-              ))}
-            </div>
-            <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-primary-hover">
-              Start with the right conversation
-            </p>
-            <h2 className="mx-auto mt-5 max-w-4xl text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">
-              Tell us what you need to build or the team you need to build it.
-            </h2>
-            <p className="max-w-2xl mx-auto mt-5 leading-7 text-dark-ink-muted">
-              We will help you define a practical next step, whether that is a
-              focused project team or a long-term offshore team.
-            </p>
-            <div className="mt-8">
-              <PrimaryCTA light />
-            </div>
-          </div>
-        </div>
-      </section>
+      <ContactInfoSection />
     </>
   );
 }

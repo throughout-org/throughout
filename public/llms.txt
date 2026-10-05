@@ -6,22 +6,24 @@ Throughout was founded in 2022 and serves clients in Sri Lanka and worldwide, re
 
 ## Services
 
-- [Digital Marketing](https://www.throughout.io/digital-marketing): SEO & content strategy, Google & Meta Ads, social media management, email marketing, analytics and reporting.
-- [Engineering](https://www.throughout.io/engineering): Custom software development, UI/UX engineering, Shopify development, CMS development (WordPress, headless CMS), cloud & server infrastructure, workflow automation and AI integration.
-- [Design](https://www.throughout.io/design): Brand identity & logo design, UI/UX design, web design, motion and video graphics, social media creatives.
-- [Agency Partner Programme](https://www.throughout.io/agency-partners): A dedicated, revenue-shared engineering team that other agencies (marketing, creative, branding, growth) can plug in as their technical delivery arm — full transparency on costs, timesheets, and profit split.
+Everything lives on one page: https://www.throughout.io
+
+- [Engineering](https://www.throughout.io/#services): Web & mobile apps, SaaS platforms & APIs, AI features & workflow automation, Shopify & e-commerce, data engineering, cloud, DevOps & QA.
+- [Design](https://www.throughout.io/#services): Product strategy & UX research, UI/UX design, prototypes, design systems, websites & landing pages, brand identity.
+- [Digital Marketing](https://www.throughout.io/#services): SEO & content strategy, Google & Meta ads, conversion optimisation, email & lifecycle marketing, social media, analytics.
+- [Dedicated Teams](https://www.throughout.io/#engagement-models): A project team for a defined outcome, or a long-term dedicated offshore team that works as part of your company.
 
 ## Company
 
-- [About](https://www.throughout.io/about): Mission, vision, and team.
-- [Portfolio](https://www.throughout.io/portfolio): Client work across web, app, and growth projects.
-- [Case Studies](https://www.throughout.io/case-studies): Detailed project breakdowns including MVP launches, Shopify conversions, SEO growth, and workflow automation.
+- [Work](https://www.throughout.io/#work): Live client projects (ScaleLabz, Ado Coffee, Hostraspace, Artisans Touch).
+- [Team](https://www.throughout.io/#team): The people behind Throughout.
 - [Insights](https://www.throughout.io/insights): Articles on digital marketing, engineering, and design.
 - [Careers](https://www.throughout.io/careers): Open internships and roles.
-- [Contact](https://www.throughout.io/contact): Book a free discovery or strategy call.
+- [Contact](https://www.throughout.io/#contact-form): Book a free consultation.
 
 ## Products
 
+- [Checkout](https://checkout.throughout.io/): Offline-first point of sale built by Throughout.
 - [Comflo](https://comflo.app/): Communication/workflow product built by Throughout.
 - [Rankout](https://rankout.app/): SEO/ranking product built by Throughout.
 

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import ServiceSectionHeader from "@/components/service/ServiceSectionHeader";
 
 type TeamMember = {
   name: string;
@@ -49,12 +48,15 @@ function getInitials(name: string) {
 export default function TeamSection() {
   return (
     <div>
-      <ServiceSectionHeader
-        badgeText="OUR TEAM"
-        headline="Meet the team"
-        intro="The people behind the strategy, engineering, and client relationships."
-      />
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="max-w-3xl">
+        <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-primary">
+          Our team
+        </p>
+        <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
+          The people you&apos;ll work with.
+        </h2>
+      </div>
+      <div className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
         {team.map((member) => (
           <div
             key={member.name}

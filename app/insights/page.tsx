@@ -5,7 +5,7 @@ import { client } from "@/src/sanity/client";
 const siteUrl = "https://www.throughout.io";
 const pagePath = "/insights";
 const imageLicenseUrl = `${siteUrl}/privacy-policy#terms-of-service`;
-const acquireLicensePageUrl = `${siteUrl}/contact`;
+const acquireLicensePageUrl = `${siteUrl}/#contact-form`;
 
 type Author = {
   name: string;

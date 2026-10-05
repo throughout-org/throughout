@@ -107,7 +107,7 @@ const organizationSchema = {
       contactType: "Sales",
       email: "info@throughout.io",
       availableLanguage: ["English"],
-      url: "https://www.throughout.io/contact",
+      url: "https://www.throughout.io/#contact-form",
     },
     {
       "@type": "ContactPoint",
@@ -147,11 +147,11 @@ const servicesSchema = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": "https://www.throughout.io/digital-marketing#service",
+      "@id": "https://www.throughout.io/#digital-marketing-service",
       name: "Digital Marketing",
       provider: { "@id": "https://www.throughout.io/#organization" },
       description: "SEO, paid advertising, social media management, content strategy, and email marketing to grow your digital presence and generate leads.",
-      url: "https://www.throughout.io/digital-marketing",
+      url: "https://www.throughout.io/#services",
       serviceType: "Digital Marketing",
       areaServed: ["Sri Lanka", "Worldwide"],
       hasOfferCatalog: {
@@ -167,11 +167,11 @@ const servicesSchema = {
     },
     {
       "@type": "Service",
-      "@id": "https://www.throughout.io/engineering#service",
+      "@id": "https://www.throughout.io/#engineering-service",
       name: "Engineering",
       provider: { "@id": "https://www.throughout.io/#organization" },
       description: "Web and mobile app development, cloud infrastructure, AI automation, and workflow engineering for startups and growing businesses.",
-      url: "https://www.throughout.io/engineering",
+      url: "https://www.throughout.io/#services",
       serviceType: "Software Engineering",
       areaServed: ["Sri Lanka", "Worldwide"],
       hasOfferCatalog: {
@@ -187,11 +187,11 @@ const servicesSchema = {
     },
     {
       "@type": "Service",
-      "@id": "https://www.throughout.io/design#service",
+      "@id": "https://www.throughout.io/#design-service",
       name: "Design",
       provider: { "@id": "https://www.throughout.io/#organization" },
       description: "Brand identity, UI/UX design, web design, and creative visual production for businesses that want to look premium and convert consistently.",
-      url: "https://www.throughout.io/design",
+      url: "https://www.throughout.io/#services",
       serviceType: "Design",
       areaServed: ["Sri Lanka", "Worldwide"],
       hasOfferCatalog: {
@@ -207,11 +207,11 @@ const servicesSchema = {
     },
     {
       "@type": "Service",
-      "@id": "https://www.throughout.io/dedicated-teams#service",
+      "@id": "https://www.throughout.io/#dedicated-teams-service",
       name: "Dedicated Offshore Teams",
       provider: { "@id": "https://www.throughout.io/#organization" },
       description: "Long-term dedicated offshore engineering, design, data, QA, DevOps, AI, and marketing teams shaped around a company's roadmap and working rhythm.",
-      url: "https://www.throughout.io/dedicated-teams",
+      url: "https://www.throughout.io/#engagement-models",
       serviceType: "Dedicated Offshore Team",
       areaServed: ["Sri Lanka", "Worldwide"],
       audience: { "@type": "Audience", audienceType: "Startups, product companies, digital agencies, and growing businesses" },
