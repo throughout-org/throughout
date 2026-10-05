@@ -15,7 +15,7 @@ Everything lives on one page: https://www.throughout.io
 
 ## Company
 
-- [Work](https://www.throughout.io/#work): Live client projects (ScaleLabz, Ado Coffee, Hostraspace, Artisans Touch).
+- [Work](https://www.throughout.io/#work): Our products (Checkout, Rankout, Comflo) and client projects (Ado Coffee, Hostraspace, Artisans Touch).
 - [Team](https://www.throughout.io/#team): The people behind Throughout.
 - [Insights](https://www.throughout.io/insights): Articles on digital marketing, engineering, and design.
 - [Careers](https://www.throughout.io/careers): Open internships and roles.

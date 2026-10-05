@@ -3,12 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { CalendlyButton } from "@/components/CalendlyPopup";
+import { BookCallLink } from "@/components/BookCallLink";
 
 const navigation = [
   { name: "Services", href: "/#services" },
   { name: "Work", href: "/#work" },
-  { name: "Products", href: "/#products" },
   { name: "Team", href: "/#team" },
   { name: "Contact", href: "/#contact-form" },
 ];
@@ -55,9 +54,9 @@ export default function Navbar() {
             ))}
           </div>
 
-          <CalendlyButton className="hidden min-h-11 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-on-primary transition hover:bg-primary-hover lg:inline-flex lg:items-center xl:px-7 xl:text-sm">
+          <BookCallLink className="hidden min-h-11 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-on-primary transition hover:bg-primary-hover lg:inline-flex lg:items-center xl:px-7 xl:text-sm">
             Book a Free Consultation
-          </CalendlyButton>
+          </BookCallLink>
 
           <button
             type="button"
@@ -97,9 +96,9 @@ export default function Navbar() {
             </Link>
           ))}
         </div>
-        <CalendlyButton className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-on-primary transition hover:bg-primary-hover">
+        <BookCallLink className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-on-primary transition hover:bg-primary-hover">
           Book a Free Consultation
-        </CalendlyButton>
+        </BookCallLink>
       </div>
     </nav>
   );

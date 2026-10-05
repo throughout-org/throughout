@@ -28,6 +28,11 @@ const team: TeamMember[] = [
     photo: "/images/team/aysha-bg.png",
   },
   {
+    name: "Khansa",
+    role: "Video Editor",
+    photo: "/images/team/khansa.png",
+  },
+  {
     name: "Amrith Shylendra",
     role: "Sales Executive",
     photo: "/images/team/amrith.png",
@@ -56,7 +61,7 @@ export default function TeamSection() {
           The people you&apos;ll work with.
         </h2>
       </div>
-      <div className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
         {team.map((member) => (
           <div
             key={member.name}
@@ -67,7 +72,7 @@ export default function TeamSection() {
                 src={member.photo}
                 alt={member.name}
                 fill
-                sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
+                sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
                 className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
               />
             ) : (

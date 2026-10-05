@@ -2,24 +2,19 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   FiArrowRight,
-  FiBarChart2,
   FiCheck,
   FiCode,
-  FiExternalLink,
-  FiMessageCircle,
   FiPenTool,
-  FiShoppingBag,
   FiTrendingUp,
 } from "react-icons/fi";
-import { CalendlyButton } from "@/components/CalendlyPopup";
+import { BookCallLink } from "@/components/BookCallLink";
 import GallerySlider from "@/components/home/GallerySlider";
 import HeroCursorField from "@/components/home/HeroCursorField";
 import HeroTeamGrowth from "@/components/home/HeroTeamGrowth";
-import ProductDashboardPreview from "@/components/home/ProductDashboardPreview";
 import ServiceFAQ from "@/components/service/ServiceFAQ";
 import TeamSection from "@/components/about/TeamSection";
 import ContactInfoSection from "@/components/contact/ContactInfoSection";
-import { portfolioProjects } from "@/data/portfolio";
+import { work } from "@/data/portfolio";
 
 const services = [
   {
@@ -63,66 +58,6 @@ const services = [
   },
 ];
 
-const products = [
-  {
-    name: "Checkout",
-    label: "Point of sale",
-    description:
-      "An offline-first POS that brings sales, inventory, customers, purchasing, and reporting into one beautifully simple system.",
-    href: "https://checkout.throughout.io/",
-    icon: FiShoppingBag,
-    accent: "checkout",
-  },
-  {
-    name: "Rankout",
-    label: "Search visibility",
-    description:
-      "One platform to research, automate, implement, and measure SEO, AEO, and GEO, with every AI-drafted change under your control.",
-    href: "https://rankout.app/",
-    icon: FiBarChart2,
-    accent: "rankout",
-  },
-  {
-    name: "Comflo",
-    label: "Commerce operations",
-    description:
-      "A connected workspace for customer conversations, orders, channels, and retention, built for growing ecommerce businesses.",
-    href: "https://comflo.app/",
-    icon: FiMessageCircle,
-    accent: "comflo",
-  },
-] as const;
-
-const productStyles = {
-  checkout: {
-    card: "bg-transparent border-[#dedee2]",
-    icon: "bg-[#2b2b68] text-white",
-    glow: "hidden",
-    visual: "bg-[#2b2b68] text-white",
-    badge: "bg-[#dff7f7] text-[#176f70]",
-    accent: "text-[#1eb4b4]",
-    status: "bg-[#1eb4b4]",
-  },
-  rankout: {
-    card: "bg-transparent border-[#dedbd3]",
-    icon: "bg-[#ea2804] text-white",
-    glow: "hidden",
-    visual: "bg-transparent text-ink shadow-none",
-    badge: "bg-[#ffe4dc] text-[#9f1c04]",
-    accent: "text-[#ea2804]",
-    status: "bg-[#ea2804]",
-  },
-  comflo: {
-    card: "bg-transparent border-[#d7e6df]",
-    icon: "bg-[#0e2e24] text-[#19c37d]",
-    glow: "hidden",
-    visual: "bg-white text-ink",
-    badge: "bg-[#dff8ec] text-[#0e2e24]",
-    accent: "text-[#19c37d]",
-    status: "bg-[#19c37d]",
-  },
-} as const;
-
 export const homepageFAQs = [
   {
     question:
@@ -163,11 +98,11 @@ function PrimaryCTA({
   light?: boolean;
 }) {
   return (
-    <CalendlyButton
+    <BookCallLink
       className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold shadow-whisper transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${light ? "bg-dark-ink text-dark-canvas hover:bg-primary-soft" : "bg-primary text-on-primary hover:bg-primary-hover"} ${className}`}
     >
       Book a Free Consultation <FiArrowRight aria-hidden="true" />
-    </CalendlyButton>
+    </BookCallLink>
   );
 }
 
@@ -257,139 +192,43 @@ export default function HomepageRedesign() {
           <div className="max-w-3xl">
             <Eyebrow>Our work</Eyebrow>
             <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
-              Live projects we&apos;ve built for clients.
+              Products we&apos;ve built, for clients and for ourselves.
             </h2>
           </div>
-          <div className="grid gap-6 mt-12 md:grid-cols-2">
-            {portfolioProjects.map((project) => (
+          <div className="grid gap-6 mt-12 sm:grid-cols-2 lg:grid-cols-3">
+            {work.map((item) => (
               <a
-                key={project.id}
-                href={project.link}
+                key={item.name}
+                href={item.href}
                 target="_blank"
                 rel="noreferrer"
-                aria-label={`Visit ${project.clientName} (opens in a new tab)`}
-                className="flex flex-col overflow-hidden transition bg-canvas-elevated border group rounded-[1.5rem] border-hairline hover:-translate-y-1 hover:shadow-card focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                aria-label={`Visit ${item.name} (opens in a new tab)`}
+                className="overflow-hidden transition bg-canvas-elevated border group rounded-[1.5rem] border-hairline hover:-translate-y-1 hover:shadow-card focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
               >
                 <div className="relative aspect-[16/10] overflow-hidden border-b border-hairline bg-canvas-soft">
                   <Image
-                    src={project.image}
-                    alt={`${project.clientName} website`}
+                    src={item.image}
+                    alt={`${item.name} website`}
                     fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     className="object-cover object-top transition duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
-                <div className="flex flex-col flex-1 p-6 sm:p-7">
-                  <div className="flex flex-wrap gap-2">
-                    {project.category.map((category) => (
-                      <span
-                        key={category}
-                        className="rounded-full bg-primary-soft px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-primary"
-                      >
-                        {category}
-                      </span>
-                    ))}
+                <div className="p-6">
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="text-xl font-semibold tracking-tight text-ink">
+                      {item.name}
+                    </h3>
+                    <span className="rounded-full bg-primary-soft px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-primary">
+                      {item.kind}
+                    </span>
                   </div>
-                  <h3 className="mt-4 text-2xl font-semibold tracking-tight text-ink">
-                    {project.clientName}
-                  </h3>
-                  <p className="mt-1 text-sm font-medium text-ink-2">
-                    {project.title.split(" – ")[1]}
+                  <p className="mt-2 text-sm leading-6 text-ink-2">
+                    {item.tagline}
                   </p>
-                  <p className="mt-4 text-sm leading-6 text-ink-2 line-clamp-3">
-                    {project.shortDescription}
-                  </p>
-                  <span className="inline-flex items-center gap-2 pt-6 mt-auto text-sm font-semibold text-primary">
-                    Visit site
-                    <FiExternalLink aria-hidden="true" />
-                  </span>
                 </div>
               </a>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="products" className="relative scroll-mt-24 overflow-hidden px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
-        <div
-          aria-hidden="true"
-          className="absolute left-1/2 top-0 h-96 w-[48rem] -translate-x-1/2 rounded-full bg-primary-soft blur-3xl"
-        />
-        <div className="relative mx-auto max-w-7xl">
-          <div className="grid gap-7 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
-            <div>
-              <Eyebrow>Products by Throughout</Eyebrow>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
-                We don&apos;t just build for clients. We build our own.
-              </h2>
-            </div>
-            <p className="max-w-2xl text-lg leading-8 text-ink-2 lg:justify-self-end">
-              The same product thinking, engineering discipline, and attention
-              to detail we bring to every partnership. Tested in software we
-              own, operate, and keep improving.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-5 lg:grid-cols-3">
-            {products.map((product) => {
-              const Icon = product.icon;
-              const styles = productStyles[product.accent];
-
-              return (
-                <a
-                  key={product.name}
-                  href={product.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Visit ${product.name} (opens in a new tab)`}
-                  className={`group relative flex min-h-[31rem] flex-col overflow-hidden rounded-[1.5rem] border p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-floating focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:p-7 ${styles.card}`}
-                >
-                  <div
-                    aria-hidden="true"
-                    className={`absolute -right-16 -top-16 h-44 w-44 rounded-full blur-3xl ${styles.glow}`}
-                  />
-                  <div className="relative flex items-center justify-between">
-                    <span
-                      className={`flex h-12 w-12 items-center justify-center rounded-2xl text-xl shadow-whisper ${styles.icon}`}
-                    >
-                      <Icon aria-hidden="true" />
-                    </span>
-                    <span
-                      className={`rounded-full px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.13em] ${styles.badge}`}
-                    >
-                      {product.label}
-                    </span>
-                  </div>
-
-                  <div className="relative mt-8">
-                    <h3 className="text-3xl font-semibold tracking-[-0.03em] text-ink">
-                      {product.name}
-                      <span className={styles.accent}>.</span>
-                    </h3>
-                    <p className="mt-4 text-sm leading-6 text-ink-2">
-                      {product.description}
-                    </p>
-                  </div>
-
-                  <div
-                    className={`relative mt-8 flex-1 overflow-hidden rounded-2xl border border-black/10 p-4 shadow-card transition duration-500 group-hover:-translate-y-1 ${styles.visual}`}
-                    aria-hidden="true"
-                  >
-                    <div className="flex items-center justify-between text-[0.65rem] font-semibold opacity-70">
-                      <span>{product.name} / Overview</span>
-                      <span className={`h-2 w-2 rounded-full ${styles.status}`} />
-                    </div>
-
-                    <ProductDashboardPreview product={product.name} />
-                  </div>
-
-                  <span className="relative mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink">
-                    Explore {product.name}
-                    <FiExternalLink className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
-                  </span>
-                </a>
-              );
-            })}
           </div>
         </div>
       </section>

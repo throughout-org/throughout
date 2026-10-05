@@ -35,17 +35,10 @@ export function trackFBCustomEvent(eventName: string, params?: Record<string, un
 
 // ── Conversion Events (call these at the right moments) ───────────────────────
 
-/** Fire when user opens Calendly popup or completes booking */
-export function trackCalendlyOpen() {
+/** Fire when user clicks a "Book a call" link */
+export function trackBookCallOpen() {
   trackGA4Event("calendly_open", { event_category: "engagement", event_label: "book_call" });
   trackFBCustomEvent("CalendlyOpen");
-}
-
-export function trackCalendlyBooked() {
-  trackGA4Event("conversion", { send_to: `${GA_ID}/calendly_booked`, event_category: "conversion", event_label: "call_booked" });
-  trackGA4Event("generate_lead", { event_category: "conversion", method: "calendly" });
-  trackFBEvent("Schedule", { content_name: "Free Strategy Call" });
-  trackFBEvent("Lead", { content_name: "Calendly Booking" });
 }
 
 /** Fire when contact form is submitted successfully */

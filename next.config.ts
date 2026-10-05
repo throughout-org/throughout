@@ -19,6 +19,8 @@ const nextConfig: NextConfig = {
     ];
   },
   async headers() {
+    // dev chunk names aren't hashed, so immutable caching would serve stale code
+    if (process.env.NODE_ENV !== "production") return [];
     return [
       {
         source: "/_next/static/(.*)",

@@ -7,6 +7,7 @@ import {
   FiMessageCircle,
 } from "react-icons/fi";
 import NewsletterSignup from "@/components/ui/NewsletterSignup";
+import { BookCallLink } from "@/components/BookCallLink";
 
 const resources = [
   { label: "Work", href: "/#work" },
@@ -200,13 +201,12 @@ export default function Footer() {
               </div>
             </div>
 
-            <Link
-              href="/#contact-form"
+            <BookCallLink
               className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary px-4 py-2.5 text-xs font-semibold text-on-primary transition hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary xl:px-5 xl:text-sm"
             >
               Book a free consultation
               <FiArrowUpRight className="shrink-0" aria-hidden="true" />
-            </Link>
+            </BookCallLink>
           </div>
         </div>
 
