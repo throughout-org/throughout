@@ -223,19 +223,21 @@ export default function HomepageRedesign() {
             </div>
           </div>
 
-          <dl className="mt-16 grid gap-6 border-t border-hairline pt-6 sm:grid-cols-2 lg:mt-20">
-            <div>
-              <dt className="font-mono text-xs text-ink-2">BestWeb.LK 2026</dt>
-              <dd className="mt-1 font-semibold">Winner, Best Mobile User Experience</dd>
-            </div>
-            <div>
-              <dt className="font-mono text-xs text-ink-2">Clients</dt>
-              <dd className="mt-1 font-semibold">Australia, Switzerland and Sri Lanka</dd>
-            </div>
-          </dl>
+          <div className="lg:mx-auto lg:max-w-[1340px] lg:px-16">
+            <dl className="mt-16 grid gap-6 border-t border-hairline pt-6 sm:grid-cols-2 lg:mt-20">
+              <div>
+                <dt className="font-mono text-xs text-ink-2">BestWeb.LK 2026</dt>
+                <dd className="mt-1 font-semibold">Winner, Best Mobile User Experience</dd>
+              </div>
+              <div>
+                <dt className="font-mono text-xs text-ink-2">Clients</dt>
+                <dd className="mt-1 font-semibold">Australia, Switzerland and Sri Lanka</dd>
+              </div>
+            </dl>
 
-          <div className="mt-8 border-t border-hairline pt-6">
-            <TechMarquee />
+            <div className="mt-8 border-t border-hairline pt-6">
+              <TechMarquee />
+            </div>
           </div>
         </div>
       </section>
