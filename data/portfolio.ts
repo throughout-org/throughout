@@ -11,6 +11,15 @@ export interface WorkItem {
 
 export const work: WorkItem[] = [
   {
+    name: "Rankout",
+    tagline: "AI that does your SEO. You just approve.",
+    category: "SEO platform",
+    image: "/images/work/rankout.jpg",
+    href: "https://rankout.app/",
+    kind: "Our product",
+    color: "#ea2804",
+  },
+  {
     name: "Checkout",
     tagline: "Offline-first POS for retail businesses.",
     category: "Point of sale",
@@ -20,13 +29,13 @@ export const work: WorkItem[] = [
     color: "#1eb4b4",
   },
   {
-    name: "Rankout",
-    tagline: "AI that does your SEO. You just approve.",
-    category: "SEO platform",
-    image: "/images/work/rankout.jpg",
-    href: "https://rankout.app/",
+    name: "Tryout",
+    tagline: "Design your own T-shirt, priced live and printed for you.",
+    category: "E-commerce",
+    image: "/images/work/tryout.jpg",
+    href: "https://tryout.lk/",
     kind: "Our product",
-    color: "#ea2804",
+    color: "#e0482c",
   },
   {
     name: "Comflo",
@@ -43,17 +52,8 @@ export const work: WorkItem[] = [
     category: "Business CRM",
     image: "/images/work/crm.jpg",
     href: "https://crm.throughout.io/",
-    kind: "Our product",
-    color: "#6ab4fe",
-  },
-  {
-    name: "Tryout",
-    tagline: "Design your own T-shirt, priced live and printed for you.",
-    category: "E-commerce",
-    image: "/images/work/tryout.jpg",
-    href: "https://tryout.lk/",
     kind: "Client project",
-    color: "#e0482c",
+    color: "#6ab4fe",
   },
   {
     name: "Naaraa Biznet",
