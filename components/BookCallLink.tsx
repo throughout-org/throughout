@@ -13,6 +13,8 @@ export function BookCallLink({ children, onClick, ...rest }: BookCallLinkProps) 
   return (
     <a
       href={BOOK_CALL_URL}
+      target="_blank"
+      rel="noopener noreferrer"
       {...rest}
       onClick={(event) => {
         onClick?.(event);
