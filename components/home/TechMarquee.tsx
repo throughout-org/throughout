@@ -6,7 +6,7 @@ const tech = [
   ["git", "Git"], ["linux", "Linux"], ["openai", "OpenAI"], ["langchain", "LangChain"], ["huggingface", "Hugging Face"],
   ["pytorch", "PyTorch"], ["pinecone", "Pinecone"], ["shopify", "Shopify"], ["liquid", "Liquid"], ["woocommerce", "WooCommerce"],
   ["wordpress", "WordPress"], ["stripe", "Stripe"], ["payhere", "PayHere"], ["figma", "Figma"], ["sketch", "Sketch"],
-  ["adobexd", "Adobe XD"], ["zeplin", "Zeplin"], ["storybook", "Storybook"], ["gsc", "Google Search Console"],
+  ["zeplin", "Zeplin"], ["storybook", "Storybook"], ["gsc", "Google Search Console"],
 ] as const;
 
 // Greyscale and slow; a logo shows its own colours on hover. Pauses on hover, stops for reduced motion.

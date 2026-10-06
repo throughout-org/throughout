@@ -78,6 +78,7 @@ const clients = work.filter((item) => item.kind === "Client project");
 // Content starts 6rem in on desktop so the thread can run down the left gutter.
 const container = "relative mx-auto max-w-7xl px-4 sm:px-6 lg:pl-24 lg:pr-8";
 const h2 = "font-display max-w-4xl text-[clamp(2rem,4vw,3.4rem)] font-[720]";
+const caseTitle = "font-display mt-4 max-w-4xl text-[clamp(1.6rem,3vw,2.5rem)] font-[720]";
 const primaryButton =
   "inline-flex min-h-12 items-center gap-2 rounded-md bg-sapphire px-6 text-sm font-semibold text-on-sapphire transition-colors hover:bg-sapphire/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal";
 
@@ -123,6 +124,25 @@ function Artefact({ kind }: { kind: (typeof services)[number]["artefact"] }) {
   );
 }
 
+/** A site screenshot in a minimal browser window on the project's brand colour. Scrolls on hover of a parent `.group`. */
+function BrowserFrame({ src, host, color, alt, sizes }: { src: string; host: string; color: string; alt: string; sizes: string }) {
+  return (
+    <div className="overflow-hidden rounded-[10px] px-[7%] pt-[7%]" style={{ backgroundColor: color }}>
+      <div className="overflow-hidden rounded-t-md bg-white shadow-[0_24px_60px_-24px_rgba(0,0,0,0.55)]">
+        <div className="flex h-6 items-center gap-1.5 border-b border-black/5 bg-[#f3f4f7] px-3" aria-hidden="true">
+          <span className="h-2 w-2 rounded-full bg-black/15" />
+          <span className="h-2 w-2 rounded-full bg-black/15" />
+          <span className="h-2 w-2 rounded-full bg-black/15" />
+          <span className="ml-3 truncate font-mono text-[10px] text-black/45">{host}</span>
+        </div>
+        <div className="frame-scroll relative aspect-[16/10] overflow-hidden">
+          <Image src={src} alt={alt} width={1200} height={2667} sizes={sizes} className="absolute left-0 h-auto w-full" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function WorkTile({ item, large = false }: { item: WorkItem; large?: boolean }) {
   const host = new URL(item.href).host.replace(/^www\./, "");
   return (
@@ -133,26 +153,13 @@ function WorkTile({ item, large = false }: { item: WorkItem; large?: boolean }) 
       aria-label={`${item.name}: ${item.tagline} Opens ${host} in a new tab.`}
       className="group block rounded-[10px] focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-white"
     >
-      <div className="overflow-hidden rounded-[10px] px-[7%] pt-[7%]" style={{ backgroundColor: item.color }}>
-        <div className="overflow-hidden rounded-t-md bg-white shadow-[0_24px_60px_-24px_rgba(0,0,0,0.55)]">
-          <div className="flex h-6 items-center gap-1.5 border-b border-black/5 bg-[#f3f4f7] px-3" aria-hidden="true">
-            <span className="h-2 w-2 rounded-full bg-black/15" />
-            <span className="h-2 w-2 rounded-full bg-black/15" />
-            <span className="h-2 w-2 rounded-full bg-black/15" />
-            <span className="ml-3 truncate font-mono text-[10px] text-black/45">{host}</span>
-          </div>
-          <div className="frame-scroll relative aspect-[16/10] overflow-hidden">
-            <Image
-              src={item.image}
-              alt={item.kind === "Our product" ? `${item.name}, a product built by Throughout` : `${item.name} website, built by Throughout`}
-              width={1200}
-              height={2667}
-              sizes={large ? "(min-width: 768px) 45vw, 92vw" : "(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"}
-              className="absolute left-0 h-auto w-full"
-            />
-          </div>
-        </div>
-      </div>
+      <BrowserFrame
+        src={item.image}
+        host={host}
+        color={item.color}
+        alt={item.kind === "Our product" ? `${item.name}, a product built by Throughout` : `${item.name} website, built by Throughout`}
+        sizes={large ? "(min-width: 768px) 45vw, 92vw" : "(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"}
+      />
       <div className="mt-5 flex items-start justify-between gap-4">
         <div className="min-w-0">
           <h4 className={`font-display font-[700] ${large ? "text-3xl" : "text-2xl md:text-xl lg:text-2xl"}`}>{item.name}</h4>
@@ -261,64 +268,131 @@ export default function HomepageRedesign() {
         </div>
       </section>
 
-      {/* Case study */}
+      {/* Case studies */}
       <section id="case-study" className="scroll-mt-16 bg-mist py-24 lg:py-32">
         <div className={container}>
           <ThreadNode className="top-3" />
-          <p className="font-mono text-xs text-ink-2">Case study · Comflo · Customer retention campaign</p>
-          <h2 className={`${h2} mt-5`}>
-            They already had the customers.{" "}
-            <span className="text-ink-2">Comflo helped bring them back.</span>
+          <h2 className={h2}>
+            Case studies.{" "}
+            <span className="text-ink-2">What the work actually changed.</span>
           </h2>
 
-          <div className="mt-14 grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-14">
-            <div className="lg:col-span-7">
-              <VideoCard
-                aspect="landscape"
-                src="/videos/comflo-retention.mp4"
-                previewSrc="/videos/comflo-retention-preview.mp4"
-                poster="/videos/comflo-retention-poster.jpg"
-                title="How the campaign worked"
-                meta="0:47 · sound on"
-                ariaLabel="Comflo customer retention campaign video, 47 seconds, with sound"
-              />
+          <article className="mt-14 border-t border-ink/15 pt-12">
+            <p className="font-mono text-xs text-ink-2">Comflo · Customer retention campaign</p>
+            <h3 className={caseTitle}>
+              They already had the customers.{" "}
+              <span className="text-ink-2">Comflo helped bring them back.</span>
+            </h3>
+
+            <div className="mt-12 grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-14">
+              <div className="lg:col-span-7">
+                <VideoCard
+                  aspect="landscape"
+                  src="/videos/comflo-retention.mp4"
+                  previewSrc="/videos/comflo-retention-preview.mp4"
+                  poster="/videos/comflo-retention-poster.jpg"
+                  title="How the campaign worked"
+                  meta="0:47 · sound on"
+                  ariaLabel="Comflo customer retention campaign video, 47 seconds, with sound"
+                />
+              </div>
+
+              <div className="lg:col-span-5">
+                <p className="font-display text-[clamp(3.5rem,8vw,6rem)] font-[750] leading-none text-sapphire">
+                  28.6×
+                </p>
+                <p className="mt-2 font-mono text-xs text-ink-2">Return on ad spend, in just 24 hours</p>
+
+                <dl className="mt-10 grid grid-cols-3 gap-4 border-y border-ink/15 py-6">
+                  {[
+                    ["200", "Existing customers reached"],
+                    ["LKR 1,400", "Campaign spend"],
+                    ["LKR 40,000+", "Revenue generated"],
+                  ].map(([value, label]) => (
+                    <div key={label} className="min-w-0">
+                      <dt className="sr-only">{label}</dt>
+                      <dd className="font-display text-[clamp(1.05rem,2vw,1.5rem)] font-[720] leading-tight">{value}</dd>
+                      <dd className="mt-1.5 text-xs leading-5 text-ink-2 sm:text-sm">{label}</dd>
+                    </div>
+                  ))}
+                </dl>
+
+                <p className="mt-8 leading-7 text-ink-2">
+                  By reaching just 200 existing customers through WhatsApp, the campaign turned LKR 1,400 in
+                  messaging spend into over LKR 40,000 in revenue within 24 hours.
+                </p>
+
+                <a href="https://comflo.app/" target="_blank" rel="noopener noreferrer" className={`${primaryButton} mt-8`}>
+                  See what Comflo can do <FiArrowRight aria-hidden="true" />
+                </a>
+              </div>
             </div>
+          </article>
 
-            <div className="lg:col-span-5">
-              <p className="font-display text-[clamp(3.5rem,8vw,6rem)] font-[750] leading-none text-sapphire">
-                28.6×
-              </p>
-              <p className="mt-2 font-mono text-xs text-ink-2">Return on ad spend, in just 24 hours</p>
+          <article id="seo-case-study" className="mt-20 scroll-mt-24 border-t border-ink/15 pt-12 lg:mt-28">
+            <p className="font-mono text-xs text-ink-2">Müllwood · SEO, AI search and content · July to September 2026</p>
+            <h3 className={caseTitle}>
+              A store Google couldn&apos;t read.{" "}
+              <span className="text-ink-2">Rebuilt for search and AI assistants in three months.</span>
+            </h3>
 
-              <dl className="mt-10 grid grid-cols-3 gap-4 border-y border-ink/15 py-6">
-                {[
-                  ["200", "Existing customers reached"],
-                  ["LKR 1,400", "Campaign spend"],
-                  ["LKR 40,000+", "Revenue generated"],
-                ].map(([value, label]) => (
-                  <div key={label} className="min-w-0">
-                    <dt className="sr-only">{label}</dt>
-                    <dd className="font-display text-[clamp(1.05rem,2vw,1.5rem)] font-[720] leading-tight">{value}</dd>
-                    <dd className="mt-1.5 text-xs leading-5 text-ink-2 sm:text-sm">{label}</dd>
-                  </div>
-                ))}
-              </dl>
+            <div className="mt-12 grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-14">
+              <div className="lg:order-2 lg:col-span-7">
+                <a
+                  href="https://mullwood.lk/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Müllwood website (opens mullwood.lk in a new tab)"
+                  className="group block rounded-[10px] focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-signal"
+                >
+                  <BrowserFrame
+                    src="/images/work/mullwood.jpg"
+                    host="mullwood.lk"
+                    color="#127a78"
+                    alt="Müllwood curly hair care website, optimised for search by Throughout"
+                    sizes="(min-width: 1024px) 55vw, 92vw"
+                  />
+                </a>
+              </div>
 
-              <p className="mt-8 leading-7 text-ink-2">
-                By reaching just 200 existing customers through WhatsApp, the campaign turned LKR 1,400 in
-                messaging spend into over LKR 40,000 in revenue within 24 hours.
-              </p>
+              <div className="lg:order-1 lg:col-span-5">
+                <p className="leading-7 text-ink-2">
+                  Müllwood, Sri Lanka&apos;s first curly hair brand, had a store Google couldn&apos;t understand: no
+                  keywords, no structured data, hundreds of images without descriptions, a leftover demo page in
+                  Google and a malicious script hidden in its blog. We fixed the foundations, built content around
+                  what curly-haired customers actually search, and made the store readable by ChatGPT, Gemini and
+                  Perplexity.
+                </p>
 
-              <a
-                href="https://comflo.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${primaryButton} mt-8`}
-              >
-                See what Comflo can do <FiArrowRight aria-hidden="true" />
-              </a>
+                <dl className="mt-8 divide-y divide-ink/10 border-y border-ink/15">
+                  {[
+                    ["Structured data coverage", "0%", "100%"],
+                    ["Pages & products with SEO titles and keywords", "0", "20"],
+                    ["Images missing alt text", "671", "Fixed"],
+                    ["Blog articles", "1", "13"],
+                  ].map(([label, before, after]) => (
+                    <div key={label} className="flex items-baseline justify-between gap-4 py-3.5">
+                      <dt className="text-sm text-ink-2">{label}</dt>
+                      <dd className="shrink-0 font-display text-lg font-[720] tabular-nums">
+                        <span className="text-ink-3">{before}</span>
+                        <span className="mx-2 text-signal" aria-label="to">→</span>
+                        <span className="text-sapphire">{after}</span>
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+
+                <p className="mt-6 text-sm leading-6 text-ink-2">
+                  Also: technical clean-up, 3 new category pages, Google Analytics and Search Console, Bing and
+                  IndexNow, an llms.txt file for AI assistants, and a Google Business Profile.
+                </p>
+
+                <BookCallLink className={`${primaryButton} mt-8`}>
+                  Talk to us about SEO <FiArrowRight aria-hidden="true" />
+                </BookCallLink>
+              </div>
             </div>
-          </div>
+          </article>
         </div>
       </section>
 

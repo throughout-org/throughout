@@ -16,6 +16,7 @@ Website: https://www.throughout.io (a single page; sections linked below)
 - [Products we built and run](https://www.throughout.io/#work): Checkout (offline-first POS), Rankout (AI SEO platform), Comflo (customer conversations and orders), Throughout CRM.
 - [Client projects](https://www.throughout.io/#work): Tryout, Naaraa Biznet, Findout, Montado Coffee, Rataa Backdrops, NRS Optical, Ado Coffee, Hostraspace, Artisans Touch.
 - [Case study: Comflo retention campaign](https://www.throughout.io/#case-study): 28.6x return on ad spend in 24 hours. 200 existing customers reached on WhatsApp, LKR 1,400 spent, LKR 40,000+ revenue.
+- [Case study: Müllwood SEO and AI search](https://www.throughout.io/#seo-case-study): Three months of SEO, AEO and GEO for mullwood.lk, Sri Lanka's first curly hair brand. Structured data coverage 0% to 100%, 20 pages and products given SEO titles and keywords, 671 images without alt text fixed, blog grown from 1 to 13 articles, AI crawler access, llms.txt, Bing and IndexNow.
 
 ## Company
 
