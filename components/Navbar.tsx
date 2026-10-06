@@ -109,7 +109,7 @@ export default function Navbar() {
 
         <div className="hidden justify-end lg:flex">
           <BookCallLink className="group inline-flex min-h-11 items-center gap-3 rounded-full bg-sapphire py-1 pl-5 pr-1 text-sm font-semibold text-on-sapphire transition-colors hover:bg-sapphire/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal">
-            Book a call
+            Book a free call
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-signal text-sapphire transition-transform duration-300 group-hover:rotate-45">
               <FiArrowUpRight aria-hidden="true" />
             </span>
@@ -154,7 +154,7 @@ export default function Navbar() {
           ))}
         </ul>
         <BookCallLink className="mt-auto flex min-h-14 items-center justify-between rounded-full bg-sapphire py-1 pl-6 pr-1.5 text-base font-semibold text-on-sapphire">
-          Book a call
+          Book a free call
           <span className="flex h-11 w-11 items-center justify-center rounded-full bg-signal text-sapphire">
             <FiArrowUpRight aria-hidden="true" />
           </span>
