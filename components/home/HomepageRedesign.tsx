@@ -466,31 +466,8 @@ export default function HomepageRedesign() {
         </div>
       </section>
 
-      {/* Process */}
-      <section className="bg-mist py-24 lg:py-32">
-        <div className={container}>
-          <ThreadNode className="top-3" />
-          <h2 className={h2}>From first call to a working team.</h2>
-          <ol className="relative mt-16 grid gap-12 md:grid-cols-3 md:gap-8">
-            <span aria-hidden="true" className="absolute left-[5px] right-0 top-[5px] hidden h-px bg-signal md:block" />
-            {[
-              ["Align", "We clarify the outcome, your existing team, constraints, the roles you need and the best way to work together."],
-              ["Assemble", "We shape the team, confirm responsibilities and fit the delivery approach to your workflow."],
-              ["Deliver", "The team starts with clear priorities, visible progress and regular reviews, with room to adapt."],
-            ].map(([title, copy], index) => (
-              <li key={title} className="relative">
-                <span aria-hidden="true" className="relative block h-[11px] w-[11px] rounded-full bg-signal" />
-                <p className="mt-6 font-mono text-xs text-ink-2">Step {index + 1}</p>
-                <h3 className="font-display mt-2 text-2xl font-[720]">{title}</h3>
-                <p className="mt-3 max-w-sm leading-7 text-ink-2">{copy}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
       {/* People */}
-      <section id="team" className="scroll-mt-16 py-24 lg:py-36">
+      <section id="team" className="scroll-mt-16 border-t border-hairline py-24 lg:py-36">
         <div className={container}>
           <ThreadNode className="top-3" />
           <h2 className={h2}>

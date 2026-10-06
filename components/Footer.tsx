@@ -1,14 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const links = [
-  { label: "Work", href: "/#work" },
-  { label: "Services", href: "/#services" },
-  { label: "Team", href: "/#team" },
-  { label: "Blog", href: "/insights" },
-  { label: "Careers", href: "/careers" },
-  { label: "Contact", href: "/#contact" },
-  { label: "Privacy & terms", href: "/privacy-policy" },
+const groups = [
+  {
+    title: "Explore",
+    links: [
+      { label: "Work", href: "/#work" },
+      { label: "Services", href: "/#services" },
+      { label: "Team", href: "/#team" },
+      { label: "Contact", href: "/#contact" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "Blog", href: "/insights" },
+      { label: "Careers", href: "/careers" },
+      { label: "Privacy & terms", href: "/privacy-policy" },
+    ],
+  },
 ];
 
 const socials = [
@@ -43,38 +53,70 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-hairline bg-canvas text-ink">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-10 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:pl-24 lg:pr-8">
-        <Link href="/" className="inline-flex shrink-0 py-1.5" aria-label="Throughout home">
-          <Image src="/images/logo.png" alt="Throughout" width={974} height={256} className="h-8 w-auto" />
-        </Link>
-
-        <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-3">
-          {links.map((item) => (
-            <Link key={item.href} href={item.href} className="link-draw py-1 text-sm text-ink-2 hover:text-ink">
-              {item.label}
+    <footer className="relative overflow-hidden border-t border-hairline bg-mist text-ink">
+      <div className="mx-auto max-w-7xl px-4 pt-14 sm:px-6 lg:pl-24 lg:pr-8 lg:pt-20">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-12">
+          <div className="col-span-2 md:col-span-6 lg:col-span-5">
+            <Link href="/" className="inline-flex py-1.5" aria-label="Throughout home">
+              <Image src="/images/logo.png" alt="Throughout" width={974} height={256} className="h-9 w-auto" />
             </Link>
-          ))}
-        </nav>
+            <p className="font-display mt-6 max-w-sm text-2xl font-[700] leading-tight text-sapphire">
+              We build, design and grow digital products.
+            </p>
+            <div className="mt-8 flex items-center gap-2">
+              {socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-hairline-strong bg-canvas text-ink-2 transition duration-300 hover:-translate-y-0.5 hover:border-sapphire hover:bg-sapphire hover:text-on-sapphire focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+          </div>
 
-        <div className="flex items-center gap-2">
-          {socials.map((social) => (
-            <a
-              key={social.label}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={social.label}
-              className="flex h-9 w-9 items-center justify-center rounded-md text-ink-2 transition-colors hover:bg-mist hover:text-sapphire"
-            >
-              {social.icon}
-            </a>
+          {groups.map((group, index) => (
+            <nav key={group.title} aria-label={group.title} className={`md:col-span-3 lg:col-span-2 ${index === 0 ? "lg:col-start-8" : ""}`}>
+              <h2 className="font-mono text-xs text-ink-3">{group.title}</h2>
+              <ul className="mt-5 space-y-1">
+                {group.links.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="group inline-flex min-h-9 items-center gap-1.5 text-[15px] text-ink-2 transition-colors hover:text-sapphire"
+                    >
+                      {item.label}
+                      <span aria-hidden="true" className="-translate-x-1 text-signal opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                        →
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           ))}
         </div>
+
+        <div className="mt-14 flex flex-col gap-2 border-t border-pale/70 py-6 font-mono text-xs text-ink-3 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Throughout (PVT) LTD</p>
+          <p className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-signal" aria-hidden="true" />
+            Colombo, Sri Lanka
+          </p>
+        </div>
       </div>
-      <div className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:pl-24 lg:pr-8">
-        <p className="font-mono text-xs text-ink-3">© {new Date().getFullYear()} Throughout (PVT) LTD · Colombo, Sri Lanka</p>
-      </div>
+
+      {/* Oversized wordmark, cropped by the page edge */}
+      <p
+        aria-hidden="true"
+        className="font-display pointer-events-none -mb-[0.22em] select-none whitespace-nowrap text-center text-[clamp(3rem,12.5vw,11rem)] font-[800] leading-none text-pale/60"
+      >
+        Throughout
+      </p>
     </footer>
   );
 }
