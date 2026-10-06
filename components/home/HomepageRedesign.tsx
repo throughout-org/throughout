@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
+import { FiArrowRight, FiArrowUpRight, FiSearch } from "react-icons/fi";
 import { BookCallLink } from "@/components/BookCallLink";
 import ContactForm from "@/components/home/ContactForm";
+import TypingCode from "@/components/home/TypingCode";
 import VideoCard from "@/components/home/VideoCard";
 import TechMarquee from "@/components/home/TechMarquee";
 import Thread, { ThreadNode } from "@/components/home/Thread";
@@ -84,17 +85,7 @@ const primaryButton =
 
 function Artefact({ kind }: { kind: (typeof services)[number]["artefact"] }) {
   if (kind === "code") {
-    return (
-      <pre className="overflow-x-auto rounded-md bg-ink p-5 font-mono text-[12.5px] leading-6 lg:text-[12px] xl:text-[12.5px] text-ice transition-colors group-hover:bg-sapphire">
-        <span className="text-ink-3">{"// sync a sale, even offline"}</span>
-        {"\n"}
-        <span className="text-sky">const</span> sale = <span className="text-sky">await</span> pos.sync({"{"}
-        {"\n  "}offline: <span className="text-pale">true</span>,
-        {"\n  "}store: <span className="text-pale">&quot;colombo-01&quot;</span>,
-        {"\n"}
-        {"});"}
-      </pre>
-    );
+    return <TypingCode />;
   }
   if (kind === "frame") {
     return (
@@ -106,9 +97,9 @@ function Artefact({ kind }: { kind: (typeof services)[number]["artefact"] }) {
             <span className="h-5 w-14 rounded bg-sapphire" />
           </div>
           <div className="grid grid-cols-3 gap-2 pt-1">
-            <span className="h-10 rounded bg-mist" />
-            <span className="h-10 rounded bg-mist" />
-            <span className="h-10 rounded border-2 border-signal bg-canvas" />
+            <span className="pick h-10 rounded border-2 border-transparent bg-mist" />
+            <span className="pick pick-2 h-10 rounded border-2 border-transparent bg-mist" />
+            <span className="pick pick-3 h-10 rounded border-2 border-signal bg-canvas" />
           </div>
           <span className="h-2 w-3/4 rounded-full bg-hairline" />
         </div>
@@ -117,9 +108,15 @@ function Artefact({ kind }: { kind: (typeof services)[number]["artefact"] }) {
   }
   return (
     <div className="rounded-md border border-hairline bg-canvas p-4 transition-colors group-hover:border-signal">
-      <p className="font-mono text-[11px] text-ink-3">yourbusiness.lk › services</p>
-      <p className="mt-1 text-[15px] font-semibold leading-5 text-sapphire">Your services page, found by the people searching for it</p>
-      <p className="mt-1 text-xs leading-5 text-ink-2">Ranking on Google, cited by AI assistants, and built to turn the visit into an enquiry.</p>
+      <p className="flex items-center gap-2 rounded-full border border-hairline px-3 py-1.5 font-mono text-[11px] text-ink-2">
+        <FiSearch className="shrink-0 text-ink-3" aria-hidden="true" />
+        <span className="query inline-block overflow-hidden whitespace-nowrap">web design agency</span>
+      </p>
+      <div className="hit mt-3">
+        <p className="font-mono text-[11px] text-ink-3">yourbusiness.lk › services</p>
+        <p className="mt-1 text-[15px] font-semibold leading-5 text-sapphire">Your services page, found by the people searching for it</p>
+        <p className="mt-1 text-xs leading-5 text-ink-2">Ranking on Google, cited by AI assistants, and built to turn the visit into an enquiry.</p>
+      </div>
     </div>
   );
 }

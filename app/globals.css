@@ -129,8 +129,23 @@ html {
 .marquee-track { animation: marquee 50s linear infinite; will-change: transform; backface-visibility: hidden; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 
+@keyframes caret { 50% { opacity: 0; } }
+.caret { animation: caret 1s steps(1) infinite; }
+
+/* Design card: the selection moves across the three tiles */
+@keyframes pick { 0%, 30% { border-color: var(--color-signal); background: var(--color-canvas); } 34%, 100% { border-color: transparent; background: var(--color-mist); } }
+.pick { animation: pick 4.5s infinite; }
+.pick-2 { animation-delay: 1.5s; }
+.pick-3 { animation-delay: 3s; }
+
+/* Marketing card: a search is typed, then the result appears */
+@keyframes query { from { width: 0; } 30%, to { width: 17ch; } }
+@keyframes hit { 0%, 34% { opacity: 0; transform: translateY(6px); } 44%, 92% { opacity: 1; transform: none; } to { opacity: 0; } }
+.query { animation: query 6s steps(17) infinite; }
+.hit { animation: hit 6s ease-out infinite; }
+
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
+  .marquee-track, .pick, .query, .hit { animation: none; }
   html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
