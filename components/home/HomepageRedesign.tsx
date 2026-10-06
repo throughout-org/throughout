@@ -199,7 +199,7 @@ export default function HomepageRedesign() {
                   Book a free call <FiArrowRight aria-hidden="true" />
                 </BookCallLink>
                 <Link href="#work" className="link-draw inline-flex min-h-11 items-center text-sm font-semibold text-ink">
-                  See {work.length} live projects
+                  See our work
                 </Link>
               </div>
             </div>
@@ -244,12 +244,12 @@ export default function HomepageRedesign() {
           <h2 className={h2}>
             Live products, built properly.{" "}
             <span className="text-on-sapphire-muted">
-              {products.length} of our own, {clients.length} for clients.
+              Our own, and for clients.
             </span>
           </h2>
 
           <h3 className="mt-16 border-t border-pale/25 pt-4 font-mono text-xs text-on-sapphire-muted">
-            Our products · {products.length}<span className="hidden lg:inline"> · hover to scroll through a site</span>
+            Our products<span className="hidden lg:inline"> · hover to scroll through a site</span>
           </h3>
           <div className="mt-8 grid gap-x-8 gap-y-14 md:grid-cols-2">
             {products.map((item) => (
@@ -258,7 +258,7 @@ export default function HomepageRedesign() {
           </div>
 
           <h3 className="mt-24 border-t border-pale/25 pt-4 font-mono text-xs text-on-sapphire-muted">
-            Client projects · {clients.length}
+            Selected client projects
           </h3>
           <div className="mt-8 grid gap-x-6 gap-y-12 md:grid-cols-3 md:gap-x-5 lg:gap-x-6">
             {clients.map((item) => (
