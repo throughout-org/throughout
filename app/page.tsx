@@ -1,24 +1,23 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import HomepageRedesign, { homepageFAQs } from "@/components/home/HomepageRedesign";
 
 export const metadata: Metadata = {
-  title: "Dedicated Development Teams & Digital Services | Throughout",
+  title: { absolute: "Offshore Software Development & Dedicated Teams | Throughout" },
   description:
-    "Build and scale digital products with a dedicated engineering, design, data, AI, DevOps, QA, or marketing team from Throughout. Book a free consultation.",
+    "Offshore software development for Australian and European businesses. Hire dedicated developers or a project team to build websites, apps and SaaS.",
   alternates: { canonical: "https://www.throughout.io" },
   openGraph: {
     type: "website",
     url: "https://www.throughout.io",
-    title: "Dedicated Teams That Build, Launch and Scale Digital Products",
+    title: "Offshore Software Development & Dedicated Teams | Throughout",
     description:
-      "Senior engineering, design, data, AI, DevOps, QA, and marketing expertise assembled around your goals.",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Throughout dedicated digital teams" }],
+      "Websites, apps and SaaS for founders and agencies in Australia, Europe and beyond. Hire dedicated developers or a project team, at offshore rates.",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Throughout, offshore software development and dedicated teams" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dedicated Development Teams & Digital Services | Throughout",
-    description: "Build a project team or a long-term offshore team with Throughout.",
+    title: "Offshore Software Development & Dedicated Teams | Throughout",
+    description: "Hire dedicated developers or a project team to build websites, apps and SaaS, at offshore rates.",
     images: ["/twitter-image"],
   },
 };
@@ -36,9 +35,7 @@ const faqSchema = {
 export default function Home() {
   return (
     <main className="bg-canvas text-ink">
-      <Script id="homepage-faq-schema" type="application/ld+json">
-        {JSON.stringify(faqSchema)}
-      </Script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <HomepageRedesign />
     </main>
   );

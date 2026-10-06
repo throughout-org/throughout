@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Archivo, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SiteChrome from "@/components/SiteChrome";
 
-const inter = Inter({
-  variable: "--font-inter",
+const archivo = Archivo({
+  variable: "--font-archivo",
+  subsets: ["latin"],
+  axes: ["wdth"],
+  display: "swap",
+});
+
+const hanken = Hanken_Grotesk({
+  variable: "--font-hanken",
   subsets: ["latin"],
   display: "swap",
 });
@@ -20,26 +27,26 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.throughout.io"),
 
   title: {
-    default: "Digital Marketing, Engineering & Design Agency | Throughout (PVT) LTD",
-    template: "%s | Throughout (PVT) LTD",
+    default: "Offshore Software Development & Dedicated Teams | Throughout",
+    template: "%s | Throughout",
   },
 
   description:
-    "Throughout (PVT) LTD is a full-stack digital growth studio combining Digital Marketing, Engineering, and Design to build and grow businesses online.",
+    "Throughout is an offshore software development studio in Colombo, Sri Lanka. Hire dedicated developers or a project team to build websites, apps and SaaS.",
 
   keywords: [
-    "digital marketing agency",
-    "software engineering company",
-    "web design agency",
-    "SEO agency Sri Lanka",
-    "digital growth studio",
-    "brand identity design",
-    "UI UX design",
-    "web development company",
-    "AI automation",
-    "Shopify development",
-    "Throughout Sri Lanka",
-    "digital agency Colombo",
+    "offshore software development",
+    "hire dedicated developers",
+    "dedicated development team",
+    "dedicated software development team",
+    "outsource web development",
+    "offshore web development",
+    "MVP development company",
+    "SaaS development company",
+    "web development agency",
+    "Shopify development agency",
+    "UI UX design agency",
+    "software development Sri Lanka",
   ],
 
   creator: "Throughout (PVT) LTD",
@@ -54,7 +61,6 @@ export const metadata: Metadata = {
     title: "Digital Marketing, Engineering & Design | Throughout (PVT) LTD",
     description:
       "Full-stack digital growth with design, engineering, and marketing under one roof for startups and growing businesses.",
-    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Throughout (PVT) LTD" }],
     locale: "en_US",
   },
 
@@ -62,7 +68,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Digital Marketing, Engineering & Design | Throughout (PVT) LTD",
     description: "Full-stack digital growth with design, engineering, and marketing under one roof.",
-    images: ["/images/twitter-default.png"],
     creator: "@throughout_io",
   },
 
@@ -97,10 +102,11 @@ const organizationSchema = {
     height: 90,
   },
   description:
-    "Throughout is a full-stack digital growth studio combining Digital Marketing, Engineering, and Design to build and grow digital businesses.",
+    "Throughout is an offshore software development studio in Colombo, Sri Lanka. We design, build and grow websites, apps and SaaS platforms, and provide dedicated development teams for companies in Australia, Europe and beyond.",
   foundingDate: "2022",
-  areaServed: ["Sri Lanka", "Worldwide"],
-  serviceType: ["Digital Marketing", "Software Engineering", "UI/UX Design", "Brand Identity", "Web Development", "AI Automation"],
+  areaServed: ["Australia", "New Zealand", "Europe", "United Kingdom", "Middle East", "Sri Lanka"],
+  serviceType: ["Software Development", "Web Development", "Mobile App Development", "UI/UX Design", "SEO and Digital Marketing", "Dedicated Development Teams"],
+  knowsAbout: ["Next.js", "React", "Node.js", "Laravel", "Shopify", "SaaS development", "MVP development", "AI automation", "SEO"],
   contactPoint: [
     {
       "@type": "ContactPoint",
@@ -147,74 +153,75 @@ const servicesSchema = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": "https://www.throughout.io/#digital-marketing-service",
-      name: "Digital Marketing",
+      "@id": "https://www.throughout.io/#software-development",
+      name: "Software Development",
       provider: { "@id": "https://www.throughout.io/#organization" },
-      description: "SEO, paid advertising, social media management, content strategy, and email marketing to grow your digital presence and generate leads.",
+      description: "Custom software development for web, mobile and SaaS: websites, web apps, mobile apps, MVPs and e-commerce, from first release to scale.",
+      url: "https://www.throughout.io/#services",
+      serviceType: "Software Development",
+      areaServed: ["Australia", "New Zealand", "Europe", "United Kingdom", "Middle East"],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Software Development",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website & web app development" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Mobile app development" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "SaaS & MVP development" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI & workflow automation" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Shopify & e-commerce development" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Cloud, DevOps & QA" } },
+        ],
+      },
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.throughout.io/#design",
+      name: "UI/UX & Website Design",
+      provider: { "@id": "https://www.throughout.io/#organization" },
+      description: "UI/UX design, website design, prototypes and design systems built around real user tasks.",
+      url: "https://www.throughout.io/#services",
+      serviceType: "UI/UX Design",
+      areaServed: ["Australia", "New Zealand", "Europe", "United Kingdom", "Middle East"],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "UI/UX & Website Design",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "UI/UX design" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website & landing page design" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Design systems" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Brand identity" } },
+        ],
+      },
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.throughout.io/#marketing",
+      name: "SEO & Digital Marketing",
+      provider: { "@id": "https://www.throughout.io/#organization" },
+      description: "SEO services, content, Google and Meta ads, and conversion optimisation that turn visits into customers.",
       url: "https://www.throughout.io/#services",
       serviceType: "Digital Marketing",
-      areaServed: ["Sri Lanka", "Worldwide"],
+      areaServed: ["Australia", "New Zealand", "Europe", "United Kingdom", "Middle East"],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
-        name: "Digital Marketing Services",
+        name: "SEO & Digital Marketing",
         itemListElement: [
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO & Content Strategy" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Google & Meta Ads" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media Management" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Email Marketing" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO services" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Google & Meta ads" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Conversion optimisation" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Email & messaging campaigns" } },
         ],
       },
     },
     {
       "@type": "Service",
-      "@id": "https://www.throughout.io/#engineering-service",
-      name: "Engineering",
+      "@id": "https://www.throughout.io/#dedicated-teams",
+      name: "Dedicated Development Teams",
       provider: { "@id": "https://www.throughout.io/#organization" },
-      description: "Web and mobile app development, cloud infrastructure, AI automation, and workflow engineering for startups and growing businesses.",
-      url: "https://www.throughout.io/#services",
-      serviceType: "Software Engineering",
-      areaServed: ["Sri Lanka", "Worldwide"],
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "Engineering Services",
-        itemListElement: [
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web & Mobile App Development" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Cloud & DevOps" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI & Automation" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Shopify Development" } },
-        ],
-      },
-    },
-    {
-      "@type": "Service",
-      "@id": "https://www.throughout.io/#design-service",
-      name: "Design",
-      provider: { "@id": "https://www.throughout.io/#organization" },
-      description: "Brand identity, UI/UX design, web design, and creative visual production for businesses that want to look premium and convert consistently.",
-      url: "https://www.throughout.io/#services",
-      serviceType: "Design",
-      areaServed: ["Sri Lanka", "Worldwide"],
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "Design Services",
-        itemListElement: [
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Brand Identity & Logo Design" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "UI/UX Design" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Design" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media Creatives" } },
-        ],
-      },
-    },
-    {
-      "@type": "Service",
-      "@id": "https://www.throughout.io/#dedicated-teams-service",
-      name: "Dedicated Offshore Teams",
-      provider: { "@id": "https://www.throughout.io/#organization" },
-      description: "Long-term dedicated offshore engineering, design, data, QA, DevOps, AI, and marketing teams shaped around a company's roadmap and working rhythm.",
+      description: "Hire dedicated developers, designers, QA and marketers who work inside your company, tools and roadmap, from Colombo, Sri Lanka (GMT+5:30).",
       url: "https://www.throughout.io/#engagement-models",
-      serviceType: "Dedicated Offshore Team",
-      areaServed: ["Sri Lanka", "Worldwide"],
-      audience: { "@type": "Audience", audienceType: "Startups, product companies, digital agencies, and growing businesses" },
+      serviceType: "Dedicated Development Team",
+      areaServed: ["Australia", "New Zealand", "Europe", "United Kingdom", "Middle East"],
     },
   ],
 };
@@ -277,7 +284,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
       </head>
 
-      <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased font-sans`}>
+      <body className={`${archivo.variable} ${hanken.variable} ${jetbrainsMono.variable} antialiased font-sans`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe

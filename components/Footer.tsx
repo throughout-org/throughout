@@ -1,33 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  FiArrowUpRight,
-  FiMail,
-  FiMapPin,
-  FiMessageCircle,
-} from "react-icons/fi";
-import NewsletterSignup from "@/components/ui/NewsletterSignup";
-import { BookCallLink } from "@/components/BookCallLink";
 
-const resources = [
+const links = [
   { label: "Work", href: "/#work" },
+  { label: "Services", href: "/#services" },
   { label: "Team", href: "/#team" },
   { label: "Blog", href: "/insights" },
   { label: "Careers", href: "/careers" },
-  { label: "Contact Us", href: "/#contact-form" },
-];
-
-const services = [
-  { label: "Engineering", href: "/#services" },
-  { label: "Design", href: "/#services" },
-  { label: "Digital Marketing", href: "/#services" },
-  { label: "Dedicated Teams", href: "/#engagement-models" },
-];
-
-const products = [
-  { label: "Checkout", href: "https://checkout.throughout.io/" },
-  { label: "Comflo", href: "https://comflo.app/" },
-  { label: "Rankout", href: "https://rankout.app/" },
+  { label: "Contact", href: "/#contact" },
+  { label: "Privacy & terms", href: "/privacy-policy" },
 ];
 
 const socials = [
@@ -60,171 +41,39 @@ const socials = [
   },
 ];
 
-function FooterLink({ href, label }: { href: string; label: string }) {
-  const isExternal = href.startsWith("http");
-  return (
-    <li>
-      <Link
-        href={href}
-        target={isExternal ? "_blank" : undefined}
-        rel={isExternal ? "noopener noreferrer" : undefined}
-        className="inline-flex items-center gap-2 text-sm transition group text-dark-ink-muted hover:text-dark-ink"
-      >
-        <span className="w-1 h-1 transition rounded-full bg-dark-hairline group-hover:bg-primary-hover" />
-        {label}
-      </Link>
-    </li>
-  );
-}
-
 export default function Footer() {
   return (
-    <footer className="text-dark-ink bg-dark-canvas">
-      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        {/* Newsletter strip */}
-        <div className="flex flex-col gap-4 py-8 border-b border-dark-hairline sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h3 className="text-xl font-semibold tracking-tight text-dark-ink sm:text-[32px]">
-              Sign up to our newsletter
-            </h3>
-          </div>
-          <div className="w-full shrink-0 sm:w-96">
-            <NewsletterSignup source="footer" heading="" subtext="" />
-          </div>
-        </div>
+    <footer className="border-t border-hairline bg-canvas text-ink">
+      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-10 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:pl-24 lg:pr-8">
+        <Link href="/" className="inline-flex shrink-0 py-1.5" aria-label="Throughout home">
+          <Image src="/images/logo.png" alt="Throughout" width={974} height={256} className="h-8 w-auto" />
+        </Link>
 
-        <div className="grid gap-10 py-14 lg:grid-cols-[1.1fr_0.8fr_0.75fr_0.75fr_1fr]">
-          <div>
-            <Link href="/" className="inline-flex items-center">
-              <Image
-                src="/images/logo.png"
-                alt="Throughout (PVT) LTD"
-                width={170}
-                height={76}
-                className="w-auto h-11 brightness-0 invert"
-              />
+        <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-3">
+          {links.map((item) => (
+            <Link key={item.href} href={item.href} className="link-draw py-1 text-sm text-ink-2 hover:text-ink">
+              {item.label}
             </Link>
+          ))}
+        </nav>
 
-            <p className="max-w-sm mt-5 text-sm leading-6 text-dark-ink-muted">
-              Dedicated engineering, design, data, AI, DevOps, QA, and marketing
-              teams for ambitious digital products.
-            </p>
-
-            <div className="flex gap-2 mt-6">
-              {socials.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="flex items-center justify-center w-10 h-10 transition border rounded-full border-dark-hairline bg-dark-surface-1 text-dark-ink-muted hover:border-primary/40 hover:bg-primary/10 hover:text-dark-ink"
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <nav aria-label="Footer resources">
-            <h3 className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-dark-ink-muted">
-              Resources
-            </h3>
-            <ul className="mt-5 space-y-3">
-              {resources.map((item) => (
-                <FooterLink
-                  key={item.label}
-                  href={item.href}
-                  label={item.label}
-                />
-              ))}
-            </ul>
-          </nav>
-
-          <nav aria-label="Footer services">
-            <h3 className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-dark-ink-muted">
-              Services
-            </h3>
-            <ul className="mt-5 space-y-3">
-              {services.map((item) => (
-                <FooterLink
-                  key={item.label}
-                  href={item.href}
-                  label={item.label}
-                />
-              ))}
-            </ul>
-          </nav>
-
-          <nav aria-label="Footer products">
-            <h3 className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-dark-ink-muted">
-              Products
-            </h3>
-            <ul className="mt-5 space-y-3">
-              {products.map((item) => (
-                <FooterLink
-                  key={item.label}
-                  href={item.href}
-                  label={item.label}
-                />
-              ))}
-            </ul>
-          </nav>
-
-          <div>
-            <h3 className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-dark-ink-muted">
-              Get in touch
-            </h3>
-
-            <div className="mt-5">
-              <a
-                href="mailto:info@throughout.io"
-                className="flex items-start gap-3 py-4 text-sm transition rounded-2xl text-dark-ink-muted"
-              >
-                <FiMail className="mt-0.5 h-5 w-5 shrink-0 text-primary-hover" />
-                <span className="break-all">info@throughout.io</span>
-              </a>
-
-              <a
-                href="https://wa.me/94707007992"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-3 py-4 text-sm transition text-dark-ink-muted"
-              >
-                <FiMessageCircle className="mt-0.5 h-5 w-5 shrink-0 text-primary-hover" />
-                <span>+94 070 7007 992</span>
-              </a>
-
-              <div className="flex items-start gap-3 py-4 text-sm text-dark-ink-muted">
-                <FiMapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary-hover" />
-                <span>Available worldwide</span>
-              </div>
-            </div>
-
-            <BookCallLink
-              className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary px-4 py-2.5 text-xs font-semibold text-on-primary transition hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary xl:px-5 xl:text-sm"
+        <div className="flex items-center gap-2">
+          {socials.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.label}
+              className="flex h-9 w-9 items-center justify-center rounded-md text-ink-2 transition-colors hover:bg-mist hover:text-sapphire"
             >
-              Book a free consultation
-              <FiArrowUpRight className="shrink-0" aria-hidden="true" />
-            </BookCallLink>
-          </div>
+              {social.icon}
+            </a>
+          ))}
         </div>
-
-        <div className="flex flex-col gap-4 py-6 text-sm border-t border-dark-hairline text-dark-ink-muted md:flex-row md:items-center md:justify-between">
-          <p>
-            © {new Date().getFullYear()} Throughout (PVT) LTD. All rights
-            reserved.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            <Link
-              href="/privacy-policy"
-              className="transition hover:text-dark-ink"
-            >
-              TERMS &amp; PRIVACY POLICY
-            </Link>
-          </div>
-        </div>
+      </div>
+      <div className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:pl-24 lg:pr-8">
+        <p className="font-mono text-xs text-ink-3">© {new Date().getFullYear()} Throughout (PVT) LTD · Colombo, Sri Lanka</p>
       </div>
     </footer>
   );

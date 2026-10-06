@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { cache } from "react";
 import InsightDetails from "@/components/insights/InsightDetails";
+import { metaDescription } from "@/lib/seo";
 import { client } from "@/src/sanity/client";
 
 type Params = { slug: string };
 const siteUrl = "https://www.throughout.io";
 const imageLicenseUrl = `${siteUrl}/privacy-policy#terms-of-service`;
-const acquireLicensePageUrl = `${siteUrl}/#contact-form`;
+const acquireLicensePageUrl = `${siteUrl}/#contact`;
 
 const fetchPost = cache(async (slug: string) => {
   const post = await client.fetch(
@@ -51,11 +52,11 @@ export async function generateMetadata({
     };
   }
 
-  const title = `${post.title} | Throughout (PVT) LTD Insights`;
-  const description =
-    post.excerpt ||
-    "Explore detailed insights from Throughout (PVT) LTD on software, AI, and automation.";
-  const image = post.imageUrl || `${siteUrl}/images/og-default.png`;
+  const title = post.title;
+  const description = metaDescription(
+    post.excerpt || "Practical notes from Throughout, an offshore software development studio.",
+  );
+  const image: string | undefined = post.imageUrl || undefined;
 
   return {
     title,
@@ -68,20 +69,13 @@ export async function generateMetadata({
       type: "article",
       siteName: "Throughout (PVT) LTD",
       publishedTime: post.date,
-      images: [
-        {
-          url: image,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
+      images: image ? [{ url: image, width: 1200, height: 630, alt: post.title }] : ["/opengraph-image"],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [image],
+      images: image ? [image] : ["/twitter-image"],
     },
   };
 }

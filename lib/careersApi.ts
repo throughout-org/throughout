@@ -1,6 +1,6 @@
 import { type Internship } from "@/data/internships";
 
-const DEFAULT_CRM_BASE_URL = "https://crm.throoout.com";
+const DEFAULT_CRM_BASE_URL = "https://crm.throughout.io";
 
 type JobsApiResponse = {
   success: boolean;
@@ -12,11 +12,8 @@ function getCrmBaseUrl() {
     process.env.CRM_PUBLIC_API_BASE_URL?.trim() ||
     process.env.NEXT_PUBLIC_CRM_API_BASE_URL?.trim();
 
-  const resolvedBaseUrl =
-    configuredBaseUrl ||
-    (process.env.NODE_ENV === "development"
-      ? "http://localhost:3001"
-      : DEFAULT_CRM_BASE_URL);
+  // Set CRM_PUBLIC_API_BASE_URL to point at a local CRM while developing.
+  const resolvedBaseUrl = configuredBaseUrl || DEFAULT_CRM_BASE_URL;
 
   return resolvedBaseUrl.replace(/\/$/, "");
 }

@@ -1,87 +1,75 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafafa;
-  --foreground: #171717;
+  --background: #fefefe;
+  --foreground: #121417;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Legacy brand tokens — kept for pages not yet migrated */
+  /* Throughout palette (the logo's colours). Every blue on the site comes from these five. */
+  --color-navy: #003366;
+  --color-sky: #6ab4fe;
+  --color-pale: #a8cef4;
+  --color-ice: #eaf3fd;
+  --color-paper: #fefefe;
+
+  /* Legacy names, mapped onto the palette */
   --color-brand: #6ab4fe;
   --color-brand-light: #eaf3fd;
   --color-brand-pale: #a8cef4;
   --color-brand-dark: #003366;
   --color-brand-secondary: #a8cef4;
-  --color-dark: #10141a;
-  --color-card: #181e26;
-  --color-accent: #0084d1;
-  --color-accent2: #60a5fa;
-  --color-border: #232a36;
+  --color-accent: #6ab4fe;
+  --color-accent2: #a8cef4;
+  --color-dark: #121417;
+  --color-card: #1c1f24;
+  --color-border: #2a2e35;
 
-  /* Design system — 60% Vercel / 25% Linear / 15% Stripe */
+  /* Roles */
+  --color-sapphire: #003366;
+  --color-signal: #6ab4fe;
+  --color-mist: #eaf3fd;
+  --color-canvas: #fefefe;
+  --color-canvas-elevated: #fefefe;
+  --color-canvas-soft: #eaf3fd;
 
-  /* Light surfaces (Vercel near-white canvas + Stripe cool undertone) */
-  --color-canvas: #fafafa;
-  --color-canvas-elevated: #ffffff;
-  --color-canvas-soft: #f4f4f7;
+  /* Neutral text and lines (no extra blues) */
+  --color-ink: #121417;
+  --color-ink-2: #5b6068;
+  --color-ink-3: #8c9097;
+  --color-ink-4: #b7bac0;
+  --color-hairline: #e4e6e9;
+  --color-hairline-strong: #cdd0d5;
 
-  /* Ink ladder — near-black, never blue-tinted slate */
-  --color-ink: #171717;
-  --color-ink-2: #48484f;
-  --color-ink-3: #85858c;
-  --color-ink-4: #a3a3aa;
-
-  /* Hairline borders (Vercel/Stripe structural workhorse) */
-  --color-hairline: #e6e6ea;
-  --color-hairline-strong: #d6d6dc;
-
-  /* Primary accent — the Throughout logo blue, not a borrowed indigo.
-     `primary` is a deepened, WCAG-AA shade for text-on-fill; `primary-bright`
-     is the literal logo pixel color (#3399ff), reserved for hover states,
-     glows, dots, and gradient stops where contrast isn't load-bearing. */
-  --color-primary: #0084d1;
-  --color-primary-hover: #3399ff;
-  --color-primary-press: #0069a8;
+  --color-primary: #003366;
+  --color-primary-press: #003366;
   --color-primary-soft: #eaf3fd;
-  --color-primary-bright: #3399ff;
-  --color-on-primary: #ffffff;
+  --color-primary-bright: #6ab4fe;
+  --color-on-primary: #fefefe;
 
-  /* Dark surface ladder (Linear canvas → surface-1 → surface-2) for closing/comparison bands.
-     The gradient stop toward the brand's own navy (#003366) keeps dark sections
-     tied to the logo instead of reading as generic near-black. */
-  --color-dark-canvas: #0a0a0d;
-  --color-dark-surface-1: #15151a;
-  --color-dark-surface-2: #1d1d22;
+  /* On navy */
+  --color-on-sapphire: #fefefe;
+  --color-on-sapphire-muted: #a8cef4;
+
+  --color-dark-canvas: #121417;
+  --color-dark-surface-1: #1c1f24;
+  --color-dark-surface-2: #24282e;
   --color-dark-navy: #003366;
-  --color-dark-hairline: #2a2a30;
-  --color-dark-ink: #f5f5f7;
-  --color-dark-ink-muted: #a6a6ae;
+  --color-dark-hairline: #2a2e35;
+  --color-dark-ink: #fefefe;
+  --color-dark-ink-muted: #a8cef4;
 
-  /* Hero mesh-gradient stops — monochromatic blue family (logo blue + cyan + navy),
-     deliberately no violet/magenta so the accent stays singular, like Linear's rule. */
-  --color-mesh-cyan: #22d3ee;
-  --color-mesh-navy: #003366;
-
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-hanken);
   --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family:
-    var(--font-inter),
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    "Roboto",
-    "Oxygen",
-    "Ubuntu",
-    "Cantarell",
-    sans-serif;
+  font-family: var(--font-hanken), "Helvetica Neue", Arial, sans-serif;
   overflow-x: hidden;
 }
 
@@ -91,15 +79,58 @@ html {
 }
 
 ::selection {
-  background: #cfe6ff;
+  background: #eaf3fd;
   color: #003366;
 }
 
 :focus-visible {
-  outline-color: #0084d1;
+  outline-color: #6ab4fe;
 }
 
+/* Wide grotesque for headlines only */
+.font-display {
+  font-family: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  font-stretch: 125%;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+/* Headline lines rise in once on load; visible without JS */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(0.35em); }
+  to { opacity: 1; transform: none; }
+}
+.rise { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) both; }
+.rise-2 { animation-delay: 0.08s; }
+.rise-3 { animation-delay: 0.16s; }
+.rise-4 { animation-delay: 0.3s; }
+
+/* Link underline that draws in */
+.link-draw {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.35s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.link-draw:hover, .link-draw:focus-visible { background-size: 100% 1px; }
+
+/* Screenshot scrolls through the whole page inside its frame on hover */
+.frame-scroll img {
+  top: 0;
+  transform: translateY(0);
+  transition: top 7s cubic-bezier(0.45, 0, 0.55, 1), transform 7s cubic-bezier(0.45, 0, 0.55, 1);
+}
+.group:hover .frame-scroll img, .group:focus-visible .frame-scroll img {
+  top: 100%;
+  transform: translateY(-100%);
+}
+
+/* Logo strip: two identical sets, shifted by half for a seamless loop */
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 50s linear infinite; will-change: transform; backface-visibility: hidden; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
 @media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
   html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -109,36 +140,45 @@ html {
   }
 }
 
+/* Role descriptions arrive as HTML from the CRM */
+.role-copy { font-size: 1.0625rem; line-height: 1.8; color: color-mix(in srgb, var(--color-ink) 85%, transparent); overflow-x: auto; }
+.role-copy > :first-child { margin-top: 0; }
+.role-copy h1, .role-copy h2 { font-family: var(--font-archivo), "Helvetica Neue", Arial, sans-serif; font-stretch: 125%; letter-spacing: -0.02em; font-weight: 700; font-size: 1.5rem; line-height: 1.2; color: var(--color-ink); margin: 2.5rem 0 1rem; }
+.role-copy h3 { font-weight: 600; font-size: 1.15rem; color: var(--color-ink); margin: 2rem 0 0.75rem; }
+.role-copy p { margin: 0 0 1.1rem; }
+.role-copy ul, .role-copy ol { margin: 0 0 1.4rem; padding-left: 1.25rem; list-style: disc; }
+.role-copy ol { list-style: decimal; }
+.role-copy li { margin: 0.4rem 0; }
+.role-copy li[data-list="bullet"] { list-style-type: disc; }
+.role-copy li[data-list="ordered"] { list-style-type: decimal; }
+.role-copy .ql-ui { display: none; }
+.role-copy li::marker { color: var(--color-signal); }
+.role-copy strong { font-weight: 600; color: var(--color-ink); }
+.role-copy a { color: var(--color-navy); text-decoration: underline; text-decoration-color: var(--color-pale); text-underline-offset: 4px; }
+.role-copy table { width: 100%; min-width: 520px; margin: 1.5rem 0; border-collapse: collapse; font-size: 0.95rem; }
+.role-copy th, .role-copy td { padding: 0.75rem 1rem 0.75rem 0; border-bottom: 1px solid var(--color-hairline); text-align: left; vertical-align: top; }
+.role-copy th, .role-copy tr:first-child td { font-weight: 600; color: var(--color-ink); border-bottom-color: var(--color-ink); }
+
 .legal-copy ul {
   list-style: disc;
   padding-left: 1.25rem;
 }
+.legal-copy li::marker { color: var(--color-signal); }
+.legal-copy strong { font-weight: 600; color: var(--color-ink); }
 
 .legal-copy li + li {
   margin-top: 0.5rem;
 }
 
-.no-scrollbar {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
 
-/* Elevation ladder — hairline first, shadow only when floating */
-.shadow-whisper {
-  box-shadow: 0 1px 2px rgba(15, 15, 20, 0.04), 0 1px 1px rgba(15, 15, 20, 0.03);
-}
 
-.shadow-card {
-  box-shadow: 0 1px 3px rgba(15, 15, 20, 0.06), 0 8px 24px -4px rgba(15, 15, 20, 0.08);
-}
 
-.shadow-floating {
-  box-shadow: 0 2px 6px rgba(15, 15, 20, 0.06), 0 12px 32px -6px rgba(15, 15, 20, 0.14);
-}
+
+
+
+
+
 
 /* Custom Animations */
 @keyframes blob {
@@ -167,14 +207,9 @@ html {
   }
 }
 
-@keyframes float {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(0, -12px, 0); }
-}
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
+
+
 
 .animate-blob {
   animation: blob 7s infinite;
@@ -200,20 +235,7 @@ html {
   animation: fade-in 0.8s ease-out 0.4s both;
 }
 
-@keyframes cta-avatar-float {
-  0%, 100% {
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    transform: translate3d(0, -14px, 0);
-  }
-}
 
-.cta-avatar-float {
-  animation-name: cta-avatar-float;
-  animation-duration: 4.8s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  transform: translate3d(0, 0, 0);
-  will-change: transform;
-}
+
+
+

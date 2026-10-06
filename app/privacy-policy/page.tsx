@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms & Privacy Policy",
-  description: "Throughout (PVT) LTD terms of service and privacy policy.",
+  description: "How Throughout (PVT) LTD collects, uses and protects your information, and the terms that apply to our website and software development services.",
   alternates: { canonical: "https://www.throughout.io/privacy-policy" },
 };
 
@@ -62,46 +62,54 @@ const termsSections = [
 
 function LegalSection({ id, title, intro, sections }: { id: string; title: string; intro: string; sections: typeof privacySections }) {
   return (
-    <section id={id} className="scroll-mt-28 border-t border-black pt-12 first:border-0 first:pt-0">
-      <p className="text-xs font-bold uppercase tracking-[0.18em] text-black">Throughout (PVT) LTD</p>
-      <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-black sm:text-4xl">{title}</h2>
-      <p className="mt-5 leading-7 text-black">{intro}</p>
-      <div className="mt-10 space-y-9">
+    <section id={id} className="scroll-mt-24">
+      <h2 className="font-display text-[clamp(1.9rem,4vw,2.75rem)] font-[720]">{title}</h2>
+      <p className="mt-5 max-w-2xl text-lg leading-8 text-ink-2">{intro}</p>
+      <ol className="mt-10 border-t border-ink">
         {sections.map((section, index) => (
-          <article key={section.title} className="grid gap-3 sm:grid-cols-[3rem_1fr]">
-            <span className="font-mono text-sm font-bold text-black">{String(index + 1).padStart(2, "0")}</span>
-            <div className="legal-copy text-black">
-              <h3 className="text-xl font-bold text-black">{section.title}</h3>
-              <div className="mt-3 space-y-3 leading-7 text-black">{section.content}</div>
+          <li key={section.title} className="grid gap-2 border-b border-hairline py-8 sm:grid-cols-[3.5rem_1fr] sm:gap-4">
+            <span className="font-mono text-xs text-ink-2 sm:pt-1.5">{String(index + 1).padStart(2, "0")}</span>
+            <div className="legal-copy">
+              <h3 className="text-xl font-semibold">{section.title}</h3>
+              <div className="mt-3 max-w-2xl space-y-3 leading-7 text-ink-2">{section.content}</div>
             </div>
-          </article>
+          </li>
         ))}
-      </div>
+      </ol>
     </section>
   );
 }
 
 export default function TermsAndPrivacyPolicy() {
   return (
-    <main className="min-h-screen bg-white px-4 pb-24 pt-36 text-black sm:px-6 sm:pt-44 lg:px-8">
-      <div className="mx-auto max-w-4xl">
-        <header className="border-b border-black pb-12">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-black">Legal</p>
-          <h1 className="mt-5 text-4xl font-extrabold tracking-[-0.04em] text-black sm:text-6xl">Terms &amp; Privacy Policy</h1>
-          <p className="mt-5 text-sm font-semibold uppercase tracking-wider text-black">Last updated: 25 November 2025</p>
-          <nav aria-label="Legal document sections" className="mt-8 flex flex-wrap gap-3">
-            <a href="#privacy-policy" className="rounded-full border border-black px-5 py-2.5 text-sm font-bold text-black transition hover:bg-black hover:text-white">Privacy Policy</a>
-            <a href="#terms-of-service" className="rounded-full border border-black px-5 py-2.5 text-sm font-bold text-black transition hover:bg-black hover:text-white">Terms of Service</a>
-          </nav>
+    <main className="bg-canvas text-ink">
+      <div className="mx-auto max-w-7xl px-4 pb-24 pt-16 sm:px-6 lg:px-8 lg:pb-32 lg:pt-24">
+        <header>
+          <p className="font-mono text-xs text-ink-2">Legal · Last updated 25 November 2025</p>
+          <h1 className="font-display mt-5 text-[clamp(2.5rem,6vw,4.75rem)] font-[750]">Terms &amp; privacy.</h1>
         </header>
 
-        <div className="mt-14 space-y-20">
-          <LegalSection id="privacy-policy" title="Privacy Policy" intro="We respect your privacy. This policy explains what information we collect, how we use and protect it, and the choices available to you when you use our website or services." sections={privacySections} />
-          <LegalSection id="terms-of-service" title="Terms of Service" intro="These terms govern access to our website and provide general conditions for our services. A signed proposal, contract, or statement of work takes precedence for a specific client engagement." sections={termsSections} />
-          <section className="border-t border-black pt-12 text-black">
-            <h2 className="text-2xl font-extrabold text-black">Contact</h2>
-            <p className="mt-4 leading-7 text-black">Questions about these terms or our privacy practices can be sent to <a className="font-bold text-black underline underline-offset-4" href="mailto:info@throughout.io">info@throughout.io</a>.</p>
-          </section>
+        <div className="mt-14 grid gap-12 border-t border-ink pt-12 lg:grid-cols-12 lg:gap-16">
+          <nav aria-label="On this page" className="lg:col-span-3">
+            <div className="flex flex-wrap gap-x-6 gap-y-1 lg:sticky lg:top-24 lg:flex-col">
+              <p className="hidden font-mono text-xs text-ink-2 lg:mb-3 lg:block">On this page</p>
+              <a href="#privacy-policy" className="link-draw inline-flex min-h-11 items-center self-start font-semibold text-sapphire lg:min-h-9">Privacy policy</a>
+              <a href="#terms-of-service" className="link-draw inline-flex min-h-11 items-center self-start font-semibold text-sapphire lg:min-h-9">Terms of service</a>
+              <a href="#legal-contact" className="link-draw inline-flex min-h-11 items-center self-start font-semibold text-sapphire lg:min-h-9">Contact</a>
+            </div>
+          </nav>
+
+          <div className="grid gap-20 lg:col-span-9">
+            <LegalSection id="privacy-policy" title="Privacy policy" intro="We respect your privacy. This policy explains what information we collect, how we use and protect it, and the choices available to you when you use our website or services." sections={privacySections} />
+            <LegalSection id="terms-of-service" title="Terms of service" intro="These terms govern access to our website and provide general conditions for our services. A signed proposal, contract, or statement of work takes precedence for a specific client engagement." sections={termsSections} />
+            <section id="legal-contact" className="scroll-mt-24 border-t border-ink pt-10">
+              <h2 className="font-display text-2xl font-[720]">Contact</h2>
+              <p className="mt-4 max-w-2xl leading-7 text-ink-2">
+                Questions about these terms or our privacy practices can be sent to{" "}
+                <a className="font-semibold text-sapphire underline decoration-pale decoration-2 underline-offset-4 hover:decoration-signal" href="mailto:info@throughout.io">info@throughout.io</a>.
+              </p>
+            </section>
+          </div>
         </div>
       </div>
     </main>

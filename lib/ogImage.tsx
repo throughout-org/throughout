@@ -10,8 +10,7 @@ export function renderOgImage(headline: string, subline: string) {
         flexDirection: "column",
         justifyContent: "center",
         padding: "80px",
-        background:
-          "linear-gradient(135deg, #0c1a2e 0%, #0b3a66 45%, #0284c7 100%)",
+        background: "#003366",
         fontFamily: "sans-serif",
       }}
     >
@@ -24,14 +23,14 @@ export function renderOgImage(headline: string, subline: string) {
         }}
       >
         <div
-          style={{ width: 14, height: 44, borderRadius: 4, background: "#38bdf8" }}
+          style={{ width: 14, height: 44, borderRadius: 4, background: "#6ab4fe" }}
         />
         <div
           style={{
             display: "flex",
             fontSize: 40,
             fontWeight: 700,
-            color: "#e0f2fe",
+            color: "#eaf3fd",
             letterSpacing: -1,
           }}
         >
@@ -41,7 +40,7 @@ export function renderOgImage(headline: string, subline: string) {
       <div
         style={{
           display: "flex",
-          fontSize: 54,
+          fontSize: 64,
           fontWeight: 700,
           color: "#ffffff",
           lineHeight: 1.15,
@@ -54,7 +53,7 @@ export function renderOgImage(headline: string, subline: string) {
         style={{
           display: "flex",
           fontSize: 28,
-          color: "#bae6fd",
+          color: "#a8cef4",
           marginTop: 28,
           maxWidth: 900,
         }}

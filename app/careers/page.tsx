@@ -1,35 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FiArrowRight } from "react-icons/fi";
+import { FiArrowUpRight } from "react-icons/fi";
 import { getInternshipsFromCrm } from "@/lib/careersApi";
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Careers at Throughout",
-  description: "Explore current career and internship opportunities at Throughout and learn how our hiring process works.",
+  title: "Careers & Internships in Sri Lanka",
+  description: "Open roles and internships at Throughout, a software development company in Colombo, Sri Lanka. See current openings and apply online.",
   alternates: { canonical: "https://www.throughout.io/careers" },
-  openGraph: { type: "website", url: "https://www.throughout.io/careers", title: "Careers at Throughout", description: "Open roles for people who want to learn, contribute, and take ownership." },
+  openGraph: { type: "website", url: "https://www.throughout.io/careers", title: "Careers & Internships in Sri Lanka | Throughout", description: "Open roles and internships at a software development company in Colombo, Sri Lanka.", images: ["/opengraph-image"] },
 };
 
-function stripHtml(html: string) {
-  return html
-    .replace(/<[^>]*>/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/\s{2,}/g, " ")
-    .trim();
-}
-
-const hiringSteps = [
-  { title: "Review", copy: "We review your application against the role and the work it involves." },
-  { title: "Conversation & task", copy: "Selected candidates discuss the role and may complete a relevant practical exercise." },
-  { title: "Decision", copy: "We confirm fit, answer final questions, and share the next step directly." },
-];
 
 export default async function CareersPage() {
   const roles = await getInternshipsFromCrm();
@@ -52,39 +34,34 @@ export default async function CareersPage() {
   }));
 
   return (
-    <main className="min-h-screen bg-white text-slate-950">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostings.length === 1 ? jobPostings[0] : { "@context": "https://schema.org", "@graph": jobPostings }) }} />
+    <main className="bg-canvas text-ink">
+      {jobPostings.length > 0 && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostings.length === 1 ? jobPostings[0] : { "@context": "https://schema.org", "@graph": jobPostings }) }} />
+      )}
 
-      <section className="border-b border-slate-200 px-4 pb-20 pt-32 sm:px-6 sm:pb-24 sm:pt-40 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-sky-700">Careers</p>
-          <div className="mt-6 grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-            <h1 className="max-w-4xl text-balance text-4xl font-extrabold leading-[1.05] tracking-[-0.045em] sm:text-6xl">Do useful work. Learn by doing it.</h1>
-            <div><p className="max-w-xl text-lg leading-8 text-slate-600">We look for people who are curious, dependable, and ready to take ownership of real work.</p><Link href="#open-roles" className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-sky-600 px-6 py-3 text-sm font-bold text-white transition hover:bg-sky-700">View open roles <FiArrowRight aria-hidden="true" /></Link></div>
-          </div>
-        </div>
-      </section>
+      <section className="mx-auto max-w-7xl px-4 pb-24 pt-16 sm:px-6 lg:px-8 lg:pb-32 lg:pt-24">
+        <p className="font-mono text-xs text-ink-2">Careers · {roles.length} open</p>
+        <h1 className="font-display mt-5 text-[clamp(2.5rem,6vw,4.75rem)] font-[750]">Open roles.</h1>
 
-      <section id="open-roles" className="scroll-mt-24 px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-3xl"><p className="text-sm font-bold uppercase tracking-[0.18em] text-sky-700">Open roles</p><h2 className="mt-4 text-3xl font-extrabold tracking-[-0.035em] sm:text-5xl">Find your next opportunity.</h2></div>
-          {roles.length === 0 ? (
-            <div className="mt-10 rounded-3xl border border-slate-200 bg-slate-50 p-10 text-center"><h3 className="text-2xl font-bold">No roles open right now</h3><p className="mt-3 text-slate-600">Check back later for new opportunities.</p></div>
-          ) : (
-            <div className="mt-10 divide-y divide-slate-200 border-y border-slate-200">
-              {roles.map((role) => (
-                <Link key={role.id} href={`/careers/${role.slug}`} className="group flex flex-col gap-6 py-7 transition sm:flex-row sm:items-center sm:justify-between">
-                  <div className="max-w-3xl"><div className="flex flex-wrap gap-2 text-xs font-bold"><span className="rounded-full bg-emerald-50 px-3 py-1.5 text-emerald-700">OPEN</span><span className="rounded-full bg-slate-100 px-3 py-1.5 text-slate-700">{role.location}</span><span className="rounded-full bg-slate-100 px-3 py-1.5 text-slate-700">{role.duration}</span>{role.stipend !== "Not specified" && <span className="rounded-full bg-slate-100 px-3 py-1.5 text-slate-700">{role.stipend}</span>}</div><h3 className="mt-4 text-2xl font-bold transition group-hover:text-sky-700">{role.title}</h3><p className="mt-3 line-clamp-2 text-sm leading-6 text-slate-600">{stripHtml(role.description)}</p></div>
-                  <span className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-sky-700">View role <FiArrowRight className="transition group-hover:translate-x-1" aria-hidden="true" /></span>
+        {roles.length === 0 ? (
+          <p className="mt-14 border-t border-ink py-12 text-lg text-ink-2">No roles are open right now. Check back soon.</p>
+        ) : (
+          <ul className="mt-14 border-t border-ink">
+            {roles.map((role) => (
+              <li key={role.id} className="border-b border-hairline">
+                <Link href={`/careers/${role.slug}`} className="group grid gap-4 py-8 md:grid-cols-12 md:items-center md:gap-10">
+                  <h2 className="font-display text-[clamp(1.4rem,2.4vw,2rem)] font-[720] transition-colors group-hover:text-sapphire md:col-span-7">
+                    {role.title}
+                  </h2>
+                  <p className="font-mono text-xs leading-6 text-ink-2 md:col-span-4">
+                    {[role.location, role.duration, role.stipend !== "Not specified" ? role.stipend : null].filter(Boolean).join(" · ")}
+                  </p>
+                  <FiArrowUpRight className="hidden justify-self-end text-2xl text-sapphire transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 md:col-span-1 md:block" aria-hidden="true" />
                 </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      <section className="bg-slate-50 px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
-        <div className="mx-auto max-w-7xl"><p className="text-sm font-bold uppercase tracking-[0.18em] text-sky-700">Hiring process</p><h2 className="mt-4 text-3xl font-extrabold tracking-[-0.035em] sm:text-4xl">Simple and relevant to the role.</h2><ol className="mt-10 grid gap-px overflow-hidden rounded-3xl border border-slate-200 bg-slate-200 md:grid-cols-3">{hiringSteps.map((step, index) => <li key={step.title} className="bg-white p-7"><span className="font-mono text-sm font-bold text-sky-700">{String(index + 1).padStart(2, "0")}</span><h3 className="mt-5 text-xl font-bold">{step.title}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{step.copy}</p></li>)}</ol></div>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
     </main>
   );

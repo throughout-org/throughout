@@ -49,12 +49,6 @@ export function trackContactFormSubmit(source?: string) {
   trackFBEvent("Contact");
 }
 
-/** Fire when newsletter signup completes */
-export function trackNewsletterSignup(source?: string) {
-  trackGA4Event("sign_up", { event_category: "engagement", method: "newsletter", source: source ?? "footer" });
-  trackFBEvent("Lead", { content_name: "Newsletter Signup", content_category: "newsletter" });
-  trackFBCustomEvent("NewsletterSignup", { source });
-}
 
 /** Fire when CTA button is clicked (not a conversion, just engagement) */
 export function trackCTAClick(label: string, page?: string) {
