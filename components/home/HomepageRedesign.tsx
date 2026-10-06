@@ -78,6 +78,7 @@ const clients = work.filter((item) => item.kind === "Client project");
 
 // Content starts 6rem in on desktop so the thread can run down the left gutter.
 const container = "relative mx-auto max-w-7xl px-4 sm:px-6 lg:pl-24 lg:pr-8";
+const heroContainer = "relative mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-12";
 const h2 = "font-display max-w-4xl text-[clamp(2rem,4vw,3.4rem)] font-[720]";
 const caseTitle = "font-display mt-4 max-w-4xl text-[clamp(1.6rem,3vw,2.5rem)] font-[720]";
 const primaryButton =
@@ -174,12 +175,17 @@ function WorkTile({ item, large = false }: { item: WorkItem; large?: boolean }) 
 
 export default function HomepageRedesign() {
   return (
-    <Thread>
+    <>
       {/* Hero */}
-      <section className="pb-20 pt-10 sm:pt-14 lg:pb-28 lg:pt-20">
-        <div className={container}>
-          <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-10">
-            <div className="lg:col-span-8">
+      <section className="relative overflow-hidden pb-20 pt-10 sm:pt-14 lg:pb-28 lg:pt-20">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="animate-blob absolute -left-24 top-0 h-80 w-80 rounded-full bg-signal/20 blur-3xl" />
+          <div className="animation-delay-2000 animate-blob absolute right-0 top-20 h-96 w-96 rounded-full bg-mist blur-3xl" />
+          <div className="animation-delay-4000 animate-blob absolute left-1/4 bottom-0 h-72 w-72 rounded-full bg-sapphire/10 blur-3xl" />
+        </div>
+        <div className={`${heroContainer} relative`}>
+          <div className="flex flex-col items-start gap-12 lg:mx-auto lg:max-w-[1340px] lg:flex-row lg:items-end lg:justify-center lg:gap-20">
+            <div>
               <p className="rise font-mono text-xs text-ink-2">Offshore development studio · Colombo, Sri Lanka</p>
               <h1 className="font-display mt-6 text-[clamp(2.6rem,6.2vw,4.9rem)] font-[750] text-ink">
                 <span className="rise block">We build,</span>
@@ -200,7 +206,7 @@ export default function HomepageRedesign() {
                 </Link>
               </div>
             </div>
-            <div className="lg:col-span-4">
+            <div className="w-full shrink-0 lg:w-[380px]">
               <div className="relative mx-auto max-w-[320px] lg:max-w-none">
                 <div aria-hidden="true" className="absolute -bottom-3 -right-3 h-full w-full rounded-[10px] bg-sapphire" />
                 <div className="relative">
@@ -234,6 +240,7 @@ export default function HomepageRedesign() {
         </div>
       </section>
 
+      <Thread>
       {/* Work */}
       <section id="work" className="scroll-mt-16 bg-sapphire py-24 text-on-sapphire lg:py-36">
         <div className={container}>
@@ -625,6 +632,7 @@ export default function HomepageRedesign() {
           </div>
         </div>
       </section>
-    </Thread>
+      </Thread>
+    </>
   );
 }
