@@ -28,8 +28,9 @@ export default function VideoCard({ src, poster, title, meta, previewSrc, ariaLa
   const previewRef = useRef<HTMLVideoElement>(null);
   const [previewPlaying, setPreviewPlaying] = useState(false);
 
-  // The preview clip is ~1.8 MB, so it waits until the page has loaded and the card is
-  // on screen, and is skipped for reduced motion or data saver. The poster shows meanwhile.
+  // The preview clip is ~1.8 MB. It starts on the visitor's first scroll, tap, key or mouse
+  // move (so the poster stays the page's LCP), only while the card is on screen, and never
+  // for reduced motion or data saver.
   useEffect(() => {
     const video = previewRef.current;
     if (!video || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -47,10 +48,14 @@ export default function VideoCard({ src, poster, title, meta, previewSrc, ariaLa
       });
       observer.observe(video);
     };
-    if (document.readyState === "complete") watch();
-    else window.addEventListener("load", watch, { once: true });
+    const events = ["scroll", "pointerdown", "pointermove", "keydown", "touchstart"];
+    const start = () => {
+      events.forEach((name) => window.removeEventListener(name, start));
+      watch();
+    };
+    events.forEach((name) => window.addEventListener(name, start, { once: true, passive: true }));
     return () => {
-      window.removeEventListener("load", watch);
+      events.forEach((name) => window.removeEventListener(name, start));
       observer?.disconnect();
     };
   }, [previewSrc]);
