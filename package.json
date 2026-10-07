@@ -20,7 +20,6 @@
     "@cloudflare/workers-response-store": "^1.0.1",
     "@vinext/cloudflare": "^1.0.1",
     "cloudinary": "^2.9.0",
-    "googleapis": "^154.1.0",
     "gray-matter": "^4.0.3",
     "markdown-to-jsx": "^9.10.3",
     "mongoose": "^8.22.0",
