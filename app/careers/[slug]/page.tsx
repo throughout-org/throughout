@@ -45,14 +45,14 @@ export async function generateMetadata({
       description: metaDescription(stripHtml(internship.description)),
       url: `https://www.throughout.io/careers/${internship.slug}`,
       type: "article",
-      images: ["/opengraph-image"],
+      images: ["/opengraph-image.png"],
     },
     twitter: {
       card: "summary_large_image",
       title: `${internship.title} | Careers`,
       description: metaDescription(stripHtml(internship.description)),
       site: "@throughout",
-      images: ["/twitter-image"],
+      images: ["/twitter-image.png"],
     },
     alternates: {
       canonical: `https://www.throughout.io/careers/${internship.slug}`,

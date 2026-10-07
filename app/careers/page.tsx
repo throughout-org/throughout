@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Careers & Internships in Sri Lanka",
   description: "Open roles and internships at Throughout, a software development company in Colombo, Sri Lanka. See current openings and apply online.",
   alternates: { canonical: "https://www.throughout.io/careers" },
-  openGraph: { type: "website", url: "https://www.throughout.io/careers", title: "Careers & Internships in Sri Lanka | Throughout", description: "Open roles and internships at a software development company in Colombo, Sri Lanka.", images: ["/opengraph-image"] },
+  openGraph: { type: "website", url: "https://www.throughout.io/careers", title: "Careers & Internships in Sri Lanka | Throughout", description: "Open roles and internships at a software development company in Colombo, Sri Lanka.", images: ["/opengraph-image.png"] },
 };
 
 

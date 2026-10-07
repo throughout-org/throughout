@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import HomepageRedesign, { homepageFAQs } from "@/components/home/HomepageRedesign";
 
+// Static content; tells the Cloudflare build to cache it at the edge.
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: { absolute: "Offshore Software Development & Dedicated Teams | Throughout" },
   description:
@@ -12,13 +15,13 @@ export const metadata: Metadata = {
     title: "Offshore Software Development & Dedicated Teams | Throughout",
     description:
       "Websites, apps and SaaS for founders and agencies in Australia, Europe and beyond. Hire dedicated developers or a project team, at offshore rates.",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Throughout, offshore software development and dedicated teams" }],
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Throughout, offshore software development and dedicated teams" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Offshore Software Development & Dedicated Teams | Throughout",
     description: "Hire dedicated developers or a project team to build websites, apps and SaaS, at offshore rates.",
-    images: ["/twitter-image"],
+    images: ["/twitter-image.png"],
   },
 };
 

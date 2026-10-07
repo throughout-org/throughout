@@ -98,14 +98,14 @@ const team = [
     photo: "/images/team/Insaf.png",
   },
   {
-    name: "Aysha Shahani",
-    role: "Software Engineer",
-    photo: "/images/team/aysha-bg.png",
-  },
-  {
     name: "Janith Viranga",
     role: "Software Engineer",
     photo: "/images/team/janith.png",
+  },
+  {
+    name: "Aysha Shahani",
+    role: "Software Engineer",
+    photo: "/images/team/aysha-bg.png",
   },
   {
     name: "Amrith Shylendra",
@@ -290,7 +290,9 @@ export default function HomepageRedesign() {
           <div className="absolute bottom-0 rounded-full animation-delay-4000 animate-blob left-1/4 h-72 w-72 bg-sapphire/10 blur-3xl" />
         </div>
         <div className={`${heroContainer} relative`}>
-          <div className="flex flex-col items-start gap-12 lg:mx-auto lg:max-w-[1340px] lg:flex-row lg:items-center lg:justify-center lg:gap-20">
+          {/* Sized to the text + video row; the stats and logos below take exactly that width. */}
+          <div className="lg:mx-auto lg:w-fit lg:max-w-[1340px]">
+          <div className="flex flex-col items-start gap-12 lg:flex-row lg:items-center lg:gap-20">
             <div>
               <p className="font-mono text-xs rise text-ink-2">
                 Offshore development studio · Colombo, Sri Lanka
@@ -340,7 +342,7 @@ export default function HomepageRedesign() {
             </div>
           </div>
 
-          <div className="lg:mx-auto lg:max-w-[1340px] lg:px-16">
+          <div className="lg:w-0 lg:min-w-full">
             <dl className="grid gap-6 pt-6 mt-16 border-t border-hairline sm:grid-cols-2 lg:mt-20">
               <div>
                 <dt className="font-mono text-xs text-ink-2">
@@ -361,6 +363,7 @@ export default function HomepageRedesign() {
             <div className="pt-6 mt-8 border-t border-hairline">
               <TechMarquee />
             </div>
+          </div>
           </div>
         </div>
       </section>
@@ -566,6 +569,90 @@ export default function HomepageRedesign() {
                   <BookCallLink className={`${primaryButton} mt-8`}>
                     Talk to us about SEO <FiArrowRight aria-hidden="true" />
                   </BookCallLink>
+                </div>
+              </div>
+            </article>
+
+            <article
+              id="seo-case-study-coreconnect"
+              className="pt-12 mt-20 border-t scroll-mt-24 border-ink/15 lg:mt-28"
+            >
+              <p className="font-mono text-xs text-ink-2">
+                CoreConnect group · Aerix, Airmate and CoreConnect · SEO, AEO
+                and GEO · Month 1, September 2026
+              </p>
+              <h3 className={caseTitle}>
+                Three brands, invisible to search.{" "}
+                <span className="text-ink-2">
+                  The foundations rebuilt on all three in one month.
+                </span>
+              </h3>
+
+              <div className="grid gap-12 mt-12 lg:grid-cols-12 lg:items-center lg:gap-14">
+                <div className="lg:col-span-7">
+                  <a
+                    href="https://airmatelk.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Airmate website (opens airmatelk.com in a new tab)"
+                    className="group block rounded-[10px] focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-signal"
+                  >
+                    <BrowserFrame
+                      src="/images/work/airmate.jpg"
+                      host="airmatelk.com"
+                      color="#1d6fa5"
+                      alt="Airmate scent diffuser store, optimised for search and AI assistants by Throughout"
+                      sizes="(min-width: 1024px) 55vw, 92vw"
+                    />
+                  </a>
+                </div>
+
+                <div className="lg:col-span-5">
+                  <p className="leading-7 text-ink-2">
+                    CoreConnect Distributions runs three sites: Aerix for
+                    business scenting, Airmate for home diffusers, and the
+                    CoreConnect parent brand. Search engines and AI assistants
+                    had almost nothing to read: no SEO titles, no structured
+                    data, leftover template pages and duplicate URLs. Airmate
+                    had no AI Overview citations at all. In the first month we
+                    rebuilt the foundations on all three sites and linked the
+                    brands, so AI assistants can tell who owns what.
+                  </p>
+
+                  <dl className="mt-8 divide-y divide-ink/10 border-y border-ink/15">
+                    {[
+                      ["Aerix URLs with SEO titles and metas", "0%", "90%"],
+                      [
+                        "Airmate pages and products with SEO titles",
+                        "0",
+                        "61",
+                      ],
+                      ["CoreConnect pages with structured data", "0%", "100%"],
+                      ["Answer-ready guides across the three sites", "0", "8"],
+                    ].map(([label, before, after]) => (
+                      <div
+                        key={label}
+                        className="flex items-baseline justify-between gap-4 py-3.5"
+                      >
+                        <dt className="text-sm text-ink-2">{label}</dt>
+                        <dd className="shrink-0 font-display text-lg font-[720] tabular-nums">
+                          <span className="text-ink-3">{before}</span>
+                          <span className="mx-2 text-signal" aria-label="to">
+                            →
+                          </span>
+                          <span className="text-sapphire">{after}</span>
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+
+                  <p className="mt-6 text-sm leading-6 text-ink-2">
+                    Also: product and business schema on all 59 Aerix products,
+                    FAQ schema across the group, 246 images given descriptive
+                    alt text, duplicate pages redirected, and sitemaps submitted
+                    to Google. Rankings follow as Google recrawls; months 2 and
+                    3 build content and authority.
+                  </p>
                 </div>
               </div>
             </article>

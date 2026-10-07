@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Readable } from "stream";
-import { google } from "googleapis";
 import { v2 as cloudinary } from "cloudinary";
 import JobApplication from "@/models/JobApplication";
 import { dbConnect } from "@/lib/mongoose";
 import { sendEmail } from "@/lib/email";
+import { uploadPdfToDrive } from "@/lib/google";
 
 export const runtime = "nodejs";
 
@@ -44,28 +43,6 @@ function getGoogleDriveFolderId(): string {
   return DEFAULT_GOOGLE_DRIVE_FOLDER_ID;
 }
 
-function getOAuth2Client() {
-  const clientId = process.env.GOOGLE_CLIENT_ID?.trim();
-  const clientSecret = process.env.GOOGLE_CLIENT_SECRET?.trim();
-  const redirectUri = process.env.GOOGLE_REDIRECT_URI?.trim();
-  const refreshToken = process.env.GOOGLE_REFRESH_TOKEN?.trim();
-
-  if (!clientId || !clientSecret || !redirectUri || !refreshToken) {
-    throw new Error(
-      "Missing Google OAuth2 credentials. Set GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REDIRECT_URI, and GOOGLE_REFRESH_TOKEN.",
-    );
-  }
-
-  const oAuth2Client = new google.auth.OAuth2(
-    clientId,
-    clientSecret,
-    redirectUri,
-  );
-  oAuth2Client.setCredentials({ refresh_token: refreshToken });
-
-  return oAuth2Client;
-}
-
 function getAllowedOrigins(): string[] {
   const fromEnv = process.env.CORS_ALLOWED_ORIGINS;
   if (fromEnv && fromEnv.trim().length > 0) {
@@ -103,47 +80,10 @@ async function uploadPdfToGoogleDrive(file: File): Promise<string> {
     throw new Error("Resume must be a PDF file");
   }
 
-  const folderId = getGoogleDriveFolderId();
-  const auth = getOAuth2Client();
-  const drive = google.drive({
-    version: "v3",
-    auth,
-  });
-
-  const bytes = await file.arrayBuffer();
-  const buffer = Buffer.from(bytes);
-  const fileName = buildPdfFileName(file.name || "resume.pdf");
-
-  const upload = await drive.files.create({
-    requestBody: {
-      name: fileName,
-      parents: [folderId],
-      mimeType: "application/pdf",
-    },
-    media: {
-      mimeType: "application/pdf",
-      body: Readable.from(buffer),
-    },
-    fields: "id, webViewLink",
-    supportsAllDrives: true,
-  });
-
-  const fileId = upload.data.id;
-  if (!fileId) {
-    throw new Error("Google Drive upload failed: missing file id");
-  }
-
-  await drive.permissions.create({
-    fileId,
-    requestBody: {
-      role: "reader",
-      type: "anyone",
-    },
-    supportsAllDrives: true,
-  });
-
-  return (
-    upload.data.webViewLink || `https://drive.google.com/file/d/${fileId}/view`
+  return uploadPdfToDrive(
+    await file.arrayBuffer(),
+    buildPdfFileName(file.name || "resume.pdf"),
+    getGoogleDriveFolderId(),
   );
 }
 
@@ -214,7 +154,6 @@ function isGoogleInvalidGrant(error: unknown): boolean {
     "message" in error ? String((error as { message?: unknown }).message) : "";
   if (message.toLowerCase().includes("invalid_grant")) return true;
 
-  // googleapis typically throws a GaxiosError with `response.data` containing `{ error: 'invalid_grant', ... }`
   const maybeResponse = (error as { response?: unknown }).response;
   if (!maybeResponse || typeof maybeResponse !== "object") return false;
 
@@ -372,7 +311,8 @@ export async function POST(request: NextRequest) {
       { status: 201, headers: corsHeaders(origin) },
     );
   } catch (error) {
-    console.error("Job application error:", error);
+    // Stringified: Workers logs drop non-serialisable Error objects.
+    console.error("Job application error:", error instanceof Error ? error.stack || error.message : String(error));
 
     if (isGoogleInvalidGrant(error)) {
       return NextResponse.json(

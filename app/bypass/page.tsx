@@ -13,6 +13,9 @@ import {
 import BypassPricingCard from "@/components/bypass/BypassPricingCard";
 import BypassLogo from "@/components/bypass/BypassLogo";
 
+// Static content; tells the Cloudflare build to cache it at the edge.
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "Bypass — Unofficial Mobile Client for Shortcut",
   description:

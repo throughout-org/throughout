@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 
+// Static content; tells the Cloudflare build to cache it at the edge.
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "Terms & Privacy Policy",
   description: "How Throughout (PVT) LTD collects, uses and protects your information, and the terms that apply to our website and software development services.",

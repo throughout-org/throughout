@@ -1,15 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
-
-const transporter = nodemailer.createTransport({
-  host: "smtppro.zoho.com",
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+import { createMailTransport } from "@/lib/email";
 
 export async function POST(req: NextRequest) {
   try {
@@ -60,7 +50,7 @@ export async function POST(req: NextRequest) {
       </html>
     `;
 
-    await transporter.sendMail({
+    await createMailTransport().sendMail({
       from: `"${fromName}" <${fromEmail}>`,
       to: toEmail,
       replyTo: email,

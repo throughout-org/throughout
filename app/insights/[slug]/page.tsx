@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import InsightDetails from "@/components/insights/InsightDetails";
 import { getAllArticles, getArticleBySlug, getRelatedArticles } from "@/lib/insights";
 
+// Static content; tells the Cloudflare build to cache it at the edge.
+export const dynamic = "force-static";
+
 type Params = { slug: string };
 const siteUrl = "https://www.throughout.io";
 

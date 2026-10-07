@@ -1,15 +1,18 @@
 import nodemailer from "nodemailer";
 
-// Configure email transporter with Zoho SMTP settings
-const transporter = nodemailer.createTransport({
-  host: "smtppro.zoho.com",
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+// Zoho SMTP. Created per call: Workers forbid the random bytes nodemailer
+// generates at construction time outside a request handler.
+export function createMailTransport() {
+  return nodemailer.createTransport({
+    host: "smtppro.zoho.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
+}
 
 export async function sendEmail({
   to,
@@ -73,7 +76,7 @@ export async function sendEmail({
     const fromName = process.env.MAIL_FROM || "Throughout (PVT) LTD";
     const fromEmail = process.env.SMTP_USER;
 
-    const result = await transporter.sendMail({
+    const result = await createMailTransport().sendMail({
       from: `"${fromName}" <${fromEmail}>`,
       to,
       subject,

@@ -17,6 +17,7 @@ Website: https://www.throughout.io (a single page; sections linked below)
 - [Client projects](https://www.throughout.io/#work): Throughout CRM, Naaraa Biznet, Findout, Montado Coffee, Rataa Backdrops, NRS Optical, Ado Coffee, Hostraspace, Artisans Touch.
 - [Case study: Comflo retention campaign](https://www.throughout.io/#case-study): 28.6x return on ad spend in 24 hours. 200 existing customers reached on WhatsApp, LKR 1,400 spent, LKR 40,000+ revenue.
 - [Case study: Müllwood SEO and AI search](https://www.throughout.io/#seo-case-study): Three months of SEO, AEO and GEO for mullwood.lk, Sri Lanka's first curly hair brand. Structured data coverage 0% to 100%, 20 pages and products given SEO titles and keywords, 671 images without alt text fixed, blog grown from 1 to 13 articles, AI crawler access, llms.txt, Bing and IndexNow.
+- [Case study: CoreConnect group SEO](https://www.throughout.io/#seo-case-study-coreconnect): Month 1 of SEO, AEO and GEO across three sites owned by CoreConnect Distributions: aerixlk.com, airmatelk.com and coreconnect.lk. Aerix URLs with SEO titles and metas 0% to 90%, Airmate pages and products with SEO titles 0 to 61, CoreConnect structured data 0% to 100%, 8 answer-ready guides published, 246 images given alt text, brand relationships stated in schema.
 
 ## Company
 

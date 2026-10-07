@@ -1,13 +1,5 @@
-import fs from "node:fs";
-import path from "node:path";
 import matter from "gray-matter";
-
-const articleDirectories = [
-  path.join(process.cwd(), "content", "insights"),
-  path.join(process.cwd(), "content", "product-articles", "rankout"),
-  path.join(process.cwd(), "content", "product-articles", "comflo"),
-  path.join(process.cwd(), "content", "product-articles", "checkout"),
-];
+import { contentFiles } from "@/lib/generated/content";
 
 export type ArticleAuthor = { name: string; role: string; type: "Person" | "Organization"; url?: string; avatar?: string };
 export type ArticleCta = { label: string; description: string; url: string };
@@ -56,12 +48,10 @@ function isoDate(value: unknown, field: string, file: string): string {
   return date;
 }
 
-function parseArticle(directory: string, fileName: string): Article {
-  const fullPath = path.join(directory, fileName);
-  const { data, content } = matter(fs.readFileSync(fullPath, "utf8"));
+function parseArticle(file: string, fileName: string, raw: string): Article {
+  const { data, content } = matter(raw);
   const author = data.author as Record<string, unknown> | undefined;
   const cta = data.cta as Record<string, unknown> | undefined;
-  const file = path.relative(process.cwd(), fullPath);
   const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
 
   const slug = requiredString(data.slug, "slug", file);
@@ -102,11 +92,8 @@ function parseArticle(directory: string, fileName: string): Article {
 }
 
 export function getAllArticles(): Article[] {
-  const articles = articleDirectories
-    .filter((directory) => fs.existsSync(directory))
-    .flatMap((directory) => fs.readdirSync(directory)
-      .filter((fileName) => fileName.endsWith(".md") || fileName.endsWith(".mdx"))
-      .map((fileName) => parseArticle(directory, fileName)))
+  const articles = contentFiles
+    .map(({ file, name, raw }) => parseArticle(file, name, raw))
     .sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
 
   const slugs = new Set<string>();
