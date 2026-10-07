@@ -12,7 +12,8 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    # Org self-hosted runner on the Contabo VPS (shared with the other org projects).
+    runs-on: [self-hosted, Linux, X64, production-vps]
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
