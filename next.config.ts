@@ -16,6 +16,13 @@ const nextConfig: NextConfig = {
       { source: "/internships", destination: "/careers", permanent: true },
       { source: "/internships/:path*", destination: "/careers/:path*", permanent: true },
       { source: "/portfolio", destination: "/#work", permanent: true },
+      // Canonical host is www (was a Vercel domain setting before Cloudflare).
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "throughout.io" }],
+        destination: "https://www.throughout.io/:path*",
+        permanent: true,
+      },
     ];
   },
   async headers() {

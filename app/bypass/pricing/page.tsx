@@ -3,6 +3,9 @@ import Link from "next/link";
 import { FiCheck } from "react-icons/fi";
 import BypassPricingCard from "@/components/bypass/BypassPricingCard";
 
+// Static content; tells the Cloudflare build to cache it at the edge.
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "Bypass Pricing",
   description: "Simple, per-user pricing for Bypass — an unofficial mobile client for Shortcut. 7-day free trial, then $2.99/user/month or $24/user/year.",

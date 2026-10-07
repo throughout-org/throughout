@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import BypassLogo from "@/components/bypass/BypassLogo";
 
+// Static content; tells the Cloudflare build to cache it at the edge.
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "Bypass Privacy Policy",
   description:

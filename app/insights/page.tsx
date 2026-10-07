@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { getAllArticles } from "@/lib/insights";
 
+// Static content; tells the Cloudflare build to cache it at the edge.
+export const dynamic = "force-static";
+
 const siteUrl = "https://www.throughout.io";
 
 function formatDate(date: string) {
@@ -17,11 +20,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/insights" },
   openGraph: {
     title: "Throughout Insights", description: "Practical engineering, product-building and implementation lessons from the Throughout team.",
-    url: `${siteUrl}/insights`, siteName: "Throughout (PVT) LTD", type: "website", images: ["/opengraph-image"],
+    url: `${siteUrl}/insights`, siteName: "Throughout (PVT) LTD", type: "website", images: ["/opengraph-image.png"],
   },
   twitter: {
     card: "summary_large_image", title: "Throughout Insights",
-    description: "Practical engineering, product-building and implementation lessons from the Throughout team.", images: ["/twitter-image"],
+    description: "Practical engineering, product-building and implementation lessons from the Throughout team.", images: ["/twitter-image.png"],
   },
 };
 

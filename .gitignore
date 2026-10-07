@@ -47,3 +47,6 @@ public/SEO Reports Mullwood/
 .vinext/
 .cloudflare/
 public/seo-clients-report/
+
+# generated at build time by scripts/bundle-content.mjs
+lib/generated/
