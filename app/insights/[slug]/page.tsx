@@ -1,123 +1,76 @@
 import type { Metadata } from "next";
-import { cache } from "react";
+import { notFound } from "next/navigation";
 import InsightDetails from "@/components/insights/InsightDetails";
-import { metaDescription } from "@/lib/seo";
-import { client } from "@/src/sanity/client";
+import { getAllArticles, getArticleBySlug, getRelatedArticles } from "@/lib/insights";
 
 type Params = { slug: string };
 const siteUrl = "https://www.throughout.io";
-const imageLicenseUrl = `${siteUrl}/privacy-policy#terms-of-service`;
-const acquireLicensePageUrl = `${siteUrl}/#contact`;
 
-const fetchPost = cache(async (slug: string) => {
-  const post = await client.fetch(
-    `*[_type == "post" && slug.current == $slug][0]{
-      _id,
-      title,
-      slug,
-      content,
-      category,
-      date,
-      image {
-        asset->{url}
-      },
-      "imageUrl": coalesce(image.asset->url, ""),
-      excerpt,
-      author->{
-        name,
-        role,
-        "avatarUrl": image.asset->url
-      }
-    }`,
-    { slug },
-  );
-  return post;
-});
+export function generateStaticParams() {
+  return getAllArticles().map(({ slug }) => ({ slug }));
+}
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<Params>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = slug ? await fetchPost(slug) : null;
-
-  const canonical = `${siteUrl}/insights/${slug}`;
-
-  if (!post) {
-    return {
-      title: "Insight not found",
-      description: "Requested insight could not be found.",
-      alternates: { canonical },
-    };
-  }
-
-  const title = post.title;
-  const description = metaDescription(
-    post.excerpt || "Practical notes from Throughout, an offshore software development studio.",
-  );
-  const image: string | undefined = post.imageUrl || undefined;
+  const post = getArticleBySlug(slug);
+  if (!post) return { title: "Insight not found", robots: { index: false, follow: false } };
 
   return {
-    title,
-    description,
-    alternates: { canonical },
+    title: post.seoTitle,
+    description: post.metaDescription,
+    keywords: [post.primaryKeyword, ...post.secondaryKeywords],
+    alternates: { canonical: post.canonicalUrl },
+    robots: post.noIndex ? { index: false, follow: true } : { index: true, follow: true },
+    authors: [{ name: post.author.name, url: post.author.url }],
     openGraph: {
-      title,
-      description,
-      url: canonical,
-      type: "article",
-      siteName: "Throughout (PVT) LTD",
-      publishedTime: post.date,
-      images: image ? [{ url: image, width: 1200, height: 630, alt: post.title }] : ["/opengraph-image"],
+      title: post.seoTitle, description: post.metaDescription, url: post.canonicalUrl, type: "article",
+      siteName: "Throughout (PVT) LTD", publishedTime: post.publishedDate, modifiedTime: post.updatedDate,
+      authors: [post.author.name], section: post.category,
+      images: [{ url: post.coverImage, width: 1200, height: 675, alt: post.coverImageAlt }],
     },
     twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: image ? [image] : ["/twitter-image"],
+      card: "summary_large_image", title: post.seoTitle, description: post.metaDescription,
+      images: [{ url: post.coverImage, alt: post.coverImageAlt }],
     },
   };
 }
 
-export default async function InsightDetailPage({
-  params,
-}: {
-  params: Promise<Params>;
-}) {
+export default async function InsightDetailPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  const post = slug ? await fetchPost(slug) : null;
+  const post = getArticleBySlug(slug);
+  if (!post) notFound();
+  const relatedPosts = getRelatedArticles(post);
 
-  const imageObject =
-    post && post.imageUrl
-      ? {
-          "@context": "https://schema.org",
-          "@type": "ImageObject",
-          contentUrl: post.imageUrl,
-          name: post.title,
-          description:
-            post.excerpt ||
-            "Explore detailed insights from Throughout (PVT) LTD on software, AI, and automation.",
-          license: imageLicenseUrl,
-          acquireLicensePage: acquireLicensePageUrl,
-          creditText: "Throughout (PVT) LTD Insights",
-          creator: {
-            "@type": "Organization",
-            name: "Throughout (PVT) LTD",
-          },
-          copyrightNotice: "© Throughout (PVT) LTD",
-        }
-      : null;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting", "@id": `${post.canonicalUrl}#article`, headline: post.title,
+        description: post.metaDescription, url: post.canonicalUrl, mainEntityOfPage: post.canonicalUrl,
+        datePublished: post.publishedDate, dateModified: post.updatedDate,
+        image: `${siteUrl}${post.coverImage}`,
+        author: { "@type": post.author.type, name: post.author.name, ...(post.author.type === "Person" ? { jobTitle: post.author.role } : {}), url: post.author.url },
+        publisher: {
+          "@type": "Organization", name: "Throughout (PVT) LTD", url: siteUrl,
+          logo: { "@type": "ImageObject", url: `${siteUrl}/images/logo.png` },
+        },
+        articleSection: post.category, keywords: [post.primaryKeyword, ...post.secondaryKeywords].join(", "),
+      },
+      {
+        "@type": "BreadcrumbList", "@id": `${post.canonicalUrl}#breadcrumbs`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "Insights", item: `${siteUrl}/insights` },
+          { "@type": "ListItem", position: 3, name: post.title, item: post.canonicalUrl },
+        ],
+      },
+    ],
+  };
 
   return (
     <>
-      {imageObject && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(imageObject) }}
-        />
-      )}
-      <InsightDetails post={post} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
+      <InsightDetails post={post} relatedPosts={relatedPosts} />
     </>
   );
 }

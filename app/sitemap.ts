@@ -1,26 +1,15 @@
 import { MetadataRoute } from "next";
-import { client } from "@/src/sanity/client";
+import { getAllArticles } from "@/lib/insights";
 
 const BASE = "https://www.throughout.io";
-const now = new Date();
-
-function page(path: string, priority = 0.8, changefreq: "daily" | "weekly" | "monthly" = "weekly") {
-  return { url: `${BASE}${path}`, lastModified: now, priority, changeFrequency: changefreq };
+function page(path: string, priority = 0.8, changefreq: "daily" | "weekly" | "monthly" = "weekly", lastModified?: string | Date) {
+  return { url: `${BASE}${path}`, lastModified, priority, changeFrequency: changefreq };
 }
 
-async function getBlogSlugs(): Promise<string[]> {
-  try {
-    const posts = await client.fetch<{ slug: string }[]>(
-      `*[_type == "post"] | order(date desc) { "slug": slug.current }`,
-    );
-    return posts.map((p) => p.slug).filter(Boolean);
-  } catch {
-    return [];
-  }
-}
-
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogSlugs = await getBlogSlugs();
+export default function sitemap(): MetadataRoute.Sitemap {
+  const blogPosts = getAllArticles().filter(
+    (post) => !post.noIndex && post.canonicalUrl.startsWith(`${BASE}/insights/`),
+  );
 
   return [
     // Core pages
@@ -33,6 +22,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     page("/privacy-policy", 0.3, "monthly"),
 
     // Blog posts
-    ...blogSlugs.map((slug) => page(`/insights/${slug}`, 0.75, "monthly")),
+    ...blogPosts.map((post) => page(`/insights/${post.slug}`, 0.75, "monthly", post.updatedDate)),
   ];
 }
