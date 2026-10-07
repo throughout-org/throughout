@@ -6,9 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "dev:vinext": "vite dev --port 3001",
+    "build:vinext": "vite build",
+    "start:vinext": "vite preview",
+    "deploy:vinext": "vinext-cloudflare deploy",
+    "deploy:response-store": "cf deploy --prebuilt --mode production --worker throughout-response-store"
   },
   "dependencies": {
+    "@cloudflare/workers-response-store": "^1.0.1",
+    "@vinext/cloudflare": "^1.0.1",
     "cloudinary": "^2.9.0",
     "googleapis": "^154.1.0",
     "gray-matter": "^4.0.3",
@@ -17,21 +24,29 @@
     "motion": "^13.1.1",
     "next": "16.0.10",
     "nodemailer": "^7.0.13",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "react-icons": "^5.5.0"
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-icons": "^5.5.0",
+    "react-server-dom-webpack": "^19.3.0",
+    "vinext": "^1.0.1"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^2.0.0-beta.sha-52b0dc0e9",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/nodemailer": "^7.0.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.1.2",
+    "@vitejs/plugin-rsc": "^0.5.36",
     "babel-plugin-react-compiler": "1.0.0",
     "baseline-browser-mapping": "^2.10.0",
+    "cf": "^1.0.0-beta.12",
     "eslint": "^9",
     "eslint-config-next": "16.0.5",
     "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+    "typescript": "^5",
+    "vite": "^8.3.0"
+  },
+  "type": "module"
 }

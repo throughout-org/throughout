@@ -43,3 +43,7 @@ public/videos/*.MOV
 public/videos/amrith-review-throughout.mp4
 public/videos/retention.mov
 public/SEO Reports Mullwood/
+/dist/
+.vinext/
+.cloudflare/
+public/seo-clients-report/
