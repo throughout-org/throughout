@@ -31,7 +31,7 @@ const markdownOptions = {
     blockquote: { props: { className: "my-10 border-l-2 border-signal pl-6 text-xl leading-8 text-sapphire" } },
     a: { props: { className: "font-medium text-sapphire underline decoration-pale decoration-2 underline-offset-4 transition-colors hover:decoration-signal" } },
     code: { props: { className: "rounded bg-mist px-1.5 py-0.5 font-mono text-[0.9em] text-sapphire" } },
-    pre: { props: { className: "my-8 overflow-x-auto rounded-md bg-ink p-5 font-mono text-sm leading-7 text-white" } },
+    pre: { props: { className: "my-8 overflow-x-auto rounded-md bg-ink p-5 font-mono text-sm leading-7 text-white [&>code]:!rounded-none [&>code]:!bg-transparent [&>code]:!p-0 [&>code]:!text-inherit" } },
     table: { props: { className: "my-8 w-full border-collapse text-left text-sm" } },
     th: { props: { className: "border-b border-ink px-3 py-3 font-semibold" } },
     td: { props: { className: "border-b border-hairline px-3 py-3 align-top" } },
