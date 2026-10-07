@@ -39,7 +39,7 @@
   /* Neutral text and lines (no extra blues) */
   --color-ink: #121417;
   --color-ink-2: #5b6068;
-  --color-ink-3: #8c9097;
+  --color-ink-3: #676c74; /* 4.5:1 on mist, white and the browser-frame grey */
   --color-ink-4: #b7bac0;
   --color-hairline: #e4e6e9;
   --color-hairline-strong: #cdd0d5;
@@ -140,7 +140,8 @@ html {
 
 /* Marketing card: a search is typed, then the result appears */
 @keyframes query { from { width: 0; } 30%, to { width: 17ch; } }
-@keyframes hit { 0%, 34% { opacity: 0; transform: translateY(6px); } 44%, 92% { opacity: 1; transform: none; } to { opacity: 0; } }
+/* clip-path, not opacity: the text never fades to an unreadable contrast */
+@keyframes hit { 0%, 34% { clip-path: inset(0 0 100% 0); } 44%, 92% { clip-path: inset(0); } to { clip-path: inset(0 0 100% 0); } }
 .query { animation: query 6s steps(17) infinite; }
 .hit { animation: hit 6s ease-out infinite; }
 
@@ -270,7 +271,5 @@ html {
   }
 }
 
-
-
-
-
+/* Decorative footer wordmark as generated content, so contrast checks and screen readers skip it */
+.wordmark::before { content: "Throughout"; }

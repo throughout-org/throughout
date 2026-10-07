@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const segments: [string, string?][] = [
-  ["// sync a sale, even offline", "text-ink-3"],
+  ["// sync a sale, even offline", "text-ink-4"],
   ["\n"],
   ["const", "text-sky"],
   [" sale = "],

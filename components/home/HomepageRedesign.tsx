@@ -203,7 +203,7 @@ function BrowserFrame({
           <span className="w-2 h-2 rounded-full bg-black/15" />
           <span className="w-2 h-2 rounded-full bg-black/15" />
           <span className="w-2 h-2 rounded-full bg-black/15" />
-          <span className="ml-3 truncate font-mono text-[10px] text-black/45">
+          <span className="ml-3 truncate font-mono text-[10px] text-black/60">
             {host}
           </span>
         </div>
@@ -248,9 +248,10 @@ function WorkTile({
             : `${item.name} website, built by Throughout`
         }
         sizes={
+          // The screenshot sits inside 7% frame padding, so it renders at ~86% of the tile.
           large
-            ? "(min-width: 768px) 45vw, 92vw"
-            : "(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"
+            ? "(min-width: 1280px) 490px, (min-width: 768px) 39vw, 80vw"
+            : "(min-width: 1280px) 330px, (min-width: 1024px) 26vw, (min-width: 640px) 39vw, 80vw"
         }
       />
       <div className="flex items-start justify-between gap-4 mt-5">
@@ -332,6 +333,7 @@ export default function HomepageRedesign() {
                   <VideoCard
                     src="/videos/story.mp4"
                     previewSrc="/videos/story-preview.mp4"
+                    priority
                     poster="/videos/story-poster.jpg"
                     title="Watch our story"
                     meta="2:50 · sound on"

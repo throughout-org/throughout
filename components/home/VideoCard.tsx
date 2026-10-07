@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FiPlay, FiX } from "react-icons/fi";
 
 interface VideoCardProps {
@@ -12,6 +12,8 @@ interface VideoCardProps {
   previewSrc?: string;
   ariaLabel: string;
   aspect?: "portrait" | "landscape";
+  /** Above the fold: fetch the poster at high priority (it is the page's LCP image). */
+  priority?: boolean;
 }
 
 const shapes = {
@@ -19,10 +21,39 @@ const shapes = {
   landscape: { card: "aspect-video", dialog: "w-[min(92vw,calc(88vh*16/9))]", video: "aspect-video" },
 };
 
-export default function VideoCard({ src, poster, title, meta, previewSrc, ariaLabel, aspect = "portrait" }: VideoCardProps) {
+export default function VideoCard({ src, poster, title, meta, previewSrc, ariaLabel, aspect = "portrait", priority = false }: VideoCardProps) {
   const shape = shapes[aspect];
   const dialogRef = useRef<HTMLDialogElement>(null);
   const fullRef = useRef<HTMLVideoElement>(null);
+  const previewRef = useRef<HTMLVideoElement>(null);
+  const [previewPlaying, setPreviewPlaying] = useState(false);
+
+  // The preview clip is ~1.8 MB, so it waits until the page has loaded and the card is
+  // on screen, and is skipped for reduced motion or data saver. The poster shows meanwhile.
+  useEffect(() => {
+    const video = previewRef.current;
+    if (!video || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if ((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData) return;
+
+    let observer: IntersectionObserver | undefined;
+    const watch = () => {
+      observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          if (!video.src && previewSrc) video.src = previewSrc;
+          void video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+      observer.observe(video);
+    };
+    if (document.readyState === "complete") watch();
+    else window.addEventListener("load", watch, { once: true });
+    return () => {
+      window.removeEventListener("load", watch);
+      observer?.disconnect();
+    };
+  }, [previewSrc]);
 
   const open = () => {
     dialogRef.current?.showModal();
@@ -42,21 +73,28 @@ export default function VideoCard({ src, poster, title, meta, previewSrc, ariaLa
         className={`group relative block ${shape.card} w-full overflow-hidden rounded-[10px] bg-sapphire text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal`}
         aria-label={ariaLabel}
       >
-        {previewSrc ? (
+        {/* eslint-disable-next-line @next/next/no-img-element -- poster doubles as the LCP image */}
+        <img
+          src={poster}
+          alt=""
+          fetchPriority={priority ? "high" : "auto"}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]"
+        />
+        {previewSrc && (
           <video
-            className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]"
-            src={previewSrc}
-            poster={poster}
-            autoPlay
+            ref={previewRef}
+            className={`absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.02] ${
+              previewPlaying ? "opacity-100" : "opacity-0"
+            }`}
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="none"
             aria-hidden="true"
+            onPlaying={() => setPreviewPlaying(true)}
           />
-        ) : (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={poster} alt="" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]" />
         )}
         <span className="absolute inset-x-0 bottom-0 flex items-center gap-3 bg-gradient-to-t from-black/75 to-transparent p-4 pt-20 text-white">
           <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-sapphire transition group-hover:scale-105">

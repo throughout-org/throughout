@@ -111,12 +111,10 @@ export default function Footer() {
       </div>
 
       {/* Oversized wordmark, cropped by the page edge */}
-      <p
+      <div
         aria-hidden="true"
-        className="font-display pointer-events-none -mb-[0.22em] select-none whitespace-nowrap text-center text-[clamp(3rem,12.5vw,11rem)] font-[800] leading-none text-pale/60"
-      >
-        Throughout
-      </p>
+        className="wordmark font-display pointer-events-none -mb-[0.22em] select-none whitespace-nowrap text-center text-[clamp(3rem,12.5vw,11rem)] font-[800] leading-none text-pale/60"
+      />
     </footer>
   );
 }

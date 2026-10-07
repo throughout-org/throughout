@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Archivo, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SiteChrome from "@/components/SiteChrome";
@@ -230,50 +229,36 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        {/* Google Tag Manager */}
+        <meta name="facebook-domain-verification" content="uf6mvfowatdceibrh83b3u1e5xdtpb" />
+
+        {/* GTM, GA4 and the Meta Pixel. Queues exist from the start so no event is lost;
+            the scripts themselves download on the first scroll, tap or key press, or 8s
+            after load, so they stay off the critical path (they cost ~250ms of main thread). */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-54NGRH8P');
-            `,
-          }}
-        />
-        {/* End Google Tag Manager */}
-
-        <meta name="facebook-domain-verification" content="uf6mvfowatdceibrh83b3u1e5xdtpb" />
-        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
               window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${GA_ID}', {
-                send_page_view: true,
-                cookie_flags: 'SameSite=None;Secure'
-              });
-            `,
-          }}
-        />
-
-        <Script
-          id="meta-pixel"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `
-              !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-              n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-              n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-              t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-              (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+              gtag('config', '${GA_ID}', { send_page_view: true, cookie_flags: 'SameSite=None;Secure' });
+              !function(f,n){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window);
               fbq('init', '${FB_PIXEL_ID}');
               fbq('track', 'PageView');
+              (function(){
+                var loaded = false, events = ['scroll','pointerdown','keydown','touchstart'];
+                function add(src){ var s = document.createElement('script'); s.async = true; s.src = src; document.head.appendChild(s); }
+                function load(){
+                  if (loaded) return; loaded = true;
+                  events.forEach(function(e){ removeEventListener(e, load); });
+                  add('https://www.googletagmanager.com/gtm.js?id=GTM-54NGRH8P');
+                  add('https://www.googletagmanager.com/gtag/js?id=${GA_ID}');
+                  add('https://connect.facebook.net/en_US/fbevents.js');
+                }
+                events.forEach(function(e){ addEventListener(e, load, { once: true, passive: true }); });
+                addEventListener('load', function(){ setTimeout(load, 8000); });
+              })();
             `,
           }}
         />
