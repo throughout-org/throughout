@@ -489,11 +489,33 @@ export default function HomepageRedesign() {
                   </a>
                 </div>
               </div>
+
+              <div className="grid gap-8 pt-10 mt-14 border-t border-ink/10 sm:grid-cols-12 sm:items-center sm:gap-10">
+                <div className="sm:col-span-4">
+                  <p className="font-mono text-xs text-ink-2">Behind the product</p>
+                  <p className="font-display mt-3 text-[clamp(1.4rem,2.4vw,1.9rem)] font-[720] leading-tight">
+                    Why we built Comflo.
+                  </p>
+                  <p className="mt-3 leading-7 text-ink-2">
+                    The story behind it, in under a minute.
+                  </p>
+                </div>
+                <div className="sm:col-span-8">
+                  <VideoCard
+                    aspect="landscape"
+                    src="/videos/reason-behind-developing-comflo.mp4"
+                    poster="/videos/reason-behind-developing-comflo-poster.jpg"
+                    title="Watch the story"
+                    meta="0:48 · sound on"
+                    ariaLabel="Why we built Comflo, 48 seconds, with sound"
+                  />
+                </div>
+              </div>
             </article>
 
             <article
               id="seo-case-study"
-              className="pt-12 mt-20 border-t scroll-mt-24 border-ink/15 lg:mt-28"
+              className="pt-12 mt-14 border-t scroll-mt-24 border-ink/15 lg:mt-16"
             >
               <p className="font-mono text-xs text-ink-2">
                 Müllwood · SEO, AI search and content · July to September 2026
@@ -577,7 +599,7 @@ export default function HomepageRedesign() {
 
             <article
               id="seo-case-study-coreconnect"
-              className="pt-12 mt-20 border-t scroll-mt-24 border-ink/15 lg:mt-28"
+              className="pt-12 mt-14 border-t scroll-mt-24 border-ink/15 lg:mt-16"
             >
               <p className="font-mono text-xs text-ink-2">
                 CoreConnect group · Aerix, Airmate and CoreConnect · SEO, AEO
