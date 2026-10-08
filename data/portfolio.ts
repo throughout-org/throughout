@@ -47,6 +47,15 @@ export const work: WorkItem[] = [
     color: "#0e7a4f",
   },
   {
+    name: "Spendout",
+    tagline: "A free expense tracker that pulls receipts from your Gmail.",
+    category: "Personal finance",
+    image: "/images/work/spendout.jpg",
+    href: "https://spendout.throughout.io/",
+    kind: "Our product",
+    color: "#d4f04c",
+  },
+  {
     name: "Throughout CRM",
     tagline: "Clients, projects, invoices and payroll in one place.",
     category: "Business CRM",
