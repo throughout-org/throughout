@@ -12,7 +12,13 @@ export default defineConfig({
       // Each Cloudflare location keeps its own copy of a cached page for an hour instead of
       // re-reading KV's central store every 60s (that read cost up to ~1s TTFB).
       // Trade-off: CRM job changes can take up to an hour to show at a location.
-      cache: { data: kvDataAdapter({ entryCacheTtlSeconds: 3600 }) },
+      // Keys are scoped per commit, so a deploy never serves the previous build's cached pages.
+      cache: {
+        data: kvDataAdapter({
+          entryCacheTtlSeconds: 3600,
+          appPrefix: (process.env.GITHUB_SHA ?? String(Date.now())).slice(0, 12),
+        }),
+      },
       images: { optimizer: imagesOptimizer() },
     }),
     cloudflare({
