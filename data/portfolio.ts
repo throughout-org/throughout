@@ -50,7 +50,7 @@ export const work: WorkItem[] = [
     name: "Spendout",
     tagline: "A free expense tracker that pulls receipts from your Gmail.",
     category: "Personal finance",
-    image: "/images/work/spendout.jpg",
+    image: "/images/work/spendout-home.jpg",
     href: "https://spendout.throughout.io/",
     kind: "Our product",
     color: "#d4f04c",
