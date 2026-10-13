@@ -26,6 +26,7 @@ coverImageAlt: "Editorial diagram comparing ranked search results with a synthes
 relatedArticles:
   - "why-your-business-doesnt-show-up-in-chatgpt-even-though-you-rank-1-on-google"
   - "seo-and-geo-are-merging-here-s-how-we-re-doing-it-differently-with-easy-mcp-ai"
+  - "how-to-write-a-content-brief-for-search-intent"
 cta:
   label: "Explore RankOut"
   description: "RankOut connects search research, implementation, validation and measurement across traditional and AI-assisted search workflows."

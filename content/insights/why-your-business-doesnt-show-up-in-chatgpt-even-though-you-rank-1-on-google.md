@@ -26,6 +26,7 @@ coverImageAlt: "Editorial diagnostic diagram showing a business source failing c
 relatedArticles:
   - "geo-vs-seo-what-actually-gets-you-cited-by-chatgpt-in-2026"
   - "seo-and-geo-are-merging-here-s-how-we-re-doing-it-differently-with-easy-mcp-ai"
+  - "how-to-write-a-content-brief-for-search-intent"
 cta:
   label: "See how RankOut approaches search visibility"
   description: "Connect technical findings, content opportunities, implementation and measurement instead of treating AI visibility as a one-off prompt test."

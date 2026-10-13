@@ -16,7 +16,7 @@ canonicalUrl: "https://www.throughout.io/insights/design-handoff-checklist-for-d
 noIndex: false
 coverImage: "/images/insights/saas-mvp-scope.png"
 coverImageAlt: "Editorial diagram organizing product requirements into a focused implementation scope"
-relatedArticles: ["your-saas-mvp-built-in-3-weeks-why-founders-choose-throoout", "building-an-mcp-server-for-wordpress-what-we-learned-shipping-easy-mcp-ai"]
+relatedArticles: ["your-saas-mvp-built-in-3-weeks-why-founders-choose-throoout", "building-an-mcp-server-for-wordpress-what-we-learned-shipping-easy-mcp-ai", "how-to-redesign-a-website-without-losing-clarity"]
 cta: { label: "Plan a design-to-build workflow", description: "We can help turn product requirements into an implementable interface system and tested release.", url: "https://www.throughout.io/#contact" }
 ---
 
