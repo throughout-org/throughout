@@ -26,6 +26,7 @@ coverImageAlt: "Editorial diagram reducing a large product backlog into one focu
 relatedArticles:
   - "ai-automation-vs-hiring-staff-what-actually-costs-less-for-small-businesses-in-2026"
   - "graphql-with-next-js-wordpress-my-practical-guide"
+  - "how-to-redesign-a-website-without-losing-clarity"
 cta:
   label: "Discuss your MVP scope"
   description: "Bring the problem, audience and constraints. We can help define a responsible first release before estimating design or development."
