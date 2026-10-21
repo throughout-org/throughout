@@ -84,6 +84,7 @@ export const metadata: Metadata = {
 
 const GA_ID = "G-70B910BNDJ";
 const FB_PIXEL_ID = "1251107350497461";
+const ADDITIONAL_FB_PIXEL_ID = "2039332200078973";
 
 // ── Schema Markup ────────────────────────────────────────────────────────────
 
@@ -231,9 +232,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <meta name="facebook-domain-verification" content="uf6mvfowatdceibrh83b3u1e5xdtpb" />
 
-        {/* GTM, GA4 and the Meta Pixel. Queues exist from the start so no event is lost;
-            the scripts themselves download on the first scroll, tap or key press, or 8s
-            after load, so they stay off the critical path (they cost ~250ms of main thread). */}
+        {/* Meta Pixel loads immediately; GTM and GA4 load after interaction or 8s. */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -245,16 +244,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               !function(f,n){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
               if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window);
               fbq('init', '${FB_PIXEL_ID}');
+              fbq('init', '${ADDITIONAL_FB_PIXEL_ID}');
               fbq('track', 'PageView');
               (function(){
                 var loaded = false, events = ['scroll','pointerdown','keydown','touchstart'];
                 function add(src){ var s = document.createElement('script'); s.async = true; s.src = src; document.head.appendChild(s); }
+                add('https://connect.facebook.net/en_US/fbevents.js');
                 function load(){
                   if (loaded) return; loaded = true;
                   events.forEach(function(e){ removeEventListener(e, load); });
                   add('https://www.googletagmanager.com/gtm.js?id=GTM-54NGRH8P');
                   add('https://www.googletagmanager.com/gtag/js?id=${GA_ID}');
-                  add('https://connect.facebook.net/en_US/fbevents.js');
                 }
                 events.forEach(function(e){ addEventListener(e, load, { once: true, passive: true }); });
                 addEventListener('load', function(){ setTimeout(load, 8000); });
@@ -285,6 +285,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img alt="" height="1" width="1" style={{ display: "none" }}
             src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img alt="" height="1" width="1" style={{ display: "none" }}
+            src={`https://www.facebook.com/tr?id=${ADDITIONAL_FB_PIXEL_ID}&ev=PageView&noscript=1`}
           />
         </noscript>
 
