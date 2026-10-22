@@ -118,7 +118,7 @@ const organizationSchema = {
     {
       "@type": "ContactPoint",
       contactType: "Customer Support",
-      telephone: "+94707007992",
+      telephone: "+94767727992",
       availableLanguage: ["English"],
     },
   ],

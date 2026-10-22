@@ -1035,12 +1035,12 @@ export default function HomepageRedesign() {
                     </dt>
                     <dd className="mt-1">
                       <a
-                        href="https://wa.me/94707007992"
+                        href="https://wa.me/94767727992"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="font-semibold link-draw"
                       >
-                        +94 70 700 7992
+                        +94 76 772 7992
                       </a>
                     </dd>
                   </div>

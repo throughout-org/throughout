@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiArrowUp } from "react-icons/fi";
 
-const WHATSAPP_URL = "https://wa.me/94707007992";
+const WHATSAPP_URL = "https://wa.me/94767727992";
 
 export default function FloatingActions() {
   const [showTop, setShowTop] = useState(false);

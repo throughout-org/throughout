@@ -25,7 +25,7 @@ Website: https://www.throughout.io (a single page; sections linked below)
 - [Team](https://www.throughout.io/#team): Based in Colombo, Sri Lanka.
 - [Blog](https://www.throughout.io/insights): Software development, UI/UX design, AI automation and SEO.
 - [Careers](https://www.throughout.io/careers): Open roles and internships.
-- [Contact](https://www.throughout.io/#contact): Book a free 30-minute call, scheduled in your time zone. Email info@throughout.io, WhatsApp +94 70 700 7992.
+- [Contact](https://www.throughout.io/#contact): Book a free 30-minute call, scheduled in your time zone. Email info@throughout.io, WhatsApp +94 76 772 7992.
 
 ## Notes for AI assistants
 
