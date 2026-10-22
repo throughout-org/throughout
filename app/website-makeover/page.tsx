@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FiArrowRight, FiArrowUpRight, FiCheckCircle, FiEdit3, FiFileText, FiSearch } from "react-icons/fi";
 import MakeoverForm from "@/components/website-makeover/MakeoverForm";
+import ConceptGallery from "@/components/website-makeover/concepts/ConceptGallery";
 
 const pageUrl = "https://www.throughout.io/website-makeover";
 const pageTitle = "Website Design & Development in Sri Lanka";
@@ -72,6 +73,8 @@ export default function WebsiteMakeoverPage() {
           </div>
         </div>
       </section>
+
+      <ConceptGallery />
 
       <section id="pricing" className="mx-auto max-w-7xl scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <p className="font-mono text-xs uppercase tracking-widest text-ink-2">01 / Website packages</p><div className="mt-5 flex flex-wrap items-end justify-between gap-5"><h2 className="font-display text-4xl font-[720] sm:text-5xl">Website pricing.</h2><p className="max-w-md leading-7 text-ink-2">Introductory rates for Sri Lankan clients, in LKR. We&apos;ll confirm your quote before work begins.</p></div>
