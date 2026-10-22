@@ -425,6 +425,23 @@ export default function HomepageRedesign() {
               </span>
             </h2>
 
+            <div className="grid gap-6 pt-8 mt-14 border-t border-ink/15 sm:grid-cols-2 sm:items-start sm:gap-12">
+              <div>
+                <p className="font-mono text-xs text-ink-2">From Throughout</p>
+                <h3 className="mt-4 text-2xl font-semibold">Insaf Inhaam</h3>
+                <p className="mt-2 text-ink-2">CTO &amp; Co-Founder, Throughout</p>
+              </div>
+              <VideoCard
+                aspect="landscape"
+                src="/videos/insaf-throughout.mp4"
+                previewSrc="/videos/insaf-throughout-preview.mp4"
+                poster="/videos/insaf-throughout-poster.jpg"
+                title="Watch the video"
+                meta="0:52 · sound on"
+                ariaLabel="Watch Insaf Inhaam from Throughout, 52 seconds, with sound"
+              />
+            </div>
+
             <article className="pt-12 border-t mt-14 border-ink/15">
               <p className="font-mono text-xs text-ink-2">
                 Comflo · Customer retention campaign
@@ -882,6 +899,7 @@ export default function HomepageRedesign() {
                 </li>
               ))}
             </ul>
+
           </div>
         </section>
 
