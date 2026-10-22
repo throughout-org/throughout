@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     // Core pages
     page("/", 1.0, "daily"),
+    page("/website-makeover", 0.8, "monthly"),
     // Content
     page("/insights", 0.85, "daily"),
     page("/careers", 0.6, "weekly"),

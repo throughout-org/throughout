@@ -4,10 +4,24 @@ import Image from "next/image";
 import { FiArrowRight, FiArrowUpRight, FiCheckCircle, FiEdit3, FiFileText, FiSearch } from "react-icons/fi";
 import MakeoverForm from "@/components/website-makeover/MakeoverForm";
 
+const pageUrl = "https://www.throughout.io/website-makeover";
+const pageTitle = "Website Design & Development in Sri Lanka";
+const pageDescription = "Explore website packages from Rs. 25,000 and apply for a free homepage concept for selected Sri Lankan businesses. No obligation to purchase.";
+
 export const metadata: Metadata = {
-  title: "Website Makeover for Growing Businesses | Throughout",
-  description: "Apply for a free homepage redesign concept. Website packages for Sri Lankan businesses start at Rs. 25,000.",
-  alternates: { canonical: "https://www.throughout.io/website-makeover" },
+  title: pageTitle,
+  description: pageDescription,
+  alternates: { canonical: pageUrl },
+  openGraph: { type: "website", url: pageUrl, siteName: "Throughout", title: `${pageTitle} | Throughout`, description: pageDescription, images: ["/opengraph-image.png"] },
+  twitter: { card: "summary_large_image", title: `${pageTitle} | Throughout`, description: pageDescription, images: ["/opengraph-image.png"] },
+};
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebPage", "@id": `${pageUrl}#webpage`, url: pageUrl, name: pageTitle, description: pageDescription, isPartOf: { "@id": "https://www.throughout.io/#website" }, about: { "@id": `${pageUrl}#service` } },
+    { "@type": "Service", "@id": `${pageUrl}#service`, name: "Website design and development", description: "Website design and development packages for Sri Lankan businesses.", provider: { "@id": "https://www.throughout.io/#organization" }, areaServed: { "@type": "Country", name: "Sri Lanka" }, url: pageUrl },
+  ],
 };
 
 const packages = [
@@ -32,6 +46,7 @@ const steps = [
   { title: "Choose what’s next", description: "Build with us if you like. No obligation.", icon: FiCheckCircle },
 ];
 const questions = [
+  ["How much does a website cost in Sri Lanka?", "Our introductory packages start at Rs. 25,000 for a landing page. Website packages vary by page count, features and integrations; see the pricing above for details."],
   ["Is the homepage concept really free?", "Yes. Selected businesses receive one desktop homepage design concept at no cost. Applying does not guarantee selection."],
   ["Do I have to purchase a website?", "No. The concept comes with no obligation to proceed. If you want us to build your website, we will agree on the scope and price first."],
   ["How long will development take?", "Estimated delivery times are listed for each package. The final schedule depends on the scope, content and features, and will be agreed before the project begins."],
@@ -41,12 +56,13 @@ const questions = [
 export default function WebsiteMakeoverPage() {
   return (
     <main className="bg-canvas text-ink">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema).replace(/</g, "\\u003c") }} />
       <section className="overflow-hidden bg-sapphire text-on-sapphire">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.1fr_.9fr] lg:items-center lg:gap-20 lg:px-8 lg:py-28">
           <div>
             <p className="font-mono text-xs uppercase tracking-[.18em] text-on-sapphire-muted">Throughout · Website Makeover 2026</p>
             <h1 className="font-display mt-8 max-w-3xl text-[clamp(2.8rem,6vw,5.4rem)] font-[750]">A better website starts here.</h1>
-            <p className="mt-7 max-w-xl text-lg leading-8 text-on-sapphire-muted">Apply for a free homepage concept for your business. We&apos;ll select five businesses, with no obligation to purchase.</p>
+            <p className="mt-7 max-w-xl text-lg leading-8 text-on-sapphire-muted">Website design and development for Sri Lankan businesses. Apply for a free homepage concept; we&apos;ll select five businesses, with no obligation to purchase.</p>
             <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4"><a href="#apply" className="group inline-flex min-h-11 items-center gap-3 rounded-full bg-white py-1 pl-5 pr-1 text-sm font-semibold text-sapphire transition-colors hover:bg-mist focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal">Apply for your free concept <span className="flex h-9 w-9 items-center justify-center rounded-full bg-signal text-sapphire transition-transform duration-300 group-hover:rotate-45"><FiArrowUpRight aria-hidden="true" /></span></a><a href="#pricing" className="link-draw inline-flex min-h-11 items-center gap-2 text-sm font-semibold">See pricing <FiArrowRight aria-hidden="true" /></a></div>
             <p className="mt-5 text-sm text-on-sapphire-muted">Website packages from Rs. 25,000</p>
           </div>
