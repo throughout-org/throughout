@@ -183,26 +183,28 @@ function BrowserFrame({
   color,
   alt,
   sizes,
+  fullBleed = false,
 }: {
   src: string;
   host: string;
   color: string;
   alt: string;
   sizes: string;
+  fullBleed?: boolean;
 }) {
   return (
     <div
-      className="overflow-hidden rounded-[10px] px-[7%] pt-[7%]"
-      style={{ backgroundColor: color }}
+      className={`overflow-hidden rounded-[10px] ${fullBleed ? "" : "px-[7%] pt-[7%]"}`}
+      style={fullBleed ? undefined : { backgroundColor: color }}
     >
       <div className="overflow-hidden rounded-t-md bg-white shadow-[0_24px_60px_-24px_rgba(0,0,0,0.55)]">
         <div
           className="flex h-6 items-center gap-1.5 border-b border-black/5 bg-[#f3f4f7] px-3"
           aria-hidden="true"
         >
-          <span className="w-2 h-2 rounded-full bg-black/15" />
-          <span className="w-2 h-2 rounded-full bg-black/15" />
-          <span className="w-2 h-2 rounded-full bg-black/15" />
+          <span className="w-2 h-2 rounded-full bg-[#ff5f57]" />
+          <span className="w-2 h-2 rounded-full bg-[#febc2e]" />
+          <span className="w-2 h-2 rounded-full bg-[#28c840]" />
           <span className="ml-3 truncate font-mono text-[10px] text-black/60">
             {host}
           </span>
@@ -242,16 +244,16 @@ function WorkTile({
         src={item.image}
         host={host}
         color={item.color}
+        fullBleed
         alt={
           item.kind === "Our product"
             ? `${item.name}, a product built by Throughout`
             : `${item.name} website, built by Throughout`
         }
         sizes={
-          // The screenshot sits inside 7% frame padding, so it renders at ~86% of the tile.
           large
-            ? "(min-width: 1280px) 490px, (min-width: 768px) 39vw, 80vw"
-            : "(min-width: 1280px) 330px, (min-width: 1024px) 26vw, (min-width: 640px) 39vw, 80vw"
+            ? "(min-width: 1280px) 570px, (min-width: 768px) 46vw, 100vw"
+            : "(min-width: 1280px) 390px, (min-width: 1024px) 31vw, (min-width: 640px) 46vw, 100vw"
         }
       />
       <div className="flex items-start justify-between gap-4 mt-5">
