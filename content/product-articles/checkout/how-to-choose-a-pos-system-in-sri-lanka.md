@@ -9,7 +9,7 @@ product: "Checkout"
 primaryKeyword: "how to choose a POS system in Sri Lanka"
 secondaryKeywords: ["POS system Sri Lanka", "retail POS checklist", "offline POS Sri Lanka"]
 searchIntent: "Commercial investigation"
-category: "Retail technology"
+category: "Business"
 cluster: "Checkout"
 excerpt: "A practical Sri Lankan retail POS checklist covering checkout, offline operation, inventory, hardware, branches, support, migration and complete cost."
 author: { name: "Throughout", role: "Product and engineering team", type: "Organization", url: "https://www.throughout.io" }

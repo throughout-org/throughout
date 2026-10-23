@@ -10,7 +10,7 @@ metaDescription: "Create an evidence-led content brief with audience, intent, SE
 primaryKeyword: "content brief for search intent"
 secondaryKeywords: ["SEO content brief", "search intent brief", "content brief template"]
 searchIntent: "Informational"
-category: "Marketing"
+category: "SEO & GEO"
 cluster: "Content strategy"
 canonicalUrl: "https://www.throughout.io/insights/how-to-write-a-content-brief-for-search-intent"
 noIndex: false

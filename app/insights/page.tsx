@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { getAllArticles } from "@/lib/insights";
+import { getAllArticles, insightCategories } from "@/lib/insights";
 
 // Static content; tells the Cloudflare build to cache it at the edge.
 export const dynamic = "force-static";
@@ -36,6 +36,15 @@ export default function InsightsPage() {
         <p className="font-mono text-xs text-ink-2">Insights · {posts.length} articles</p>
         <h1 className="font-display mt-5 text-[clamp(2.5rem,6vw,4.75rem)] font-[750]">Notes from the studio.</h1>
         <p className="mt-6 max-w-xl text-lg leading-8 text-ink-2">Engineering, product-building and implementation lessons from work we have done ourselves.</p>
+        <ul className="mt-8 flex flex-wrap gap-2" aria-label="Insight categories">
+          {insightCategories.map((category) => (
+            <li key={category.slug}>
+              <Link href={`/insights/category/${category.slug}`} className="inline-flex min-h-9 items-center rounded-full border border-hairline-strong px-4 text-sm font-medium transition-colors hover:bg-mist">
+                {category.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </header>
       <section className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8 lg:pb-32" aria-label="Insight articles">
         <ol className="border-t border-ink">

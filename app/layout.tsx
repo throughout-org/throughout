@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.throughout.io"),
 
   title: {
-    default: "Offshore Software Development & Dedicated Teams | Throughout",
+    default: "Offshore Software Development in Sri Lanka | Throughout",
     template: "%s | Throughout",
   },
 
@@ -57,16 +57,16 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://www.throughout.io",
     siteName: "Throughout (PVT) LTD",
-    title: "Digital Marketing, Engineering & Design | Throughout (PVT) LTD",
+    title: "Offshore Software Development in Sri Lanka | Throughout",
     description:
-      "Full-stack digital growth with design, engineering, and marketing under one roof for startups and growing businesses.",
+      "Hire dedicated developers or a project team in Colombo, Sri Lanka. Software development, UI/UX design and SEO under one roof for founders and agencies.",
     locale: "en_US",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Digital Marketing, Engineering & Design | Throughout (PVT) LTD",
-    description: "Full-stack digital growth with design, engineering, and marketing under one roof.",
+    title: "Offshore Software Development in Sri Lanka | Throughout",
+    description: "Hire dedicated developers or a project team in Colombo, Sri Lanka, at offshore rates.",
     creator: "@throughout_io",
   },
 
@@ -90,7 +90,7 @@ const ADDITIONAL_FB_PIXEL_ID = "2039332200078973";
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "ProfessionalService"],
   "@id": "https://www.throughout.io/#organization",
   name: "Throughout (PVT) LTD",
   alternateName: "Throughout",
@@ -125,8 +125,14 @@ const organizationSchema = {
   address: {
     "@type": "PostalAddress",
     addressCountry: "LK",
+    addressRegion: "Western Province",
     addressLocality: "Colombo",
   },
+  founder: [
+    { "@type": "Person", name: "Bavaram Karunaaharan", jobTitle: "CEO & Co-Founder" },
+    { "@type": "Person", name: "Insaf Inhaam", jobTitle: "CTO & Co-Founder" },
+  ],
+  award: ["BestWeb.LK 2026 Winner, Best Mobile User Experience", "BestWeb.LK 2026 Bronze, Best Personal Website"],
   sameAs: [
     "https://www.linkedin.com/company/throughout-io",
     "https://www.facebook.com/throughout.io",
@@ -157,7 +163,7 @@ const servicesSchema = {
       name: "Software Development",
       provider: { "@id": "https://www.throughout.io/#organization" },
       description: "Custom software development for web, mobile and SaaS: websites, web apps, mobile apps, MVPs and e-commerce, from first release to scale.",
-      url: "https://www.throughout.io/#services",
+      url: "https://www.throughout.io/services/engineering",
       serviceType: "Software Development",
       areaServed: ["Australia", "New Zealand", "Europe", "United Kingdom", "Middle East"],
       hasOfferCatalog: {
@@ -179,7 +185,7 @@ const servicesSchema = {
       name: "UI/UX & Website Design",
       provider: { "@id": "https://www.throughout.io/#organization" },
       description: "UI/UX design, website design, prototypes and design systems built around real user tasks.",
-      url: "https://www.throughout.io/#services",
+      url: "https://www.throughout.io/services/design",
       serviceType: "UI/UX Design",
       areaServed: ["Australia", "New Zealand", "Europe", "United Kingdom", "Middle East"],
       hasOfferCatalog: {
@@ -199,7 +205,7 @@ const servicesSchema = {
       name: "SEO & Digital Marketing",
       provider: { "@id": "https://www.throughout.io/#organization" },
       description: "SEO services, content, Google and Meta ads, and conversion optimisation that turn visits into customers.",
-      url: "https://www.throughout.io/#services",
+      url: "https://www.throughout.io/services/marketing",
       serviceType: "Digital Marketing",
       areaServed: ["Australia", "New Zealand", "Europe", "United Kingdom", "Middle East"],
       hasOfferCatalog: {

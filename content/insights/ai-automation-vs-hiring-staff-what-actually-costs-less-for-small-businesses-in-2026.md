@@ -17,7 +17,7 @@ secondaryKeywords:
   - "AI automation cost framework"
   - "small business workflow automation"
 searchIntent: "Commercial investigation"
-category: "AI"
+category: "Business"
 cluster: "Automation decisions"
 canonicalUrl: "https://www.throughout.io/insights/ai-automation-vs-hiring-staff-what-actually-costs-less-for-small-businesses-in-2026"
 noIndex: false

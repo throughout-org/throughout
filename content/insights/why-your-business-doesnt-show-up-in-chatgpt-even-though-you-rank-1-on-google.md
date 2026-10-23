@@ -17,7 +17,7 @@ secondaryKeywords:
   - "ChatGPT business visibility"
   - "AI search visibility audit"
 searchIntent: "Diagnostic informational"
-category: "AI Search"
+category: "SEO & GEO"
 cluster: "Search visibility"
 canonicalUrl: "https://www.throughout.io/insights/why-your-business-doesnt-show-up-in-chatgpt-even-though-you-rank-1-on-google"
 noIndex: false

@@ -4,10 +4,10 @@ const nextConfig: NextConfig = {
   /* config options here */
   async redirects() {
     return [
-      { source: "/services/:path*", destination: "/#services", permanent: true },
-      { source: "/engineering", destination: "/#services", permanent: true },
-      { source: "/design", destination: "/#services", permanent: true },
-      { source: "/digital-marketing", destination: "/#services", permanent: true },
+      { source: "/services", destination: "/#services", permanent: true },
+      { source: "/engineering", destination: "/services/engineering", permanent: true },
+      { source: "/design", destination: "/services/design", permanent: true },
+      { source: "/digital-marketing", destination: "/services/marketing", permanent: true },
       { source: "/dedicated-teams", destination: "/#engagement-models", permanent: true },
       { source: "/agency-partners", destination: "/#engagement-models", permanent: true },
       { source: "/about", destination: "/#team", permanent: true },

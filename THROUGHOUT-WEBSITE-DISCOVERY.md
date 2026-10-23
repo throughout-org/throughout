@@ -76,7 +76,7 @@ These are outside the "website improvement" scope but should not wait for it.
 | Structured data | See §10. |
 | i18n / localisation | None. `<html lang="en">`, OG locale `en_US`. No hreflang, no translated routes. |
 | Unused code | `contexts/CalendlyContext.tsx`, `components/ui/Button.tsx` (referenced only inside a commented-out block), `data/portfolio.ts` (no importer in the working tree), `trackCTAClick`, `trackServiceView`, `trackGA4PageView`. |
-| Root clutter | `menu` (founder's navigation brainstorm, tracked in git), `Design System Analysis: Linear.md`, `TRUEAUTO-WEBSITE-DISCOVERY.md`, `tsconfig.tsbuildinfo`, the service-account JSON. |
+| Root clutter | `menu` (founder's navigation brainstorm, tracked in git), `Design System Analysis - Linear.md`, `TRUEAUTO-WEBSITE-DISCOVERY.md`, `tsconfig.tsbuildinfo`, the service-account JSON. |
 
 **Key dependencies by concern**
 

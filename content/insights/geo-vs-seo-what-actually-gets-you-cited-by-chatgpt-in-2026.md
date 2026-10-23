@@ -17,7 +17,7 @@ secondaryKeywords:
   - "generative engine optimization"
   - "AI search optimization"
 searchIntent: "Informational comparison"
-category: "AI Search"
+category: "SEO & GEO"
 cluster: "Search visibility"
 canonicalUrl: "https://www.throughout.io/insights/geo-vs-seo-what-actually-gets-you-cited-by-chatgpt-in-2026"
 noIndex: false

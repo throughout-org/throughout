@@ -47,6 +47,7 @@ export const homepageFAQs = [
 const services = [
   {
     title: "Engineering",
+    href: "/services/engineering",
     copy: "Custom software development for web, mobile and SaaS, from the first release to scale.",
     items: [
       "Website & web app development",
@@ -60,6 +61,7 @@ const services = [
   },
   {
     title: "Design",
+    href: "/services/design",
     copy: "UI/UX and website design people understand at a glance, built around real tasks.",
     items: [
       "Product strategy & UX research",
@@ -73,6 +75,7 @@ const services = [
   },
   {
     title: "Marketing",
+    href: "/services/marketing",
     copy: "SEO and digital marketing that get the right people to find you, and turn visits into customers.",
     items: [
       "SEO services",
@@ -298,7 +301,7 @@ export default function HomepageRedesign() {
           <div className="flex flex-col items-start gap-12 lg:flex-row lg:items-center lg:gap-20">
             <div>
               <p className="font-mono text-xs rise text-ink-2">
-                Offshore development studio · Colombo, Sri Lanka
+                Offshore software development · Colombo, Sri Lanka
               </p>
               <h1 className="font-display mt-6 text-[clamp(2.6rem,6.2vw,4.9rem)] font-[750] text-ink">
                 <span className="block rise">We build,</span>
@@ -719,13 +722,19 @@ export default function HomepageRedesign() {
                   className="grid gap-6 py-10 border-b group border-hairline lg:grid-cols-12 lg:items-center lg:gap-10 lg:py-12"
                 >
                   <h3 className="font-display text-[clamp(2.2rem,3.6vw,3.9rem)] font-[750] transition-colors group-hover:text-sapphire lg:col-span-4 xl:col-span-5">
-                    {service.title}
+                    <Link href={service.href}>{service.title}</Link>
                   </h3>
                   <div className="lg:col-span-4">
                     <p className="leading-7 text-ink-2">{service.copy}</p>
                     <p className="mt-4 text-sm leading-7 text-ink">
                       {service.items.join(" · ")}
                     </p>
+                    <Link
+                      href={service.href}
+                      className="inline-flex items-center gap-2 mt-4 text-sm font-semibold link-draw min-h-11 text-sapphire"
+                    >
+                      Explore {service.title.toLowerCase()} <FiArrowRight aria-hidden="true" />
+                    </Link>
                   </div>
                   <div
                     className="lg:col-span-4 xl:col-span-3"
@@ -744,7 +753,7 @@ export default function HomepageRedesign() {
           <div className={container}>
             <ThreadNode className="top-3" />
             <h2 className={h2}>
-              Two ways to work with us.{" "}
+              Hire a project team or dedicated developers.{" "}
               <span className="text-ink-2">
                 A defined outcome now, or a team that stays.
               </span>

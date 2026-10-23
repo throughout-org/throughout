@@ -12,6 +12,15 @@ const groups = [
     ],
   },
   {
+    title: "Services",
+    links: [
+      { label: "Software development", href: "/services/engineering" },
+      { label: "UI/UX design", href: "/services/design" },
+      { label: "SEO & marketing", href: "/services/marketing" },
+      { label: "Dedicated teams", href: "/#engagement-models" },
+    ],
+  },
+  {
     title: "Company",
     links: [
       { label: "Blog", href: "/insights" },
@@ -80,7 +89,7 @@ export default function Footer() {
           </div>
 
           {groups.map((group, index) => (
-            <nav key={group.title} aria-label={group.title} className={`md:col-span-3 lg:col-span-2 ${index === 0 ? "lg:col-start-8" : ""}`}>
+            <nav key={group.title} aria-label={group.title} className={`md:col-span-4 lg:col-span-2 ${index === 0 ? "lg:col-start-6" : ""}`}>
               <h2 className="font-mono text-xs text-ink-3">{group.title}</h2>
               <ul className="mt-5 space-y-1">
                 {group.links.map((item) => (
