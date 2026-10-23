@@ -16,7 +16,7 @@ canonicalUrl: "https://www.throughout.io/insights/offshore-software-development-
 noIndex: false
 coverImage: "/images/insights/offshore-sri-lanka-guide.png"
 coverImageAlt: "A central node in Sri Lanka connected by lines to three clocks that represent client time zones in Australia, Europe and the Gulf"
-relatedArticles: ["hiring-offshore-developers-12-questions", "dedicated-team-vs-project-team-offshore", "sri-lanka-vs-india-vs-vietnam-offshore-development"]
+relatedArticles: ["hiring-offshore-developers-12-questions", "dedicated-developer-cost-2026", "offshore-software-development-trends-2027"]
 cta: { label: "Talk to a Colombo development team", description: "Tell us what you are building and the skills you need. We will say honestly whether offshore fits and what we would do.", url: "https://www.throughout.io/#contact" }
 ---
 

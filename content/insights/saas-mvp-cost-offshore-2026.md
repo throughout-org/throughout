@@ -16,7 +16,7 @@ canonicalUrl: "https://www.throughout.io/insights/saas-mvp-cost-offshore-2026"
 noIndex: false
 coverImage: "/images/insights/saas-mvp-cost.png"
 coverImageAlt: "Three bars of increasing height beside a coin, representing low, medium and high MVP budgets"
-relatedArticles: ["mvp-idea-to-launch-how-throughout-builds", "your-saas-mvp-built-in-3-weeks-why-founders-choose-throoout", "ai-workflow-automation-small-business-guide"]
+relatedArticles: ["mvp-idea-to-launch-how-throughout-builds", "your-saas-mvp-built-in-3-weeks-why-founders-choose-throoout", "dedicated-developer-cost-2026"]
 cta: { label: "Get a scoped MVP estimate", description: "Share the problem, audience and constraints. We will outline a first release and an estimate with its assumptions.", url: "https://www.throughout.io/#contact" }
 ---
 

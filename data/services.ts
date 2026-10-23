@@ -156,7 +156,8 @@ export const servicePages: ServicePage[] = [
       "ai-workflow-automation-small-business-guide",
       "offshore-software-development-sri-lanka-guide",
       "hiring-offshore-developers-12-questions",
-      "shopify-vs-woocommerce-2026",
+      "nextjs-node-nestjs-offshore-stack",
+      "dedicated-developer-cost-2026",
     ],
   },
   {
@@ -381,7 +382,8 @@ export const servicePages: ServicePage[] = [
       "geo-vs-seo-what-actually-gets-you-cited-by-chatgpt-in-2026",
       "geo-explained-get-recommended-by-chatgpt-gemini",
       "mullwood-invisible-to-ai-ready-case-study",
-      "how-to-measure-seo-changes-after-implementation",
+      "coreconnect-multi-brand-seo-case-study",
+      "building-rankout-ai-seo-agent",
     ],
   },
 ];

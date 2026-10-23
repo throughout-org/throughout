@@ -33,6 +33,11 @@ Contact: info@throughout.io, WhatsApp +94 76 772 7992, free 30-minute call at ht
 - [GEO explained: get recommended by ChatGPT and Gemini](https://www.throughout.io/insights/geo-explained-get-recommended-by-chatgpt-gemini)
 - [Shopify vs WooCommerce for 2026](https://www.throughout.io/insights/shopify-vs-woocommerce-2026)
 - [How we took Müllwood from invisible to AI-ready (case study narrative)](https://www.throughout.io/insights/mullwood-invisible-to-ai-ready-case-study)
+- [Dedicated team pricing in 2026: how offshore developer cost works](https://www.throughout.io/insights/dedicated-developer-cost-2026)
+- [Next.js, Node and NestJS: our default stack](https://www.throughout.io/insights/nextjs-node-nestjs-offshore-stack)
+- [Building Rankout: an AI SEO agent](https://www.throughout.io/insights/building-rankout-ai-seo-agent)
+- [CoreConnect group: multi-brand SEO case study](https://www.throughout.io/insights/coreconnect-multi-brand-seo-case-study)
+- [2027 offshore software development trends](https://www.throughout.io/insights/offshore-software-development-trends-2027)
 - [How to scope a SaaS MVP](https://www.throughout.io/insights/your-saas-mvp-built-in-3-weeks-why-founders-choose-throoout)
 - [SEO, AEO and GEO: what changes for AI search](https://www.throughout.io/insights/geo-vs-seo-what-actually-gets-you-cited-by-chatgpt-in-2026)
 - [All articles](https://www.throughout.io/insights): Engineering, Design, SEO and GEO, Business, Case studies

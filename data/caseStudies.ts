@@ -118,7 +118,7 @@ export const caseStudies: CaseStudy[] = [
       { question: "Why state brand relationships in schema?", answer: "Search engines and AI assistants infer entities from markup and links. Stating that Aerix, Airmate and CoreConnect are related lets them resolve which brand belongs to which owner." },
       { question: "Did the work improve rankings?", answer: "Month one reports delivery metrics. Rankings follow as Google recrawls, so we measure them against a baseline in later months." },
     ],
-    relatedInsights: ["geo-explained-get-recommended-by-chatgpt-gemini", "how-to-prioritize-seo-issues-after-an-audit", "how-to-measure-seo-changes-after-implementation"],
+    relatedInsights: ["coreconnect-multi-brand-seo-case-study", "geo-explained-get-recommended-by-chatgpt-gemini", "how-to-measure-seo-changes-after-implementation"],
   },
 ];
 

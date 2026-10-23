@@ -16,7 +16,7 @@ canonicalUrl: "https://www.throughout.io/insights/mullwood-invisible-to-ai-ready
 noIndex: false
 coverImage: "/images/work/mullwood.jpg"
 coverImageAlt: "Müllwood curly hair care website after its search and AI-readiness rebuild"
-relatedArticles: ["mullwood-seo-rebuild-case-study", "geo-explained-get-recommended-by-chatgpt-gemini", "how-to-measure-seo-changes-after-implementation"]
+relatedArticles: ["coreconnect-multi-brand-seo-case-study", "geo-explained-get-recommended-by-chatgpt-gemini", "how-to-measure-seo-changes-after-implementation"]
 cta: { label: "Plan an SEO and GEO rebuild", description: "Share your site and your goal. We will tell you what we would fix first.", url: "https://www.throughout.io/#contact" }
 ---
 
