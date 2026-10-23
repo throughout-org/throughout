@@ -16,7 +16,7 @@ canonicalUrl: "https://www.throughout.io/insights/mullwood-seo-rebuild-case-stud
 noIndex: false
 coverImage: "/images/work/mullwood.jpg"
 coverImageAlt: "Müllwood curly hair ecommerce website after its search foundation was rebuilt"
-relatedArticles: ["how-to-prioritize-seo-issues-after-an-audit", "seo-and-geo-are-merging-here-s-how-we-re-doing-it-differently-with-easy-mcp-ai"]
+relatedArticles: ["mullwood-invisible-to-ai-ready-case-study", "how-to-prioritize-seo-issues-after-an-audit", "seo-and-geo-are-merging-here-s-how-we-re-doing-it-differently-with-easy-mcp-ai"]
 cta: { label: "Discuss an SEO implementation", description: "Bring us the evidence, affected pages and business objective. We can help turn them into an implementable plan.", url: "https://www.throughout.io/#contact" }
 ---
 

@@ -153,8 +153,10 @@ export const servicePages: ServicePage[] = [
     ],
     relatedInsights: [
       "your-saas-mvp-built-in-3-weeks-why-founders-choose-throoout",
-      "ai-automation-vs-hiring-staff-what-actually-costs-less-for-small-businesses-in-2026",
-      "graphql-with-next-js-wordpress-my-practical-guide",
+      "ai-workflow-automation-small-business-guide",
+      "offshore-software-development-sri-lanka-guide",
+      "hiring-offshore-developers-12-questions",
+      "shopify-vs-woocommerce-2026",
     ],
   },
   {
@@ -333,13 +335,13 @@ export const servicePages: ServicePage[] = [
         label: "Case study",
         title: "Müllwood: a store Google could not read",
         copy: "Structured data coverage from 0% to 100%, 671 images given alt text and a blog grown from 1 to 13 articles in three months.",
-        href: "/insights/mullwood-seo-rebuild-case-study",
+        href: "/case-studies/mullwood",
       },
       {
         label: "Case study",
         title: "CoreConnect group: three brands in one month",
         copy: "Aerix, Airmate and CoreConnect rebuilt for search and AI assistants, with brand relationships stated in schema.",
-        href: "/#seo-case-study-coreconnect",
+        href: "/case-studies/coreconnect-group",
       },
       {
         label: "Guide",
@@ -377,8 +379,9 @@ export const servicePages: ServicePage[] = [
     ],
     relatedInsights: [
       "geo-vs-seo-what-actually-gets-you-cited-by-chatgpt-in-2026",
+      "geo-explained-get-recommended-by-chatgpt-gemini",
+      "mullwood-invisible-to-ai-ready-case-study",
       "how-to-measure-seo-changes-after-implementation",
-      "how-to-write-a-content-brief-for-search-intent",
     ],
   },
 ];

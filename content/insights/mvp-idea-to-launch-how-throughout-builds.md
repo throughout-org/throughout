@@ -16,7 +16,7 @@ canonicalUrl: "https://www.throughout.io/insights/mvp-idea-to-launch-how-through
 noIndex: false
 coverImage: "/images/insights/mvp-idea-to-launch.png"
 coverImageAlt: "A timeline of connected milestones leading to a launch button"
-relatedArticles: ["saas-mvp-cost-offshore-2026", "your-saas-mvp-built-in-3-weeks-why-founders-choose-throoout", "design-handoff-checklist-for-development"]
+relatedArticles: ["saas-mvp-cost-offshore-2026", "hiring-offshore-developers-12-questions", "design-handoff-checklist-for-development"]
 cta: { label: "Plan your MVP with us", description: "Bring the problem, the audience and your constraints. We will outline a phased plan and what we would cut.", url: "https://www.throughout.io/#contact" }
 ---
 
@@ -78,6 +78,8 @@ This is the sequence we follow, based on building our own products, including [R
 
 ## What can make it longer?
 
+Timelines slip for ordinary reasons rather than technical ones. The usual causes are scope that grows after design approval, slow feedback, unclear ownership of decisions, poorly documented integrations, compliance work discovered late and content or data that arrive after the build needs them.
+
 - Scope that grows after design is approved.
 - Slow feedback or no single decision-maker.
 - Integrations with systems that have poor documentation.
@@ -86,7 +88,7 @@ This is the sequence we follow, based on building our own products, including [R
 
 ## What do you need to provide?
 
-A product owner with time each week, access to sample users, brand assets and any accounts the product depends on. Fast answers are the cheapest way to keep a schedule.
+You need to provide a product owner with time each week, access to a few sample users, brand assets and any accounts or data the product depends on. Fast, specific answers are the cheapest way to protect a schedule, because every day a decision waits is a day the build waits too.
 
 ## Frequently asked questions
 

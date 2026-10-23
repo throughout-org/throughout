@@ -24,6 +24,7 @@ noIndex: false
 coverImage: "/images/insights/seo-aeo-geo.png"
 coverImageAlt: "Editorial diagram comparing ranked search results with a synthesized AI answer supported by multiple sources"
 relatedArticles:
+  - "geo-explained-get-recommended-by-chatgpt-gemini"
   - "why-your-business-doesnt-show-up-in-chatgpt-even-though-you-rank-1-on-google"
   - "seo-and-geo-are-merging-here-s-how-we-re-doing-it-differently-with-easy-mcp-ai"
 cta:

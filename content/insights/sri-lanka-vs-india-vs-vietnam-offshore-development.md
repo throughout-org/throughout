@@ -26,6 +26,8 @@ There is no single best country to outsource software development. India offers 
 
 ## How do the three compare?
 
+The three countries differ most in scale, time zone and typical studio size. India has the largest talent pool, Vietnam is closest to Australia in time zone, and Sri Lanka offers smaller boutique studios with English-language collaboration. Treat the table as a starting hypothesis, not a verdict.
+
 | Factor | Sri Lanka | India | Vietnam |
 | --- | --- | --- | --- |
 | Time zone | UTC+5:30 | UTC+5:30 | UTC+7 |
@@ -40,6 +42,8 @@ Use this as a starting hypothesis, then test it with the actual studios you are 
 
 ## Why might you choose Sri Lanka?
 
+Sri Lanka suits founders who want a small team and direct contact with the engineers. It works well for MVPs, product websites, e-commerce and SaaS builds for Australia, Europe and the Gulf, where a morning-to-afternoon overlap is enough and English-language specs matter. Consider it when:
+
 - You want a **small team and direct contact** with the engineers.
 - You need **English-language** specs and standups without friction.
 - Your market is Australia, Europe or the Gulf, and a **morning-to-afternoon overlap** is enough.
@@ -47,17 +51,23 @@ Use this as a starting hypothesis, then test it with the actual studios you are 
 
 ## Why might you choose India?
 
+India suits projects that need many engineers quickly or niche specialists. Its ecosystem of agencies, freelancers and product companies is the deepest of the three, though quality varies widely, so vendor selection takes more effort on your side. Consider it when:
+
 - You need **many engineers quickly** or niche specialists.
 - You value a deep ecosystem of agencies, freelancers and product companies.
 - You are comfortable with more vendor selection effort because quality varies widely.
 
 ## Why might you choose Vietnam?
 
+Vietnam suits engineering-heavy teams that want a time zone closer to Australia and Asia-Pacific hours. It has a strong and growing engineering market, though English proficiency should be confirmed with the actual team you will work with. Consider it when:
+
 - Your team works on **Asia-Pacific hours** and wants a time zone closer to Australia.
 - You want a strong engineering market and are happy to confirm English proficiency in the actual team.
 - Your product is engineering-heavy and you will manage requirements in writing.
 
 ## How should you decide?
+
+Decide by fixing your time-zone needs first, then team size, then the actual people and written proposals. Daily overlap matters more than a small difference in rates, and a short paid pilot reveals more than any sales call. Follow these five steps:
 
 1. **Fix the time zone first.** Daily overlap matters more than a small difference in rates.
 2. **Decide how big the team must become.** If you may need 30 engineers, favour the largest pools.

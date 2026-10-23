@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { caseStudies } from "@/data/caseStudies";
 import { servicePages } from "@/data/services";
 import { getAllArticles, insightCategories } from "@/lib/insights";
 
@@ -18,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/website-makeover", 0.8, "monthly"),
     // Services
     ...servicePages.map((service) => page(`/services/${service.slug}`, 0.9, "monthly")),
+    ...caseStudies.map((study) => page(`/case-studies/${study.slug}`, 0.85, "monthly", study.dateModified)),
     // Content
     page("/insights", 0.85, "daily"),
     ...insightCategories.map((category) => page(`/insights/category/${category.slug}`, 0.6, "weekly")),

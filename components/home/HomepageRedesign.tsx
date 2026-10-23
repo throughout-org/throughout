@@ -612,9 +612,14 @@ export default function HomepageRedesign() {
                     file for AI assistants, and a Google Business Profile.
                   </p>
 
-                  <BookCallLink className={`${primaryButton} mt-8`}>
-                    Talk to us about SEO <FiArrowRight aria-hidden="true" />
-                  </BookCallLink>
+                  <div className="flex flex-wrap items-center mt-8 gap-x-8 gap-y-3">
+                    <BookCallLink className={primaryButton}>
+                      Talk to us about SEO <FiArrowRight aria-hidden="true" />
+                    </BookCallLink>
+                    <Link href="/case-studies/mullwood" className="inline-flex items-center text-sm font-semibold link-draw min-h-11 text-sapphire">
+                      Read the full case study
+                    </Link>
+                  </div>
                 </div>
               </div>
             </article>
@@ -699,6 +704,9 @@ export default function HomepageRedesign() {
                     to Google. Rankings follow as Google recrawls; months 2 and
                     3 build content and authority.
                   </p>
+                  <Link href="/case-studies/coreconnect-group" className="inline-flex items-center mt-4 text-sm font-semibold link-draw min-h-11 text-sapphire">
+                    Read the full case study
+                  </Link>
                 </div>
               </div>
             </article>

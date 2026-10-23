@@ -16,7 +16,7 @@ canonicalUrl: "https://www.throughout.io/insights/saas-mvp-cost-offshore-2026"
 noIndex: false
 coverImage: "/images/insights/saas-mvp-cost.png"
 coverImageAlt: "Three bars of increasing height beside a coin, representing low, medium and high MVP budgets"
-relatedArticles: ["your-saas-mvp-built-in-3-weeks-why-founders-choose-throoout", "mvp-idea-to-launch-how-throughout-builds", "dedicated-team-vs-project-team-offshore"]
+relatedArticles: ["mvp-idea-to-launch-how-throughout-builds", "your-saas-mvp-built-in-3-weeks-why-founders-choose-throoout", "ai-workflow-automation-small-business-guide"]
 cta: { label: "Get a scoped MVP estimate", description: "Share the problem, audience and constraints. We will outline a first release and an estimate with its assumptions.", url: "https://www.throughout.io/#contact" }
 ---
 
@@ -26,11 +26,15 @@ Rather than quote a number that would be wrong for most readers, this guide show
 
 ## What is the formula?
 
+The cost of a SaaS MVP is team size multiplied by time multiplied by a blended monthly rate, plus third-party costs and a contingency. Offshore rates vary by country, studio and seniority, so use written quotes. The structure holds whatever the rates are:
+
 **Cost ≈ team × months × blended monthly rate, plus third-party costs and a contingency.**
 
 Offshore rates differ by country, studio and seniority, so use written quotes. The structure below holds whatever the rates are.
 
 ## What drives the cost most?
+
+Scope drives cost far more than the hourly rate. The biggest levers are how many user roles and workflows you build, how many integrations you need, how deep the design goes and how high the quality bar is. Eight drivers move the estimate most:
 
 1. **Number of user roles.** Each role (admin, customer, staff) needs its own screens, permissions and tests.
 2. **Core workflows.** One workflow done well is an MVP. Five is a product.
@@ -43,7 +47,7 @@ Offshore rates differ by country, studio and seniority, so use written quotes. T
 
 ## What does a worked example look like?
 
-Suppose a founder wants a B2B SaaS with sign-up, one core workflow, a dashboard, Stripe subscriptions and email notifications.
+As an illustration, take a B2B SaaS with sign-up, one core workflow, a dashboard, Stripe subscriptions and email notifications. A small team over roughly 12 weeks is a reasonable planning assumption. The table lists the assumptions, which you should replace with figures from your own proposals.
 
 | Item | Assumption |
 | --- | --- |
@@ -58,6 +62,8 @@ These are planning assumptions, not a quote. Replace each with figures from your
 
 ## What do founders forget to budget for?
 
+Founders most often forget discovery and design, third-party services, post-launch support, their own time and basic legal documents. Each can add meaningful cost or delay if it is not planned for early. Budget for these items alongside the build itself:
+
 - **Discovery and design before build.** Skipping it moves cost into rework.
 - **Third-party services** such as email, SMS, maps, AI model usage and monitoring.
 - **Post-launch support** for bugs, hosting and small improvements.
@@ -65,6 +71,8 @@ These are planning assumptions, not a quote. Replace each with figures from your
 - **Legal basics** such as terms, privacy policy and contracts.
 
 ## How do you keep MVP cost down without cutting quality?
+
+You keep MVP cost down by cutting scope, not quality. Choose one role and one workflow, reuse proven components for sign-in and billing, defer internal tooling and build only what produces the evidence you need. Five habits do most of the work:
 
 1. Pick **one user role and one workflow** for release one.
 2. Use proven components for authentication, billing and email.
@@ -76,7 +84,7 @@ Our guide to [scoping a SaaS MVP](/insights/your-saas-mvp-built-in-3-weeks-why-f
 
 ## Should you choose a project price or a monthly team?
 
-A fixed-scope project suits a well-defined first release. A monthly dedicated team suits a roadmap that will keep changing. See [dedicated team vs project team](/insights/dedicated-team-vs-project-team-offshore).
+A fixed-scope project suits a well-defined first release, because price and scope are agreed up front. A monthly dedicated team suits a roadmap that will keep changing, because you pay for capacity rather than a fixed outcome. Our guide to [dedicated team vs project team](/insights/dedicated-team-vs-project-team-offshore) explains the trade-offs.
 
 ## Frequently asked questions
 

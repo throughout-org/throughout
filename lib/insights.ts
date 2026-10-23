@@ -143,3 +143,29 @@ export function getCategoryBySlug(slug: string): InsightCategory | null {
 export function getArticlesByCategory(name: string): Article[] {
   return getAllArticles().filter((article) => article.category === name && !article.noIndex);
 }
+
+/**
+ * Reads question/answer pairs from a "Frequently asked questions" section (each question an H3,
+ * its answer the paragraph(s) beneath) so FAQPage schema always matches the visible text.
+ */
+export function extractFaqs(content: string): { question: string; answer: string }[] {
+  const section = content.split(/^##\s+Frequently asked questions\s*$/im)[1];
+  if (!section) return [];
+  const body = section.split(/^##\s+/m)[0];
+  return body
+    .split(/^###\s+/m)
+    .slice(1)
+    .map((block) => {
+      const [question, ...rest] = block.split("\n");
+      const answer = rest.join(" ").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/[*_`]/g, "").replace(/\s+/g, " ").trim();
+      return { question: question.trim(), answer };
+    })
+    .filter((faq) => faq.question && faq.answer);
+}
+
+/** The service page an article of this category should send readers to. */
+export function serviceForCategory(category: string): { href: string; label: string } {
+  if (category === "Design") return { href: "/services/design", label: "UI/UX and website design" };
+  if (category === "SEO & GEO" || category === "Case study") return { href: "/services/marketing", label: "SEO, GEO and content strategy" };
+  return { href: "/services/engineering", label: "Offshore software development" };
+}

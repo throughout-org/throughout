@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
       { source: "/dedicated-teams", destination: "/#engagement-models", permanent: true },
       { source: "/agency-partners", destination: "/#engagement-models", permanent: true },
       { source: "/about", destination: "/#team", permanent: true },
-      { source: "/case-studies/:path*", destination: "/#work", permanent: true },
+      { source: "/case-studies", destination: "/#work", permanent: true },
       { source: "/contact", destination: "/#contact-form", permanent: true },
       { source: "/internships", destination: "/careers", permanent: true },
       { source: "/internships/:path*", destination: "/careers/:path*", permanent: true },

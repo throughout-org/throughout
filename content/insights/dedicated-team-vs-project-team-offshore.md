@@ -34,6 +34,8 @@ A dedicated team is a group of developers, designers, QA or DevOps engineers who
 
 ## How do the two models compare?
 
+The two models differ mainly in how scope, cost and control work. A project team is paid for a defined outcome and managed by the studio, while a dedicated team is paid for capacity and directed by you. The table below sets out the practical differences.
+
 | | Project team | Dedicated team |
 | --- | --- | --- |
 | Best for | A defined website, app or MVP | Ongoing product development |
@@ -47,12 +49,16 @@ A dedicated team is a group of developers, designers, QA or DevOps engineers who
 
 ## When is a project team the right choice?
 
+A project team is the right choice when the outcome is definable, the budget is fixed and you cannot give daily direction. If you can write acceptance criteria and the work has a natural end such as a launch, a defined scope gives both sides clarity. Use these tests:
+
 - You can write acceptance criteria for the outcome.
 - You want a fixed budget conversation before you start.
 - You do not have a product owner with daily availability.
 - The work has a natural end, such as a launch.
 
 ## When is a dedicated team the right choice?
+
+A dedicated team is the right choice when the roadmap is long, the scope will change as you learn and you can supply a product owner. It works best for products with users or funding, where retained knowledge and steady capacity matter more than a fixed price. Use these tests:
 
 - The roadmap is long and will change as you learn.
 - You already have users, revenue or a funded plan.
@@ -64,6 +70,8 @@ A dedicated team is a group of developers, designers, QA or DevOps engineers who
 Yes, and it is common. Run the first release as a project so scope and price are explicit. Once the product is live and the backlog grows, keep the people who built it as a dedicated team. This avoids a handover and keeps context. Our guide to [scoping an MVP](/insights/your-saas-mvp-built-in-3-weeks-why-founders-choose-throoout) helps with the first step.
 
 ## Common mistakes
+
+Most problems come from picking the model before understanding the work. The costliest mistakes are paying for capacity without a backlog, fixing scope for a product you do not understand yet, lacking a single decision-maker and comparing only the monthly number. Each has a simple prevention:
 
 - **Buying a dedicated team without a backlog.** Idle capacity is the most expensive outcome.
 - **Fixing scope for a product you do not understand yet.** Discovery work first, build second.

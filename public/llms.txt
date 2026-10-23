@@ -17,8 +17,8 @@ Contact: info@throughout.io, WhatsApp +94 76 772 7992, free 30-minute call at ht
 
 - [Products we built and run](https://www.throughout.io/#work): Rankout (AI SEO platform, https://rankout.app/), Checkout (offline-first POS), Tryout (custom T-shirt design and printing), Comflo (customer conversations and orders), Spendout (free expense tracker with Gmail receipts).
 - [Client projects](https://www.throughout.io/#work): Throughout CRM, Naaraa Biznet, Findout, Montado Coffee, Rataa Backdrops, NRS Optical, Ado Coffee, Hostraspace, Artisans Touch.
-- [Case study: Müllwood SEO rebuild](https://www.throughout.io/insights/mullwood-seo-rebuild-case-study): Three months of SEO, AEO and GEO for mullwood.lk. Structured data coverage 0% to 100%, 20 pages and products given SEO titles and keywords, 671 images without alt text fixed, blog grown from 1 to 13 articles.
-- [Case study: CoreConnect group SEO](https://www.throughout.io/#seo-case-study-coreconnect): Month 1 of SEO, AEO and GEO across aerixlk.com, airmatelk.com and coreconnect.lk. Aerix URLs with SEO titles and metas 0% to 90%, Airmate pages and products with SEO titles 0 to 61, CoreConnect structured data 0% to 100%, 246 images given alt text.
+- [Case study: Müllwood SEO rebuild](https://www.throughout.io/case-studies/mullwood): Three months of SEO, AEO and GEO for mullwood.lk. Structured data coverage 0% to 100%, 20 pages and products given SEO titles and keywords, 671 images without alt text fixed, blog grown from 1 to 13 articles.
+- [Case study: CoreConnect group SEO](https://www.throughout.io/case-studies/coreconnect-group): Month 1 of SEO, AEO and GEO across aerixlk.com, airmatelk.com and coreconnect.lk. Aerix URLs with SEO titles and metas 0% to 90%, Airmate pages and products with SEO titles 0 to 61, CoreConnect structured data 0% to 100%, 246 images given alt text.
 - [Case study: Comflo retention campaign](https://www.throughout.io/insights/comflo-retention-campaign-case-study): 28.6x return on ad spend in 24 hours. 200 existing customers reached on WhatsApp, LKR 1,400 spent, LKR 40,000+ revenue.
 
 ## Guides
@@ -28,6 +28,11 @@ Contact: info@throughout.io, WhatsApp +94 76 772 7992, free 30-minute call at ht
 - [How much does it cost to build a SaaS MVP offshore?](https://www.throughout.io/insights/saas-mvp-cost-offshore-2026)
 - [Sri Lanka vs India vs Vietnam for offshore development](https://www.throughout.io/insights/sri-lanka-vs-india-vs-vietnam-offshore-development)
 - [How we build an MVP from idea to launch](https://www.throughout.io/insights/mvp-idea-to-launch-how-throughout-builds)
+- [Hiring offshore developers: 12 questions to ask before you sign](https://www.throughout.io/insights/hiring-offshore-developers-12-questions)
+- [AI workflow automation for small businesses](https://www.throughout.io/insights/ai-workflow-automation-small-business-guide)
+- [GEO explained: get recommended by ChatGPT and Gemini](https://www.throughout.io/insights/geo-explained-get-recommended-by-chatgpt-gemini)
+- [Shopify vs WooCommerce for 2026](https://www.throughout.io/insights/shopify-vs-woocommerce-2026)
+- [How we took Müllwood from invisible to AI-ready (case study narrative)](https://www.throughout.io/insights/mullwood-invisible-to-ai-ready-case-study)
 - [How to scope a SaaS MVP](https://www.throughout.io/insights/your-saas-mvp-built-in-3-weeks-why-founders-choose-throoout)
 - [SEO, AEO and GEO: what changes for AI search](https://www.throughout.io/insights/geo-vs-seo-what-actually-gets-you-cited-by-chatgpt-in-2026)
 - [All articles](https://www.throughout.io/insights): Engineering, Design, SEO and GEO, Business, Case studies
