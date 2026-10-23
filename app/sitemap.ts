@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next";
-import { getAllArticles } from "@/lib/insights";
+import { caseStudies } from "@/data/caseStudies";
+import { servicePages } from "@/data/services";
+import { getAllArticles, insightCategories } from "@/lib/insights";
 
 const BASE = "https://www.throughout.io";
 function page(path: string, priority = 0.8, changefreq: "daily" | "weekly" | "monthly" = "weekly", lastModified?: string | Date) {
@@ -15,8 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Core pages
     page("/", 1.0, "daily"),
     page("/website-makeover", 0.8, "monthly"),
+    // Services
+    ...servicePages.map((service) => page(`/services/${service.slug}`, 0.9, "monthly")),
+    ...caseStudies.map((study) => page(`/case-studies/${study.slug}`, 0.85, "monthly", study.dateModified)),
     // Content
     page("/insights", 0.85, "daily"),
+    ...insightCategories.map((category) => page(`/insights/category/${category.slug}`, 0.6, "weekly")),
     page("/careers", 0.6, "weekly"),
 
     // Legal

@@ -17,7 +17,7 @@ secondaryKeywords:
   - "SEO approval workflow"
   - "automated SEO fixes"
 searchIntent: "Operational informational"
-category: "Product"
+category: "SEO & GEO"
 cluster: "Search operations"
 canonicalUrl: "https://www.throughout.io/insights/seo-and-geo-are-merging-here-s-how-we-re-doing-it-differently-with-easy-mcp-ai"
 noIndex: false

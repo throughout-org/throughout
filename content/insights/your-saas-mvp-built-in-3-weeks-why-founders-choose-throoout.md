@@ -17,7 +17,7 @@ secondaryKeywords:
   - "minimum viable product planning"
   - "MVP development checklist"
 searchIntent: "Informational commercial"
-category: "Product"
+category: "Engineering"
 cluster: "Product delivery"
 canonicalUrl: "https://www.throughout.io/insights/your-saas-mvp-built-in-3-weeks-why-founders-choose-throoout"
 noIndex: false

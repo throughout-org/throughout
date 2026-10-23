@@ -104,6 +104,11 @@ export function getAllArticles(): Article[] {
     if (canonical.protocol !== "https:") throw new Error(`Canonical URL for '${article.slug}' must use HTTPS`);
   }
   for (const article of articles) {
+    if (!insightCategories.some((category) => category.name === article.category)) {
+      throw new Error(`Unknown category '${article.category}' in '${article.slug}'; add it to insightCategories`);
+    }
+  }
+  for (const article of articles) {
     for (const relatedSlug of article.relatedArticles) {
       if (!slugs.has(relatedSlug)) throw new Error(`Unknown related article '${relatedSlug}' in '${article.slug}'`);
     }
@@ -118,4 +123,49 @@ export function getArticleBySlug(slug: string): Article | null {
 export function getRelatedArticles(article: Article): Article[] {
   const bySlug = new Map(getAllArticles().map((item) => [item.slug, item]));
   return article.relatedArticles.map((slug) => bySlug.get(slug)).filter((item): item is Article => Boolean(item));
+}
+
+/** Topic hubs for /insights. Every article's `category` must be one of these names. */
+export const insightCategories = [
+  { name: "Engineering", slug: "engineering", title: "Engineering", description: "Offshore software development, SaaS and MVP builds, Next.js, APIs and AI engineering, written by the team that ships them." },
+  { name: "Design", slug: "design", title: "Design", description: "UI/UX and website design practice: handoff, redesigns, design systems and product clarity." },
+  { name: "SEO & GEO", slug: "seo-geo", title: "SEO and GEO", description: "Technical SEO, content strategy and generative engine optimisation for visibility in Google, ChatGPT, Gemini and Perplexity." },
+  { name: "Business", slug: "business", title: "Business", description: "Hiring offshore developers, costs, vendor choice and delivery models for founders and agencies." },
+  { name: "Case study", slug: "case-study", title: "Case studies", description: "Documented client and product work with the numbers we actually recorded." },
+] as const;
+
+export type InsightCategory = (typeof insightCategories)[number];
+
+export function getCategoryBySlug(slug: string): InsightCategory | null {
+  return insightCategories.find((category) => category.slug === slug) || null;
+}
+
+export function getArticlesByCategory(name: string): Article[] {
+  return getAllArticles().filter((article) => article.category === name && !article.noIndex);
+}
+
+/**
+ * Reads question/answer pairs from a "Frequently asked questions" section (each question an H3,
+ * its answer the paragraph(s) beneath) so FAQPage schema always matches the visible text.
+ */
+export function extractFaqs(content: string): { question: string; answer: string }[] {
+  const section = content.split(/^##\s+Frequently asked questions\s*$/im)[1];
+  if (!section) return [];
+  const body = section.split(/^##\s+/m)[0];
+  return body
+    .split(/^###\s+/m)
+    .slice(1)
+    .map((block) => {
+      const [question, ...rest] = block.split("\n");
+      const answer = rest.join(" ").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/[*_`]/g, "").replace(/\s+/g, " ").trim();
+      return { question: question.trim(), answer };
+    })
+    .filter((faq) => faq.question && faq.answer);
+}
+
+/** The service page an article of this category should send readers to. */
+export function serviceForCategory(category: string): { href: string; label: string } {
+  if (category === "Design") return { href: "/services/design", label: "UI/UX and website design" };
+  if (category === "SEO & GEO" || category === "Case study") return { href: "/services/marketing", label: "SEO, GEO and content strategy" };
+  return { href: "/services/engineering", label: "Offshore software development" };
 }

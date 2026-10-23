@@ -9,7 +9,7 @@ product: "RankOut"
 primaryKeyword: "how to prioritize SEO issues after an audit"
 secondaryKeywords: ["SEO audit prioritization", "SEO action plan", "SEO priority matrix"]
 searchIntent: "Informational with commercial investigation"
-category: "SEO"
+category: "SEO & GEO"
 cluster: "RankOut"
 excerpt: "A practical method for turning a long SEO audit into an evidence-based implementation plan ordered by impact, confidence, effort and dependencies."
 author: { name: "Throughout", role: "Product and engineering team", type: "Organization", url: "https://www.throughout.io" }

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Markdown from "markdown-to-jsx";
 import { FiArrowLeft, FiArrowUpRight } from "react-icons/fi";
-import type { Article } from "@/lib/insights";
+import { insightCategories, serviceForCategory, type Article } from "@/lib/insights";
 
 function formatDate(date: string) {
   return new Date(`${date}T00:00:00Z`).toLocaleDateString("en-GB", {
@@ -41,6 +41,8 @@ const markdownOptions = {
 
 export default function InsightDetails({ post, relatedPosts }: { post: Article; relatedPosts: Article[] }) {
   const externalCta = post.cta.url.startsWith("http");
+  const category = insightCategories.find((item) => item.name === post.category);
+  const service = serviceForCategory(post.category);
   return (
     <main className="bg-canvas text-ink">
       <article>
@@ -55,7 +57,7 @@ export default function InsightDetails({ post, relatedPosts }: { post: Article; 
           <p className="mt-8 font-mono text-xs text-ink-2">
             Published <time dateTime={post.publishedDate}>{formatDate(post.publishedDate)}</time>
             {post.updatedDate !== post.publishedDate && <> · Updated <time dateTime={post.updatedDate}>{formatDate(post.updatedDate)}</time></>}
-            <> · {post.category} · {post.readingMinutes} min read</>
+            <> · {category ? <Link href={`/insights/category/${category.slug}`} className="underline underline-offset-4 hover:text-ink">{post.category}</Link> : post.category} · {post.readingMinutes} min read</>
           </p>
           <h1 className="font-display mt-4 text-[clamp(2.1rem,5vw,3.75rem)] font-[750]">{post.title}</h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-ink-2 sm:text-xl sm:leading-9">{post.excerpt}</p>
@@ -79,6 +81,9 @@ export default function InsightDetails({ post, relatedPosts }: { post: Article; 
               {post.cta.label} {externalCta && <FiArrowUpRight aria-hidden="true" />}
             </a>
           </aside>
+          <p className="mt-6 text-sm text-ink-2">
+            Related service: <Link href={service.href} className="font-semibold text-sapphire underline decoration-pale decoration-2 underline-offset-4 hover:decoration-signal">{service.label}</Link>
+          </p>
           {relatedPosts.length > 0 && (
             <aside className="mt-14" aria-labelledby="related-insights">
               <h2 id="related-insights" className="font-display text-2xl font-[720]">Related insights</h2>

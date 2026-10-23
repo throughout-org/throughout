@@ -9,7 +9,7 @@ product: "Comflo"
 primaryKeyword: "how to manage WhatsApp orders"
 secondaryKeywords: ["WhatsApp order management", "WhatsApp orders without spreadsheets", "shared WhatsApp inbox"]
 searchIntent: "Informational with commercial investigation"
-category: "Commerce"
+category: "Business"
 cluster: "Comflo"
 excerpt: "A practical workflow for connecting WhatsApp conversations, customers and order status without copying changing details between chats and spreadsheets."
 author: { name: "Throughout", role: "Product and engineering team", type: "Organization", url: "https://www.throughout.io" }

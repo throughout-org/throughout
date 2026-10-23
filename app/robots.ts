@@ -8,15 +8,17 @@ export default function robots(): MetadataRoute.Robots {
       // Standard crawlers — full access
       { userAgent: "*", allow: "/", disallow: ["/api/"] },
 
-      // AI / LLM crawlers — explicitly allowed for GEO/AEO visibility
-      { userAgent: "GPTBot", allow: "/" },
-      { userAgent: "ChatGPT-User", allow: "/" },
-      { userAgent: "ClaudeBot", allow: "/" },
-      { userAgent: "anthropic-ai", allow: "/" },
-      { userAgent: "PerplexityBot", allow: "/" },
-      { userAgent: "YouBot", allow: "/" },
-      { userAgent: "Google-Extended", allow: "/" },
-      { userAgent: "cohere-ai", allow: "/" },
+      // AI / LLM crawlers: explicitly allowed for GEO/AEO visibility, minus the API routes
+      {
+        userAgent: [
+          "GPTBot", "OAI-SearchBot", "ChatGPT-User",
+          "ClaudeBot", "Claude-SearchBot", "Claude-User", "anthropic-ai",
+          "PerplexityBot", "Perplexity-User", "YouBot",
+          "Google-Extended", "Applebot-Extended", "cohere-ai",
+        ],
+        allow: "/",
+        disallow: ["/api/"],
+      },
     ],
     sitemap: [`${SITE}/sitemap.xml`],
   };

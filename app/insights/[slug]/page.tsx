@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import InsightDetails from "@/components/insights/InsightDetails";
-import { getAllArticles, getArticleBySlug, getRelatedArticles } from "@/lib/insights";
+import { extractFaqs, getAllArticles, getArticleBySlug, getRelatedArticles } from "@/lib/insights";
 
 // Static content; tells the Cloudflare build to cache it at the edge.
 export const dynamic = "force-static";
@@ -44,6 +44,7 @@ export default async function InsightDetailPage({ params }: { params: Promise<Pa
   if (!post) notFound();
   const relatedPosts = getRelatedArticles(post);
 
+  const faqs = extractFaqs(post.content);
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -67,6 +68,12 @@ export default async function InsightDetailPage({ params }: { params: Promise<Pa
           { "@type": "ListItem", position: 3, name: post.title, item: post.canonicalUrl },
         ],
       },
+      ...(faqs.length > 0
+        ? [{
+            "@type": "FAQPage", "@id": `${post.canonicalUrl}#faq`,
+            mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })),
+          }]
+        : []),
     ],
   };
 

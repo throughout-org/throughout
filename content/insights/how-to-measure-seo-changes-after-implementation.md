@@ -10,7 +10,7 @@ metaDescription: "Measure SEO implementations with baselines, annotations, query
 primaryKeyword: "how to measure SEO changes"
 secondaryKeywords: ["SEO implementation measurement", "measure SEO impact", "SEO change validation"]
 searchIntent: "Informational"
-category: "Marketing"
+category: "SEO & GEO"
 cluster: "SEO measurement"
 canonicalUrl: "https://www.throughout.io/insights/how-to-measure-seo-changes-after-implementation"
 noIndex: false
