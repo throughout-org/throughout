@@ -20,7 +20,7 @@
 5. **List the 5 products** on Product Hunt, SaaSHub and AlternativeTo: `product-listings.md`.
 6. **Track referring domains** (target 8 to 12 new by end of Month 2) in `referring-domains.md`.
 7. Resubmit the sitemap and run `node scripts/indexnow.mjs` after deploy.
-8. Confirm the post dates (2 to 16 Nov 2026) match your publishing schedule; they are in each post's frontmatter.
+8. Post dates are all set to 2026-10-23 (published).
 
 ## Notes
 

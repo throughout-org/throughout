@@ -33,8 +33,8 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "Throughout rebuilt the search foundations of Müllwood, Sri Lanka's first curly-hair brand, over three months from July to September 2026. Structured data coverage went from 0% to 100%, 20 pages and products received SEO titles and keywords, 671 images received alt text and the blog grew from 1 to 13 articles.",
     period: "July to September 2026",
-    datePublished: "2026-10-30",
-    dateModified: "2026-10-30",
+    datePublished: "2026-10-23",
+    dateModified: "2026-10-23",
     services: ["Technical SEO", "Structured data", "AEO and GEO", "Content strategy"],
     image: "/images/work/mullwood.jpg",
     imageAlt: "Müllwood curly hair care website, optimised for search by Throughout",
@@ -82,8 +82,8 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "In September 2026 Throughout rebuilt the search and AI-assistant foundations of three sites owned by CoreConnect Distributions: Aerix, Airmate and CoreConnect. Aerix URLs with SEO titles went from 0% to 90%, Airmate pages and products with SEO titles from 0 to 61, CoreConnect structured data from 0% to 100%, and eight answer-ready guides were published.",
     period: "Month 1, September 2026",
-    datePublished: "2026-10-30",
-    dateModified: "2026-10-30",
+    datePublished: "2026-10-23",
+    dateModified: "2026-10-23",
     services: ["Technical SEO", "Structured data", "AEO and GEO", "Content strategy"],
     image: "/images/work/airmate.jpg",
     imageAlt: "Airmate scent diffuser store, optimised for search and AI assistants by Throughout",

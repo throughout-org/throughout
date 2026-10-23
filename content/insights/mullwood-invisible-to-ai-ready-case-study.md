@@ -3,8 +3,8 @@ title: "How We Took Müllwood from Invisible to AI-Ready in 90 Days (Case Study)
 slug: "mullwood-invisible-to-ai-ready-case-study"
 excerpt: "A 90-day story of rebuilding an ecommerce store so Google and AI assistants can read it: the sequence, the decisions and what we would repeat."
 author: { name: "Throughout Growth Team", role: "SEO and implementation", type: "Organization", url: "https://www.throughout.io" }
-publishedDate: "2026-11-05"
-updatedDate: "2026-11-05"
+publishedDate: "2026-10-23"
+updatedDate: "2026-10-23"
 seoTitle: "Müllwood SEO and GEO Case Study: Invisible to AI-Ready"
 metaDescription: "How we rebuilt Müllwood's ecommerce store for Google and AI assistants in 90 days: sequence, structured data, content and what we would repeat."
 primaryKeyword: "SEO case study Sri Lanka"

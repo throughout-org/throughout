@@ -3,8 +3,8 @@ title: "GEO Explained: How to Get Your Business Recommended by ChatGPT and Gemin
 slug: "geo-explained-get-recommended-by-chatgpt-gemini"
 excerpt: "A practical, honest guide to generative engine optimisation: what it is, what you can control, a checklist and how to track whether AI assistants mention you."
 author: { name: "Throughout Growth Team", role: "Search and content strategy", type: "Organization", url: "https://www.throughout.io" }
-publishedDate: "2026-11-09"
-updatedDate: "2026-11-09"
+publishedDate: "2026-10-23"
+updatedDate: "2026-10-23"
 seoTitle: "GEO Explained: Get Recommended by ChatGPT and Gemini"
 metaDescription: "What generative engine optimisation (GEO) is, what you can control, a practical checklist and how to track mentions in ChatGPT, Gemini and Perplexity."
 primaryKeyword: "generative engine optimisation (GEO)"
